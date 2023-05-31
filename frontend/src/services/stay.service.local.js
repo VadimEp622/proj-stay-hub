@@ -2,7 +2,12 @@ import { storageService } from './async-storage.service.js'
 import { utilService } from './util.service.js'
 import { userService } from './user.service.js'
 
-const STORAGE_KEY = 'stay'
+const STAY_STORAGE_KEY = 'stay'
+
+
+let gStays
+
+_createDemoStays()
 
 export const stayService = {
     query,
@@ -16,7 +21,7 @@ window.cs = stayService
 
 
 async function query(filterBy = { name: '', price: 0 }) {
-    var stays = await storageService.query(STORAGE_KEY)
+    var stays = await storageService.query(STAY_STORAGE_KEY)
     if (filterBy.name) {
         const regex = new RegExp(filterBy.txt, 'i')
         stays = stays.filter(stay => regex.test(stay.name) || regex.test(stay.description))
@@ -28,22 +33,22 @@ async function query(filterBy = { name: '', price: 0 }) {
 }
 
 function getById(stayId) {
-    return storageService.get(STORAGE_KEY, stayId)
+    return storageService.get(STAY_STORAGE_KEY, stayId)
 }
 
 async function remove(stayId) {
     // throw new Error('Nope')
-    await storageService.remove(STORAGE_KEY, stayId)
+    await storageService.remove(STAY_STORAGE_KEY, stayId)
 }
 
 async function save(stay) {
     var savedStay
     if (stay._id) {
-        savedStay = await storageService.put(STORAGE_KEY, stay)
+        savedStay = await storageService.put(STAY_STORAGE_KEY, stay)
     } else {
         // Later, owner is set by the backend
         stay.owner = userService.getLoggedinUser()
-        savedStay = await storageService.post(STORAGE_KEY, stay)
+        savedStay = await storageService.post(STAY_STORAGE_KEY, stay)
     }
     return savedStay
 }
@@ -59,7 +64,7 @@ async function addStayMsg(stayId, txt) {
         txt
     }
     stay.msgs.push(msg)
-    await storageService.put(STORAGE_KEY, stay)
+    await storageService.put(STAY_STORAGE_KEY, stay)
 
     return msg
 }
@@ -68,17 +73,61 @@ function getEmptyStay() {
     return {
         name: '',
         description: '',
-        price: utilService.getRandomIntInclusive(100, 9000),
-        type: "House",
+        price: '',
+        type: '',
         imgUrls: [],
-        summary: "Fantastic duplex apartment...",
-        capacity: utilService.getRandomIntInclusive(1, 10),
+        summary: '',
+        capacity: '',
     }
 }
 
 
+
+
+// *********************** PRIVATE FUNCTIONS ***********************
 // TEST DATA
+
 // storageService.post(STORAGE_KEY, {vendor: 'Subali Rahok 2', price: 980}).then(x => console.log(x))
+
+function _createDemoStays() {
+    gStays = JSON.parse(localStorage.getItem(STAY_STORAGE_KEY)) || []
+    if (gStays.length > 0) return gStays
+
+    gStays.push(_createDemoStay(
+        'Once in a lifetime experience - bedroom room view beside seaside cliff',
+        'A single bedroom cabin with an enormous glass window facing the ocean from a cliff',
+        'Cabin'
+    ))
+    gStays.push(_createDemoStay(
+        'Enormous Duplex apartment in a lively downtown block',
+        'Fantastic duplex apartment with an elevator and a balcony adorned with potted greenery....',
+        'House'
+    ))
+    gStays.push(_createDemoStay(
+        'High-rise building apartment - fantastic view of the beautiful city',
+        'An apartment in a high-rise building',
+        'Apartment'
+    ))
+    gStays.push(_createDemoStay(
+        'Comfy single bed room for single night\'s nap',
+        '1 small neat and compact room with a bed and a small window facing the tram train passing by',
+        'Room'
+    ))
+    localStorage.setItem(STAY_STORAGE_KEY, JSON.stringify(gStays))
+}
+
+
+function _createDemoStay(name, summary, type) {
+    return {
+        name,
+        summary,
+        description: '<Enter Description Here>',
+        type,
+        price: utilService.getRandomIntInclusive(100, 9000),
+        capacity: utilService.getRandomIntInclusive(1, 10),
+        imgUrls: [],
+    }
+}
 
 
 

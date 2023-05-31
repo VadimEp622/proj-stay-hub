@@ -4,7 +4,6 @@ import { httpService } from './http.service.js'
 import { utilService } from './util.service.js'
 import { userService } from './user.service.js'
 
-
 const STORAGE_KEY = 'stay'
 
 export const stayService = {
@@ -58,6 +57,9 @@ function getEmptyStay() {
     }
 }
 
+
+
+// *********************** PRIVATE FUNCTIONS ***********************
 
 
 
