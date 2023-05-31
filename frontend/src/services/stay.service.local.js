@@ -96,28 +96,32 @@ function _createDemoStays() {
     gStays.push(_createDemoStay(
         'Once in a lifetime experience - bedroom room view beside seaside cliff',
         'A single bedroom cabin with an enormous glass window facing the ocean from a cliff',
-        'Cabin'
+        'Cabin',
+        { country: "Portugal", countryCode: "PT", city: "Lisbon" }
     ))
     gStays.push(_createDemoStay(
         'Enormous Duplex apartment in a lively downtown block',
         'Fantastic duplex apartment with an elevator and a balcony adorned with potted greenery....',
-        'House'
+        'House',
+        { country: "Israel", countryCode: "IL", city: "Haifa" }
     ))
     gStays.push(_createDemoStay(
         'High-rise building apartment - fantastic view of the beautiful city',
         'An apartment in a high-rise building',
-        'Apartment'
+        'Apartment',
+        { country: "Israel", countryCode: "IL", city: "Eilat" }
     ))
     gStays.push(_createDemoStay(
         'Comfy single bed room for single night\'s nap',
         '1 small neat and compact room with a bed and a small window facing the tram train passing by',
-        'Room'
+        'Room',
+        { country: "Israel", countryCode: "IL", city: "Tel Aviv" }
     ))
     localStorage.setItem(STAY_STORAGE_KEY, JSON.stringify(gStays))
 }
 
 
-function _createDemoStay(name, summary, type) {
+function _createDemoStay(name, summary, type, loc) {
     return {
         name,
         summary,
@@ -126,9 +130,16 @@ function _createDemoStay(name, summary, type) {
         price: utilService.getRandomIntInclusive(100, 9000),
         capacity: utilService.getRandomIntInclusive(1, 10),
         imgUrls: [],
+        loc: {
+            country: loc.country,
+            countryCode: loc.countryCode,
+            city: loc.city,
+        },
+        //below is temp!
+        checkIn: Date().now(),//today
+        checkOut: Date().now() + 86400000 * 3//in 3 days
     }
 }
-
 
 
 
