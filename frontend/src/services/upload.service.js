@@ -2,8 +2,8 @@ export const uploadService = {
   uploadImg
 }
 async function uploadImg(ev) {
-  const CLOUD_NAME = "dnhn4zsy0"  // "dcwibf9o5" 
-  const UPLOAD_PRESET = "aqkq2mwa"  // "vt0iqgff"
+  const CLOUD_NAME = "dnhn4zsy0"
+  const UPLOAD_PRESET = "aqkq2mwa"
   const UPLOAD_URL = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`
 
   try {
