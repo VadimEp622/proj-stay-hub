@@ -51,7 +51,7 @@
             }
 
             & :last-child {
-                flex: 1.216 1 auto;
+                flex: 1.211 1 auto;
             }
 
             & .search-navbar {
@@ -78,14 +78,14 @@
                     &:is(:nth-child(1), :nth-child(2)) {
                         font-family: montserrat semibold;
                         padding-inline-start: 20px;
-                        margin-inline-end: 1px;
+                        margin-inline-end: -2px;
                         transform: scaleX(90%);
                     }
 
                     &:nth-child(3) {
                         font-family: montserrat;
-                        margin-inline-end: 7px;
-                        transform: scaleX(90%);
+                        margin-inline-end: 3px;
+                        transform: scaleX(91%);
                     }
                 }
 
