@@ -1,6 +1,6 @@
 .stay-details {
     .img-container {
-        display: grid;
+        @include grid();
         grid-template-columns: repeat(4, 1fr); // Four columns with equal width
         grid-template-rows: auto; // Auto-sized rows
         grid-gap: 10px; // Gap between grid items
