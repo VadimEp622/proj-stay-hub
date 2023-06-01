@@ -18,7 +18,6 @@
     }
 }
 
-
 /* Media  Mixins */
 @mixin aspect-ratio($width, $height) {
     position: relative;
@@ -54,5 +53,43 @@
     }
 }
 
+@mixin flex {
+    display: flex;
+}
+
+@mixin column {
+    flex-direction: column;
+}
+
+@mixin justify-center {
+    justify-content: center;
+}
+
+@mixin align-center {
+    align-items: center;
+}
+
+@mixin between {
+    justify-content: space-between;
+}
+
+@mixin center {
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin grid {
+    display: grid;
+}
+
+@mixin hidden {
+    display: none;
+}
+
+@mixin clean-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
 
 // @mixin customButtons {}
