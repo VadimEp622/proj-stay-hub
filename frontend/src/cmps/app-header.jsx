@@ -69,10 +69,9 @@ export function AppHeader() {
 
                 <section className="search-navbar-container">
                     <section className='search-navbar'>
-                        <article></article>
-                        <article></article>
-                        <article>
-                        </article>
+                        <article>Anywhere</article>
+                        <article>Any week</article>
+                        <article>Add guests</article>
                         <button className='custom-btn-main-search'>
                             <SvgHandler svgName={SEARCH} />
                         </button>
