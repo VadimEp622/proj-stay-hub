@@ -6,7 +6,8 @@ import { userService } from './user.service'
 export const reviewService = {
   add,
   query,
-  remove
+  remove,
+  getAverageReview
 }
 
 function query(filterBy) {
@@ -20,9 +21,9 @@ async function remove(reviewId) {
   await storageService.remove('review', reviewId)
 }
 
-async function add({txt, aboutUserId}) {
+async function add({ txt, aboutUserId }) {
   // const addedReview = await httpService.post(`review`, {txt, aboutUserId})
-  
+
   const aboutUser = await userService.getById(aboutUserId)
 
   const reviewToAdd = {
@@ -39,4 +40,21 @@ async function add({txt, aboutUserId}) {
   await userService.update(reviewToAdd.byUser)
   const addedReview = await storageService.post('review', reviewToAdd)
   return addedReview
+}
+
+function getAverageReview(stay) {
+  let count = 0;
+  const totalRate = stay.reviews.reduce((acc, review) => {
+    acc += review.rate;
+    count++;
+    return acc;
+  }, 0);
+  const averageRate = totalRate / count;
+
+  const formattedRate = averageRate.toLocaleString(undefined, {
+    minimumFractionDigits: 0,
+    maximumFractionDigits: averageRate % 1 > 0 ? 2 : 0,
+  });
+
+  return formattedRate;
 }
