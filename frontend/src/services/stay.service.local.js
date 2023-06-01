@@ -123,7 +123,7 @@ function _createDemoStays() {
 
 function _createDemoStay(name, summary, type, loc) {
     return {
-        _id:utilService.makeId(),
+        _id: utilService.makeId(),
         name,
         summary,
         description: '<Enter Description Here>',
