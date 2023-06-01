@@ -6,6 +6,12 @@ import { showErrorMsg } from "../services/event-bus.service.js"
 import { reviewService } from '../services/review.service.js'
 
 import SvgHandler from '../cmps/svg_handler.jsx'
+<<<<<<< HEAD
+=======
+import star from "../assets/img/star.svg"
+import share from "../assets/img/share.svg"
+import heart from "../assets/img/heart.svg"
+>>>>>>> 48bb91c62b532f40223da2440825f2123cb82516
 import star from "../assets/img/star/star.svg"
 import share from "../assets/img/share/share.svg"
 import heart from "../assets/img/heart/heart.svg"

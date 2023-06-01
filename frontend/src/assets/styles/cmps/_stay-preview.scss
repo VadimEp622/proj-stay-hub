@@ -1,9 +1,37 @@
 .stay-preview {
-    img {
-        border-radius: 12px;
+    position: relative;
+    cursor: pointer;
+
+    .img-container {
+        height: 100%;
+        width: 100%;
+
+        img {
+            border-radius: 12px;
+        }
+    }
+
+    .review-rate {
+        width: auto;
+        display: flex;
+        @include between();
+        gap: rem(3px);
+
+        img {
+            height: rem(14px);
+            width: rem(14px);
+        }
     }
 
     .preview-info {
         margin-block-start: 0.5rem;
+        line-height: 1.13rem;
+        padding: 0;
+        margin: 0;
+    }
+
+    .preview-header {
+        display: flex;
+        @include between();
     }
 }

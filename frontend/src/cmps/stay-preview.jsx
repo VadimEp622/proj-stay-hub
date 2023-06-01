@@ -1,18 +1,24 @@
 import { reviewService } from "../services/review.service";
 import { utilService } from "../services/util.service";
-
+// import star from '../assets/img/star.svg'
+import SvgHandler from "./svg_handler";
+import { STAR } from "../services/svg.service";
 export function StayPreview({ stay }) {
 
 
     return (
-        <div className="stay-preview" key={stay._id}>
-            <img src={stay.imgUrls[0]} alt="stay-image" />
+        <section className="stay-preview" key={stay._id}>
+            <div className="img-container">
+                <img src={stay.imgUrls[0]} alt="stay-image" />
+            </div>
             <div className="preview-info">
-                <p>{stay.loc.city}, {stay.loc.country}</p>
-                <p>{reviewService.getAverageReview(stay)}</p>
+                <div className="preview-header">
+                    <p>{stay.loc.city}, {stay.loc.country}</p>
+                    <p className="review-rate"><svgHandler svgName={STAR} /><span>{reviewService.getAverageReview(stay)}</span></p>
+                </div>
                 <p>{utilService.getFormattedTimeRange(stay.checkIn, stay.checkOut)}</p>
                 <p>${stay.price.toLocaleString()} night</p>
             </div>
-        </div>
+        </section>
     )
 }
