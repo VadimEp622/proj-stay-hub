@@ -80,10 +80,12 @@ export function AppHeader() {
 
 
                 <section className="user-navbar-container">
-                    <article className="user-navbar">
-                        <SvgHandler svgName={USER_NAV_BARS} />
-                        <SvgHandler svgName={USER_NAV_PROFILE} />
-                    </article>
+                    <section className="user-navbar">
+                        <article className="bars"><SvgHandler svgName={USER_NAV_BARS} /></article>
+
+                        <article className="profile"><SvgHandler svgName={USER_NAV_PROFILE} /></article>
+
+                    </section>
                 </section>
             </nav>
         </header>
