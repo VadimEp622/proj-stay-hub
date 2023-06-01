@@ -16,11 +16,11 @@ const routes = [
         label: 'Airbnb DEMO',
         isLogo: true,
     },
-    // {
-    //     path: 'stay',
-    //     component: <StayIndex />,
-    //     label: 'Stays'
-    // },
+    {
+        path: 'stay',
+        component: <StayIndex />,
+        label: 'Stays'
+    },
     // {
     //     path: 'review',
     //     component: <ReviewIndex />,
