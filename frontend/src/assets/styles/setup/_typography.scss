@@ -3,13 +3,16 @@
 //     src: url(../../fonts/Caveat/Caveat-Regular.ttf);
 // } 
 
-// @font-face {
-//     font-family: montserrat;
-//     src: url(../../fonts/Montserrat/Montserrat-Regular.ttf);
-// }
+@font-face {
+    font-family: montserrat;
+    src: url(../../fonts/Montserrat/Montserrat-Regular.ttf);
+}
+@font-face {
+    font-family: montserrat semibold;
+    src: url(../../fonts/Montserrat/Montserrat-SemiBold.ttf);
+}
 
 
-// AIRBNB FONT
 @font-face {
     font-family: circular;
     src: url(../../fonts/FlowCircular/FlowCircular-Regular.ttf);
