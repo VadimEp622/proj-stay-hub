@@ -6,7 +6,7 @@ import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service.js'
 import { login, logout, signup } from '../store/user.actions.js'
 import { LoginSignup } from './login-signup.jsx'
 
-import { LOGO, USER_NAV_BARS, USER_NAV_PROFILE } from '../services/svg.service.js'
+import { LOGO, USER_NAV_BARS, USER_NAV_PROFILE, SEARCH } from '../services/svg.service.js'
 
 
 // import logo from '../assets/img/logo/logo-airbnb.svg'
@@ -67,7 +67,17 @@ export function AppHeader() {
                     }
                 </section>
 
-                <section className="search-navbar"></section>
+                <section className="search-navbar-container">
+                    <section className='search-navbar'>
+                        <article></article>
+                        <article></article>
+                        <article>
+                        </article>
+                            <button className='custom-btn-main-search'>
+                                <SvgHandler svgName={SEARCH} />
+                            </button>
+                    </section>
+                </section>
 
 
                 <section className="user-navbar-container">

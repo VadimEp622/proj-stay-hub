@@ -12,24 +12,54 @@
 
     // less than 750px
     @include for-mobile-layout {
-        grid-template-columns:
-            0 1fr 0;
+        grid-template-columns: 0 1fr 0;
 
         & .app-main {
-            padding-inline: 40px
+            padding-inline: 40px;
+
+            .search-navbar-container {
+
+                & .search-navbar {
+                    // width: 1000px;
+                    background-color: blue;
+                }
+            }
         }
     }
 
     // more than 750px
     @include for-normal-layout {
-        grid-template-columns:
-            40px 1fr 40px;
+        grid-template-columns: 40px 1fr 40px;
+
+        & .app-main {
+
+            // & .search-navbar-container {
+            // display: flex;
+            // justify-content: center;
+
+            // & .search-navbar {
+            //     width: 350px;
+            // }
+            // }
+        }
     }
 
     // more than 1450px
     @include for-wide-layout {
-        grid-template-columns:
-            80px 1fr 80px;
+        grid-template-columns: 80px 1fr 80px;
+
+        & .app-main {
+
+            // & .search-navbar-container {
+            // display: flex;
+            // justify-content: center;
+
+            // & .search-navbar {
+            //     width: 350px;
+
+            // }
+            // }
+        }
     }
 }
 

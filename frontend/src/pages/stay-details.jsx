@@ -29,7 +29,12 @@ export function StayDetails() {
     }
 
     if (!stay) return <div>Loading...</div>
-    return <section className="stay-details">
+    return <section className="stay-details"
+
+        // possible to change in place other than stays stay-index, but needs some work
+        // style={{ display: "grid", gridTemplateRows: "150px 1fr 150px" }}
+
+    >
         <section className='stay-review flex'>
             <h1>{stay.name}</h1>
             <section className='info-bar flex space-between align-center'>
@@ -62,5 +67,5 @@ export function StayDetails() {
             })()}
         </section>
 
-    </section>
+    </section >
 }

@@ -5,7 +5,8 @@ import { ReactComponent as UserNavProfile } from '../assets/img/user-nav/user-na
 import { ReactComponent as Star } from '../assets/img/star/star.svg'
 import { ReactComponent as Share } from '../assets/img/share/share.svg'
 import { ReactComponent as Heart } from '../assets/img/heart/heart.svg'
-import { HEART, LOGO, SHARE, STAR, USER_NAV_BARS, USER_NAV_PROFILE } from '../services/svg.service'
+import { ReactComponent as Search } from '../assets/img/search/search.svg'
+import { HEART, LOGO, SEARCH, SHARE, STAR, USER_NAV_BARS, USER_NAV_PROFILE } from '../services/svg.service'
 
 
 const SvgHandler = ({ svgName }) => {
@@ -24,6 +25,10 @@ const SvgHandler = ({ svgName }) => {
                 return <Share />
             case HEART:
                 return <Heart />
+            case SEARCH:
+                return <Search />
+            // case:
+            //     return default
         }
     }
 
