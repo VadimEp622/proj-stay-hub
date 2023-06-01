@@ -1,0 +1,6 @@
+export const LOGO = 'logo'
+export const USER_NAV_BARS = 'user_nav-bars'
+export const USER_NAV_PROFILE = 'user-nav-profile'
+export const HEART = 'heart'
+export const HEART_RED = 'heart-red'
+export const STAR = 'star'
