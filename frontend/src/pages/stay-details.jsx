@@ -3,9 +3,11 @@ import { useParams, useNavigate, Link } from 'react-router-dom'
 
 import { stayService } from "../services/stay.service.local.js"
 import { showErrorMsg } from "../services/event-bus.service.js"
+import { reviewService } from '../services/review.service.js'
 
 import star from "../assets/img/star.svg"
-import { reviewService } from '../services/review.service.js'
+import share from "../assets/img/share.svg"
+import heart from "../assets/img/heart.svg"
 
 export function StayDetails() {
     const [stay, setStay] = useState(null)
@@ -33,13 +35,15 @@ export function StayDetails() {
             <h1>{stay.name}</h1>
             <section className='info-bar flex space-between align-center'>
                 <section className='info flex'>
-                    <img className="review-star" src={star} alt="star image" />
+                    <img className="review-star" src={star} alt="star" />
                     <span>{reviewService.getAverageReview(stay)}</span>
                     <span>{stay.reviews.length} Review</span>
                     <span>{stay.loc.city}, {stay.loc.country}</span>
                 </section>
                 <section className='btns flex'>
+                    <img className="share-svg" src={share} alt="share" />
                     <span>Share</span>
+                    <img className="heart-svg" src={heart} alt="heart" />
                     <span>Save</span>
                 </section>
             </section>

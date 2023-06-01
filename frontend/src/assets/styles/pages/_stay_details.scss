@@ -17,8 +17,16 @@
             }
             
             .btns {
+                align-items: baseline;
                 gap: 0.5em;
-
+                
+                .share-svg {
+                    width: 16px;
+                }
+                
+                .heart-svg {
+                    width: 16px;
+                }
             }
         }
     }
