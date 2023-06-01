@@ -20,9 +20,9 @@
                 .logo-svg {
                     display: flex;
                     color: #E0565B;
-                    gap:$padding-small;
-                    
-                    span{
+                    gap: $padding-small;
+
+                    span {
                         height: fit-content;
                         margin-block: auto;
                     }
@@ -42,7 +42,7 @@
             & .search-navbar {
                 height: 48px;
                 display: flex;
-                justify-content:center;
+                justify-content: center;
                 align-items: center;
                 position: relative;
                 width: 350px;
@@ -50,10 +50,31 @@
                 border: 1px solid rgb(221, 221, 221);
                 border-radius: 40px;
                 box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.05);
-                & > *:not(:last-child){
+
+                &>*:not(:last-child) {
                     // margin-inline:$padding-large;
                     flex: 1 1 auto;
                     text-align: center
+                }
+
+                & :nth-child(2) {
+                    position: relative;
+
+                    &::before {
+                        content: '|';
+                        position: absolute;
+                        left: 0;
+                        transform: scaleY(2);
+                        color: rgb(221, 221, 221);
+                    }
+
+                    &::after {
+                        content: '|';
+                        position: absolute;
+                        transform: scaleY(2);
+                        right: 0;
+                        color: rgb(221, 221, 221);
+                    }
                 }
 
                 & .custom-btn-main-search {
