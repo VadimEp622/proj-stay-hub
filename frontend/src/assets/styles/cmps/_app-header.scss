@@ -1,55 +1,39 @@
-.app-header {
-    background-color: $clr4;
-    padding: 10px;
-    // max-height: 80px;
-
-    .logo-svg {
-        color: #E0565B;
-    }
-
-    .navbar-container{
-        display: flex;
-    }
-
-    .user-info {
-        // background-color: $clr2;
-        // padding: 2px 8px;
-        padding-left: 100px;
-        color: $clr1;
-
-        .score {
-            background-color: $clr2;
-            color: $clr6;
-            padding: 8px;
-            margin: 10px;
-            border-radius: 50%;
-        }
-
-        img {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            object-fit: cover;
-        }
-    }
-
-    .user-info .btn-link {
-        color: $clr2;
-    }
-
-    nav {
+.app-header-container {
+    height: $height-header;
+    height: 100%;
+    & .app-header {
+        margin-block: calc($padding-large - 1px);
+        display: grid;
+        grid-template-columns: auto 1fr auto;
         font-size: .8em;
-        background-color: $clr5;
-        padding: 5px;
+
+        & .navbar-container {
+            display: flex;
+
+            gap: $padding-large;
+
+            .page-navbar {
+                align-self: center;
+
+                .logo-svg {
+                    color: #E0565B;
+                }
+            }
+
+            .search-navbar {}
 
 
-        .user-navbar-container {
+        }
+
+
+        & .user-navbar-container {
             height: 42px;
             width: 77px;
             border: 1px solid rgb(221, 221, 221);
             border-radius: 21px;
+            // justify-self:;
 
-            .user-navbar{
+            .user-navbar {
                 display: flex;
                 height: 100%;
                 padding: 5px 5px 5px 12px;
@@ -57,20 +41,6 @@
             }
         }
 
-    }
 
-    nav a:first-child {
-        margin-right: 30px;
     }
-
-    nav a:not(:first-child) {
-        border-top: 1px solid $clr1;
-        padding: 0 5px;
-        margin: 10px;
-    }
-
-    nav .active {
-        color: $clr1;
-    }
-
 }

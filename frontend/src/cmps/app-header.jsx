@@ -42,13 +42,14 @@ export function AppHeader() {
     }
 
     return (
-        <header className="app-header full main-layout">
-            <nav>
+        <header className="app-header-container full main-layout">
+            <nav className='app-header'>
                 {/* fix img src */}
                 <section className="navbar-container">
                     {
                         routes.map(route =>
                             <NavLink
+                                className={"page-navbar"}
                                 key={route.path}
                                 to={route.path}
                             >
@@ -66,21 +67,7 @@ export function AppHeader() {
                     }
                 </section>
 
-                {/* {user &&
-                    <span className="user-info">
-                        <Link to={`user/${user._id}`}>
-                            {user.imgUrl && <img src={user.imgUrl} />}
-                            {user.fullname}
-                        </Link>
-                        <span className="score">{user.score?.toLocaleString()}</span>
-                        <button onClick={onLogout}>Logout</button>
-                    </span>
-                }
-                {!user &&
-                    <section className="user-info">
-                        <LoginSignup onLogin={onLogin} onSignup={onSignup} />
-                    </section>
-                } */}
+                <section className="search-navbar"></section>
 
 
                 <section className="user-navbar-container">
