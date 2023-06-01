@@ -14,7 +14,8 @@ export function StayDetails() {
     }, [stayId])
 
     function loadStay() {
-        stayService.getById('X8hb7Z')
+        console.log(stayId);
+        stayService.getById(stayId)
             .then(setStay)
             .catch((err) => {
                 console.log('Had issues in stay details', err)
@@ -26,22 +27,29 @@ export function StayDetails() {
     if (!stay) return <div>Loading...</div>
     return <section className="stay-details">
         <section className='details-review'>
-        <h1>{stay.name}</h1>
-        <section className='info-bar flex space-between align-center'>
-            <section className='info flex'>
-                <h4>⭐️5</h4>
-                <h4>1 Review</h4>
-                <h4>{stay.loc.city}, {stay.loc.country}</h4>
+            <h1>{stay.name}</h1>
+            <section className='info-bar flex space-between align-center'>
+                <section className='info flex'>
+                    <h4>⭐️5</h4>
+                    <h4>1 Review</h4>
+                    <h4>{stay.loc.city}, {stay.loc.country}</h4>
+                </section>
+                <section className='btns flex'>
+                    <h4>Share</h4>
+                    <h4>Save</h4>
+                </section>
             </section>
-            <section className='btns flex'>
-                <h4>Share</h4>
-                <h4>Save</h4>
-            </section>
         </section>
-        </section>
-        <section className='img-container'>
-            <h1>Images</h1>
-        </section>
-        <h5>Price: ${stay.price}</h5>
+        <section className="img-container">
+    {(() => {
+      const images = []
+      for (let i = 0; i < 5; i++) {
+        const url = stay.imgUrls[i]
+        images.push(<img key={i} src={url} alt={`Image ${i}`} />)
+      }
+      return images
+    })()}
+  </section>
+
     </section>
 }
