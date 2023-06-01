@@ -6,3 +6,6 @@ export const HEART_RED = 'heart-red'
 export const STAR = 'star'
 export const SHARE = 'share'
 export const SEARCH = 'search'
+export const WHITE_HEART = 'heart-white'
+export const RED_HEART = 'heart-red'
+

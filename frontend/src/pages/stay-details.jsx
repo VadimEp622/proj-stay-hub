@@ -29,20 +29,15 @@ export function StayDetails() {
     }
 
     if (!stay) return <div>Loading...</div>
-    return <section className="stay-details"
-
-        // possible to change in place other than stays stay-index, but needs some work
-        // style={{ display: "grid", gridTemplateRows: "150px 1fr 150px" }}
-
-    >
+    return <section className="stay-details">
         <section className='stay-review flex'>
             <h1>{stay.name}</h1>
             <section className='info-bar flex space-between align-center'>
                 <section className='info flex'>
                     <SvgHandler svgName={STAR} />
                     <span>{reviewService.getAverageReview(stay)}</span>
-                    <span className='info-review'>{stay.reviews.length} Review</span>
-                    <span className='info-loc'>{stay.loc.city}, {stay.loc.country}</span>
+                    <span>{stay.reviews.length} Review</span>
+                    <span>{stay.loc.city}, {stay.loc.country}</span>
                 </section>
                 <section className='btns flex'>
                     <div className='share-btn flex'>
@@ -50,7 +45,7 @@ export function StayDetails() {
                         <span>Share</span>
                     </div>
                     <div className='save-btn flex'>
-                        <SvgHandler svgName={HEART} />
+                        {/* <SvgHandler svgName={HEART} /> */}
                         <span>Save</span>
                     </div>
                 </section>
@@ -58,14 +53,19 @@ export function StayDetails() {
         </section>
         <section className="img-container">
             {(() => {
-                const images = []
+                const images = [];
                 for (let i = 0; i < 5; i++) {
-                    const url = stay.imgUrls[i]
-                    images.push(<img key={i} src={url} alt={`Image ${i}`} />)
+                    const url = stay.imgUrls[i];
+                    images.push(
+                        <div className="image-container" key={i}>
+                            <img src={url} alt={`Image ${i}`} className="fade-image" />
+                            <div className="overlay"></div>
+                        </div>
+                    )
                 }
-                return images
+                return images;
             })()}
         </section>
 
-    </section >
+    </section>
 }

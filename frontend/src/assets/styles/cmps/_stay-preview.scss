@@ -1,6 +1,23 @@
 .stay-preview {
+    p {
+        margin: 0;
+    }
+
     position: relative;
     cursor: pointer;
+
+    .price-preview span {
+        font-weight: bold;
+    }
+
+    .heart-svg {
+        width: 32px;
+        height: 32px;
+        position: absolute;
+        top: 3%;
+        left: 85%;
+        right: rem(15px);
+    }
 
     .img-container {
         height: 100%;
@@ -33,5 +50,62 @@
     .preview-header {
         display: flex;
         @include between();
+        margin-block-start: rem(10px);
+
+        p:first-child {
+            font-weight: bold;
+        }
+
+    }
+
+    .react-multiple-carousel__arrow::before {
+        color: black;
+        font-size: 12px;
+        font-weight: bold;
+    }
+
+    .react-multiple-carousel__arrow {
+        opacity: 0;
+        background-color: white;
+        color: black;
+        margin: auto;
+        min-width: 30px;
+        min-height: 30px;
+        border-radius: 50%;
+    }
+
+    &:hover .react-multiple-carousel__arrow {
+        opacity: 0.85;
+    }
+
+    & .react-multiple-carousel__arrow:hover {
+        opacity: 1;
+        scale: 1.05;
+    }
+
+    .react-multi-carousel-dot button {
+        height: rem(7px);
+        width: rem(7px);
+        border-color: white;
+        background-color: white;
+        opacity: 0.35;
+    }
+
+    .react-multi-carousel-dot--active button {
+        opacity: 1;
+    }
+
+    .react-multi-carousel-dot-list {
+        margin-block-end: rem(5px);
+    }
+
+    .price-preview {
+        margin-block-start: rem(10px);
+    }
+}
+
+.stay-info {
+    p:first-child {
+        margin-block-start: 10px;
     }
 }

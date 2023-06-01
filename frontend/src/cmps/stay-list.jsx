@@ -6,9 +6,7 @@ export function StayList({ stays }) {
         <ul className="stays-list">
             {stays.map(stay => (
                 <li key={stay._id}>
-                    <Link to={`/stay/${stay._id}`}>
-                        <StayPreview stay={stay} />
-                    </Link>
+                    <StayPreview stay={stay} />
                 </li>
             ))}
         </ul>
