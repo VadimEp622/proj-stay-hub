@@ -6,23 +6,18 @@
     }
 }
 
-@mixin for-narrow-layout {
+@mixin for-normal-layout {
     @media (min-width: calc($mobile-breakpoint + 40px)) {
         @content;
     }
 }
 
-@mixin for-normal-layout {
+@mixin for-wide-layout {
     @media (min-width: calc($narrow-breakpoint + 40px)) {
         @content;
     }
 }
 
-@mixin for-wide-layout {
-    @media (min-width: calc($normal-breakpoint + 40px)) {
-        @content;
-    }
-}
 
 /* Media  Mixins */
 @mixin aspect-ratio($width, $height) {

@@ -1,8 +1,7 @@
-.main-container {
+.main-layout {
     display: grid;
-    grid-template-columns: 20px 1fr 20px;
 
-    > * {
+    >* {
         grid-column: 2;
 
         &.full {
@@ -10,23 +9,26 @@
         }
     }
 
-    @include for-narrow-layout {
-        grid-template-columns: 
-            minmax(20px, 1fr)
-            minmax(auto, $mobile-breakpoint)
-            minmax(20px, 1fr);
+    // less than 750px
+    @include for-mobile-layout {
+        grid-template-columns:
+            0 1fr 0;
+
+        & .app-main {
+            padding-inline: 40px
+        }
     }
+
+    // more than 750px
     @include for-normal-layout {
-        grid-template-columns: 
-            minmax(20px, 1fr)
-            minmax(auto, $narrow-breakpoint)
-            minmax(20px, 1fr);
+        grid-template-columns:
+            40px 1fr 40px;
     }
+
+    // more than 1450px
     @include for-wide-layout {
-        grid-template-columns: 
-            minmax(20px, 1fr)
-            minmax(auto, $normal-breakpoint)
-            minmax(20px, 1fr);
+        grid-template-columns:
+            80px 1fr 80px;
     }
 }
 
@@ -35,4 +37,3 @@
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     grid-gap: 20px;
 }
-

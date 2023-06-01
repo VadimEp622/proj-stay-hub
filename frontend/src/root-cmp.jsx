@@ -1,7 +1,7 @@
 import React from 'react'
 import { Routes, Route } from 'react-router'
 
-import { stayService } from './services/stay.service.local'
+import { stayService } from './services/stay.service.local'// needed to init demo data to localStorage (do not delete)
 
 import routes from './routes'
 
@@ -13,17 +13,17 @@ import { StayDetails } from './pages/stay-details'
 export function RootCmp() {
 
     return (
-        <div>
+        <section className="app main-layout">
             <AppHeader />
-            <main>
+            <main className="app-main">
                 <Routes>
                     {routes.map(route => <Route key={route.path} exact={true} element={route.component} path={route.path} />)}
                     <Route path="user/:id" element={<UserDetails />} />
-                    <Route path="stay/:stayId" element={<StayDetails />} /> 
+                    <Route path="stay/:stayId" element={<StayDetails />} />
                 </Routes>
             </main>
             <AppFooter />
-        </div>
+        </section>
     )
 }
 
