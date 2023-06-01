@@ -43,18 +43,15 @@ async function add({ txt, aboutUserId }) {
 }
 
 function getAverageReview(stay) {
-  let count = 0;
+  let count = 0
   const totalRate = stay.reviews.reduce((acc, review) => {
-    acc += review.rate;
-    count++;
-    return acc;
-  }, 0);
-  const averageRate = totalRate / count;
+    acc += review.rate
+    count++
+    return acc
+  }, 0)
+  const averageRate = totalRate / count
 
-  const formattedRate = averageRate.toLocaleString(undefined, {
-    minimumFractionDigits: 0,
-    maximumFractionDigits: averageRate % 1 > 0 ? 2 : 0,
-  });
+  const formattedRate = averageRate % 1 === 0 ? averageRate.toFixed(1) : averageRate.toFixed(2)
 
-  return formattedRate;
+  return formattedRate
 }
