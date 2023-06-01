@@ -10,6 +10,13 @@
         }
     }
 
+    .line-header {
+        opacity: 0.3;
+        margin: 0;
+        padding: 0;
+        width: 2px;
+    }
+
     // less than 750px
     @include for-mobile-layout {
         grid-template-columns: 0 1fr 0;

@@ -11,8 +11,6 @@
     }
 
     .heart-svg {
-        width: 32px;
-        height: 32px;
         position: absolute;
         top: 3%;
         left: 85%;
@@ -21,10 +19,11 @@
 
     .img-container {
         height: 100%;
-        width: 100%;
 
         img {
             border-radius: 12px;
+            aspect-ratio: 1.08 / 0.99;
+            object-fit: cover;
         }
     }
 
@@ -50,7 +49,7 @@
     .preview-header {
         display: flex;
         @include between();
-        margin-block-start: rem(10px);
+        margin-block-start: rem(14px);
 
         p:first-child {
             font-weight: bold;

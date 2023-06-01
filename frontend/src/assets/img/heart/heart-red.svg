@@ -6,9 +6,9 @@
             focusable="false"
             style="
               display: block;
-              fill: red;
-              height: 16px;
-              width: 16px;
+              fill: #FF385C;
+              height: 24px;
+              width: 24px;
               stroke: currentcolor;
               stroke-width: 2;
               overflow: visible;
