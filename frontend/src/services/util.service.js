@@ -6,7 +6,7 @@ export const utilService = {
     randomPastTime,
     saveToStorage,
     loadFromStorage,
-    formatTime
+    getFormattedTimeRange
 }
 
 function makeId(length = 6) {
@@ -66,33 +66,21 @@ function loadFromStorage(key) {
     return (data) ? JSON.parse(data) : undefined
 }
 
-function formatTime(time) {
-    let now = Date.now()
-    let diff = now - time
 
-    const SECOND = 1000
-    const MINUTE = SECOND * 60
-    const HOUR = MINUTE * 60
-    const DAY = HOUR * 24
-    const WEEK = DAY * 7
-    const MONTH = DAY * 30
-    const YEAR = DAY * 365
+function getFormattedTimeRange(start, end) {
+    const startDate = new Date(start)
+    const endDate = new Date(end)
 
-    if (diff < MINUTE) return 'Just now'
-    if (diff < MINUTE * 5) return 'A few minutes ago'
-    if (diff < HOUR) return 'Less than a hour ago'
-    if (diff < HOUR * 3) return 'Couple of hours ago'
-    if (diff < DAY) return 'Today'
-    if (diff < DAY * 2) return 'Yesterday'
-    if (diff < DAY * 3) return '2 days ago'
-    if (diff < WEEK) return 'About a week ago'
+    const startMonth = startDate.toLocaleString('default', { month: 'short' })
+    const endMonth = endDate.toLocaleString('default', { month: 'short' })
 
-    return _getFormattedTime(time)
-}
+    let formattedRange = startMonth + ' ' + startDate.getDate()
 
-function _getFormattedTime(t) {
-    var d = new Date(t)
-    var str = 'At ' + d.getDate() + '/' + (d.getMonth() + 1) + '/' +
-        d.getFullYear() + ' Time: ' + d.getHours() + ':' + d.getMinutes()
-    return str
+    if (startMonth !== endMonth || startDate.getFullYear() !== endDate.getFullYear()) {
+        formattedRange += ' - ' + endMonth + ' ' + endDate.getDate()
+    } else {
+        formattedRange += ' - ' + endDate.getDate()
+    }
+
+    return formattedRange
 }

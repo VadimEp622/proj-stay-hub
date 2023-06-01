@@ -192,6 +192,18 @@ function _createDemoStay(name, summary, type, loc, imgUrls) {
         price: utilService.getRandomIntInclusive(100, 9000),
         capacity: utilService.getRandomIntInclusive(1, 10),
         imgUrls,
+        reviews: [
+            {
+                id: "madeId",
+                txt: "Very helpful hosts. Cooked traditional...",
+                rate: 5,
+                by: {
+                    _id: "u102",
+                    fullname: "user2",
+                    imgUrl: "/img/img2.jpg"
+                }
+            }
+        ],
         loc: {
             country: loc.country,
             countryCode: loc.countryCode,
