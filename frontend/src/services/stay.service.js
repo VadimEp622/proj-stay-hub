@@ -22,6 +22,7 @@ async function query(filterBy = { name: '', price: 0 }) {
 }
 
 function getById(stayId) {
+    console.log('service:',stayId);
     return httpService.get(`stay/${stayId}`)
 }
 

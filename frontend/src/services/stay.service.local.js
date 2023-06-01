@@ -97,31 +97,92 @@ function _createDemoStays() {
         'Once in a lifetime experience - bedroom room view beside seaside cliff',
         'A single bedroom cabin with an enormous glass window facing the ocean from a cliff',
         'Cabin',
-        { country: "Portugal", countryCode: "PT", city: "Lisbon" }
+        { country: "Portugal", countryCode: "PT", city: "Lisbon" },
+        [
+            'https://a0.muscache.com/im/pictures/0f7a9ab8-6b60-45cb-8e00-02b7fbbe19f0.jpg',
+            'https://a0.muscache.com/im/pictures/b567fde4-e9fd-401c-82ae-90e375adcc0c.jpg',
+            'https://a0.muscache.com/im/pictures/125b284a-7775-497f-86f4-f0c2de7dfbb3.jpg',
+            'https://a0.muscache.com/im/pictures/143bbdc0-a455-49cc-b502-30984666c0a7.jpg',
+            'https://a0.muscache.com/im/pictures/434a3847-56d5-4454-b956-189a3c610088.jpg',
+            'https://a0.muscache.com/im/pictures/890d442c-bf11-44f8-8636-73c35f709e33.jpg',
+        ]
     ))
     gStays.push(_createDemoStay(
         'Enormous Duplex apartment in a lively downtown block',
         'Fantastic duplex apartment with an elevator and a balcony adorned with potted greenery....',
         'House',
-        { country: "Israel", countryCode: "IL", city: "Haifa" }
+        { country: "Israel", countryCode: "IL", city: "Haifa" },
+        [
+            'https://a0.muscache.com/im/pictures/cd0f10cf-7f98-4a90-adc5-ac0726d559b1.jpg',
+            'https://a0.muscache.com/im/pictures/4db8afca-8543-4be4-9c18-64803f262bf9.jpg',
+            'https://a0.muscache.com/im/pictures/20527ca6-272a-473d-824f-062cae7d1086.jpg',
+            'https://a0.muscache.com/im/pictures/2d475438-7ce9-4ce3-86b7-9c15c60f3181.jpg',
+            'https://a0.muscache.com/im/pictures/27437609-40df-4d63-9127-d407fc4d9a17.jpg',
+            'https://a0.muscache.com/im/pictures/dedd981e-5102-47fb-81fa-b62483c49ad4.jpg',
+        ]
     ))
     gStays.push(_createDemoStay(
         'High-rise building apartment - fantastic view of the beautiful city',
         'An apartment in a high-rise building',
         'Apartment',
-        { country: "Israel", countryCode: "IL", city: "Eilat" }
+        { country: "Israel", countryCode: "IL", city: "Eilat" },
+        [
+            'https://a0.muscache.com/im/pictures/0f7a9ab8-6b60-45cb-8e00-02b7fbbe19f0.jpg',
+            'https://a0.muscache.com/im/pictures/b567fde4-e9fd-401c-82ae-90e375adcc0c.jpg',
+            'https://a0.muscache.com/im/pictures/125b284a-7775-497f-86f4-f0c2de7dfbb3.jpg',
+            'https://a0.muscache.com/im/pictures/143bbdc0-a455-49cc-b502-30984666c0a7.jpg',
+            'https://a0.muscache.com/im/pictures/434a3847-56d5-4454-b956-189a3c610088.jpg',
+            'https://a0.muscache.com/im/pictures/890d442c-bf11-44f8-8636-73c35f709e33.jpg',
+        ]
     ))
     gStays.push(_createDemoStay(
         'Comfy single bed room for single night\'s nap',
         '1 small neat and compact room with a bed and a small window facing the tram train passing by',
         'Room',
-        { country: "Israel", countryCode: "IL", city: "Tel Aviv" }
+        { country: "Israel", countryCode: "IL", city: "Tel Aviv" },
+        [
+            'https://a0.muscache.com/im/pictures/cd0f10cf-7f98-4a90-adc5-ac0726d559b1.jpg',
+            'https://a0.muscache.com/im/pictures/4db8afca-8543-4be4-9c18-64803f262bf9.jpg',
+            'https://a0.muscache.com/im/pictures/20527ca6-272a-473d-824f-062cae7d1086.jpg',
+            'https://a0.muscache.com/im/pictures/2d475438-7ce9-4ce3-86b7-9c15c60f3181.jpg',
+            'https://a0.muscache.com/im/pictures/27437609-40df-4d63-9127-d407fc4d9a17.jpg',
+            'https://a0.muscache.com/im/pictures/dedd981e-5102-47fb-81fa-b62483c49ad4.jpg',
+        ]
     ))
+    gStays.push(_createDemoStay(
+        'Comfy single bed room for single night\'s nap',
+        '1 small neat and compact room with a bed and a small window facing the tram train passing by',
+        'Room',
+        { country: "Israel", countryCode: "IL", city: "Tel Aviv" },
+        [
+            'https://a0.muscache.com/im/pictures/cd0f10cf-7f98-4a90-adc5-ac0726d559b1.jpg',
+            'https://a0.muscache.com/im/pictures/4db8afca-8543-4be4-9c18-64803f262bf9.jpg',
+            'https://a0.muscache.com/im/pictures/20527ca6-272a-473d-824f-062cae7d1086.jpg',
+            'https://a0.muscache.com/im/pictures/2d475438-7ce9-4ce3-86b7-9c15c60f3181.jpg',
+            'https://a0.muscache.com/im/pictures/27437609-40df-4d63-9127-d407fc4d9a17.jpg',
+            'https://a0.muscache.com/im/pictures/dedd981e-5102-47fb-81fa-b62483c49ad4.jpg',
+        ]
+    ))
+    gStays.push(_createDemoStay(
+        'Comfy single bed room for single night\'s nap',
+        '1 small neat and compact room with a bed and a small window facing the tram train passing by',
+        'Room',
+        { country: "Israel", countryCode: "IL", city: "Tel Aviv" },
+        [
+            'https://a0.muscache.com/im/pictures/cd0f10cf-7f98-4a90-adc5-ac0726d559b1.jpg',
+            'https://a0.muscache.com/im/pictures/4db8afca-8543-4be4-9c18-64803f262bf9.jpg',
+            'https://a0.muscache.com/im/pictures/20527ca6-272a-473d-824f-062cae7d1086.jpg',
+            'https://a0.muscache.com/im/pictures/2d475438-7ce9-4ce3-86b7-9c15c60f3181.jpg',
+            'https://a0.muscache.com/im/pictures/27437609-40df-4d63-9127-d407fc4d9a17.jpg',
+            'https://a0.muscache.com/im/pictures/dedd981e-5102-47fb-81fa-b62483c49ad4.jpg',
+        ]
+    ))
+
     localStorage.setItem(STAY_STORAGE_KEY, JSON.stringify(gStays))
 }
 
 
-function _createDemoStay(name, summary, type, loc) {
+function _createDemoStay(name, summary, type, loc, imgUrls) {
     return {
         _id: utilService.makeId(),
         name,
@@ -130,15 +191,15 @@ function _createDemoStay(name, summary, type, loc) {
         type,
         price: utilService.getRandomIntInclusive(100, 9000),
         capacity: utilService.getRandomIntInclusive(1, 10),
-        imgUrls: [],
+        imgUrls,
         loc: {
             country: loc.country,
             countryCode: loc.countryCode,
             city: loc.city,
         },
         //below is temp!
-        checkIn: Date.now(),//today
-        checkOut: Date.now() + 86400000 * 3//in 3 days
+        checkIn: 1685116800000,
+        checkOut: 1685116800000 + 86400000 * 3//in 3 days
     }
 }
 
