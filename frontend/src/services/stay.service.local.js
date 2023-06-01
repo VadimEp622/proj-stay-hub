@@ -90,7 +90,7 @@ function getEmptyStay() {
 // storageService.post(STORAGE_KEY, {vendor: 'Subali Rahok 2', price: 980}).then(x => console.log(x))
 
 function _createDemoStays() {
-    gStays = JSON.parse(localStorage.getItem(STAY_STORAGE_KEY)) || []
+    gStays = utilService.loadFromStorage(STAY_STORAGE_KEY) || []
     if (gStays.length > 0) return gStays
 
     gStays.push(_createDemoStay(
@@ -178,7 +178,7 @@ function _createDemoStays() {
         ]
     ))
 
-    localStorage.setItem(STAY_STORAGE_KEY, JSON.stringify(gStays))
+    utilService.saveToStorage(STAY_STORAGE_KEY, gStays)
 }
 
 
