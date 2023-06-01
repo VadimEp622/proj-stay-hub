@@ -6,12 +6,7 @@ import { showErrorMsg } from "../services/event-bus.service.js"
 import { reviewService } from '../services/review.service.js'
 
 import SvgHandler from '../cmps/svg_handler.jsx'
-import star from "../assets/img/star.svg"
-import share from "../assets/img/share.svg"
-import heart from "../assets/img/heart.svg"
-import star from "../assets/img/star/star.svg"
-import share from "../assets/img/share/share.svg"
-import heart from "../assets/img/heart/heart.svg"
+import { HEART, SHARE, STAR } from '../services/svg.service.js'
 
 export function StayDetails() {
     const [stay, setStay] = useState(null)
@@ -39,19 +34,18 @@ export function StayDetails() {
             <h1>{stay.name}</h1>
             <section className='info-bar flex space-between align-center'>
                 <section className='info flex'>
-                    <img className="review-star" src={star} alt="star" />
+                    <SvgHandler svgName={STAR} />
                     <span>{reviewService.getAverageReview(stay)}</span>
                     <span>{stay.reviews.length} Review</span>
                     <span>{stay.loc.city}, {stay.loc.country}</span>
                 </section>
                 <section className='btns flex'>
                     <div className='share-btn flex'>
-                        <img className="share-svg" src={share} alt="share" />
+                        <SvgHandler svgName={SHARE} />
                         <span>Share</span>
                     </div>
-                    < SvgHandler />
                     <div className='save-btn flex'>
-                        <img className="heart-svg" src={heart} alt="heart" />
+                        {/* <SvgHandler svgName={HEART} /> */}
                         <span>Save</span>
                     </div>
                 </section>
