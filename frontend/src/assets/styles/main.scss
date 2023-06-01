@@ -11,18 +11,18 @@
 @import "basics/links";
 @import "basics/forms";
 
-
-// Views
-@import "views/AboutUs";
-@import "views/HomePage";
-@import "views/StayIndex";
-@import "views/ReviewIndex";
-@import "views/UserDetails";
-
 // Components
-@import "cmps/AppHeader";
-@import "cmps/StayList";
-@import "cmps/StayPreview";
-@import "cmps/AppFooter";
-@import "cmps/UserMsg";
-@import "cmps/ShoppingCart";
+@import "cmps/app-header";
+@import "cmps/app-footer";
+@import "cmps/stay-list";
+@import "cmps/stay-preview";
+@import "cmps/user-msg";
+@import "cmps/shopping-cart";
+
+// Pages
+@import "pages/about-us";
+@import "pages/home_page";
+@import "pages/stay_index";
+@import "pages/review-index";
+@import "pages/user_details";
+@import "pages/stay_details";
