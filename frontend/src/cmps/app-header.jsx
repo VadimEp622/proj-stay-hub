@@ -1,9 +1,13 @@
 import { Link, NavLink } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import routes from '../routes'
-import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
+
+import routes from '../routes.js'
+import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service.js'
 import { login, logout, signup } from '../store/user.actions.js'
 import { LoginSignup } from './login-signup.jsx'
+
+
+import logo from '../assets/img/logo.svg'
 
 export function AppHeader() {
     const user = useSelector(storeState => storeState.userModule.user)
@@ -36,7 +40,13 @@ export function AppHeader() {
     return (
         <header className="app-header full main-layout">
             <nav>
-                {routes.map(route => <NavLink key={route.path} to={route.path}>{route.label}</NavLink>)}
+                {/* fix img src */}
+                {
+                    routes.map(route =>
+                        <NavLink
+                            key={route.path}
+                            to={route.path}
+                        >{route.isLogo && <img src={logo} className="logo-svg" alt="logo" />} {route.label}</NavLink>)}
 
                 {user &&
                     <span className="user-info">
