@@ -40,6 +40,14 @@
         background-color: $clr5;
         padding: 5px;
 
+
+        .user-navbar {
+            height: 42px;
+            width: 77px;
+            border: 1px solid rgb(221, 221, 221);
+            border-radius: 21px;
+        }
+
     }
 
     nav a:first-child {

@@ -63,6 +63,9 @@ export function AppHeader() {
                         <LoginSignup onLogin={onLogin} onSignup={onSignup} />
                     </section>
                 }
+
+
+                <section className="user-navbar"></section>
             </nav>
         </header>
     )
