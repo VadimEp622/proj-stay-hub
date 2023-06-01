@@ -1,3 +1,4 @@
+import { reviewService } from "../services/review.service";
 import { STAR } from "../services/svg.service";
 import SvgHandler from "./svg_handler";
 
@@ -25,7 +26,6 @@ export function OrderContainer({ stay }) {
                     </button>
                 </div>
             </div>
-
         </section>
     )
 }
