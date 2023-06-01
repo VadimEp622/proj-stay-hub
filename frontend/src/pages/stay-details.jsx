@@ -41,8 +41,8 @@ export function StayDetails() {
                 <section className='info flex'>
                     <SvgHandler svgName={STAR} />
                     <span>{reviewService.getAverageReview(stay)}</span>
-                    <span>{stay.reviews.length} Review</span>
-                    <span>{stay.loc.city}, {stay.loc.country}</span>
+                    <span className='info-review'>{stay.reviews.length} Review</span>
+                    <span className='info-loc'>{stay.loc.city}, {stay.loc.country}</span>
                 </section>
                 <section className='btns flex'>
                     <div className='share-btn flex'>
@@ -50,7 +50,7 @@ export function StayDetails() {
                         <span>Share</span>
                     </div>
                     <div className='save-btn flex'>
-                        {/* <SvgHandler svgName={HEART} /> */}
+                        <SvgHandler svgName={HEART} />
                         <span>Save</span>
                     </div>
                 </section>
