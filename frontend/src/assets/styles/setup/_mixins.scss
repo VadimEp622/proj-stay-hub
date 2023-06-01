@@ -92,4 +92,10 @@
     margin: 0;
 }
 
-// @mixin customButtons {}
+@mixin custom-btn-main-search {
+    border-radius: 50%;
+    background-color: red;
+    height: 32px;
+    width: 32px;
+    padding: 0px;
+}

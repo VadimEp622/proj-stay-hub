@@ -1,6 +1,7 @@
 .app-header-container {
     height: $height-header;
     height: 100%;
+
     & .app-header {
         margin-block: calc($padding-large - 1px);
         display: grid;
@@ -12,7 +13,7 @@
 
             gap: $padding-large;
 
-            .page-navbar {
+            & .page-navbar {
                 align-self: center;
 
                 .logo-svg {
@@ -20,7 +21,37 @@
                 }
             }
 
-            .search-navbar {}
+        }
+
+        & .search-navbar-container {
+            height: calc($height-header - 30px);
+            // background-color: blue;  
+            display: flex;
+            justify-content: center;
+
+            & .search-navbar {
+                display: flex;
+                position: relative;
+                width: 350px;
+                height: 100%;
+                border: 1px solid rgb(221, 221, 221);
+                border-radius: 40px;
+                box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.05);
+
+                & .custom-btn-main-search {
+                    @include custom-btn-main-search;
+                    position: absolute;
+                    right: 0;
+                    align-self: center;
+                    padding: calc($padding-small * 2);
+                    margin-block: calc($padding-small + 2px);
+                    margin-inline-start: calc($padding-small + 2px);
+
+                    svg {
+                        margin-inline: auto;
+                    }
+                }
+            }
 
 
         }
@@ -40,7 +71,6 @@
                 align-items: center;
             }
         }
-
 
     }
 }
