@@ -6,6 +6,8 @@ import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service.js'
 import { login, logout, signup } from '../store/user.actions.js'
 import { LoginSignup } from './login-signup.jsx'
 
+import { LOGO, USER_NAV_BARS, USER_NAV_PROFILE } from '../services/svg.service.js'
+
 
 // import logo from '../assets/img/logo/logo-airbnb.svg'
 // import userNav from '../assets/img/user-nav/user-nav.svg'
@@ -54,7 +56,7 @@ export function AppHeader() {
                                     route.isLogo &&
                                     // <img src={logo} className="logo-svg" alt="logo" />
                                     <article className="logo-svg">
-                                        <SvgHandler svgName={'Logo'} />
+                                        <SvgHandler svgName={LOGO} />
                                         {route.label}
                                     </article>
                                 }
@@ -64,7 +66,7 @@ export function AppHeader() {
                     }
                 </section>
 
-                {user &&
+                {/* {user &&
                     <span className="user-info">
                         <Link to={`user/${user._id}`}>
                             {user.imgUrl && <img src={user.imgUrl} />}
@@ -78,12 +80,14 @@ export function AppHeader() {
                     <section className="user-info">
                         <LoginSignup onLogin={onLogin} onSignup={onSignup} />
                     </section>
-                }
+                } */}
 
 
-                <section className="user-navbar">
-                    {/* <img src={userNav} alt="user-nav" /> */}
-                    <SvgHandler svgName={'UserNav'} />
+                <section className="user-navbar-container">
+                    <article className="user-navbar">
+                        <SvgHandler svgName={USER_NAV_BARS} />
+                        <SvgHandler svgName={USER_NAV_PROFILE} />
+                    </article>
                 </section>
             </nav>
         </header>
