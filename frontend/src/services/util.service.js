@@ -38,9 +38,12 @@ function getRandomIntInclusive(min, max) {
 
 
 function randomPastTime() {
-    const HOUR = 1000 * 60 * 60
-    const DAY = 1000 * 60 * 60 * 24
-    const WEEK = 1000 * 60 * 60 * 24 * 7
+    const MINUTE = 1000 * 60
+    const HOUR = MINUTE * 60
+    const DAY = HOUR * 24
+    const WEEK = DAY * 7
+    const MONTH = WEEK * 4
+    const YEAR = MONTH * 12
 
     const pastTime = getRandomIntInclusive(HOUR, WEEK)
     return Date.now() - pastTime
