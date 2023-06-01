@@ -58,7 +58,7 @@ export function StayDetails() {
                 for (let i = 0; i < 5; i++) {
                     const url = stay.imgUrls[i];
                     images.push(
-                        <div className="image-container" key={i}>
+                        <div className="img" key={i}>
                             <img src={url} alt={`Image ${i}`} className="fade-image" />
                             <div className="overlay"></div>
                         </div>
@@ -67,6 +67,38 @@ export function StayDetails() {
                 return images;
             })()}
         </section>
-            <OrderContainer stay={stay} />
+        <section className='details-container'>
+            <section className='about-host flex space-between'>
+                <section className='host-info'>
+                    <h2>Entire villa hosted by Joan Felip</h2>
+                    <span>4 • guests1 • bedroom2 • beds1 • bath</span>
+                </section>
+                <img src="https://a0.muscache.com/im/pictures/user/59da4e65-e5a0-4fde-b4d9-e48f20c1ba43.jpg?im_w=240" alt="host image" />
+            </section>
+            <section className='stay-highlights'>
+                <div className='highlight flex'>
+                    <span></span>
+                    <div>
+                       <h3>Great location</h3> 
+                       <p>100% of recent guests gave the location a 5-star rating.</p>
+                    </div>
+                </div>
+                <div className='highlight flex'>
+                    <span></span>
+                    <div>
+                       <h3>Self check-in</h3> 
+                       <p>Check yourself in with the lockbox.</p>
+                    </div>
+                </div>
+                <div className='highlight flex'>
+                    <span></span>
+                    <div>
+                       <h3>Free cancellation for 48 hours.</h3> 
+                       <p></p>
+                    </div>
+                </div>
+            </section>
+            <OrderContainer className='order-container' stay={stay} />
+        </section>
     </section>
 }
