@@ -1,10 +1,11 @@
 .app-header-container {
     height: $height-header;
     height: 100%;
-    padding-inline-end: $padding-small;
+    // padding-inline-end: $padding-small;
+    // max-height: 80px;
 
     & .app-header {
-        margin-block: calc($padding-large - 4px);
+        margin-block: calc($padding-large - 5px);
         display: flex;
         font-size: rem(14px);
         align-items: center;
@@ -101,17 +102,40 @@
 
 
         & .user-navbar-container {
-            height: 42px;
-            width: 77px;
-            border: 1px solid rgb(221, 221, 221);
-            border-radius: 21px;
+            // height: 42px;
+            // width: 77px;
+            // border: 1px solid rgb(221, 221, 221);
+            // border-radius: 21px;
             // justify-self:;
 
             .user-navbar {
                 display: flex;
-                height: 100%;
+
+                height: 42px;
+                width: 77px;
+                border: 1px solid rgb(221, 221, 221);
+                border-radius: 21px;
+
+
+                // height: 100%;
+                // width: 100%;
                 padding: 5px 5px 5px 12px;
                 align-items: center;
+
+                &>* {
+                    flex: 1 1 auto;
+                }
+
+                & :last-child {
+
+                    // display: flex;
+                    // max-width: 30px;
+                    padding-inline-start: 12px;
+
+                    & :first-child {
+                        // display: block;
+                    }
+                }
             }
         }
 
