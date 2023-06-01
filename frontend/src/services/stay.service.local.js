@@ -198,8 +198,8 @@ function _createDemoStay(name, summary, type, loc, imgUrls) {
             city: loc.city,
         },
         //below is temp!
-        checkIn: Date.now(),//today
-        checkOut: Date.now() + 86400000 * 3//in 3 days
+        checkIn: 1685116800000,
+        checkOut: 1685116800000 + 86400000 * 3//in 3 days
     }
 }
 
