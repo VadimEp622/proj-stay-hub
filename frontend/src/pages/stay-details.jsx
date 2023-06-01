@@ -5,9 +5,9 @@ import { stayService } from "../services/stay.service.local.js"
 import { showErrorMsg } from "../services/event-bus.service.js"
 import { reviewService } from '../services/review.service.js'
 
-import star from "../assets/img/star.svg"
-import share from "../assets/img/share.svg"
-import heart from "../assets/img/heart.svg"
+import star from "../assets/img/star/star.svg"
+import share from "../assets/img/share/share.svg"
+import heart from "../assets/img/heart/heart.svg"
 
 export function StayDetails() {
     const [stay, setStay] = useState(null)
