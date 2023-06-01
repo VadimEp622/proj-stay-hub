@@ -1,6 +1,7 @@
 .stay-list {
     list-style: none;
-    display: flex;
+    @include flex();
+    @include clean-list();
     flex-wrap: wrap;
 
     li {
