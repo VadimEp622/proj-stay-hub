@@ -55,7 +55,6 @@ export function AppHeader() {
                             >
                                 {
                                     route.isLogo &&
-                                    // <img src={logo} className="logo-svg" alt="logo" />
                                     <article className="logo-svg">
                                         <SvgHandler svgName={LOGO} />
                                         <span>{route.label}</span>
@@ -82,9 +81,7 @@ export function AppHeader() {
                 <section className="user-navbar-container">
                     <section className="user-navbar">
                         <article className="bars"><SvgHandler svgName={USER_NAV_BARS} /></article>
-
                         <article className="profile"><SvgHandler svgName={USER_NAV_PROFILE} /></article>
-
                     </section>
                 </section>
             </nav>
