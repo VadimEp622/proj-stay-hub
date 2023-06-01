@@ -4,11 +4,13 @@ import { loadStays, addStay, updateStay, removeStay, addToCart } from '../store/
 
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 import { stayService } from '../services/stay.service.js'
+import { Link } from 'react-router-dom'
+import { UpperFilter } from '../cmps/upper-filter.jsx'
+import { StayList } from '../cmps/stay-list.jsx'
 
 export function StayIndex() {
 
     const stays = useSelector(storeState => storeState.stayModule.stays)
-
     useEffect(() => {
         loadStays()
     }, [])
@@ -55,27 +57,9 @@ export function StayIndex() {
     }
 
     return (
-        <div>
-            <h3>Stays App</h3>
-            <main>
-                <button onClick={onAddStay}>Add Stay </button>
-                <ul className="stays-list">
-                    {stays.map(stay =>
-                        <li className="stay-preview" key={stay._id}>
-                            <h4>{stay.vendor}</h4>
-                            <p>Price: <span>${stay.price.toLocaleString()}</span></p>
-                            <p>Owner: <span>{stay.owner && stay.owner.fullname}</span></p>
-                            <div>
-                                <button onClick={() => { onRemoveStay(stay._id) }}>x</button>
-                                <button onClick={() => { onUpdateStay(stay) }}>Edit</button>
-                            </div>
-
-                            <button onClick={() => { onAddStayMsg(stay) }}>Add stay msg</button>
-                            <button className="buy" onClick={() => { onAddToCart(stay) }}>Add to cart</button>
-                        </li>)
-                    }
-                </ul>
-            </main>
-        </div>
+        <section className="stay-index">
+            {/* <UpperFilter /> */}
+            <StayList stays={stays} />
+        </section>
     )
 }
