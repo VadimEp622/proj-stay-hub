@@ -3,10 +3,14 @@
     padding: 10px;
     // max-height: 80px;
 
-    .logo-svg {
-        width: 30px;
-        height: 32px;
-        fill: red;
+    // .logo-svg {
+        // max-width: 30px;
+        // max-height: 32px;
+        // fill: red;
+    // }
+
+    .navbar-container{
+        display: flex;
     }
 
     .user-info {
