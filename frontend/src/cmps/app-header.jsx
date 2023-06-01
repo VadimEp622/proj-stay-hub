@@ -67,6 +67,7 @@ export function AppHeader() {
                 </section>
 
                 <section className="search-navbar-container">
+                    <span></span>
                     <section className='search-navbar'>
                         <article>Anywhere</article>
                         <article>Any week</article>
@@ -75,6 +76,7 @@ export function AppHeader() {
                             <SvgHandler svgName={SEARCH} />
                         </button>
                     </section>
+                    <span></span>
                 </section>
 
 

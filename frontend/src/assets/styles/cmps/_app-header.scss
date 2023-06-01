@@ -38,7 +38,16 @@
             flex: 1 1 auto;
             display: flex;
             justify-content: center;
+            // margin-inline-end: 250px;
+            // margin-inline-start: auto;
 
+            & :first-child {
+                flex: 1 1 auto;
+            }
+
+            & :last-child {
+                flex: 1.17 1 auto;
+            }
 
             & .search-navbar {
                 height: 48px;
@@ -80,15 +89,14 @@
 
                 & .custom-btn-main-search {
                     @include custom-btn-main-search;
-                    position: block;
-                    right: 0;
+                    // right: 0;
+                    // height: fit-content;
+                    // width: fit-content;
+                    // padding: calc($padding-small * 2);
                     align-self: center;
-                    height: fit-content;
-                    width: fit-content;
-                    padding: calc($padding-small * 2);
                     margin-block: calc($padding-small + 2px);
                     margin-inline-end: calc($padding-small + 2px);
-
+                    max-width: 32px;
                     svg {
                         margin-inline: auto;
                     }
