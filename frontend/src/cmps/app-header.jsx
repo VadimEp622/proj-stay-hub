@@ -58,7 +58,7 @@ export function AppHeader() {
                                     // <img src={logo} className="logo-svg" alt="logo" />
                                     <article className="logo-svg">
                                         <SvgHandler svgName={LOGO} />
-                                        {route.label}
+                                        <span>{route.label}</span>
                                     </article>
                                 }
                                 {!route.isLogo && route.label}
@@ -73,9 +73,9 @@ export function AppHeader() {
                         <article></article>
                         <article>
                         </article>
-                            <button className='custom-btn-main-search'>
-                                <SvgHandler svgName={SEARCH} />
-                            </button>
+                        <button className='custom-btn-main-search'>
+                            <SvgHandler svgName={SEARCH} />
+                        </button>
                     </section>
                 </section>
 
