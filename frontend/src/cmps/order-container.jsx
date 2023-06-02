@@ -20,14 +20,16 @@ export function OrderContainer({ stay }) {
         return divElements
     }
 
-    console.log(stay)
-
     return (
-        <section className="order-container">
+        <section className="order-container flex">
             {/* <DatePicker stay={stay} /> */}
-            <div className="order-container-header">${stay.price.toLocaleString()} night
-                <p className="review-rate"><SvgHandler svgName={STAR} />{reviewService.getAverageReview(stay)} ·{stay.reviews.length} reviews</p>
-
+            <div className="order-container-header flex space-between align-center">
+                <h2><span>${stay.price.toLocaleString()}</span> night</h2>
+                <div className="order-rate flex">
+                    <span className="review-rate"> <SvgHandler svgName={STAR} />{reviewService.getAverageReview(stay)}</span>
+                    <span>·</span>
+                    <span className="review-count">{stay.reviews.length} reviews</span>
+                </div>
             </div>
             <div className="date-container">
                 <div className="check-in">
