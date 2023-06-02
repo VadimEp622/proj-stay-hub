@@ -6,7 +6,7 @@
 
 
     & .app-header {
-        margin-block: calc($padding-large - 4px);
+        margin-block: calc($padding-large - 5px);
         display: flex;
         font-size: rem(14px);
         align-items: center;
@@ -23,10 +23,13 @@
                     display: flex;
                     color: #ff385c;
                     gap: $padding-small;
+                    padding-inline-end: 75px;
 
                     span {
                         height: fit-content;
                         margin-block: auto;
+                        font-family: cereal;
+                        font-size: em(20px);
                     }
                 }
             }
@@ -44,6 +47,7 @@
             font-family: montserrat semibold;
             // font-size: 10px;
             // font-weight: 800;
+            // transform:scaleY(0.95);
 
 
             & :first-child {
