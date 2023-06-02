@@ -111,6 +111,10 @@
         }
     }
 
+    .amenities {
+        border-bottom: 1px solid #dddddd;
+    }
+
     .details-container {
         padding-top: 48px;
         display: grid;
@@ -120,9 +124,10 @@
         // gap: 14px;
 
         .about-host {
-            border-bottom: 1px solid rgba(128,128,128,.3);
+            border-bottom: 1px solid rgba(128, 128, 128, .3);
             padding-top: 48px;
             padding-bottom: 24px;
+
             // height: 100px;
             & img {
                 width: 53px;
@@ -130,22 +135,24 @@
                 border-radius: 50px;
                 object-fit: cover;
             }
+
             .host-info {
                 h2 {
                     font-size: rem(22px);
                 }
+
                 & span {
                     font-size: rem(16px);
                     font-family: circular-book;
                 }
             }
         }
-        
+
 
         .stay-highlights {
             grid-column: 1;
             padding: 32px 0;
-            border-bottom: 1px solid rgba(128,128,128,.3);
+            border-bottom: 1px solid rgba(128, 128, 128, .3);
 
             .highlight {
                 margin-bottom: 24px;

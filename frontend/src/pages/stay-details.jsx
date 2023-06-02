@@ -20,14 +20,14 @@ export function StayDetails() {
 
     async function loadStay() {
         try {
-        const stay = await stayService.getById(stayId);
-        setStay(stay);
+            const stay = await stayService.getById(stayId);
+            setStay(stay);
         } catch (err) {
-        console.log('Had issues in stay details', err);
-        showErrorMsg('Cannot load stay');
-        navigate('/stay');
+            console.log('Had issues in stay details', err);
+            showErrorMsg('Cannot load stay');
+            navigate('/stay');
         }
-        }
+    }
 
     const [isHeartClicked, setIsHeartClicked] = useState(false)
     const heartSvg = isHeartClicked ? 'heart-red-16' : 'heart-16'
@@ -101,7 +101,13 @@ export function StayDetails() {
                     </div>
                 </div>
             </section>
+            <section className='stay-highlights'>
+                <h3>What this place offers</h3>
+                <div className='highlight flex'>
+                    {console.log(stay)}
+                </div>
+            </section>
             <OrderContainer className='order-container' stay={stay} />
         </section>
-    </section>
+    </section >
 }

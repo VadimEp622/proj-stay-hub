@@ -7,6 +7,7 @@ import { stayService } from '../services/stay.service.js'
 import { Link } from 'react-router-dom'
 import { UpperFilter } from '../cmps/upper-filter.jsx'
 import { StayList } from '../cmps/stay-list.jsx'
+import { DatePicker } from '../cmps/date-picker.jsx'
 
 export function StayIndex() {
 
@@ -60,6 +61,7 @@ export function StayIndex() {
         <section className="stay-index">
             {/* <UpperFilter /> */}
             <StayList stays={stays} />
+            <DatePicker />
         </section>
     )
 }

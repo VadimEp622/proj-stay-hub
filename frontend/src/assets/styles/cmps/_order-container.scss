@@ -4,12 +4,33 @@
     padding: rem(20px);
     width: rem(300px);
     box-shadow: 0 0 5px 5px #00000015;
+    // display: flex;
 
-    & .header {
+    .review-rate {
         display: flex;
         align-items: center;
-        justify-content: space-between;
-        width: 100%;
+    }
+
+    .check-in,
+    .check-out {
+        width: 160px;
+        border: none;
+        background-color: transparent;
+        height: 56px;
+    }
+
+    .check-in {
+        border-right: 1px solid #717171;
+    }
+
+    .price-container {
+        @include flex();
+        @include between();
+    }
+
+    .order-container-header {
+        display: flex;
+        @include between();
     }
 
     .btn-container {

@@ -209,6 +209,17 @@ function _createDemoStay(name, summary, type, loc, imgUrls) {
             countryCode: loc.countryCode,
             city: loc.city,
         },
+        amenities: [
+            "TV",
+            "Wifi",
+            "Kitchen",
+            "Smoking allowed",
+            "Pets allowed",
+            "Cooking basics",
+            "Hot tub",
+            "Air conditining",
+            "Gym"
+        ],
         //below is temp!
         checkIn: 1685116800000,
         checkOut: 1685116800000 + 86400000 * 3//in 3 days

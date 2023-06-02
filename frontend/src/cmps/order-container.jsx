@@ -1,7 +1,7 @@
 import { reviewService } from "../services/review.service"
 import { STAR } from "../services/svg.service"
 import { utilService } from "../services/util.service"
-import DatePicker from "./date-picker"
+// import DatePicker from "./date-picker"
 import SvgHandler from "./svg_handler"
 
 export function OrderContainer({ stay }) {
@@ -19,7 +19,7 @@ export function OrderContainer({ stay }) {
         return divElements
     }
 
-
+    console.log(stay)
     function calculateHowManyNights() {
         const checkInDate = new Date(stay.checkIn * 1000)
         const checkOutDate = new Date(stay.checkOut * 1000)
@@ -30,12 +30,22 @@ export function OrderContainer({ stay }) {
 
     return (
         <section className="order-container">
-            <DatePicker stay={stay} />
-            <header><span>${stay.price.toLocaleString()}</span> night
-                <p className="review-rate"><SvgHandler svgName={STAR} /><span>{reviewService.getAverageReview(stay)}</span></p>
-                <span>·{stay.reviews.length} reviews</span>
-            </header>
-            <div className="input-container">
+            {/* <DatePicker stay={stay} /> */}
+            <div className="order-container-header">${stay.price.toLocaleString()} night
+                <p className="review-rate"><SvgHandler svgName={STAR} />{reviewService.getAverageReview(stay)} ·{stay.reviews.length} reviews</p>
+
+            </div>
+            <div className="date-container">
+                <div className="check-in">
+                    <p>CHECK-IN</p>
+                    <p>Add Date</p>
+                </div>
+            </div>
+            <div className="date-container">
+                <div className="check-in">
+                    <p>CHECKOUT</p>
+                    <p>Add Date</p>
+                </div>
             </div>
             <div className="btn-container">
                 {_createButtonDivContainer()}
