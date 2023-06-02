@@ -9,6 +9,7 @@ import { OrderContainer } from '../cmps/order-container.jsx'
 import SvgHandler from '../cmps/svg_handler.jsx'
 import { HEART_16, RED_HEART_16, SHARE, STAR, LOCATION, CHECKIN, KEY } from '../services/svg.service.js'
 import { DatePicker } from '../cmps/date-picker.jsx'
+import GoogleMap from '../cmps/map.jsx'
 
 export function StayDetails() {
     const [stay, setStay] = useState(null)
@@ -209,6 +210,9 @@ export function StayDetails() {
         <section className="map-container">
             <h3>Where you'll be</h3>
             {stay.loc.city}, {stay.loc.country}
+            <div className="map">
+                <GoogleMap loc={stay.loc.coordinates} />
+            </div>
         </section>
         <section className="host-details-container">
             <div className="name-details">
