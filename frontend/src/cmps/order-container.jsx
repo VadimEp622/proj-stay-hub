@@ -23,26 +23,33 @@ export function OrderContainer({ stay }) {
     return (
         <section className="order-container flex">
             {/* <DatePicker stay={stay} /> */}
-            <div className="order-container-header flex space-between align-center">
+            <div className="order-container-header flex">
                 <h2><span>${stay.price.toLocaleString()}</span> night</h2>
                 <div className="order-rate flex">
-                    <span className="review-rate"> <SvgHandler svgName={STAR} />{reviewService.getAverageReview(stay)}</span>
-                    <span>·</span>
+                    <span > <SvgHandler svgName={STAR} /></span>
+                    <span className="review-rate">{reviewService.getAverageReview(stay)}</span>
+                    <span className="period">·</span>
                     <span className="review-count">{stay.reviews.length} reviews</span>
                 </div>
             </div>
-            <div className="date-container">
-                <div className="check-in">
-                    <p>CHECK-IN</p>
-                    <p>Add Date</p>
+            <section className="order-data">
+            <div className="date-container flex">
+                <div className="check-in flex">
+                    <span>CHECK-IN</span>
+                    <span>18/07/2023</span>
+                </div>
+                <div className="check-out flex">
+                    <span>CHECKOUT</span>
+                    <span>23/07/2023</span>
                 </div>
             </div>
-            <div className="date-container">
-                <div className="check-out">
-                    <p>CHECKOUT</p>
-                    <p>Add Date</p>
+            <div className="guests-container">
+                <div className="guests">
+                    <span>GUESTS</span>
+                    <span>Add Guest</span>
                 </div>
             </div>
+            </section>
             <div className="btn-container">
                 {_createButtonDivContainer()}
                 <div className="content">

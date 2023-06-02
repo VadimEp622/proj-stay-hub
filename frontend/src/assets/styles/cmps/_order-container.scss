@@ -23,17 +23,28 @@
         color: $clr3;
     }
 
-    .check-in,
-    .check-out {
-        width: 160px;
-        border: none;
-        background-color: transparent;
-        height: 56px;
+    .order-data {
+        border: 1px solid $clr3;
+        border-radius: 8px;
+       
+        .check-in,
+        .check-out {
+            flex-direction: column;
+            background-color: transparent;
+            padding: 7px 12px;
+            width: 50%
+        }
+       
+        .guests {
+            flex-direction: column;
+            background-color: transparent;
+            padding: 7px 12px;
+            width: 100%
+        }
+
+
     }
 
-    .check-in {
-        border-right: 1px solid #717171;
-    }
 
     .price-container {
         @include flex();
@@ -43,6 +54,21 @@
     .order-container-header {
         display: flex;
         @include between();
+
+        .order-rate {
+            align-items: center;
+            justify-content: center;
+
+            .review-rate {
+                padding-left: 4px;
+            }
+            
+            .period {
+                padding-left: 4px;
+                padding-right: 4px;
+
+            }
+        }
     }
 
     .btn-container {
