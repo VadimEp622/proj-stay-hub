@@ -7,7 +7,8 @@ import { reviewService } from '../services/review.service.js'
 import { OrderContainer } from '../cmps/order-container.jsx'
 
 import SvgHandler from '../cmps/svg_handler.jsx'
-import { HEART_16, RED_HEART_16, SHARE, STAR, LOCATION } from '../services/svg.service.js'
+import { HEART_16, RED_HEART_16, SHARE, STAR, LOCATION, CHECKIN, KEY } from '../services/svg.service.js'
+import { DatePicker } from '../cmps/date-picker.jsx'
 
 export function StayDetails() {
     const [stay, setStay] = useState(null)
@@ -87,14 +88,15 @@ export function StayDetails() {
                     </div>
                 </div>
                 <div className='highlight flex'>
-                    <span></span>
+                    <span><SvgHandler svgName={KEY} />
+                    </span>
                     <div>
                         <h3>Self check-in</h3>
                         <p>Check yourself in with the lockbox.</p>
                     </div>
                 </div>
                 <div className='highlight flex'>
-                    <span></span>
+                    <span><SvgHandler svgName={CHECKIN} /></span>
                     <div>
                         <h3>Free cancellation for 48 hours.</h3>
                         <p></p>
@@ -112,18 +114,16 @@ export function StayDetails() {
                     })}
                 </div>
             </section>
-            {/* <section className='amenities'> */}
-            {/* <h3>What this place offers</h3>
-                <div className='highlight flex'>
-                    {stay.amenities.map(amenity => {
-                        return <div className="amenity">
-                            <SvgHandler svgName={amenity} />
-                            {amenity}
-                        </div>
-                    })}
-                </div>
-            </section> */}
             <OrderContainer className='order-container' stay={stay} />
+            <div className="date-container">
+                <h3>Select check-in date</h3>
+                <p>Add your travel dates for exact pricing</p>
+                <DatePicker />
+            </div>
         </section>
+        <div className="review-container">
+            <SvgHandler svgName={STAR} />
+        </div>
+
     </section >
 }
