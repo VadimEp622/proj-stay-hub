@@ -12,14 +12,16 @@ import { LOGO, USER_NAV_BARS, USER_NAV_PROFILE, SEARCH } from '../services/svg.s
 // import logo from '../assets/img/logo/logo-airbnb.svg'
 // import userNav from '../assets/img/user-nav/user-nav.svg'
 import SvgHandler from './svg_handler.jsx'
-import { Fragment, useState } from 'react'
+import { Fragment, useRef, useState } from 'react'
 import { stayService } from '../services/stay.service.local.js'
 import { AppHeaderSearch } from './app-header-search.jsx'
 import { updateFilterBy } from '../store/stay.actions.js'
+import { DateFilter } from './stay-filter-date.jsx'
 
 export function AppHeader() {
     const user = useSelector(storeState => storeState.userModule.user)
     const [filterBy, setFilterBy] = useState({ filterText: '' })
+    // const showTempFilterRef = useRef(false)
 
 
 
@@ -118,7 +120,11 @@ export function AppHeader() {
                 </nav>
             </header>
 
-            <AppHeaderSearch filterBy={filterBy} onSubmit={onSubmit} handleChange={handleChange} />
+            <section className="filter-container flex justify-center align-center" style={{ gap: 20 }}>
+                <AppHeaderSearch filterBy={filterBy} onSubmit={onSubmit} handleChange={handleChange} />
+                <DateFilter />
+            </section>
+
         </Fragment>
     )
 }
