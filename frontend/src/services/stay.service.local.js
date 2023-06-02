@@ -181,6 +181,25 @@ function _createDemoStays() {
     utilService.saveToStorage(STAY_STORAGE_KEY, gStays)
 }
 
+// function calculateRate(stay) {
+//     const reviewInputs = stay.reviews.map(review => review.reviewInputs)
+//     const reviewCount = reviewInputs.length
+//     const reviewInputsTotal = reviewInputs.reduce((acc, inputs) => {
+//         for (const key in inputs) {
+//             acc[key] = (acc[key] || 0) + inputs[key]
+//         }
+//         return acc
+//     }, {})
+//     const reviewInputsAverage = {};
+//     for (const key in reviewInputsTotal) {
+//         reviewInputsAverage[key] = reviewInputsTotal[key] / reviewCount
+//     }
+//     const rate = Object.values(reviewInputsAverage).reduce(
+//         (sum, value) => sum + value,
+//         0
+//     ) / Object.keys(reviewInputsAverage).length;
+
+// }
 
 function _createDemoStay(name, summary, type, loc, imgUrls) {
     return {
@@ -195,14 +214,80 @@ function _createDemoStay(name, summary, type, loc, imgUrls) {
         reviews: [
             {
                 id: "madeId",
-                txt: "Very helpful hosts. Cooked traditional...",
+                txt: "Very helpful hosts. Cooked traditional Lorem, ipsum dolor sit amet consectetur adipisicing elit. Unde, incidunt corrupti illo animi hic voluptatum corporis ullam natus! Qui, expedita animi magnam harum iusto mollitia itaque voluptas unde obcaecati aut.",
+                reviewInputs: {
+                    cleanliness: 4.8,
+                    communication: 5,
+                    checkin: 5,
+                    accuracy: 4.8,
+                    location: 4.8,
+                    value: 4.4
+                },
                 rate: 5,
                 by: {
                     _id: "u102",
                     fullname: "user2",
+                    date: "May 2023",
                     imgUrl: "/img/img2.jpg"
                 }
-            }
+            },
+            {
+                id: "madeId",
+                txt: "Very helpful hosts. Cooked traditional Lorem, ipsum dolor sit amet consectetur adipisicing elit. Unde, incidunt corrupti illo animi hic voluptatum corporis ullam natus! Qui, expedita animi magnam harum iusto mollitia itaque voluptas unde obcaecati aut.",
+                reviewInputs: {
+                    cleanliness: 4.2,
+                    communication: 1,
+                    checkin: 5,
+                    accuracy: 4.5,
+                    location: 4.8,
+                    value: 4.4
+                },
+                rate: 5,
+                by: {
+                    _id: "u102",
+                    fullname: "user2",
+                    date: "May 2023",
+                    imgUrl: "/img/img2.jpg"
+                }
+            },
+            {
+                id: "madeId",
+                txt: "Very helpful hosts. Cooked traditional Lorem, ipsum dolor sit amet consectetur adipisicing elit. Unde, incidunt corrupti illo animi hic voluptatum corporis ullam natus! Qui, expedita animi magnam harum iusto mollitia itaque voluptas unde obcaecati aut.",
+                reviewInputs: {
+                    cleanliness: 4.8,
+                    communication: 4,
+                    checkin: 1,
+                    accuracy: 4.8,
+                    location: 3.8,
+                    value: 4.4
+                },
+                rate: 5,
+                by: {
+                    _id: "u102",
+                    fullname: "user2",
+                    date: "May 2023",
+                    imgUrl: "/img/img2.jpg"
+                }
+            },
+            {
+                id: "madeId",
+                txt: "Very helpful hosts. Cooked traditional Lorem, ipsum dolor sit amet consectetur adipisicing elit. Unde, incidunt corrupti illo animi hic voluptatum corporis ullam natus! Qui, expedita animi magnam harum iusto mollitia itaque voluptas unde obcaecati aut.",
+                reviewInputs: {
+                    cleanliness: 4.8,
+                    communication: 5,
+                    'check-in': 5,
+                    accuracy: 4.8,
+                    location: 4.8,
+                    value: 4.4
+                },
+                rate: 5,
+                by: {
+                    _id: "u102",
+                    fullname: "user2",
+                    date: "May 2023",
+                    imgUrl: "/img/img2.jpg"
+                }
+            },
         ],
         loc: {
             country: loc.country,
