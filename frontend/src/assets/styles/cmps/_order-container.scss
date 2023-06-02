@@ -1,151 +1,170 @@
-.order-container {
-    flex-direction: column;
-    border: 1px solid #00000030;
-    border-radius: rem(13px);
-    height: max-content;
+.order-modal {
+    position: sticky;
+    top: 78px;
     margin-top: 48px;
-    padding: rem(24px);
-    box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
-    width: 83%;
-    min-width: 285px ;
 
-    .order-container-header {
-        display: flex;
-        @include between();
-
-        .order-rate {
-            align-items: center;
-            justify-content: center;
-
-            .review-rate {
-                padding-left: 4px;
-            }
-            
-            .period {
-                padding-left: 4px;
-                padding-right: 4px;
-
-            }
-        }
-
-        h2 {
-            font-family: cereal_W_Lt;
-            font-size: rem(16px);
-    
-            span {
-                color: $clr2;
-                font-family: cereal_W_Bd;
-                font-size: rem(22px);
-            }
-        }
-
-        .review-count {
-            color: $clr3;
-        }
-    }
-
-
-    .order-data {
-        border: 1px solid $clr3;
-        border-radius: 8px;
-        margin-bottom: 16px;
-        .date-container {
-            justify-content: space-between;
-            border-bottom: 1px solid $clr3;
-            .check-in {
-                border-right: 1px solid $clr3;
-            }
-            .check-in,
-            .check-out {
-                flex-direction: column;
-                background-color: transparent;
-                padding: 7px 12px;
-                width: 50%
-            }
-        }
-       
-    }
-    
-    .guests {
+    .order-modal-form {
         flex-direction: column;
-        background-color: transparent;
-        padding: 7px 12px;
-        width: 100%;
-    }
+        border: 1px solid #00000030;
+        border-radius: rem(13px);
+        height: max-content;
+        margin-top: 48px;
+        padding: rem(24px);
+        box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
+        width: 83%;
+        min-width: 285px;
+        margin-left: auto;
+        
     
-    .price-container {
-
-    }
-
-    .btn-container {
-        position: relative;
-        width: 100%;
-        height: 48px;
-        padding: 0 0;
-        margin: 0 0;
-        cursor: pointer;
-        border: none;
-        display: grid;
-        grid-template: repeat(10, 1fr) / repeat(10, 1fr);
-
-        @for $i from 0 to 10 {
-            .cell:nth-child(10n + #{$i + 1}):hover~.content {
-                --positionX: #{$i};
+        .order-container-header {
+            display: flex;
+            @include between();
+    
+            .order-rate {
+                align-items: center;
+                justify-content: center;
+    
+                .review-rate {
+                    padding-left: 4px;
+                }
+    
+                .period {
+                    padding-left: 4px;
+                    padding-right: 4px;
+    
+                }
             }
-
-            .cell:nth-child(n + #{10 * $i + 1}):nth-child(-n + #{10 * ($i + 1)}):hover~.content {
-                --positionY: #{$i};
+    
+            h2 {
+                font-family: cereal_W_Lt;
+                font-size: rem(16px);
+    
+                span {
+                    color: $clr2;
+                    font-family: cereal_W_Bd;
+                    font-size: rem(22px);
+                }
+            }
+    
+            .review-count {
+                color: $clr3;
             }
         }
-
-        span {
+    
+        .order-data {
+            border: 1px solid $clr3;
+            border-radius: 8px;
+            margin-bottom: 16px;
+    
+            .date-container {
+                justify-content: space-between;
+                border-bottom: 1px solid $clr3;
+    
+                .check-in {
+                    border-right: 1px solid $clr3;
+                }
+    
+                .check-in,
+                .check-out {
+                    flex-direction: column;
+                    background-color: transparent;
+                    padding: 7px 12px;
+                    width: 50%
+                }
+            }
+    
+        }
+    
+        .guests {
+            flex-direction: column;
+            background-color: transparent;
+            padding: 7px 12px;
+            width: 100%;
+        }
+    
+        .price-container {
+            margin-top: 8px;
+    
+            p {
+                text-align: center;
+            }
+    
+            .total-price-container h5 {
+                font-size: rem(16px);
+                margin-top: 24px;
+            }
+        }
+    
+        .btn-container {
+            position: relative;
+            width: 100%;
+            height: 48px;
             padding: 0 0;
             margin: 0 0;
-            color: white;
-            font-size: 16px;
-            line-height: 20px;
-            font-weight: 600;
-            font-family: sans-serif;
+            cursor: pointer;
+            border: none;
+            display: grid;
+            grid-template: repeat(10, 1fr) / repeat(10, 1fr);
+    
+            @for $i from 0 to 10 {
+                .cell:nth-child(10n + #{$i + 1}):hover~.content {
+                    --positionX: #{$i};
+                }
+    
+                .cell:nth-child(n + #{10 * $i + 1}):nth-child(-n + #{10 * ($i + 1)}):hover~.content {
+                    --positionY: #{$i};
+                }
+            }
+    
+            span {
+                padding: 0 0;
+                margin: 0 0;
+                color: white;
+                font-size: 16px;
+                line-height: 20px;
+                font-weight: 600;
+                font-family: sans-serif;
+            }
         }
-    }
-
-    .cell {
-        width: 100%;
-        height: 100%;
-        z-index: 1;
-        // border: 1px solid rgba(128, 128, 128, 0.753);
-    }
-
-    .content {
-        --positionX: 0;
-        --positionY: 5;
-
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100%;
-        border-radius: 8px;
-
-        background-image: radial-gradient(circle at calc((0 + var(--positionX, 0)) * 10%) calc((0 + var(--positionY, 0)) * 5%),
-                rgb(241, 37, 75) 0%,
-                rgb(230, 30, 77) 27.5%,
-                rgb(227, 28, 95) 40%,
-                rgb(215, 4, 102) 57.5%,
-                rgb(189, 30, 89) 75%,
-                rgb(189, 30, 89) 100%);
-    }
-
-    .action-btn {
-        padding: 0 0;
-        margin: 0 0;
-        width: 100%;
-        height: 100%;
-        background-color: transparent;
-        border: none;
+    
+        .cell {
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            // border: 1px solid rgba(128, 128, 128, 0.753);
+        }
+    
+        .content {
+            --positionX: 0;
+            --positionY: 5;
+    
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            border-radius: 8px;
+    
+            background-image: radial-gradient(circle at calc((0 + var(--positionX, 0)) * 10%) calc((0 + var(--positionY, 0)) * 5%),
+                    rgb(241, 37, 75) 0%,
+                    rgb(230, 30, 77) 27.5%,
+                    rgb(227, 28, 95) 40%,
+                    rgb(215, 4, 102) 57.5%,
+                    rgb(189, 30, 89) 75%,
+                    rgb(189, 30, 89) 100%);
+        }
+    
+        .action-btn {
+            padding: 0 0;
+            margin: 0 0;
+            width: 100%;
+            height: 100%;
+            background-color: transparent;
+            border: none;
+        }
     }
 }

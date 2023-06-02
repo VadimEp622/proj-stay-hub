@@ -162,8 +162,8 @@
 
         .order-container {
             grid-column: 2;
-            justify-self: end;
             margin-bottom: 2rem;
+            width: 100%;
             position: relative;
         }
 
@@ -199,4 +199,6 @@
             }
         }
     }
+
+   
 }

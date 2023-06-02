@@ -7,7 +7,9 @@ import SvgHandler from "./svg_handler"
 
 export function OrderContainer({ stay }) {
 
-    const nightsPrice = stayService.calculateHowManyNights(stay) * stay.price
+    const checkIn = stayService.getDate(stay.checkIn)
+    const checkOut = stayService.getDate(stay.checkOut)
+    const nightsPrice = stayService.calculateHowManyNights(stay) * (stay.price)
     const cleaningFee = utilService.getRandomIntInclusive(100, 500)
     const serviceFee = utilService.getRandomIntInclusive(100, 500)
     const totalPrice = nightsPrice + cleaningFee + serviceFee
@@ -21,7 +23,8 @@ export function OrderContainer({ stay }) {
     }
 
     return (
-        <section className="order-container flex">
+        <section className="order-modal">
+            <section className="order-modal-form flex">
             {/* <DatePicker stay={stay} /> */}
             <div className="order-container-header flex">
                 <h2><span>${stay.price.toLocaleString()}</span> night</h2>
@@ -36,11 +39,11 @@ export function OrderContainer({ stay }) {
                 <div className="date-container flex">
                     <div className="check-in flex">
                         <span>CHECK-IN</span>
-                        <span>18/07/2023</span>
+                        <span>{checkIn}</span>
                     </div>
                     <div className="check-out flex">
                         <span>CHECKOUT</span>
-                        <span>23/07/2023</span>
+                        <span>{checkOut}</span>
                     </div>
                 </div>
                 <div className="guests-container">
@@ -58,24 +61,27 @@ export function OrderContainer({ stay }) {
                     </button>
                 </div>
             </div>
-            <p>You won't be charged yet</p>
-            <div className="price-container">
-                <p>${stay.price.toLocaleString()} x {nightsCount} nights</p>
-                <p>${nightsPrice}</p>
-            </div>
-            <div className="price-container">
-                <p>Cleaning fee</p>
-                <span>{cleaningFee}</span>
-            </div>
-            <div className="price-container">
-                <p>StayHub service fee</p>
-                <span>{serviceFee}</span>
-            </div>
-            <hr />
-            <div className="total-price-container">
-                <h5>Total</h5>
-                <h5>{totalPrice}</h5>
-            </div>
+            <section className="price-container">
+                <p>You won't be charged yet</p>
+                <section className="flex space-between">
+                    <p>${stay.price.toLocaleString()} x {nightsCount} nights</p>
+                    <p>${nightsPrice.toLocaleString()}</p>
+                </section>
+                <section className="flex space-between">
+                    <p>Cleaning fee</p>
+                    <span>${cleaningFee.toLocaleString()}</span>
+                </section>
+                <div className="flex space-between" >
+                    <p>StayHub service fee</p>
+                    <span>${serviceFee.toLocaleString()}</span>
+                </div>
+                <hr />
+                <div className="total-price-container flex space-between fs16">
+                    <h5>Total</h5>
+                    <h5>${totalPrice}</h5>
+                </div>
+            </section>
+            </section>
 
         </section>
     )

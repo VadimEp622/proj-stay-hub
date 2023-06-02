@@ -13,6 +13,7 @@ export const stayService = {
     remove,
     getEmptyStay,
     addStayMsg,
+    getDate,
     calculateHowManyNights
 }
 window.cs = stayService
@@ -59,9 +60,13 @@ function getEmptyStay() {
     }
 }
 
+function getDate(timeStamp) {
+    return new Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit'}).format(timeStamp)
+}
+
 function calculateHowManyNights(stay) {
-    const checkInDate = new Date(stay.checkIn * 1000)
-    const checkOutDate = new Date(stay.checkOut * 1000)
+    const checkInDate = new Date(stay.checkIn)
+    const checkOutDate = new Date(stay.checkOut)
     const timeDiff = checkOutDate.getTime() - checkInDate.getTime()
     const nightsCount = Math.ceil(timeDiff / (1000 * 3600 * 24))
     return nightsCount
@@ -69,7 +74,3 @@ function calculateHowManyNights(stay) {
 
 
 // *********************** PRIVATE FUNCTIONS ***********************
-
-
-
-
