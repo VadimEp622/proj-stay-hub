@@ -1,25 +1,43 @@
 export const SET_STAYS = 'SET_STAYS'
 export const REMOVE_STAY = 'REMOVE_STAY'
+export const UNDO_REMOVE_STAY = 'UNDO_REMOVE_STAY'
 export const ADD_STAY = 'ADD_STAY'
 export const UPDATE_STAY = 'UPDATE_STAY'
 export const ADD_TO_CART = 'ADD_TO_CART'
+
 export const CLEAR_CART = 'CLEAR_CART'
-export const UNDO_REMOVE_STAY = 'UNDO_REMOVE_STAY'
 export const REMOVE_FROM_CART = 'REMOVE_FROM_CART'
+
+export const UPDATE_FILTER_BY = 'UPDATE_FILTER_BY'
+
+
 
 const initialState = {
     stays: [],
     cart: [],
-    lastRemovedStay: null
+    lastRemovedStay: null,
+    filterBy: {}
 }
 
 export function stayReducer(state = initialState, action) {
-    var newState = state
-    var stays
-    var cart
+    console.log('action', action)
+    let newState = state
+    let stays
+    let cart
     switch (action.type) {
         case SET_STAYS:
-            newState = { ...state, stays: action.stays }
+            stays = action.stays.filter(stay => {
+                if (Object.keys(state.filterBy).length === 0) return stay
+                if (state.filterBy.country) return stay.loc.country.toLowerCase().includes(state.filterBy.country.toLowerCase())
+                if (state.filterBy.city) return stay.loc.city.toLowerCase().includes(state.filterBy.city.toLowerCase())
+
+
+                // console.log('Object.keys(state.filterBy).length', Object.keys(state.filterBy).length)
+                console.log('state.filterBy', state.filterBy)
+                console.log('stay', stay)
+
+            })
+            newState = { ...state, stays: stays }
             break
         case REMOVE_STAY:
             const lastRemovedStay = state.stays.find(stay => stay._id === action.stayId)
@@ -47,6 +65,9 @@ export function stayReducer(state = initialState, action) {
             if (state.lastRemovedStay) {
                 newState = { ...state, stays: [...state.stays, state.lastRemovedStay], lastRemovedStay: null }
             }
+            break
+        case UPDATE_FILTER_BY:
+            newState = { ...state, filterBy: { ...action.filterBy } }
             break
         default:
     }

@@ -12,9 +12,17 @@ import { LOGO, USER_NAV_BARS, USER_NAV_PROFILE, SEARCH } from '../services/svg.s
 // import logo from '../assets/img/logo/logo-airbnb.svg'
 // import userNav from '../assets/img/user-nav/user-nav.svg'
 import SvgHandler from './svg_handler.jsx'
+import { Fragment, useState } from 'react'
+import { stayService } from '../services/stay.service.local.js'
+import { AppHeaderSearch } from './app-header-search.jsx'
+import { updateFilterBy } from '../store/stay.actions.js'
 
 export function AppHeader() {
     const user = useSelector(storeState => storeState.userModule.user)
+    const [filterBy, setFilterBy] = useState({ filterText: '' })
+
+
+
 
     async function onLogin(credentials) {
         try {
@@ -41,52 +49,76 @@ export function AppHeader() {
         }
     }
 
+
+    function onSubmit(ev) {
+        ev.preventDefault()
+        const filter = {}
+
+        if (filterBy.filterText) {
+            filter.city = filterBy.filterText
+            filter.country = filter.filterText
+        }
+
+        updateFilterBy(filter)
+    }
+
+
+    function handleChange({ target }) {
+        const field = target.name
+        const value = (target.type === 'number') ? +target.value : target.value
+        setFilterBy(prevFilter => ({ ...prevFilter, [field]: value }))
+    }
+
     return (
-        <header className="app-header-container full main-layout">
-            <nav className='app-header'>
-                {/* fix img src */}
-                <section className="navbar-container">
-                    {
-                        routes.map(route =>
-                            <NavLink
-                                className={"page-navbar"}
-                                key={route.path}
-                                to={route.path}
-                            >
-                                {
-                                    route.isLogo &&
-                                    <article className="logo-svg">
-                                        <SvgHandler svgName={LOGO} />
-                                        <span>{route.label}</span>
-                                    </article>
-                                }
-                                {!route.isLogo && route.label}
-                            </NavLink>
-                        )
-                    }
-                </section>
-
-                <section className="search-navbar-container">
-                    <span></span>
-                    <section className='search-navbar'>
-                        <article>Anywhere</article>
-                        <article>Any week</article>
-                        <article>Add guests</article>
-                        <button className='custom-btn-main-search'>
-                            <SvgHandler svgName={SEARCH} />
-                        </button>
+        <Fragment>
+            <header className="app-header-container full main-layout">
+                <nav className='app-header'>
+                    {/* fix img src */}
+                    <section className="navbar-container">
+                        {
+                            routes.map(route =>
+                                <NavLink
+                                    className={"page-navbar"}
+                                    key={route.path}
+                                    to={route.path}
+                                >
+                                    {
+                                        route.isLogo &&
+                                        <article className="logo-svg">
+                                            <SvgHandler svgName={LOGO} />
+                                            <span>{route.label}</span>
+                                        </article>
+                                    }
+                                    {!route.isLogo && route.label}
+                                </NavLink>
+                            )
+                        }
                     </section>
-                    <span></span>
-                </section>
 
-
-                <section className="user-navbar-container">
-                    <section className="user-navbar">
-                        <article className="bars"><SvgHandler svgName={USER_NAV_BARS} /></article>
-                        <article className="profile"><SvgHandler svgName={USER_NAV_PROFILE} /></article>
+                    <section className="search-navbar-container">
+                        <span></span>
+                        <section className='search-navbar'>
+                            <article>Anywhere</article>
+                            <article>Any week</article>
+                            <article>Add guests</article>
+                            <button className='custom-btn-main-search'>
+                                <SvgHandler svgName={SEARCH} />
+                            </button>
+                        </section>
+                        <span></span>
                     </section>
-                </section>
-            </nav>
-        </header>
+
+
+                    <section className="user-navbar-container">
+                        <section className="user-navbar">
+                            <article className="bars"><SvgHandler svgName={USER_NAV_BARS} /></article>
+                            <article className="profile"><SvgHandler svgName={USER_NAV_PROFILE} /></article>
+                        </section>
+                    </section>
+                </nav>
+            </header>
+
+            <AppHeaderSearch filterBy={filterBy} onSubmit={onSubmit} handleChange={handleChange} />
+        </Fragment>
     )
 }

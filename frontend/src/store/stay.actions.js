@@ -2,10 +2,11 @@ import { stayService } from "../services/stay.service.local.js";
 import { userService } from "../services/user.service.js";
 import { store } from './store.js'
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
-import { ADD_STAY, ADD_TO_CART, CLEAR_CART, REMOVE_STAY, REMOVE_FROM_CART, SET_STAYS, UNDO_REMOVE_STAY, UPDATE_STAY } from "./stay.reducer.js";
+import { ADD_STAY, ADD_TO_CART, CLEAR_CART, REMOVE_STAY, REMOVE_FROM_CART, SET_STAYS, UNDO_REMOVE_STAY, UPDATE_STAY, UPDATE_FILTER_BY } from "./stay.reducer.js";
 import { SET_SCORE } from "./user.reducer.js";
 
-// Action Creators:
+// ****************** Action Creators ****************** :
+
 export function getActionRemoveStay(stayId) {
     return {
         type: REMOVE_STAY,
@@ -24,6 +25,13 @@ export function getActionUpdateStay(stay) {
         stay
     }
 }
+
+
+
+
+
+
+// ****************** Action senders ****************** :
 
 export async function loadStays() {
     try {
@@ -71,6 +79,12 @@ export async function updateStay(stay) {
         throw err
     }
 }
+
+
+export function updateFilterBy(filterBy) {
+    store.dispatch({ type: UPDATE_FILTER_BY, filterBy })
+}
+
 
 export function addToCart(stay) {
     store.dispatch({
