@@ -15,7 +15,7 @@ export function OrderContainer({ stay }) {
     function _createButtonDivContainer() {
         const divElements = []
         for (let i = 0; i < 100; i++) {
-            divElements.push(<div className="cell"></div>)
+            divElements.push(<div className="cell" key={i}></div>)
         }
         return divElements
     }
@@ -33,22 +33,22 @@ export function OrderContainer({ stay }) {
                 </div>
             </div>
             <section className="order-data">
-            <div className="date-container flex">
-                <div className="check-in flex">
-                    <span>CHECK-IN</span>
-                    <span>18/07/2023</span>
+                <div className="date-container flex">
+                    <div className="check-in flex">
+                        <span>CHECK-IN</span>
+                        <span>18/07/2023</span>
+                    </div>
+                    <div className="check-out flex">
+                        <span>CHECKOUT</span>
+                        <span>23/07/2023</span>
+                    </div>
                 </div>
-                <div className="check-out flex">
-                    <span>CHECKOUT</span>
-                    <span>23/07/2023</span>
+                <div className="guests-container">
+                    <div className="guests">
+                        <span>GUESTS</span>
+                        <span>Add Guest</span>
+                    </div>
                 </div>
-            </div>
-            <div className="guests-container">
-                <div className="guests">
-                    <span>GUESTS</span>
-                    <span>Add Guest</span>
-                </div>
-            </div>
             </section>
             <div className="btn-container">
                 {_createButtonDivContainer()}

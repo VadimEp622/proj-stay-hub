@@ -114,7 +114,7 @@
         padding-top: 48px;
         display: grid;
         grid-template-columns: 3fr 1fr;
-        
+
         border-bottom: 1px solid #dddddd;
         // gap: 14px;
 
@@ -162,9 +162,41 @@
 
         .order-container {
             grid-column: -1;
-            justify-self:end;
+            justify-self: end;
             margin-bottom: 2rem;
             position: relative;
+        }
+
+    }
+
+    .review-container {
+        .reviews-inputs {
+            .review-input {
+                display: flex;
+
+                .progress-bar-container {
+                    background-color: rgb(221, 221, 221);
+                    position: relative;
+                    border-radius: 0.2em;
+                    height: rem(4px);
+                    width: 100%;
+                    border-radius: rem(2px);
+
+                    .review-input-bar {
+                        min-height: 0.2em;
+                        position: absolute;
+                        max-height: 0.2em;
+                        border-radius: 2em;
+                        background-color: rgb(34, 34, 34);
+
+                        span {
+                            font-size: rem(12px);
+                            line-height: 16px;
+                            color: rgb(34, 34, 34);
+                        }
+                    }
+                }
+            }
         }
     }
 }
