@@ -7,7 +7,7 @@ import { reviewService } from '../services/review.service.js'
 import { OrderContainer } from '../cmps/order-container.jsx'
 
 import SvgHandler from '../cmps/svg_handler.jsx'
-import { HEART, SHARE, STAR } from '../services/svg.service.js'
+import { HEART_16, RED_HEART_16, SHARE, STAR, LOCATION } from '../services/svg.service.js'
 
 export function StayDetails() {
     const [stay, setStay] = useState(null)
@@ -18,16 +18,19 @@ export function StayDetails() {
         loadStay()
     }, [stayId])
 
-    function loadStay() {
-        console.log(stayId);
-        stayService.getById(stayId)
-            .then(setStay)
-            .catch((err) => {
-                console.log('Had issues in stay details', err)
-                showErrorMsg('Cannot load stay')
-                navigate('/stay')
-            })
-    }
+    async function loadStay() {
+        try {
+        const stay = await stayService.getById(stayId);
+        setStay(stay);
+        } catch (err) {
+        console.log('Had issues in stay details', err);
+        showErrorMsg('Cannot load stay');
+        navigate('/stay');
+        }
+        }
+
+    const [isHeartClicked, setIsHeartClicked] = useState(false)
+    const heartSvg = isHeartClicked ? 'heart-red-16' : 'heart-16'
 
     if (!stay) return <div>Loading...</div>
     return <section className="stay-details">
@@ -45,8 +48,8 @@ export function StayDetails() {
                         <SvgHandler svgName={SHARE} />
                         <span>Share</span>
                     </div>
-                    <div className='save-btn flex'>
-                        <SvgHandler svgName={HEART} />
+                    <div className='save-btn flex' onClick={() => setIsHeartClicked(prevHeart => !prevHeart)}>
+                        <SvgHandler svgName={heartSvg} />
                         <span>Save</span>
                     </div>
                 </section>
@@ -77,24 +80,24 @@ export function StayDetails() {
             </section>
             <section className='stay-highlights'>
                 <div className='highlight flex'>
-                    <span></span>
+                    <span><SvgHandler svgName={LOCATION} /></span>
                     <div>
-                       <h3>Great location</h3> 
-                       <p>100% of recent guests gave the location a 5-star rating.</p>
+                        <h3>Great location</h3>
+                        <p>100% of recent guests gave the location a 5-star rating.</p>
                     </div>
                 </div>
                 <div className='highlight flex'>
                     <span></span>
                     <div>
-                       <h3>Self check-in</h3> 
-                       <p>Check yourself in with the lockbox.</p>
+                        <h3>Self check-in</h3>
+                        <p>Check yourself in with the lockbox.</p>
                     </div>
                 </div>
                 <div className='highlight flex'>
                     <span></span>
                     <div>
-                       <h3>Free cancellation for 48 hours.</h3> 
-                       <p></p>
+                        <h3>Free cancellation for 48 hours.</h3>
+                        <p></p>
                     </div>
                 </div>
             </section>

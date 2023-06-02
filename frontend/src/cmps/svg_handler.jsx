@@ -4,11 +4,13 @@ import { ReactComponent as UserNavBar } from '../assets/img/user-nav/user-nav-ba
 import { ReactComponent as UserNavProfile } from '../assets/img/user-nav/user-nav-profile.svg'
 import { ReactComponent as Star } from '../assets/img/star/star.svg'
 import { ReactComponent as Share } from '../assets/img/share/share.svg'
-import { ReactComponent as Heart } from '../assets/img/heart/heart.svg'
+import { ReactComponent as Heart16 } from '../assets/img/heart/heart-16.svg'
+import { ReactComponent as RedHeart16 } from '../assets/img/heart/heart-red-16.svg'
 import { ReactComponent as Search } from '../assets/img/search/search.svg'
 import { ReactComponent as WhiteStrokedHeart } from '../assets/img/heart/heart-white.svg'
 import { ReactComponent as RedStrokedHeart } from '../assets/img/heart/heart-red.svg'
-import { HEART, LOGO, RED_HEART, SEARCH, SHARE, STAR, USER_NAV_BARS, USER_NAV_PROFILE, WHITE_HEART } from '../services/svg.service'
+import { ReactComponent as Location } from '../assets/img/location/location.svg'
+import { HEART_16, RED_HEART_16, LOGO, RED_HEART, SEARCH, SHARE, STAR, USER_NAV_BARS, USER_NAV_PROFILE, WHITE_HEART, LOCATION } from '../services/svg.service'
 
 
 const SvgHandler = ({ svgName }) => {
@@ -25,8 +27,10 @@ const SvgHandler = ({ svgName }) => {
                 return <Star />
             case SHARE:
                 return <Share />
-            case HEART:
-                return <Heart />
+            case HEART_16:
+                return <Heart16 />
+            case RED_HEART_16:
+                return <RedHeart16 />
             case SEARCH:
                 return <Search />
             case WHITE_HEART:
@@ -34,8 +38,11 @@ const SvgHandler = ({ svgName }) => {
                 return <WhiteStrokedHeart />
             case RED_HEART:
                 return <RedStrokedHeart />
-            // case:
-            //     return default
+            case LOCATION:
+                return <Location />
+            
+            default:
+                return <Heart16 />
         }
         return null
     }
