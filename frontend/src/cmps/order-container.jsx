@@ -44,9 +44,9 @@ export function OrderContainer({ stay }) {
                 </div>
             </div>
             <div className="guests-container">
-                <div className="guests">
+                <div className="guests flex">
                     <span>GUESTS</span>
-                    <span>Add Guest</span>
+                    <span>1 guest</span>
                 </div>
             </div>
             </section>
