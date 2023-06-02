@@ -15,7 +15,7 @@ export function OrderContainer({ stay }) {
     function _createButtonDivContainer() {
         const divElements = []
         for (let i = 0; i < 100; i++) {
-            divElements.push(<div className="cell"></div>)
+            divElements.push(<div className="cell" key={i}></div>)
         }
         return divElements
     }

@@ -79,7 +79,6 @@ export function StayDetails() {
             return acc;
         }, {});
 
-        // Calculate the average
         Object.entries(criteria).forEach(([input, value]) => {
             criteria[input] = value / stay.reviews.length;
         });
@@ -192,8 +191,10 @@ export function StayDetails() {
                     {Object.entries(reviewsInputs).map(([key, value]) => (
                         <div className="review-input" key={key}>
                             <div className="review-input-key">{key}</div>
-                            <div className="review-input-bar" style={{ width: `${calculatePercentage(value)}%` }}></div>
-                            <div className="review-input-value">{value.toFixed(1)}</div>
+                            <div className="progress-bar-container">
+                                <div className="review-input-bar" style={{ width: `${calculatePercentage(value)}%` }}><span>{value.toFixed(1)}</span>
+                                </div>
+                            </div>
                         </div>
                     ))}
                 </div>

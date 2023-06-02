@@ -7,6 +7,7 @@ export function DatePicker({ stay }) {
     const [selectedRange, setSelectedRange] = useState();
     const [fromValue, setFromValue] = useState('');
     const [toValue, setToValue] = useState('');
+    const [openDatePicker, setOpenDatePicker] = useState(true);
 
     const handleFromChange = (e) => {
         setFromValue(e.target.value);
@@ -43,6 +44,7 @@ export function DatePicker({ stay }) {
             setFromValue('');
         }
         if (range?.to) {
+            setOpenDatePicker(false);
             setToValue(format(range.to, 'y-MM-dd'));
         } else {
             setToValue('');
@@ -53,6 +55,7 @@ export function DatePicker({ stay }) {
         <>
             <form className="ma2">
                 <input
+                    onClick={() => setOpenDatePicker(true)}
                     size={10}
                     placeholder="From Date"
                     value={fromValue}
@@ -61,6 +64,7 @@ export function DatePicker({ stay }) {
                 />
                 {' – '}
                 <input
+                    onClick={() => setOpenDatePicker(true)}
                     size={10}
                     placeholder="To Date"
                     value={toValue}
@@ -68,12 +72,13 @@ export function DatePicker({ stay }) {
                     className="input-reset pa2 bg-white black ba"
                 />
             </form>
-            <DayPicker
-                mode="range"
-                selected={selectedRange}
-                numberOfMonths={2}
-                onSelect={handleRangeSelect}
-            />
+            {openDatePicker ?
+                <DayPicker
+                    mode="range"
+                    selected={selectedRange}
+                    numberOfMonths={2}
+                    onSelect={handleRangeSelect}
+                /> : null}
         </>
     );
 }
