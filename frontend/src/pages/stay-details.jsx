@@ -87,6 +87,12 @@ export function StayDetails() {
         return criteria;
     }
 
+    function calculatePercentage(value) {
+        const percentage = (value / 5) * 100
+        return percentage.toFixed(1)
+    }
+
+
     const reviewsInputs = displayReviewsCriteria()
     console.log(reviewsInputs)
     const reviews = stay.reviews.length > 1 ? 'reviews' : 'review'
@@ -186,8 +192,8 @@ export function StayDetails() {
                     {Object.entries(reviewsInputs).map(([key, value]) => (
                         <div className="review-input" key={key}>
                             <div className="review-input-key">{key}</div>
-                            <div className="review-input-bar" ></div>
-                            <div className="review-input-value">{value}</div>
+                            <div className="review-input-bar" style={{ width: `${calculatePercentage(value)}%` }}></div>
+                            <div className="review-input-value">{value.toFixed(1)}</div>
                         </div>
                     ))}
                 </div>
@@ -195,12 +201,11 @@ export function StayDetails() {
                 {stay.reviews.length > 6 && <button>Show all {stay.reviews.length} reviews</button>}
             </section>}
 
-
         <section className="map-container">
             <h3>Where you'll be</h3>
             {stay.loc.city}, {stay.loc.country}
-
         </section>
+
         <section className="host-details-container">
 
         </section>
