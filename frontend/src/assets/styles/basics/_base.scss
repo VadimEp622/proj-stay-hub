@@ -3,19 +3,19 @@
 }
 
 ::selection {
-    background-color: $clr1;
-    color: $clr6;
+    background-color: $clr6;
+    color: $clr4;
 }
 
 html {
-    font-family: circular;
+    font-family: circular-book;
     line-height: 1.6;
     color: $clr2;
 }
 
 body {
     font-size: rem(14px);
-    // font-family: circular;
+    color: $clr2;
     margin: 0;
 
     // margin-right: 17px;// FOR MAIN SCROLL BAR
@@ -41,6 +41,8 @@ h3,
 h4,
 h5,
 h6 {
+    font-family: circular-bold;
+    color: $clr2;
     margin: 0 0 0.6em;
     line-height: 1;
 }
@@ -52,6 +54,7 @@ img {
 }
 
 p {
+    color: $clr3;
     margin: 0 0 1em;
 }
 

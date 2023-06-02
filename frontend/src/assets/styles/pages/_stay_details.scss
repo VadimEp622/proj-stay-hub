@@ -130,7 +130,17 @@
                 border-radius: 50px;
                 object-fit: cover;
             }
+            .host-info {
+                h2 {
+                    font-size: rem(22px);
+                }
+                & span {
+                    font-size: rem(16px);
+                    font-family: circular-book;
+                }
+            }
         }
+        
 
         .stay-highlights {
             grid-column: 1;
