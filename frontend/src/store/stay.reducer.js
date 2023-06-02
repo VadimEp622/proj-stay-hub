@@ -27,15 +27,12 @@ export function stayReducer(state = initialState, action) {
     switch (action.type) {
         case SET_STAYS:
             stays = action.stays.filter(stay => {
-                if (Object.keys(state.filterBy).length === 0) return stay
-                if (state.filterBy.country) return stay.loc.country.toLowerCase().includes(state.filterBy.country.toLowerCase())
-                if (state.filterBy.city) return stay.loc.city.toLowerCase().includes(state.filterBy.city.toLowerCase())
-
-
-                // console.log('Object.keys(state.filterBy).length', Object.keys(state.filterBy).length)
-                console.log('state.filterBy', state.filterBy)
-                console.log('stay', stay)
-
+                if (Object.keys(state.filterBy).length === 0) return true
+                if (state.filterBy) {
+                    if (stay.loc.country.toLowerCase().includes(state.filterBy.country.toLowerCase())) return true
+                    if (stay.loc.city.toLowerCase().includes(state.filterBy.city.toLowerCase())) return true
+                    return false
+                }
             })
             newState = { ...state, stays: stays }
             break

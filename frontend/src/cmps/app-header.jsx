@@ -56,7 +56,7 @@ export function AppHeader() {
 
         if (filterBy.filterText) {
             filter.city = filterBy.filterText
-            filter.country = filter.filterText
+            filter.country = filterBy.filterText
         }
 
         updateFilterBy(filter)
