@@ -20,7 +20,7 @@ const initialState = {
 }
 
 export function stayReducer(state = initialState, action) {
-    console.log('action', action)
+    // console.log('action', action)
     let newState = state
     let stays
     let cart
