@@ -104,15 +104,10 @@
             opacity: 0.15;
         }
 
-
         & :first-child {
             grid-column: 1 / span 2;
             grid-row: 1 / span 2;
         }
-    }
-
-    .amenities {
-        border-bottom: 1px solid #dddddd;
     }
 
     .details-container {
@@ -148,7 +143,6 @@
             }
         }
 
-
         .stay-highlights {
             grid-column: 1;
             padding: 32px 0;
@@ -157,6 +151,10 @@
             .highlight {
                 margin-bottom: 24px;
             }
+        }
+
+        .amenities {
+            border-bottom: 1px solid #dddddd;
         }
 
         .order-container {

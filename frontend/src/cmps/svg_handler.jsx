@@ -13,7 +13,7 @@ import { ReactComponent as Location } from '../assets/img/location/location.svg'
 import { ReactComponent as Key } from '../assets/img/key/key.svg'
 import { ReactComponent as Checkin } from '../assets/img/self-checkin/self-checkin.svg'
 import { HEART_16, RED_HEART_16, LOGO, RED_HEART, SEARCH, SHARE, STAR, USER_NAV_BARS, 
-        USER_NAV_PROFILE, WHITE_HEART, LOCATION, KEY, CHECKIN } from '../services/svg.service'
+    USER_NAV_PROFILE, WHITE_HEART, LOCATION, KEY, CHECKIN } from '../services/svg.service'
 
 
 const SvgHandler = ({ svgName }) => {
@@ -37,7 +37,6 @@ const SvgHandler = ({ svgName }) => {
             case SEARCH:
                 return <Search />
             case WHITE_HEART:
-                { console.log(WhiteStrokedHeart) }
                 return <WhiteStrokedHeart />
             case RED_HEART:
                 return <RedStrokedHeart />
@@ -47,7 +46,7 @@ const SvgHandler = ({ svgName }) => {
                 return <Key />
             case CHECKIN:
                 return <Checkin />
-            
+        
             default:
                 return <Heart16 />
         }
@@ -58,8 +57,3 @@ const SvgHandler = ({ svgName }) => {
 }
 
 export default SvgHandler
-
-
-
-
-// 
