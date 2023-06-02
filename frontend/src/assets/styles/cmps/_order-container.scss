@@ -7,25 +7,48 @@
     padding: rem(24px);
     box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
     width: 83%;
+    min-width: 285px ;
 
-    h2 {
-        font-family: cereal_W_Lt;
-        font-size: rem(16px);
+    .order-container-header {
+        display: flex;
+        @include between();
 
-        span {
-            color: $clr2;
-            font-family: cereal_W_Bd;
-            font-size: rem(22px);
+        .order-rate {
+            align-items: center;
+            justify-content: center;
+
+            .review-rate {
+                padding-left: 4px;
+            }
+            
+            .period {
+                padding-left: 4px;
+                padding-right: 4px;
+
+            }
+        }
+
+        h2 {
+            font-family: cereal_W_Lt;
+            font-size: rem(16px);
+    
+            span {
+                color: $clr2;
+                font-family: cereal_W_Bd;
+                font-size: rem(22px);
+            }
+        }
+
+        .review-count {
+            color: $clr3;
         }
     }
 
-    .review-count {
-        color: $clr3;
-    }
 
     .order-data {
         border: 1px solid $clr3;
         border-radius: 8px;
+        margin-bottom: 16px;
         .date-container {
             justify-content: space-between;
             border-bottom: 1px solid $clr3;
@@ -51,28 +74,7 @@
     }
     
     .price-container {
-        @include flex();
-        @include between();
-    }
 
-    .order-container-header {
-        display: flex;
-        @include between();
-
-        .order-rate {
-            align-items: center;
-            justify-content: center;
-
-            .review-rate {
-                padding-left: 4px;
-            }
-            
-            .period {
-                padding-left: 4px;
-                padding-right: 4px;
-
-            }
-        }
     }
 
     .btn-container {
@@ -146,7 +148,4 @@
         background-color: transparent;
         border: none;
     }
-
-
-
 }

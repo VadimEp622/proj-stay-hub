@@ -113,7 +113,7 @@
     .details-container {
         padding-top: 48px;
         display: grid;
-        grid-template-columns: 3fr 1fr;
+        grid-template-columns: 1.45fr 1fr;
 
         border-bottom: 1px solid #dddddd;
         // gap: 14px;
@@ -161,7 +161,7 @@
         }
 
         .order-container {
-            grid-column: -1;
+            grid-column: 2;
             justify-self: end;
             margin-bottom: 2rem;
             position: relative;
