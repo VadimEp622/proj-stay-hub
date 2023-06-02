@@ -1,4 +1,5 @@
 import { reviewService } from "../services/review.service"
+import { stayService } from "../services/stay.service"
 import { STAR } from "../services/svg.service"
 import { utilService } from "../services/util.service"
 // import DatePicker from "./date-picker"
@@ -6,11 +7,11 @@ import SvgHandler from "./svg_handler"
 
 export function OrderContainer({ stay }) {
 
-    const nightsPrice = calculateHowManyNights() * stay.price
+    const nightsPrice = stayService.calculateHowManyNights(stay) * stay.price
     const cleaningFee = utilService.getRandomIntInclusive(100, 500)
     const serviceFee = utilService.getRandomIntInclusive(100, 500)
     const totalPrice = nightsPrice + cleaningFee + serviceFee
-    const nightsCount = calculateHowManyNights()
+    const nightsCount = stayService.calculateHowManyNights(stay)
     function _createButtonDivContainer() {
         const divElements = []
         for (let i = 0; i < 100; i++) {
@@ -20,13 +21,6 @@ export function OrderContainer({ stay }) {
     }
 
     console.log(stay)
-    function calculateHowManyNights() {
-        const checkInDate = new Date(stay.checkIn * 1000)
-        const checkOutDate = new Date(stay.checkOut * 1000)
-        const timeDiff = checkOutDate.getTime() - checkInDate.getTime()
-        const nightsCount = Math.ceil(timeDiff / (1000 * 3600 * 24))
-        return nightsCount
-    }
 
     return (
         <section className="order-container">
@@ -42,7 +36,7 @@ export function OrderContainer({ stay }) {
                 </div>
             </div>
             <div className="date-container">
-                <div className="check-in">
+                <div className="check-out">
                     <p>CHECKOUT</p>
                     <p>Add Date</p>
                 </div>

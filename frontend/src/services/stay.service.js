@@ -12,7 +12,8 @@ export const stayService = {
     save,
     remove,
     getEmptyStay,
-    addStayMsg
+    addStayMsg,
+    calculateHowManyNights
 }
 window.cs = stayService
 
@@ -22,7 +23,7 @@ async function query(filterBy = { name: '', price: 0 }) {
 }
 
 function getById(stayId) {
-    console.log('service:',stayId);
+    console.log('service:', stayId);
     return httpService.get(`stay/${stayId}`)
 }
 
@@ -58,6 +59,13 @@ function getEmptyStay() {
     }
 }
 
+function calculateHowManyNights(stay) {
+    const checkInDate = new Date(stay.checkIn * 1000)
+    const checkOutDate = new Date(stay.checkOut * 1000)
+    const timeDiff = checkOutDate.getTime() - checkInDate.getTime()
+    const nightsCount = Math.ceil(timeDiff / (1000 * 3600 * 24))
+    return nightsCount
+}
 
 
 // *********************** PRIVATE FUNCTIONS ***********************

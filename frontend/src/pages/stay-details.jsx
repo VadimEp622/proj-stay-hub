@@ -101,12 +101,28 @@ export function StayDetails() {
                     </div>
                 </div>
             </section>
-            <section className='stay-highlights'>
+            <section className='amenities'>
                 <h3>What this place offers</h3>
                 <div className='highlight flex'>
-                    {console.log(stay)}
+                    {stay.amenities.map(amenity => {
+                        return <div className="amenity">
+                            <SvgHandler svgName={amenity} />
+                            {amenity}
+                        </div>
+                    })}
                 </div>
             </section>
+            {/* <section className='amenities'> */}
+            {/* <h3>What this place offers</h3>
+                <div className='highlight flex'>
+                    {stay.amenities.map(amenity => {
+                        return <div className="amenity">
+                            <SvgHandler svgName={amenity} />
+                            {amenity}
+                        </div>
+                    })}
+                </div>
+            </section> */}
             <OrderContainer className='order-container' stay={stay} />
         </section>
     </section >
