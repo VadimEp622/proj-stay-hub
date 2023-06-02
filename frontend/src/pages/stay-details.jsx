@@ -103,7 +103,7 @@ export function StayDetails() {
                     </div>
                 </div>
             </section>
-            {/* <section className='amenities'>
+            <section className='amenities'>
                 <h3>What this place offers</h3>
                 <div className='highlight flex'>
                     {stay.amenities.map(amenity => {
@@ -113,13 +113,13 @@ export function StayDetails() {
                         </div>
                     })}
                 </div>
-            </section> */}
-            {/* <OrderContainer className='order-container' stay={stay} />
+            </section>
+            <OrderContainer className='order-container' stay={stay} />
             <div className="date-container">
                 <h3>Select check-in date</h3>
                 <p>Add your travel dates for exact pricing</p>
                 <DatePicker />
-            </div> */}
+            </div>
         </section>
         <div className="review-container">
             <SvgHandler svgName={STAR} />
