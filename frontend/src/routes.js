@@ -8,18 +8,13 @@ import { ChatApp } from './pages/chat-app.jsx'
 import { AdminApp } from './pages/admin-app.jsx'
 
 
-// Routes accesible from the main navigation (in AppHeader)
+// Routes accessible from the main navigation (in AppHeader)
 const routes = [
     {
         path: '/',
-        component: <HomePage />,
-        label: 'Airbnb DEMO',
-        isLogo: true,
-    },
-    {
-        path: 'stay',
         component: <StayIndex />,
-        label: 'Stays'
+        label: 'StayHub',
+        isLogo: true,
     },
     // {
     //     path: 'review',
