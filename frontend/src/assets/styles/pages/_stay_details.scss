@@ -2,7 +2,7 @@
     max-width: 1120px;
     margin: auto;
     scroll-margin-top: 25px;
-    
+
     .stay-review {
         flex-direction: column;
 
@@ -57,7 +57,7 @@
 
                     .share-svg {
                         width: 16px;
-                    } 
+                    }
                 }
 
                 .save-btn {
@@ -89,12 +89,14 @@
                     }
                 }
             }
+
             span {
                 font-family: cereal_W_Bd;
                 text-decoration: underline;
             }
         }
     }
+
     img {
         cursor: pointer;
         aspect-ratio: 1.08 / 1;
@@ -111,7 +113,7 @@
         padding: 0;
         overflow: hidden;
         border-radius: 12px;
-        
+
 
         .img {
             padding: 0;
@@ -186,10 +188,33 @@
         .amenities {
             grid-column: 1;
             padding-top: 48px;
-            display: flex;
-            flex-direction: column;
+            padding-bottom: 48px;
             border-bottom: 1px solid rgba(128, 128, 128, .3);
             scroll-margin-top: 80px;
+
+            h3 {
+                padding-bottom: 24px;
+                margin: 0;
+            }
+
+            .amenities-list {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                // margin-bottom: 24px;
+
+                .amenity {
+                    align-items: center;
+                    padding-bottom: 16px;
+                    font-size: rem(16px);
+
+                    &.amenity * {
+                        margin: 0 0.25em;
+                        font-size: rem(16px);
+                    }
+                }
+
+            }
+
         }
 
         .order-container {
@@ -198,11 +223,11 @@
             width: 100%;
             position: relative;
         }
-
     }
 
     .review-container {
         scroll-margin-top: 80px;
+
         .reviews-inputs {
             .review-input {
                 display: flex;
