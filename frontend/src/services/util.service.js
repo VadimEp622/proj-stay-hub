@@ -1,12 +1,15 @@
+import { format, startOfDay } from 'date-fns'
+
 export const utilService = {
     makeId,
     makeLorem,
     getRandomIntInclusive,
     debounce,
     randomPastTime,
+    getFutureTime,
     saveToStorage,
     loadFromStorage,
-    getFormattedTimeRange
+    getFormattedTimeRange,
 }
 
 function makeId(length = 6) {
@@ -47,6 +50,24 @@ function randomPastTime() {
 
     const pastTime = getRandomIntInclusive(HOUR, WEEK)
     return Date.now() - pastTime
+}
+
+
+function getFutureTime(amount, item) {
+    const date = Date.now()
+    const TODAY = Date.parse(startOfDay(date))
+
+
+    const MINUTE = 1000 * 60
+    const HOUR = MINUTE * 60
+    const DAY = HOUR * 24
+    const WEEK = DAY * 7
+    const MONTH = WEEK * 4
+    const YEAR = MONTH * 12
+
+    if (item === 'day') return TODAY + (DAY * amount)
+
+    return TODAY
 }
 
 function debounce(func, timeout = 300) {

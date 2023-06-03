@@ -318,7 +318,14 @@ function _createDemoStay(name, summary, type, loc, imgUrls) {
         owner: 'Juan',
         //below is temp!
         checkIn: 1685116800000,
-        checkOut: 1685116800000 + 86400000 * 3//in 3 days
+        checkOut: 1685116800000 + 86400000 * 3,//in 3 days
+
+        availableDates: [
+            {
+                from: utilService.getFutureTime(),
+                to: utilService.getFutureTime(3, 'day'),
+            }
+        ]
     }
 }
 
