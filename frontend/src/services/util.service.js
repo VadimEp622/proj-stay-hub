@@ -10,6 +10,7 @@ export const utilService = {
     saveToStorage,
     loadFromStorage,
     getFormattedTimeRange,
+    getTimeDiffBy,
 }
 
 function makeId(length = 6) {
@@ -68,6 +69,22 @@ function getFutureTime(amount, item) {
     if (item === 'day') return TODAY + (DAY * amount)
 
     return TODAY
+}
+
+function getTimeDiffBy(item) {
+    const MINUTE = 1000 * 60
+    const HOUR = MINUTE * 60
+    const DAY = HOUR * 24
+    const WEEK = DAY * 7
+    const MONTH = WEEK * 4
+    const YEAR = MONTH * 12
+
+    if (item === 'minute') return MINUTE
+    if (item === 'hour') return HOUR
+    if (item === 'day') return DAY
+    if (item === 'week') return WEEK
+    if (item === 'month') return MONTH
+    if (item === 'year') return YEAR
 }
 
 function debounce(func, timeout = 300) {

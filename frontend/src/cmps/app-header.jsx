@@ -17,6 +17,7 @@ import { stayService } from '../services/stay.service.local.js'
 import { AppHeaderSearch } from './app-header-search.jsx'
 import { updateFilterBy } from '../store/stay.actions.js'
 import { DateFilter } from './app-header-date-filter.jsx'
+import { utilService } from '../services/util.service.js'
 
 export function AppHeader() {
     const user = useSelector(storeState => storeState.userModule.user)
@@ -59,6 +60,10 @@ export function AppHeader() {
             filter.city = filterBy.filterText
             filter.country = filterBy.filterText
         }
+        if (filterBy.from) {
+            filter.from = filterBy.from
+            filter.to = filterBy.to
+        }
 
         updateFilterBy(filter)
     }
@@ -88,7 +93,7 @@ export function AppHeader() {
                 if (filter.from === undefined) {
                     filter.to = ''
                 } else {
-                    filter.to = filter.from
+                    filter.to = filter.from + utilService.getTimeDiffBy('day')
                 }
             }
             else {
