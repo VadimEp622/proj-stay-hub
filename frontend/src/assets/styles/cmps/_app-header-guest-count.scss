@@ -22,10 +22,30 @@
             border-radius: 50%;
             width: 30px;
             height: 30px;
+            font-weight: 700;
+            font-size: 13.5px;
+        }
+
+        & span {
+            margin-inline: 10px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .pet-service {
+            font-weight: 600;
+            color: rgb(113, 113, 113);
+            cursor: pointer;
         }
 
         .custom-btn-guest-count:hover {
             border-color: rgb(34, 34, 34);
+        }
+
+        .custom-btn-guest-count:disabled {
+            cursor: not-allowed;
+            border-color: #EBEBEB;
+            color: #EBEBEB;
         }
     }
 }
