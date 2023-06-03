@@ -93,9 +93,9 @@ export function StayDetails() {
     const capitalizedReviewsString = reviews.charAt(0).toUpperCase() + reviews.slice(1)
 
     return <Fragment>
-    <section className="stay-details">
-        {true && <DetailsHeader stay={stay}/>}
-        <section className='stay-review flex'>
+    <section className="stay-details" id='scroll-1'>
+        {<DetailsHeader stay={stay}/>}
+        <section className='stay-review flex' >
             <h1>{stay.name}</h1>
             <section className='info-bar flex space-between align-center'>
                 <section className='info flex'>
@@ -166,7 +166,7 @@ export function StayDetails() {
                         </div>
                     </div>
                 </section>
-                <section className='amenities'>
+                <section className='amenities' id='scroll-2'>
                     <h3>What this place offers</h3>
                     <div className='highlight flex'>
                         {stay.amenities.map(amenity => {
@@ -188,7 +188,7 @@ export function StayDetails() {
             </section>
         </section>
         {stay.reviews.length > 0 &&
-            <section className="review-container">
+            <section className="review-container" id='scroll-3'>
                 <div className="review-title"><SvgHandler svgName={STAR} />
                     {reviewService.getAverageReview(stay)} • {stay.reviews.length} {reviews}
                 </div>
@@ -206,7 +206,7 @@ export function StayDetails() {
                 {displayReviews()}
                 {stay.reviews.length > 6 && <button>Show all {stay.reviews.length} reviews</button>}
             </section>}
-        <section className="map-container">
+        <section className="map-container" id='scroll-4'>
             <h3>Where you'll be</h3>
             {stay.loc.city}, {stay.loc.country}
             <div className="map">

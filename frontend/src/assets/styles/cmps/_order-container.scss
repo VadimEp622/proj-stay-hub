@@ -1,6 +1,6 @@
 .order-modal {
     position: sticky;
-    top: 82px;
+    top: 130px;
     margin-top: 48px;
 
     .order-modal-form {
@@ -21,7 +21,7 @@
             @include between();
     
             .order-rate {
-                align-items: center;
+                
                 justify-content: center;
     
                 .review-rate {
@@ -95,8 +95,6 @@
             }
         }
     }
-
-
 }
 
 .btn-container {

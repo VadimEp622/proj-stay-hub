@@ -26,9 +26,9 @@ export function OrderContainer({ stay }) {
         <section className="order-modal">
             <section className="order-modal-form flex">
             {/* <DatePicker stay={stay} /> */}
-            <div className="order-container-header flex">
+            <div className="order-container-header flex align-baseline">
                 <h2><span>${stay.price.toLocaleString()}</span> night</h2>
-                <div className="order-rate flex">
+                <div className="order-rate flex align-baseline">
                     <span > <SvgHandler svgName={STAR} /></span>
                     <span className="review-rate">{reviewService.getAverageReview(stay)}</span>
                     <span className="period">·</span>

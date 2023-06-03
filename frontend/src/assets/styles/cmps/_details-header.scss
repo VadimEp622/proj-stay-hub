@@ -3,26 +3,88 @@
     top: 0;
     height: 80px;
     background-color: #fff;
-    z-index: 1;
+    z-index: 10;
 
     a {
-        font-family: cereal_W_Bd;
-        ;
+        margin-right: 24px;
+        text-decoration: none;
+        position: relative;
     }
 
+    a::after {
+        content: "";
+        position: absolute;
+        bottom: -28px;
+        left: 0;
+        width: 100%;
+        background-color: $clr2;
+    }
+    a:hover::after {
+        height: 4px;
+    }
+    
     .details-header-container {
         display: flex;
         height: 100%;
     }
 
-    .reserve-link {
+    .reserve-container {
         width: 400px;
         height: 100%;
 
+        .reserve-prev {
+            flex-direction: column;
+            p {
+                color: $clr2;
+                span {
+                    font-family: cereal_W_Bd;
+                    font-size: rem(16px);
+                }
+            }
+
+            .reserve-review {
+                font-size: rem(12px);
+                p {
+                    font-size: inherit;
+                    & span {
+                        margin-left: 0.5em;
+                        font-size: inherit;
+                    }
+                }
+                .period {
+                    margin: 0 .25em;
+
+                }
+            }
+        }
+
         .reserve-btn {
             width: 105px;
-            margin-top: auto;
             margin-left: auto;
+        }
+
+        .reserve-info {
+            height: 100%;
         }
     }
 }
+
+.details-header::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 100px;
+  height: 1px;
+  background-color:rgba(128, 128, 128, .3);
+  width: 100vw;
+}
+
+.details-header::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  height: 1px;
+  background-color:rgba(128, 128, 128, .3);
+  width: 100vw;
+}
+
