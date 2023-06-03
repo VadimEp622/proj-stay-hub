@@ -190,21 +190,25 @@ export function StayDetails() {
             {stay.reviews.length > 0 &&
                 <section className="review-container " id='scroll-3'>
                     <div className="review-title flex align-center"><SvgHandler svgName={STAR_16} />
-                    <span>{reviewService.getAverageReview(stay)} • {stay.reviews.length} {reviews} </span>
+                        <span>{reviewService.getAverageReview(stay)} • {stay.reviews.length} {reviews} </span>
                     </div>
                     <div className="reviews-inputs">
                         {Object.entries(reviewsInputs).map(([key, value]) => (
                             <div className="review-input" key={key}>
                                 <div className="review-input-key">{key}</div>
-                                <div className="progress-bar-container flex">
-                                    <div className="review-input-bar" style={{ width: `${calculatePercentage(value)}%` }}><span>{value.toFixed(1)}</span>
+                                <section className='review-rate flex align-center'>
+                                    <div className="progress-bar-container flex align-center">
+                                        <div className="review-input-bar" style={{ width: `${calculatePercentage(value)}%` }}></div>
                                     </div>
-                                </div>
+                                    <span>{value.toFixed(1)}</span>
+                                </section>
                             </div>
                         ))}
                     </div>
-                    {displayReviews()}
-                    {stay.reviews.length > 6 && <button>Show all {stay.reviews.length} reviews</button>}
+                    <section className='reviews-sum'>
+                        {displayReviews()}
+                        {stay.reviews.length > 6 && <button>Show all {stay.reviews.length} reviews</button>}
+                    </section>
                 </section>}
             <section className="map-container" id='scroll-4'>
                 <h3>Where you'll be</h3>
@@ -213,7 +217,7 @@ export function StayDetails() {
                     <GoogleMap loc={stay.loc.coordinates} />
                 </div>
             </section>
-            <section className="host-details-container">
+            {/* <section className="host-details-container">
                 <div className="name-details">
                     <img src="https://a0.muscache.com/im/pictures/user/59da4e65-e5a0-4fde-b4d9-e48f20c1ba43.jpg?im_w=240" alt="host image" />
                     Hosted by {stay.owner ? stay.owner : 'Juan'}
@@ -260,7 +264,7 @@ export function StayDetails() {
                     <p>Free cancellation before {stay.checkIn}</p>
                     <p>Review the Host's full cancellation policy which applies even if you cancel for illness for disruptions caused by COVID-19</p>
                 </div>
-            </section>
+            </section> */}
         </section >
     </Fragment>
 }

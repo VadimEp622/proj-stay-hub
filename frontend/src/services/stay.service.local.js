@@ -97,7 +97,7 @@ function _createDemoStays() {
         'Once in a lifetime experience - bedroom room view beside seaside cliff',
         'A single bedroom cabin with an enormous glass window facing the ocean from a cliff',
         'Cabin',
-        { country: "Portugal", countryCode: "PT", city: "Lisbon", lat: 34.03, lng: 34.03 },
+        { country: "Portugal", countryCode: "PT", city: "Lisbon", lat: 38.7223, lng: -9.142685 },
         [
             'https://a0.muscache.com/im/pictures/0f7a9ab8-6b60-45cb-8e00-02b7fbbe19f0.jpg',
             'https://a0.muscache.com/im/pictures/b567fde4-e9fd-401c-82ae-90e375adcc0c.jpg',
@@ -111,7 +111,7 @@ function _createDemoStays() {
         'Enormous Duplex apartment in a lively downtown block',
         'Fantastic duplex apartment with an elevator and a balcony adorned with potted greenery....',
         'House',
-        { country: "Israel", countryCode: "IL", city: "Haifa", lat: 34.03, lng: 34.03 },
+        { country: "Israel", countryCode: "IL", city: "Haifa", lat: 32.7940, lng: 34.9896 },
         [
             'https://a0.muscache.com/im/pictures/cd0f10cf-7f98-4a90-adc5-ac0726d559b1.jpg',
             'https://a0.muscache.com/im/pictures/4db8afca-8543-4be4-9c18-64803f262bf9.jpg',
@@ -125,7 +125,7 @@ function _createDemoStays() {
         'High-rise building apartment - fantastic view of the beautiful city',
         'An apartment in a high-rise building',
         'Apartment',
-        { country: "Israel", countryCode: "IL", city: "Eilat", lat: 34.03, lng: 34.03 },
+        { country: "Israel", countryCode: "IL", city: "Eilat", lat: 29.5581, lng: 34.9482 },
         [
             'https://a0.muscache.com/im/pictures/0f7a9ab8-6b60-45cb-8e00-02b7fbbe19f0.jpg',
             'https://a0.muscache.com/im/pictures/b567fde4-e9fd-401c-82ae-90e375adcc0c.jpg',
@@ -139,7 +139,7 @@ function _createDemoStays() {
         'Comfy single bed room for single night\'s nap',
         '1 small neat and compact room with a bed and a small window facing the tram train passing by',
         'Room',
-        { country: "Israel", countryCode: "IL", city: "Tel Aviv", lat: 34.03, lng: 34.03 },
+        { country: "Israel", countryCode: "IL", city: "Tel Aviv", lat: 32.0853, lng: 34.7818 },
         [
             'https://a0.muscache.com/im/pictures/cd0f10cf-7f98-4a90-adc5-ac0726d559b1.jpg',
             'https://a0.muscache.com/im/pictures/4db8afca-8543-4be4-9c18-64803f262bf9.jpg',
@@ -153,7 +153,7 @@ function _createDemoStays() {
         'Comfy single bed room for single night\'s nap',
         '1 small neat and compact room with a bed and a small window facing the tram train passing by',
         'Room',
-        { country: "Israel", countryCode: "IL", city: "Tel Aviv", lat: 34.03, lng: 34.03 },
+        { country: "Israel", countryCode: "IL", city: "Tel Aviv", lat: 32.0853, lng: 34.7818 },
         [
             'https://a0.muscache.com/im/pictures/cd0f10cf-7f98-4a90-adc5-ac0726d559b1.jpg',
             'https://a0.muscache.com/im/pictures/4db8afca-8543-4be4-9c18-64803f262bf9.jpg',
@@ -167,7 +167,7 @@ function _createDemoStays() {
         'Comfy single bed room for single night\'s nap',
         '1 small neat and compact room with a bed and a small window facing the tram train passing by',
         'Room',
-        { country: "Israel", countryCode: "IL", city: "Tel Aviv", lat: 34.03, lng: 34.03 },
+        { country: "Israel", countryCode: "IL", city: "Tel Aviv", lat: 32.0853, lng: 34.7818 },
         [
             'https://a0.muscache.com/im/pictures/cd0f10cf-7f98-4a90-adc5-ac0726d559b1.jpg',
             'https://a0.muscache.com/im/pictures/4db8afca-8543-4be4-9c18-64803f262bf9.jpg',

@@ -1,25 +1,29 @@
 import React from "react";
 import GoogleMapReact from 'google-map-react';
 import { useState } from 'react'
+// import { Button } from '@material-ui/core'
+
 function Marker() {
     return <div style={{ height: '1em', width: '1em', borderRadius: '50%', background: 'red' }}></div>
 }
-export default function GoogleMap({ loc }) {
+
+export default function SimpleMap({ loc }) {
+    console.log('loc', loc)
     const [center, setCenter] = useState({ lat: loc.lat, lng: loc.lng })
-    const zoom = 10
+    const [zoom, setZoom] = useState(12)
+
     return (
-        // Important! Always set the container height explicitly
-        <div className="map-container">
-            <div className="map">
+        <div>
+            <div style={{ height: '60vh', width: '100%' }}>
                 <GoogleMapReact
-                    bootstrapURLKeys={{ key: "" }} // Always remove key before uploading to github!
+                    bootstrapURLKeys={{ key: "AIzaSyDyfAKpN05bJPgve7o6my-sutOHsaV6Y-A" }}
                     defaultCenter={center}
                     center={center}
-                    defaultZoom={zoom}
-                >
-                    <Marker lat={center.lat} lng={center.lng} />
+                    zoom={zoom}
+                    defaultZoom={zoom}>
+  
+                    <Marker lat={loc.lat} lng={loc.lng} />
                 </GoogleMapReact>
-
             </div>
         </div>
     );

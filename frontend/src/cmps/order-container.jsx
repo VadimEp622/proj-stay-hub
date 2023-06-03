@@ -56,7 +56,7 @@ export function OrderContainer({ stay }) {
                     </div>
                 </div>
                 <section className="order-data">
-                    <div className="date-container flex">
+                    <div className="order-date-container flex">
                         <div className="check-in flex">
                             <span>CHECK-IN</span>
                             <span>{checkIn}</span>
