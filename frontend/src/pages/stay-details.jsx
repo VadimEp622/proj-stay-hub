@@ -1,10 +1,11 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, Fragment } from 'react'
 import { useParams, useNavigate, Link } from 'react-router-dom'
 
 import { stayService } from "../services/stay.service.local.js"
 import { showErrorMsg } from "../services/event-bus.service.js"
 import { reviewService } from '../services/review.service.js'
 import { OrderContainer } from '../cmps/order-container.jsx'
+import {DetailsHeader} from '../cmps/details-header.jsx'
 
 import SvgHandler from '../cmps/svg_handler.jsx'
 import { HEART_16, RED_HEART_16, SHARE, STAR, LOCATION, CHECKIN, KEY } from '../services/svg.service.js'
@@ -95,7 +96,9 @@ export function StayDetails() {
     const reviews = stay.reviews.length > 1 ? 'reviews' : 'review'
     const capitalizedReviewsString = reviews.charAt(0).toUpperCase() + reviews.slice(1)
 
-    return <section className="stay-details">
+    return <Fragment>
+    <section className="stay-details">
+        {true && <DetailsHeader />}
         <section className='stay-review flex'>
             <h1>{stay.name}</h1>
             <section className='info-bar flex space-between align-center'>
@@ -263,4 +266,5 @@ export function StayDetails() {
             </div>
         </section>
     </section >
+    </Fragment>
 }

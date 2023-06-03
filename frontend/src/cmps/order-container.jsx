@@ -78,7 +78,7 @@ export function OrderContainer({ stay }) {
                 <hr />
                 <div className="total-price-container flex space-between fs16">
                     <h5>Total</h5>
-                    <h5>${totalPrice}</h5>
+                    <h5>${totalPrice.toLocaleString()}</h5>
                 </div>
             </section>
             </section>
