@@ -1,12 +1,7 @@
 .stay-details {
     max-width: 1120px;
     margin: auto;
-
-    img {
-        cursor: pointer;
-        aspect-ratio: 1.08 / 1;
-    }
-
+    
     .stay-review {
         flex-direction: column;
 
@@ -45,11 +40,7 @@
 
                     .share-svg {
                         width: 16px;
-                    }
-
-                    span {
-                        text-decoration: underline;
-                    }
+                    } 
                 }
 
                 .save-btn {
@@ -65,9 +56,16 @@
                         text-decoration: underline;
                     }
                 }
-
+            }
+            span {
+                font-family: cereal_W_Bd;
+                text-decoration: underline;
             }
         }
+    }
+    img {
+        cursor: pointer;
+        aspect-ratio: 1.08 / 1;
     }
 
     .img-container {
