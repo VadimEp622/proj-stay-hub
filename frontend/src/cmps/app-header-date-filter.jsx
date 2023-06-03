@@ -64,8 +64,8 @@ export function DateFilter() {
                 selected={selectedRange}
                 onSelect={handleRangeSelect}
 
-                classNames={classNames}
-                modifiers={dayModifiers}//add styling
+                classNames={classNames}//add classnames for styling
+                modifiers={dayModifiers}//add styling(?)
                 disabled={isDayDisabled}//disables given days
             />
         </section>
