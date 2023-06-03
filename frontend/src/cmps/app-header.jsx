@@ -77,7 +77,7 @@ export function AppHeader() {
 
 
     function setFilterDates(range) {
-        console.log('range  --> app-header.jsx', range)
+        // console.log('range  --> app-header.jsx', range)
         if (!range) {
             setFilterBy(prevFilter => ({ ...prevFilter, from: '', to: '' }))
         } else {
@@ -154,12 +154,12 @@ export function AppHeader() {
                 </nav>
             </header>
 
-            <form className="filter-container" onSubmit={onSubmit}  >
-                <section className="flex align-center" style={{ gap: 20 }} >
+            <form className="filter-container" onSubmit={onSubmit} >
+                <section className="flex justify-center align-center" style={{ width: "100%", gap: 20 }} >
                     <AppHeaderSearch filterBy={filterBy} onSubmit={onSubmit} handleChange={handleChange} />
                     <DateFilter filterBy={filterBy} setFilterDates={setFilterDates} />
                 </section>
-                <input type="submit" />
+                <input type="submit" style={{ marginInline: "auto" }} />
             </form>
 
         </Fragment>

@@ -50,7 +50,7 @@ export function DateFilter({ filterBy, setFilterDates }) {
 
 
     return (
-        <section className="filter-date-picker">
+        <section className="filter-date-picker" style={{width:"fit-content"}}>
             <section className="flex space-evenly">
                 <article>
                     <label>Check In</label>

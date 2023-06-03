@@ -27,20 +27,30 @@ export function stayReducer(state = initialState, action) {
     switch (action.type) {
         case SET_STAYS:
             stays = action.stays.filter(stay => {
-                if (Object.keys(state.filterBy).length === 0) return true
-                if (state.filterBy) {
-                    if (!stay.loc.country.toLowerCase().includes(state.filterBy.country.toLowerCase())) return false
-                    if (!stay.loc.city.toLowerCase().includes(state.filterBy.city.toLowerCase())) return false
 
+                if (Object.keys(state.filterBy).length === 0) return true// if filterBy state object is empty, display all
 
-                    if (stay.availableDates?.length > 0) {
-                        return stay.availableDates.some(date =>
-                            date.from <= state.filterBy.from && date.to >= state.filterBy.to
-                        )
-                    }
-
-                    return true
+                if (state.filterBy.country || state.filterBy.city) {
+                    //remove from to-be listed stays, if...
+                    if (
+                        !stay.loc.country.toLowerCase().includes(state.filterBy.country.toLowerCase()) &&
+                        !stay.loc.city.toLowerCase().includes(state.filterBy.city.toLowerCase())
+                    ) return false
                 }
+
+                if (state.filterBy.from) {
+                    //remove from to-be listed stays, if...
+                    if (!stay.availableDates || stay.availableDates.length < 1) return false
+                    else {
+                        const isNotAvailableDuring = stay.availableDates.every(date =>
+                            date.from > state.filterBy.from || date.to < state.filterBy.to
+                        )
+                        if (isNotAvailableDuring) return false
+                    }
+                }
+
+                //display all stays that survived filtering to this point
+                return true
             })
             newState = { ...state, stays: stays }
             break

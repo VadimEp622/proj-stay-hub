@@ -14,10 +14,10 @@ export function StayIndex() {
     const filterBy = useSelector(storeState => storeState.stayModule.filterBy)
     const isLoadingRef = useRef(true)
     useEffect(() => {
+        // console.log('hi')
         isLoadingRef.current = true
         loadStays()
             .then(isLoadingRef.current = false)
-            .catch(showErrorMsg('Cannot load stays'))
     }, [filterBy])
 
 
@@ -65,10 +65,10 @@ export function StayIndex() {
     return (
         <section className="stay-index">
             <UpperFilter />
-            <StayList stays={stays} isLoadingRef={isLoadingRef}/>
+            <StayList stays={stays} isLoadingRef={isLoadingRef} />
             {/* below for aesthetic proposes - when there's no views to display */}
-            {stays.length > 0 && <DatePicker />}
-            {/* <DatePicker /> */}
+            {/* {stays.length > 0 && <DatePicker />} */}
+            {false && <DatePicker />}
         </section>
     )
 }
