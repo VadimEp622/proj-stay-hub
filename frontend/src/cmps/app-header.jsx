@@ -16,7 +16,7 @@ import { Fragment, useRef, useState } from 'react'
 import { stayService } from '../services/stay.service.local.js'
 import { AppHeaderSearch } from './app-header-search.jsx'
 import { updateFilterBy } from '../store/stay.actions.js'
-import { DateFilter } from './stay-filter-date.jsx'
+import { DateFilter } from './app-header-date-filter.jsx'
 
 export function AppHeader() {
     const user = useSelector(storeState => storeState.userModule.user)
