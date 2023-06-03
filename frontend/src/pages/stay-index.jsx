@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { useSelector } from 'react-redux'
 import { loadStays, addStay, updateStay, removeStay, addToCart } from '../store/stay.actions.js'
 
@@ -10,11 +10,14 @@ import { StayList } from '../cmps/stay-list.jsx'
 import { DatePicker } from '../cmps/date-picker.jsx'
 
 export function StayIndex() {
-
     const stays = useSelector(storeState => storeState.stayModule.stays)
     const filterBy = useSelector(storeState => storeState.stayModule.filterBy)
+    const isLoadingRef = useRef(true)
     useEffect(() => {
+        // console.log('hi')
+        isLoadingRef.current = true
         loadStays()
+            .then(isLoadingRef.current = false)
     }, [filterBy])
 
 
@@ -62,8 +65,10 @@ export function StayIndex() {
     return (
         <section className="stay-index">
             <UpperFilter />
-            <StayList stays={stays} />
-            <DatePicker />
+            <StayList stays={stays} isLoadingRef={isLoadingRef} />
+            {/* below for aesthetic proposes - when there's no views to display */}
+            {/* {stays.length > 0 && <DatePicker />} */}
+            {false && <DatePicker />}
         </section>
     )
 }
