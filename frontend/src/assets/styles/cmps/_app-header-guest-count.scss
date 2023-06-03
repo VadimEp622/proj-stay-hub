@@ -22,6 +22,14 @@
             border-radius: 50%;
             width: 30px;
             height: 30px;
+            font-weight: 700;
+            font-size: 13.5px;
+        }
+
+        & span {
+            margin-inline: 10px;
+            text-align: center;
+            font-weight: 600;
         }
 
         .custom-btn-guest-count:hover {
