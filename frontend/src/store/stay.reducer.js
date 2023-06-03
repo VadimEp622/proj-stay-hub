@@ -7,7 +7,7 @@ export const ADD_TO_CART = 'ADD_TO_CART'
 
 export const CLEAR_CART = 'CLEAR_CART'
 export const REMOVE_FROM_CART = 'REMOVE_FROM_CART'
-
+export const SET_GUESTS = 'SET_GUESTS'
 export const UPDATE_FILTER_BY = 'UPDATE_FILTER_BY'
 
 
@@ -16,7 +16,8 @@ const initialState = {
     stays: [],
     cart: [],
     lastRemovedStay: null,
-    filterBy: {}
+    filterBy: {},
+    guests: {}
 }
 
 export function stayReducer(state = initialState, action) {
@@ -84,6 +85,10 @@ export function stayReducer(state = initialState, action) {
         case UPDATE_FILTER_BY:
             newState = { ...state, filterBy: { ...action.filterBy } }
             break
+        case SET_GUESTS:
+            newState = { ...state, guests: { ...action.guests } }
+            break
+
         default:
     }
     return newState

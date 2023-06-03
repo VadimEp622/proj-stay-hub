@@ -1,3 +1,4 @@
+import { useSelector } from "react-redux"
 import { reviewService } from "../services/review.service"
 import { stayService } from "../services/stay.service"
 import { STAR } from "../services/svg.service"
@@ -14,6 +15,7 @@ export function OrderContainer({ stay }) {
     const serviceFee = utilService.getRandomIntInclusive(100, 500)
     const totalPrice = nightsPrice + cleaningFee + serviceFee
     const nightsCount = stayService.calculateHowManyNights(stay)
+    const guests = useSelector(storeState => storeState.stayModule.guests)
     function _createButtonDivContainer() {
         const divElements = []
         for (let i = 0; i < 100; i++) {
@@ -22,65 +24,83 @@ export function OrderContainer({ stay }) {
         return divElements
     }
 
+    let guestsString = ''
+
+    if (Object.keys(guests).length === 0) {
+        guestsString = '1 guest'
+    } else {
+        const { adults, children, infants, pets } = guests
+        const guestCount = adults + children;
+
+        guestsString = `${guestCount} guest${guestCount !== 1 ? 's' : ''}`;
+        if (infants > 0) {
+            guestsString += `, ${infants} infant${infants !== 1 ? 's' : ''}`;
+        }
+        if (pets > 0) {
+            guestsString += `, ${pets} pet${pets !== 1 ? 's' : ''}`;
+        }
+    }
+
+
     return (
         <section className="order-modal">
             <section className="order-modal-form flex">
-            {/* <DatePicker stay={stay} /> */}
-            <div className="order-container-header flex align-baseline">
-                <h2><span>${stay.price.toLocaleString()}</span> night</h2>
-                <div className="order-rate flex align-baseline">
-                    <span > <SvgHandler svgName={STAR} /></span>
-                    <span className="review-rate">{reviewService.getAverageReview(stay)}</span>
-                    <span className="period">·</span>
-                    <span className="review-count">{stay.reviews.length} reviews</span>
-                </div>
-            </div>
-            <section className="order-data">
-                <div className="date-container flex">
-                    <div className="check-in flex">
-                        <span>CHECK-IN</span>
-                        <span>{checkIn}</span>
-                    </div>
-                    <div className="check-out flex">
-                        <span>CHECKOUT</span>
-                        <span>{checkOut}</span>
+                {/* <DatePicker stay={stay} /> */}
+                <div className="order-container-header flex align-baseline">
+                    <h2><span>${stay.price.toLocaleString()}</span> night</h2>
+                    <div className="order-rate flex align-baseline">
+                        <span > <SvgHandler svgName={STAR} /></span>
+                        <span className="review-rate">{reviewService.getAverageReview(stay)}</span>
+                        <span className="period">·</span>
+                        <span className="review-count">{stay.reviews.length} reviews</span>
                     </div>
                 </div>
-                <div className="guests-container">
-                    <div className="guests flex">
-                        <span>GUESTS</span>
-                        <span>1 guest</span>
+                <section className="order-data">
+                    <div className="date-container flex">
+                        <div className="check-in flex">
+                            <span>CHECK-IN</span>
+                            <span>{checkIn}</span>
+                        </div>
+                        <div className="check-out flex">
+                            <span>CHECKOUT</span>
+                            <span>{checkOut}</span>
+                        </div>
                     </div>
-                </div>
-            </section>
-            <div className="btn-container">
-                {_createButtonDivContainer()}
-                <div className="content">
-                    <button className="action-btn">
-                        <span>Reserve</span>
-                    </button>
-                </div>
-            </div>
-            <section className="price-container">
-                <p>You won't be charged yet</p>
-                <section className="flex space-between">
-                    <p>${stay.price.toLocaleString()} x {nightsCount} nights</p>
-                    <p>${nightsPrice.toLocaleString()}</p>
+                    <div className="guests-container">
+                        <div className="guests flex">
+                            <span>GUESTS</span>
+                            <span>{guestsString}</span>
+                        </div>
+                    </div>
                 </section>
-                <section className="flex space-between">
-                    <p>Cleaning fee</p>
-                    <span>${cleaningFee.toLocaleString()}</span>
+                <div className="btn-container">
+                    {_createButtonDivContainer()}
+                    <div className="content">
+                        <button className="action-btn">
+                            <span>Reserve</span>
+                        </button>
+                    </div>
+                </div>
+                <section className="price-container">
+                    <p>You won't be charged yet</p>
+                    <section className="flex space-between">
+                        <p>${stay.price.toLocaleString()} x {nightsCount} nights</p>
+                        <p>${nightsPrice.toLocaleString()}</p>
+                    </section>
+                    <section className="flex space-between">
+                        <p>Cleaning fee</p>
+                        <span>${cleaningFee.toLocaleString()}</span>
+                    </section>
+                    <div className="flex space-between" >
+                        <p>StayHub service fee</p>
+                        <span>${serviceFee.toLocaleString()}</span>
+                    </div>
+                    <hr />
+                    <div className="total-price-container flex space-between fs16">
+                        <h5>Total</h5>
+                        <h5>${totalPrice.toLocaleString()}</h5>
+                    </div>
                 </section>
-                <div className="flex space-between" >
-                    <p>StayHub service fee</p>
-                    <span>${serviceFee.toLocaleString()}</span>
-                </div>
-                <hr />
-                <div className="total-price-container flex space-between fs16">
-                    <h5>Total</h5>
-                    <h5>${totalPrice.toLocaleString()}</h5>
-                </div>
-            </section>
             </section>
 
         </section>

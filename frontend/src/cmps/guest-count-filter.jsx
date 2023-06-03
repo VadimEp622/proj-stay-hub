@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { updateFilterBy } from "../store/stay.actions"
+import { setGuests, updateFilterBy } from "../store/stay.actions"
 
 export function GuestCountFilter() {
     const [guestCounts, setGuestCounts] = useState({
@@ -14,7 +14,8 @@ export function GuestCountFilter() {
     }
 
     function sendToFilter() {
-        const capacityTotal = guestCounts.adults + guestCounts.children + Math.ceil(guestCounts.infants / 2)
+        const capacityTotal = guestCounts.adults + guestCounts.children
+        setGuests(guestCounts)
         updateFilterBy({ capacity: capacityTotal })
     }
 
