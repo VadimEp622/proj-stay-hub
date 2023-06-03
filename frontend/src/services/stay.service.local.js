@@ -325,7 +325,7 @@ function _createDemoStay(name, summary, type, loc, imgUrls) {
                 from: utilService.getFutureTime(),
                 to: utilService.getFutureTime(3, 'day'),
             }
-        ]
+        ],
     }
 }
 

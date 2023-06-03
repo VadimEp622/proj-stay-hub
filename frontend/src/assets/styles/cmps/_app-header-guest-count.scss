@@ -1,0 +1,31 @@
+.guest-count-filter {
+
+    & .card {
+        white-space: nowrap;
+        display: flex;
+        justify-content: space-between;
+        padding-block:em(24px);
+
+        p {
+            margin: 0;
+        }
+
+        &:not(:last-child) {
+            content: '';
+            border-bottom: 1px solid rgb(235, 235, 235);
+        }
+
+        .custom-btn-guest-count {
+            background-color: rgb(255, 255, 255);
+            color: rgb(113, 113, 113);
+            border: 1px solid rgb(176, 176, 176);
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+        }
+
+        .custom-btn-guest-count:hover {
+            border-color: rgb(34, 34, 34);
+        }
+    }
+}

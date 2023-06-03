@@ -3,7 +3,7 @@ import { useRef, useState, createElement, useEffect } from 'react'
 import { DateRange, SelectRangeEventHandler, DayPicker } from 'react-day-picker'
 import styles from 'react-day-picker/dist/style.module.css'
 
-export function DateFilter({ filterBy, onSubmit, setFilterDates }) {
+export function DateFilter({ filterBy, setFilterDates }) {
     const [selectedRange, setSelectedRange] = useState('')
     const [fromValue, setFromValue] = useState('')
     const [toValue, setToValue] = useState('')
@@ -50,7 +50,7 @@ export function DateFilter({ filterBy, onSubmit, setFilterDates }) {
 
 
     return (
-        <section className="filter-date-picker">
+        <section className="filter-date-picker" style={{width:"fit-content"}}>
             <section className="flex space-evenly">
                 <article>
                     <label>Check In</label>

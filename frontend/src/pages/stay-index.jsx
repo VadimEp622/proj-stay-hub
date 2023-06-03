@@ -11,13 +11,13 @@ import { DatePicker } from '../cmps/date-picker.jsx'
 import { FilterModal } from '../cmps/filter.jsx'
 
 export function StayIndex() {
-
     const stays = useSelector(storeState => storeState.stayModule.stays)
     const filterBy = useSelector(storeState => storeState.stayModule.filterBy)
     const [isFilterModalOpen, setIsFilterModalOpen] = useState(false)
     const isLoadingRef = useRef(true)
     useEffect(() => {
-        loadStays(filterBy)
+        isLoadingRef.current = true
+        loadStays()
             .then(isLoadingRef.current = false)
     }, [filterBy])
 
@@ -78,7 +78,9 @@ export function StayIndex() {
                 setIsFilterModalOpen={setIsFilterModalOpen} />)}
             <UpperFilter />
             <StayList stays={stays} isLoadingRef={isLoadingRef} />
+            {/* below for aesthetic proposes - when there's no views to display */}
+            {/* {stays.length > 0 && <DatePicker />} */}
             {false && <DatePicker />}
-        </section>
+        </section >
     )
 }
