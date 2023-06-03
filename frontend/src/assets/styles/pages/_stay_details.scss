@@ -35,8 +35,24 @@
 
                 .share-btn {
                     gap: 0.4em;
+                    position: relative;
                     align-items: center;
                     justify-content: center;
+                    cursor: pointer;
+                    display: flex;
+
+                    .share-btn-overlay {
+                        position: absolute;
+                        inset: -10%;
+                        background-color: lightgray;
+                        opacity: 0;
+                        transition: opacity 0.3s ease;
+                        border-radius: 6px;
+                    }
+
+                    &:hover .share-btn-overlay {
+                        opacity: 0.3;
+                    }
 
                     .share-svg {
                         width: 16px;
@@ -47,6 +63,21 @@
                     gap: 0.4em;
                     align-items: center;
                     justify-content: center;
+                    cursor: pointer;
+                    position: relative;
+
+                    .save-btn-overlay {
+                        position: absolute;
+                        inset: -10%;
+                        background-color: lightgray;
+                        opacity: 0;
+                        transition: opacity 0.3s ease;
+                        border-radius: 6px;
+                    }
+
+                    &:hover .save-btn-overlay {
+                        opacity: 0.3;
+                    }
 
                     .heart-svg {
                         width: 16px;
@@ -198,5 +229,12 @@
         }
     }
 
-   
+    .host-details-container {
+        & img {
+            width: 53px;
+            height: 53px;
+            border-radius: 50px;
+            object-fit: cover;
+        }
+    }
 }

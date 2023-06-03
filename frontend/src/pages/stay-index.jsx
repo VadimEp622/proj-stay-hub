@@ -61,7 +61,7 @@ export function StayIndex() {
 
     return (
         <section className="stay-index">
-            {/* <UpperFilter /> */}
+            <UpperFilter />
             <StayList stays={stays} />
             <DatePicker />
         </section>
