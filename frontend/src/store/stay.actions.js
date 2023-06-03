@@ -105,9 +105,6 @@ export async function checkout(total) {
     }
 }
 
-export function setGuests(guests) {
-    store.dispatch({ type: SET_GUESTS, guests })
-}
 
 // Demo for Optimistic Mutation 
 // (IOW - Assuming the server call will work, so updating the UI first)

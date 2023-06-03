@@ -7,7 +7,6 @@ export const ADD_TO_CART = 'ADD_TO_CART'
 
 export const CLEAR_CART = 'CLEAR_CART'
 export const REMOVE_FROM_CART = 'REMOVE_FROM_CART'
-export const SET_GUESTS = 'SET_GUESTS'
 export const UPDATE_FILTER_BY = 'UPDATE_FILTER_BY'
 
 
@@ -28,9 +27,7 @@ export function stayReducer(state = initialState, action) {
     switch (action.type) {
         case SET_STAYS:
             stays = action.stays.filter(stay => {
-
                 if (Object.keys(state.filterBy).length === 0) return true// if filterBy state object is empty, display all
-
                 if (state.filterBy.country || state.filterBy.city) {
                     //remove from to-be listed stays, if...
                     if (
@@ -38,7 +35,9 @@ export function stayReducer(state = initialState, action) {
                         !stay.loc.city.toLowerCase().includes(state.filterBy.city.toLowerCase())
                     ) return false
                 }
-
+                if (state.filterBy.capacity) {
+                    if (stay.capacity < state.filterBy.capacity) return false
+                }
                 if (state.filterBy.from) {
                     //remove from to-be listed stays, if...
                     if (!stay.availableDates || stay.availableDates.length < 1) return false
@@ -49,7 +48,6 @@ export function stayReducer(state = initialState, action) {
                         if (isNotAvailableDuring) return false
                     }
                 }
-
                 //display all stays that survived filtering to this point
                 return true
             })
@@ -84,9 +82,6 @@ export function stayReducer(state = initialState, action) {
             break
         case UPDATE_FILTER_BY:
             newState = { ...state, filterBy: { ...action.filterBy } }
-            break
-        case SET_GUESTS:
-            newState = { ...state, guests: { ...action.guests } }
             break
 
         default:

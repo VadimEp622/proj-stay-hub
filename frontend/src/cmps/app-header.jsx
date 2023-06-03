@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 
 import routes from '../routes.js'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service.js'
-import { login, logout, signup } from '../store/user.actions.js'
+import { login, logout, setGuests, signup } from '../store/user.actions.js'
 import { LoginSignup } from './login-signup.jsx'
 
 import { LOGO, USER_NAV_BARS, USER_NAV_PROFILE, SEARCH } from '../services/svg.service.js'
@@ -55,7 +55,7 @@ export function AppHeader() {
 
     function onSubmit(ev) {
         ev.preventDefault()
-        const filter = { city: '', country: '', from: '', to: '' }
+        const filter = { city: '', country: '', from: '', to: '', capacity: '' }
 
         if (filterBy.filterText) {
             filter.city = filterBy.filterText
@@ -65,7 +65,8 @@ export function AppHeader() {
             filter.from = filterBy.from
             filter.to = filterBy.to
         }
-
+        if (filterBy.capacity) filter.capacity = filterBy.capacity
+        if (filterBy.guests) setGuests(filterBy.guests)
         updateFilterBy(filter)
     }
 
