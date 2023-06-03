@@ -27,5 +27,11 @@
         .custom-btn-guest-count:hover {
             border-color: rgb(34, 34, 34);
         }
+
+        .custom-btn-guest-count:disabled {
+            cursor: not-allowed;
+            border-color: #EBEBEB;
+            color: #EBEBEB;
+        }
     }
 }
