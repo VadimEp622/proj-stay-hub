@@ -4,9 +4,9 @@
         white-space: nowrap;
         display: flex;
         justify-content: space-between;
-        padding-block:em(24px);
+        padding-block: em(24px);
 
-        p {
+        & p {
             margin: 0;
         }
 

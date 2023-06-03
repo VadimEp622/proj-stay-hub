@@ -324,6 +324,10 @@ function _createDemoStay(name, summary, type, loc, imgUrls) {
             {
                 from: utilService.getFutureTime(),
                 to: utilService.getFutureTime(3, 'day'),
+            },
+            {
+                from: utilService.getFutureTime(6, 'day'),
+                to: utilService.getFutureTime(9, 'day'),
             }
         ],
     }

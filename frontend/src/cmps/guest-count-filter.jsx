@@ -9,6 +9,7 @@ export function GuestCountFilter() {
                 </section>
                 <section>
                     <button className="custom-btn-guest-count">-</button>
+                    <span>0</span>
                     <button className="custom-btn-guest-count">+</button>
                 </section>
             </article>
@@ -20,6 +21,7 @@ export function GuestCountFilter() {
                 </section>
                 <section>
                     <button className="custom-btn-guest-count">-</button>
+                    <span>0</span>
                     <button className="custom-btn-guest-count">+</button>
                 </section>
             </article>
@@ -31,6 +33,7 @@ export function GuestCountFilter() {
                 </section>
                 <section>
                     <button className="custom-btn-guest-count">-</button>
+                    <span>0</span>
                     <button className="custom-btn-guest-count">+</button>
                 </section>
             </article>
@@ -42,6 +45,7 @@ export function GuestCountFilter() {
                 </section>
                 <section>
                     <button className="custom-btn-guest-count">-</button>
+                    <span>0</span>
                     <button className="custom-btn-guest-count">+</button>
                 </section>
             </article>
