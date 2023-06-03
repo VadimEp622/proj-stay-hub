@@ -1,4 +1,4 @@
-export function AppHeaderSearch({ filterBy, onSubmit, handleChange }) {
+export function LocationFilter({ filterBy, handleChange }) {
 
 
     return (

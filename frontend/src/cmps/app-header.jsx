@@ -14,10 +14,11 @@ import { LOGO, USER_NAV_BARS, USER_NAV_PROFILE, SEARCH } from '../services/svg.s
 import SvgHandler from './svg_handler.jsx'
 import { Fragment, useRef, useState } from 'react'
 import { stayService } from '../services/stay.service.local.js'
-import { AppHeaderSearch } from './app-header-search.jsx'
+import { LocationFilter } from './location-filter.jsx'
 import { updateFilterBy } from '../store/stay.actions.js'
 import { DateFilter } from './app-header-date-filter.jsx'
 import { utilService } from '../services/util.service.js'
+import { GuestCountFilter } from './guest-count-filter.jsx'
 
 export function AppHeader() {
     const user = useSelector(storeState => storeState.userModule.user)
@@ -156,8 +157,9 @@ export function AppHeader() {
 
             <form className="filter-container" onSubmit={onSubmit} >
                 <section className="flex justify-center align-center" style={{ width: "100%", gap: 20 }} >
-                    <AppHeaderSearch filterBy={filterBy} onSubmit={onSubmit} handleChange={handleChange} />
+                    <LocationFilter filterBy={filterBy} onSubmit={onSubmit} handleChange={handleChange} />
                     <DateFilter filterBy={filterBy} setFilterDates={setFilterDates} />
+                    <GuestCountFilter />
                 </section>
                 <input type="submit" style={{ marginInline: "auto" }} />
             </form>
