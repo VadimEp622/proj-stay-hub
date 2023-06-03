@@ -14,7 +14,7 @@ export function GuestCountFilter() {
     }
 
     function sendToFilter() {
-        const capacityTotal = guestCounts.adults + guestCounts.children + guestCounts.infants / 2
+        const capacityTotal = guestCounts.adults + guestCounts.children + Math.ceil(guestCounts.infants / 2)
         updateFilterBy({ capacity: capacityTotal })
     }
 
