@@ -1,7 +1,6 @@
 import React from "react";
 import GoogleMapReact from 'google-map-react';
 import { useState } from 'react'
-
 function Marker() {
     return <div style={{ height: '1em', width: '1em', borderRadius: '50%', background: 'red' }}></div>
 }

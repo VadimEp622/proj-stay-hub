@@ -11,6 +11,7 @@ export const utilService = {
     loadFromStorage,
     getFormattedTimeRange,
     getTimeDiffBy,
+    checkMinMaxPrices
 }
 
 function makeId(length = 6) {
@@ -121,4 +122,16 @@ function getFormattedTimeRange(start, end) {
     }
 
     return formattedRange
+}
+
+function checkMinMaxPrices(stays) {
+    if (stays.length === 0) return null
+    let minPrice = stays[0].price
+    let maxPrice = stays[0].price
+    stays.forEach(stay => {
+        const price = stay.price
+        if (price < minPrice) minPrice = price
+        if (price > maxPrice) maxPrice = price
+    })
+    return { minPrice, maxPrice }
 }

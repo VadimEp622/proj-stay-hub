@@ -1,0 +1,80 @@
+/* CSS styles for the slider bar */
+.rc-slider {
+    width: 100%;
+    height: 2px;
+    position: relative;
+
+}
+
+.rc-slider-rail {
+    background-color: #DDDDDD;
+    height: 4px;
+}
+
+.rc-slider-track {
+    background-color: #222222;
+    position: absolute;
+    height: 4px;
+}
+
+.rc-slider-handle {
+    width: 32px;
+    height: 32px;
+    background-color: white;
+    top: -15%;
+    border: 1px solid #DDDDDD;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    fill: #222222;
+    transition: scale 0.1s ease;
+}
+
+.rc-slider-handle:hover {
+    border: 1px solid #DDDDDD;
+}
+
+.rc-slider-handle-dragging.rc-slider-handle-dragging.rc-slider-handle-dragging {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+    border: 1px solid #DDDDDD;
+}
+
+.rc-slider-handle:active {
+    scale: 1.1875;
+}
+
+.price-ranges {
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+    justify-content: space-between;
+}
+
+.places-type {
+    display: grid;
+    border-radius: 12px;
+    min-height: 70px;
+    grid-auto-columns: minmax(0px, 1fr);
+    grid-auto-flow: column;
+
+    button {
+        background-color: white;
+        color: inherit;
+        border-color: #222222;
+        background-image: linear-gradient(to bottom, rgba(255 255 255/0.16), rgba(255 255 255/0));
+    }
+
+    button:active {
+        background-color: #222222;
+    }
+}
+
+.type {
+    color: #ffffff;
+    font-weight: 600;
+    display: flex;
+    flex-wrap: wrap;
+
+    span {
+        color: #DDDDDD;
+    }
+}
