@@ -22,7 +22,7 @@ import { GuestCountFilter } from './guest-count-filter.jsx'
 
 export function AppHeader() {
     const user = useSelector(storeState => storeState.userModule.user)
-    const [filterBy, setFilterBy] = useState({ filterText: '', from: '', to: '' })
+    const [filterBy, setFilterBy] = useState({ filterText: '', from: '', to: '', capacity: '' })
 
 
 
@@ -159,7 +159,7 @@ export function AppHeader() {
                 <section className="flex justify-center align-center" style={{ width: "100%", gap: 20 }} >
                     <LocationFilter filterBy={filterBy} onSubmit={onSubmit} handleChange={handleChange} />
                     <DateFilter filterBy={filterBy} setFilterDates={setFilterDates} />
-                    <GuestCountFilter />
+                    <GuestCountFilter filterBy={filterBy} setFilterBy={setFilterBy} />
                 </section>
                 <input type="submit" style={{ marginInline: "auto" }} />
             </form>
