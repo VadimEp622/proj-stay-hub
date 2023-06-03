@@ -29,13 +29,13 @@
     }
 
     .reserve-container {
-        width: 400px;
-        height: 100%;
 
         .reserve-prev {
             flex-direction: column;
+
             p {
                 color: $clr2;
+                margin-bottom: 0;
                 span {
                     font-family: cereal_W_Bd;
                     font-size: rem(16px);
@@ -44,8 +44,10 @@
 
             .reserve-review {
                 font-size: rem(12px);
+                margin-right: 16px;
                 p {
                     font-size: inherit;
+                    margin-bottom: 0;
                     & span {
                         margin-left: 0.5em;
                         font-size: inherit;

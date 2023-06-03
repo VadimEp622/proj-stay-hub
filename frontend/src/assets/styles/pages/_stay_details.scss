@@ -182,6 +182,14 @@
 
             .highlight {
                 margin-bottom: 24px;
+
+                .highlight-txt {
+                    margin-left: 16px;
+
+                    h3 {
+                        font-size: rem(16px);
+                    }
+                }
             }
         }
 
@@ -223,12 +231,28 @@
             width: 100%;
             position: relative;
         }
+
+        .date-container {
+            padding-top: 48px;
+            padding-bottom: 48px;
+        }
     }
 
     .review-container {
         scroll-margin-top: 80px;
+        padding-top: 48px;
 
+        .review-title {
+            font-size: rem(22px);
+            font-family: cereal_W_Bd;
+            margin-bottom: 32px;
+            span {
+                margin-left: 16px;
+            }
+        }
         .reviews-inputs {
+            display: grid;
+            grid-template: repeat(4, 1fr)/repeat(2, 1fr);
             .review-input {
                 display: flex;
 
@@ -237,7 +261,7 @@
                     position: relative;
                     border-radius: 0.2em;
                     height: rem(4px);
-                    width: 100%;
+                    width: 35%;
                     border-radius: rem(2px);
 
                     .review-input-bar {

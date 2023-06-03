@@ -3,6 +3,7 @@ import { ReactComponent as Logo } from '../assets/img/logo/logo-airbnb.svg'
 import { ReactComponent as UserNavBar } from '../assets/img/user-nav/user-nav-bars.svg'
 import { ReactComponent as UserNavProfile } from '../assets/img/user-nav/user-nav-profile.svg'
 import { ReactComponent as Star } from '../assets/img/star/star.svg'
+import { ReactComponent as Star16 } from '../assets/img/star/star-16.svg'
 import { ReactComponent as Share } from '../assets/img/share/share.svg'
 import { ReactComponent as Heart16 } from '../assets/img/heart/heart-16.svg'
 import { ReactComponent as RedHeart16 } from '../assets/img/heart/heart-red-16.svg'
@@ -12,7 +13,7 @@ import { ReactComponent as RedStrokedHeart } from '../assets/img/heart/heart-red
 import { ReactComponent as Location } from '../assets/img/location/location.svg'
 import { ReactComponent as Key } from '../assets/img/key/key.svg'
 import { ReactComponent as Checkin } from '../assets/img/self-checkin/self-checkin.svg'
-import { HEART_16, RED_HEART_16, LOGO, RED_HEART, SEARCH, SHARE, STAR, USER_NAV_BARS, 
+import { HEART_16, RED_HEART_16, LOGO, RED_HEART, SEARCH, SHARE, STAR, STAR_16, USER_NAV_BARS, 
     USER_NAV_PROFILE, WHITE_HEART, LOCATION, KEY, CHECKIN } from '../services/svg.service'
 
 
@@ -28,6 +29,8 @@ const SvgHandler = ({ svgName }) => {
                 return <UserNavProfile />
             case STAR:
                 return <Star />
+            case STAR_16:
+                return <Star16 />
             case SHARE:
                 return <Share />
             case HEART_16:

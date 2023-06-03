@@ -8,7 +8,7 @@ import { OrderContainer } from '../cmps/order-container.jsx'
 import { DetailsHeader } from '../cmps/details-header.jsx'
 
 import SvgHandler from '../cmps/svg_handler.jsx'
-import { HEART_16, RED_HEART_16, SHARE, STAR, LOCATION, CHECKIN, KEY } from '../services/svg.service.js'
+import { HEART_16, RED_HEART_16, SHARE, STAR, STAR_16, LOCATION, CHECKIN, KEY } from '../services/svg.service.js'
 import { DatePicker } from '../cmps/date-picker.jsx'
 import GoogleMap from '../cmps/map.jsx'
 
@@ -145,7 +145,7 @@ export function StayDetails() {
                     <section className='stay-highlights'>
                         <div className='highlight flex'>
                             <span><SvgHandler svgName={LOCATION} /></span>
-                            <div>
+                            <div className='highlight-txt'>
                                 <h3>Great location</h3>
                                 <p>100% of recent guests gave the location a 5-star rating.</p>
                             </div>
@@ -153,14 +153,14 @@ export function StayDetails() {
                         <div className='highlight flex'>
                             <span><SvgHandler svgName={KEY} />
                             </span>
-                            <div>
+                            <div className='highlight-txt'>
                                 <h3>Self check-in</h3>
                                 <p>Check yourself in with the lockbox.</p>
                             </div>
                         </div>
                         <div className='highlight flex'>
                             <span><SvgHandler svgName={CHECKIN} /></span>
-                            <div>
+                            <div className='highlight-txt'>
                                 <h3>Free cancellation for 48 hours.</h3>
                                 <p></p>
                             </div>
@@ -187,16 +187,16 @@ export function StayDetails() {
                     <OrderContainer stay={stay} />
                 </section>
             </section>
-            {/* {stay.reviews.length > 0 &&
-                <section className="review-container" id='scroll-3'>
-                    <div className="review-title"><SvgHandler svgName={STAR} />
-                        {reviewService.getAverageReview(stay)} • {stay.reviews.length} {reviews}
+            {stay.reviews.length > 0 &&
+                <section className="review-container " id='scroll-3'>
+                    <div className="review-title flex align-center"><SvgHandler svgName={STAR_16} />
+                    <span>{reviewService.getAverageReview(stay)} • {stay.reviews.length} {reviews} </span>
                     </div>
                     <div className="reviews-inputs">
                         {Object.entries(reviewsInputs).map(([key, value]) => (
                             <div className="review-input" key={key}>
                                 <div className="review-input-key">{key}</div>
-                                <div className="progress-bar-container">
+                                <div className="progress-bar-container flex">
                                     <div className="review-input-bar" style={{ width: `${calculatePercentage(value)}%` }}><span>{value.toFixed(1)}</span>
                                     </div>
                                 </div>
@@ -260,7 +260,7 @@ export function StayDetails() {
                     <p>Free cancellation before {stay.checkIn}</p>
                     <p>Review the Host's full cancellation policy which applies even if you cancel for illness for disruptions caused by COVID-19</p>
                 </div>
-            </section> */}
+            </section>
         </section >
     </Fragment>
 }
