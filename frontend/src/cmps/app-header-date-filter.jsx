@@ -1,10 +1,10 @@
 import { compareAsc, format, startOfDay } from 'date-fns'
-import { useRef, useState } from 'react'
+import { useRef, useState, createElement, useEffect } from 'react'
 import { DateRange, SelectRangeEventHandler, DayPicker } from 'react-day-picker'
 import styles from 'react-day-picker/dist/style.module.css'
 
-export function DateFilter() {
-    const [selectedRange, setSelectedRange] = useState()
+export function DateFilter({ filterBy, onSubmit, setFilterDates }) {
+    const [selectedRange, setSelectedRange] = useState('')
     const [fromValue, setFromValue] = useState('')
     const [toValue, setToValue] = useState('')
 
@@ -12,21 +12,22 @@ export function DateFilter() {
     const date = new Date()
     const today = startOfDay(date)
 
+    useEffect(() => {
+        setFilterDates(selectedRange)
+    }, [selectedRange])
+
 
     function handleRangeSelect(range) {
-        const rangeByTimestamp = { ...range, fromParsed: Date.parse(range.from), toParsed: Date.parse(range.to) }
-        setSelectedRange(rangeByTimestamp)
+        setSelectedRange(range)
         if (range?.from) {
             setFromValue(format(range.from, 'y-MM-dd'))
         } else {
             setFromValue('')
         }
         if (range?.to) {
-            // setOpenDatePicker(false)
             setToValue(format(range.to, 'y-MM-dd'))
         } else {
             setToValue('')
-
         }
     }
 

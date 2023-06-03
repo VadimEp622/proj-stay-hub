@@ -20,8 +20,7 @@ import { DateFilter } from './app-header-date-filter.jsx'
 
 export function AppHeader() {
     const user = useSelector(storeState => storeState.userModule.user)
-    const [filterBy, setFilterBy] = useState({ filterText: '' })
-    // const showTempFilterRef = useRef(false)
+    const [filterBy, setFilterBy] = useState({ filterText: '', from: '', to: '' })
 
 
 
@@ -70,6 +69,35 @@ export function AppHeader() {
         const value = (target.type === 'number') ? +target.value : target.value
         setFilterBy(prevFilter => ({ ...prevFilter, [field]: value }))
     }
+
+
+    function setFilterDates(range) {
+        console.log('range  --> app-header.jsx', range)
+        if (!range) {
+            setFilterBy(prevFilter => ({ ...prevFilter, from: '', to: '' }))
+        } else {
+            const filter = { ...range }
+            if (filter.from === undefined) {
+                filter.from = ''
+            }
+            else {
+                filter.from = Date.parse(range.from)
+            }
+
+            if (filter.to === undefined) {
+                if (filter.from === undefined) {
+                    filter.to = ''
+                } else {
+                    filter.to = filter.from
+                }
+            }
+            else {
+                filter.to = Date.parse(range.to)
+            }
+            setFilterBy(prevFilter => ({ ...prevFilter, ...filter }))
+        }
+    }
+
 
     return (
         <Fragment>
@@ -122,7 +150,7 @@ export function AppHeader() {
 
             <section className="filter-container flex justify-center align-center" style={{ gap: 20 }}>
                 <AppHeaderSearch filterBy={filterBy} onSubmit={onSubmit} handleChange={handleChange} />
-                <DateFilter />
+                <DateFilter filterBy={filterBy} onSubmit={onSubmit} setFilterDates={setFilterDates} />
             </section>
 
         </Fragment>
