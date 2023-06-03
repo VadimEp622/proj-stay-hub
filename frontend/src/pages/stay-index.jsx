@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { loadStays, addStay, updateStay, removeStay, addToCart } from '../store/stay.actions.js'
 
@@ -8,15 +8,16 @@ import { Link } from 'react-router-dom'
 import { UpperFilter } from '../cmps/upper-filter.jsx'
 import { StayList } from '../cmps/stay-list.jsx'
 import { DatePicker } from '../cmps/date-picker.jsx'
+import { FilterModal } from '../cmps/filter.jsx'
 
 export function StayIndex() {
+
     const stays = useSelector(storeState => storeState.stayModule.stays)
     const filterBy = useSelector(storeState => storeState.stayModule.filterBy)
+    const [isFilterModalOpen, setIsFilterModalOpen] = useState(false)
     const isLoadingRef = useRef(true)
     useEffect(() => {
-        // console.log('hi')
-        isLoadingRef.current = true
-        loadStays()
+        loadStays(filterBy)
             .then(isLoadingRef.current = false)
     }, [filterBy])
 
@@ -62,12 +63,21 @@ export function StayIndex() {
         console.log(`TODO Adding msg to stay`)
     }
 
+    function openFilterModal() {
+        setIsFilterModalOpen(true)
+    }
+
     return (
         <section className="stay-index">
+            <button className="filter-opener" onClick={openFilterModal}>
+                <div className="filter-button-content">
+                    Filters
+                </div>
+            </button>
+            {isFilterModalOpen && (<FilterModal stays={stays}
+                setIsFilterModalOpen={setIsFilterModalOpen} />)}
             <UpperFilter />
             <StayList stays={stays} isLoadingRef={isLoadingRef} />
-            {/* below for aesthetic proposes - when there's no views to display */}
-            {/* {stays.length > 0 && <DatePicker />} */}
             {false && <DatePicker />}
         </section>
     )
