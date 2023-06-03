@@ -59,7 +59,7 @@ export function GuestCountFilter() {
             <article className="card">
                 <section>
                     <h3>Pets</h3>
-                    <p>Bringing a service animal?</p>
+                    <p className="pet-service underline">Bringing a service animal?</p>
                 </section>
                 <section>
                     <button className="custom-btn-guest-count" onClick={() => handleGuestCountChange('pets', -1)} disabled={guestCounts.pets === 0}>-</button>
