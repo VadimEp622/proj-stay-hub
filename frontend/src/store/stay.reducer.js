@@ -29,9 +29,17 @@ export function stayReducer(state = initialState, action) {
             stays = action.stays.filter(stay => {
                 if (Object.keys(state.filterBy).length === 0) return true
                 if (state.filterBy) {
-                    if (stay.loc.country.toLowerCase().includes(state.filterBy.country.toLowerCase())) return true
-                    if (stay.loc.city.toLowerCase().includes(state.filterBy.city.toLowerCase())) return true
-                    return false
+                    if (!stay.loc.country.toLowerCase().includes(state.filterBy.country.toLowerCase())) return false
+                    if (!stay.loc.city.toLowerCase().includes(state.filterBy.city.toLowerCase())) return false
+
+
+                    if (stay.availableDates?.length > 0) {
+                        return stay.availableDates.some(date =>
+                            date.from <= state.filterBy.from && date.to >= state.filterBy.to
+                        )
+                    }
+
+                    return true
                 }
             })
             newState = { ...state, stays: stays }

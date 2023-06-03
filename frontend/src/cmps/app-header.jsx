@@ -54,7 +54,7 @@ export function AppHeader() {
 
     function onSubmit(ev) {
         ev.preventDefault()
-        const filter = {}
+        const filter = { city: '', country: '', from: '', to: '' }
 
         if (filterBy.filterText) {
             filter.city = filterBy.filterText
@@ -106,6 +106,7 @@ export function AppHeader() {
 
     return (
         <Fragment>
+
             <header className="app-header-container full main-layout">
                 <nav className='app-header'>
                     {/* fix img src */}
@@ -153,10 +154,13 @@ export function AppHeader() {
                 </nav>
             </header>
 
-            <section className="filter-container flex justify-center align-center" style={{ gap: 20 }}>
-                <AppHeaderSearch filterBy={filterBy} onSubmit={onSubmit} handleChange={handleChange} />
-                <DateFilter filterBy={filterBy} onSubmit={onSubmit} setFilterDates={setFilterDates} />
-            </section>
+            <form className="filter-container" onSubmit={onSubmit}  >
+                <section className="flex align-center" style={{ gap: 20 }} >
+                    <AppHeaderSearch filterBy={filterBy} onSubmit={onSubmit} handleChange={handleChange} />
+                    <DateFilter filterBy={filterBy} setFilterDates={setFilterDates} />
+                </section>
+                <input type="submit" />
+            </form>
 
         </Fragment>
     )
