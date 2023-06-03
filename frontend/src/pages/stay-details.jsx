@@ -55,15 +55,11 @@ export function StayDetails() {
                 <div className="review-container" key={idx}>
                     {review.by.fullname}
                     {review.by.date}
-
-
-
                     <div className="description-container">
                         {review.txt}
                     </div>
                 </div>
             ))
-
             return reviews;
         }
     }
@@ -98,7 +94,7 @@ export function StayDetails() {
 
     return <Fragment>
     <section className="stay-details">
-        {true && <DetailsHeader />}
+        {true && <DetailsHeader stay={stay}/>}
         <section className='stay-review flex'>
             <h1>{stay.name}</h1>
             <section className='info-bar flex space-between align-center'>

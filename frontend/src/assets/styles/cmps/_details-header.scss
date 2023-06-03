@@ -4,7 +4,25 @@
     height: 80px;
     background-color: #fff;
     z-index: 1;
+
     a {
-        font-family: cereal_W_Bd;;
+        font-family: cereal_W_Bd;
+        ;
+    }
+
+    .details-header-container {
+        display: flex;
+        height: 100%;
+    }
+
+    .reserve-link {
+        width: 400px;
+        height: 100%;
+
+        .reserve-btn {
+            width: 105px;
+            margin-top: auto;
+            margin-left: auto;
+        }
     }
 }
