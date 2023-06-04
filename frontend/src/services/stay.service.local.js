@@ -302,7 +302,7 @@ function _createDemoStay(name, summary, type, loc, imgUrls) {
             "TV",
             "Wifi",
             "Kitchen",
-            "Smoking allowed",
+            "Refrigerator",
             "Pets allowed",
             "Cooking basics",
             "Hot tub",

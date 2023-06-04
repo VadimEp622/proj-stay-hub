@@ -3,13 +3,13 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { Link } from "react-router-dom";
 
-export function CarouselImage2({ jpegFiles }) {
+export function CarouselImage2({ imgs }) {
     const windowWidth = useRef(window.innerWidth)
     const carouselRef = useRef(null)
     console.log(windowWidth.current)
+
     const handleResize = () => {
         windowWidth.current = window.innerWidth
-        carouselRef.current?.reInit()
         console.log('have entered handleResize')
     }
 
@@ -25,19 +25,19 @@ export function CarouselImage2({ jpegFiles }) {
     const responsive = {
         desktop: {
             breakpoint: { max: 3000, min: 1024 },
-            items: Math.ceil(windowWidth.current / 80)
+            items: 18
         },
         tablet: {
             breakpoint: { max: 1024, min: 464 },
-            items: Math.ceil(windowWidth.current / 80)
+            items: 14
         },
         mobile: {
             breakpoint: { max: 464, min: 0 },
-            items: Math.ceil(windowWidth.current / 80)
+            items: 8
         }
     };
     console.log('items', responsive.desktop.items)
-    if (!jpegFiles) return null
+    if (!imgs) return null
 
     return (
         <Carousel
@@ -68,7 +68,7 @@ export function CarouselImage2({ jpegFiles }) {
             swipeable
             ref={carouselRef}
         >
-            {jpegFiles.map(({ fileName, module }) => (
+            {imgs.map(({ fileName, module }) => (
                 <img
                     key={fileName}
                     src={module.default}

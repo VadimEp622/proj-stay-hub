@@ -13,8 +13,25 @@ import { ReactComponent as RedStrokedHeart } from '../assets/img/heart/heart-red
 import { ReactComponent as Location } from '../assets/img/location/location.svg'
 import { ReactComponent as Key } from '../assets/img/key/key.svg'
 import { ReactComponent as Checkin } from '../assets/img/self-checkin/self-checkin.svg'
-import { HEART_16, RED_HEART_16, LOGO, RED_HEART, SEARCH, SHARE, STAR, STAR_16, USER_NAV_BARS, 
-    USER_NAV_PROFILE, WHITE_HEART, LOCATION, KEY, CHECKIN } from '../services/svg.service'
+import { ReactComponent as Kitchen } from '../assets/img/airbnb-assets/kitchen.svg'
+import { ReactComponent as TV } from '../assets/img/airbnb-assets/tv.svg'
+import { ReactComponent as Dishes } from '../assets/img/airbnb-assets/dishes.svg'
+import { ReactComponent as Gym } from '../assets/img/airbnb-assets/gym.svg'
+import { ReactComponent as HotTub } from '../assets/img/airbnb-assets/hot-tub.svg'
+import { ReactComponent as Pets } from '../assets/img/airbnb-assets/pets-allowed.svg'
+import { ReactComponent as Refrigirator } from '../assets/img/airbnb-assets/refrigerator.svg'
+import { ReactComponent as Wifi } from '../assets/img/airbnb-assets/wifi.svg'
+import { ReactComponent as AirCond } from '../assets/img/airbnb-assets/air-conditioning.svg'
+
+
+
+
+
+
+import {
+    HEART_16, RED_HEART_16, LOGO, RED_HEART, SEARCH, SHARE, STAR, STAR_16, USER_NAV_BARS,
+    USER_NAV_PROFILE, WHITE_HEART, LOCATION, KEY, CHECKIN
+} from '../services/svg.service'
 
 
 const SvgHandler = ({ svgName }) => {
@@ -49,7 +66,23 @@ const SvgHandler = ({ svgName }) => {
                 return <Key />
             case CHECKIN:
                 return <Checkin />
-        
+            case 'TV':
+                return <TV />
+            case 'Wifi':
+                return <Wifi />
+            case 'Kitchen':
+                return <Kitchen />
+            case 'Pets allowed':
+                return <Pets />
+            case 'Cooking basics':
+                return <Dishes />
+            case 'Hot tub':
+                return <HotTub />
+            case 'Air conditioning':
+                return <AirCond />
+            case 'Gym':
+                return <Gym />
+
             default:
                 return <Heart16 />
         }

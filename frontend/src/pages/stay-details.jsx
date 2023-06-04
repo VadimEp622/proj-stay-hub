@@ -165,6 +165,7 @@ export function StayDetails() {
                             {stay.amenities.map(amenity => {
                                 return <div className="amenity fs16 flex" key={amenity}>
                                     <SvgHandler svgName={amenity} />
+                                    {console.log(amenity)}
                                     {amenity}
                                 </div>
                             })}

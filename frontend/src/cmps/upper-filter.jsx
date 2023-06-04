@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { CarouselImage2 } from "./carousel2";
+import CarouselImage3 from "./carousel3";
 
 export function UpperFilter() {
     const [jpegFiles, setJpegFiles] = useState([]);
@@ -105,7 +106,7 @@ export function UpperFilter() {
 
     return (
         <section className="label-filter">
-            {/* {jpegFiles.map(({ fileName, module }) => (
+            {jpegFiles.map(({ fileName, module }) => (
                 <div className="upper-filter-icon">
                     <img
                         key={fileName}
@@ -115,8 +116,8 @@ export function UpperFilter() {
                     />
                     {fileName}
                 </div>
-            ))} */}
-            {/* <CarouselImage2 imgs={jpegFiles} /> */}
+            ))}
+            <CarouselImage3 imgs={jpegFiles} />
         </section>
     );
 }
