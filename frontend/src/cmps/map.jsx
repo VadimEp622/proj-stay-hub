@@ -1,17 +1,17 @@
 import React from "react";
 import GoogleMapReact from 'google-map-react';
 import { useState } from 'react'
-// import { Button } from '@material-ui/core'
 
 function Marker() {
     return <div style={{ height: '1em', width: '1em', borderRadius: '50%', background: 'red' }}></div>
 }
 
+
 export default function SimpleMap({ loc }) {
     console.log('loc', loc)
     const [center, setCenter] = useState({ lat: loc.lat, lng: loc.lng })
     const [zoom, setZoom] = useState(12)
-
+    const Popper = () => <div className="map-popper"><AiFillHome/><div className="popper-wedge"></div></div>
     return (
         <div>
             <div style={{ height: '60vh', width: '100%' }}>
