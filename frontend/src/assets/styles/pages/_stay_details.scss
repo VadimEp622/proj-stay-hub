@@ -1,5 +1,6 @@
 .stay-details {
     max-width: 1120px;
+    padding-top: 24px;
     margin: auto;
     scroll-margin-top: 25px;
 
@@ -8,10 +9,11 @@
 
         h1 {
             font-size: 26px;
-            margin-bottom: 0.35em;
         }
 
         .info-bar {
+            font-family: cereal_W_Md;
+            margin-top: 8px;
             padding: 0;
 
             .info {
@@ -33,6 +35,11 @@
             .btns {
                 align-items: baseline;
                 gap: 1em;
+
+                span {
+
+                    text-decoration: underline;
+                }
 
                 .share-btn {
                     gap: 0.4em;
@@ -86,10 +93,7 @@
                 }
             }
 
-            span {
-                font-family: cereal_W_Md;
-                text-decoration: underline;
-            }
+
         }
     }
 
@@ -147,7 +151,6 @@
 
         .about-host {
             border-bottom: $border-bottom;
-            padding-top: 48px;
             padding-bottom: 24px;
 
             & img {
@@ -170,7 +173,8 @@
 
         .stay-highlights {
             grid-column: 1;
-            padding: 32px 0;
+            padding-top: 32px;
+            padding-bottom: 8px;
             border-bottom: $border-bottom;
 
             .highlight {
@@ -229,18 +233,9 @@
         }
     }
 
-    .reviews-sum {
-        scroll-margin-top: 80px;
-        padding-top: 24px;
-        flex-wrap: wrap;
-
-    }
-
-    .review-container {
+    .reviews-container {
         flex-basis: 50%;
-        padding: 0 rem(8px);
-        margin-bottom: 2.5rem;
-        
+        padding-top: 48px;
 
         img {
             width: 40px;
@@ -309,6 +304,17 @@
             }
         }
 
+        .reviews-sum {
+            scroll-margin-top: 80px;
+            padding-top: 40px;
+            flex-wrap: wrap;
+
+        }
+
+        .review-container {
+            margin-bottom: 40px;
+        }
+
         .description-container {
             margin-right: 8.333%;
         }
@@ -366,11 +372,79 @@
     }
 
     .host-details-container {
+        padding: 48px 0;
+
         img {
-            width: 53px;
-            height: 53px;
+            width: 56px;
+            height: 56px;
             border-radius: 50px;
             object-fit: cover;
+            margin-right: 16px;
+        }
+
+        .mini-owner {
+            margin-bottom: 24px;
+        }
+
+        .mini-owner-info {
+
+            span {
+                color: $clr3;
+            }
+        }
+
+        .sub-details {
+           flex-direction: row;
+           
+        }
+
+        .sub-details-highlights {
+            width: 45%;
+            padding: 0 8px;
+
+            span {
+                margin: 0 8px;
+            }
+        }
+
+        .things-to-know {
+            margin-top: 18px;
+        }
+
+        .owner-communication {
+            // width: 80%;
+            margin-left: 8.333%;
+            padding: 0 24px;
+            flex-direction: column;
+
+
+            h3 {
+                margin-bottom: 16px;
+                font-family: cereal_W_Lt;
+            }
+
+            button {
+                width: rem(150px);
+                height: rem(48px);
+                background-color: rgb(255, 255, 255);
+                cursor: pointer;
+                border: 1px solid rgb(34, 34, 34);
+                border-radius: rem(12px);
+                margin: 24px 0;
+                
+
+                &:hover {
+                    background-color: #f7f7f7;
+                }
+            }
+
+            .protection-info {
+                width: 60%;
+                & img {
+                    height: 24px;
+                    width: 24px;
+                }
+            }
         }
     }
 }

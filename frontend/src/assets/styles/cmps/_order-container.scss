@@ -1,14 +1,12 @@
 .order-modal {
     position: sticky;
     top: 130px;
-    margin-top: 48px;
 
     .order-modal-form {
         flex-direction: column;
         border: 1px solid #00000030;
         border-radius: rem(13px);
         height: max-content;
-        margin-top: 48px;
         padding: rem(24px);
         box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
         width: 83%;

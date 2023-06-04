@@ -94,7 +94,9 @@ export function StayDetails() {
                     <section className='info flex'>
                         <SvgHandler svgName={STAR} />
                         <span>{reviewService.getAverageReview(stay)}</span>
+                        <span>•</span>
                         <span className='info-review'>{stay.reviews.length} {reviews}</span>
+                        <span>•</span>
                         <span className='info-loc'>{stay.loc.city}, {stay.loc.country}</span>
                     </section>
                     <section className='btns flex'>
@@ -182,7 +184,7 @@ export function StayDetails() {
                 </section>
             </section>
             {stay.reviews.length > 0 &&
-                <section className="review-container " id='reviews'>
+                <section className="reviews-container " id='reviews'>
                     <div className="review-title fs22 flex align-center"><SvgHandler svgName={STAR_16} />
                         <span>{reviewService.getAverageReview(stay)} • {stay.reviews.length} {reviews} </span>
                     </div>
@@ -205,7 +207,7 @@ export function StayDetails() {
                     </section>
                 </section>}
             <section className="map-container" id='location'>
-                <h3>Where you'll be</h3>
+                <h3 className='fs22'>Where you'll be</h3>
                 <div className="map">
                     <GoogleMap loc={stay.loc.coordinates} />
                 </div>
@@ -214,52 +216,72 @@ export function StayDetails() {
                 </section>
             </section>
             <section className="host-details-container">
-                <div className="name-details">
+                <div className="mini-owner flex align-center">
                     <img src="https://a0.muscache.com/im/pictures/user/59da4e65-e5a0-4fde-b4d9-e48f20c1ba43.jpg?im_w=240" alt="host image" />
-                    Hosted by {stay.owner ? stay.owner : 'Juan'}
-                    <p>Joined in March 2014</p>
+                    <section className='mini-owner-info'>
+                        <h3 className='fs22'>Hosted by {stay.owner ? stay.owner : 'Juan'}</h3>
+                        <span>Joined in March 2014</span>
+                    </section>
                 </div>
-                <div className="sub-details">
-                    <SvgHandler svgName={STAR} />
-                    {stay.reviews.length} {capitalizedReviewsString}
-                    <SvgHandler svgName={STAR} />
-                    Identity verified
-                    {stay.superhost && (
-                        <>
+                <div className="sub-details flex">
+                    <section className='sub-details-highlights'>
+                        <section className='fs16 flex align-center'>
                             <SvgHandler svgName={STAR} />
-                            Superhost
-                        </>
-                    )}
+                            <span>
+                                 {stay.reviews.length}
+                            </span>
+                            <span>
+                                  {capitalizedReviewsString} 
+                            </span>
+                            <SvgHandler svgName={STAR} />
+                            <span>
+                                Identity verified
+                            </span>
+                            {stay.superhost && (
+                                <>
+                                    <SvgHandler svgName={STAR} />
+                                    Superhost
+                                </>
+                            )}
+                            {stay.superhost && (
+                                <>
+                                    <p>{stay.owner} is a Superhost</p>
+                                    <p>Superhosts are experienced, highly rated hosts who are committed to providing great stays for guests.</p>
+                                </>
+                            )}
+                        </section>
+                        <section className="things-to-know fs16">
+                            <div className="house-rules">
+                                <p>House rules</p>
+                                <p>Check-in after 4:00 PM</p>
+                                <p>Checkout before 10:00 AM</p>
+                                <p>Pets allowed</p>
+                            </div>
+                            <div className="house-rules">
+                                <p>Safety & property</p>
+                                <p>No smoke alarm</p>
+                                <p>Pool/hot tub without a gate or lock</p>
+                                <p>Carbon monoxide detector not required</p>
+                            </div>
+                            <div className="house-rules">
+                                <p>Cancellation policy</p>
+                                <p>Free cancellation before {getDate(stay.checkIn)}</p>
+                                <p>Review the Host's full cancellation policy which applies even if you cancel for illness for disruptions caused by COVID-19</p>
+                            </div>
+                        </section>
+                    </section>
+                    <section className='owner-communication flex'>
+                        <h3 className='fs16'>Language: English</h3>
+                        <h3 className='fs16'>Response rate: 100%</h3>
+                        <h3 className='fs16'>Response time: within a couple of hours</h3>
+                        <button className='fs16'>Contact Host</button>
+                        <section className='protection-info flex align-center fs12'>
+                            <img src="https://res.cloudinary.com/dnhn4zsy0/image/upload/v1685913828/airbnb-orotect_ohgcnp.svg" alt="airbnb protect" />
+                            <span>To protect your payment, never transfer money or communicate outside of the Airbnb website or app.</span>
+                        </section>
+                    </section>
                 </div>
-                {stay.superhost && (
-                    <>
-                        <p>{stay.owner} is a Superhost</p>
-                        <p>Superhosts are experienced, highly rated hosts who are committed to providing great stays for guests.</p>
-                    </>
-                )}
-                Language: English
-                Response rate: 100%
-                Response time: within a couple of hours
-                <button>Contact Host</button>
-            </section>
-            <section className="things-to-know">
-                <div className="house-rules">
-                    <p>House rules</p>
-                    <p>Check-in after 4:00 PM</p>
-                    <p>Checkout before 10:00 AM</p>
-                    <p>Pets allowed</p>
-                </div>
-                <div className="house-rules">
-                    <p>Safety & property</p>
-                    <p>No smoke alarm</p>
-                    <p>Pool/hot tub without a gate or lock</p>
-                    <p>Carbon monoxide detector not required</p>
-                </div>
-                <div className="house-rules">
-                    <p>Cancellation policy</p>
-                    <p>Free cancellation before {getDate(stay.checkIn)}</p>
-                    <p>Review the Host's full cancellation policy which applies even if you cancel for illness for disruptions caused by COVID-19</p>
-                </div>
+
             </section>
         </section >
     </Fragment>
