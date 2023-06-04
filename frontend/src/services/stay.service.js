@@ -60,14 +60,14 @@ function getEmptyStay() {
     }
 }
 
-function getDate(timeStamp) {
-    return new Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit'}).format(timeStamp)
+export function getDate(timeStamp) {
+    return new Intl.DateTimeFormat('en-US', { year: 'numeric', month: '2-digit', day: '2-digit' }).format(timeStamp)
 }
 
-function calculateHowManyNights(stay) {
-    const checkInDate = new Date(stay.checkIn)
-    const checkOutDate = new Date(stay.checkOut)
-    const timeDiff = checkOutDate.getTime() - checkInDate.getTime()
+function calculateHowManyNights(checkInDate, checkOutDate) {
+    const firstDate = new Date(checkInDate)
+    const secondDate = new Date(checkOutDate)
+    const timeDiff = secondDate.getTime() - firstDate.getTime()
     const nightsCount = Math.ceil(timeDiff / (1000 * 3600 * 24))
     return nightsCount
 }

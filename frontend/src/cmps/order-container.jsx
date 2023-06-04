@@ -10,12 +10,12 @@ export function OrderContainer({ stay }) {
 
     const checkIn = stayService.getDate(stay.checkIn)
     const checkOut = stayService.getDate(stay.checkOut)
-    const nightsPrice = stayService.calculateHowManyNights(stay) * (stay.price)
+    const nightsCount = stayService.calculateHowManyNights(stay.checkIn, stay.checkOut)
+    const nightsPrice = nightsCount * (stay.price)
     const cleaningFee = utilService.getRandomIntInclusive(100, 500)
     const serviceFee = utilService.getRandomIntInclusive(100, 500)
     const totalPrice = nightsPrice + cleaningFee + serviceFee
-    const nightsCount = stayService.calculateHowManyNights(stay)
-    const guests = useSelector(storeState => storeState.stayModule.guests)
+    const guestsObject = useSelector(storeState => storeState.stayModule.guests)
     function _createButtonDivContainer() {
         const divElements = []
         for (let i = 0; i < 100; i++) {
@@ -23,21 +23,19 @@ export function OrderContainer({ stay }) {
         }
         return divElements
     }
-
     let guestsString = ''
-
-    if (Object.keys(guests).length === 0) {
+    if (Object.keys(guestsObject).length === 0) {
         guestsString = '1 guest'
     } else {
-        const { adults, children, infants, pets } = guests
-        const guestCount = adults + children;
+        const { adults, children, infants, pets } = guestsObject
+        const guestCount = adults + children
 
-        guestsString = `${guestCount} guest${guestCount !== 1 ? 's' : ''}`;
+        guestsString = `${guestCount} guest${guestCount !== 1 ? 's' : ''}`
         if (infants > 0) {
-            guestsString += `, ${infants} infant${infants !== 1 ? 's' : ''}`;
+            guestsString += `, ${infants} infant${infants !== 1 ? 's' : ''}`
         }
         if (pets > 0) {
-            guestsString += `, ${pets} pet${pets !== 1 ? 's' : ''}`;
+            guestsString += `, ${pets} pet${pets !== 1 ? 's' : ''}`
         }
     }
 
@@ -56,7 +54,7 @@ export function OrderContainer({ stay }) {
                     </div>
                 </div>
                 <section className="order-data">
-                    <div className="order-date-container flex">
+                    <div className="date-container flex">
                         <div className="check-in flex">
                             <span>CHECK-IN</span>
                             <span>{checkIn}</span>
