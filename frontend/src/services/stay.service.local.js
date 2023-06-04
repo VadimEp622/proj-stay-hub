@@ -306,7 +306,7 @@ function _createDemoStay(name, summary, type, loc, imgUrls) {
             "Pets allowed",
             "Cooking basics",
             "Hot tub",
-            "Air conditining",
+            "Air conditioning",
             "Gym"
         ],
         labels: [
