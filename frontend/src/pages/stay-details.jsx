@@ -6,8 +6,8 @@ import { showErrorMsg } from "../services/event-bus.service.js"
 import { reviewService } from '../services/review.service.js'
 import { OrderContainer } from '../cmps/order-container.jsx'
 import { DetailsHeader } from '../cmps/details-header.jsx'
-
-import SvgHandler from '../cmps/svg-handler.jsx'
+import { getDate } from '../services/stay.service.js'
+import SvgHandler from '../cmps/svg_handler.jsx'
 import { HEART_16, RED_HEART_16, SHARE, STAR, STAR_16, LOCATION, CHECKIN, KEY } from '../services/svg.service.js'
 import { DatePicker } from '../cmps/date-picker.jsx'
 import GoogleMap from '../cmps/map.jsx'
@@ -35,33 +35,21 @@ export function StayDetails() {
     }
 
     function displayReviews() {
-        if (stay.reviews.length > 6) {
-            return (
-                <>
-                    {stay.reviews.slice(0, 6).map((review, idx) => (
-                        <div className="review-container" key={idx}>
-                            {review.by.fullname}
-                            {review.by.date}
-                            {/* <img src={review.by.imgUrl} alt="host image" /> */}
-                            <div className="description-container">
-                                {review.txt}
-                            </div>
+        const reviewsToDisplay = (stay.reviews.length > 6) ? stay.reviews.slice(0, 6) : stay.reviews
+        return (
+            <>
+                {reviewsToDisplay.map((review, idx) => (
+                    <div className="review-container" key={idx}>
+                        {review.by.fullname}
+                        {review.by.date}
+                        {/* <img src={review.by.imgUrl} alt="host image" /> */}
+                        <div className="description-container">
+                            {review.txt}
                         </div>
-                    ))}
-                </>
-            )
-        } else {
-            const reviews = stay.reviews.map((review, idx) => (
-                <div className="review-container" key={idx}>
-                    {review.by.fullname}
-                    {review.by.date}
-                    <div className="description-container">
-                        {review.txt}
                     </div>
-                </div>
-            ))
-            return reviews;
-        }
+                ))}
+            </>
+        )
     }
 
     function displayReviewsCriteria() {
@@ -216,7 +204,7 @@ export function StayDetails() {
                     <GoogleMap loc={stay.loc.coordinates} />
                 </div>
                 <section className='location-about'>
-                <h3 className='fs16'>{stay.loc.city}, {stay.loc.country}</h3>
+                    <h3 className='fs16'>{stay.loc.city}, {stay.loc.country}</h3>
                 </section>
             </section>
             <section className="host-details-container">
@@ -263,7 +251,7 @@ export function StayDetails() {
                 </div>
                 <div className="house-rules">
                     <p>Cancellation policy</p>
-                    <p>Free cancellation before {stay.checkIn}</p>
+                    <p>Free cancellation before {getDate(stay.checkIn)}</p>
                     <p>Review the Host's full cancellation policy which applies even if you cancel for illness for disruptions caused by COVID-19</p>
                 </div>
             </section>
