@@ -10,7 +10,10 @@ export function GuestCountFilter({ setFilterBy }) {
     })
 
     function handleGuestCountChange(type, value) {
+        console.log(type)
+        console.log(value)
         setGuestsCount((prevGuestCounts) => ({ ...prevGuestCounts, [type]: prevGuestCounts[type] + value }))
+        console.log(guestsCount)
         const capacityTotal = guestsCount.adults + guestsCount.children
         setFilterBy((prevFilter) => ({ ...prevFilter, capacity: capacityTotal, guests: guestsCount }))
     }
