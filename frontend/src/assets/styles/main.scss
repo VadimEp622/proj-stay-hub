@@ -13,19 +13,18 @@
 
 // Components
 @import "cmps/app-header";
-@import "cmps/app-header-guest-count";
+@import "cmps/app-header-filter";
 @import "cmps/details-header";
-@import "cmps/app-header-date-filter";
 @import "cmps/order-container";
-@import "cmps/app-footer";
 @import "cmps/stay-list";
 @import "cmps/stay-preview";
-@import "cmps/app-header-guest-count";
-@import "cmps/user-msg";
 @import "cmps/shopping-cart";
 @import "cmps/carousel";
 @import "cmps/filter";
-@import "cmps/_upper-filter";
+@import "cmps/upper-filter";
+@import "cmps/user-msg";
+@import "cmps/app-footer";
+
 // Pages
 @import "pages/about-us";
 @import "pages/stay_index";

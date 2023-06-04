@@ -11,7 +11,7 @@
         font-size: rem(14px);
         align-items: center;
 
-        & .navbar-container {
+        & .logo-container {
             display: flex;
 
             gap: $padding-large;
@@ -36,7 +36,7 @@
 
         }
 
-        & .search-navbar-container {
+        & .filter-container {
             height: calc($height-header - 30px);
             // background-color: blue;  
             flex: 1 1 auto;
@@ -147,7 +147,7 @@
         }
 
 
-        & .user-navbar-container {
+        & .user-container {
             // height: 42px;
             // width: 77px;
             // border: 1px solid rgb(221, 221, 221);
