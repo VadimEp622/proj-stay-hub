@@ -30,7 +30,7 @@ export function AppHeader() {
     const [filterBy, setFilterBy] = useState({ filterText: '', from: '', to: '', capacity: '' })
     const [isFilterExpanded, setIsFilterExpanded] = useState(true)
     const [selectedExperienceTab, setSelectedExperienceTab] = useState('stays')
-    const [isUnclickableBg, setIsUnclickableBg] = useState(true)
+    // const [isUnclickableBg, setIsUnclickableBg] = useState(true)
 
     // async function onLogin(credentials) {
     //     try {
@@ -123,10 +123,10 @@ export function AppHeader() {
     }
 
 
-    function onSetIsUnclickableBg(ev, isUnclickable) {
-        ev.preventDefault()
-        setIsUnclickableBg(isUnclickable)
-    }
+    // function onSetIsUnclickableBg(ev, isUnclickable) {
+    //     ev.preventDefault()
+    //     setIsUnclickableBg(isUnclickable)
+    // }
 
     return (
         <Fragment>
@@ -223,13 +223,13 @@ export function AppHeader() {
             </header>
 
 
-            {
+            {/* {
                 isUnclickableBg &&
                 <aside
                     className="unclickable-background"
                     onClick={(ev) => onSetIsUnclickableBg(ev, false)}
                 ></aside>
-            }
+            } */}
 
             
         </Fragment >
