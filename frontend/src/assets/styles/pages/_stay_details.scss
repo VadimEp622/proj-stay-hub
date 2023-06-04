@@ -208,12 +208,10 @@
             .amenities-list {
                 display: grid;
                 grid-template-columns: repeat(2, 1fr);
-                // margin-bottom: 24px;
 
                 .amenity {
                     align-items: center;
                     padding-bottom: 16px;
-                    font-size: rem(16px);
 
                     &.amenity * {
                         margin: 0 0.25em;
@@ -243,7 +241,6 @@
         padding-top: 24px;
 
         .review-title {
-            font-size: rem(22px);
             font-family: cereal_W_Bd;
             margin-bottom: 32px;
 
@@ -286,7 +283,6 @@
                         }
                     }
                     span {
-                        font-size: rem(12px);
                         font-family: cereal_W_Bd;
                         color: rgb(34, 34, 34);
                     }
@@ -296,6 +292,21 @@
         .reviews-sum {
             padding-bottom: 48px;
             border-bottom: 1px solid rgba(128, 128, 128, .3);
+        }
+    }
+
+    .map-container {
+        scroll-margin-top: 80px;
+        padding-top: 48px;
+        padding-bottom: 48px;
+        border-bottom: 1px solid rgba(128, 128, 128, .3);
+
+        h3 {
+            padding-bottom: 24px;
+        }
+
+        .location-about {
+            margin-top: 24px;
         }
     }
 
