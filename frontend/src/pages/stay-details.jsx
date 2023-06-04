@@ -7,7 +7,7 @@ import { reviewService } from '../services/review.service.js'
 import { OrderContainer } from '../cmps/order-container.jsx'
 import { DetailsHeader } from '../cmps/details-header.jsx'
 
-import SvgHandler from '../cmps/svg_handler.jsx'
+import SvgHandler from '../cmps/svg-handler.jsx'
 import { HEART_16, RED_HEART_16, SHARE, STAR, STAR_16, LOCATION, CHECKIN, KEY } from '../services/svg.service.js'
 import { DatePicker } from '../cmps/date-picker.jsx'
 import GoogleMap from '../cmps/map.jsx'
@@ -93,7 +93,7 @@ export function StayDetails() {
     const capitalizedReviewsString = reviews.charAt(0).toUpperCase() + reviews.slice(1)
 
     return <Fragment>
-        <section className="stay-details" id='scroll-1'>
+        <section className="stay-details" id='photos'>
             {<DetailsHeader stay={stay} />}
             <section className='stay-review flex' >
                 <h1>{stay.name}</h1>
@@ -166,7 +166,7 @@ export function StayDetails() {
                             </div>
                         </div>
                     </section>
-                    <section className='amenities' id='scroll-2'>
+                    <section className='amenities' id='amenities'>
                         <h3>What this place offers</h3>
                         <div className='amenities-list'>
                             {stay.amenities.map(amenity => {
@@ -188,7 +188,7 @@ export function StayDetails() {
                 </section>
             </section>
             {stay.reviews.length > 0 &&
-                <section className="review-container " id='scroll-3'>
+                <section className="review-container " id='reviews'>
                     <div className="review-title fs22 flex align-center"><SvgHandler svgName={STAR_16} />
                         <span>{reviewService.getAverageReview(stay)} • {stay.reviews.length} {reviews} </span>
                     </div>
@@ -210,7 +210,7 @@ export function StayDetails() {
                         {stay.reviews.length > 6 && <button>Show all {stay.reviews.length} reviews</button>}
                     </section>
                 </section>}
-            <section className="map-container" id='scroll-4'>
+            <section className="map-container" id='location'>
                 <h3>Where you'll be</h3>
                 <div className="map">
                     <GoogleMap loc={stay.loc.coordinates} />

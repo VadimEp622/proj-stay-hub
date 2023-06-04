@@ -4,7 +4,7 @@ import { stayService } from "../services/stay.service"
 import { STAR } from "../services/svg.service"
 import { utilService } from "../services/util.service"
 // import DatePicker from "./date-picker"
-import SvgHandler from "./svg_handler"
+import SvgHandler from "./svg-handler"
 
 export function OrderContainer({ stay }) {
 

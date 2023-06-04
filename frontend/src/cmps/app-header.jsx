@@ -11,7 +11,7 @@ import { LOGO, USER_NAV_BARS, USER_NAV_PROFILE, SEARCH } from '../services/svg.s
 
 // import logo from '../assets/img/logo/logo-airbnb.svg'
 // import userNav from '../assets/img/user-nav/user-nav.svg'
-import SvgHandler from './svg_handler.jsx'
+import SvgHandler from './svg-handler.jsx'
 import { Fragment, useRef, useState } from 'react'
 import { stayService } from '../services/stay.service.local.js'
 import { LocationFilter } from './location-filter.jsx'

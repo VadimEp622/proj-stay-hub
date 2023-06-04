@@ -1,5 +1,6 @@
-import React from "react";
-import GoogleMapReact from 'google-map-react';
+import React from "react"
+import GoogleMapReact from 'google-map-react'
+import { AiFillHome } from "react-icons/ai"
 import { useState } from 'react'
 
 function Marker() {
@@ -8,10 +9,10 @@ function Marker() {
 
 
 export default function SimpleMap({ loc }) {
-    console.log('loc', loc)
-    const [center, setCenter] = useState({ lat: loc.lat, lng: loc.lng })
+    const { lat, lng } = loc
+    const [center, setCenter] = useState({ lat, lng })
     const [zoom, setZoom] = useState(12)
-    const Popper = () => <div className="map-popper"><AiFillHome/><div className="popper-wedge"></div></div>
+    const Popper = () => <div className="map-popper"><AiFillHome /><div className="popper-wedge"></div></div>
     return (
         <div>
             <div style={{ height: '60vh', width: '100%' }}>
@@ -21,10 +22,10 @@ export default function SimpleMap({ loc }) {
                     center={center}
                     zoom={zoom}
                     defaultZoom={zoom}>
-  
-                    <Marker lat={loc.lat} lng={loc.lng} />
+                    <Popper lat={loc.lat} lng={loc.lng} />
+                    {/* <Marker lat={loc.lat} lng={loc.lng} /> */}
                 </GoogleMapReact>
             </div>
         </div>
-    );
+    )
 }
