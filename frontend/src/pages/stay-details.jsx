@@ -17,7 +17,7 @@ export function StayDetails() {
     const { stayId } = useParams()
     const navigate = useNavigate()
     const [isHeartClicked, setIsHeartClicked] = useState(false)
-    const heartSvg = isHeartClicked ? 'heart-red-16' : 'heart-16'
+    const heartSvg = isHeartClicked ? RED_HEART_16 : HEART_16
 
     useEffect(() => {
         loadStay()
