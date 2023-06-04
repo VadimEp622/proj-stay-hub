@@ -208,8 +208,11 @@ export function AppHeader() {
                     </nav>
 
 
-                    <section className='flex justify-center align-center' style={{ height: '80px' }}>
-                        <span style={{}}>{selectedExperienceTab} here</span>
+                    {/* THIS WILL HAVE 850px WIDTH!!! when 850px WIDTH becomes the width of center column of main layout grid, do Media queries!! */}
+                    <section className="filter-expanded-container" >
+                        <section className="filter-expanded">
+                            <span style={{}}>{selectedExperienceTab} here</span>
+                        </section>
                     </section>
 
 

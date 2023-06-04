@@ -254,9 +254,36 @@
                 }
             }
         }
+
+    }
+
+    & .filter-expanded-container {
+        height: 80px;
+        display: grid;
+        grid-template-columns: auto 850px auto;
+        // background-color: aqua;
+
+        & .filter-expanded {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            grid-column: 2;
+            background-color: #ff385c;
+            height: 66px;
+            border-radius: 32px;
+            border: 1px solid rgb(221, 221, 221);
+            background-color: rgb(235, 235, 235);
+        }
     }
 }
 
+
+
+
+
+
+
+//FAILED ATTEMPTS AT GRAYING OUT SCREEN, LAY BELOW :(
 // .app-header-container::after {
 //     content: '';
 //     height: 100%;
@@ -267,16 +294,16 @@
 //     z-index: 100;
 // }
 
-.app-header-container::before {
-    content: '';
-    // height: 100%;
-    opacity: 1;
-    position: absolute;
-    top: -10px;
-    right: -10px;
-    bottom: -10px;
-    left: -10px;
-    // width: 100%;
-    pointer-events: none;
-    height: 250px;
-}
+// .app-header-container::before {
+//     content: '';
+//     // height: 100%;
+//     opacity: 1;
+//     position: absolute;
+//     top: -10px;
+//     right: -10px;
+//     bottom: -10px;
+//     left: -10px;
+//     // width: 100%;
+//     pointer-events: none;
+//     height: 250px;
+// }
