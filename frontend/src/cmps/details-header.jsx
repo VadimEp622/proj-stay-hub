@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { reviewService } from "../services/review.service"
 import { STAR } from "../services/svg.service"
-import SvgHandler from "./svg_handler"
+import SvgHandler from "./svg-handler"
 
 export function DetailsHeader({ stay }) {
     const reviews = stay.reviews.length > 1 ? 'reviews' : 'review'
@@ -50,10 +50,10 @@ export function DetailsHeader({ stay }) {
     return <section className='details-header'>
         <section className='details-header-container flex space-between'>
             <section className='links-container flex align-center'>
-                <a className='detail-link' href='#scroll-1'>Photos</a>
-                <a className='detail-link' href='#scroll-2'>Amenities</a>
-                <a className='detail-link' href='#scroll-3'>Reviews</a>
-                <a className='detail-link' href='#scroll-4'>Location</a>
+                <a className='detail-link' href='#photos'>Photos</a>
+                <a className='detail-link' href='#amenities'>Amenities</a>
+                <a className='detail-link' href='#reviews'>Reviews</a>
+                <a className='detail-link' href='#location'>Location</a>
             </section>
             <section className='reserve-container'>
                 <section className='reserve-info flex align-center justify-center'>

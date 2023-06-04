@@ -4,7 +4,7 @@ import { stayService } from "../services/stay.service"
 import { STAR } from "../services/svg.service"
 import { utilService } from "../services/util.service"
 // import DatePicker from "./date-picker"
-import SvgHandler from "./svg_handler"
+import SvgHandler from "./svg-handler"
 
 export function OrderContainer({ stay }) {
 
@@ -54,19 +54,19 @@ export function OrderContainer({ stay }) {
                     </div>
                 </div>
                 <section className="order-data">
-                    <div className="date-container flex">
+                    <div className="order-date-container flex">
                         <div className="check-in flex">
-                            <span>CHECK-IN</span>
+                            <span className="uppertext">check-in</span>
                             <span>{checkIn}</span>
                         </div>
                         <div className="check-out flex">
-                            <span>CHECKOUT</span>
+                            <span className="uppertext">checkout</span>
                             <span>{checkOut}</span>
                         </div>
                     </div>
                     <div className="guests-container">
                         <div className="guests flex">
-                            <span>GUESTS</span>
+                            <span className="uppertext">guests</span>
                             <span>{guestsString}</span>
                         </div>
                     </div>
@@ -82,15 +82,15 @@ export function OrderContainer({ stay }) {
                 <section className="price-container">
                     <p>You won't be charged yet</p>
                     <section className="flex space-between">
-                        <p>${stay.price.toLocaleString()} x {nightsCount} nights</p>
+                        <p className="underline">${stay.price.toLocaleString()} x {nightsCount} nights</p>
                         <p>${nightsPrice.toLocaleString()}</p>
                     </section>
                     <section className="flex space-between">
-                        <p>Cleaning fee</p>
+                        <p className="underline">Cleaning fee</p>
                         <span>${cleaningFee.toLocaleString()}</span>
                     </section>
                     <div className="flex space-between" >
-                        <p>StayHub service fee</p>
+                        <p className="underline">StayHub service fee</p>
                         <span>${serviceFee.toLocaleString()}</span>
                     </div>
                     <hr />

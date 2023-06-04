@@ -308,6 +308,37 @@
         .location-about {
             margin-top: 24px;
         }
+
+        .map-popper {
+            height: 48px;
+            width: 48px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: $clr1;
+            border-radius: 50%;
+            position: relative;
+      
+            .popper-wedge {
+              background: linear-gradient(135deg, rgba(0, 0, 0, 0) 50%, rgb(255, 56, 92) 50%);
+              border-radius: 2px;
+              bottom: -4px;
+              height: 12px;
+              left: 50%;
+              position: absolute;
+              transform: translate(-50%, 0px) rotate(45deg);
+              width: 12px;
+              z-index: autol
+            }
+      
+            svg {
+              height: 22px;
+              width: 22px;
+              display: block;
+              color: white;
+            }
+          }
+        
     }
 
     .host-details-container {

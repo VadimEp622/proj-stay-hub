@@ -1,7 +1,7 @@
 import { reviewService } from "../services/review.service";
 import { utilService } from "../services/util.service";
 // import star from '../assets/img/star.svg'
-import SvgHandler from "./svg_handler";
+import SvgHandler from "./svg-handler";
 import { HEART, STAR, WHITE_HEART } from "../services/svg.service";
 import { CarouselImage } from "./carousel";
 import { Link } from "react-router-dom";
