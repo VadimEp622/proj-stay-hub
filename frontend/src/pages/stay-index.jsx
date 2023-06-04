@@ -81,6 +81,7 @@ export function StayIndex() {
             {/* below for aesthetic proposes - when there's no views to display */}
             {/* {stays.length > 0 && <DatePicker />} */}
             {false && <DatePicker />}
+
         </section >
     )
 }

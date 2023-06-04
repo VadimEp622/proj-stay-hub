@@ -310,10 +310,10 @@ function _createDemoStay(name, summary, type, loc, imgUrls) {
             "Gym"
         ],
         labels: [
-            "Top of the world",
-            "Trending",
-            "Play",
-            "Tropical"
+            "Lakefront",
+            "Tiny Homes",
+            "Cabins",
+            "Mansions"
         ],
         owner: 'Juan',
         //below is temp!

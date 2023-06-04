@@ -48,6 +48,9 @@ export function stayReducer(state = initialState, action) {
                         if (isNotAvailableDuring) return false
                     }
                 }
+                if (state.filterBy.labels) {
+                    if (!stay.labels.includes(state.filterBy.labels)) return false
+                }
                 //display all stays that survived filtering to this point
                 return true
             })

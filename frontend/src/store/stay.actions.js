@@ -76,6 +76,7 @@ export async function updateStay(stay) {
 }
 
 export function updateFilterBy(filterBy) {
+    console.log(filterBy)
     store.dispatch({ type: UPDATE_FILTER_BY, filterBy })
 }
 

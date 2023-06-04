@@ -1,4 +1,45 @@
-.label-filter {
+.filter-div {
+    padding: 0.5rem 0;
     display: flex;
-    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    overflow-x: auto;
+}
+
+.links-img {
+    width: 1.5rem;
+    height: 1.5rem;
+    object-fit: contain;
+    opacity: 0.6425339366515838;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.links-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
+    align-items: center;
+    margin-right: 2rem;
+    // opacity: 0.5;
+    min-width: 80px;
+}
+
+.links-label {
+    font-size: 12px;
+    font-weight: 700;
+    color: $clr3;
+}
+
+.links-box:hover,
+.selected-box {
+    opacity: 1;
+    border-bottom: 0.5px solid black; // change the black
+    transition: color 0.2s ease;
+    cursor: pointer;
+    position: relative;
+}
+
+.selected-label {
+    font-weight: 800;
 }
