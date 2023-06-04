@@ -208,6 +208,10 @@ export function AppHeader() {
                     </nav>
 
 
+                    <section className='flex justify-center align-center' style={{ height: '80px' }}>
+                        <span style={{}}>{selectedExperienceTab} here</span>
+                    </section>
+
 
                 </section>
                 <section>
@@ -231,7 +235,7 @@ export function AppHeader() {
                 ></aside>
             } */}
 
-            
+
         </Fragment >
     )
 }
