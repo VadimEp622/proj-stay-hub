@@ -28,7 +28,8 @@ import { GuestCountFilter } from './guest-count-filter.jsx'
 export function AppHeader() {
     const user = useSelector(storeState => storeState.userModule.user)
     const [filterBy, setFilterBy] = useState({ filterText: '', from: '', to: '', capacity: '' })
-
+    const [isFilterExpanded, setIsFilterExpanded] = useState(true)
+    const [selectedExperienceTab, setSelectedExperienceTab] = useState('stays')
 
     // async function onLogin(credentials) {
     //     try {
@@ -109,6 +110,17 @@ export function AppHeader() {
     }
 
 
+    function toggleSelected(ev) {
+        // This function toggles between selected experiences-tab
+        ev.preventDefault()
+
+        const field = ev.currentTarget.getAttribute('name')
+        const value = ev.currentTarget.getAttribute('class')
+
+        if (value === selectedExperienceTab) return
+        setSelectedExperienceTab(`${field}`)
+    }
+
     return (
         <Fragment>
             <header className="app-header-container full main-layout">
@@ -134,14 +146,49 @@ export function AppHeader() {
 
                         <section className="filter-container">
                             <span></span>
-                            <button className="filter">
-                                <article>Anywhere</article>
-                                <article>Any week</article>
-                                <article>Add guests</article>
-                                <aside className="filter-search-circle">
-                                    <SvgHandler svgName={SEARCH} />
-                                </aside>
-                            </button>
+                            {
+                                !isFilterExpanded &&
+                                <button className="filter">
+                                    <article>Anywhere</article>
+                                    <article>Any week</article>
+                                    <article>Add guests</article>
+                                    <aside className="filter-search-circle">
+                                        <SvgHandler svgName={SEARCH} />
+                                    </aside>
+                                </button>
+                            }
+
+                            {isFilterExpanded &&
+                                <section className="filter-expanded">
+                                    <section className="experiences-tab">
+
+                                        <article
+                                            className={selectedExperienceTab === 'stays' ? 'selected' : ''}
+                                            name="stays"
+                                            onClick={toggleSelected}
+                                        >
+                                            <span>Stays</span>
+                                        </article>
+
+                                        <article
+                                            className={selectedExperienceTab === 'experiences' ? 'selected' : ''}
+                                            name="experiences"
+                                            onClick={toggleSelected}
+                                        >
+                                            <span>Experiences</span>
+                                        </article>
+
+                                        <article
+                                            className={selectedExperienceTab === 'online' ? 'selected' : ''}
+                                            name="online"
+                                            onClick={toggleSelected}
+                                        >
+                                            <span>Online Experiences</span>
+                                        </article>
+                                    </section>
+
+                                </section>
+                            }
                             <span></span>
                         </section>
 

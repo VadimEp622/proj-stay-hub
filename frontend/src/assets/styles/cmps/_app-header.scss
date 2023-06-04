@@ -1,9 +1,5 @@
 .app-header-container {
-    // height: $height-header;
     height: 100%;
-    // padding-inline-end: $padding-small;
-    // max-height: 80px;
-
 
     & .app-header {
         margin-block: calc($padding-large - 5px);
@@ -38,17 +34,10 @@
 
         & .filter-container {
             height: calc($height-header - 30px);
-            // background-color: blue;  
             flex: 1 1 auto;
             display: flex;
             justify-content: center;
-            // margin-inline-end: 250px;
-            // margin-inline-start: auto;
             font-family: montserrat semibold;
-            // font-size: 10px;
-            // font-weight: 800;
-            // transform:scaleY(0.95);
-
 
             & :first-child {
                 flex: 1 1 auto;
@@ -154,6 +143,81 @@
             & .filter:hover {
                 box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px 0px;
             }
+
+            & .filter-expanded {
+                height: fit-content;
+
+                & .experiences-tab {
+                    display: flex;
+                    font-size: rem(16px);
+                    // margin-block-start: 30px;
+                    margin-top: 2px;
+                    padding-inline-start: 10px;
+
+                    // position: relative;
+
+                    &>*.selected::after {
+                        content: '';
+                        display: block;
+                        width: 100%;
+                        position: absolute;
+                        bottom: -7px;
+                        height: fit-content;
+                        border-bottom: 2px solid black;
+                    }
+
+                    &>*:not(.selected):hover ::after {
+                        content: '';
+                        display: block;
+                        width: 100%;
+                        position: absolute;
+                        bottom: -7px;
+                        height: fit-content;
+                        border-bottom: 2px solid rgb(138, 138, 138);
+                    }
+
+                    & article {
+                        margin-block: 10px;
+
+                        &:first-child {
+                            transform: scaleX(0.9352);
+                            margin-inline-end: 27px;
+
+                        }
+
+                        &:nth-child(2) {
+                            transform: scaleX(0.9240);
+                            margin-inline-end: 21px;
+                        }
+
+                        &:last-child {
+                            transform: scaleX(0.9084);
+                        }
+
+                        & span {
+                            font-family: montserrat;
+                            line-height: rem(20px);
+                            font-weight: 400;
+                        }
+                    }
+
+                    & article:not(.selected):hover{
+                        color:rgb(138, 138, 138);
+                    }
+
+
+
+                }
+
+            }
+
+            & .filter-expanded:hover {
+                cursor: pointer;
+            }
+
+            // &:is(.filter-expanded){
+            //     margin-block-start:0;
+            // }
         }
 
 
