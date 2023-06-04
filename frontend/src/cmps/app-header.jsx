@@ -113,13 +113,13 @@ export function AppHeader() {
         <Fragment>
             <header className="app-header-container full main-layout">
                 <section>
-                    <nav className='app-header'>
+                    <nav className="app-header">
                         <section className="logo-container">
                             {
                                 routes.map(route =>
                                     route.isLogo &&
                                     <NavLink
-                                        className={"page-navbar"}
+                                        className={'page-navbar'}
                                         key={route.path}
                                         to={route.path}
                                     >
@@ -134,13 +134,13 @@ export function AppHeader() {
 
                         <section className="filter-container">
                             <span></span>
-                            <section className='search-navbar'>
+                            <section className="filter">
                                 <article>Anywhere</article>
                                 <article>Any week</article>
                                 <article>Add guests</article>
-                                <button className='custom-btn-main-search'>
+                                <aside className="filter-search-circle">
                                     <SvgHandler svgName={SEARCH} />
-                                </button>
+                                </aside>
                             </section>
                             <span></span>
                         </section>
@@ -156,12 +156,12 @@ export function AppHeader() {
                 </section>
                 <section>
                     <form className="filter-unraveled-container" onSubmit={onSubmit} >
-                        <section className="flex justify-center align-center" style={{ width: "100%", gap: 20 }} >
+                        <section className="flex justify-center align-center" style={{ width: '100%', gap: 20 }} >
                             <LocationFilter filterBy={filterBy} onSubmit={onSubmit} handleChange={handleChange} />
                             <DateFilter filterBy={filterBy} setFilterDates={setFilterDates} />
                             <GuestCountFilter filterBy={filterBy} setFilterBy={setFilterBy} />
                         </section>
-                        <input type="submit" style={{ marginInline: "auto" }} />
+                        <input type="submit" style={{ marginInline: 'auto' }} />
                     </form>
                 </section>
             </header>
