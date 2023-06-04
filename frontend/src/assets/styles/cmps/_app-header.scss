@@ -265,7 +265,7 @@
 
         & .filter-expanded {
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
             grid-column: 2;
             // background-color: #ff385c;
@@ -308,7 +308,7 @@
 
 
             & :last-child {
-                margin-inline-end: 9px;
+                margin-inline-end: 3.8px;
             }
         }
     }
