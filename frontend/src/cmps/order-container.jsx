@@ -15,7 +15,8 @@ export function OrderContainer({ stay }) {
     const cleaningFee = utilService.getRandomIntInclusive(100, 500)
     const serviceFee = utilService.getRandomIntInclusive(100, 500)
     const totalPrice = nightsPrice + cleaningFee + serviceFee
-    const guestsObject = useSelector(storeState => storeState.stayModule.guests)
+    const guestsObject = useSelector(storeState => storeState.userModule.guests)
+    console.log(guestsObject)
     function _createButtonDivContainer() {
         const divElements = []
         for (let i = 0; i < 100; i++) {
@@ -23,6 +24,7 @@ export function OrderContainer({ stay }) {
         }
         return divElements
     }
+
     let guestsString = ''
     if (Object.keys(guestsObject).length === 0) {
         guestsString = '1 guest'
