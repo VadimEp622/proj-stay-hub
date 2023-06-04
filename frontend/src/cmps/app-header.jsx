@@ -134,14 +134,14 @@ export function AppHeader() {
 
                         <section className="filter-container">
                             <span></span>
-                            <section className="filter">
+                            <button className="filter">
                                 <article>Anywhere</article>
                                 <article>Any week</article>
                                 <article>Add guests</article>
                                 <aside className="filter-search-circle">
                                     <SvgHandler svgName={SEARCH} />
                                 </aside>
-                            </section>
+                            </button>
                             <span></span>
                         </section>
 
