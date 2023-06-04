@@ -11,7 +11,7 @@ export default function SimpleMap({ loc }) {
     console.log('loc', loc)
     const [center, setCenter] = useState({ lat: loc.lat, lng: loc.lng })
     const [zoom, setZoom] = useState(12)
-    const Popper = () => <div className="map-popper"><AiFillHome/><div className="popper-wedge"></div></div>
+    // const Popper = () => <div className="map-popper"><AiFillHome/><div className="popper-wedge"></div></div>
     return (
         <div>
             <div style={{ height: '60vh', width: '100%' }}>

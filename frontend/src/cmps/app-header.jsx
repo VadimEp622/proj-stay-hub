@@ -6,6 +6,11 @@ import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service.js'
 import { login, logout, setGuests, signup } from '../store/user.actions.js'
 import { LoginSignup } from './login-signup.jsx'
 
+// header filter -> expanded-filter -> filter-modals
+// filter-bar -> main-filter
+
+
+
 import { LOGO, USER_NAV_BARS, USER_NAV_PROFILE, SEARCH } from '../services/svg.service.js'
 
 
@@ -25,32 +30,30 @@ export function AppHeader() {
     const [filterBy, setFilterBy] = useState({ filterText: '', from: '', to: '', capacity: '' })
 
 
-
-
-    async function onLogin(credentials) {
-        try {
-            const user = await login(credentials)
-            showSuccessMsg(`Welcome: ${user.fullname}`)
-        } catch (err) {
-            showErrorMsg('Cannot login')
-        }
-    }
-    async function onSignup(credentials) {
-        try {
-            const user = await signup(credentials)
-            showSuccessMsg(`Welcome new user: ${user.fullname}`)
-        } catch (err) {
-            showErrorMsg('Cannot signup')
-        }
-    }
-    async function onLogout() {
-        try {
-            await logout()
-            showSuccessMsg(`Bye now`)
-        } catch (err) {
-            showErrorMsg('Cannot logout')
-        }
-    }
+    // async function onLogin(credentials) {
+    //     try {
+    //         const user = await login(credentials)
+    //         showSuccessMsg(`Welcome: ${user.fullname}`)
+    //     } catch (err) {
+    //         showErrorMsg('Cannot login')
+    //     }
+    // }
+    // async function onSignup(credentials) {
+    //     try {
+    //         const user = await signup(credentials)
+    //         showSuccessMsg(`Welcome new user: ${user.fullname}`)
+    //     } catch (err) {
+    //         showErrorMsg('Cannot signup')
+    //     }
+    // }
+    // async function onLogout() {
+    //     try {
+    //         await logout()
+    //         showSuccessMsg(`Bye now`)
+    //     } catch (err) {
+    //         showErrorMsg('Cannot logout')
+    //     }
+    // }
 
 
     function onSubmit(ev) {
@@ -108,63 +111,62 @@ export function AppHeader() {
 
     return (
         <Fragment>
-
             <header className="app-header-container full main-layout">
-                <nav className='app-header'>
-                    {/* fix img src */}
-                    <section className="navbar-container">
-                        {
-                            routes.map(route =>
-                                <NavLink
-                                    className={"page-navbar"}
-                                    key={route.path}
-                                    to={route.path}
-                                >
-                                    {
-                                        route.isLogo &&
+                <section>
+                    <nav className='app-header'>
+                        <section className="logo-container">
+                            {
+                                routes.map(route =>
+                                    route.isLogo &&
+                                    <NavLink
+                                        className={"page-navbar"}
+                                        key={route.path}
+                                        to={route.path}
+                                    >
                                         <article className="logo-svg">
                                             <SvgHandler svgName={LOGO} />
                                             <span>{route.label}</span>
                                         </article>
-                                    }
-                                    {!route.isLogo && route.label}
-                                </NavLink>
-                            )
-                        }
-                    </section>
-
-                    <section className="search-navbar-container">
-                        <span></span>
-                        <section className='search-navbar'>
-                            <article>Anywhere</article>
-                            <article>Any week</article>
-                            <article>Add guests</article>
-                            <button className='custom-btn-main-search'>
-                                <SvgHandler svgName={SEARCH} />
-                            </button>
+                                    </NavLink>
+                                )
+                            }
                         </section>
-                        <span></span>
-                    </section>
 
-
-                    <section className="user-navbar-container">
-                        <section className="user-navbar">
-                            <article className="bars"><SvgHandler svgName={USER_NAV_BARS} /></article>
-                            <article className="profile"><SvgHandler svgName={USER_NAV_PROFILE} /></article>
+                        <section className="filter-container">
+                            <span></span>
+                            <section className='search-navbar'>
+                                <article>Anywhere</article>
+                                <article>Any week</article>
+                                <article>Add guests</article>
+                                <button className='custom-btn-main-search'>
+                                    <SvgHandler svgName={SEARCH} />
+                                </button>
+                            </section>
+                            <span></span>
                         </section>
-                    </section>
-                </nav>
+
+
+                        <section className="user-container">
+                            <section className="user-navbar">
+                                <article className="bars"><SvgHandler svgName={USER_NAV_BARS} /></article>
+                                <article className="profile"><SvgHandler svgName={USER_NAV_PROFILE} /></article>
+                            </section>
+                        </section>
+                    </nav>
+                </section>
+                <section>
+                    <form className="filter-unraveled-container" onSubmit={onSubmit} >
+                        <section className="flex justify-center align-center" style={{ width: "100%", gap: 20 }} >
+                            <LocationFilter filterBy={filterBy} onSubmit={onSubmit} handleChange={handleChange} />
+                            <DateFilter filterBy={filterBy} setFilterDates={setFilterDates} />
+                            <GuestCountFilter filterBy={filterBy} setFilterBy={setFilterBy} />
+                        </section>
+                        <input type="submit" style={{ marginInline: "auto" }} />
+                    </form>
+                </section>
             </header>
 
-            <form className="filter-container" onSubmit={onSubmit} >
-                <section className="flex justify-center align-center" style={{ width: "100%", gap: 20 }} >
-                    <LocationFilter filterBy={filterBy} onSubmit={onSubmit} handleChange={handleChange} />
-                    <DateFilter filterBy={filterBy} setFilterDates={setFilterDates} />
-                    <GuestCountFilter filterBy={filterBy} setFilterBy={setFilterBy} />
-                </section>
-                <input type="submit" style={{ marginInline: "auto" }} />
-            </form>
 
-        </Fragment>
+        </Fragment >
     )
 }
