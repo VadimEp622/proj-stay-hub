@@ -226,9 +226,9 @@ function _createDemoStay(name, summary, type, loc, imgUrls) {
                 rate: 5,
                 by: {
                     _id: "u102",
-                    fullname: "user2",
+                    fullname: "Jack",
                     date: "May 2023",
-                    imgUrl: "/img/img2.jpg"
+                    imgUrl: "https://res.cloudinary.com/dgzyxjapv/image/upload/v1670246635/stayby/avatars/male/60.jpg"
                 }
             },
             {
@@ -242,12 +242,12 @@ function _createDemoStay(name, summary, type, loc, imgUrls) {
                     location: 4.8,
                     value: 4.4
                 },
-                rate: 5,
+                rate: 4,
                 by: {
-                    _id: "u102",
-                    fullname: "user2",
-                    date: "May 2023",
-                    imgUrl: "/img/img2.jpg"
+                    _id: "u103",
+                    fullname: "Patricia",
+                    date: "September 2022",
+                    imgUrl: "https://res.cloudinary.com/dgzyxjapv/image/upload/v1670246635/stayby/avatars/female/14.jpg"
                 }
             },
             {
@@ -263,10 +263,10 @@ function _createDemoStay(name, summary, type, loc, imgUrls) {
                 },
                 rate: 5,
                 by: {
-                    _id: "u102",
-                    fullname: "user2",
-                    date: "May 2023",
-                    imgUrl: "/img/img2.jpg"
+                    _id: "u104",
+                    fullname: "Lina & Alexis",
+                    date: "January 2023",
+                    imgUrl: "https://res.cloudinary.com/dgzyxjapv/image/upload/v1670246635/stayby/avatars/female/63.jpg"
                 }
             },
             {
@@ -282,10 +282,10 @@ function _createDemoStay(name, summary, type, loc, imgUrls) {
                 },
                 rate: 5,
                 by: {
-                    _id: "u102",
-                    fullname: "user2",
+                    _id: "u105",
+                    fullname: "Juan Carlo",
                     date: "May 2023",
-                    imgUrl: "/img/img2.jpg"
+                    imgUrl: "https://res.cloudinary.com/dgzyxjapv/image/upload/v1670246635/stayby/avatars/male/51.jpg"
                 }
             },
         ],
