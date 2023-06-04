@@ -19,9 +19,9 @@ import { ReactComponent as Dishes } from '../assets/img/airbnb-assets/dishes.svg
 import { ReactComponent as Gym } from '../assets/img/airbnb-assets/gym.svg'
 import { ReactComponent as HotTub } from '../assets/img/airbnb-assets/hot-tub.svg'
 import { ReactComponent as Pets } from '../assets/img/airbnb-assets/pets-allowed.svg'
-import { ReactComponent as Refrigirator } from '../assets/img/airbnb-assets/refrigerator.svg'
+import { ReactComponent as Refrigerator } from '../assets/img/airbnb-assets/refrigerator.svg'
 import { ReactComponent as Wifi } from '../assets/img/airbnb-assets/wifi.svg'
-import { ReactComponent as AirCond } from '../assets/img/airbnb-assets/air-conditioning.svg'
+import { ReactComponent as AirCond } from '../assets/img/airbnb-assets/air-cond.svg'
 
 
 
@@ -82,7 +82,8 @@ const SvgHandler = ({ svgName }) => {
                 return <AirCond />
             case 'Gym':
                 return <Gym />
-
+            case 'Refrigerator':
+                return <Refrigerator />
             default:
                 return <Heart16 />
         }
