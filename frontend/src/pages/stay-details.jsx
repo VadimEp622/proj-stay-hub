@@ -39,13 +39,19 @@ export function StayDetails() {
         return (
             <>
                 {reviewsToDisplay.map((review, idx) => (
-                    <div className="review-container" key={idx}>
-                        {review.by.fullname}
-                        {review.by.date}
-                        {/* <img src={review.by.imgUrl} alt="host image" /> */}
-                        <div className="description-container">
-                            {review.txt}
-                        </div>
+                    <div className="review-container flex" key={idx}>
+                        <section>
+                            <section className='mini-user flex'>
+                                <img src={review.by.imgUrl} alt="host image" />
+                                <section>
+                                    <h4 className='fs16'>{review.by.fullname}</h4>
+                                    <span>{review.by.date}</span>
+                                </section>
+                            </section>
+                            <div className="description-container fs16">
+                                {review.txt}
+                            </div>
+                        </section>
                     </div>
                 ))}
             </>
@@ -192,7 +198,7 @@ export function StayDetails() {
                             </div>
                         ))}
                     </div>
-                    <section className='reviews-sum'>
+                    <section className='reviews-sum flex'>
                         {displayReviews()}
                         {stay.reviews.length > 6 && <button>Show all {stay.reviews.length} reviews</button>}
                     </section>

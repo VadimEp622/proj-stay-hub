@@ -83,15 +83,11 @@
                     .heart-svg {
                         width: 16px;
                     }
-
-                    span {
-                        text-decoration: underline;
-                    }
                 }
             }
 
             span {
-                font-family: cereal_W_Bd;
+                font-family: cereal_W_Md;
                 text-decoration: underline;
             }
         }
@@ -147,16 +143,13 @@
         padding-top: 48px;
         display: grid;
         grid-template-columns: 1.45fr 1fr;
-
         border-bottom: 1px solid #dddddd;
-        // gap: 14px;
 
         .about-host {
-            border-bottom: 1px solid $clr4;
+            border-bottom: $border-bottom;
             padding-top: 48px;
             padding-bottom: 24px;
 
-            // height: 100px;
             & img {
                 width: 53px;
                 height: 53px;
@@ -178,7 +171,7 @@
         .stay-highlights {
             grid-column: 1;
             padding: 32px 0;
-            border-bottom: 1px solid $clr4;
+            border-bottom: $border-bottom;
 
             .highlight {
                 margin-bottom: 24px;
@@ -197,7 +190,7 @@
             grid-column: 1;
             padding-top: 48px;
             padding-bottom: 48px;
-            border-bottom: 1px solid $clr4;
+            border-bottom: $border-bottom;
             scroll-margin-top: 80px;
 
             h3 {
@@ -236,9 +229,25 @@
         }
     }
 
-    .review-container {
+    .reviews-sum {
         scroll-margin-top: 80px;
         padding-top: 24px;
+        flex-wrap: wrap;
+
+    }
+
+    .review-container {
+        flex-basis: 50%;
+        padding: 0 rem(8px);
+        margin-bottom: 2.5rem;
+        
+
+        img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50px;
+            object-fit: cover;
+        }
 
         .review-title {
             font-family: cereal_W_Bd;
@@ -246,6 +255,15 @@
 
             span {
                 margin-left: 16px;
+            }
+        }
+
+        .mini-user {
+            gap: rem(12px);
+            margin-bottom: 12px;
+
+            span {
+                color: $clr3;
             }
         }
 
@@ -261,7 +279,7 @@
                 grid-template-columns: repeat(2, 1fr);
 
                 .review-rate {
-                   
+
                     .progress-bar-container {
                         background-color: rgb(221, 221, 221);
                         position: relative;
@@ -282,6 +300,7 @@
 
                         }
                     }
+
                     span {
                         font-family: cereal_W_Bd;
                         color: rgb(34, 34, 34);
@@ -289,9 +308,14 @@
                 }
             }
         }
+
+        .description-container {
+            margin-right: 8.333%;
+        }
+
         .reviews-sum {
             padding-bottom: 48px;
-            border-bottom: 1px solid $clr4;
+            border-bottom: $border-bottom;
         }
     }
 
@@ -299,7 +323,7 @@
         scroll-margin-top: 80px;
         padding-top: 48px;
         padding-bottom: 48px;
-        border-bottom: 1px solid $clr4;
+        border-bottom: $border-bottom;
 
         h3 {
             padding-bottom: 24px;
@@ -318,31 +342,31 @@
             background-color: $clr1;
             border-radius: 50%;
             position: relative;
-      
+
             .popper-wedge {
-              background: linear-gradient(135deg, rgba(0, 0, 0, 0) 50%, rgb(255, 56, 92) 50%);
-              border-radius: 2px;
-              bottom: -4px;
-              height: 12px;
-              left: 50%;
-              position: absolute;
-              transform: translate(-50%, 0px) rotate(45deg);
-              width: 12px;
-              z-index: autol
+                background: linear-gradient(135deg, rgba(0, 0, 0, 0) 50%, rgb(255, 56, 92) 50%);
+                border-radius: 2px;
+                bottom: -4px;
+                height: 12px;
+                left: 50%;
+                position: absolute;
+                transform: translate(-50%, 0px) rotate(45deg);
+                width: 12px;
+                z-index: autol
             }
-      
+
             svg {
-              height: 22px;
-              width: 22px;
-              display: block;
-              color: white;
+                height: 22px;
+                width: 22px;
+                display: block;
+                color: white;
             }
-          }
-        
+        }
+
     }
 
     .host-details-container {
-        & img {
+        img {
             width: 53px;
             height: 53px;
             border-radius: 50px;
