@@ -8,6 +8,7 @@ import { ReactComponent as Share } from '../assets/img/share/share.svg'
 import { ReactComponent as Heart16 } from '../assets/img/heart/heart-16.svg'
 import { ReactComponent as RedHeart16 } from '../assets/img/heart/heart-red-16.svg'
 import { ReactComponent as Search } from '../assets/img/search/search.svg'
+import { ReactComponent as Search2 } from '../assets/img/search/search-2.svg'
 import { ReactComponent as WhiteStrokedHeart } from '../assets/img/heart/heart-white.svg'
 import { ReactComponent as RedStrokedHeart } from '../assets/img/heart/heart-red.svg'
 import { ReactComponent as Location } from '../assets/img/location/location.svg'
@@ -30,7 +31,7 @@ import { ReactComponent as AirCond } from '../assets/img/airbnb-assets/air-cond.
 
 import {
     HEART_16, RED_HEART_16, LOGO, RED_HEART, SEARCH, SHARE, STAR, STAR_16, USER_NAV_BARS,
-    USER_NAV_PROFILE, WHITE_HEART, LOCATION, KEY, CHECKIN
+    USER_NAV_PROFILE, WHITE_HEART, LOCATION, KEY, CHECKIN, SEARCH_2
 } from '../services/svg.service'
 
 
@@ -56,6 +57,8 @@ const SvgHandler = ({ svgName }) => {
                 return <RedHeart16 />
             case SEARCH:
                 return <Search />
+            case SEARCH_2:
+                return <Search2 />
             case WHITE_HEART:
                 return <WhiteStrokedHeart />
             case RED_HEART:

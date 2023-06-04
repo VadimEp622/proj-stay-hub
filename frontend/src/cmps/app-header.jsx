@@ -11,7 +11,7 @@ import { LoginSignup } from './login-signup.jsx'
 
 
 
-import { LOGO, USER_NAV_BARS, USER_NAV_PROFILE, SEARCH } from '../services/svg.service.js'
+import { LOGO, USER_NAV_BARS, USER_NAV_PROFILE, SEARCH, SEARCH_2 } from '../services/svg.service.js'
 
 
 // import logo from '../assets/img/logo/logo-airbnb.svg'
@@ -211,7 +211,31 @@ export function AppHeader() {
                     {/* THIS WILL HAVE 850px WIDTH!!! when 850px WIDTH becomes the width of center column of main layout grid, do Media queries!! */}
                     <section className="filter-expanded-container" >
                         <section className="filter-expanded">
-                            <span style={{}}>{selectedExperienceTab} here</span>
+                            {/* <span style={{}}>{selectedExperienceTab} here</span> */}
+                            <article className="where">
+                                <h3>Where</h3>
+                                <input placeholder="Search Destinations"></input>
+                            </article>
+                            <article className="check-in">
+                                <h3>Check in</h3>
+                                <span></span>
+                            </article>
+                            <article className="check-out">
+                                <h3>Check out</h3>
+                                <span></span>
+                            </article>
+                            <article className="who">
+                                <h3>Who</h3>
+                                <span></span>
+                            </article>
+                            <article>
+                                <button className="btn-main-search">
+                                    <section className="svg-container">
+                                        <SvgHandler svgName={SEARCH_2} />
+                                    </section>
+                                    <span>Search</span>
+                                </button>
+                            </article>
                         </section>
                     </section>
 

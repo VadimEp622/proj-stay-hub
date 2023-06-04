@@ -268,11 +268,48 @@
             justify-content: center;
             align-items: center;
             grid-column: 2;
-            background-color: #ff385c;
+            // background-color: #ff385c;
             height: 66px;
             border-radius: 32px;
             border: 1px solid rgb(221, 221, 221);
             background-color: rgb(235, 235, 235);
+
+
+            .btn-main-search {
+                background-color: $main-clr1;
+                padding-inline: 16px;
+                padding-block: 16px;
+                color: $gray-clr-1;
+                border: none;
+                border-radius: 32px;
+                white-space: nowrap;
+                height: rem(48px);
+                width: rem(111.750px);
+                display: flex;
+                align-items: center;
+                gap: calc($padding-small + 1px);
+
+
+                & :first-child {
+                    display: inline-block;
+                    width: 16px;
+                    height: 16px;
+                }
+
+                & :last-child {
+                    font-size: rem(16px);
+                    font-weight: 600;
+                }
+            }
+
+            .btn-main-search:hover {
+                cursor: pointer;
+            }
+
+
+            & :last-child {
+                margin-inline-end: 9px;
+            }
         }
     }
 }
