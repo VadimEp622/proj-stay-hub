@@ -30,6 +30,7 @@ export function AppHeader() {
     const [filterBy, setFilterBy] = useState({ filterText: '', from: '', to: '', capacity: '' })
     const [isFilterExpanded, setIsFilterExpanded] = useState(true)
     const [selectedExperienceTab, setSelectedExperienceTab] = useState('stays')
+    const [isUnclickableBg, setIsUnclickableBg] = useState(true)
 
     // async function onLogin(credentials) {
     //     try {
@@ -121,6 +122,12 @@ export function AppHeader() {
         setSelectedExperienceTab(`${field}`)
     }
 
+
+    function onSetIsUnclickableBg(ev, isUnclickable) {
+        ev.preventDefault()
+        setIsUnclickableBg(isUnclickable)
+    }
+
     return (
         <Fragment>
             <header className="app-header-container full main-layout">
@@ -192,7 +199,6 @@ export function AppHeader() {
                             <span></span>
                         </section>
 
-
                         <section className="user-container">
                             <section className="user-navbar">
                                 <article className="bars"><SvgHandler svgName={USER_NAV_BARS} /></article>
@@ -200,6 +206,9 @@ export function AppHeader() {
                             </section>
                         </section>
                     </nav>
+
+
+
                 </section>
                 <section>
                     <form className="filter-unraveled-container" onSubmit={onSubmit} >
@@ -214,6 +223,15 @@ export function AppHeader() {
             </header>
 
 
+            {
+                isUnclickableBg &&
+                <aside
+                    className="unclickable-background"
+                    onClick={(ev) => onSetIsUnclickableBg(ev, false)}
+                ></aside>
+            }
+
+            
         </Fragment >
     )
 }

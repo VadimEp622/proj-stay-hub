@@ -106,7 +106,7 @@ export function UpperFilter() {
 
     return (
         <section className="label-filter">
-            {jpegFiles.map(({ fileName, module }) => (
+            {/* {jpegFiles.map(({ fileName, module }) => (
                 <div className="upper-filter-icon">
                     <img
                         key={fileName}
@@ -117,7 +117,7 @@ export function UpperFilter() {
                     {fileName}
                 </div>
             ))}
-            <CarouselImage3 imgs={jpegFiles} />
+            <CarouselImage3 imgs={jpegFiles} /> */}
         </section>
     );
 }
