@@ -51,4 +51,10 @@
     opacity: 1;
 }
 
-/* Add any additional styles as needed */
+.carousel-image-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    align-items: center;
+    justify-content: center;
+}

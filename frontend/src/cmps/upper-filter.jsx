@@ -3,21 +3,6 @@ import { CarouselImage2 } from "./carousel2";
 
 export function UpperFilter() {
     const [jpegFiles, setJpegFiles] = useState([]);
-    const windowWidth = useRef(window.innerWidth);
-    const carouselRef = useRef(null);
-
-    useEffect(() => {
-        const handleResize = () => {
-            windowWidth.current = window.innerWidth;
-            carouselRef.current?.reInit();
-        };
-
-        window.addEventListener("resize", handleResize);
-
-        return () => {
-            window.removeEventListener("resize", handleResize);
-        };
-    }, [])
 
     useEffect(() => {
         const fileNames = [
@@ -118,21 +103,20 @@ export function UpperFilter() {
         return <div>Loading...</div>;
     }
 
-
     return (
         <section className="label-filter">
-            {/* {jpegFiles.map(({ fileName, module }) => (
+            {jpegFiles.map(({ fileName, module }) => (
                 <div className="upper-filter-icon">
-                    {fileName}
                     <img
                         key={fileName}
                         src={module.default}
                         alt={fileName}
                         style={{ width: "24px", height: "24px" }}
                     />
-                </div> */}
-            {/* <CarouselImage2 imgs={jpegFiles} /> */}
-            {/* ))} */}
+                    {fileName}
+                </div>
+            ))}
+            <CarouselImage2 imgs={jpegFiles} />
         </section>
     );
 }

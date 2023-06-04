@@ -1,85 +1,90 @@
-// import React, { useEffect, useRef, useState } from "react";
-// import Carousel from "react-multi-carousel";
-// import "react-multi-carousel/lib/styles.css";
-// import { Link } from "react-router-dom";
+import React, { useEffect, useRef, useState } from "react";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+import { Link } from "react-router-dom";
 
-// export function CarouselImage2({ jpegFiles }) {
-//     const windowWidth = useRef(window.innerWidth);
-//     const carouselRef = useRef(null);
+export function CarouselImage2({ jpegFiles }) {
+    const windowWidth = useRef(window.innerWidth)
+    const carouselRef = useRef(null)
+    console.log(windowWidth.current)
+    const handleResize = () => {
+        windowWidth.current = window.innerWidth
+        carouselRef.current?.reInit()
+        console.log('have entered handleResize')
+    }
 
-//     useEffect(() => {
-//         const handleResize = () => {
-//             windowWidth.current = window.innerWidth;
-//             carouselRef.current?.reInit();
-//         };
+    useEffect(() => {
+        window.addEventListener("resize", handleResize)
+        handleResize()
+        return () => {
+            window.removeEventListener("resize", handleResize)
+        }
+    }, [windowWidth])
 
-//         window.addEventListener("resize", handleResize);
+    console.log(Math.ceil(windowWidth.current / 80))
+    const responsive = {
+        desktop: {
+            breakpoint: { max: 3000, min: 1024 },
+            items: Math.ceil(windowWidth.current / 80)
+        },
+        tablet: {
+            breakpoint: { max: 1024, min: 464 },
+            items: Math.ceil(windowWidth.current / 80)
+        },
+        mobile: {
+            breakpoint: { max: 464, min: 0 },
+            items: Math.ceil(windowWidth.current / 80)
+        }
+    };
+    console.log('items', responsive.desktop.items)
+    if (!jpegFiles) return null
 
-//         return () => {
-//             window.removeEventListener("resize", handleResize);
-//         };
-//     }, []);
-
-//     const responsive = {
-//         desktop: {
-//             breakpoint: { max: 3000, min: 1024 },
-//             items: Math.ceil(windowWidth.current / 80)
-//         },
-//         tablet: {
-//             breakpoint: { max: 1024, min: 464 },
-//             items: Math.ceil(windowWidth.current / 80)
-//         },
-//         mobile: {
-//             breakpoint: { max: 464, min: 0 },
-//             items: Math.ceil(windowWidth.current / 80)
-//         }
-//     };
-
-//     return (
-//         <Carousel
-//             additionalTransfrom={0}
-//             autoPlaySpeed={3000}
-//             showDots={false}
-//             centerMode={false}
-//             className="carousel"
-//             containerClass="container"
-//             dotListClass="dot-container"
-//             draggable={false}
-//             focusOnSelect={false}
-//             infinite={true}
-//             itemClass=""
-//             keyBoardControl
-//             minimumTouchDrag={80}
-//             slidesToSlide={1}
-//             pauseOnHover
-//             renderArrowsWhenDisabled={false}
-//             renderButtonGroupOutside={false}
-//             renderDotsOutside={false}
-//             rewind={false}
-//             rewindWithAnimation={false}
-//             rtl={false}
-//             shouldResetAutoplay
-//             sliderClass=""
-//             responsive={responsive}
-//             swipeable
-//             ref={carouselRef}
-//         >
-//             {jpegFiles.map(({ fileName, module }) => (
-//                 <img
-//                     key={fileName}
-//                     src={module.default}
-//                     alt={fileName}
-//                     style={{
-//                         display: "block",
-//                         height: "24px",
-//                         margin: "auto",
-//                         width: "24px"
-//                     }}
-//                 />
-//             ))}
-//         </Carousel>
-//     );
-// }
+    return (
+        <Carousel
+            additionalTransfrom={0}
+            autoPlaySpeed={3000}
+            showDots={false}
+            centerMode={false}
+            className="carousel-image-wrapper"
+            containerClass=""
+            dotListClass="dot-container"
+            draggable={false}
+            focusOnSelect={false}
+            infinite={true}
+            itemClass=""
+            keyBoardControl
+            minimumTouchDrag={80}
+            slidesToSlide={1}
+            pauseOnHover
+            renderArrowsWhenDisabled={false}
+            renderButtonGroupOutside={false}
+            renderDotsOutside={false}
+            rewind={false}
+            rewindWithAnimation={false}
+            rtl={false}
+            shouldResetAutoplay
+            sliderClass=""
+            responsive={responsive}
+            swipeable
+            ref={carouselRef}
+        >
+            {jpegFiles.map(({ fileName, module }) => (
+                <img
+                    key={fileName}
+                    src={module.default}
+                    alt={fileName}
+                    style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        height: "24px",
+                        margin: "auto",
+                        width: "24px"
+                    }}
+                />
+            ))}
+        </Carousel>
+    );
+}
 
 // import { useState, useRef, useEffect } from 'react';
 

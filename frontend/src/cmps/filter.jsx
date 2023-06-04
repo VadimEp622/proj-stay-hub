@@ -5,27 +5,35 @@ import { useSelector } from 'react-redux';
 import { updateFilterBy } from '../store/stay.actions';
 import { utilService } from '../services/util.service';
 
+function displayAmenities(stays) {
+    if (!stays || !Array.isArray(stays)) return []
+    const allAmenities = stays.reduce((amenities, stay) => {
+        stay.amenities.forEach((amenity) => {
+            if (!amenities.includes(amenity)) {
+                amenities.push(amenity)
+            }
+        })
+        return amenities
+    }, [])
+    return allAmenities
+}
+
+
 export function FilterModal({ stays, setIsFilterModalOpen }) {
     // const [filterByToEdit, setFilterByToEdit] = useState(stayService.getDefaultFilter())
     const [priceRange, setPriceRange] = useState(utilService.checkMinMaxPrices(stays))
     const [initialPriceRange, setInitialPriceRange] = useState(utilService.checkMinMaxPrices(stays))
-    const [filterByToSend, setFilterByToSend] = useState({})
+    const [filterByToSend, setFilterByToSend] = useState({ amenities: [] })
     const [amenities, setAmenities] = useState([])
 
     useEffect(() => {
-        setFilterByToSend(prevFilter => ({ ...prevFilter, minPrice: priceRange.minPrice, maxPrice: priceRange.maxPrice, }));
+        setFilterByToSend(prevFilter => ({ ...prevFilter, minPrice: priceRange.minPrice, maxPrice: priceRange.maxPrice }))
     }, [priceRange]);
 
-    function displayAmenities(stays) {
-        const allAmenities = stays.reduce((amenities, stay) => {
-            stay.amenities.forEach((amenity) => {
-                if (!amenities.includes(amenity)) {
-                    amenities.push(amenity);
-                }
-            })
-            return amenities;
-        }, [])
-    }
+    useEffect(() => {
+        const allAmenities = displayAmenities(stays)
+        setAmenities(allAmenities)
+    }, [stays])
 
 
     // const elInputRef = useRef(null)
@@ -33,24 +41,27 @@ export function FilterModal({ stays, setIsFilterModalOpen }) {
     //     elInputRef.current.focus()
     // }, [])
 
-    // useEffect(() => {
-    //     onSetFilter(filterByToEdit)
-    // }, [filterByToEdit])
 
     function handleChange({ target }) {
-        const { name: field, type, checked } = target
-        const value = (type === 'number') ? (+target.value || '') :
-            (type === 'checkbox') ? checked :
-                target.value
-        setFilterByToSend((prevFilter) => ({ ...prevFilter, [field]: value }))
-    }
+        const { name: field, type, checked } = target;
+        const value =
+            type === "number" ? +target.value || "" : type === "checkbox" ? checked : target.value;
 
-    // function onLabelChange(selectedLabels) {
-    //     setFilterByToEdit((prevFilter) => ({
-    //         ...prevFilter,
-    //         labels: selectedLabels,
-    //     }))
-    // }
+        setFilterByToSend((prevFilter) => {
+            if (amenities.includes(field)) {
+                if (checked) {
+                    return { ...prevFilter, amenities: [...prevFilter.amenities, field] };
+                } else {
+                    const updatedAmenities = prevFilter.amenities.filter((amenity) => amenity !== field);
+                    return { ...prevFilter, amenities: updatedAmenities };
+                }
+            } else {
+                return { ...prevFilter, [field]: value };
+            }
+        });
+
+        console.log(filterByToSend);
+    }
 
 
     function handleSliderChange(values) {
@@ -118,21 +129,21 @@ export function FilterModal({ stays, setIsFilterModalOpen }) {
                         <input type="number" name="maxPrice" value={priceRange.maxPrice} onChange={handleInputChange} />
                     </div>
                 </div>
-                {/* <div className="amenities-container">
-                        <h2>Amenities</h2>
-                        <h4>Essentials</h4>
-                        {allAmenities.map((amenity) => (
-                            <label key={amenity}>
-                                <input
-                                    type="checkbox"
-                                    value={amenity}
-                                    checked={filterByToSend.amenities.includes(amenity)}
-                                    onChange={handleChange}
-                                />
-                                {amenity}
-                            </label>
-                        ))} */}
-                {/* </div> */}
+                <div className="amenities-container">
+                    <h2>Amenities</h2>
+                    <h4>Essentials</h4>
+                    {displayAmenities(stays).map((amenity) => (
+                        <label key={amenity}>
+                            <input
+                                type="checkbox"
+                                name={amenity}
+                                onChange={handleChange}
+                                value={amenity}
+                            />
+                            {amenity}
+                        </label>
+                    ))}
+                </div>
             </form>
 
         </section >
