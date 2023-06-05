@@ -218,17 +218,17 @@ export function AppHeader() {
                             </article>
                             <article className="check-in">
                                 <h3>Check in</h3>
-                                <span></span>
+                                <span>Add dates</span>
                             </article>
                             <article className="check-out">
                                 <h3>Check out</h3>
-                                <span></span>
+                                <span>Add dates</span>
                             </article>
                             <article className="who">
                                 <h3>Who</h3>
-                                <span></span>
+                                <span>Add guests</span>
                             </article>
-                            <article>
+                            <article className="search">
                                 <button className="btn-main-search">
                                     <section className="svg-container">
                                         <SvgHandler svgName={SEARCH_2} />
