@@ -23,6 +23,7 @@ import { ReactComponent as Pets } from '../assets/img/airbnb-assets/pets-allowed
 import { ReactComponent as Refrigerator } from '../assets/img/airbnb-assets/refrigerator.svg'
 import { ReactComponent as Wifi } from '../assets/img/airbnb-assets/wifi.svg'
 import { ReactComponent as AirCond } from '../assets/img/airbnb-assets/air-cond.svg'
+import { ReactComponent as TickDecline } from '../assets/img/tick-decline/tick-decline.svg'
 
 
 
@@ -31,7 +32,7 @@ import { ReactComponent as AirCond } from '../assets/img/airbnb-assets/air-cond.
 
 import {
     HEART_16, RED_HEART_16, LOGO, RED_HEART, SEARCH, SHARE, STAR, STAR_16, USER_NAV_BARS,
-    USER_NAV_PROFILE, WHITE_HEART, LOCATION, KEY, CHECKIN, SEARCH_2
+    USER_NAV_PROFILE, WHITE_HEART, LOCATION, KEY, CHECKIN, SEARCH_2, TICK_DECLINE
 } from '../services/svg.service'
 
 
@@ -87,6 +88,8 @@ const SvgHandler = ({ svgName }) => {
                 return <Gym />
             case 'Refrigerator':
                 return <Refrigerator />
+            case TICK_DECLINE:
+                return <TickDecline />
             default:
                 return <Heart16 />
         }
