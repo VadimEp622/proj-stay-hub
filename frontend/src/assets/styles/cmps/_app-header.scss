@@ -47,9 +47,7 @@
             }
 
             & :last-child {
-                // flex: 1.211 1 auto;
-                flex: 1.323 1 auto;
-                padding-inline-start: 1px;
+                flex: 1.211 1 auto;
             }
 
             & .filter {
@@ -61,17 +59,8 @@
                 justify-content: center;
                 align-items: center;
 
-                transform: scaleX(100%);
-
-                margin-block: 1px;
-                height: 48px;
-                // width: 353px;
-                width: 351px;
-                // max-width: 353px;   
+                width: 353px;
                 padding: 0;
-
-                // padding-inline-start: -50px;
-
 
                 border: 1px solid $gray-clr2;
                 border-radius: 40px;
@@ -90,14 +79,11 @@
 
                     &:is(:nth-child(1), :nth-child(2)) {
                         font-family: montserrat semibold;
-                        // padding-inline-start: 20px;
-
+                        padding-inline-start: 20px;
                         margin-inline-end: -2px;
                         transform: scaleX(90%);
                         color: $black-clr2;
                     }
-
-
 
                     &:nth-child(3) {
                         font-family: montserrat;
@@ -146,15 +132,13 @@
                     padding: 0px;
                     align-self: center;
                     margin-block: calc($padding-small + 2px);
-                    // ********** DOWN HERE *************
-                    margin-inline-end: calc($padding-small + 2.2px);
+                    margin-inline-end: calc($padding-small + 2px);
                     max-width: 32px;
 
                     &>* {
                         margin-inline: auto;
                         margin-block: auto;
-                        height: 102%;
-                        min-width: 13px;
+                        height: 100%;
                     }
                 }
             }
@@ -165,9 +149,7 @@
 
             & .filter-expanded {
                 height: fit-content;
-                transform: scaleX(99%);
-                margin-inline-end: 10.5px;
-                
+
                 & .experiences-tab {
                     display: flex;
                     font-size: rem(16px);
@@ -365,6 +347,7 @@
                     height: 18px;
                     border: none;
                     background-color: inherit;
+                    padding:0px;
                 }
 
                 input:focus {
