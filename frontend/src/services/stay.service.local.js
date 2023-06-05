@@ -233,7 +233,7 @@ function _createDemoStay(name, summary, type, loc, imgUrls) {
             },
             {
                 id: "madeId",
-                txt: "Very helpful hosts. Cooked traditional Lorem, ipsum dolor sit amet consectetur adipisicing elit. Unde, incidunt corrupti illo animi hic voluptatum corporis ullam natus! Qui, expedita animi magnam harum iusto mollitia itaque voluptas unde obcaecati aut.",
+                txt: "Love this place, was soo peaceful and we had a marvelous time. Perfect little kitchen and beautiful views to enjoy. We loved all the activities they offer and driving around the local area, we can`t wait to go back.",
                 reviewInputs: {
                     cleanliness: 4.2,
                     communication: 1,
@@ -252,7 +252,7 @@ function _createDemoStay(name, summary, type, loc, imgUrls) {
             },
             {
                 id: "madeId",
-                txt: "Very helpful hosts. Cooked traditional Lorem, ipsum dolor sit amet consectetur adipisicing elit. Unde, incidunt corrupti illo animi hic voluptatum corporis ullam natus! Qui, expedita animi magnam harum iusto mollitia itaque voluptas unde obcaecati aut.",
+                txt: "We had the best honeymoon we could have asked for here!",
                 reviewInputs: {
                     cleanliness: 4.8,
                     communication: 4,
@@ -271,7 +271,7 @@ function _createDemoStay(name, summary, type, loc, imgUrls) {
             },
             {
                 id: "madeId",
-                txt: "Very helpful hosts. Cooked traditional Lorem, ipsum dolor sit amet consectetur adipisicing elit. Unde, incidunt corrupti illo animi hic voluptatum corporis ullam natus! Qui, expedita animi magnam harum iusto mollitia itaque voluptas unde obcaecati aut.",
+                txt: "It was a dream of a stay. The hosts go above and beyond. Such kind, earnest interactions and the best tips/advice. The property itself is ideal for an adventure that is also peaceful and calming. I’d recommend to anyone whose looking to leave their trip refreshed and with new perspective. Everything was thoughtfully prepared and the communication was excellent and accurate.",
                 reviewInputs: {
                     cleanliness: 4.8,
                     communication: 5,

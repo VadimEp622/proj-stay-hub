@@ -1,0 +1,25 @@
+.reviews-sum {
+    scroll-margin-top: 80px;
+    padding-top: 40px;
+    flex-wrap: wrap;
+    padding-bottom: 48px;
+    border-bottom: $border-bottom;
+}
+
+.review-container {
+    margin-bottom: 40px;
+}
+
+.description-container {
+    margin-right: 8.333%;
+
+    button {
+        display: inline-block;
+        padding: 10px 20px;
+        border: none;
+        text-align: center;
+        text-decoration: none;
+        cursor: pointer;
+        background-color: inherit;
+    }
+}

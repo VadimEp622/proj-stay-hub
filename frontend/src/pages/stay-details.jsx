@@ -6,6 +6,7 @@ import { showErrorMsg } from "../services/event-bus.service.js"
 import { reviewService } from '../services/review.service.js'
 import { OrderContainer } from '../cmps/order-container.jsx'
 import { DetailsHeader } from '../cmps/details-header.jsx'
+import { DetailsReviews } from '../cmps/details-reviews.jsx'
 import { getDate } from '../services/stay.service.js'
 import SvgHandler from '../cmps/svg-handler.jsx'
 import { HEART_16, RED_HEART_16, SHARE, STAR, STAR_16, LOCATION, CHECKIN, KEY } from '../services/svg.service.js'
@@ -16,6 +17,7 @@ export function StayDetails() {
     const [stay, setStay] = useState(null)
     const { stayId } = useParams()
     const navigate = useNavigate()
+    const reviewsToDisplay = stay?.reviews?.slice(0, 6)
     const [isHeartClicked, setIsHeartClicked] = useState(false)
     const heartSvg = isHeartClicked ? RED_HEART_16 : HEART_16
 
@@ -32,30 +34,6 @@ export function StayDetails() {
             showErrorMsg('Cannot load stay');
             navigate('/stay');
         }
-    }
-
-    function displayReviews() {
-        const reviewsToDisplay = (stay.reviews.length > 6) ? stay.reviews.slice(0, 6) : stay.reviews
-        return (
-            <>
-                {reviewsToDisplay.map((review, idx) => (
-                    <div className="review-container flex" key={idx}>
-                        <section>
-                            <section className='mini-user flex'>
-                                <img src={review.by.imgUrl} alt="host image" />
-                                <section>
-                                    <h4 className='fs16'>{review.by.fullname}</h4>
-                                    <span>{review.by.date}</span>
-                                </section>
-                            </section>
-                            <div className="description-container fs16">
-                                {review.txt}
-                            </div>
-                        </section>
-                    </div>
-                ))}
-            </>
-        )
     }
 
     function displayReviewsCriteria() {
@@ -202,8 +180,10 @@ export function StayDetails() {
                         ))}
                     </div>
                     <section className='reviews-sum flex'>
-                        {displayReviews()}
-                        {stay.reviews.length > 6 && <button>Show all {stay.reviews.length} reviews</button>}
+                        <DetailsReviews 
+                         reviewsToDisplay={reviewsToDisplay}
+                         key={reviewsToDisplay.id}
+                         />
                     </section>
                 </section>}
             <section className="map-container" id='location'>
