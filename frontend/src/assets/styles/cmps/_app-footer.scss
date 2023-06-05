@@ -1,9 +1,14 @@
 .app-footer {
-    background-color: #111;
+    background-color: rgb(255, 255, 255);
     color: $clr4;
-    // padding: 20px;
-    // margin: 10px;
+    padding-top: 13px;
+    padding-bottom: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
     text-align: center;
+    padding: 0 80px;
 
     & p {
         margin: 0;

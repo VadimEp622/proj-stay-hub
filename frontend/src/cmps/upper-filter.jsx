@@ -102,13 +102,13 @@ export function UpperFilter() {
 
     return (
         <section className="filter-div">
-            {/* {images.map((image, idx) => {
+            {images.map((image, idx) => {
                 return <div key={idx} className={`links-box ${image.label === selectedFilter && "selected-box"}`} onClick={() => handleClick(image.label)}>
                     <img src={image.imgSrc} className="links-img" />
                     <p className={`links-label ${image.label === selectedFilter && "selected-label"}`}>{image.label}</p>
                 </div>
             })
-            } */}
+            }
         </section>
     )
 }

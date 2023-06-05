@@ -23,7 +23,7 @@ export function RootCmp() {
                 </Routes>
             </main>
             <AppFooter />
-            
+
         </section>
     )
 }
