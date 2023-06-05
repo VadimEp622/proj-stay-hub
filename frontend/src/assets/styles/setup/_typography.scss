@@ -4,6 +4,21 @@
 // } 
 
 @font-face {
+    font-family: cereal-std;
+    src: url(../../fonts/airbnb-fonts/Airbnb_Cereal-Book.ttf);
+}
+
+@font-face {
+    font-family: cereal-medium;
+    src: url(../../fonts/airbnb-fonts/Airbnb_Cereal-Medium.ttf);
+}
+
+@font-face {
+    font-family: cereal-bold;
+    src: url(../../fonts/airbnb-fonts/Airbnb_Cereal-Bold.ttf);
+}
+
+@font-face {
     font-family: cereal;
     src: url(../../fonts/Cereal/AirbnbCereal_W_XBd.otf);
 }
@@ -30,16 +45,6 @@
 @font-face {
     font-family: montserrat semibold;
     src: url(../../fonts/Montserrat/Montserrat-SemiBold.ttf);
-}
-
-@font-face {
-    font-family: circular-bold;
-    src: url(../../fonts/circular-std-font-family/CircularStd-Bold.ttf);
-}
-
-@font-face {
-    font-family: circular-medium;
-    src: url(../../fonts/circular-std-font-family/CircularStd-Medium.ttf);
 }
 
 @font-face {
