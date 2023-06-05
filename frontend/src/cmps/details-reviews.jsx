@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export function DetailsReviews({ reviewsToDisplay, MAX_LENGTH = 100 }) {
+export function DetailsReviews({ reviewsToDisplay, MAX_LENGTH = 120 }) {
     const [expanded, setExpanded] = useState(reviewsToDisplay.map(() => false));
   
     function handleExpand(idx) {
