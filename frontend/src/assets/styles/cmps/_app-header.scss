@@ -20,7 +20,7 @@
 
                 .logo-svg {
                     display: flex;
-                    color: #ff385c;
+                    color: $main-clr0;
                     gap: $padding-small;
                     padding-inline-end: 75px;
 
@@ -62,7 +62,7 @@
                 width: 353px;
                 padding: 0;
 
-                border: 1px solid rgb(221, 221, 221);
+                border: 1px solid $gray-clr2;
                 border-radius: 40px;
 
                 box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.05);
@@ -82,14 +82,14 @@
                         padding-inline-start: 20px;
                         margin-inline-end: -2px;
                         transform: scaleX(90%);
-                        color: #222222;
+                        color: $black-clr2;
                     }
 
                     &:nth-child(3) {
                         font-family: montserrat;
                         margin-inline-end: 3px;
                         transform: scaleX(91%);
-                        color: #717171;
+                        color: $gray-clr0;
                     }
                 }
 
@@ -102,7 +102,7 @@
                         left: 0;
                         // transform: scaleY(2);
                         // margin-inline-start: 3px;
-                        color: rgb(221, 221, 221);
+                        color: $gray-clr2;
 
                         font-size: 8px;
                         transform: scaleY(4);
@@ -115,7 +115,7 @@
                         position: absolute;
                         transform: scaleY(2);
                         right: 0;
-                        color: rgb(221, 221, 221);
+                        color: $gray-clr2;
                         margin-inline-end: -17px;
                         font-size: 8px;
                         transform: scaleY(4);
@@ -124,8 +124,8 @@
                 }
 
                 & .filter-search-circle {
-                    background-color: #ff385c;
-                    color: rgb(255, 255, 255);
+                    background-color: $main-clr0;
+                    color: $gray-clr-1;
                     border-radius: 50%;
                     height: 32px;
                     width: 32px;
@@ -166,7 +166,7 @@
                         position: absolute;
                         bottom: -7px;
                         height: fit-content;
-                        border-bottom: 2px solid black;
+                        border-bottom: 2px solid $black-clr0;
                     }
 
                     &>*:not(.selected):hover ::after {
@@ -176,7 +176,7 @@
                         position: absolute;
                         bottom: -7px;
                         height: fit-content;
-                        border-bottom: 2px solid rgb(138, 138, 138);
+                        border-bottom: 2px solid $gray-clr4;
                     }
 
                     & article {
@@ -273,13 +273,19 @@
             // background-color: #ff385c;
             height: 66px;
             border-radius: 32px;
-            border: 1px solid rgb(221, 221, 221);
-            background-color: rgb(235, 235, 235);
+            border: 1px solid $gray-clr2;
+            background-color: $gray-clr3;
             width: 850px;
 
-            // &>*:not(:last-child) {
-            //     border-right: 1px solid black;
-            // }
+            &>*:not(:last-child, :nth-child(4))::after {
+                content: '';
+                border-right: 1px solid $gray-clr2;
+                height: 32px;
+                position: absolute;
+                inset: 17.195px 0px 0px 0px;
+            }
+
+
 
             .btn-main-search {
                 background-color: $main-clr1;
@@ -314,6 +320,8 @@
             }
 
             &>* {
+                position: relative;
+
                 & h3 {
                     font-size: rem(12px);
                     height: rem(16px);
@@ -361,6 +369,7 @@
                 padding-block: rem(14px);
                 padding-inline-start: rem(24px);
                 padding-inline-end: rem(23.9px);
+
                 &>* {
                     width: rem(97.56px);
                 }
@@ -374,6 +383,7 @@
                 // margin-inline-end: 3.8px;
                 // padding-inline-end: 6px;
             }
+
         }
     }
 }
