@@ -248,16 +248,20 @@ export function AppHeader() {
                     }
 
                 </section>
-                <section>
-                    <form className="filter-unraveled-container" onSubmit={onSubmit} >
-                        <section className="flex justify-center align-center" style={{ width: '100%', gap: 20 }} >
-                            <LocationFilter filterBy={filterBy} onSubmit={onSubmit} handleChange={handleChange} />
-                            <DateFilter filterBy={filterBy} setFilterDates={setFilterDates} />
-                            <GuestCountFilter filterBy={filterBy} setFilterBy={setFilterBy} />
-                        </section>
-                        <input type="submit" style={{ marginInline: 'auto' }} />
-                    </form>
-                </section>
+
+                {
+                    isFilterExpanded &&
+                    <section>
+                        <form className="filter-unraveled-container" onSubmit={onSubmit} >
+                            <section className="flex justify-center align-center" style={{ width: '100%', gap: 20 }} >
+                                <LocationFilter filterBy={filterBy} onSubmit={onSubmit} handleChange={handleChange} />
+                                <DateFilter filterBy={filterBy} setFilterDates={setFilterDates} />
+                                <GuestCountFilter filterBy={filterBy} setFilterBy={setFilterBy} />
+                            </section>
+                            <input type="submit" style={{ marginInline: 'auto' }} />
+                        </form>
+                    </section>
+                }
             </header>
 
 
