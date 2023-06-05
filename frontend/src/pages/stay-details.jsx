@@ -111,7 +111,13 @@ export function StayDetails() {
                     <section className='about-host flex space-between'>
                         <section className='host-info'>
                             <h2>Entire villa hosted by {stay.owner ? stay.owner : 'Juan'}</h2>
-                            <span>4 guests • 1 bedroom • 2 beds • 1 bath</span>
+                            <span>4 guests</span>
+                            <span className='dot'>•</span>
+                            <span>1 bedroom</span>
+                            <span className='dot'>•</span>
+                            <span>2 beds</span>
+                            <span className='dot'>•</span>
+                            <span>1 bath</span>
                         </section>
                         <img src="https://a0.muscache.com/im/pictures/user/59da4e65-e5a0-4fde-b4d9-e48f20c1ba43.jpg?im_w=240" alt="host image" />
                     </section>
@@ -145,8 +151,7 @@ export function StayDetails() {
                             {stay.amenities.map(amenity => {
                                 return <div className="amenity fs16 flex" key={amenity}>
                                     <SvgHandler svgName={amenity} />
-                                    {console.log(amenity)}
-                                    {amenity}
+                                    <span>{amenity}</span>
                                 </div>
                             })}
                         </div>

@@ -10,6 +10,7 @@
 html {
     font-family: cereal-std;
     line-height: 1.6;
+    letter-spacing: 0.0225rem;
     color: $clr2;
     scroll-behavior: smooth;
 }
@@ -43,8 +44,9 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: cereal-bold;
-    letter-spacing: 0.05rem;
+    font-family: cereal-std;
+    font-weight: 600;
+    letter-spacing: 0.0225rem;
     color: $clr2;
     margin: 0;
     line-height: 1;
@@ -62,7 +64,8 @@ p {
 }
 
 a {
-    font-family: cereal-bold;
+    font-family: cereal-std;
+    font-weight: 600;
     text-decoration: none;
     color: inherit;
 }

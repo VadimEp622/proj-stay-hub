@@ -61,8 +61,20 @@ function getEmptyStay() {
 }
 
 export function getDate(timeStamp) {
-    return new Intl.DateTimeFormat('en-US', { year: 'numeric', month: '2-digit', day: '2-digit' }).format(timeStamp)
-}
+    const formatter = new Intl.DateTimeFormat('en-US', {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit'
+    })
+  
+    const formattedDate = formatter.format(timeStamp)
+    return formattedDate.replace(/^0(\d)/, '$1')
+  }
+  
+// Delete the following if no issues appears with the above function
+// export function getDate(timeStamp) {
+//     return new Intl.DateTimeFormat('en-US', { year: 'numeric', month: '2-digit', day: '2-digit' }).format(timeStamp)
+// }
 
 function calculateHowManyNights(checkInDate, checkOutDate) {
     const firstDate = new Date(checkInDate)

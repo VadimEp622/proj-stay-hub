@@ -7,7 +7,7 @@
         border: 1px solid #00000030;
         border-radius: rem(13px);
         height: max-content;
-        padding: rem(24px);
+        padding: rem(28px);
         box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
         width: 83%;
         min-width: 285px;
@@ -17,6 +17,7 @@
         .order-container-header {
             display: flex;
             @include between();
+            margin-bottom: rem(22px);
     
             .order-rate {
                 
@@ -66,8 +67,13 @@
                 .check-out {
                     flex-direction: column;
                     background-color: transparent;
-                    padding: 7px 12px;
+                    padding: 9px 12px;
                     width: 50%
+                }
+
+                .uppertext {
+                    font-size: rem(10px);
+                    font-family: cereal-medium;
                 }
             }
     

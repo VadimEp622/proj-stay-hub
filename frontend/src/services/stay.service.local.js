@@ -94,6 +94,21 @@ function _createDemoStays() {
     if (gStays.length > 0) return gStays
 
     gStays.push(_createDemoStay(
+        'Casa Indy village paradise',
+        'Entire guesthouse hosted by Mia',
+        'House',
+        { country: "Cyprus", countryCode: "CY", city: "Limassol", lat: 35.1264, lng: 33.4299 },
+        [
+            'https://a0.muscache.com/im/pictures/619197e3-3427-4ee2-83d1-c04fcd80720d.jpg',
+            'https://a0.muscache.com/im/pictures/770dfa27-f8f8-43cd-a40a-f3d308ff2255.jpg',
+            'https://a0.muscache.com/im/pictures/23744814-ec6c-43e2-84a8-b038f73efe44.jpg',
+            'https://a0.muscache.com/im/pictures/33a44003-0782-491b-9155-96461fd04fba.jpg',
+            'https://a0.muscache.com/im/pictures/6c937234-a28f-4ee2-9310-7567b450fbf2.jpg',
+            'https://a0.muscache.com/im/pictures/757a5d77-6f26-4c56-a621-585613adb288.jpg',
+        ]
+    ))
+
+    gStays.push(_createDemoStay(
         'Once in a lifetime experience - bedroom room view beside seaside cliff',
         'A single bedroom cabin with an enormous glass window facing the ocean from a cliff',
         'Cabin',

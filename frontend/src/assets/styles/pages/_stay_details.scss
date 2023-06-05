@@ -12,15 +12,16 @@
         }
 
         .info-bar {
-            font-family: cereal_W_Md;
-            margin-top: 8px;
+            font-family: cereal-std;
+            font-weight: 600;
+            margin-top: 10px;
             padding: 0;
 
             .info {
                 padding: 0;
                 align-items: center;
                 justify-content: center;
-                gap: 0.5em;
+                gap: 0.42em;
 
                 .review-star {
                     width: 12px;
@@ -34,7 +35,7 @@
 
             .btns {
                 align-items: baseline;
-                gap: 1em;
+                gap: 1.225em;
 
                 span {
 
@@ -42,7 +43,7 @@
                 }
 
                 .share-btn {
-                    gap: 0.4em;
+                    gap: 0.7em;
                     position: relative;
                     align-items: center;
                     justify-content: center;
@@ -68,7 +69,7 @@
                 }
 
                 .save-btn {
-                    gap: 0.4em;
+                    gap: 0.7em;
                     align-items: center;
                     justify-content: center;
                     cursor: pointer;
@@ -146,7 +147,7 @@
     .details-container {
         padding-top: 48px;
         display: grid;
-        grid-template-columns: 1.45fr 1fr;
+        grid-template-columns: 1.4fr 1fr;
         border-bottom: 1px solid #dddddd;
 
         .about-host {
@@ -163,11 +164,15 @@
             .host-info {
                 h2 {
                     font-size: rem(22px);
+                    margin-bottom: 0.3em;
                 }
 
                 & span {
                     font-size: rem(16px);
                 }
+            }
+            .dot {
+                margin: 0 0.15rem;
             }
         }
 
@@ -178,13 +183,14 @@
             border-bottom: $border-bottom;
 
             .highlight {
-                margin-bottom: 24px;
+                margin-bottom: 8px;
 
                 .highlight-txt {
                     margin-left: 16px;
 
                     h3 {
                         font-size: rem(16px);
+                        margin-bottom: 0.475rem;
                     }
                 }
             }
@@ -192,27 +198,30 @@
 
         .amenities {
             grid-column: 1;
-            padding-top: 48px;
-            padding-bottom: 48px;
+            padding-top: 50px;
+            padding-bottom: 50px;
             border-bottom: $border-bottom;
             scroll-margin-top: 80px;
 
             h3 {
+                font-size: rem(22px);
                 padding-bottom: 24px;
                 margin: 0;
+                letter-spacing: 0.0125rem;
             }
 
             .amenities-list {
                 display: grid;
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: 1fr 0.95fr;
 
                 .amenity {
-                    align-items: center;
+                    align-items:self-end;
                     padding-bottom: 16px;
 
                     &.amenity * {
-                        margin: 0 0.25em;
+                        margin-right: 1em;
                         font-size: rem(16px);
+                        letter-spacing: 0.0125rem;
                     }
                 }
 
@@ -245,7 +254,8 @@
         }
 
         .review-title {
-            font-family: cereal-bold;
+            font-family: cereal-std;
+            font-weight: 600;
             margin-bottom: 32px;
 
             span {
