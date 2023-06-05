@@ -28,12 +28,13 @@ import { store } from '../store/store.js'
 import { CLOSE_EXPANDED_HEADER, OPEN_EXPANDED_HEADER, SET_UNCLICKABLE_BG } from '../store/system.reducer.js'
 
 export function AppHeader() {
+    // const isUnclickableBg = useSelector(storeState => storeState.systemModule.system)
     const user = useSelector(storeState => storeState.userModule.user)
     const [filterBy, setFilterBy] = useState({ filterText: '', from: '', to: '', capacity: '' })
-    // const [isFilterExpanded, setIsFilterExpanded] = useState(false)
     const isFilterExpanded = useSelector(storeState => storeState.systemModule.isFilterExpanded)
     const [selectedExperienceTab, setSelectedExperienceTab] = useState('stays')
-    const isUnclickableBg = useSelector(storeState => storeState.systemModule.system)
+
+
 
     // async function onLogin(credentials) {
     //     try {
@@ -129,7 +130,6 @@ export function AppHeader() {
 
     function onExpandedFilter(ev) {
         ev.preventDefault()
-        // setIsFilterExpanded(true)
         store.dispatch({ type: SET_UNCLICKABLE_BG })
         store.dispatch({ type: OPEN_EXPANDED_HEADER })
     }
