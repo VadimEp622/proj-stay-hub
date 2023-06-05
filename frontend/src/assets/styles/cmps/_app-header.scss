@@ -165,7 +165,9 @@
 
             & .filter-expanded {
                 height: fit-content;
-
+                transform: scaleX(99%);
+                margin-inline-end: 10.5px;
+                
                 & .experiences-tab {
                     display: flex;
                     font-size: rem(16px);
