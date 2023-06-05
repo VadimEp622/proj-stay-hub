@@ -1,5 +1,6 @@
 import { Link, NavLink } from 'react-router-dom'
 import { useSelector } from 'react-redux'
+import { format } from 'date-fns'
 
 import routes from '../routes.js'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service.js'
@@ -72,7 +73,8 @@ export function AppHeader() {
         }
         if (filterBy.from) {
             filter.from = filterBy.from
-            filter.to = filterBy.to
+            if (!filterBy.to) filter.to = filterBy.from + utilService.getTimeDiffBy('day')//if picked ONLY check-in date
+            else filter.to = filterBy.to
         }
         if (filterBy.capacity) filter.capacity = filterBy.capacity
         if (filterBy.guests) setGuests(filterBy.guests)
@@ -101,11 +103,11 @@ export function AppHeader() {
             }
 
             if (filter.to === undefined) {
-                if (filter.from === undefined) {
-                    filter.to = ''
-                } else {
-                    filter.to = filter.from + utilService.getTimeDiffBy('day')
-                }
+                // if (filter.from === undefined) {
+                filter.to = ''
+                // } else {
+                //     filter.to = filter.from + utilService.getTimeDiffBy('day')
+                // }
             }
             else {
                 filter.to = Date.parse(range.to)
@@ -221,22 +223,22 @@ export function AppHeader() {
                                 {/* <span style={{}}>{selectedExperienceTab} here</span> */}
                                 <article className="where">
                                     <h3>Where</h3>
-                                    <input placeholder="Search Destinations"></input>
+                                    <input name="filterText" value={filterBy.filterText} onChange={handleChange} placeholder="Search Destinations"></input>
                                 </article>
                                 <article className="check-in">
                                     <h3>Check in</h3>
-                                    <span>Add dates</span>
+                                    <span>{filterBy.from ? format(filterBy.from, 'y-MM-dd') : 'Add dates'}</span>
                                 </article>
                                 <article className="check-out">
                                     <h3>Check out</h3>
-                                    <span>Add dates</span>
+                                    <span>{filterBy.to ? format(filterBy.to, 'y-MM-dd') : 'Add dates'}</span>
                                 </article>
                                 <article className="who">
                                     <h3>Who</h3>
                                     <span>Add guests</span>
                                 </article>
                                 <article className="search">
-                                    <button className="btn-main-search">
+                                    <button className="btn-main-search" onClick={(ev)=>onSubmit(ev)}>
                                         <section className="svg-container">
                                             <SvgHandler svgName={SEARCH_2} />
                                         </section>
@@ -254,11 +256,11 @@ export function AppHeader() {
                     <section>
                         <form className="filter-unraveled-container" onSubmit={onSubmit} >
                             <section className="flex justify-center align-center" style={{ width: '100%', gap: 20 }} >
-                                <LocationFilter filterBy={filterBy} onSubmit={onSubmit} handleChange={handleChange} />
-                                <DateFilter filterBy={filterBy} setFilterDates={setFilterDates} />
+                                {/* <LocationFilter filterBy={filterBy} onSubmit={onSubmit} handleChange={handleChange} /> */}
+                                <DateFilter setFilterDates={setFilterDates} />
                                 <GuestCountFilter filterBy={filterBy} setFilterBy={setFilterBy} />
                             </section>
-                            <input type="submit" style={{ marginInline: 'auto' }} />
+                            {/* <input type="submit" style={{ marginInline: 'auto' }} /> */}
                         </form>
                     </section>
                 }

@@ -348,11 +348,17 @@
                     border: none;
                     background-color: inherit;
                     padding: 0px;
+                    z-index: 1;
+                    position: relative;
                 }
 
                 input:focus {
                     outline: none;
                 }
+
+                // input:hover {
+                //     cursor:text;
+                // }
             }
 
             & .check-in,

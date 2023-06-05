@@ -3,35 +3,22 @@ import { useRef, useState, createElement, useEffect } from 'react'
 import { DateRange, SelectRangeEventHandler, DayPicker } from 'react-day-picker'
 import styles from 'react-day-picker/dist/style.module.css'
 
-export function DateFilter({ filterBy, setFilterDates }) {
-    const [selectedRange, setSelectedRange] = useState('')
-    const [fromValue, setFromValue] = useState('')
-    const [toValue, setToValue] = useState('')
-
-
+export function DateFilter({setFilterDates }) {
     const date = new Date()
     const today = startOfDay(date)
+    const [selectedRange, setSelectedRange] = useState('')
+
+
 
     useEffect(() => {
         setFilterDates(selectedRange)
     }, [selectedRange])
 
 
+
     function handleRangeSelect(range) {
         setSelectedRange(range)
-        if (range?.from) {
-            setFromValue(format(range.from, 'y-MM-dd'))
-        } else {
-            setFromValue('')
-        }
-        if (range?.to) {
-            setToValue(format(range.to, 'y-MM-dd'))
-        } else {
-            setToValue('')
-        }
     }
-
-
 
     function isDayDisabled(day) {
         return day < today
@@ -49,18 +36,9 @@ export function DateFilter({ filterBy, setFilterDates }) {
     }
 
 
+
     return (
-        <section className="filter-date-picker" style={{width:"fit-content"}}>
-            <section className="flex space-evenly">
-                <article>
-                    <label>Check In</label>
-                    <p>{fromValue}</p>
-                </article>
-                <article>
-                    <label>Check Out</label>
-                    <p>{toValue}</p>
-                </article>
-            </section>
+        <section className="filter-date-picker" style={{ width: "fit-content" }}>
             <DayPicker
                 mode="range"
                 numberOfMonths={2}
