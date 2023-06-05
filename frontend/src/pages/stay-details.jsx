@@ -180,10 +180,10 @@ export function StayDetails() {
                         ))}
                     </div>
                     <section className='reviews-sum'>
-                        <DetailsReviews 
-                         reviewsToDisplay={reviewsToDisplay}
-                         key={reviewsToDisplay.id}
-                         />
+                        <DetailsReviews
+                            reviewsToDisplay={reviewsToDisplay}
+                            key={reviewsToDisplay.id}
+                        />
                     </section>
                 </section>}
             <section className="map-container" id='location'>
@@ -208,10 +208,10 @@ export function StayDetails() {
                         <section className='fs16 flex align-center'>
                             <SvgHandler svgName={STAR} />
                             <span>
-                                 {stay.reviews.length}
+                                {stay.reviews.length}
                             </span>
                             <span>
-                                  {capitalizedReviewsString} 
+                                {capitalizedReviewsString}
                             </span>
                             <SvgHandler svgName={STAR} />
                             <span>
@@ -232,6 +232,33 @@ export function StayDetails() {
                         </section>
                         <section className="things-to-know fs16">
                             <div className="house-rules">
+                                <p>When I finished my studies at interior design in Florence I returned to the place that inspires me the most, Santorini.</p>
+                                <h4>During your stay</h4>
+                                <p>
+                                    We live permanently at Casa San Gabriel with our family and are on site to answer any questions our guests have.
+                                    We cook for our guests once a week and hold a weekly pizza night.
+                                </p>
+
+                                <h4>Christina is a Superhost</h4>
+                                <p>
+                                    Superhosts are experienced, highly rated hosts who are committed to providing great stays for guests.
+                                </p>
+                            </div>
+
+                        </section>
+                    </section>
+                    <section className='owner-communication flex'>
+                        <h3 className='fs16'>Language: English</h3>
+                        <h3 className='fs16'>Response rate: 100%</h3>
+                        <h3 className='fs16'>Response time: within a couple of hours</h3>
+                        <button className='fs16'>Contact Host</button>
+                        <section className='protection-info flex align-center fs12'>
+                            <img src="https://res.cloudinary.com/dnhn4zsy0/image/upload/v1685913828/airbnb-orotect_ohgcnp.svg" alt="airbnb protect" />
+                            <span>To protect your payment, never transfer money or communicate outside of the Airbnb website or app.</span>
+                        </section>
+                    </section>
+                    {/* <section className="things-to-know fs16">
+                            <div className="house-rules">
                                 <p>House rules</p>
                                 <p>Check-in after 4:00 PM</p>
                                 <p>Checkout before 10:00 AM</p>
@@ -248,18 +275,8 @@ export function StayDetails() {
                                 <p>Free cancellation before {getDate(stay.checkIn)}</p>
                                 <p>Review the Host's full cancellation policy which applies even if you cancel for illness for disruptions caused by COVID-19</p>
                             </div>
-                        </section>
-                    </section>
-                    <section className='owner-communication flex'>
-                        <h3 className='fs16'>Language: English</h3>
-                        <h3 className='fs16'>Response rate: 100%</h3>
-                        <h3 className='fs16'>Response time: within a couple of hours</h3>
-                        <button className='fs16'>Contact Host</button>
-                        <section className='protection-info flex align-center fs12'>
-                            <img src="https://res.cloudinary.com/dnhn4zsy0/image/upload/v1685913828/airbnb-orotect_ohgcnp.svg" alt="airbnb protect" />
-                            <span>To protect your payment, never transfer money or communicate outside of the Airbnb website or app.</span>
-                        </section>
-                    </section>
+                        </section> */}
+
                 </div>
 
             </section>
