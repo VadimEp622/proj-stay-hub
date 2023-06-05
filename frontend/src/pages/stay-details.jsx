@@ -179,7 +179,7 @@ export function StayDetails() {
                             </div>
                         ))}
                     </div>
-                    <section className='reviews-sum flex'>
+                    <section className='reviews-sum'>
                         <DetailsReviews 
                          reviewsToDisplay={reviewsToDisplay}
                          key={reviewsToDisplay.id}
