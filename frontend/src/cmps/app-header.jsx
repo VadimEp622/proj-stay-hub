@@ -24,13 +24,16 @@ import { updateFilterBy } from '../store/stay.actions.js'
 import { DateFilter } from './app-header-date-filter.jsx'
 import { utilService } from '../services/util.service.js'
 import { GuestCountFilter } from './guest-count-filter.jsx'
+import { store } from '../store/store.js'
+import { CLOSE_EXPANDED_HEADER, OPEN_EXPANDED_HEADER, SET_UNCLICKABLE_BG } from '../store/system.reducer.js'
 
 export function AppHeader() {
     const user = useSelector(storeState => storeState.userModule.user)
     const [filterBy, setFilterBy] = useState({ filterText: '', from: '', to: '', capacity: '' })
-    const [isFilterExpanded, setIsFilterExpanded] = useState(true)
+    // const [isFilterExpanded, setIsFilterExpanded] = useState(false)
+    const isFilterExpanded = useSelector(storeState => storeState.systemModule.isFilterExpanded)
     const [selectedExperienceTab, setSelectedExperienceTab] = useState('stays')
-    // const [isUnclickableBg, setIsUnclickableBg] = useState(true)
+    const isUnclickableBg = useSelector(storeState => storeState.systemModule.system)
 
     // async function onLogin(credentials) {
     //     try {
@@ -123,14 +126,17 @@ export function AppHeader() {
     }
 
 
-    // function onSetIsUnclickableBg(ev, isUnclickable) {
-    //     ev.preventDefault()
-    //     setIsUnclickableBg(isUnclickable)
-    // }
+
+    function onExpandedFilter(ev) {
+        ev.preventDefault()
+        // setIsFilterExpanded(true)
+        store.dispatch({ type: SET_UNCLICKABLE_BG })
+        store.dispatch({ type: OPEN_EXPANDED_HEADER })
+    }
 
     return (
         <Fragment>
-            <header className="app-header-container full main-layout">
+            <header className="app-header-container full main-layout always-clickable-bg">
                 <section>
                     <nav className="app-header">
                         <section className="logo-container">
@@ -155,7 +161,7 @@ export function AppHeader() {
                             <span></span>
                             {
                                 !isFilterExpanded &&
-                                <button className="filter">
+                                <button className="filter" onClick={onExpandedFilter}>
                                     <article>Anywhere</article>
                                     <article>Any week</article>
                                     <article>Add guests</article>
@@ -207,38 +213,39 @@ export function AppHeader() {
                         </section>
                     </nav>
 
-
                     {/* THIS WILL HAVE 850px WIDTH!!! when 850px WIDTH becomes the width of center column of main layout grid, do Media queries!! */}
-                    <section className="filter-expanded-container" >
-                        <section className="filter-expanded">
-                            {/* <span style={{}}>{selectedExperienceTab} here</span> */}
-                            <article className="where">
-                                <h3>Where</h3>
-                                <input placeholder="Search Destinations"></input>
-                            </article>
-                            <article className="check-in">
-                                <h3>Check in</h3>
-                                <span>Add dates</span>
-                            </article>
-                            <article className="check-out">
-                                <h3>Check out</h3>
-                                <span>Add dates</span>
-                            </article>
-                            <article className="who">
-                                <h3>Who</h3>
-                                <span>Add guests</span>
-                            </article>
-                            <article className="search">
-                                <button className="btn-main-search">
-                                    <section className="svg-container">
-                                        <SvgHandler svgName={SEARCH_2} />
-                                    </section>
-                                    <span>Search</span>
-                                </button>
-                            </article>
+                    {
+                        isFilterExpanded &&
+                        <section className="filter-expanded-container" >
+                            <section className="filter-expanded">
+                                {/* <span style={{}}>{selectedExperienceTab} here</span> */}
+                                <article className="where">
+                                    <h3>Where</h3>
+                                    <input placeholder="Search Destinations"></input>
+                                </article>
+                                <article className="check-in">
+                                    <h3>Check in</h3>
+                                    <span>Add dates</span>
+                                </article>
+                                <article className="check-out">
+                                    <h3>Check out</h3>
+                                    <span>Add dates</span>
+                                </article>
+                                <article className="who">
+                                    <h3>Who</h3>
+                                    <span>Add guests</span>
+                                </article>
+                                <article className="search">
+                                    <button className="btn-main-search">
+                                        <section className="svg-container">
+                                            <SvgHandler svgName={SEARCH_2} />
+                                        </section>
+                                        <span>Search</span>
+                                    </button>
+                                </article>
+                            </section>
                         </section>
-                    </section>
-
+                    }
 
                 </section>
                 <section>

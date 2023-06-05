@@ -9,12 +9,16 @@ import { UpperFilter } from '../cmps/upper-filter.jsx'
 import { StayList } from '../cmps/stay-list.jsx'
 import { DatePicker } from '../cmps/date-picker.jsx'
 import { FilterModal } from '../cmps/filter.jsx'
+import { store } from '../store/store.js'
+import { CLOSE_EXPANDED_HEADER, REMOVE_UNCLICKABLE_BG } from '../store/system.reducer.js'
 
 export function StayIndex() {
     const stays = useSelector(storeState => storeState.stayModule.stays)
     const filterBy = useSelector(storeState => storeState.stayModule.filterBy)
     const [isFilterModalOpen, setIsFilterModalOpen] = useState(false)
     const isLoadingRef = useRef(true)
+    const isUnclickableBg = useSelector(storeState => storeState.systemModule.system)
+    const isFilterExpanded = useSelector(storeState => storeState.systemModule.isFilterExpanded)
     useEffect(() => {
         isLoadingRef.current = true
         loadStays()
@@ -67,6 +71,12 @@ export function StayIndex() {
         setIsFilterModalOpen(true)
     }
 
+
+    function handleUnexpand(ev) {
+        ev.preventDefault()
+        store.dispatch({ type: CLOSE_EXPANDED_HEADER })
+    }
+
     return (
         <section className="stay-index">
             <button className="filter-opener" onClick={openFilterModal}>
@@ -74,6 +84,13 @@ export function StayIndex() {
                     Filters
                 </div>
             </button>
+
+            {
+                isFilterExpanded &&
+                <button className="header-filter-unexpand" onClick={handleUnexpand}>
+                    Un-expand header
+                </button>
+            }
             {isFilterModalOpen && (<FilterModal stays={stays}
                 setIsFilterModalOpen={setIsFilterModalOpen} />)}
             <UpperFilter />
