@@ -263,9 +263,11 @@
         grid-template-columns: auto 850px auto;
         // background-color: aqua;
 
+
         & .filter-expanded {
             display: flex;
-            justify-content: space-between;
+            // justify-content: space-between;
+            justify-content: center;
             align-items: center;
             grid-column: 2;
             // background-color: #ff385c;
@@ -273,6 +275,7 @@
             border-radius: 32px;
             border: 1px solid rgb(221, 221, 221);
             background-color: rgb(235, 235, 235);
+            width: 850px;
 
             // &>*:not(:last-child) {
             //     border-right: 1px solid black;
@@ -287,7 +290,8 @@
                 border-radius: 32px;
                 white-space: nowrap;
                 height: rem(48px);
-                width: rem(111.750px);
+                // width: rem(111.750px);
+                width: rem(112px);
                 display: flex;
                 align-items: center;
                 gap: calc($padding-small + 1px);
@@ -355,8 +359,8 @@
 
             & .who {
                 padding-block: rem(14px);
-                padding-inline: rem(24px);
-
+                padding-inline-start: rem(24px);
+                padding-inline-end: rem(23.9px);
                 &>* {
                     width: rem(97.56px);
                 }
