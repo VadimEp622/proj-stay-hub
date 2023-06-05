@@ -17,7 +17,7 @@ export function RootCmp() {
     return (
         <section className={`app main-layout ${isUnclickableBg && 'unclickable-background'}`}>
             <AppHeader />
-            <div className="full unclickable"></div>
+            {/* <div className="full unclickable"></div> */}
             <main className="app-main">
                 <Routes>
                     {routes.map(route => <Route key={route.path} exact={true} element={route.component} path={route.path} />)}
@@ -30,5 +30,3 @@ export function RootCmp() {
         </section>
     )
 }
-
-

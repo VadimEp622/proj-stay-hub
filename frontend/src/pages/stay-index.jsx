@@ -81,7 +81,7 @@ export function StayIndex() {
         <section className="stay-index">
             <button className="filter-opener" onClick={openFilterModal}>
                 <div className="filter-button-content">
-                    Filters
+                    Main Filter
                 </div>
             </button>
 
@@ -91,10 +91,11 @@ export function StayIndex() {
                     Un-expand header
                 </button>
             }
-            {isFilterModalOpen && (<FilterModal stays={stays}
-                setIsFilterModalOpen={setIsFilterModalOpen} />)}
+            {
+                isFilterModalOpen && (<FilterModal stays={stays}
+                    setIsFilterModalOpen={setIsFilterModalOpen} />)
+            }
             {/* <UpperFilter /> */}
-            <StayList stays={stays} isLoadingRef={isLoadingRef} />
             <StayList stays={stays} isLoadingRef={isLoadingRef} />
             {/* below for aesthetic proposes - when there's no views to display */}
             {/* {stays.length > 0 && <DatePicker />} */}

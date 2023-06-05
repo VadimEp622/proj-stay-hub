@@ -177,6 +177,188 @@ function _createDemoStays() {
             'https://a0.muscache.com/im/pictures/dedd981e-5102-47fb-81fa-b62483c49ad4.jpg',
         ]
     ))
+    gStays.push(_createDemoStay(
+        'Comfy single bed room for single night\'s nap',
+        '1 small neat and compact room with a bed and a small window facing the tram train passing by',
+        'Room',
+        { country: "Israel", countryCode: "IL", city: "Tel Aviv", lat: 32.0853, lng: 34.7818 },
+        [
+            'https://a0.muscache.com/im/pictures/cd0f10cf-7f98-4a90-adc5-ac0726d559b1.jpg',
+            'https://a0.muscache.com/im/pictures/4db8afca-8543-4be4-9c18-64803f262bf9.jpg',
+            'https://a0.muscache.com/im/pictures/20527ca6-272a-473d-824f-062cae7d1086.jpg',
+            'https://a0.muscache.com/im/pictures/2d475438-7ce9-4ce3-86b7-9c15c60f3181.jpg',
+            'https://a0.muscache.com/im/pictures/27437609-40df-4d63-9127-d407fc4d9a17.jpg',
+            'https://a0.muscache.com/im/pictures/dedd981e-5102-47fb-81fa-b62483c49ad4.jpg',
+        ]
+    ))
+    gStays.push(_createDemoStay(
+        'Comfy single bed room for single night\'s nap',
+        '1 small neat and compact room with a bed and a small window facing the tram train passing by',
+        'Room',
+        { country: "Israel", countryCode: "IL", city: "Tel Aviv", lat: 32.0853, lng: 34.7818 },
+        [
+            'https://a0.muscache.com/im/pictures/cd0f10cf-7f98-4a90-adc5-ac0726d559b1.jpg',
+            'https://a0.muscache.com/im/pictures/4db8afca-8543-4be4-9c18-64803f262bf9.jpg',
+            'https://a0.muscache.com/im/pictures/20527ca6-272a-473d-824f-062cae7d1086.jpg',
+            'https://a0.muscache.com/im/pictures/2d475438-7ce9-4ce3-86b7-9c15c60f3181.jpg',
+            'https://a0.muscache.com/im/pictures/27437609-40df-4d63-9127-d407fc4d9a17.jpg',
+            'https://a0.muscache.com/im/pictures/dedd981e-5102-47fb-81fa-b62483c49ad4.jpg',
+        ]
+    ))
+    gStays.push(_createDemoStay(
+        'Comfy single bed room for single night\'s nap',
+        '1 small neat and compact room with a bed and a small window facing the tram train passing by',
+        'Room',
+        { country: "Israel", countryCode: "IL", city: "Tel Aviv", lat: 32.0853, lng: 34.7818 },
+        [
+            'https://a0.muscache.com/im/pictures/cd0f10cf-7f98-4a90-adc5-ac0726d559b1.jpg',
+            'https://a0.muscache.com/im/pictures/4db8afca-8543-4be4-9c18-64803f262bf9.jpg',
+            'https://a0.muscache.com/im/pictures/20527ca6-272a-473d-824f-062cae7d1086.jpg',
+            'https://a0.muscache.com/im/pictures/2d475438-7ce9-4ce3-86b7-9c15c60f3181.jpg',
+            'https://a0.muscache.com/im/pictures/27437609-40df-4d63-9127-d407fc4d9a17.jpg',
+            'https://a0.muscache.com/im/pictures/dedd981e-5102-47fb-81fa-b62483c49ad4.jpg',
+        ]
+    ))
+    gStays.push(_createDemoStay(
+        'Comfy single bed room for single night\'s nap',
+        '1 small neat and compact room with a bed and a small window facing the tram train passing by',
+        'Room',
+        { country: "Israel", countryCode: "IL", city: "Tel Aviv", lat: 32.0853, lng: 34.7818 },
+        [
+            'https://a0.muscache.com/im/pictures/cd0f10cf-7f98-4a90-adc5-ac0726d559b1.jpg',
+            'https://a0.muscache.com/im/pictures/4db8afca-8543-4be4-9c18-64803f262bf9.jpg',
+            'https://a0.muscache.com/im/pictures/20527ca6-272a-473d-824f-062cae7d1086.jpg',
+            'https://a0.muscache.com/im/pictures/2d475438-7ce9-4ce3-86b7-9c15c60f3181.jpg',
+            'https://a0.muscache.com/im/pictures/27437609-40df-4d63-9127-d407fc4d9a17.jpg',
+            'https://a0.muscache.com/im/pictures/dedd981e-5102-47fb-81fa-b62483c49ad4.jpg',
+        ]
+    ))
+    gStays.push(_createDemoStay(
+        'Comfy single bed room for single night\'s nap',
+        '1 small neat and compact room with a bed and a small window facing the tram train passing by',
+        'Room',
+        { country: "Israel", countryCode: "IL", city: "Tel Aviv", lat: 32.0853, lng: 34.7818 },
+        [
+            'https://a0.muscache.com/im/pictures/cd0f10cf-7f98-4a90-adc5-ac0726d559b1.jpg',
+            'https://a0.muscache.com/im/pictures/4db8afca-8543-4be4-9c18-64803f262bf9.jpg',
+            'https://a0.muscache.com/im/pictures/20527ca6-272a-473d-824f-062cae7d1086.jpg',
+            'https://a0.muscache.com/im/pictures/2d475438-7ce9-4ce3-86b7-9c15c60f3181.jpg',
+            'https://a0.muscache.com/im/pictures/27437609-40df-4d63-9127-d407fc4d9a17.jpg',
+            'https://a0.muscache.com/im/pictures/dedd981e-5102-47fb-81fa-b62483c49ad4.jpg',
+        ]
+    ))
+    gStays.push(_createDemoStay(
+        'Comfy single bed room for single night\'s nap',
+        '1 small neat and compact room with a bed and a small window facing the tram train passing by',
+        'Room',
+        { country: "Israel", countryCode: "IL", city: "Tel Aviv", lat: 32.0853, lng: 34.7818 },
+        [
+            'https://a0.muscache.com/im/pictures/cd0f10cf-7f98-4a90-adc5-ac0726d559b1.jpg',
+            'https://a0.muscache.com/im/pictures/4db8afca-8543-4be4-9c18-64803f262bf9.jpg',
+            'https://a0.muscache.com/im/pictures/20527ca6-272a-473d-824f-062cae7d1086.jpg',
+            'https://a0.muscache.com/im/pictures/2d475438-7ce9-4ce3-86b7-9c15c60f3181.jpg',
+            'https://a0.muscache.com/im/pictures/27437609-40df-4d63-9127-d407fc4d9a17.jpg',
+            'https://a0.muscache.com/im/pictures/dedd981e-5102-47fb-81fa-b62483c49ad4.jpg',
+        ]
+    ))
+    gStays.push(_createDemoStay(
+        'Comfy single bed room for single night\'s nap',
+        '1 small neat and compact room with a bed and a small window facing the tram train passing by',
+        'Room',
+        { country: "Israel", countryCode: "IL", city: "Tel Aviv", lat: 32.0853, lng: 34.7818 },
+        [
+            'https://a0.muscache.com/im/pictures/cd0f10cf-7f98-4a90-adc5-ac0726d559b1.jpg',
+            'https://a0.muscache.com/im/pictures/4db8afca-8543-4be4-9c18-64803f262bf9.jpg',
+            'https://a0.muscache.com/im/pictures/20527ca6-272a-473d-824f-062cae7d1086.jpg',
+            'https://a0.muscache.com/im/pictures/2d475438-7ce9-4ce3-86b7-9c15c60f3181.jpg',
+            'https://a0.muscache.com/im/pictures/27437609-40df-4d63-9127-d407fc4d9a17.jpg',
+            'https://a0.muscache.com/im/pictures/dedd981e-5102-47fb-81fa-b62483c49ad4.jpg',
+        ]
+    ))
+    gStays.push(_createDemoStay(
+        'Comfy single bed room for single night\'s nap',
+        '1 small neat and compact room with a bed and a small window facing the tram train passing by',
+        'Room',
+        { country: "Israel", countryCode: "IL", city: "Tel Aviv", lat: 32.0853, lng: 34.7818 },
+        [
+            'https://a0.muscache.com/im/pictures/cd0f10cf-7f98-4a90-adc5-ac0726d559b1.jpg',
+            'https://a0.muscache.com/im/pictures/4db8afca-8543-4be4-9c18-64803f262bf9.jpg',
+            'https://a0.muscache.com/im/pictures/20527ca6-272a-473d-824f-062cae7d1086.jpg',
+            'https://a0.muscache.com/im/pictures/2d475438-7ce9-4ce3-86b7-9c15c60f3181.jpg',
+            'https://a0.muscache.com/im/pictures/27437609-40df-4d63-9127-d407fc4d9a17.jpg',
+            'https://a0.muscache.com/im/pictures/dedd981e-5102-47fb-81fa-b62483c49ad4.jpg',
+        ]
+    ))
+    gStays.push(_createDemoStay(
+        'Comfy single bed room for single night\'s nap',
+        '1 small neat and compact room with a bed and a small window facing the tram train passing by',
+        'Room',
+        { country: "Israel", countryCode: "IL", city: "Tel Aviv", lat: 32.0853, lng: 34.7818 },
+        [
+            'https://a0.muscache.com/im/pictures/cd0f10cf-7f98-4a90-adc5-ac0726d559b1.jpg',
+            'https://a0.muscache.com/im/pictures/4db8afca-8543-4be4-9c18-64803f262bf9.jpg',
+            'https://a0.muscache.com/im/pictures/20527ca6-272a-473d-824f-062cae7d1086.jpg',
+            'https://a0.muscache.com/im/pictures/2d475438-7ce9-4ce3-86b7-9c15c60f3181.jpg',
+            'https://a0.muscache.com/im/pictures/27437609-40df-4d63-9127-d407fc4d9a17.jpg',
+            'https://a0.muscache.com/im/pictures/dedd981e-5102-47fb-81fa-b62483c49ad4.jpg',
+        ]
+    ))
+    gStays.push(_createDemoStay(
+        'Comfy single bed room for single night\'s nap',
+        '1 small neat and compact room with a bed and a small window facing the tram train passing by',
+        'Room',
+        { country: "Israel", countryCode: "IL", city: "Tel Aviv", lat: 32.0853, lng: 34.7818 },
+        [
+            'https://a0.muscache.com/im/pictures/cd0f10cf-7f98-4a90-adc5-ac0726d559b1.jpg',
+            'https://a0.muscache.com/im/pictures/4db8afca-8543-4be4-9c18-64803f262bf9.jpg',
+            'https://a0.muscache.com/im/pictures/20527ca6-272a-473d-824f-062cae7d1086.jpg',
+            'https://a0.muscache.com/im/pictures/2d475438-7ce9-4ce3-86b7-9c15c60f3181.jpg',
+            'https://a0.muscache.com/im/pictures/27437609-40df-4d63-9127-d407fc4d9a17.jpg',
+            'https://a0.muscache.com/im/pictures/dedd981e-5102-47fb-81fa-b62483c49ad4.jpg',
+        ]
+    ))
+    gStays.push(_createDemoStay(
+        'Comfy single bed room for single night\'s nap',
+        '1 small neat and compact room with a bed and a small window facing the tram train passing by',
+        'Room',
+        { country: "Israel", countryCode: "IL", city: "Tel Aviv", lat: 32.0853, lng: 34.7818 },
+        [
+            'https://a0.muscache.com/im/pictures/cd0f10cf-7f98-4a90-adc5-ac0726d559b1.jpg',
+            'https://a0.muscache.com/im/pictures/4db8afca-8543-4be4-9c18-64803f262bf9.jpg',
+            'https://a0.muscache.com/im/pictures/20527ca6-272a-473d-824f-062cae7d1086.jpg',
+            'https://a0.muscache.com/im/pictures/2d475438-7ce9-4ce3-86b7-9c15c60f3181.jpg',
+            'https://a0.muscache.com/im/pictures/27437609-40df-4d63-9127-d407fc4d9a17.jpg',
+            'https://a0.muscache.com/im/pictures/dedd981e-5102-47fb-81fa-b62483c49ad4.jpg',
+        ]
+    ))
+    gStays.push(_createDemoStay(
+        'Comfy single bed room for single night\'s nap',
+        '1 small neat and compact room with a bed and a small window facing the tram train passing by',
+        'Room',
+        { country: "Israel", countryCode: "IL", city: "Tel Aviv", lat: 32.0853, lng: 34.7818 },
+        [
+            'https://a0.muscache.com/im/pictures/cd0f10cf-7f98-4a90-adc5-ac0726d559b1.jpg',
+            'https://a0.muscache.com/im/pictures/4db8afca-8543-4be4-9c18-64803f262bf9.jpg',
+            'https://a0.muscache.com/im/pictures/20527ca6-272a-473d-824f-062cae7d1086.jpg',
+            'https://a0.muscache.com/im/pictures/2d475438-7ce9-4ce3-86b7-9c15c60f3181.jpg',
+            'https://a0.muscache.com/im/pictures/27437609-40df-4d63-9127-d407fc4d9a17.jpg',
+            'https://a0.muscache.com/im/pictures/dedd981e-5102-47fb-81fa-b62483c49ad4.jpg',
+        ]
+    ))
+    gStays.push(_createDemoStay(
+        'Comfy single bed room for single night\'s nap',
+        '1 small neat and compact room with a bed and a small window facing the tram train passing by',
+        'Room',
+        { country: "Israel", countryCode: "IL", city: "Tel Aviv", lat: 32.0853, lng: 34.7818 },
+        [
+            'https://a0.muscache.com/im/pictures/cd0f10cf-7f98-4a90-adc5-ac0726d559b1.jpg',
+            'https://a0.muscache.com/im/pictures/4db8afca-8543-4be4-9c18-64803f262bf9.jpg',
+            'https://a0.muscache.com/im/pictures/20527ca6-272a-473d-824f-062cae7d1086.jpg',
+            'https://a0.muscache.com/im/pictures/2d475438-7ce9-4ce3-86b7-9c15c60f3181.jpg',
+            'https://a0.muscache.com/im/pictures/27437609-40df-4d63-9127-d407fc4d9a17.jpg',
+            'https://a0.muscache.com/im/pictures/dedd981e-5102-47fb-81fa-b62483c49ad4.jpg',
+        ]
+    ))
 
     utilService.saveToStorage(STAY_STORAGE_KEY, gStays)
 }
