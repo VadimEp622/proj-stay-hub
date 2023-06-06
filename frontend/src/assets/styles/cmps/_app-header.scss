@@ -1,7 +1,5 @@
 .app-header-container {
     height: 100%;
-
-    // border-bottom: 1px solid rgb(191, 191, 191);
     box-shadow: rgb(0 0 0 / 8%) 0 1px 0;
 
     & .app-header {
@@ -12,7 +10,6 @@
 
         & .logo-container {
             display: flex;
-
             gap: $padding-large;
 
             & .page-navbar {
@@ -32,7 +29,6 @@
                     }
                 }
             }
-
         }
 
         & .filter-container {
@@ -217,21 +213,10 @@
             & .filter-expanded:hover {
                 cursor: pointer;
             }
-
-            // &:is(.filter-expanded){
-            //     margin-block-start:0;
-            // }
         }
 
-
         & .user-container {
-            // height: 42px;
-            // width: 77px;
-            // border: 1px solid rgb(221, 221, 221);
-            // border-radius: 21px;
-            // justify-self:;
-
-            .user-navbar {
+            & .user-navbar {
                 display: flex;
 
                 height: 42px;
@@ -241,7 +226,6 @@
 
                 padding: 5px 5px 5px 12px;
                 align-items: center;
-
 
                 & .bars {
                     color: #222222;
@@ -254,28 +238,27 @@
                 }
             }
         }
-
     }
 
     & .filter-expanded-container {
         height: 80px;
         display: grid;
         grid-template-columns: auto 850px auto;
-        // background-color: aqua;
-
 
         & .filter-expanded {
             display: flex;
-            // justify-content: space-between;
             justify-content: center;
             align-items: center;
+
             grid-column: 2;
-            // background-color: #ff385c;
-            height: 66px;
-            border-radius: 32px;
-            border: 1px solid $gray-clr2;
-            background-color: $gray-clr3;
+
             width: 850px;
+            height: 66px;
+
+            border: 1px solid $gray-clr2;
+            border-radius: 32px;
+
+            background-color: $gray-clr3;
 
             &>*:not(:last-child, :nth-child(4))::after {
                 content: '';
@@ -284,8 +267,6 @@
                 position: absolute;
                 inset: 17.195px 0px 0px 0px;
             }
-
-
 
             .btn-main-search {
                 background-color: $main-clr1;
@@ -301,7 +282,6 @@
                 display: flex;
                 align-items: center;
                 gap: calc($padding-small + 1px);
-
 
                 & :first-child {
                     display: inline-block;
@@ -355,10 +335,6 @@
                 input:focus {
                     outline: none;
                 }
-
-                // input:hover {
-                //     cursor:text;
-                // }
             }
 
             & .check-in,
