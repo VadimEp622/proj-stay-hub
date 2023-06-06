@@ -256,32 +256,34 @@
         .review-title {
             font-family: cereal-std;
             font-weight: 600;
-            margin-bottom: 32px;
-
+            margin-bottom: 25px;
+            
             span {
-                margin-left: 16px;
+                margin-left: 10px;
             }
         }
-
+        
         .mini-user {
-            gap: rem(12px);
+            gap: rem(10px);
             margin-bottom: 12px;
-
+            align-items: flex-end;
+            
             span {
-                color: $clr3;
+                color: $gray-clr0;
             }
         }
-
+        
         .reviews-inputs {
             display: grid;
             gap: 10px;
             grid-template: repeat(4, 1fr)/repeat(2, 1fr);
             font-size: rem(16px);
-
+            
             .review-input {
                 align-items: center;
                 display: grid;
                 grid-template-columns: repeat(2, 1fr);
+                letter-spacing: 0;
 
                 .review-rate {
 
@@ -290,7 +292,7 @@
                         position: relative;
                         border-radius: 0.2em;
                         height: rem(4px);
-                        width: 65%;
+                        width: 50%;
                         border-radius: rem(2px);
                         margin-right: 6px;
 
@@ -335,7 +337,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: $clr1;
+            background-color: $main-clr0;
             border-radius: 50%;
             position: relative;
 
@@ -379,7 +381,7 @@
         .mini-owner-info {
 
             span {
-                color: $clr3;
+                color: $gray-clr0;
             }
         }
 

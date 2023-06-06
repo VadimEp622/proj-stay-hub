@@ -17,7 +17,7 @@
         bottom: -28px;
         left: 0;
         width: 100%;
-        background-color: $clr2;
+        background-color: $black-clr1;
     }
     a:hover::after {
         height: 4px;
@@ -34,7 +34,7 @@
             flex-direction: column;
 
             p {
-                color: $clr2;
+                color: $black-clr1;
                 margin-bottom: 0;
                 span {
                     font-family: cereal-bold;

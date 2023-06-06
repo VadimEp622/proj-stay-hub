@@ -39,28 +39,28 @@
                 font-size: rem(16px);
     
                 span {
-                    color: $clr2;
+                    color: $black-clr1;
                     font-family: cereal-bold;
                     font-size: rem(22px);
                 }
             }
     
             .review-count {
-                color: $clr3;
+                color: $gray-clr0;
             }
         }
     
         .order-data {
-            border: 1px solid $clr3;
+            border: 1px solid $gray-clr5;
             border-radius: 8px;
             margin-bottom: 16px;
     
             .order-date-container{
                 justify-content: space-between;
-                border-bottom: 1px solid $clr3;
+                border-bottom: 1px solid $gray-clr5;
     
                 .check-in {
-                    border-right: 1px solid $clr3;
+                    border-right: 1px solid $gray-clr0;
                 }
     
                 .check-in,
@@ -96,6 +96,10 @@
             .total-price-container h5 {
                 font-size: rem(16px);
                 margin-top: 24px;
+            }
+
+            hr {
+                color: $gray-clr2;
             }
         }
     }
