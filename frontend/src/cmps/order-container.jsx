@@ -58,7 +58,7 @@ export function OrderContainer({ stay }) {
             nightsPrice: nightsPrice
         })
     }
-
+    console.log(guestsString)
     return (
         <section className="order-modal">
             <section className="order-modal-form flex">

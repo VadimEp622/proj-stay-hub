@@ -28,6 +28,7 @@ import { GuestCountFilter } from './guest-count-filter.jsx'
 import { store } from '../store/store.js'
 import { CLOSE_EXPANDED_HEADER, OPEN_EXPANDED_HEADER, SET_UNCLICKABLE_BG } from '../store/system.reducer.js'
 import { LongTxt } from './long-txt.jsx'
+import { DropDown } from './dropdown-menu.jsx'
 
 export function AppHeader() {
     // const isUnclickableBg = useSelector(storeState => storeState.systemModule.system)
@@ -47,7 +48,7 @@ export function AppHeader() {
     const isFilterExpanded = useSelector(storeState => storeState.systemModule.isFilterExpanded)
     const [selectedExperienceTab, setSelectedExperienceTab] = useState('stays')
     const [selectedFilterBox, setSelectedFilterBox] = useState('where')
-
+    const [isDropDownActive, setIsDropDownActive] = useState(false)
 
 
 
@@ -214,6 +215,10 @@ export function AppHeader() {
         if (selectedFilterBox !== field) setSelectedFilterBox(field)
     }
 
+    function onSetDropDown(ev) {
+        ev.preventDefault()
+        setIsDropDownActive(isDropDownActive => !isDropDownActive)
+    }
 
     return (
         <Fragment>
@@ -286,14 +291,14 @@ export function AppHeader() {
                             {/* <span></span> */}
                         </section>
 
-                        <section className="user-container">
+                        <section className="user-container" onClick={() => onSetDropDown(ev)}>
                             <section className="user-navbar">
                                 <article className="bars"><SvgHandler svgName={USER_NAV_BARS} /></article>
                                 <article className="profile"><SvgHandler svgName={USER_NAV_PROFILE} /></article>
                             </section>
                         </section>
                     </nav>
-
+                    {isDropDownActive && <DropDown />}
                     {/* THIS WILL HAVE 850px WIDTH!!! when 850px WIDTH becomes the width of center column of main layout grid, do Media queries!! */}
 
                     {

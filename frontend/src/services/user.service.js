@@ -90,7 +90,7 @@ function getLoggedinUser() {
 
 function buildGuestsString(guestsObject) {
     const { adults = 0, children = 0, infants = 0, pets = 0 } = guestsObject
-    const guestCount = adults + children
+    const guestCount = (adults + children === 0) ? 1 : (adults + children)
     let guestsString = `${guestCount} guest${guestCount !== 1 ? 's' : ''}`
     if (infants > 0) guestsString += `, ${infants} infant${infants !== 1 ? 's' : ''}`
     if (pets > 0) guestsString += `, ${pets} pet${pets !== 1 ? 's' : ''}`
