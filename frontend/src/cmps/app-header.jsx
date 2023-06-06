@@ -236,7 +236,7 @@ export function AppHeader() {
                         </section>
 
                         <section className="filter-container">
-                            <span></span>
+                            {/* <span></span> */}
                             {
                                 !isFilterExpanded &&
                                 <button className="filter" onClick={onExpandedFilter}>
@@ -280,7 +280,7 @@ export function AppHeader() {
 
                                 </section>
                             }
-                            <span></span>
+                            {/* <span></span> */}
                         </section>
 
                         <section className="user-container">
