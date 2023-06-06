@@ -13,7 +13,8 @@ export const userService = {
     getById,
     remove,
     update,
-    changeScore
+    changeScore,
+    buildGuestsString
 }
 
 window.userService = userService
@@ -87,6 +88,14 @@ function getLoggedinUser() {
     return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER))
 }
 
+function buildGuestsString(guestsObject) {
+    const { adults = 0, children = 0, infants = 0, pets = 0 } = guestsObject
+    const guestCount = adults + children
+    let guestsString = `${guestCount} guest${guestCount !== 1 ? 's' : ''}`
+    if (infants > 0) guestsString += `, ${infants} infant${infants !== 1 ? 's' : ''}`
+    if (pets > 0) guestsString += `, ${pets} pet${pets !== 1 ? 's' : ''}`
+    return guestsString
+}
 
 // ;(async ()=>{
 //     await userService.signup({fullname: 'Puki Norma', username: 'puki', password:'123',score: 10000, isAdmin: false})
