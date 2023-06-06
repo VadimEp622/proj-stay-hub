@@ -27,6 +27,7 @@ import { utilService } from '../services/util.service.js'
 import { GuestCountFilter } from './guest-count-filter.jsx'
 import { store } from '../store/store.js'
 import { CLOSE_EXPANDED_HEADER, OPEN_EXPANDED_HEADER, SET_UNCLICKABLE_BG } from '../store/system.reducer.js'
+import { LongTxt } from './long-txt.jsx'
 
 export function AppHeader() {
     // const isUnclickableBg = useSelector(storeState => storeState.systemModule.system)
@@ -111,6 +112,20 @@ export function AppHeader() {
         setFilterBy(prevFilter => ({ ...prevFilter, [field]: value }))
     }
 
+    function handleGuestCountChange(type, value) {
+        console.log(type)
+        console.log(value)
+
+        setFilterBy((prevFilter) => ({
+            ...prevFilter,
+            capacity: prevFilter.capacity + ((type === 'adults' || type === 'children') ? value : 0),
+            guests: {
+                ...prevFilter.guests,
+                [type]: prevFilter.guests[type] + value
+            }
+        }))
+    }
+
 
     function setFilterDates(range) {
         if (!range) {
@@ -146,6 +161,19 @@ export function AppHeader() {
         setSelectedExperienceTab(`${field}`)
     }
 
+
+    function displayGuestsFilter() {
+        // ******** At least 1 Adult from this point ********
+        let guestsStr = ''
+        // if (filterBy.guests.children)
+        const guests = filterBy.guests.adults + filterBy.guests.children
+        guestsStr += `${guests} ${guests > 1 ? 'guests' : 'guest'}`//keep it guests/guests in case of i18
+        const infants = filterBy.guests.infants
+        guestsStr += ` ,${infants} ${infants > 1 ? 'infants' : 'infant'}`
+        const pets = filterBy.guests.pets
+        guestsStr += ` ,${pets} ${pets > 1 ? 'pets' : 'pet'}`
+        return guestsStr
+    }
 
 
     function onExpandedFilter(ev) {
@@ -253,7 +281,17 @@ export function AppHeader() {
                                 </article>
                                 <article className="who">
                                     <h3>Who</h3>
-                                    <span>Add guests</span>
+                                    <span>
+                                        {
+                                            filterBy.guests.adults > 0
+                                                ? <LongTxt
+                                                    txt={displayGuestsFilter()}
+                                                    length={11}
+                                                    askShowMore={false}
+                                                />
+                                                : `Add guests`
+                                        }
+                                    </span>
                                 </article>
                                 <article className="search">
                                     <button className="btn-main-search" onClick={(ev) => onSubmit(ev)}>
@@ -276,7 +314,7 @@ export function AppHeader() {
                             <section className="flex justify-center align-center" style={{ width: '100%', gap: 20 }} >
                                 {/* <LocationFilter filterBy={filterBy} onSubmit={onSubmit} handleChange={handleChange} /> */}
                                 <DateFilter setFilterDates={setFilterDates} />
-                                <GuestCountFilter filterBy={filterBy} setFilterBy={setFilterBy} />
+                                <GuestCountFilter filterBy={filterBy} setFilterBy={setFilterBy} handleGuestCountChange={handleGuestCountChange} />
                             </section>
                         </form>
                     </section>

@@ -1,23 +1,7 @@
 import { useState } from "react"
 import { setGuests } from "../store/user.actions"
 
-export function GuestCountFilter({ filterBy, setFilterBy }) {
-
-
-    function handleGuestCountChange(type, value) {
-        console.log(type)
-        console.log(value)
-
-
-        setFilterBy((prevFilter) => ({
-            ...prevFilter,
-            capacity: prevFilter.capacity + ((type === 'adults' || type === 'children') ? value : 0),
-            guests: {
-                ...prevFilter.guests,
-                [type]: prevFilter.guests[type] + value
-            }
-        }))
-    }
+export function GuestCountFilter({ filterBy, handleGuestCountChange }) {
 
     return (
         <section className="guest-count-filter">
