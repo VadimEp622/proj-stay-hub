@@ -299,7 +299,7 @@ export function AppHeader() {
                                 {/* <span style={{}}>{selectedExperienceTab} here</span> */}
                                 <article className={`where ${selectedFilterBox === 'where' ? 'active' : ''}`} name="where" onClick={onSetSelectedFilterBox}>
                                     <h3>Where</h3>
-                                    <input name="filterText" value={filterBy.filterText} onChange={handleChange} placeholder="Search Destinations"></input>
+                                    <input name="filterText" value={filterBy.filterText} onChange={handleChange} placeholder="Search destinations"></input>
                                 </article>
                                 <article className={`check-in ${selectedFilterBox === 'check-in' ? 'active' : ''}`} name="check-in" onClick={onSetSelectedFilterBox}>
                                     <h3>Check in</h3>

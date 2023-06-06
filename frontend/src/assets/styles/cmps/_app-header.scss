@@ -307,21 +307,45 @@
                     border-radius: 32px;
                     box-shadow: rgba(0, 0, 0, 0.2) 0px 6px 20px 0px;
                 }
-                &:not(:last-child,.active):hover{
+
+                &:not(:last-child, .active):hover {
                     background-color: $gray-clr2;
                     border-radius: 32px;
                 }
 
                 & h3 {
+                    font-family: cereal-bold;
                     font-size: rem(12px);
                     height: rem(16px);
-                    padding-block-end: rem(2px);
+                    // padding-block-end: rem(2px);
                     font-weight: 100;
+                    // &:first-child{
+                    //     padding-block-start: rem(3px);
+                    //     background-color: red;
+                    // }
                 }
 
-                &:not(:last-child) span {
-                    height: 18px;
-                    color: $gray-clr1;
+                &:first-child h3 {
+                    padding-block-start: rem(3px);
+                }
+
+                &:not(:first-child, :last-child) h3 {
+                    padding-block-start: 1px;
+                    transform: translateX(1%) scaleX(102%);
+                }
+
+                &:not(:last-child) {
+                    &>*:last-child {
+                        &:not(input) {
+                            display: block;
+                            transform: translate(-2%, -2%) scale(97%, 97%);
+                        }
+                    }
+
+                    span {
+                        height: 18px;
+                        color: $gray-clr1;
+                    }
                 }
             }
 
@@ -332,6 +356,10 @@
                 padding-inline: rem(32px);
                 padding-block: rem(14px);
 
+                &>* {
+                    margin-inline-start: 3px;
+                }
+
                 input {
                     width: 261.391px;
                     height: 18px;
@@ -340,6 +368,7 @@
                     padding: 0px;
                     z-index: 1;
                     position: relative;
+                    transform: translate(4.5%, 7%) scale(109%, 102%);
                 }
 
                 input:focus {
@@ -349,12 +378,14 @@
 
             & .check-in,
             & .check-out {
+
                 padding-block: rem(14px);
                 padding-inline: rem(24px);
 
                 &>* {
-
                     width: rem(81.656px);
+                    margin-inline-start: 2px;
+                    margin-inline-end: -2px;
                 }
             }
 
@@ -365,6 +396,8 @@
 
                 &>* {
                     width: rem(97.56px);
+                    margin-inline-start: 3px;
+                    margin-inline-end: -3px;
                 }
             }
 
