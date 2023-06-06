@@ -302,9 +302,8 @@ export function AppHeader() {
                         </section>
                     </nav>
                     {isDropDownActive && <DropDown />}
-                    {/* THIS WILL HAVE 850px WIDTH!!! when 850px WIDTH becomes the width of center column of main layout grid, do Media queries!! */}
 
-                    <section className="filter-expanded-container" >
+                    <section className={`filter-expanded-container${isFilterExpanded ? '' : ' folded'}`} >
                         <section className="filter-expanded">
                             <article className={`where${selectedFilterBox === 'where' ? ' active' : ''}`} name="where" onClick={onSetSelectedFilterBox}>
                                 <section>
