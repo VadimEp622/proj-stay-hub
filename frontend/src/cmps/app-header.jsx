@@ -115,36 +115,14 @@ export function AppHeader() {
         console.log(type)
         console.log(value)
 
-        setFilterBy(prevFilter => {
-            // let capacity = prevFilter.capacity
-            // let guests = prevFilter.guests
-
-            // if (capacity === 0) {
-            //     guests[type] += value
-
-            //     if (type === 'adults') {
-            //         capacity += value
-            //     } else {
-            //         guests['adults'] += value
-            //         capacity += value * 2
-            //     }
-            // } else {
-
-
-            // }
-
-            // console.log('capacity', capacity)
-            // console.log('guests', guests)
-
-            return {
-                ...prevFilter,
-                capacity: prevFilter.capacity + ((type === 'adults' || type === 'children') ? value : 0),
-                guests: {
-                    ...prevFilter.guests,
-                    [type]: prevFilter.guests[type] + value
-                }
+        setFilterBy((prevFilter) => ({
+            ...prevFilter,
+            capacity: prevFilter.capacity + ((type === 'adults' || type === 'children') ? value : 0),
+            guests: {
+                ...prevFilter.guests,
+                [type]: prevFilter.guests[type] + value
             }
-        })
+        }))
     }
 
 
@@ -186,13 +164,16 @@ export function AppHeader() {
     function displayGuestsFilter() {
         // ******** At least 1 Adult from this point ********
         let guestsStr = ''
-        // if (filterBy.guests.children)
         const guests = filterBy.guests.adults + filterBy.guests.children
         guestsStr += `${guests} ${guests > 1 ? 'guests' : 'guest'}`//keep it guests/guests in case of i18
         const infants = filterBy.guests.infants
-        guestsStr += ` ,${infants} ${infants > 1 ? 'infants' : 'infant'}`
+        if (infants > 0) {
+            guestsStr += ` ,${infants} ${infants > 1 ? 'infants' : 'infant'}`
+        }
         const pets = filterBy.guests.pets
-        guestsStr += ` ,${pets} ${pets > 1 ? 'pets' : 'pet'}`
+        if (pets > 0) {
+            guestsStr += ` ,${pets} ${pets > 1 ? 'pets' : 'pet'}`
+        }
         return guestsStr
     }
 
@@ -202,6 +183,7 @@ export function AppHeader() {
         store.dispatch({ type: SET_UNCLICKABLE_BG })
         store.dispatch({ type: OPEN_EXPANDED_HEADER })
     }
+
 
     return (
         <Fragment>
