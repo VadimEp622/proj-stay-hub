@@ -115,35 +115,14 @@ export function AppHeader() {
         console.log(type)
         console.log(value)
 
-        setFilterBy(prevFilter => {
-            // let capacity = prevFilter.capacity
-            // let guests = prevFilter.guests
-
-            // if (capacity === 0) {
-            //     guests[type] += value
-
-            //     if (type === 'adults') {
-            //         capacity += value
-            //     } else {
-            //         guests['adults'] += value
-            //         capacity += value * 2
-            //     }
-            // } else {
-
-            // }
-
-            // console.log('capacity', capacity)
-            // console.log('guests', guests)
-
-            return {
-                ...prevFilter,
-                capacity: prevFilter.capacity + ((type === 'adults' || type === 'children') ? value : 0),
-                guests: {
-                    ...prevFilter.guests,
-                    [type]: prevFilter.guests[type] + value
-                }
+        setFilterBy((prevFilter) => ({
+            ...prevFilter,
+            capacity: prevFilter.capacity + ((type === 'adults' || type === 'children') ? value : 0),
+            guests: {
+                ...prevFilter.guests,
+                [type]: prevFilter.guests[type] + value
             }
-        })
+        }))
     }
 
 
@@ -204,148 +183,149 @@ export function AppHeader() {
         store.dispatch({ type: SET_UNCLICKABLE_BG })
         store.dispatch({ type: OPEN_EXPANDED_HEADER })
     }
+}
 
-    return (
-        <Fragment>
-            <header className="app-header-container full main-layout always-clickable-bg">
-                <section>
-                    <nav className="app-header">
-                        <section className="logo-container">
-                            {
-                                routes.map(route =>
-                                    route.isLogo &&
-                                    <NavLink
-                                        className={'page-navbar'}
-                                        key={route.path}
-                                        to={route.path}
-                                    >
-                                        <article className="logo-svg">
-                                            <SvgHandler svgName={LOGO} />
-                                            <span>{route.label}</span>
-                                        </article>
-                                    </NavLink>
-                                )
-                            }
-                        </section>
+return (
+    <Fragment>
+        <header className="app-header-container full main-layout always-clickable-bg">
+            <section>
+                <nav className="app-header">
+                    <section className="logo-container">
+                        {
+                            routes.map(route =>
+                                route.isLogo &&
+                                <NavLink
+                                    className={'page-navbar'}
+                                    key={route.path}
+                                    to={route.path}
+                                >
+                                    <article className="logo-svg">
+                                        <SvgHandler svgName={LOGO} />
+                                        <span>{route.label}</span>
+                                    </article>
+                                </NavLink>
+                            )
+                        }
+                    </section>
 
-                        <section className="filter-container">
-                            <span></span>
-                            {
-                                !isFilterExpanded &&
-                                <button className="filter" onClick={onExpandedFilter}>
-                                    <article>Anywhere</article>
-                                    <article>Any week</article>
-                                    <article>Add guests</article>
-                                    <aside className="filter-search-circle">
-                                        <SvgHandler svgName={SEARCH} />
-                                    </aside>
-                                </button>
-                            }
+                    <section className="filter-container">
+                        <span></span>
+                        {
+                            !isFilterExpanded &&
+                            <button className="filter" onClick={onExpandedFilter}>
+                                <article>Anywhere</article>
+                                <article>Any week</article>
+                                <article>Add guests</article>
+                                <aside className="filter-search-circle">
+                                    <SvgHandler svgName={SEARCH} />
+                                </aside>
+                            </button>
+                        }
 
-                            {isFilterExpanded &&
-                                <section className="filter-expanded">
-                                    <section className="experiences-tab">
-
-                                        <article
-                                            className={selectedExperienceTab === 'stays' ? 'selected' : ''}
-                                            name="stays"
-                                            onClick={toggleSelected}
-                                        >
-                                            <span>Stays</span>
-                                        </article>
-
-                                        <article
-                                            className={selectedExperienceTab === 'experiences' ? 'selected' : ''}
-                                            name="experiences"
-                                            onClick={toggleSelected}
-                                        >
-                                            <span>Experiences</span>
-                                        </article>
-
-                                        <article
-                                            className={selectedExperienceTab === 'online' ? 'selected' : ''}
-                                            name="online"
-                                            onClick={toggleSelected}
-                                        >
-                                            <span>Online Experiences</span>
-                                        </article>
-                                    </section>
-
-                                </section>
-                            }
-                            <span></span>
-                        </section>
-
-                        <section className="user-container">
-                            <section className="user-navbar">
-                                <article className="bars"><SvgHandler svgName={USER_NAV_BARS} /></article>
-                                <article className="profile"><SvgHandler svgName={USER_NAV_PROFILE} /></article>
-                            </section>
-                        </section>
-                    </nav>
-
-                    {/* THIS WILL HAVE 850px WIDTH!!! when 850px WIDTH becomes the width of center column of main layout grid, do Media queries!! */}
-                    {
-                        isFilterExpanded &&
-                        <section className="filter-expanded-container" >
+                        {isFilterExpanded &&
                             <section className="filter-expanded">
-                                {/* <span style={{}}>{selectedExperienceTab} here</span> */}
-                                <article className="where">
-                                    <h3>Where</h3>
-                                    <input name="filterText" value={filterBy.filterText} onChange={handleChange} placeholder="Search Destinations"></input>
-                                </article>
-                                <article className="check-in">
-                                    <h3>Check in</h3>
-                                    <span>{filterBy.from ? format(filterBy.from, 'y-MM-dd') : 'Add dates'}</span>
-                                </article>
-                                <article className="check-out">
-                                    <h3>Check out</h3>
-                                    <span>{filterBy.to ? format(filterBy.to, 'y-MM-dd') : 'Add dates'}</span>
-                                </article>
-                                <article className="who">
-                                    <h3>Who</h3>
-                                    <span>
-                                        {
-                                            filterBy.guests.adults > 0
-                                                ? <LongTxt
-                                                    txt={displayGuestsFilter()}
-                                                    length={11}
-                                                    askShowMore={false}
-                                                />
-                                                : `Add guests`
-                                        }
-                                    </span>
-                                </article>
-                                <article className="search">
-                                    <button className="btn-main-search" onClick={(ev) => onSubmit(ev)}>
-                                        <section className="svg-container">
-                                            <SvgHandler svgName={SEARCH_2} />
-                                        </section>
-                                        <span>Search</span>
-                                    </button>
-                                </article>
+                                <section className="experiences-tab">
+
+                                    <article
+                                        className={selectedExperienceTab === 'stays' ? 'selected' : ''}
+                                        name="stays"
+                                        onClick={toggleSelected}
+                                    >
+                                        <span>Stays</span>
+                                    </article>
+
+                                    <article
+                                        className={selectedExperienceTab === 'experiences' ? 'selected' : ''}
+                                        name="experiences"
+                                        onClick={toggleSelected}
+                                    >
+                                        <span>Experiences</span>
+                                    </article>
+
+                                    <article
+                                        className={selectedExperienceTab === 'online' ? 'selected' : ''}
+                                        name="online"
+                                        onClick={toggleSelected}
+                                    >
+                                        <span>Online Experiences</span>
+                                    </article>
+                                </section>
+
                             </section>
+                        }
+                        <span></span>
+                    </section>
+
+                    <section className="user-container">
+                        <section className="user-navbar">
+                            <article className="bars"><SvgHandler svgName={USER_NAV_BARS} /></article>
+                            <article className="profile"><SvgHandler svgName={USER_NAV_PROFILE} /></article>
                         </section>
-                    }
+                    </section>
+                </nav>
 
-                </section>
-
+                {/* THIS WILL HAVE 850px WIDTH!!! when 850px WIDTH becomes the width of center column of main layout grid, do Media queries!! */}
                 {
                     isFilterExpanded &&
-                    <section>
-                        <form className="filter-unraveled-container" onSubmit={onSubmit} >
-                            <section className="flex justify-center align-center" style={{ width: '100%', gap: 20 }} >
-                                {/* <LocationFilter filterBy={filterBy} onSubmit={onSubmit} handleChange={handleChange} /> */}
-                                <DateFilter setFilterDates={setFilterDates} />
-                                <GuestCountFilter filterBy={filterBy} setFilterBy={setFilterBy} handleGuestCountChange={handleGuestCountChange} />
-                            </section>
-                        </form>
+                    <section className="filter-expanded-container" >
+                        <section className="filter-expanded">
+                            {/* <span style={{}}>{selectedExperienceTab} here</span> */}
+                            <article className="where">
+                                <h3>Where</h3>
+                                <input name="filterText" value={filterBy.filterText} onChange={handleChange} placeholder="Search Destinations"></input>
+                            </article>
+                            <article className="check-in">
+                                <h3>Check in</h3>
+                                <span>{filterBy.from ? format(filterBy.from, 'y-MM-dd') : 'Add dates'}</span>
+                            </article>
+                            <article className="check-out">
+                                <h3>Check out</h3>
+                                <span>{filterBy.to ? format(filterBy.to, 'y-MM-dd') : 'Add dates'}</span>
+                            </article>
+                            <article className="who">
+                                <h3>Who</h3>
+                                <span>
+                                    {
+                                        filterBy.guests.adults > 0
+                                            ? <LongTxt
+                                                txt={displayGuestsFilter()}
+                                                length={11}
+                                                askShowMore={false}
+                                            />
+                                            : `Add guests`
+                                    }
+                                </span>
+                            </article>
+                            <article className="search">
+                                <button className="btn-main-search" onClick={(ev) => onSubmit(ev)}>
+                                    <section className="svg-container">
+                                        <SvgHandler svgName={SEARCH_2} />
+                                    </section>
+                                    <span>Search</span>
+                                </button>
+                            </article>
+                        </section>
                     </section>
                 }
-            </header>
+
+            </section>
+
+            {
+                isFilterExpanded &&
+                <section>
+                    <form className="filter-unraveled-container" onSubmit={onSubmit} >
+                        <section className="flex justify-center align-center" style={{ width: '100%', gap: 20 }} >
+                            {/* <LocationFilter filterBy={filterBy} onSubmit={onSubmit} handleChange={handleChange} /> */}
+                            <DateFilter setFilterDates={setFilterDates} />
+                            <GuestCountFilter filterBy={filterBy} setFilterBy={setFilterBy} handleGuestCountChange={handleGuestCountChange} />
+                        </section>
+                    </form>
+                </section>
+            }
+        </header>
 
 
-            {/* {
+        {/* {
                 isUnclickableBg &&
                 <aside
                     className="unclickable-background"
@@ -354,6 +334,5 @@ export function AppHeader() {
             } */}
 
 
-        </Fragment >
-    )
-}
+    </Fragment >
+)

@@ -1,17 +1,19 @@
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
-export function CarouselImage2() {
+export function CarouselImage2({ images, handleClick }) {
+    const isMobileDevice = window.innerWidth <= 464
+    console.log(images)
     return (
         <Carousel
             additionalTransfrom={0}
-            arrows
+            arrows={!isMobileDevice}
             autoPlaySpeed={3000}
             centerMode={false}
-            className=""
-            containerClass="container"
+            className="filter-bar"
+            containerClass="filter-bar-container"
             dotListClass=""
-            draggable={false}
+            draggable={isMobileDevice}
             focusOnSelect={false}
             infinite
             itemClass=""
@@ -22,17 +24,17 @@ export function CarouselImage2() {
             renderButtonGroupOutside={false}
             renderDotsOutside={false}
             responsive={{
-                desktop: {
+                largeDesktop: {
                     breakpoint: {
-                        max: 3000,
-                        min: 1024
+                        max: 4000,
+                        min: 1600
                     },
                     items: 1,
                 },
-                mobile: {
+                desktop: {
                     breakpoint: {
-                        max: 464,
-                        min: 0
+                        max: 1600,
+                        min: 1024
                     },
                     items: 1,
                 },
@@ -41,8 +43,15 @@ export function CarouselImage2() {
                         max: 1024,
                         min: 464
                     },
-                    items: 1,
-                }
+                    items: 3,
+                },
+                mobile: {
+                    breakpoint: {
+                        max: 464,
+                        min: 0
+                    },
+                    items: 2,
+                },
             }}
             rewind={false}
             rewindWithAnimation={false}
@@ -53,7 +62,15 @@ export function CarouselImage2() {
             slidesToSlide={1}
             swipeable
         >
-            <img src="https://images.unsplash.com/photo-1549989476-69a92fa57c36?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" alt="" />
+            {images.map((img, index) => {
+                console.log(img.imgSrc)
+                return (
+                    <img
+                        key={index}
+                        src={img.imgSrc}
+                    />
+                );
+            })}
         </Carousel>
     )
 }
