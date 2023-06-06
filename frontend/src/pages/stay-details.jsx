@@ -9,7 +9,7 @@ import { DetailsHeader } from '../cmps/details-header.jsx'
 import { DetailsReviews } from '../cmps/details-reviews.jsx'
 import { getDate } from '../services/stay.service.js'
 import SvgHandler from '../cmps/svg-handler.jsx'
-import { HEART_16, RED_HEART_16, SHARE, STAR, STAR_16, LOCATION, CHECKIN, KEY } from '../services/svg.service.js'
+import { HEART_16, RED_HEART_16, SHARE, STAR, STAR_16, LOCATION, CHECKIN, KEY, VERIFIED } from '../services/svg.service.js'
 import { DatePicker } from '../cmps/date-picker.jsx'
 import GoogleMap from '../cmps/map.jsx'
 
@@ -211,17 +211,17 @@ export function StayDetails() {
                 <div className="sub-details flex">
                     <section className='sub-details-highlights'>
                         <section className='fs16 flex align-center'>
-                            <SvgHandler svgName={STAR} />
-                            <span>
+                            <SvgHandler svgName={STAR_16} />
+                            <h4>
                                 {stay.reviews.length}
-                            </span>
+                            </h4>
                             <span>
                                 {capitalizedReviewsString}
                             </span>
-                            <SvgHandler svgName={STAR} />
-                            <span>
+                            <SvgHandler svgName={VERIFIED} />
+                            <h4>
                                 Identity verified
-                            </span>
+                            </h4>
                             {stay.superhost && (
                                 <>
                                     <SvgHandler svgName={STAR} />
@@ -235,7 +235,7 @@ export function StayDetails() {
                                 </>
                             )}
                         </section>
-                        <section className="things-to-know fs16">
+                        <section className="about-host fs16">
                             <div className="house-rules">
                                 <p>When I finished my studies at interior design in Florence I returned to the place that inspires me the most, Santorini.</p>
                                 <h4>During your stay</h4>
@@ -262,28 +262,30 @@ export function StayDetails() {
                             <span>To protect your payment, never transfer money or communicate outside of the Airbnb website or app.</span>
                         </section>
                     </section>
-                    {/* <section className="things-to-know fs16">
-                            <div className="house-rules">
-                                <p>House rules</p>
-                                <p>Check-in after 4:00 PM</p>
-                                <p>Checkout before 10:00 AM</p>
-                                <p>Pets allowed</p>
-                            </div>
-                            <div className="house-rules">
-                                <p>Safety & property</p>
-                                <p>No smoke alarm</p>
-                                <p>Pool/hot tub without a gate or lock</p>
-                                <p>Carbon monoxide detector not required</p>
-                            </div>
-                            <div className="house-rules">
-                                <p>Cancellation policy</p>
-                                <p>Free cancellation before {getDate(stay.checkIn)}</p>
-                                <p>Review the Host's full cancellation policy which applies even if you cancel for illness for disruptions caused by COVID-19</p>
-                            </div>
-                        </section> */}
-
                 </div>
-
+            </section>
+            <section className="things-to-know fs16">
+                <h2>Things to know</h2>
+                <section className='rules-container flex'>
+                    <div className="house-rules">
+                    <h4>House rules</h4>
+                    <p>Check-in after 4:00 PM</p>
+                    <p>Checkout before 10:00 AM</p>
+                    <p>Pets allowed</p>
+                </div>
+                <div className="safety">
+                    <h4>Safety & property</h4>
+                    <p>No smoke alarm</p>
+                    <p>Pool/hot tub without a gate or lock</p>
+                    <p>Carbon monoxide detector not required</p>
+                </div>
+                <div className="cancelation">
+                    <h4>Cancellation policy</h4>
+                    <p>Free cancellation before {getDate(stay.checkIn)}</p>
+                    <p>Review the Host's full cancellation policy which applies even if you cancel for illness for disruptions caused by COVID-19</p>
+                </div>
+                </section>
+                
             </section>
         </section >
     </Fragment>
