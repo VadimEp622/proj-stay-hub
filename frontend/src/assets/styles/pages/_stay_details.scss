@@ -171,6 +171,7 @@
                     font-size: rem(16px);
                 }
             }
+
             .dot {
                 margin: 0 0.15rem;
             }
@@ -215,7 +216,7 @@
                 grid-template-columns: 1fr 0.95fr;
 
                 .amenity {
-                    align-items:self-end;
+                    align-items: self-end;
                     padding-bottom: 16px;
 
                     &.amenity * {
@@ -257,35 +258,36 @@
             font-family: cereal-std;
             font-weight: 600;
             margin-bottom: 25px;
-            
+
             span {
                 margin-left: 10px;
             }
         }
-        
+
         .mini-user {
             gap: rem(10px);
             margin-bottom: 12px;
             align-items: flex-end;
-            
+
             span {
                 color: $gray-clr0;
             }
         }
-        
+
         .reviews-inputs {
             display: grid;
             gap: 10px;
             grid-template: repeat(4, 1fr)/repeat(2, 1fr);
             font-size: rem(16px);
-            
+
             .review-input {
-                align-items: center;
+                padding-right: 17.5%;
                 display: grid;
                 grid-template-columns: repeat(2, 1fr);
                 letter-spacing: 0;
 
                 .review-rate {
+                    justify-content: flex-end;
 
                     .progress-bar-container {
                         background-color: rgb(221, 221, 221);
@@ -304,13 +306,14 @@
                             max-height: rem(4px);
                             border-radius: 2em;
                             background-color: rgb(34, 34, 34);
-
                         }
                     }
 
                     span {
                         font-family: cereal-bold;
                         color: rgb(34, 34, 34);
+                        margin-left: 8px;
+
                     }
                 }
             }
@@ -365,10 +368,11 @@
 
     .host-details-container {
         padding: 48px 0;
+        border-bottom: $border-bottom;
 
         img {
-            width: 56px;
-            height: 56px;
+            width: 64px;
+            height: 64px;
             border-radius: 50px;
             object-fit: cover;
             margin-right: 16px;
@@ -386,24 +390,32 @@
         }
 
         .sub-details {
-           flex-direction: row;
-           
+            flex-direction: row;
+
         }
 
         .sub-details-highlights {
             width: 45%;
-            padding: 0 8px;
+
+            h4 {
+                padding-left: 12px;
+                padding-right: 4px;
+                letter-spacing: 0;
+            }
 
             span {
-                margin: 0 8px;
+                padding-right: 24px;
+                letter-spacing: 0;
             }
         }
 
-        .things-to-know {
+        .about-host {
             margin-top: 18px;
 
-            h4 {
+            & h4 {
                 margin-bottom: 8px;
+                padding-left: 0px;
+                letter-spacing: 0.275px;
             }
         }
 
@@ -427,7 +439,7 @@
                 border: 1px solid rgb(34, 34, 34);
                 border-radius: rem(12px);
                 margin: 24px 0;
-                
+
 
                 &:hover {
                     background-color: #f7f7f7;
@@ -436,11 +448,46 @@
 
             .protection-info {
                 width: 60%;
+
                 & img {
                     height: 24px;
                     width: 24px;
                 }
             }
         }
+
+    }
+
+    .things-to-know {
+        margin-top: 50px;
+
+        h2 {
+            font-size: rem(22px);
+            margin-bottom: 28px;
+        }
+
+        .rules-container {
+            justify-content: flex-start;
+            line-break: strict;
+        }
+
+        .rules-container > * {
+           width: 33.3333%;
+        }
+
+        h4 {
+            margin-bottom: 12px;
+        }
+
+        p {
+            margin-bottom: 10px;
+        }
+
+
+
+        // .rules-container :first-child {
+
+        // }
+
     }
 }
