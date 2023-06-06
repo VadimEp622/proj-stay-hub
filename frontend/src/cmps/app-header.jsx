@@ -244,7 +244,7 @@ export function AppHeader() {
                         </section>
 
                         <section className="filter-container">
-                            {/* <span></span> */}
+
                             {
                                 !isFilterExpanded &&
                                 <button className="filter" onClick={onExpandedFilter}>
@@ -284,14 +284,17 @@ export function AppHeader() {
                                         >
                                             <span>Online Experiences</span>
                                         </article>
-                                    </section>
 
+                                    </section>
                                 </section>
                             }
-                            {/* <span></span> */}
+
+
+
+
                         </section>
 
-                        <section className="user-container" onClick={() => onSetDropDown(ev)}>
+                        <section className="user-container" onClick={(ev) => onSetDropDown(ev)}>
                             <section className="user-navbar">
                                 <article className="bars"><SvgHandler svgName={USER_NAV_BARS} /></article>
                                 <article className="profile"><SvgHandler svgName={USER_NAV_PROFILE} /></article>
@@ -301,24 +304,28 @@ export function AppHeader() {
                     {isDropDownActive && <DropDown />}
                     {/* THIS WILL HAVE 850px WIDTH!!! when 850px WIDTH becomes the width of center column of main layout grid, do Media queries!! */}
 
-                    {
-                        isFilterExpanded &&
-                        <section className="filter-expanded-container" >
-                            <section className="filter-expanded">
-                                {/* <span style={{}}>{selectedExperienceTab} here</span> */}
-                                <article className={`where${selectedFilterBox === 'where' ? ' active' : ''}`} name="where" onClick={onSetSelectedFilterBox}>
+                    <section className="filter-expanded-container" >
+                        <section className="filter-expanded">
+                            <article className={`where${selectedFilterBox === 'where' ? ' active' : ''}`} name="where" onClick={onSetSelectedFilterBox}>
+                                <section>
                                     <h3>Where</h3>
                                     <input name="filterText" value={filterBy.filterText} onChange={handleChange} placeholder="Search destinations"></input>
-                                </article>
-                                <article className={`check-in${selectedFilterBox === 'check-in' ? ' active' : ''}`} name="check-in" onClick={onSetSelectedFilterBox}>
+                                </section>
+                            </article>
+                            <article className={`check-in${selectedFilterBox === 'check-in' ? ' active' : ''}`} name="check-in" onClick={onSetSelectedFilterBox}>
+                                <section>
                                     <h3>Check in</h3>
                                     <span>{filterBy.from ? format(filterBy.from, 'y-MM-dd') : 'Add dates'}</span>
-                                </article>
-                                <article className={`check-out${selectedFilterBox === 'check-out' ? ' active' : ''}`} name="check-out" onClick={onSetSelectedFilterBox}>
+                                </section>
+                            </article>
+                            <article className={`check-out${selectedFilterBox === 'check-out' ? ' active' : ''}`} name="check-out" onClick={onSetSelectedFilterBox}>
+                                <section>
                                     <h3>Check out</h3>
                                     <span>{filterBy.to ? format(filterBy.to, 'y-MM-dd') : 'Add dates'}</span>
-                                </article>
-                                <article className={`who${selectedFilterBox === 'who' ? ' active' : ''}`} name="who" onClick={onSetSelectedFilterBox}>
+                                </section>
+                            </article>
+                            <article className={`who${selectedFilterBox === 'who' ? ' active' : ''}`} name="who" onClick={onSetSelectedFilterBox}>
+                                <section>
                                     <h3>Who</h3>
                                     <span>
                                         {
@@ -331,18 +338,17 @@ export function AppHeader() {
                                                 : `Add guests`
                                         }
                                     </span>
-                                </article>
-                                <article className="search">
-                                    <button className="btn-main-search" onClick={(ev) => onSubmit(ev)}>
-                                        <section className="svg-container">
-                                            <SvgHandler svgName={SEARCH_2} />
-                                        </section>
-                                        <span>Search</span>
-                                    </button>
-                                </article>
-                            </section>
+                                </section>
+                                <button className="btn-main-search" onClick={(ev) => onSubmit(ev)}>
+                                    <section className="svg-container">
+                                        <SvgHandler svgName={SEARCH_2} />
+                                    </section>
+                                    <span>Search</span>
+                                </button>
+
+                            </article>
                         </section>
-                    }
+                    </section>
 
                 </section>
 
