@@ -18,8 +18,8 @@ export function StayDetails() {
     const { stayId } = useParams()
     const navigate = useNavigate()
     const reviewsToDisplay = stay?.reviews?.slice(0, 6)
-    const [isHeartClicked, setIsHeartClicked] = useState(false)
-    const heartSvg = isHeartClicked ? RED_HEART_16 : HEART_16
+    const [isLikeClicked, setIsLikeClicked] = useState(false)
+    const likeSvg = isLikeClicked ? RED_HEART_16 : HEART_16
 
     useEffect(() => {
         loadStay()
@@ -83,8 +83,8 @@ export function StayDetails() {
                             <span>Share</span>
                             <div className="share-btn-overlay"></div>
                         </div>
-                        <div className='save-btn flex' onClick={() => setIsHeartClicked(prevHeart => !prevHeart)}>
-                            <SvgHandler svgName={heartSvg} />
+                        <div className='save-btn flex' onClick={() => setIsLikeClicked(prevHeart => !prevHeart)}>
+                            <SvgHandler svgName={likeSvg} />
                             <span>Save</span>
                             <div className="save-btn-overlay"></div>
                         </div>

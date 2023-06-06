@@ -5,6 +5,9 @@ import { STAR } from "../services/svg.service"
 import { utilService } from "../services/util.service"
 // import DatePicker from "./date-picker"
 import SvgHandler from "./svg-handler"
+import { useState } from "react"
+import { OrderConfirmation } from "./order-confirmation"
+import { userService } from "../services/user.service"
 
 export function OrderContainer({ stay }) {
 
@@ -16,24 +19,45 @@ export function OrderContainer({ stay }) {
     const serviceFee = utilService.getRandomIntInclusive(100, 500)
     const totalPrice = nightsPrice + cleaningFee + serviceFee
     const guestsObject = useSelector(storeState => storeState.userModule.guests)
-    console.log(guestsObject)
+    const [orderObject, setOrderObject] = useState({})
+    // const loggedInUser = useSelector(storeState => storeState.userModule.user)
+    const guestsString = userService.buildGuestsString(guestsObject)
+    const [openModal, setOpenModal] = useState(false)
+    let guestCount = 1
 
-    let guestsString = ''
-    if (Object.keys(guestsObject).length === 0) {
-        guestsString = '1 guest'
-    } else {
-        const { adults, children, infants, pets } = guestsObject
-        const guestCount = adults + children
-
-        guestsString = `${guestCount} guest${guestCount !== 1 ? 's' : ''}`
-        if (infants > 0) {
-            guestsString += `, ${infants} infant${infants !== 1 ? 's' : ''}`
-        }
-        if (pets > 0) {
-            guestsString += `, ${pets} pet${pets !== 1 ? 's' : ''}`
-        }
+    function onOpenModal() {
+        setOpenModal(true)
+        setOrderObject({
+            // buyer: {
+            //     fullname: user.fullName,
+            //     _id: user.id
+            // },
+            seller: {
+                fullname: stay.host.fullname,
+                _id: stay.host._id,
+                image: stay.host.img
+            },
+            checkIn: stay.checkIn,
+            checkOut: stay.checkOut,
+            orderPrice: {
+                total: totalPrice,
+                serviceFee: serviceFee,
+                cleaningFee: cleaningFee,
+                price: stay.price
+            },
+            guestsNumber: guestCount,
+            stayDetails: {
+                reviewsCount: stay.reviews.length,
+                type: stay.type,
+                id: stay._id,
+                rate: stay.rate,
+                summary: stay.summary,
+                image: stay.imgUrls[0]
+            },
+            nightsCount: nightsCount,
+            nightsPrice: nightsPrice
+        })
     }
-
 
     return (
         <section className="order-modal">
@@ -66,10 +90,10 @@ export function OrderContainer({ stay }) {
                         </div>
                     </div>
                 </section>
-                <div className="btn-container">
+                <div className="btn-container" onClick={() => onOpenModal()}>
                     {utilService.createDivsForButtonContainer()}
                     <div className="content">
-                        <button className="action-btn">
+                        <button className="action-btn" >
                             <span>Reserve</span>
                         </button>
                     </div>
@@ -95,7 +119,8 @@ export function OrderContainer({ stay }) {
                     </div>
                 </section>
             </section>
-
+            <div className="modal-container">            {openModal && <OrderConfirmation setOpenModal={setOpenModal} orderObject={orderObject} />}
+            </div>
         </section>
     )
 }

@@ -7,7 +7,7 @@ export function OrderConfirmation({ setOpenModal, orderObject }) {
     const { reviewsCount, type, summary, rate, image } = stayDetails
     const { total, serviceFee, cleaningFee, price } = orderPrice
     const formattedTimeRange = utilService.getFormattedTimeRange(checkIn, checkOut)
-    const sellerFirstName = seller.fullName.substring(0, str.indexOf(' '))
+    const sellerFirstName = seller.fullName.substring(0, seller.fullName.indexOf(' '))
     return (
         <section className="order-confirmation">
             <div className="confirmation-details">
