@@ -292,24 +292,25 @@ export function AppHeader() {
                     </nav>
 
                     {/* THIS WILL HAVE 850px WIDTH!!! when 850px WIDTH becomes the width of center column of main layout grid, do Media queries!! */}
+
                     {
                         isFilterExpanded &&
                         <section className="filter-expanded-container" >
                             <section className="filter-expanded">
                                 {/* <span style={{}}>{selectedExperienceTab} here</span> */}
-                                <article className={`where ${selectedFilterBox === 'where' ? 'active' : ''}`} name="where" onClick={onSetSelectedFilterBox}>
+                                <article className={`where${selectedFilterBox === 'where' ? ' active' : ''}`} name="where" onClick={onSetSelectedFilterBox}>
                                     <h3>Where</h3>
                                     <input name="filterText" value={filterBy.filterText} onChange={handleChange} placeholder="Search destinations"></input>
                                 </article>
-                                <article className={`check-in ${selectedFilterBox === 'check-in' ? 'active' : ''}`} name="check-in" onClick={onSetSelectedFilterBox}>
+                                <article className={`check-in${selectedFilterBox === 'check-in' ? ' active' : ''}`} name="check-in" onClick={onSetSelectedFilterBox}>
                                     <h3>Check in</h3>
                                     <span>{filterBy.from ? format(filterBy.from, 'y-MM-dd') : 'Add dates'}</span>
                                 </article>
-                                <article className={`check-out ${selectedFilterBox === 'check-out' ? 'active' : ''}`} name="check-out" onClick={onSetSelectedFilterBox}>
+                                <article className={`check-out${selectedFilterBox === 'check-out' ? ' active' : ''}`} name="check-out" onClick={onSetSelectedFilterBox}>
                                     <h3>Check out</h3>
                                     <span>{filterBy.to ? format(filterBy.to, 'y-MM-dd') : 'Add dates'}</span>
                                 </article>
-                                <article className={`who ${selectedFilterBox === 'who' ? 'active' : ''}`} name="who" onClick={onSetSelectedFilterBox}>
+                                <article className={`who${selectedFilterBox === 'who' ? ' active' : ''}`} name="who" onClick={onSetSelectedFilterBox}>
                                     <h3>Who</h3>
                                     <span>
                                         {
@@ -343,8 +344,14 @@ export function AppHeader() {
                         <form className="filter-unraveled-container" onSubmit={onSubmit} >
                             <section className="flex justify-center align-center" style={{ width: '100%', gap: 20 }} >
                                 {/* <LocationFilter filterBy={filterBy} onSubmit={onSubmit} handleChange={handleChange} /> */}
-                                <DateFilter setFilterDates={setFilterDates} />
-                                <GuestCountFilter filterBy={filterBy} setFilterBy={setFilterBy} handleGuestCountChange={handleGuestCountChange} />
+                                {
+                                    (selectedFilterBox === 'check-in' || selectedFilterBox === 'check-out') &&
+                                    <DateFilter setFilterDates={setFilterDates} />
+                                }
+                                {
+                                    selectedFilterBox === 'who' &&
+                                    <GuestCountFilter filterBy={filterBy} setFilterBy={setFilterBy} handleGuestCountChange={handleGuestCountChange} />
+                                }
                             </section>
                         </form>
                     </section>

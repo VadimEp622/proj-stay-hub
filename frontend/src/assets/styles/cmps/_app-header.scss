@@ -2,6 +2,7 @@
     height: 100%;
     box-shadow: rgb(0 0 0 / 8%) 0 1px 0;
 
+
     & .app-header {
         margin-block: calc($padding-large - 5px);
         display: flex;
@@ -36,7 +37,8 @@
             flex: 1 1 auto;
             display: flex;
             justify-content: center;
-            font-family: montserrat semibold;
+            // font-family: montserrat semibold;
+            font-family: Circular;
 
             & :first-child {
                 flex: 1 1 auto;
@@ -74,7 +76,8 @@
                     }
 
                     &:is(:nth-child(1), :nth-child(2)) {
-                        font-family: montserrat semibold;
+                        // font-family: montserrat semibold;
+                        font-family: Circular;
                         padding-inline-start: 20px;
                         margin-inline-end: -2px;
                         transform: scaleX(90%);
@@ -82,7 +85,8 @@
                     }
 
                     &:nth-child(3) {
-                        font-family: montserrat;
+                        // font-family: montserrat;
+                        font-family: Circular;
                         margin-inline-end: 3px;
                         transform: scaleX(91%);
                         color: $gray-clr0;
@@ -194,7 +198,8 @@
                         }
 
                         & span {
-                            font-family: montserrat;
+                            // font-family: montserrat;
+                            font-family: Circular;
                             line-height: rem(20px);
                             font-weight: 400;
                         }
@@ -260,13 +265,39 @@
 
             background-color: $gray-clr3;
 
-            &>*:not(:last-child, :nth-child(4))::after {
-                content: '';
-                border-right: 1px solid $gray-clr2;
-                height: 32px;
-                position: absolute;
-                inset: 17.195px 0px 0px 0px;
+            &>*:not(:last-child, :nth-child(4)) {
+                &::after {
+                    // content: '';
+                    // border-right: 1px solid $gray-clr2;
+                    // height: 32px;
+                    // position: absolute;
+                    // inset: 17.195px 0px 0px 0px;
+
+                    content: "";
+                    border-right: 1px solid rgb(221, 221, 221);
+                    height: 32px;
+                    grid-area: 1 / 2 / 3 / -1;
+                    align-self: center;
+                    translate: 1.5rem 0;
+                }
+
+                // &:is(:nth-child(2),:nth-child(3)):hover::after {
+                //     border: 0;
+                // }
+
+                // &:nth-child(3):hover::after,
+                // &:nth-child(2)+&:after {
+                //     border: 0;
+                // }
+
             }
+
+            & > * {
+                &:has( +:hover)::after {
+                    border: 0;
+                }
+            }
+
 
             .btn-main-search {
                 background-color: $main-clr1;
@@ -300,6 +331,9 @@
             }
 
             &>* {
+                display: grid;
+                grid-template-columns: auto 1px;
+                grid-auto-rows: min-content;
                 position: relative;
 
                 &.active {
@@ -314,15 +348,11 @@
                 }
 
                 & h3 {
-                    font-family: cereal-bold;
+                    // font-family: cereal-bold;
+                    font-family: Circular;
                     font-size: rem(12px);
                     height: rem(16px);
-                    // padding-block-end: rem(2px);
                     font-weight: 100;
-                    // &:first-child{
-                    //     padding-block-start: rem(3px);
-                    //     background-color: red;
-                    // }
                 }
 
                 &:first-child h3 {
@@ -379,7 +409,7 @@
             & .check-in,
             & .check-out {
 
-                padding-block: rem(14px);
+                padding-block: rem(16px);
                 padding-inline: rem(24px);
 
                 &>* {
@@ -390,7 +420,7 @@
             }
 
             & .who {
-                padding-block: rem(14px);
+                padding-block: rem(16px);
                 padding-inline-start: rem(24px);
                 padding-inline-end: rem(23.9px);
 
@@ -416,7 +446,16 @@
 
 
 
+// ASI --- FOR HEADER TRANSITION
+// section.filter-expanded.folded {
+//     translate: 0px -73px;
+//     opacity: 0;
+//     scale: 48% 82%;
+// }
 
+// section.filter-expanded{
+//     transition:all 0.2s;
+// }
 
 
 
