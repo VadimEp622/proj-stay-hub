@@ -302,6 +302,16 @@
             &>* {
                 position: relative;
 
+                &.active {
+                    background-color: white;
+                    border-radius: 32px;
+                    box-shadow: rgba(0, 0, 0, 0.2) 0px 6px 20px 0px;
+                }
+                &:not(:last-child,.active):hover{
+                    background-color: $gray-clr2;
+                    border-radius: 32px;
+                }
+
                 & h3 {
                     font-size: rem(12px);
                     height: rem(16px);

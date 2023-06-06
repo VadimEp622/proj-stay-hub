@@ -46,6 +46,7 @@ export function AppHeader() {
     })
     const isFilterExpanded = useSelector(storeState => storeState.systemModule.isFilterExpanded)
     const [selectedExperienceTab, setSelectedExperienceTab] = useState('stays')
+    const [selectedFilterBox, setSelectedFilterBox] = useState('where')
 
 
 
@@ -201,6 +202,15 @@ export function AppHeader() {
         store.dispatch({ type: OPEN_EXPANDED_HEADER })
     }
 
+    function onSetSelectedFilterBox(ev) {
+        ev.preventDefault()
+        // const value = ev.currentTarget.getAttribute('class')
+        // console.log('value', value)
+        const field = ev.currentTarget.getAttribute('name')
+        console.log('field', field)
+        if (selectedFilterBox !== field) setSelectedFilterBox(field)
+    }
+
 
     return (
         <Fragment>
@@ -287,19 +297,19 @@ export function AppHeader() {
                         <section className="filter-expanded-container" >
                             <section className="filter-expanded">
                                 {/* <span style={{}}>{selectedExperienceTab} here</span> */}
-                                <article className="where">
+                                <article className={`where ${selectedFilterBox === 'where' ? 'active' : ''}`} name="where" onClick={onSetSelectedFilterBox}>
                                     <h3>Where</h3>
                                     <input name="filterText" value={filterBy.filterText} onChange={handleChange} placeholder="Search Destinations"></input>
                                 </article>
-                                <article className="check-in">
+                                <article className={`check-in ${selectedFilterBox === 'check-in' ? 'active' : ''}`} name="check-in" onClick={onSetSelectedFilterBox}>
                                     <h3>Check in</h3>
                                     <span>{filterBy.from ? format(filterBy.from, 'y-MM-dd') : 'Add dates'}</span>
                                 </article>
-                                <article className="check-out">
+                                <article className={`check-out ${selectedFilterBox === 'check-out' ? 'active' : ''}`} name="check-out" onClick={onSetSelectedFilterBox}>
                                     <h3>Check out</h3>
                                     <span>{filterBy.to ? format(filterBy.to, 'y-MM-dd') : 'Add dates'}</span>
                                 </article>
-                                <article className="who">
+                                <article className={`who ${selectedFilterBox === 'who' ? 'active' : ''}`} name="who" onClick={onSetSelectedFilterBox}>
                                     <h3>Who</h3>
                                     <span>
                                         {
