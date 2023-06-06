@@ -4,6 +4,9 @@ $clr2: rgb(34, 34, 34);
 $clr3: #717171;
 $clr4: rgba(128, 128, 128, .3);
 $clr5: rgb(176, 176, 176);
+$clr6: #fff;
+$clr7: #222;
+
 
 
 // ******* Main Colors ******* 
@@ -21,10 +24,12 @@ $gray-clr4: rgb(138, 138, 138);
 $gray-clr5: rgb(176, 176, 176);
 
 
+
 // ******* Black Colors *******
 $black-clr0: black;
 $black-clr1: rgb(34, 34, 34);
 $black-clr2: #222222;
+
 
 
 // Breakpoints
@@ -40,4 +45,4 @@ $padding-small: 5px;
 $height-header: 80px;
 
 // Other
-$border-bottom: 1px solid rgba(128, 128, 128, .3);
+$border-bottom: 1px solid $clr4;
