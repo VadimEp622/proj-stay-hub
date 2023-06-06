@@ -17,13 +17,6 @@ export function OrderContainer({ stay }) {
     const totalPrice = nightsPrice + cleaningFee + serviceFee
     const guestsObject = useSelector(storeState => storeState.userModule.guests)
     console.log(guestsObject)
-    function _createButtonDivContainer() {
-        const divElements = []
-        for (let i = 0; i < 100; i++) {
-            divElements.push(<div className="cell" key={i}></div>)
-        }
-        return divElements
-    }
 
     let guestsString = ''
     if (Object.keys(guestsObject).length === 0) {
@@ -74,7 +67,7 @@ export function OrderContainer({ stay }) {
                     </div>
                 </section>
                 <div className="btn-container">
-                    {_createButtonDivContainer()}
+                    {utilService.createDivsForButtonContainer()}
                     <div className="content">
                         <button className="action-btn">
                             <span>Reserve</span>
