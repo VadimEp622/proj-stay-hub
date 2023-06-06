@@ -226,8 +226,14 @@
 
             &>* {
 
+                &.active {
+                    background-color: $gray-clr-1;
+                    border-radius: 32px;
+                }
+
                 &>* {
                     padding-block: 12.8124px;
+
 
                     &>* {
                         &:first-child {
@@ -257,7 +263,7 @@
 
                 }
 
-                &:hover {
+                &:not(.active):hover {
                     background-color: rgb(221, 221, 221);
                     border-radius: 32px;
                 }
