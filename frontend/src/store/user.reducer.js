@@ -15,7 +15,8 @@ const initialState = {
     user: userService.getLoggedinUser(),
     users: [],
     watchedUser: null,
-    guests: {}
+    guests: {},
+    wishlist: [],
 }
 
 export function userReducer(state = initialState, action) {

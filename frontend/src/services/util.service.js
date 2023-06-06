@@ -11,7 +11,8 @@ export const utilService = {
     loadFromStorage,
     getFormattedTimeRange,
     getTimeDiffBy,
-    checkMinMaxPrices
+    checkMinMaxPrices,
+    createDivsForButtonContainer
 }
 
 function makeId(length = 6) {
@@ -134,4 +135,12 @@ function checkMinMaxPrices(stays) {
         if (price > maxPrice) maxPrice = price
     })
     return { minPrice, maxPrice }
+}
+
+function createDivsForButtonContainer() {
+    const divElements = []
+    for (let i = 0; i < 100; i++) {
+        divElements.push(<div className="cell" key={i}></div>)
+    }
+    return divElements
 }
