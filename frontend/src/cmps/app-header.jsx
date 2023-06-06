@@ -31,7 +31,18 @@ import { CLOSE_EXPANDED_HEADER, OPEN_EXPANDED_HEADER, SET_UNCLICKABLE_BG } from 
 export function AppHeader() {
     // const isUnclickableBg = useSelector(storeState => storeState.systemModule.system)
     const user = useSelector(storeState => storeState.userModule.user)
-    const [filterBy, setFilterBy] = useState({ filterText: '', from: '', to: '', capacity: '' })
+    const [filterBy, setFilterBy] = useState({
+        filterText: '',
+        from: '',
+        to: '',
+        capacity: 0,
+        guests: {
+            adults: 0,
+            children: 0,
+            infants: 0,
+            pets: 0
+        }
+    })
     const isFilterExpanded = useSelector(storeState => storeState.systemModule.isFilterExpanded)
     const [selectedExperienceTab, setSelectedExperienceTab] = useState('stays')
 
@@ -65,7 +76,19 @@ export function AppHeader() {
 
     function onSubmit(ev) {
         ev.preventDefault()
-        const filter = { city: '', country: '', from: '', to: '', capacity: '' }
+        const filter = {
+            city: '',
+            country: '',
+            from: '',
+            to: '',
+            capacity: '',
+            guests: {
+                adults: 0,
+                children: 0,
+                infants: 0,
+                pets: 0
+            }
+        }
 
         if (filterBy.filterText) {
             filter.city = filterBy.filterText
@@ -90,28 +113,23 @@ export function AppHeader() {
 
 
     function setFilterDates(range) {
-        // console.log('range  --> app-header.jsx', range)
         if (!range) {
             setFilterBy(prevFilter => ({ ...prevFilter, from: '', to: '' }))
         } else {
             const filter = { ...range }
+
             if (filter.from === undefined) {
                 filter.from = ''
-            }
-            else {
+            } else {
                 filter.from = Date.parse(range.from)
             }
 
             if (filter.to === undefined) {
-                // if (filter.from === undefined) {
                 filter.to = ''
-                // } else {
-                //     filter.to = filter.from + utilService.getTimeDiffBy('day')
-                // }
-            }
-            else {
+            } else {
                 filter.to = Date.parse(range.to)
             }
+
             setFilterBy(prevFilter => ({ ...prevFilter, ...filter }))
         }
     }
@@ -238,7 +256,7 @@ export function AppHeader() {
                                     <span>Add guests</span>
                                 </article>
                                 <article className="search">
-                                    <button className="btn-main-search" onClick={(ev)=>onSubmit(ev)}>
+                                    <button className="btn-main-search" onClick={(ev) => onSubmit(ev)}>
                                         <section className="svg-container">
                                             <SvgHandler svgName={SEARCH_2} />
                                         </section>
@@ -260,7 +278,6 @@ export function AppHeader() {
                                 <DateFilter setFilterDates={setFilterDates} />
                                 <GuestCountFilter filterBy={filterBy} setFilterBy={setFilterBy} />
                             </section>
-                            {/* <input type="submit" style={{ marginInline: 'auto' }} /> */}
                         </form>
                     </section>
                 }

@@ -27,19 +27,24 @@ export function stayReducer(state = initialState, action) {
     switch (action.type) {
         case SET_STAYS:
             stays = action.stays.filter(stay => {
+
                 if (Object.keys(state.filterBy).length === 0) return true// if filterBy state object is empty, display all
+
                 if (state.filterBy.country || state.filterBy.city) {
-                    //remove from to-be listed stays, if...
+                    //remove from to-be listed stays, if... no country/city match
                     if (
                         !stay.loc.country.toLowerCase().includes(state.filterBy.country.toLowerCase()) &&
                         !stay.loc.city.toLowerCase().includes(state.filterBy.city.toLowerCase())
                     ) return false
                 }
+
                 if (state.filterBy.capacity) {
+                    //remove from to-be listed stays, if...
                     if (stay.capacity < state.filterBy.capacity) return false
                 }
+
                 if (state.filterBy.from) {
-                    //remove from to-be listed stays, if...
+                    //remove from to-be listed stays, if... dates in filter are not available in the stay
                     if (!stay.availableDates || stay.availableDates.length < 1) return false
                     else {
                         const isNotAvailableDuring = stay.availableDates.every(date =>
@@ -48,9 +53,12 @@ export function stayReducer(state = initialState, action) {
                         if (isNotAvailableDuring) return false
                     }
                 }
+
                 if (state.filterBy.labels) {
+                    //remove from to-be listed stays, if... 
                     if (!stay.labels.includes(state.filterBy.labels)) return false
                 }
+
                 //display all stays that survived filtering to this point
                 return true
             })
