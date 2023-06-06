@@ -27,11 +27,23 @@ import { utilService } from '../services/util.service.js'
 import { GuestCountFilter } from './guest-count-filter.jsx'
 import { store } from '../store/store.js'
 import { CLOSE_EXPANDED_HEADER, OPEN_EXPANDED_HEADER, SET_UNCLICKABLE_BG } from '../store/system.reducer.js'
+import { LongTxt } from './long-txt.jsx'
 
 export function AppHeader() {
     // const isUnclickableBg = useSelector(storeState => storeState.systemModule.system)
     const user = useSelector(storeState => storeState.userModule.user)
-    const [filterBy, setFilterBy] = useState({ filterText: '', from: '', to: '', capacity: '' })
+    const [filterBy, setFilterBy] = useState({
+        filterText: '',
+        from: '',
+        to: '',
+        capacity: 0,
+        guests: {
+            adults: 0,
+            children: 0,
+            infants: 0,
+            pets: 0
+        }
+    })
     const isFilterExpanded = useSelector(storeState => storeState.systemModule.isFilterExpanded)
     const [selectedExperienceTab, setSelectedExperienceTab] = useState('stays')
 
@@ -65,7 +77,19 @@ export function AppHeader() {
 
     function onSubmit(ev) {
         ev.preventDefault()
-        const filter = { city: '', country: '', from: '', to: '', capacity: '' }
+        const filter = {
+            city: '',
+            country: '',
+            from: '',
+            to: '',
+            capacity: '',
+            guests: {
+                adults: 0,
+                children: 0,
+                infants: 0,
+                pets: 0
+            }
+        }
 
         if (filterBy.filterText) {
             filter.city = filterBy.filterText
@@ -81,37 +105,67 @@ export function AppHeader() {
         updateFilterBy(filter)
     }
 
-
     function handleChange({ target }) {
         const field = target.name
         const value = (target.type === 'number') ? +target.value : target.value
         setFilterBy(prevFilter => ({ ...prevFilter, [field]: value }))
     }
 
+    function handleGuestCountChange(type, value) {
+        console.log(type)
+        console.log(value)
+
+        setFilterBy(prevFilter => {
+            // let capacity = prevFilter.capacity
+            // let guests = prevFilter.guests
+
+            // if (capacity === 0) {
+            //     guests[type] += value
+
+            //     if (type === 'adults') {
+            //         capacity += value
+            //     } else {
+            //         guests['adults'] += value
+            //         capacity += value * 2
+            //     }
+            // } else {
+
+
+            // }
+
+            // console.log('capacity', capacity)
+            // console.log('guests', guests)
+
+            return {
+                ...prevFilter,
+                capacity: prevFilter.capacity + ((type === 'adults' || type === 'children') ? value : 0),
+                guests: {
+                    ...prevFilter.guests,
+                    [type]: prevFilter.guests[type] + value
+                }
+            }
+        })
+    }
+
 
     function setFilterDates(range) {
-        // console.log('range  --> app-header.jsx', range)
         if (!range) {
             setFilterBy(prevFilter => ({ ...prevFilter, from: '', to: '' }))
         } else {
             const filter = { ...range }
+
             if (filter.from === undefined) {
                 filter.from = ''
-            }
-            else {
+            } else {
                 filter.from = Date.parse(range.from)
             }
 
             if (filter.to === undefined) {
-                // if (filter.from === undefined) {
                 filter.to = ''
-                // } else {
-                //     filter.to = filter.from + utilService.getTimeDiffBy('day')
-                // }
-            }
-            else {
+            } else {
                 filter.to = Date.parse(range.to)
             }
+
             setFilterBy(prevFilter => ({ ...prevFilter, ...filter }))
         }
     }
@@ -128,6 +182,19 @@ export function AppHeader() {
         setSelectedExperienceTab(`${field}`)
     }
 
+
+    function displayGuestsFilter() {
+        // ******** At least 1 Adult from this point ********
+        let guestsStr = ''
+        // if (filterBy.guests.children)
+        const guests = filterBy.guests.adults + filterBy.guests.children
+        guestsStr += `${guests} ${guests > 1 ? 'guests' : 'guest'}`//keep it guests/guests in case of i18
+        const infants = filterBy.guests.infants
+        guestsStr += ` ,${infants} ${infants > 1 ? 'infants' : 'infant'}`
+        const pets = filterBy.guests.pets
+        guestsStr += ` ,${pets} ${pets > 1 ? 'pets' : 'pet'}`
+        return guestsStr
+    }
 
 
     function onExpandedFilter(ev) {
@@ -235,10 +302,20 @@ export function AppHeader() {
                                 </article>
                                 <article className="who">
                                     <h3>Who</h3>
-                                    <span>Add guests</span>
+                                    <span>
+                                        {
+                                            filterBy.guests.adults > 0
+                                                ? <LongTxt
+                                                    txt={displayGuestsFilter()}
+                                                    length={11}
+                                                    askShowMore={false}
+                                                />
+                                                : `Add guests`
+                                        }
+                                    </span>
                                 </article>
                                 <article className="search">
-                                    <button className="btn-main-search" onClick={(ev)=>onSubmit(ev)}>
+                                    <button className="btn-main-search" onClick={(ev) => onSubmit(ev)}>
                                         <section className="svg-container">
                                             <SvgHandler svgName={SEARCH_2} />
                                         </section>
@@ -258,9 +335,8 @@ export function AppHeader() {
                             <section className="flex justify-center align-center" style={{ width: '100%', gap: 20 }} >
                                 {/* <LocationFilter filterBy={filterBy} onSubmit={onSubmit} handleChange={handleChange} /> */}
                                 <DateFilter setFilterDates={setFilterDates} />
-                                <GuestCountFilter filterBy={filterBy} setFilterBy={setFilterBy} />
+                                <GuestCountFilter filterBy={filterBy} setFilterBy={setFilterBy} handleGuestCountChange={handleGuestCountChange} />
                             </section>
-                            {/* <input type="submit" style={{ marginInline: 'auto' }} /> */}
                         </form>
                     </section>
                 }

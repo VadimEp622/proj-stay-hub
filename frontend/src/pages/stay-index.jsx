@@ -95,7 +95,7 @@ export function StayIndex() {
                 isFilterModalOpen && (<FilterModal stays={stays}
                     setIsFilterModalOpen={setIsFilterModalOpen} />)
             }
-            {/* <UpperFilter /> */}
+            <UpperFilter />
             <StayList stays={stays} isLoadingRef={isLoadingRef} />
             {/* below for aesthetic proposes - when there's no views to display */}
             {/* {stays.length > 0 && <DatePicker />} */}

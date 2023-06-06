@@ -28,18 +28,12 @@ export function FilterModal({ stays, setIsFilterModalOpen }) {
 
     useEffect(() => {
         setFilterByToSend(prevFilter => ({ ...prevFilter, minPrice: priceRange.minPrice, maxPrice: priceRange.maxPrice }))
-    }, [priceRange]);
+    }, [priceRange, filterByToSend]);
 
     useEffect(() => {
         const allAmenities = displayAmenities(stays)
         setAmenities(allAmenities)
     }, [stays])
-
-
-    // const elInputRef = useRef(null)
-    // useEffect(() => {
-    //     elInputRef.current.focus()
-    // }, [])
 
 
     function handleChange({ target }) {
@@ -58,9 +52,7 @@ export function FilterModal({ stays, setIsFilterModalOpen }) {
             } else {
                 return { ...prevFilter, [field]: value };
             }
-        });
-
-        console.log(filterByToSend);
+        })
     }
 
 
