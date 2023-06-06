@@ -112,17 +112,34 @@ export function AppHeader() {
     }
 
     function handleGuestCountChange(type, value) {
-        console.log(type)
-        console.log(value)
+        setFilterBy(prevFilter => {
+            let capacity = prevFilter.capacity
+            let guests = prevFilter.guests
 
-        setFilterBy((prevFilter) => ({
-            ...prevFilter,
-            capacity: prevFilter.capacity + ((type === 'adults' || type === 'children') ? value : 0),
-            guests: {
-                ...prevFilter.guests,
-                [type]: prevFilter.guests[type] + value
+            if (capacity === 0 && value > 0) {
+                guests[type] += value
+
+                if (type === 'adults') {
+                    capacity += value
+                } else {
+                    guests['adults'] += value
+                    capacity += value * 2
+                }
+
+            } else {
+                guests[type] += value
+                capacity += value
             }
-        }))
+
+            // console.log('capacity', capacity)
+            // console.log('guests', guests)
+
+            return {
+                ...prevFilter,
+                capacity,
+                guests
+            }
+        })
     }
 
 
