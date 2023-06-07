@@ -49,7 +49,7 @@ export function AppHeader() {
     const [selectedExperienceTab, setSelectedExperienceTab] = useState('stays')
     const [selectedFilterBox, setSelectedFilterBox] = useState('where')
     const [isDropDownActive, setIsDropDownActive] = useState(false)
-
+    const [pos, setPos] = useState({ x: 0, y: 0 })
 
 
 
@@ -207,16 +207,19 @@ export function AppHeader() {
     }
 
     function onSetSelectedFilterBox(ev) {
-        ev.preventDefault()
         // const value = ev.currentTarget.getAttribute('class')
         // console.log('value', value)
+        ev.preventDefault()
         const field = ev.currentTarget.getAttribute('name')
         console.log('field', field)
         if (selectedFilterBox !== field) setSelectedFilterBox(field)
     }
 
+
     function onSetDropDown(ev) {
         ev.preventDefault()
+        const { target } = ev
+        setPos(target.parentNode.getBoundingClientRect())
         setIsDropDownActive(isDropDownActive => !isDropDownActive)
     }
 
@@ -293,15 +296,15 @@ export function AppHeader() {
 
 
                         </section>
-
-                        <section className="user-container" onClick={(ev) => onSetDropDown(ev)}>
-                            <section className="user-navbar">
-                                <article className="bars"><SvgHandler svgName={USER_NAV_BARS} /></article>
-                                <article className="profile"><SvgHandler svgName={USER_NAV_PROFILE} /></article>
+                        <div className="user-container-parent">
+                            <section className="user-container" onClick={(ev) => onSetDropDown(ev)}>
+                                <section className="user-navbar">
+                                    <article className="bars"><SvgHandler svgName={USER_NAV_BARS} /></article>
+                                    <article className="profile"><SvgHandler svgName={USER_NAV_PROFILE} /></article>
+                                </section>
+                                {isDropDownActive && <DropDown pos={pos} />}
                             </section>
-                            {isDropDownActive && <DropDown />}
-
-                        </section>
+                        </div>
                     </nav>
 
                     <section className={`filter-expanded-container${isFilterExpanded ? '' : ' folded'}`} >

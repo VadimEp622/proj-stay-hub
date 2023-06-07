@@ -176,7 +176,11 @@
         }
     }
 
-    & .user-container {
+    .user-container-parent {
+        justify-self: end;
+    }
+
+    .user-container-parent .user-container {
         justify-self: end;
 
         & .user-navbar {
