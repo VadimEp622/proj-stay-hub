@@ -5,6 +5,8 @@ import { login, signup } from '../store/user.actions'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { useSelector } from 'react-redux'
 import { AirbnbButton } from './reuseableCmp/airbnb-button'
+import { setModal } from '../store/stay.actions'
+import { useClickOutside } from '../customHooks/clickOutsideModal'
 
 
 export function LoginSignup(props) {
@@ -13,6 +15,12 @@ export function LoginSignup(props) {
     const [credentials, setCredentials] = useState({ username: '', password: '', fullname: '' })
     const [isSignup, setIsSignup] = useState(false)
     const [users, setUsers] = useState([])
+    const dropdownRef = useClickOutside(onDropdownClickOutside)
+
+    function onDropdownClickOutside() {
+        setModal(false)
+    }
+
 
     useEffect(() => {
         loadUsers()
@@ -66,7 +74,7 @@ export function LoginSignup(props) {
     }
 
     return (
-        <div className="login-page">
+        <div className="login-page" ref={dropdownRef}>
             <header className='login-header flex justify-center align-center'>
                 <h4 className="fs16">
                     {/* {!isSignup ? 'Signup' : 'Log in'} */}
@@ -74,27 +82,27 @@ export function LoginSignup(props) {
                 </h4>
             </header>
             <section className='main-login'>
-                {!isSignup && 
-                <form className="login-form flex justify-center align-center" onSubmit={onLogin}>
-                    <input
-                        type="text"
-                        name="username"
-                        value={credentials.username}
-                        placeholder="Username"
-                        onChange={handleChange}
-                        required
-                        autoFocus
-                    />
-                    <input
-                        type="password"
-                        name="password"
-                        value={credentials.password}
-                        placeholder="Password"
-                        onChange={handleChange}
-                        required
-                    />
-                    <AirbnbButton text={'Login'}/>
-                </form>}
+                {!isSignup &&
+                    <form className="login-form flex justify-center align-center" onSubmit={onLogin}>
+                        <input
+                            type="text"
+                            name="username"
+                            value={credentials.username}
+                            placeholder="Username"
+                            onChange={handleChange}
+                            required
+                            autoFocus
+                        />
+                        <input
+                            type="password"
+                            name="password"
+                            value={credentials.password}
+                            placeholder="Password"
+                            onChange={handleChange}
+                            required
+                        />
+                        <AirbnbButton text={'Login'} />
+                    </form>}
 
                 <div className="signup-section">
                     {isSignup && <form className="signup-form flex" onSubmit={onSignup}>

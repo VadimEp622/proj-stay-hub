@@ -1,9 +1,9 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { LoginSignup } from './cmps/login-signup';
-import { FilterModal } from './filter';
+import { FilterModal } from '../filter';
+import { LoginSignup } from '../login-signup';
 
-const DynamicCmp = ({ modalType }) => {
+export function DynamicCmp({ modalType }) {
     switch (modalType) {
         case 'loginSignup':
             return <LoginSignup />
@@ -12,8 +12,6 @@ const DynamicCmp = ({ modalType }) => {
             return <FilterModal />
             break
         default:
-            return null;
+            return null
     }
-};
-
-export default DynamicCmp;
+}

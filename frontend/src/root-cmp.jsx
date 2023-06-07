@@ -12,6 +12,7 @@ import { StayDetails } from './pages/stay-details'
 import { useSelector } from 'react-redux'
 import { LoginSignup } from './cmps/login-signup'
 import { OrderConfirmation } from './pages/order-confirmation'
+import { DynamicCmp } from './cmps/reuseableCmp/dynamicCmp'
 
 export function RootCmp() {
     const isUnclickableBg = useSelector(storeState => storeState.systemModule.isUnclickableBg)
@@ -24,7 +25,8 @@ export function RootCmp() {
             <div className="main-screen-unclickable">
                 <div className="modal-wrapper" >
                     <div className="modal-wrapper-second" >
-                        {!isModalOpen && <LoginSignup />}
+                        {/* {!isModalOpen && <LoginSignup />} */}
+                        {isModalOpen && <DynamicCmp modalType={isModalOpen} />}
                     </div>
                 </div>
             </div>
