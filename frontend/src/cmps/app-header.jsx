@@ -31,6 +31,7 @@ import { LongTxt } from './long-txt.jsx'
 import { DropDown } from './dropdown-menu.jsx'
 import { useClickOutside } from '../customHooks/clickOutsideModal.js'
 import { Logo } from './logo.jsx'
+import { SearchbarToggler } from './searchbar-toggler.jsx'
 
 export function AppHeader({ isStayDetailsPage }) {
     // const isUnclickableBg = useSelector(storeState => storeState.systemModule.system)
@@ -152,7 +153,6 @@ export function AppHeader({ isStayDetailsPage }) {
         })
     }
 
-
     function setFilterDates(range) {
         if (!range) {
             setFilterBy(prevFilter => ({ ...prevFilter, from: '', to: '' }))
@@ -175,19 +175,6 @@ export function AppHeader({ isStayDetailsPage }) {
         }
     }
 
-
-    function toggleSelected(ev) {
-        // This function toggles between selected experiences-tab
-        ev.preventDefault()
-
-        const field = ev.currentTarget.getAttribute('name')
-        const value = ev.currentTarget.getAttribute('class')
-
-        if (value === selectedExperienceTab) return
-        setSelectedExperienceTab(`${field}`)
-    }
-
-
     function displayGuestsFilter() {
         // ******** At least 1 Adult from this point ********
         let guestsStr = ''
@@ -204,13 +191,6 @@ export function AppHeader({ isStayDetailsPage }) {
         return guestsStr
     }
 
-
-    function onExpandedFilter(ev) {
-        ev.preventDefault()
-        store.dispatch({ type: SET_UNCLICKABLE_BG })
-        store.dispatch({ type: OPEN_EXPANDED_HEADER })
-    }
-
     function onSetSelectedFilterBox(ev) {
         // const value = ev.currentTarget.getAttribute('class')
         // console.log('value', value)
@@ -220,7 +200,6 @@ export function AppHeader({ isStayDetailsPage }) {
         if (selectedFilterBox !== field) setSelectedFilterBox(field)
     }
 
-
     function onSetDropDown(ev) {
         ev.preventDefault()
         const { target } = ev
@@ -229,6 +208,7 @@ export function AppHeader({ isStayDetailsPage }) {
         setIsDropDownActive(true)
     }
 
+
     return (
         <Fragment>
             <header className={`app-header-container full ${!isStayDetailsPage ? 'main-layout' : 'details-layout'} always-clickable-bg`}>
@@ -236,53 +216,11 @@ export function AppHeader({ isStayDetailsPage }) {
                 <nav className="app-header">
                     <Logo />
 
-                    <section className="searchbar-toggle-container">
-
-                        {
-                            !isFilterExpanded &&
-                            <button className="searchbar-closed" onClick={onExpandedFilter}>
-                                <article>Anywhere</article>
-                                <article>Any week</article>
-                                <article>Add guests</article>
-                                <aside className="search-circle">
-                                    <SvgHandler svgName={SEARCH} />
-                                </aside>
-                            </button>
-                        }
-
-                        {
-                            isFilterExpanded &&
-                            <section className="searchbar-open">
-                                <section className="experiences-tab">
-
-                                    <article
-                                        className={selectedExperienceTab === 'stays' ? 'selected' : ''}
-                                        name="stays"
-                                        onClick={toggleSelected}
-                                    >
-                                        <span>Stays</span>
-                                    </article>
-
-                                    <article
-                                        className={selectedExperienceTab === 'experiences' ? 'selected' : ''}
-                                        name="experiences"
-                                        onClick={toggleSelected}
-                                    >
-                                        <span>Experiences</span>
-                                    </article>
-
-                                    <article
-                                        className={selectedExperienceTab === 'online' ? 'selected' : ''}
-                                        name="online"
-                                        onClick={toggleSelected}
-                                    >
-                                        <span>Online Experiences</span>
-                                    </article>
-
-                                </section>
-                            </section>
-                        }
-                    </section>
+                    <SearchbarToggler
+                        isFilterExpanded={isFilterExpanded}
+                        selectedExperienceTab={selectedExperienceTab}
+                        setSelectedExperienceTab={setSelectedExperienceTab}
+                    />
 
                     <div className="user-container-parent">
                         <section className="user-container" ref={dropdownRef} onClick={(ev) => onSetDropDown(ev)}>
