@@ -9,33 +9,30 @@
         grid-template-columns: 1fr auto 1fr;
         align-items: center;
 
-        & .logo-container {
-            & .page-navbar {
-                // width: fit-content;
-                // display: block;
-                justify-self: start;
+        // & .logo-container {
+        //     & .page-navbar {
+        //         justify-self: start;
 
-                .logo-svg {
-                    display: flex;
-                    color: $main-clr0;
-                    gap: $padding-small;
-                    align-items: center;
-                    // padding-inline-end: 75px;
+        //         .logo-svg {
+        //             display: flex;
+        //             color: $main-clr0;
+        //             gap: $padding-small;
+        //             align-items: center;
 
-                    span {
-                        height: fit-content;
-                        margin-block: auto;
-                        font-family: cereal;
-                        font-size: em(20px);
-                    }
-                }
-            }
-        }
+        //             span {
+        //                 height: fit-content;
+        //                 margin-block: auto;
+        //                 font-family: cereal;
+        //                 font-size: em(20px);
+        //             }
+        //         }
+        //     }
+        // }
 
 
 
-        & .filter-container {
-            & .filter {
+        & .searchbar-toggle-container {
+            & .searchbar-closed {
                 width: 352.203px;
                 display: grid;
                 grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -98,7 +95,7 @@
                     }
                 }
 
-                & .filter-search-circle {
+                & .search-circle {
                     border-radius: 50%;
                     justify-self: end;
                     background-color: $main-clr0;
@@ -110,13 +107,13 @@
                 }
             }
 
-            & .filter:hover {
+            & .searchbar-closed:hover {
                 box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px 0px;
                 cursor: pointer;
             }
 
 
-            & .filter-expanded {
+            & .searchbar-open {
                 & .experiences-tab {
                     display: flex;
                     justify-content: center;
@@ -267,7 +264,8 @@
 
 
 
-                &:not(.who-container)>* {
+                &:not(.who-container)>*,
+                &.who-container .who-search .who {
                     padding-block: 12.8124px;
 
                     &>* {
@@ -291,29 +289,6 @@
                                 border: 0;
                                 padding: 0;
                             }
-                        }
-                    }
-                }
-
-
-                &.who-container .who-search .who {
-                    padding-block: 12.8124px;
-
-                    &>* {
-                        &:first-child {
-                            font-family: Circular-Bold;
-                            font-size: rem(12px);
-                            letter-spacing: 0.48px;
-                            line-height: 16px;
-                            padding-block-end: 0.03px;
-                        }
-
-                        &:last-child {
-                            font-family: Circular-Regular;
-                            font-size: 14px;
-                            color: $gray-clr0;
-                            letter-spacing: 0;
-                            line-height: 18px;
                         }
                     }
                 }
