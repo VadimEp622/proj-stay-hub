@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 import { Routes, Route } from 'react-router'
-
+import { useParams, useLocation } from 'react-router-dom'
 import { stayService } from './services/stay.service.local'// needed to init demo data to localStorage (do not delete)
 
 import routes from './routes'
@@ -13,12 +13,14 @@ import { useSelector } from 'react-redux'
 
 export function RootCmp() {
     const isUnclickableBg = useSelector(storeState => storeState.systemModule.isUnclickableBg)
+    const location = useLocation()
+    const isStayDetailsPage = location.pathname.includes('/stay/')
 
     return (
         <Fragment>
             <div className="main screen unclickable"></div>
 
-            <section className={`app main-layout ${isUnclickableBg && 'unclickable-background'}`}>
+            <section className={`app ${!isStayDetailsPage ? 'main-layout' : 'details-layout'} ${isUnclickableBg && 'unclickable-background'}`}>
                 <AppHeader />
                 <main className="app-main">
                     <Routes>
