@@ -332,27 +332,28 @@ export function AppHeader({ isStayDetailsPage }) {
                             </section>
                         </article>
                         <article className={`who${selectedFilterBox === 'who' ? ' active' : ''}`} name="who" onClick={onSetSelectedFilterBox}>
-                            <section>
-                                <h3>Who</h3>
-                                <span>
-                                    {
-                                        filterBy.guests.adults > 0
-                                            ? <LongTxt
-                                                txt={displayGuestsFilter()}
-                                                length={11}
-                                                askShowMore={false}
-                                            />
-                                            : `Add guests`
-                                    }
-                                </span>
-                            </section>
-                            <button className="btn-main-search" onClick={(ev) => onSubmit(ev)}>
-                                <section className="svg-container">
-                                    <SvgHandler svgName={SEARCH_2} />
+                            <section className="who-container">
+                                <section>
+                                    <h3>Who</h3>
+                                    <span>
+                                        {
+                                            filterBy.guests.adults > 0
+                                                ? <LongTxt
+                                                    txt={displayGuestsFilter()}
+                                                    length={11}
+                                                    askShowMore={false}
+                                                />
+                                                : `Add guests`
+                                        }
+                                    </span>
                                 </section>
-                                <span>Search</span>
-                            </button>
-
+                                <button className="btn-main-search" onClick={(ev) => onSubmit(ev)}>
+                                    <section className="svg-container">
+                                        <SvgHandler svgName={SEARCH_2} />
+                                    </section>
+                                    <span>Search</span>
+                                </button>
+                            </section>
                         </article>
                     </section>
 
