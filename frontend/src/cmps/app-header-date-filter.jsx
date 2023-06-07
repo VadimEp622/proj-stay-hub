@@ -1,12 +1,17 @@
-import { compareAsc, format, startOfDay } from 'date-fns'
+import { compareAsc, format, startOfDay, parseISO, parse } from 'date-fns'
 import { useRef, useState, createElement, useEffect } from 'react'
 import { DateRange, SelectRangeEventHandler, DayPicker } from 'react-day-picker'
 import styles from 'react-day-picker/dist/style.module.css'
 
-export function DateFilter({ onSetFilterDates }) {
+
+// WHY IS DATE FILTER RENDER DATES RESTARTS?
+export function DateFilter({ filterBy, onSetFilterDates }) {
     const date = new Date()
     const today = startOfDay(date)
-    const [selectedRange, setSelectedRange] = useState('')
+    const [selectedRange, setSelectedRange] = useState({
+        from: filterBy.from ? new Date(filterBy.from) : '',
+        to: filterBy.to ? new Date(filterBy.to) : ''
+    })
 
 
 

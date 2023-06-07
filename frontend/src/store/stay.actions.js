@@ -76,7 +76,6 @@ export async function updateStay(stay) {
 }
 
 export function updateFilterBy(filterBy) {
-    console.log(filterBy)
     store.dispatch({ type: UPDATE_FILTER_BY, filterBy })
 }
 
@@ -106,9 +105,9 @@ export async function checkout(total) {
     }
 }
 
-export async function setModal(boolean) {
-    console.log('Action:', boolean);
-    store.dispatch({ type: SET_MODAL_OPEN, boolean })
+export async function setModal(isModalOpen) {
+    console.log(isModalOpen)
+    store.dispatch({ type: SET_MODAL_OPEN, isModalOpen })
 }
 
 // Demo for Optimistic Mutation 

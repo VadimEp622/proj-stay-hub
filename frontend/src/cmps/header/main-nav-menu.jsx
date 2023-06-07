@@ -8,7 +8,6 @@ import SvgHandler from "../svg-handler.jsx"
 
 export function MainNavMenu() {
     const [isDropDownActive, setIsDropDownActive] = useState(false)
-    const [pos, setPos] = useState({ x: 0, y: 0 })
     const dropdownRef = useClickOutside(onDropdownClickOutside)
 
     function onDropdownClickOutside() {
@@ -17,9 +16,7 @@ export function MainNavMenu() {
 
     function onSetDropDown(ev) {
         ev.preventDefault()
-        const { target } = ev
-        setPos(target.parentNode.getBoundingClientRect())
-        setIsDropDownActive(true)
+        setIsDropDownActive(prevDropDown => !prevDropDown)
     }
 
     return (
@@ -28,7 +25,7 @@ export function MainNavMenu() {
                 <article className="bars"><SvgHandler svgName={USER_NAV_BARS} /></article>
                 <article className="profile"><SvgHandler svgName={USER_NAV_PROFILE} /></article>
             </section>
-            {isDropDownActive && <DropDown pos={pos} />}
+            {isDropDownActive && <DropDown setIsDropDownActive={setIsDropDownActive} />}
         </section>
     )
 }

@@ -24,6 +24,7 @@
         background-color: $gray-clr4;
         border-radius: 32px;
         border: 1px solid $gray-clr3;
+        position: relative;
 
         &>* {
 
@@ -53,7 +54,12 @@
 
             &:not(.who-container)>*,
             &.who-container .who-search .who {
+
                 padding-block: 12.8124px;
+
+                &:not(.where) {
+                    padding-block: 15px;
+                }
 
                 &>* {
                     &:first-child {
@@ -70,6 +76,10 @@
                         color: $gray-clr0;
                         letter-spacing: 0;
                         line-height: 18px;
+
+                        &:is(span) {
+                            display: block;
+                        }
 
                         &:is(input) {
                             background-color: inherit;
@@ -160,8 +170,173 @@
             }
         }
 
+        & .check-in-container,
+        .check-out-container,
+        .who-container {
+            position: relative;
+
+            &::before {
+                content: '';
+                position: absolute;
+                background-color: $gray-clr3;
+                height: 32px;
+                width: 1px;
+                top: 17px;
+                left: 0;
+            }
+        }
+
+
+
+
+
         &:hover {
             cursor: pointer;
+        }
+
+
+        // hover on either element 1 or adjacent element 2, change pseudo element in element 2
+        & .where-container:hover+.check-in-container::before,
+        & .check-in-container:hover::before,
+        & .check-in-container.active::before {
+            width: 0;
+        }
+
+        & .check-in-container:hover+.check-out-container::before,
+        & .check-out-container:hover::before,
+        & .check-out-container.active::before {
+            width: 0;
+        }
+
+        & .check-out-container:hover+.who-container::before,
+        & .who-container:hover::before,
+        & .who-container.active::before {
+            width: 0;
+        }
+
+
+
+        & .size-less {
+            height: 0;
+            width: 0;
+
+            & .modal:has(.guest-count-filter) {
+                right: 0;
+            }
+
+            & .modal:has(.filter-date-picker) {
+                right: 0;
+                left: 0;
+            }
+
+            & .modal:has(.location-filter) {
+                left: 0;
+            }
+
+            & .modal {
+                position: absolute;
+                background-color: $gray-clr-1;
+                border-radius: 32px;
+                margin-block-start: 44px;
+                box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.04), 0 8px 16px rgba(0, 0, 0, 0.15);
+                padding-block: 32px;
+                padding-inline: 16px;
+
+                & .filter-date-picker {
+                    margin-inline: auto;
+
+                    td {
+                        position: relative;
+
+                        & :is(.day-range-start, .day-range-end) {
+                            background-color: rgb(34, 34, 34);
+                            border-radius: 100%;
+                        }
+
+                        &:has(.day-range-end, .day-range-start) {
+                            &::before {
+                                content: "";
+                                position: absolute;
+                                top: 0;
+                                width: 50%;
+                                height: 100%;
+                                background-color: #f7f7f7;
+                            }
+                        }
+
+                        &:has(.day-range-start) {
+                            &::before {
+                                right: 0;
+                            }
+                        }
+
+                        &:has(.day-range-end) {
+                            &::before {
+                                left: 0;
+                            }
+                        }
+
+                        & .day-range-middle {
+                            background-color: #f7f7f7;
+                            color: #222222;
+                            border-radius: 0;
+                        }
+                    }
+                }
+
+                & .guest-count-filter {
+                    & .card {
+                        white-space: nowrap;
+                        display: flex;
+                        justify-content: space-between;
+                        padding-block: em(24px);
+                        width: 326px;
+
+                        & p {
+                            margin: 0;
+                        }
+
+                        &:not(:last-child) {
+                            content: '';
+                            border-bottom: 1px solid rgb(235, 235, 235);
+                        }
+
+                        .custom-btn-guest-count {
+                            background-color: rgb(255, 255, 255);
+                            color: rgb(113, 113, 113);
+                            border: 1px solid rgb(176, 176, 176);
+                            border-radius: 50%;
+                            width: 30px;
+                            height: 30px;
+                            font-weight: 700;
+                            cursor: pointer;
+                            font-size: 13.5px;
+                        }
+
+                        & span {
+                            margin-inline: 10px;
+                            text-align: center;
+                            font-weight: 600;
+                        }
+
+                        .pet-service {
+                            font-weight: 600;
+                            color: rgb(113, 113, 113);
+                            cursor: pointer;
+                        }
+
+                        .custom-btn-guest-count:hover {
+                            border-color: rgb(34, 34, 34);
+                        }
+
+                        .custom-btn-guest-count:disabled {
+                            cursor: not-allowed;
+                            border-color: #EBEBEB;
+                            color: #EBEBEB;
+                        }
+                    }
+                }
+            }
         }
     }
 }
