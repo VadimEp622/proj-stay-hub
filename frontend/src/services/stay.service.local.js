@@ -398,7 +398,86 @@ function _createDemoStays() {
 
 // }
 
+
 function _createDemoStay(name, summary, type, loc, imgUrls) {
+    const reviews = [
+        {
+            id: "madeId",
+            txt: "Very helpful hosts. Cooked traditional Lorem, ipsum dolor sit amet consectetur adipisicing elit. Unde, incidunt corrupti illo animi hic voluptatum corporis ullam natus! Qui, expedita animi magnam harum iusto mollitia itaque voluptas unde obcaecati aut.",
+            reviewInputs: {
+                cleanliness: 4.8,
+                communication: 5,
+                'check-in': 5,
+                accuracy: 4.8,
+                location: 4.8,
+                value: 4.4
+            },
+            by: {
+                _id: "u102",
+                fullname: "Jack",
+                date: "May 2023",
+                imgUrl: "https://res.cloudinary.com/dgzyxjapv/image/upload/v1670246635/stayby/avatars/male/60.jpg"
+            }
+        },
+        {
+            id: "madeId",
+            txt: "Love this place, was soo peaceful and we had a marvelous time. Perfect little kitchen and beautiful views to enjoy. We loved all the activities they offer and driving around the local area, we can`t wait to go back.",
+            reviewInputs: {
+                cleanliness: 4.2,
+                communication: 1,
+                'check-in': 5,
+                accuracy: 4.5,
+                location: 4.8,
+                value: 4.4
+            },
+            by: {
+                _id: "u103",
+                fullname: "Patricia",
+                date: "September 2022",
+                imgUrl: "https://res.cloudinary.com/dgzyxjapv/image/upload/v1670246635/stayby/avatars/female/14.jpg"
+            }
+        },
+        {
+            id: "madeId",
+            txt: "We had the best honeymoon we could have asked for here!",
+            reviewInputs: {
+                cleanliness: 4.8,
+                communication: 4,
+                'check-in': 1,
+                accuracy: 4.8,
+                location: 3.8,
+                value: 4.4
+            },
+            by: {
+                _id: "u104",
+                fullname: "Lina & Alexis",
+                date: "January 2023",
+                imgUrl: "https://res.cloudinary.com/dgzyxjapv/image/upload/v1670246635/stayby/avatars/female/63.jpg"
+            }
+        },
+        {
+            id: "madeId",
+            txt: "It was a dream of a stay. The hosts go above and beyond. Such kind, earnest interactions and the best tips/advice. The property itself is ideal for an adventure that is also peaceful and calming. I’d recommend to anyone whose looking to leave their trip refreshed and with new perspective. Everything was thoughtfully prepared and the communication was excellent and accurate.",
+            reviewInputs: {
+                cleanliness: 4.8,
+                communication: 5,
+                'check-in': 5,
+                accuracy: 4.8,
+                location: 4.8,
+                value: 4.4
+            },
+            by: {
+                _id: "u105",
+                fullname: "Juan Carlo",
+                date: "May 2023",
+                imgUrl: "https://res.cloudinary.com/dgzyxjapv/image/upload/v1670246635/stayby/avatars/male/51.jpg"
+            }
+        }
+    ]
+    const overallRate = _calculateOverallRate(reviews)
+
+    const updatedReviews = reviews.map(review => ({ ...review, rate: overallRate }))
+
     return {
         _id: utilService.makeId(),
         name,
@@ -408,84 +487,7 @@ function _createDemoStay(name, summary, type, loc, imgUrls) {
         price: utilService.getRandomIntInclusive(100, 9000),
         capacity: utilService.getRandomIntInclusive(1, 10),
         imgUrls,
-        reviews: [
-            {
-                id: "madeId",
-                txt: "Very helpful hosts. Cooked traditional Lorem, ipsum dolor sit amet consectetur adipisicing elit. Unde, incidunt corrupti illo animi hic voluptatum corporis ullam natus! Qui, expedita animi magnam harum iusto mollitia itaque voluptas unde obcaecati aut.",
-                reviewInputs: {
-                    cleanliness: 4.8,
-                    communication: 5,
-                    checkin: 5,
-                    accuracy: 4.8,
-                    location: 4.8,
-                    value: 4.4
-                },
-                rate: 5,
-                by: {
-                    _id: "u102",
-                    fullname: "Jack",
-                    date: "May 2023",
-                    imgUrl: "https://res.cloudinary.com/dgzyxjapv/image/upload/v1670246635/stayby/avatars/male/60.jpg"
-                }
-            },
-            {
-                id: "madeId",
-                txt: "Love this place, was soo peaceful and we had a marvelous time. Perfect little kitchen and beautiful views to enjoy. We loved all the activities they offer and driving around the local area, we can`t wait to go back.",
-                reviewInputs: {
-                    cleanliness: 4.2,
-                    communication: 1,
-                    checkin: 5,
-                    accuracy: 4.5,
-                    location: 4.8,
-                    value: 4.4
-                },
-                rate: 4,
-                by: {
-                    _id: "u103",
-                    fullname: "Patricia",
-                    date: "September 2022",
-                    imgUrl: "https://res.cloudinary.com/dgzyxjapv/image/upload/v1670246635/stayby/avatars/female/14.jpg"
-                }
-            },
-            {
-                id: "madeId",
-                txt: "We had the best honeymoon we could have asked for here!",
-                reviewInputs: {
-                    cleanliness: 4.8,
-                    communication: 4,
-                    checkin: 1,
-                    accuracy: 4.8,
-                    location: 3.8,
-                    value: 4.4
-                },
-                rate: 5,
-                by: {
-                    _id: "u104",
-                    fullname: "Lina & Alexis",
-                    date: "January 2023",
-                    imgUrl: "https://res.cloudinary.com/dgzyxjapv/image/upload/v1670246635/stayby/avatars/female/63.jpg"
-                }
-            },
-            {
-                id: "madeId",
-                txt: "It was a dream of a stay. The hosts go above and beyond. Such kind, earnest interactions and the best tips/advice. The property itself is ideal for an adventure that is also peaceful and calming. I’d recommend to anyone whose looking to leave their trip refreshed and with new perspective. Everything was thoughtfully prepared and the communication was excellent and accurate.",
-                reviewInputs: {
-                    cleanliness: 4.8,
-                    communication: 5,
-                    'check-in': 5,
-                    accuracy: 4.8,
-                    location: 4.8,
-                    value: 4.4
-                },
-                rate: 5,
-                by: {
-                    _id: "u105",
-                    fullname: "Juan Carlo",
-                    date: "May 2023",
-                    imgUrl: "https://res.cloudinary.com/dgzyxjapv/image/upload/v1670246635/stayby/avatars/male/51.jpg"
-                }
-            },
-        ],
+        reviews: updatedReviews,
         loc: {
             country: loc.country,
             countryCode: loc.countryCode,
@@ -530,5 +532,13 @@ function _createDemoStay(name, summary, type, loc, imgUrls) {
     }
 }
 
-
-
+function _calculateOverallRate(reviews) {
+    const totalReviews = reviews.length
+    const ratingSum = reviews.reduce((sum, review) => {
+        const ratingValues = Object.values(review.reviewInputs)
+        const sumForReview = ratingValues.reduce((acc, curr) => acc + curr, 0)
+        return sum + sumForReview
+    }, 0)
+    const overallRate = totalReviews > 0 ? ratingSum / (totalReviews * 6) : 0
+    return Number(overallRate.toFixed(1))
+}

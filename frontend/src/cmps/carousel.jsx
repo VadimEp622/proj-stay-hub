@@ -55,7 +55,7 @@ export function CarouselImage({ imgs, stay }) {
             swipeable
         >
             {imgs.map((img, index) => (
-                <Link key={index} to={`/stay/${stay._id}`}>
+                <Link key={index} to={`/stay/${stay._id}`} target="_blank">
                     <img
                         src={img}
                         style={{

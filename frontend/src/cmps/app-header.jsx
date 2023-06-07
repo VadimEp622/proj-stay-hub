@@ -224,7 +224,8 @@ export function AppHeader({ isStayDetailsPage }) {
         ev.preventDefault()
         const { target } = ev
         setPos(target.parentNode.getBoundingClientRect())
-        setIsDropDownActive(isDropDownActive => !isDropDownActive)
+        // setIsDropDownActive(isDropDownActive => !isDropDownActive)
+        setIsDropDownActive(true)
     }
 
     return (

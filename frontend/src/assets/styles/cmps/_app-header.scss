@@ -183,6 +183,7 @@
 
     .user-container-parent .user-container {
         justify-self: end;
+        position: relative;
 
         & .user-navbar {
             display: flex;
