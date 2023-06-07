@@ -1,0 +1,28 @@
+.main-nav-menu-container {
+    justify-self: end;
+    position: relative;
+
+    & .main-nav-menu {
+        display: flex;
+        cursor: pointer;
+        position: relative;
+        flex-direction: row;
+        height: 42px;
+        width: 77px;
+        border: 1px solid rgb(221, 221, 221);
+        border-radius: 21px;
+
+        padding: 5px 5px 5px 12px;
+        align-items: center;
+
+        & .bars {
+            color: #222222;
+        }
+
+        & .profile {
+            color: #717171;
+            height: 30px;
+            margin-left: auto;
+        }
+    }
+}

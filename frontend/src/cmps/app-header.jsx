@@ -30,8 +30,9 @@ import { CLOSE_EXPANDED_HEADER, OPEN_EXPANDED_HEADER, SET_UNCLICKABLE_BG } from 
 import { LongTxt } from './long-txt.jsx'
 import { DropDown } from './dropdown-menu.jsx'
 import { useClickOutside } from '../customHooks/clickOutsideModal.js'
-import { Logo } from './logo.jsx'
-import { SearchbarToggler } from './searchbar-toggler.jsx'
+import { Logo } from './header/logo.jsx'
+import { SearchbarToggler } from './header/searchbar-toggler.jsx'
+import { MainNavMenu } from './header/main-nav-menu.jsx'
 
 export function AppHeader({ isStayDetailsPage }) {
     // const isUnclickableBg = useSelector(storeState => storeState.systemModule.system)
@@ -51,40 +52,9 @@ export function AppHeader({ isStayDetailsPage }) {
     const isFilterExpanded = useSelector(storeState => storeState.systemModule.isFilterExpanded)
     const [selectedExperienceTab, setSelectedExperienceTab] = useState('stays')
     const [selectedFilterBox, setSelectedFilterBox] = useState('where')
-    const [isDropDownActive, setIsDropDownActive] = useState(false)
-    const [pos, setPos] = useState({ x: 0, y: 0 })
-    const dropdownRef = useClickOutside(onDropdownClickOutside)
-
-    function onDropdownClickOutside() {
-        setIsDropDownActive(false)
-    }
 
 
-    // async function onLogin(credentials) {
-    //     try {
-    //         const user = await login(credentials)
-    //         showSuccessMsg(`Welcome: ${user.fullname}`)
-    //     } catch (err) {
-    //         showErrorMsg('Cannot login')
-    //     }
-    // }
-    // async function onSignup(credentials) {
-    //     try {
-    //         const user = await signup(credentials)
-    //         showSuccessMsg(`Welcome new user: ${user.fullname}`)
-    //     } catch (err) {
-    //         showErrorMsg('Cannot signup')
-    //     }
-    // }
-    // async function onLogout() {
-    //     try {
-    //         await logout()
-    //         showSuccessMsg(`Bye now`)
-    //     } catch (err) {
-    //         showErrorMsg('Cannot logout')
-    //     }
-    // }
-
+    
 
     function onSubmit(ev) {
         ev.preventDefault()
@@ -200,13 +170,6 @@ export function AppHeader({ isStayDetailsPage }) {
         if (selectedFilterBox !== field) setSelectedFilterBox(field)
     }
 
-    function onSetDropDown(ev) {
-        ev.preventDefault()
-        const { target } = ev
-        setPos(target.parentNode.getBoundingClientRect())
-        // setIsDropDownActive(isDropDownActive => !isDropDownActive)
-        setIsDropDownActive(true)
-    }
 
 
     return (
@@ -215,22 +178,12 @@ export function AppHeader({ isStayDetailsPage }) {
 
                 <nav className="app-header">
                     <Logo />
-
                     <SearchbarToggler
                         isFilterExpanded={isFilterExpanded}
                         selectedExperienceTab={selectedExperienceTab}
                         setSelectedExperienceTab={setSelectedExperienceTab}
                     />
-
-                    <div className="user-container-parent">
-                        <section className="user-container" ref={dropdownRef} onClick={(ev) => onSetDropDown(ev)}>
-                            <section className="user-navbar">
-                                <article className="bars"><SvgHandler svgName={USER_NAV_BARS} /></article>
-                                <article className="profile"><SvgHandler svgName={USER_NAV_PROFILE} /></article>
-                            </section>
-                            {isDropDownActive && <DropDown pos={pos} />}
-                        </section>
-                    </div>
+                    <MainNavMenu />
                 </nav>
 
                 <section className={`filter-expanded-container full main-layout${isFilterExpanded ? '' : ' folded'}`} >

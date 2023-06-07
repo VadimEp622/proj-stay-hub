@@ -1,9 +1,9 @@
 import { NavLink } from "react-router-dom"
 
-import routes from "../routes.js"
-import { LOGO } from "../services/svg.service.js"
+import routes from "../../routes.js"
+import { LOGO } from "../../services/svg.service.js"
 
-import SvgHandler from "./svg-handler.jsx"
+import SvgHandler from "../svg-handler.jsx"
 
 export function Logo() {
     return (
