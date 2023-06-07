@@ -1,0 +1,17 @@
+.logo-container {
+    justify-self: start;
+
+    & .page-navbar .logo-svg {
+        display: flex;
+        color: $main-clr0;
+        gap: $padding-small;
+        align-items: center;
+
+        & span {
+            height: fit-content;
+            margin-block: auto;
+            font-family: cereal;
+            font-size: em(20px);
+        }
+    }
+}
