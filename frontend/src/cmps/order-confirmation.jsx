@@ -1,4 +1,6 @@
+import { useClickOutside } from "../customHooks/clickOutsideModal";
 import { STAR } from "../services/svg.service";
+import { AirbnbButton, airbnbButton } from "./airbnbButton";
 import { utilService } from "../services/util.service";
 import SvgHandler from "./svg-handler";
 
@@ -8,12 +10,18 @@ export function OrderConfirmation({ setOpenModal, orderObject }) {
     const { total, serviceFee, cleaningFee, price } = orderPrice
     const formattedTimeRange = utilService.getFormattedTimeRange(checkIn, checkOut)
     const sellerFirstName = seller.fullName.substring(0, seller.fullName.indexOf(' '))
+    const dropdownRef = useClickOutside(onModalClickOutSide)
+
+    function onModalClickOutSide() {
+        setOpenModal(false)
+    }
+
     return (
-        <section className="order-confirmation">
+        <section className="order-confirmation" ref={dropdownRef}>
             <div className="confirmation-details">
                 <h3>Confirmation</h3>
                 <div className="rare-find">
-                    <h5>This is rare find.</h5>
+                    <h5>This is a rare find.</h5>
                     {/* insert SVG of diamond here */}
                     <p>{sellerFirstName}'s place is usually booked.</p>
                 </div>
@@ -27,17 +35,7 @@ export function OrderConfirmation({ setOpenModal, orderObject }) {
                         <h4>Guests</h4>
                         <p>{guestsNumber} guest{guestsNumber !== 1 && 's'}</p>
                     </div>
-                    <div className="buttons-container">
-                        <button onClick={() => setOpenModal(false)}>Close</button>
-                        <div className="btn-container">
-                            {utilService.createDivsForButtonContainer()}
-                            <div className="content">
-                                <button className="action-btn">
-                                    <span>Approve</span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
+                    {/* <AirbnbButton onClickButton={onOpenModal} text={'Approve'} /> */}
                 </div>
             </div>
             <aside>
