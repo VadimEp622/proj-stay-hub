@@ -1,38 +1,26 @@
-import { Link, NavLink } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import { format } from 'date-fns'
+import { Fragment, useRef, useState } from 'react'
 
-import routes from '../routes.js'
+
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service.js'
+import { stayService } from '../services/stay.service.local.js'
+import { store } from '../store/store.js'
 import { login, logout, setGuests, signup } from '../store/user.actions.js'
+import { updateFilterBy } from '../store/stay.actions.js'
+import { utilService } from '../services/util.service.js'
+
+
 import { LoginSignup } from './login-signup.jsx'
+import { Logo } from './header/logo.jsx'
+import { SearchbarToggler } from './header/searchbar-toggler.jsx'
+import { MainNavMenu } from './header/main-nav-menu.jsx'
+import { FilterExpanded } from './header/filter-expanded.jsx'
+
+
 
 // header filter -> expanded-filter -> filter-modals
 // filter-bar -> main-filter
 
-
-
-import { LOGO, USER_NAV_BARS, USER_NAV_PROFILE, SEARCH, SEARCH_2 } from '../services/svg.service.js'
-
-
-// import logo from '../assets/img/logo/logo-airbnb.svg'
-// import userNav from '../assets/img/user-nav/user-nav.svg'
-import SvgHandler from './svg-handler.jsx'
-import { Fragment, useRef, useState } from 'react'
-import { stayService } from '../services/stay.service.local.js'
-import { LocationFilter } from './location-filter.jsx'
-import { updateFilterBy } from '../store/stay.actions.js'
-import { DateFilter } from './app-header-date-filter.jsx'
-import { utilService } from '../services/util.service.js'
-import { GuestCountFilter } from './guest-count-filter.jsx'
-import { store } from '../store/store.js'
-import { CLOSE_EXPANDED_HEADER, OPEN_EXPANDED_HEADER, SET_UNCLICKABLE_BG } from '../store/system.reducer.js'
-import { LongTxt } from './long-txt.jsx'
-import { DropDown } from './dropdown-menu.jsx'
-import { useClickOutside } from '../customHooks/clickOutsideModal.js'
-import { Logo } from './header/logo.jsx'
-import { SearchbarToggler } from './header/searchbar-toggler.jsx'
-import { MainNavMenu } from './header/main-nav-menu.jsx'
 
 export function AppHeader({ isStayDetailsPage }) {
     // const isUnclickableBg = useSelector(storeState => storeState.systemModule.system)
@@ -54,7 +42,7 @@ export function AppHeader({ isStayDetailsPage }) {
     const [selectedFilterBox, setSelectedFilterBox] = useState('where')
 
 
-    
+
 
     function onSubmit(ev) {
         ev.preventDefault()
@@ -123,7 +111,7 @@ export function AppHeader({ isStayDetailsPage }) {
         })
     }
 
-    function setFilterDates(range) {
+    function onSetFilterDates(range) {
         if (!range) {
             setFilterBy(prevFilter => ({ ...prevFilter, from: '', to: '' }))
         } else {
@@ -143,22 +131,6 @@ export function AppHeader({ isStayDetailsPage }) {
 
             setFilterBy(prevFilter => ({ ...prevFilter, ...filter }))
         }
-    }
-
-    function displayGuestsFilter() {
-        // ******** At least 1 Adult from this point ********
-        let guestsStr = ''
-        const guests = filterBy.guests.adults + filterBy.guests.children
-        guestsStr += `${guests} ${guests > 1 ? 'guests' : 'guest'}`//keep it guests/guests in case of i18
-        const infants = filterBy.guests.infants
-        if (infants > 0) {
-            guestsStr += ` ,${infants} ${infants > 1 ? 'infants' : 'infant'}`
-        }
-        const pets = filterBy.guests.pets
-        if (pets > 0) {
-            guestsStr += ` ,${pets} ${pets > 1 ? 'pets' : 'pet'}`
-        }
-        return guestsStr
     }
 
     function onSetSelectedFilterBox(ev) {
@@ -186,72 +158,20 @@ export function AppHeader({ isStayDetailsPage }) {
                     <MainNavMenu />
                 </nav>
 
-                <section className={`filter-expanded-container full main-layout${isFilterExpanded ? '' : ' folded'}`} >
-                    <section className="filter-expanded">
-                        <article className={`where-container${selectedFilterBox === 'where' ? ' active' : ''}`} name="where" onClick={onSetSelectedFilterBox}>
-                            <section className="where">
-                                <h3>Where</h3>
-                                <input name="filterText" value={filterBy.filterText} onChange={handleChange} placeholder="Search destinations"></input>
-                            </section>
-                        </article>
-                        <article className={`check-in-container${selectedFilterBox === 'check-in' ? ' active' : ''}`} name="check-in" onClick={onSetSelectedFilterBox}>
-                            <section className="check-in">
-                                <h3>Check in</h3>
-                                <span>{filterBy.from ? format(filterBy.from, 'y-MM-dd') : 'Add dates'}</span>
-                            </section>
-                        </article>
-                        <article className={`check-out-container${selectedFilterBox === 'check-out' ? ' active' : ''}`} name="check-out" onClick={onSetSelectedFilterBox}>
-                            <section className="check-out">
-                                <h3>Check out</h3>
-                                <span>{filterBy.to ? format(filterBy.to, 'y-MM-dd') : 'Add dates'}</span>
-                            </section>
-                        </article>
-                        <article className={`who-container${selectedFilterBox === 'who' ? ' active' : ''}`} name="who" onClick={onSetSelectedFilterBox}>
-                            <section className="who-search">
-                                <section className="who">
-                                    <h3>Who</h3>
-                                    <span>
-                                        {
-                                            filterBy.guests.adults > 0
-                                                ? <LongTxt
-                                                    txt={displayGuestsFilter()}
-                                                    length={11}
-                                                    askShowMore={false}
-                                                />
-                                                : `Add guests`
-                                        }
-                                    </span>
-                                </section>
-                                <button className="search" onClick={(ev) => onSubmit(ev)}>
-                                    <section className="svg-container">
-                                        <SvgHandler svgName={SEARCH_2} />
-                                    </section>
-                                    <span>Search</span>
-                                </button>
-                            </section>
-                        </article>
-                    </section>
-
-                    {
-                        isFilterExpanded &&
-                        <form className="filter-unraveled-container" onSubmit={onSubmit} >
-                            <section className="flex justify-center align-center" style={{ width: '100%', gap: 20 }} >
-                                {/* <LocationFilter filterBy={filterBy} onSubmit={onSubmit} handleChange={handleChange} /> */}
-                                {
-                                    (selectedFilterBox === 'check-in' || selectedFilterBox === 'check-out') &&
-                                    <DateFilter setFilterDates={setFilterDates} />
-                                }
-                                {
-                                    selectedFilterBox === 'who' &&
-                                    <GuestCountFilter filterBy={filterBy} setFilterBy={setFilterBy} handleGuestCountChange={handleGuestCountChange} />
-                                }
-                            </section>
-                        </form>
-                    }
-                </section>
+                <FilterExpanded
+                    filterBy={filterBy}
+                    setFilterBy={setFilterBy}
+                    handleChange={handleChange}
+                    handleGuestCountChange={handleGuestCountChange}
+                    onSubmit={onSubmit}
+                    onSetFilterDates={onSetFilterDates}
+                    isFilterExpanded={isFilterExpanded}
+                    selectedExperienceTab={selectedExperienceTab}
+                    selectedFilterBox={selectedFilterBox}
+                    onSetSelectedFilterBox={onSetSelectedFilterBox}
+                />
 
             </header>
-
 
             {/* {
                 isUnclickableBg &&
@@ -260,7 +180,6 @@ export function AppHeader({ isStayDetailsPage }) {
                     onClick={(ev) => onSetIsUnclickableBg(ev, false)}
                 ></aside>
             } */}
-
 
         </Fragment >
     )
