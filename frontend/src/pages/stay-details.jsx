@@ -12,6 +12,7 @@ import SvgHandler from '../cmps/svg-handler.jsx'
 import { HEART_16, RED_HEART_16, SHARE, STAR, STAR_16, LOCATION, CHECKIN, KEY, VERIFIED } from '../services/svg.service.js'
 import { DatePicker } from '../cmps/date-picker.jsx'
 import GoogleMap from '../cmps/map.jsx'
+import { Helmet } from 'react-helmet';
 
 export function StayDetails() {
     const [stay, setStay] = useState(null)
@@ -20,6 +21,7 @@ export function StayDetails() {
     const reviewsToDisplay = stay?.reviews?.slice(0, 6)
     const [isLikeClicked, setIsLikeClicked] = useState(false)
     const likeSvg = isLikeClicked ? RED_HEART_16 : HEART_16
+
 
     useEffect(() => {
         loadStay()
@@ -64,6 +66,12 @@ export function StayDetails() {
     const capitalizedReviewsString = reviews.charAt(0).toUpperCase() + reviews.slice(1)
 
     return <Fragment>
+        <div>
+            <Helmet>
+                <title>{stay.name}</title>
+            </Helmet>
+        </div>
+
         <section className="stay-details" id='photos'>
             {<DetailsHeader stay={stay} />}
             <section className='stay-review flex' >
@@ -268,24 +276,24 @@ export function StayDetails() {
                 <h2>Things to know</h2>
                 <section className='rules-container flex'>
                     <div className="house-rules">
-                    <h4>House rules</h4>
-                    <p>Check-in after 4:00 PM</p>
-                    <p>Checkout before 10:00 AM</p>
-                    <p>Pets allowed</p>
-                </div>
-                <div className="safety">
-                    <h4>Safety & property</h4>
-                    <p>No smoke alarm</p>
-                    <p>Pool/hot tub without a gate or lock</p>
-                    <p>Carbon monoxide detector not required</p>
-                </div>
-                <div className="cancelation">
-                    <h4>Cancellation policy</h4>
-                    <p>Free cancellation before {getDate(stay.checkIn)}</p>
-                    <p>Review the Host's full cancellation policy which applies even if you cancel for illness for disruptions caused by COVID-19</p>
-                </div>
+                        <h4>House rules</h4>
+                        <p>Check-in after 4:00 PM</p>
+                        <p>Checkout before 10:00 AM</p>
+                        <p>Pets allowed</p>
+                    </div>
+                    <div className="safety">
+                        <h4>Safety & property</h4>
+                        <p>No smoke alarm</p>
+                        <p>Pool/hot tub without a gate or lock</p>
+                        <p>Carbon monoxide detector not required</p>
+                    </div>
+                    <div className="cancelation">
+                        <h4>Cancellation policy</h4>
+                        <p>Free cancellation before {getDate(stay.checkIn)}</p>
+                        <p>Review the Host's full cancellation policy which applies even if you cancel for illness for disruptions caused by COVID-19</p>
+                    </div>
                 </section>
-                
+
             </section>
         </section >
     </Fragment>
