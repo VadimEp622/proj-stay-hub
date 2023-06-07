@@ -1,18 +1,30 @@
 .app-footer {
-    background-color: rgb(255, 255, 255);
     color: $clr4;
     padding-top: 13px;
     padding-bottom: 14px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+
     position: sticky;
     text-align: center;
-    padding: 0 80px;
+    border-top: 1px solid rgb(221, 221, 221);
+
 
     & p {
+        letter-spacing: 0;
         margin: 0;
         padding-block-start: calc($padding-large - 7px);
         padding-block-end: calc($padding-large - 6px);
+
+        span {
+            margin: 0 rem(8px);
+        }
+
+        svg {
+            margin: 0 rem(7px);
+        }
+    }
+
+
+    &.details-layout {
+        background-color: $gray-clr-2;
     }
 }

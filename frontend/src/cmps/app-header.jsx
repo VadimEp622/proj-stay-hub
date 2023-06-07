@@ -30,7 +30,7 @@ import { CLOSE_EXPANDED_HEADER, OPEN_EXPANDED_HEADER, SET_UNCLICKABLE_BG } from 
 import { LongTxt } from './long-txt.jsx'
 import { DropDown } from './dropdown-menu.jsx'
 
-export function AppHeader() {
+export function AppHeader({isStayDetailsPage}) {
     // const isUnclickableBg = useSelector(storeState => storeState.systemModule.system)
     const user = useSelector(storeState => storeState.userModule.user)
     const [filterBy, setFilterBy] = useState({
@@ -222,7 +222,7 @@ export function AppHeader() {
 
     return (
         <Fragment>
-            <header className="app-header-container full main-layout always-clickable-bg">
+            <header className={`app-header-container full ${!isStayDetailsPage ? 'main-layout' : 'details-layout'} always-clickable-bg`}>
                 <section>
                     <nav className="app-header">
                         <section className="logo-container">

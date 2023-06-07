@@ -3,7 +3,7 @@ import "react-multi-carousel/lib/styles.css";
 
 export function CarouselImage2({ images, handleClick }) {
     const isMobileDevice = window.innerWidth <= 464
-    console.log(images)
+    // console.log(images)
     return (
         <Carousel
             additionalTransfrom={0}
@@ -63,7 +63,7 @@ export function CarouselImage2({ images, handleClick }) {
             swipeable
         >
             {images.map((img, index) => {
-                console.log(img.imgSrc)
+                // console.log(img.imgSrc)
                 return (
                     <img
                         key={index}

@@ -21,8 +21,6 @@ export function StayDetails() {
     const reviewsToDisplay = stay?.reviews?.slice(0, 6)
     const [isLikeClicked, setIsLikeClicked] = useState(false)
     const likeSvg = isLikeClicked ? RED_HEART_16 : HEART_16
-    const { steve } = useParams()
-    console.log(steve)
     useEffect(() => {
         loadStay()
     }, [stayId])

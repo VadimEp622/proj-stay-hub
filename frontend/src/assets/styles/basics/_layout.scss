@@ -69,6 +69,20 @@
     }
 }
 
+.details-layout {
+    // background-color: bisque;
+    display: grid;
+    grid-template-columns: 1fr minmax(600px, 1120px) 1fr;
+    
+    >* {
+        grid-column: 2;
+
+        &.full {
+            grid-column: 1 /-1;
+        }
+    }
+}
+
 // .card-grid {
 //     display: grid;
 //     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));

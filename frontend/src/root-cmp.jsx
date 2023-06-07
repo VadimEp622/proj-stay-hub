@@ -21,7 +21,7 @@ export function RootCmp() {
             <div className="main screen unclickable"></div>
 
             <section className={`app ${!isStayDetailsPage ? 'main-layout' : 'details-layout'} ${isUnclickableBg && 'unclickable-background'}`}>
-                <AppHeader />
+                <AppHeader isStayDetailsPage={isStayDetailsPage} />
                 <main className="app-main">
                     <Routes>
                         {routes.map(route => <Route key={route.path} exact={true} element={route.component} path={route.path} />)}
@@ -29,7 +29,7 @@ export function RootCmp() {
                         <Route path="stay/:stayId" element={<StayDetails />} />
                     </Routes>
                 </main>
-                <AppFooter />
+                <AppFooter isStayDetailsPage={isStayDetailsPage}/>
 
             </section>
 
