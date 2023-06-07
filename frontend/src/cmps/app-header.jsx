@@ -314,27 +314,27 @@ export function AppHeader({ isStayDetailsPage }) {
 
                 <section className={`filter-expanded-container full main-layout${isFilterExpanded ? '' : ' folded'}`} >
                     <section className="filter-expanded">
-                        <article className={`where${selectedFilterBox === 'where' ? ' active' : ''}`} name="where" onClick={onSetSelectedFilterBox}>
-                            <section>
+                        <article className={`where-container${selectedFilterBox === 'where' ? ' active' : ''}`} name="where" onClick={onSetSelectedFilterBox}>
+                            <section className="where">
                                 <h3>Where</h3>
                                 <input name="filterText" value={filterBy.filterText} onChange={handleChange} placeholder="Search destinations"></input>
                             </section>
                         </article>
-                        <article className={`check-in${selectedFilterBox === 'check-in' ? ' active' : ''}`} name="check-in" onClick={onSetSelectedFilterBox}>
-                            <section>
+                        <article className={`check-in-container${selectedFilterBox === 'check-in' ? ' active' : ''}`} name="check-in" onClick={onSetSelectedFilterBox}>
+                            <section className="check-in">
                                 <h3>Check in</h3>
                                 <span>{filterBy.from ? format(filterBy.from, 'y-MM-dd') : 'Add dates'}</span>
                             </section>
                         </article>
-                        <article className={`check-out${selectedFilterBox === 'check-out' ? ' active' : ''}`} name="check-out" onClick={onSetSelectedFilterBox}>
-                            <section>
+                        <article className={`check-out-container${selectedFilterBox === 'check-out' ? ' active' : ''}`} name="check-out" onClick={onSetSelectedFilterBox}>
+                            <section className="check-out">
                                 <h3>Check out</h3>
                                 <span>{filterBy.to ? format(filterBy.to, 'y-MM-dd') : 'Add dates'}</span>
                             </section>
                         </article>
-                        <article className={`who${selectedFilterBox === 'who' ? ' active' : ''}`} name="who" onClick={onSetSelectedFilterBox}>
-                            <section className="who-container">
-                                <section>
+                        <article className={`who-container${selectedFilterBox === 'who' ? ' active' : ''}`} name="who" onClick={onSetSelectedFilterBox}>
+                            <section className="who-search">
+                                <section className="who">
                                     <h3>Who</h3>
                                     <span>
                                         {
@@ -348,7 +348,7 @@ export function AppHeader({ isStayDetailsPage }) {
                                         }
                                     </span>
                                 </section>
-                                <button className="btn-main-search" onClick={(ev) => onSubmit(ev)}>
+                                <button className="search" onClick={(ev) => onSubmit(ev)}>
                                     <section className="svg-container">
                                         <SvgHandler svgName={SEARCH_2} />
                                     </section>

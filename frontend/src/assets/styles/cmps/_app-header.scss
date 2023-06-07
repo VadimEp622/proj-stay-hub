@@ -32,6 +32,8 @@
             }
         }
 
+
+
         & .filter-container {
             & .filter {
                 width: 352.203px;
@@ -175,6 +177,7 @@
                 }
             }
         }
+
     }
 
     .user-container-parent {
@@ -215,6 +218,7 @@
         height: 80px;
         display: grid;
         // grid-template-columns: 1fr 850px 1fr;
+        grid-template-rows: none;
         grid-template-columns: repeat(3, 1fr);
         transition: all 0.2s;
         position: absolute;
@@ -237,20 +241,11 @@
             border-radius: 32px;
             border: 1px solid $gray-clr3;
 
-            // *******
-            // box-shadow: 1px 1px 1px 1px rgb(255, 255, 255);
-            // *******
-            // box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-            // border-radius: 32px;
-
             &>* {
 
                 &.active {
                     background-color: $gray-clr-1;
                     border-radius: 32px;
-
-                    box-sizing: content-box;
-
 
                     &>* {
                         box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
@@ -258,27 +253,27 @@
                     }
                 }
 
-                &:first-child.active {
+                &.where-container.active {
                     box-shadow: -1px 0px 0px 1px rgb(255, 255, 255);
                 }
 
-                &:not(:first-child, :last-child).active {
+                &:is(.check-in-container, .check-out-container).active {
                     box-shadow: 0px 0px 0px 1px rgb(255, 255, 255);
                 }
 
-                &:last-child.active {
+                &.who-container.active {
                     box-shadow: 1px 0px 0px 1px rgb(255, 255, 255);
                 }
 
 
-                &:not(:last-child)>* {
+
+                &:not(.who-container)>* {
                     padding-block: 12.8124px;
 
                     &>* {
                         &:first-child {
-                            font-family: Circular-Regular;
+                            font-family: Circular-Bold;
                             font-size: rem(12px);
-                            font-weight: 800;
                             letter-spacing: 0.48px;
                             line-height: 16px;
                             padding-block-end: 0.03px;
@@ -287,7 +282,6 @@
                         &:last-child {
                             font-family: Circular-Regular;
                             font-size: 14px;
-                            font-weight: 400;
                             color: $gray-clr0;
                             letter-spacing: 0;
                             line-height: 18px;
@@ -302,125 +296,106 @@
                 }
 
 
-                &:last-child>* {
+                &.who-container .who-search .who {
+                    padding-block: 12.8124px;
+
                     &>* {
                         &:first-child {
-                            padding-block: 12.8124px;
+                            font-family: Circular-Bold;
+                            font-size: rem(12px);
+                            letter-spacing: 0.48px;
+                            line-height: 16px;
+                            padding-block-end: 0.03px;
+                        }
 
-                            &>* {
-                                &:first-child {
-                                    font-family: Circular-Regular;
-                                    font-size: rem(12px);
-                                    font-weight: 800;
-                                    letter-spacing: 0.48px;
-                                    line-height: 16px;
-                                    padding-block-end: 0.03px;
-                                }
-
-                                &:last-child {
-                                    font-family: Circular-Regular;
-                                    font-size: 14px;
-                                    font-weight: 400;
-                                    color: $gray-clr0;
-                                    letter-spacing: 0;
-                                    line-height: 18px;
-
-                                    &:is(input) {
-                                        background-color: inherit;
-                                        border: 0;
-                                        padding: 0;
-                                    }
-                                }
-                            }
+                        &:last-child {
+                            font-family: Circular-Regular;
+                            font-size: 14px;
+                            color: $gray-clr0;
+                            letter-spacing: 0;
+                            line-height: 18px;
                         }
                     }
                 }
 
+                & .where {
+                    padding-inline: 32.52px;
+
+                    &>* {
+                        width: 261.391px;
+                    }
+                }
+
+                & .check-in,
+                .check-out {
+                    padding-inline: 24px;
+
+                    &>* {
+                        width: 81.656px;
+                    }
+                }
+
+                & .who-search {
+                    width: 262.312px;
+                    display: flex;
+                    justify-content: space-between;
+
+                    & .who {
+                        padding-inline: 24px;
+                        width: 97.562px;
+                        flex: 1 1 auto;
+                    }
+
+                    & .search {
+                        display: flex;
+                        padding: 0;
+                        border: 0;
+                        align-items: center;
+                        border-radius: 32px;
+                        width: 111.750px;
+                        height: 48px;
+                        background-color: $main-clr0;
+                        gap: 8px;
+                        padding-block: 16px;
+                        padding-inline: 16px;
+                        margin-block: auto;
+                        margin-inline-end: 8px;
+
+                        &>* {
+                            color: $gray-clr-1;
+                            width: fit-content;
+
+                            // height: 16px;
+                            &:first-child {
+                                height: 16px;
+                            }
+
+                            &:last-child {
+                                font-family: Circular-Semibold;
+                                font-size: rem(16px);
+                                // margin-top: -0.5px;
+                            }
+                        }
+
+
+                        &:hover {
+                            cursor: pointer;
+                        }
+                    }
+
+                    & .who,
+                    .search {
+                        &>* {
+                            width: 81.656px;
+                        }
+                    }
+
+                }
 
                 &:not(.active):hover {
                     background-color: rgb(221, 221, 221);
                     border-radius: 32px;
                 }
-
-                &:first-child {
-                    &>* {
-                        padding-inline: 32.52px;
-
-                        &>* {
-                            width: 261.391px;
-                        }
-                    }
-                }
-
-                &:is(:nth-child(2), :nth-child(3)) {
-                    &>* {
-                        padding-inline: 24px;
-
-                        &>* {
-                            width: 81.656px;
-                        }
-                    }
-                }
-
-                &:last-child {
-                    width: 262.312px;
-
-                    &>* {
-                        display: flex;
-                        justify-content: space-between;
-
-                        &>* {
-                            &:first-child {
-                                padding-inline: 24px;
-                                width: 97.562px;
-                                flex: 1 1 auto;
-                            }
-
-                            &:last-child {
-                                display: flex;
-                                padding: 0;
-                                border: 0;
-                                align-items: center;
-                                border-radius: 32px;
-                                width: 111.750px;
-                                height: 48px;
-                                background-color: $main-clr0;
-                                gap: 8px;
-                                padding-block: 16px;
-                                padding-inline: 16px;
-                                margin-block: auto;
-                                margin-inline-end: 8px;
-
-
-                                &>* {
-                                    color: $gray-clr-1;
-                                    width: fit-content;
-
-                                    // height: 16px;
-                                    &:first-child {
-                                        height: 16px;
-                                    }
-
-                                    &:last-child {
-                                        font-family: Circular-Semibold;
-                                        font-size: rem(16px);
-                                        // margin-top: -0.5px;
-                                    }
-                                }
-
-
-                                &:hover {
-                                    cursor: pointer;
-                                }
-                            }
-
-                            &>* {
-                                width: 81.656px;
-                            }
-                        }
-                    }
-                }
-
             }
 
             &:hover {
@@ -428,6 +403,8 @@
             }
         }
     }
+
+
 
     & .filter-expanded-container.folded {
         translate: 0px -73px;
