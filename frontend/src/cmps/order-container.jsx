@@ -8,6 +8,7 @@ import SvgHandler from "./svg-handler"
 import { useState } from "react"
 import { OrderConfirmation } from "./order-confirmation"
 import { userService } from "../services/user.service"
+import { AirbnbButton } from "./airbnbButton"
 
 export function OrderContainer({ stay }) {
 
@@ -90,14 +91,7 @@ export function OrderContainer({ stay }) {
                         </div>
                     </div>
                 </section>
-                <div className="btn-container" onClick={() => onOpenModal()}>
-                    {utilService.createDivsForButtonContainer()}
-                    <div className="content">
-                        <button className="action-btn" >
-                            <span>Reserve</span>
-                        </button>
-                    </div>
-                </div>
+                <AirbnbButton text={'Reserve'} onClickButton={onOpenModal}/>
                 <section className="price-container">
                     <p>You won't be charged yet</p>
                     <section className="flex space-between">
@@ -119,7 +113,7 @@ export function OrderContainer({ stay }) {
                     </div>
                 </section>
             </section>
-            <div className="modal-container">            {openModal && <OrderConfirmation setOpenModal={setOpenModal} orderObject={orderObject} />}
+            <div className="modal-container">{openModal && <OrderConfirmation setOpenModal={setOpenModal} orderObject={orderObject} />}
             </div>
         </section>
     )
