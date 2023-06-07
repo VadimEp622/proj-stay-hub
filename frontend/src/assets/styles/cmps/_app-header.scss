@@ -1,6 +1,7 @@
 .app-header-container {
     height: 100%;
     box-shadow: rgb(0 0 0 / 8%) 0 1px 0;
+    position: relative;
 
     & .app-header {
         height: 80px;
@@ -215,6 +216,11 @@
         // grid-template-columns: 1fr 850px 1fr;
         grid-template-columns: repeat(3, 1fr);
         transition: all 0.2s;
+        position: absolute;
+        z-index: 1;
+        background-color: white;
+        box-shadow: rgb(0 0 0 / 8%) 0 1px 0;
+        margin-block-start: 80px;
 
         & .filter-expanded {
             grid-column: 2;
@@ -236,6 +242,10 @@
                 &.active {
                     background-color: $gray-clr-1;
                     border-radius: 32px;
+                    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+                    // height: 102%;
+                    // transform: translateX(-1px);
+                    // width: 100.3%;
                 }
 
                 &>* {

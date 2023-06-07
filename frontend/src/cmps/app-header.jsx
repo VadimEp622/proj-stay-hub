@@ -30,7 +30,7 @@ import { CLOSE_EXPANDED_HEADER, OPEN_EXPANDED_HEADER, SET_UNCLICKABLE_BG } from 
 import { LongTxt } from './long-txt.jsx'
 import { DropDown } from './dropdown-menu.jsx'
 
-export function AppHeader({isStayDetailsPage}) {
+export function AppHeader({ isStayDetailsPage }) {
     // const isUnclickableBg = useSelector(storeState => storeState.systemModule.system)
     const user = useSelector(storeState => storeState.userModule.user)
     const [filterBy, setFilterBy] = useState({
@@ -226,138 +226,134 @@ export function AppHeader({isStayDetailsPage}) {
     return (
         <Fragment>
             <header className={`app-header-container full ${!isStayDetailsPage ? 'main-layout' : 'details-layout'} always-clickable-bg`}>
-                <section>
-                    <nav className="app-header">
-                        <section className="logo-container">
-                            {
-                                routes.map(route =>
-                                    route.isLogo &&
-                                    <NavLink
-                                        className={'page-navbar'}
-                                        key={route.path}
-                                        to={route.path}
-                                    >
-                                        <article className="logo-svg">
-                                            <SvgHandler svgName={LOGO} />
-                                            <span>{route.label}</span>
-                                        </article>
-                                    </NavLink>
-                                )
-                            }
-                        </section>
-
-                        <section className="filter-container">
-
-                            {
-                                !isFilterExpanded &&
-                                <button className="filter" onClick={onExpandedFilter}>
-                                    <article>Anywhere</article>
-                                    <article>Any week</article>
-                                    <article>Add guests</article>
-                                    <aside className="filter-search-circle">
-                                        <SvgHandler svgName={SEARCH} />
-                                    </aside>
-                                </button>
-                            }
-
-                            {isFilterExpanded &&
-                                <section className="filter-expanded">
-                                    <section className="experiences-tab">
-
-                                        <article
-                                            className={selectedExperienceTab === 'stays' ? 'selected' : ''}
-                                            name="stays"
-                                            onClick={toggleSelected}
-                                        >
-                                            <span>Stays</span>
-                                        </article>
-
-                                        <article
-                                            className={selectedExperienceTab === 'experiences' ? 'selected' : ''}
-                                            name="experiences"
-                                            onClick={toggleSelected}
-                                        >
-                                            <span>Experiences</span>
-                                        </article>
-
-                                        <article
-                                            className={selectedExperienceTab === 'online' ? 'selected' : ''}
-                                            name="online"
-                                            onClick={toggleSelected}
-                                        >
-                                            <span>Online Experiences</span>
-                                        </article>
-
-                                    </section>
-                                </section>
-                            }
-
-
-
-
-                        </section>
-                        <div className="user-container-parent">
-                            <section className="user-container" onClick={(ev) => onSetDropDown(ev)}>
-                                <section className="user-navbar">
-                                    <article className="bars"><SvgHandler svgName={USER_NAV_BARS} /></article>
-                                    <article className="profile"><SvgHandler svgName={USER_NAV_PROFILE} /></article>
-                                </section>
-                                {isDropDownActive && <DropDown pos={pos} />}
-                            </section>
-                        </div>
-                    </nav>
-
-                    <section className={`filter-expanded-container${isFilterExpanded ? '' : ' folded'}`} >
-                        <section className="filter-expanded">
-                            <article className={`where${selectedFilterBox === 'where' ? ' active' : ''}`} name="where" onClick={onSetSelectedFilterBox}>
-                                <section>
-                                    <h3>Where</h3>
-                                    <input name="filterText" value={filterBy.filterText} onChange={handleChange} placeholder="Search destinations"></input>
-                                </section>
-                            </article>
-                            <article className={`check-in${selectedFilterBox === 'check-in' ? ' active' : ''}`} name="check-in" onClick={onSetSelectedFilterBox}>
-                                <section>
-                                    <h3>Check in</h3>
-                                    <span>{filterBy.from ? format(filterBy.from, 'y-MM-dd') : 'Add dates'}</span>
-                                </section>
-                            </article>
-                            <article className={`check-out${selectedFilterBox === 'check-out' ? ' active' : ''}`} name="check-out" onClick={onSetSelectedFilterBox}>
-                                <section>
-                                    <h3>Check out</h3>
-                                    <span>{filterBy.to ? format(filterBy.to, 'y-MM-dd') : 'Add dates'}</span>
-                                </section>
-                            </article>
-                            <article className={`who${selectedFilterBox === 'who' ? ' active' : ''}`} name="who" onClick={onSetSelectedFilterBox}>
-                                <section>
-                                    <h3>Who</h3>
-                                    <span>
-                                        {
-                                            filterBy.guests.adults > 0
-                                                ? <LongTxt
-                                                    txt={displayGuestsFilter()}
-                                                    length={11}
-                                                    askShowMore={false}
-                                                />
-                                                : `Add guests`
-                                        }
-                                    </span>
-                                </section>
-                                <button className="btn-main-search" onClick={(ev) => onSubmit(ev)}>
-                                    <section className="svg-container">
-                                        <SvgHandler svgName={SEARCH_2} />
-                                    </section>
-                                    <span>Search</span>
-                                </button>
-
-                            </article>
-                        </section>
+                {/* <section> */}
+                <nav className="app-header">
+                    <section className="logo-container">
+                        {
+                            routes.map(route =>
+                                route.isLogo &&
+                                <NavLink
+                                    className={'page-navbar'}
+                                    key={route.path}
+                                    to={route.path}
+                                >
+                                    <article className="logo-svg">
+                                        <SvgHandler svgName={LOGO} />
+                                        <span>{route.label}</span>
+                                    </article>
+                                </NavLink>
+                            )
+                        }
                     </section>
 
-                </section>
+                    <section className="filter-container">
 
-                {
-                    isFilterExpanded &&
-                    <section>
+                        {
+                            !isFilterExpanded &&
+                            <button className="filter" onClick={onExpandedFilter}>
+                                <article>Anywhere</article>
+                                <article>Any week</article>
+                                <article>Add guests</article>
+                                <aside className="filter-search-circle">
+                                    <SvgHandler svgName={SEARCH} />
+                                </aside>
+                            </button>
+                        }
+
+                        {isFilterExpanded &&
+                            <section className="filter-expanded">
+                                <section className="experiences-tab">
+
+                                    <article
+                                        className={selectedExperienceTab === 'stays' ? 'selected' : ''}
+                                        name="stays"
+                                        onClick={toggleSelected}
+                                    >
+                                        <span>Stays</span>
+                                    </article>
+
+                                    <article
+                                        className={selectedExperienceTab === 'experiences' ? 'selected' : ''}
+                                        name="experiences"
+                                        onClick={toggleSelected}
+                                    >
+                                        <span>Experiences</span>
+                                    </article>
+
+                                    <article
+                                        className={selectedExperienceTab === 'online' ? 'selected' : ''}
+                                        name="online"
+                                        onClick={toggleSelected}
+                                    >
+                                        <span>Online Experiences</span>
+                                    </article>
+
+                                </section>
+                            </section>
+                        }
+
+
+
+
+                    </section>
+                    <div className="user-container-parent">
+                        <section className="user-container" onClick={(ev) => onSetDropDown(ev)}>
+                            <section className="user-navbar">
+                                <article className="bars"><SvgHandler svgName={USER_NAV_BARS} /></article>
+                                <article className="profile"><SvgHandler svgName={USER_NAV_PROFILE} /></article>
+                            </section>
+                            {isDropDownActive && <DropDown pos={pos} />}
+                        </section>
+                    </div>
+                </nav>
+
+                <section className={`filter-expanded-container full main-layout${isFilterExpanded ? '' : ' folded'}`} >
+                    <section className="filter-expanded">
+                        <article className={`where${selectedFilterBox === 'where' ? ' active' : ''}`} name="where" onClick={onSetSelectedFilterBox}>
+                            <section>
+                                <h3>Where</h3>
+                                <input name="filterText" value={filterBy.filterText} onChange={handleChange} placeholder="Search destinations"></input>
+                            </section>
+                        </article>
+                        <article className={`check-in${selectedFilterBox === 'check-in' ? ' active' : ''}`} name="check-in" onClick={onSetSelectedFilterBox}>
+                            <section>
+                                <h3>Check in</h3>
+                                <span>{filterBy.from ? format(filterBy.from, 'y-MM-dd') : 'Add dates'}</span>
+                            </section>
+                        </article>
+                        <article className={`check-out${selectedFilterBox === 'check-out' ? ' active' : ''}`} name="check-out" onClick={onSetSelectedFilterBox}>
+                            <section>
+                                <h3>Check out</h3>
+                                <span>{filterBy.to ? format(filterBy.to, 'y-MM-dd') : 'Add dates'}</span>
+                            </section>
+                        </article>
+                        <article className={`who${selectedFilterBox === 'who' ? ' active' : ''}`} name="who" onClick={onSetSelectedFilterBox}>
+                            <section>
+                                <h3>Who</h3>
+                                <span>
+                                    {
+                                        filterBy.guests.adults > 0
+                                            ? <LongTxt
+                                                txt={displayGuestsFilter()}
+                                                length={11}
+                                                askShowMore={false}
+                                            />
+                                            : `Add guests`
+                                    }
+                                </span>
+                            </section>
+                            <button className="btn-main-search" onClick={(ev) => onSubmit(ev)}>
+                                <section className="svg-container">
+                                    <SvgHandler svgName={SEARCH_2} />
+                                </section>
+                                <span>Search</span>
+                            </button>
+
+                        </article>
+                    </section>
+
+                    {
+                        isFilterExpanded &&
                         <form className="filter-unraveled-container" onSubmit={onSubmit} >
                             <section className="flex justify-center align-center" style={{ width: '100%', gap: 20 }} >
                                 {/* <LocationFilter filterBy={filterBy} onSubmit={onSubmit} handleChange={handleChange} /> */}
@@ -371,8 +367,12 @@ export function AppHeader({isStayDetailsPage}) {
                                 }
                             </section>
                         </form>
-                    </section>
-                }
+                    }
+                </section>
+
+                {/* </section> */}
+
+
             </header>
 
 

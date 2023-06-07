@@ -1,4 +1,10 @@
 .filter-unraveled-container {
+    margin-block-start: 80px;
+    position: absolute;
+    background-color: white;
+    z-index: 1;
+    border-radius: 32px;
+
     .filter-date-picker {
 
         td {

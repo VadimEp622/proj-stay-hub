@@ -85,12 +85,7 @@ export function StayIndex() {
                 </div>
             </button>
 
-            {
-                isFilterExpanded &&
-                <button className="header-filter-unexpand" onClick={handleUnexpand}>
-                    Un-expand header
-                </button>
-            }
+
             {
                 isFilterModalOpen && (<FilterModal stays={stays}
                     setIsFilterModalOpen={setIsFilterModalOpen} />)
@@ -100,6 +95,13 @@ export function StayIndex() {
             {/* below for aesthetic proposes - when there's no views to display */}
             {/* {stays.length > 0 && <DatePicker />} */}
             {false && <DatePicker />}
+
+            {
+                isFilterExpanded &&
+                <button className="header-filter-unexpand" onClick={handleUnexpand}>
+                    Un-expand header
+                </button>
+            }
 
         </section >
     )
