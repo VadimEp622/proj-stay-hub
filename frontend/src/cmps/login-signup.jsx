@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { userService } from '../services/user.service'
-import { ImgUploader } from '../cmps/img-uploader'
+import { ImgUploader } from './reuseableCmp/img-uploader'
 import { login, signup } from '../store/user.actions'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { useSelector } from 'react-redux'

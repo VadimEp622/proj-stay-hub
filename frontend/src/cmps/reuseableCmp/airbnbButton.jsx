@@ -1,6 +1,6 @@
-import { utilService } from "../services/util.service";
+import { utilService } from "../../services/util.service";
 
-export function AirbnbButton({ text, onClickButton }) {
+export function AirbnbButton({ text, onClickButton = () => { } }) {
     return (
         <div className="btn-container" onClick={() => onClickButton()}>
             {utilService.createDivsForButtonContainer()}

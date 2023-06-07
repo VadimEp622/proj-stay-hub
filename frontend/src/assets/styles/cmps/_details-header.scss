@@ -5,13 +5,13 @@
     background-color: #fff;
     z-index: 10;
 
-    a {
+    .detail-link {
         margin-right: 23px;
         text-decoration: none;
         position: relative;
     }
 
-    a::after {
+    .detail-link::after {
         content: "";
         position: absolute;
         bottom: -28px;
@@ -19,10 +19,11 @@
         width: 100%;
         background-color: $black-clr1;
     }
-    a:hover::after {
+
+    .detail-link:hover::after {
         height: 4px;
     }
-    
+
     .details-header-container {
         display: flex;
         height: 100%;
@@ -36,6 +37,7 @@
             p {
                 color: $black-clr1;
                 margin-bottom: 0;
+
                 span {
                     font-family: cereal-bold;
                     font-size: rem(16px);
@@ -45,14 +47,17 @@
             .reserve-review {
                 font-size: rem(12px);
                 margin-right: 16px;
+
                 p {
                     font-size: inherit;
                     margin-bottom: 0;
+
                     & span {
                         margin-left: 0.5em;
                         font-size: inherit;
                     }
                 }
+
                 .period {
                     margin: 0 .25em;
 
@@ -72,21 +77,20 @@
 }
 
 .details-header::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  right: 100px;
-  height: 1px;
-  background-color:rgba(128, 128, 128, .3);
-  width: 100vw;
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 100px;
+    height: 1px;
+    background-color: rgba(128, 128, 128, .3);
+    width: 100vw;
 }
 
 .details-header::before {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  height: 1px;
-  background-color:rgba(128, 128, 128, .3);
-  width: 100vw;
+    content: "";
+    position: absolute;
+    bottom: 0;
+    height: 1px;
+    background-color: rgba(128, 128, 128, .3);
+    width: 100vw;
 }
-

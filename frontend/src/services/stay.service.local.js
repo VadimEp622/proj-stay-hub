@@ -514,11 +514,14 @@ function _createDemoStay(name, summary, type, loc, imgUrls) {
             "Cabins",
             "Mansions"
         ],
-        owner: 'Juan',
         //below is temp!
         checkIn: 1685116800000,
         checkOut: 1685116800000 + 86400000 * 3,//in 3 days
-
+        host: {
+            _id: utilService.makeId(),
+            fullname: 'Pablo Escobar',
+            image: "https://res.cloudinary.com/dgzyxjapv/image/upload/v1670246635/stayby/avatars/male/60.jpg"
+        },
         availableDates: [
             {
                 from: utilService.getFutureTime(),

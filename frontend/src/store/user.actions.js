@@ -4,7 +4,7 @@ import { store } from '../store/store.js'
 
 import { showErrorMsg } from '../services/event-bus.service.js'
 import { LOADING_DONE, LOADING_START } from "./system.reducer.js";
-import { REMOVE_USER, SET_GUESTS, SET_USER, SET_USERS, SET_WATCHED_USER } from "./user.reducer.js";
+import { REMOVE_USER, SET_GUESTS, SET_ORDER, SET_USER, SET_USERS, SET_WATCHED_USER } from "./user.reducer.js";
 
 export async function loadUsers() {
     try {
@@ -83,4 +83,8 @@ export async function loadUser(userId) {
 
 export function setGuests(guests) {
     store.dispatch({ type: SET_GUESTS, guests })
+}
+
+export function setOrder(order) {
+    store.dispatch({ type: SET_ORDER, order })
 }

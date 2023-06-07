@@ -5,9 +5,12 @@ import { STAR } from "../services/svg.service"
 import { utilService } from "../services/util.service"
 // import DatePicker from "./date-picker"
 import SvgHandler from "./svg-handler"
-import { useState } from "react"
-import { OrderConfirmation } from "./order-confirmation"
+import { useEffect, useState } from "react"
+import { OrderConfirmation } from "../pages/order-confirmation"
 import { userService } from "../services/user.service"
+import { AirbnbButton } from "./reuseableCmp/airbnbButton"
+import { setOrder } from "../store/user.actions"
+import { Link } from "react-router-dom"
 
 export function OrderContainer({ stay }) {
 
@@ -24,9 +27,7 @@ export function OrderContainer({ stay }) {
     const guestsString = userService.buildGuestsString(guestsObject)
     const [openModal, setOpenModal] = useState(false)
     let guestCount = 1
-
-    function onOpenModal() {
-        setOpenModal(true)
+    useEffect(() => {
         setOrderObject({
             // buyer: {
             //     fullname: user.fullName,
@@ -56,9 +57,12 @@ export function OrderContainer({ stay }) {
             },
             nightsCount: nightsCount,
             nightsPrice: nightsPrice
-        })
-    }
-    console.log(guestsString)
+        });
+
+        setOrder(orderObject);
+    }, [])
+
+
     return (
         <section className="order-modal">
             <section className="order-modal-form flex">
@@ -90,14 +94,9 @@ export function OrderContainer({ stay }) {
                         </div>
                     </div>
                 </section>
-                <div className="btn-container" onClick={() => onOpenModal()}>
-                    {utilService.createDivsForButtonContainer()}
-                    <div className="content">
-                        <button className="action-btn" >
-                            <span>Reserve</span>
-                        </button>
-                    </div>
-                </div>
+                <Link to={`/stay/book/${stay._id}`}>
+                    <AirbnbButton text={'Reserve'} />
+                </Link>
                 <section className="price-container">
                     <p>You won't be charged yet</p>
                     <section className="flex space-between">
@@ -119,7 +118,7 @@ export function OrderContainer({ stay }) {
                     </div>
                 </section>
             </section>
-            <div className="modal-container">            {openModal && <OrderConfirmation setOpenModal={setOpenModal} orderObject={orderObject} />}
+            <div className="modal-container">{openModal && <OrderConfirmation setOpenModal={setOpenModal} orderObject={orderObject} />}
             </div>
         </section>
     )

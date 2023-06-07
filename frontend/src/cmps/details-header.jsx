@@ -2,17 +2,11 @@ import { useEffect } from 'react'
 import { reviewService } from "../services/review.service"
 import { STAR } from "../services/svg.service"
 import SvgHandler from "./svg-handler"
+import { utilService } from '../services/util.service'
+import { Link } from 'react-router-dom'
 
 export function DetailsHeader({ stay }) {
     const reviews = stay.reviews.length > 1 ? 'reviews' : 'review'
-
-    function _createButtonDivContainer() {
-        const divElements = []
-        for (let i = 0; i < 100; i++) {
-            divElements.push(<div className="cell" key={i}></div>)
-        }
-        return divElements
-    }
 
     useEffect(() => {
         const header = document.querySelector('.img-container')
@@ -68,16 +62,18 @@ export function DetailsHeader({ stay }) {
                             <span className="review-count">{stay.reviews.length} {reviews}</span>
                         </section>
                     </section>
-                    <section className='reserve-btn'>
-                        <div className="btn-container">
-                            {_createButtonDivContainer()}
-                            <div className="content">
-                                <button className="action-btn">
-                                    <span>Reserve</span>
-                                </button>
+                    <Link to={`/stay/book/${stay._id}`}>
+                        <section className='reserve-btn'>
+                            <div className="btn-container">
+                                {utilService.createDivsForButtonContainer()}
+                                <div className="content">
+                                    <button className="action-btn">
+                                        <span>Reserve</span>
+                                    </button>
+                                </div>
                             </div>
-                        </div>
-                    </section>
+                        </section>
+                    </Link>
                 </section>
             </section>
         </section>

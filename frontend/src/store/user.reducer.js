@@ -9,6 +9,8 @@ export const REMOVE_USER = 'REMOVE_USER'
 export const SET_USERS = 'SET_USERS'
 export const SET_SCORE = 'SET_SCORE'
 export const SET_GUESTS = 'SET_GUESTS'
+export const SET_ORDER = 'SET_ORDER'
+
 
 const initialState = {
     count: 10,
@@ -17,6 +19,7 @@ const initialState = {
     watchedUser: null,
     guests: {},
     wishlist: [],
+    order: {}
 }
 
 export function userReducer(state = initialState, action) {
@@ -52,7 +55,9 @@ export function userReducer(state = initialState, action) {
         case SET_GUESTS:
             newState = { ...state, guests: { ...action.guests } }
             break
-
+        case SET_ORDER:
+            newState = { ...state, order: { ...action.order } }
+            break
         default:
     }
     // For debug:
