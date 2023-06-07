@@ -3,7 +3,7 @@ import { useRef, useState, createElement, useEffect } from 'react'
 import { DateRange, SelectRangeEventHandler, DayPicker } from 'react-day-picker'
 import styles from 'react-day-picker/dist/style.module.css'
 
-export function DateFilter({setFilterDates }) {
+export function DateFilter({ onSetFilterDates }) {
     const date = new Date()
     const today = startOfDay(date)
     const [selectedRange, setSelectedRange] = useState('')
@@ -11,7 +11,7 @@ export function DateFilter({setFilterDates }) {
 
 
     useEffect(() => {
-        setFilterDates(selectedRange)
+        onSetFilterDates(selectedRange)
     }, [selectedRange])
 
 

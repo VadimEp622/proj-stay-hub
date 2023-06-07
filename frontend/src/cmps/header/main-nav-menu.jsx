@@ -6,7 +6,7 @@ import { useClickOutside } from "../../customHooks/clickOutsideModal.js"
 import { DropDown } from "../dropdown-menu.jsx"
 import SvgHandler from "../svg-handler.jsx"
 
-export function MainNavMenu({ onSetDropDown }) {
+export function MainNavMenu() {
     const [isDropDownActive, setIsDropDownActive] = useState(false)
     const [pos, setPos] = useState({ x: 0, y: 0 })
     const dropdownRef = useClickOutside(onDropdownClickOutside)
