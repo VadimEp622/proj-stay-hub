@@ -12,7 +12,8 @@ export const utilService = {
     getFormattedTimeRange,
     getTimeDiffBy,
     checkMinMaxPrices,
-    createDivsForButtonContainer
+    createDivsForButtonContainer,
+    convertTimestampToDate
 }
 
 function makeId(length = 6) {
@@ -144,3 +145,13 @@ function createDivsForButtonContainer() {
     }
     return divElements
 }
+
+function convertTimestampToDate(timestamp) {
+    var targetDate = new Date(timestamp);
+
+    var options = { year: 'numeric', month: 'long', day: 'numeric' };
+    var formattedDate = targetDate.toLocaleDateString(undefined, options);
+
+    return formattedDate;
+}
+

@@ -18,12 +18,7 @@ export function OrderConfirmation() {
     return (
         <section className="order-confirmation" >
             <div className="confirmation-details">
-                <h3>Confirmation</h3>
-                <div className="rare-find">
-                    <h5>This is a rare find.</h5>
-                    {/* insert SVG of diamond here */}
-                    <p>{sellerFirstName}'s place is usually booked.</p>
-                </div>
+                <h3>Confirm and pay</h3>
                 <div className="trip-details">
                     <h4>Your Trip</h4>
                     <div className="trip-detail">
@@ -44,7 +39,7 @@ export function OrderConfirmation() {
                         <p>{type}</p>
                         <p>{summary}</p>
                         {reviewsCount > 0 && (
-                            <p><SvgHandler svgName={STAR} />{rate}({reviewsCount} 'review' {reviewsCount !== 1 && 's'})</p>
+                            <p><SvgHandler svgName={STAR} />{rate}({reviewsCount} review{reviewsCount !== 1 && 's'})</p>
                         )}
                     </div>
                 </div>
@@ -73,6 +68,23 @@ export function OrderConfirmation() {
                     </div>
                 </div>
             </aside>
+            <div className="message-host">
+                <h3>Required for your trip</h3>
+                <h5>Message the host</h5>
+                <p>Let the Host know why you're travelling and when you'll check in.</p>
+                <div className="host-details-preview">
+                    {sellerFirstName}
+                    {seller.image}
+                    Joined in 2020
+                </div>
+                <textarea name="" id="" cols="30" rows="10"></textarea>
+            </div>
+            <div className="cancellation-policy">
+                <h3>Cancellation policy</h3>
+                <p>Cancel before {utilService.convertTimestampToDate(utilService.getFutureTime(2, 'day'))} for a partial refund. After that, this reservation is non-refundable.</p>
+            </div>
+            <p>By selecting the button below, I agree to the Host's House Rules, Ground rules for guests, Airbnb's Rebooking and Refund Policy, and that Airbnb can charge my payment method if I'm responsible for damage.</p>
+            <AirbnbButton text={'Confirm and pay'} />
         </section>
     )
 }
