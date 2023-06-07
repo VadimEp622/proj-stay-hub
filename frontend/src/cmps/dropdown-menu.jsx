@@ -4,7 +4,7 @@ export function DropDown() {
     const loggedInUser = useSelector(storeState => storeState.userModule.user);
 
     return (
-        <div className="user-navbar flex">
+        <div className="dropdown-navbar flex">
             {loggedInUser ? (
                 <>
                     <div className="dropdown-option">Messages</div>

@@ -1,12 +1,14 @@
-.user-navbar {
+.dropdown-navbar {
     flex-direction: column;
     position: absolute;
+    transform: translateY(10px);
     width: 240px;
-    right: 0;
+    right: 40px;
+
     padding-top: 11px;
     padding-bottom: 10px;
     border-radius: 12px;
-    z-index: 13;
+    z-index: 10;
     background-color: $clr6;
     box-shadow: 0 2px 16px #0000001f;
 }

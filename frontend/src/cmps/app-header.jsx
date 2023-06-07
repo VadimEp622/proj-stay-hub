@@ -299,9 +299,10 @@ export function AppHeader() {
                                 <article className="bars"><SvgHandler svgName={USER_NAV_BARS} /></article>
                                 <article className="profile"><SvgHandler svgName={USER_NAV_PROFILE} /></article>
                             </section>
+                            {isDropDownActive && <DropDown />}
+
                         </section>
                     </nav>
-                    {isDropDownActive && <DropDown />}
 
                     <section className={`filter-expanded-container${isFilterExpanded ? '' : ' folded'}`} >
                         <section className="filter-expanded">
