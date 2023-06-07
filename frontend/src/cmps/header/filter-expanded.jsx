@@ -92,7 +92,7 @@ export function FilterExpanded(
                         }
                         {
                             (selectedFilterBox === 'check-in' || selectedFilterBox === 'check-out') &&
-                            <DateFilter onSetFilterDates={onSetFilterDates} />
+                            <DateFilter filterBy={filterBy} onSetFilterDates={onSetFilterDates} />
                         }
                         {
                             selectedFilterBox === 'who' &&

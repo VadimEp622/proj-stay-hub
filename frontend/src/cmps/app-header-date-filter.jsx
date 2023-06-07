@@ -5,10 +5,13 @@ import styles from 'react-day-picker/dist/style.module.css'
 
 
 // WHY IS DATE FILTER RENDER DATES RESTARTS?
-export function DateFilter({ onSetFilterDates }) {
+export function DateFilter({ filterBy, onSetFilterDates }) {
     const date = new Date()
     const today = startOfDay(date)
-    const [selectedRange, setSelectedRange] = useState('')
+    const [selectedRange, setSelectedRange] = useState({
+        from: filterBy.from ? new Date(filterBy.from).toString() : '',
+        to: filterBy.to ? new Date(filterBy.to).toString() : ''
+    })
 
 
 
