@@ -29,19 +29,10 @@ export function DropDown({ setIsDropDownActive }) {
                     </>
                 ) : (
                     <>
-                        <div className="dropdown-option" onClick={(ev) => openModal(ev, 'loginSignup')}>
+                        <div className="dropdown-option" onClick={(ev) => openModal(ev, 'logIn')}>
                             <span>Log in</span>
-                            {/* {logInClicked && (
-                                <div className="login-component-overlay">
-                                    <div className="login-component-wrapper">
-                                        <div className="login-component">
-                                            <LoginSignup />
-                                        </div>
-                                    </div>
-                                </div>
-                            )} */}
                         </div>
-                        <div className="dropdown-option">Sign up</div>
+                        <div className="dropdown-option" onClick={(ev) => openModal(ev, 'signUp')}>Sign up</div>
                         <div className="dropdown-line"></div>
                         <div className="dropdown-option">Stayhub your home</div>
                     </>
