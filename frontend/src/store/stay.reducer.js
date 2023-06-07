@@ -8,7 +8,7 @@ export const ADD_TO_CART = 'ADD_TO_CART'
 export const CLEAR_CART = 'CLEAR_CART'
 export const REMOVE_FROM_CART = 'REMOVE_FROM_CART'
 export const UPDATE_FILTER_BY = 'UPDATE_FILTER_BY'
-
+export const SET_MODAL_OPEN = 'SET_MODAL_OPEN'
 
 
 const initialState = {
@@ -16,7 +16,8 @@ const initialState = {
     cart: [],
     lastRemovedStay: null,
     filterBy: {},
-    guests: {}
+    guests: {},
+    isModalOpen: false
 }
 
 export function stayReducer(state = initialState, action) {
@@ -94,7 +95,9 @@ export function stayReducer(state = initialState, action) {
         case UPDATE_FILTER_BY:
             newState = { ...state, filterBy: { ...action.filterBy } }
             break
-
+        case SET_MODAL_OPEN:
+            newState = { ...state, isModalOpen: action.isModalOpen }
+            break
         default:
     }
     return newState

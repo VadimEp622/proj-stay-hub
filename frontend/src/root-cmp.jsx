@@ -10,16 +10,23 @@ import { AppFooter } from './cmps/app-footer'
 import { UserDetails } from './pages/user-details'
 import { StayDetails } from './pages/stay-details'
 import { useSelector } from 'react-redux'
+import { LoginSignup } from './cmps/login-signup'
 
 export function RootCmp() {
     const isUnclickableBg = useSelector(storeState => storeState.systemModule.isUnclickableBg)
     const location = useLocation()
     const isStayDetailsPage = location.pathname.includes('/stay/')
-
+    const isModalOpen = useSelector(storeState => storeState.stayModule.isModalOpen)
+    // const modalType = useSelector((storeState) => storeState.stayModule.modalType)
     return (
         <Fragment>
-            <div className="main screen unclickable"></div>
-
+            <div className="main-screen-unclickable">
+                <div className="modal-wrapper" >
+                    <div className="modal-wrapper-second" >
+                        {!isModalOpen && <LoginSignup />}
+                    </div>
+                </div>
+            </div>
             <section className={`app ${!isStayDetailsPage ? 'main-layout' : 'details-layout'} ${isUnclickableBg && 'unclickable-background'}`}>
                 <AppHeader isStayDetailsPage={isStayDetailsPage} />
                 <main className="app-main">
@@ -29,7 +36,7 @@ export function RootCmp() {
                         <Route path="stay/:stayId" element={<StayDetails />} />
                     </Routes>
                 </main>
-                <AppFooter isStayDetailsPage={isStayDetailsPage}/>
+                <AppFooter isStayDetailsPage={isStayDetailsPage} />
 
             </section>
 
