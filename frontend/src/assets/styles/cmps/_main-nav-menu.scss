@@ -14,6 +14,7 @@
 
         padding: 5px 5px 5px 12px;
         align-items: center;
+        transition: box-shadow 0.2s ease;
 
         & .bars {
             color: #222222;
@@ -24,5 +25,10 @@
             height: 30px;
             margin-left: auto;
         }
+
+        &:hover {
+            box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px 0px;
+        }
     }
+
 }
