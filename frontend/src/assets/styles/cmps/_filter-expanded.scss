@@ -197,17 +197,20 @@
 
         // hover on either element 1 or adjacent element 2, change pseudo element in element 2
         & .where-container:hover+.check-in-container::before,
-        & .check-in-container:hover::before {
+        & .check-in-container:hover::before,
+        & .check-in-container.active::before {
             width: 0;
         }
 
         & .check-in-container:hover+.check-out-container::before,
-        & .check-out-container:hover::before {
+        & .check-out-container:hover::before,
+        & .check-out-container.active::before {
             width: 0;
         }
 
         & .check-out-container:hover+.who-container::before,
-        & .who-container:hover::before {
+        & .who-container:hover::before,
+        & .who-container.active::before {
             width: 0;
         }
 
