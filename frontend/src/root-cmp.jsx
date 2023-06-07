@@ -17,6 +17,7 @@ export function RootCmp() {
     const location = useLocation()
     const isStayDetailsPage = location.pathname.includes('/stay/')
     const isModalOpen = useSelector(storeState => storeState.stayModule.isModalOpen)
+    // const modalType = useSelector((storeState) => storeState.stayModule.modalType)
     return (
         <Fragment>
             <div className="main-screen-unclickable">
