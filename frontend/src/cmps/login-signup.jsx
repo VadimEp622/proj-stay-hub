@@ -4,6 +4,7 @@ import { ImgUploader } from './reuseableCmp/img-uploader'
 import { login, signup } from '../store/user.actions'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { useSelector } from 'react-redux'
+import { AirbnbButton } from './reuseableCmp/airbnb-button'
 
 
 export function LoginSignup(props) {
@@ -74,7 +75,7 @@ export function LoginSignup(props) {
             </header>
             <section className='main-login'>
                 {!isSignup && 
-                <form className="login-form" onSubmit={onLogin}>
+                <form className="login-form flex justify-center align-center" onSubmit={onLogin}>
                     <input
                         type="text"
                         name="username"
@@ -92,11 +93,11 @@ export function LoginSignup(props) {
                         onChange={handleChange}
                         required
                     />
-                    <button>Log in</button>
+                    <AirbnbButton text={'Login'}/>
                 </form>}
 
                 <div className="signup-section">
-                    {isSignup && <form className="signup-form" onSubmit={onSignup}>
+                    {isSignup && <form className="signup-form flex" onSubmit={onSignup}>
                         <input
                             type="text"
                             name="fullname"

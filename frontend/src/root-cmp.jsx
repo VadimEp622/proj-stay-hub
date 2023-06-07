@@ -24,7 +24,7 @@ export function RootCmp() {
             <div className="main-screen-unclickable">
                 <div className="modal-wrapper" >
                     <div className="modal-wrapper-second" >
-                        {isModalOpen && <LoginSignup />}
+                        {!isModalOpen && <LoginSignup />}
                     </div>
                 </div>
             </div>
