@@ -8,9 +8,9 @@ import SvgHandler from "./svg-handler"
 import { useEffect, useState } from "react"
 import { OrderConfirmation } from "../pages/order-confirmation"
 import { userService } from "../services/user.service"
-import { AirbnbButton } from "./reuseableCmp/airbnbButton"
 import { setOrder } from "../store/user.actions"
 import { Link } from "react-router-dom"
+import { AirbnbButton } from "./reuseableCmp/airbnb-button"
 
 export function OrderContainer({ stay }) {
 

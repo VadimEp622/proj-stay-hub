@@ -10,7 +10,7 @@ export function LoginSignup(props) {
     const loggedInUser = useSelector(storeState => storeState.userModule.user)
     const [logInClicked, setLogInClicked] = useState(false)
     const [credentials, setCredentials] = useState({ username: '', password: '', fullname: '' })
-    const [isSignup, setIsSignup] = useState(true)
+    const [isSignup, setIsSignup] = useState(false)
     const [users, setUsers] = useState([])
 
     useEffect(() => {
@@ -40,7 +40,7 @@ export function LoginSignup(props) {
         try {
             const user = await login(credentials)
             showSuccessMsg(`Welcome: ${user.fullname}`)
-            setLogInClicked(true)
+            // setLogInClicked(true)
             // closeModal()
         } catch (err) {
             showErrorMsg('Cannot login')
@@ -66,41 +66,15 @@ export function LoginSignup(props) {
 
     return (
         <div className="login-page">
-            <h4 className="header-login">
-                {/* {!isSignup ? 'Signup' : 'Log in'} */}
-                Log in or sign up
-            </h4>
-            {!isSignup && <form className="login-form" onSubmit={onLogin}>
-                <input
-                    type="text"
-                    name="username"
-                    value={credentials.username}
-                    placeholder="Username"
-                    onChange={handleChange}
-                    required
-                    autoFocus
-                />
-                <input
-                    type="password"
-                    name="password"
-                    value={credentials.password}
-                    placeholder="Password"
-                    onChange={handleChange}
-                    required
-                />
-                <button>Log in</button>
-            </form>}
-
-            <div className="signup-section">
-                {isSignup && <form className="signup-form" onSubmit={onSignup}>
-                    <input
-                        type="text"
-                        name="fullname"
-                        value={credentials.fullname}
-                        placeholder="Fullname"
-                        onChange={handleChange}
-                        required
-                    />
+            <header className='login-header flex justify-center align-center'>
+                <h4 className="fs16">
+                    {/* {!isSignup ? 'Signup' : 'Log in'} */}
+                    Log in or sign up
+                </h4>
+            </header>
+            <section className='main-login'>
+                {!isSignup && 
+                <form className="login-form" onSubmit={onLogin}>
                     <input
                         type="text"
                         name="username"
@@ -108,6 +82,7 @@ export function LoginSignup(props) {
                         placeholder="Username"
                         onChange={handleChange}
                         required
+                        autoFocus
                     />
                     <input
                         type="password"
@@ -117,14 +92,40 @@ export function LoginSignup(props) {
                         onChange={handleChange}
                         required
                     />
-                    <ImgUploader onUploaded={onUploaded} />
-                    <button >Signup!</button>
+                    <button>Log in</button>
                 </form>}
-            </div>
 
-
-
-
+                <div className="signup-section">
+                    {isSignup && <form className="signup-form" onSubmit={onSignup}>
+                        <input
+                            type="text"
+                            name="fullname"
+                            value={credentials.fullname}
+                            placeholder="Fullname"
+                            onChange={handleChange}
+                            required
+                        />
+                        <input
+                            type="text"
+                            name="username"
+                            value={credentials.username}
+                            placeholder="Username"
+                            onChange={handleChange}
+                            required
+                        />
+                        <input
+                            type="password"
+                            name="password"
+                            value={credentials.password}
+                            placeholder="Password"
+                            onChange={handleChange}
+                            required
+                        />
+                        <ImgUploader onUploaded={onUploaded} />
+                        <button >Signup!</button>
+                    </form>}
+                </div>
+            </section>
         </div>
     )
 }
