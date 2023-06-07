@@ -3,6 +3,8 @@ import { useRef, useState, createElement, useEffect } from 'react'
 import { DateRange, SelectRangeEventHandler, DayPicker } from 'react-day-picker'
 import styles from 'react-day-picker/dist/style.module.css'
 
+
+// WHY IS DATE FILTER RENDER DATES RESTARTS?
 export function DateFilter({ onSetFilterDates }) {
     const date = new Date()
     const today = startOfDay(date)

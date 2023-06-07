@@ -57,6 +57,10 @@
 
                 padding-block: 12.8124px;
 
+                &:not(.where) {
+                    padding-block: 15px;
+                }
+
                 &>* {
                     &:first-child {
                         font-family: Circular-Bold;
@@ -72,6 +76,10 @@
                         color: $gray-clr0;
                         letter-spacing: 0;
                         line-height: 18px;
+
+                        &:is(span) {
+                            display: block;
+                        }
 
                         &:is(input) {
                             background-color: inherit;
