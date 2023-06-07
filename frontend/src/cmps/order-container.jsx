@@ -59,8 +59,13 @@ export function OrderContainer({ stay }) {
             nightsPrice: nightsPrice
         });
 
-        setOrder(orderObject);
+
     }, [])
+
+    useEffect(() => {
+        console.log(orderObject)
+        setOrder(orderObject)
+    }, [orderObject])
 
 
     return (

@@ -1,17 +1,19 @@
 import { useClickOutside } from "../customHooks/clickOutsideModal";
 import { STAR } from "../services/svg.service";
-import { AirbnbButton, airbnbButton } from "../cmps/reuseableCmp/airbnb-button";
+import { AirbnbButton } from "../cmps/reuseableCmp/airbnb-button";
 import { utilService } from "../services/util.service";
 import SvgHandler from "../cmps/svg-handler";
 import { useSelector } from "react-redux";
 
 export function OrderConfirmation() {
-    const orderObject = useSelector(storeState => storeState.stayModule.orderObject)
+    const orderObject = useSelector(storeState => storeState.userModule.order)
+    console.log(orderObject)
     const { stayDetails, guestsNumber, checkIn, checkOut, orderPrice, nightsCount, nightsPrice, seller } = orderObject
+    console.log(seller)
     const { reviewsCount, type, summary, rate, image } = stayDetails
     const { total, serviceFee, cleaningFee, price } = orderPrice
     const formattedTimeRange = utilService.getFormattedTimeRange(checkIn, checkOut)
-    const sellerFirstName = seller.fullName.substring(0, seller.fullName.indexOf(' '))
+    const sellerFirstName = seller.fullname.substring(0, seller.fullname.indexOf(' '))
 
     return (
         <section className="order-confirmation" >

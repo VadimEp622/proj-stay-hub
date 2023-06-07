@@ -11,6 +11,7 @@ import { UserDetails } from './pages/user-details'
 import { StayDetails } from './pages/stay-details'
 import { useSelector } from 'react-redux'
 import { LoginSignup } from './cmps/login-signup'
+import { OrderConfirmation } from './pages/order-confirmation'
 
 export function RootCmp() {
     const isUnclickableBg = useSelector(storeState => storeState.systemModule.isUnclickableBg)
@@ -23,7 +24,7 @@ export function RootCmp() {
             <div className="main-screen-unclickable">
                 <div className="modal-wrapper" >
                     <div className="modal-wrapper-second" >
-                        {!isModalOpen && <LoginSignup />}
+                        {isModalOpen && <LoginSignup />}
                     </div>
                 </div>
             </div>
@@ -34,6 +35,7 @@ export function RootCmp() {
                         {routes.map(route => <Route key={route.path} exact={true} element={route.component} path={route.path} />)}
                         <Route path="user/:id" element={<UserDetails />} />
                         <Route path="stay/:stayId" element={<StayDetails />} />
+                        <Route path="stay/book/:stayId" element={<OrderConfirmation />} />
                     </Routes>
                 </main>
                 <AppFooter isStayDetailsPage={isStayDetailsPage} />
