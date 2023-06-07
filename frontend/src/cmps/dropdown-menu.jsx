@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 
 export function DropDown({ pos }) {
     const loggedInUser = useSelector(storeState => storeState.userModule.user);
-    console.log(pos)
+
     return (
         <div className="dropdown-navbar flex">
             {loggedInUser ? (

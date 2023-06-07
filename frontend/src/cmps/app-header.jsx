@@ -301,7 +301,7 @@ export function AppHeader({ isStayDetailsPage }) {
 
                     </section>
                     <div className="user-container-parent">
-                        <section className="user-container" ref={dropdownRef} onClick={(ev) => onSetDropDown(ev)}>
+                        <section className="user-container" style={{ position: 'relative' }} ref={dropdownRef} onClick={(ev) => onSetDropDown(ev)}>
                             <section className="user-navbar">
                                 <article className="bars"><SvgHandler svgName={USER_NAV_BARS} /></article>
                                 <article className="profile"><SvgHandler svgName={USER_NAV_PROFILE} /></article>
