@@ -29,6 +29,7 @@ import { store } from '../store/store.js'
 import { CLOSE_EXPANDED_HEADER, OPEN_EXPANDED_HEADER, SET_UNCLICKABLE_BG } from '../store/system.reducer.js'
 import { LongTxt } from './long-txt.jsx'
 import { DropDown } from './dropdown-menu.jsx'
+import { useClickOutside } from '../customHooks/clickOutsideModal.js'
 
 export function AppHeader({ isStayDetailsPage }) {
     // const isUnclickableBg = useSelector(storeState => storeState.systemModule.system)
@@ -50,8 +51,11 @@ export function AppHeader({ isStayDetailsPage }) {
     const [selectedFilterBox, setSelectedFilterBox] = useState('where')
     const [isDropDownActive, setIsDropDownActive] = useState(false)
     const [pos, setPos] = useState({ x: 0, y: 0 })
+    const dropdownRef = useClickOutside(onDropdownClickOutside)
 
-
+    function onDropdownClickOutside() {
+        setIsDropDownActive(false)
+    }
 
 
     // async function onLogin(credentials) {
@@ -297,7 +301,7 @@ export function AppHeader({ isStayDetailsPage }) {
 
                     </section>
                     <div className="user-container-parent">
-                        <section className="user-container" onClick={(ev) => onSetDropDown(ev)}>
+                        <section className="user-container" ref={dropdownRef} onClick={(ev) => onSetDropDown(ev)}>
                             <section className="user-navbar">
                                 <article className="bars"><SvgHandler svgName={USER_NAV_BARS} /></article>
                                 <article className="profile"><SvgHandler svgName={USER_NAV_PROFILE} /></article>
