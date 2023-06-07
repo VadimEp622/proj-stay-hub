@@ -84,13 +84,12 @@ export function FilterExpanded(
                         </button>
                     </section>
                 </article>
-            </section>
-
-            {
-                isFilterExpanded &&
-                <form className="filter-unraveled-container" onSubmit={onSubmit} >
-                    <section className="flex justify-center align-center" style={{ width: '100%', gap: 20 }} >
-                        {/* <LocationFilter filterBy={filterBy} onSubmit={onSubmit} handleChange={handleChange} /> */}
+                <div className="size-less">
+                    <div className="modal">
+                        {
+                            (selectedFilterBox === 'where') &&
+                            <LocationFilter filterBy={filterBy} onSubmit={onSubmit} handleChange={handleChange} />
+                        }
                         {
                             (selectedFilterBox === 'check-in' || selectedFilterBox === 'check-out') &&
                             <DateFilter onSetFilterDates={onSetFilterDates} />
@@ -99,9 +98,9 @@ export function FilterExpanded(
                             selectedFilterBox === 'who' &&
                             <GuestCountFilter filterBy={filterBy} setFilterBy={setFilterBy} handleGuestCountChange={handleGuestCountChange} />
                         }
-                    </section>
-                </form>
-            }
+                    </div>
+                </div>
+            </section>
         </section>
     )
 }

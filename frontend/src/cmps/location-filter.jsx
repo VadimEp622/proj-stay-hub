@@ -1,10 +1,8 @@
 export function LocationFilter({ filterBy, handleChange }) {
 
-
     return (
-        <section>
-            <label>Search: </label>
-            <input name="filterText" value={filterBy.filterText} onChange={handleChange}></input>
+        <section className="location-filter">
+            <label>Hello from Location Filter</label>
         </section>
     )
 }
