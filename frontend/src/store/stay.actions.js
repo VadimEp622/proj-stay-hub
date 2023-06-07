@@ -107,6 +107,7 @@ export async function checkout(total) {
 }
 
 export async function setModal(boolean) {
+    console.log('Action:', boolean);
     store.dispatch({ type: SET_MODAL_OPEN, boolean })
 }
 
