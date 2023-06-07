@@ -170,9 +170,48 @@
             }
         }
 
+        & .check-in-container,
+        .check-out-container,
+        .who-container {
+            position: relative;
+
+            &::before {
+                content: '';
+                position: absolute;
+                background-color: $gray-clr3;
+                height: 32px;
+                width: 1px;
+                top: 17px;
+                left: 0;
+            }
+        }
+
+
+
+
+
         &:hover {
             cursor: pointer;
         }
+
+
+        // hover on either element 1 or adjacent element 2, change pseudo element in element 2
+        & .where-container:hover+.check-in-container::before,
+        & .check-in-container:hover::before {
+            width: 0;
+        }
+
+        & .check-in-container:hover+.check-out-container::before,
+        & .check-out-container:hover::before {
+            width: 0;
+        }
+
+        & .check-out-container:hover+.who-container::before,
+        & .who-container:hover::before {
+            width: 0;
+        }
+
+
 
         & .size-less {
             height: 0;

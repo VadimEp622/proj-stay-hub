@@ -2,15 +2,15 @@
     position: absolute;
     height: 100vh;
     width: 100vw;
-}
 
-.modal-wrapper-second {
-    transform: translate(-50%, -50%);
-    top: 50%;
-    left: 50%;
-    background-color: black;
-    width: fit-content;
-    position: relative;
-    height: fit-content;
-    z-index: 10;
+    & .modal-wrapper-second {
+        transform: translate(-50%, -50%);
+        top: 50%;
+        left: 50%;
+        background-color: black;
+        width: fit-content;
+        position: relative;
+        height: fit-content;
+        z-index: 10;
+    }
 }
