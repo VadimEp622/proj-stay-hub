@@ -1,0 +1,164 @@
+.order-confirmation {
+    margin-top: 50px;
+
+    & h2 {
+        font-size: rem(32px);
+        margin-bottom: 52px;
+    }
+}
+
+.confirmation-container {
+    display: grid;
+    grid-template-columns: 1.202fr 1fr;
+    column-gap: 95px;
+
+
+    .confirmation-details {
+        padding-bottom: 16px;
+        border-bottom: 1px solid $gray-clr2;
+    }
+
+    .trip-detail {
+        margin-top: 26px;
+
+        p {
+            margin-top: 16px;
+            letter-spacing: 0;
+            margin-top: 6px;
+            font-weight: 100;
+            font-size: rem(16px);
+        }
+    }
+
+    aside {
+        grid-area: 1 / 2 / span 3;
+        border: 1px solid $gray-clr2;
+        border-radius: 12px;
+        padding: 22px;
+        flex-direction: column;
+        height: fit-content;
+        position: sticky;
+
+        .confirmation-preview {
+            border-bottom: 1px solid $gray-clr2;
+            padding-bottom: 24px;
+
+            img {
+                aspect-ratio: 1.18/1;
+                width: 124px;
+                object-fit: cover;
+                border-radius: 8px;
+                margin-right: 12px;
+            }
+
+            .detail> :first-child {
+                margin-bottom: 0;
+            }
+
+            .detail> :last-child {
+                margin-top: 44px;
+                font-size: rem(12px);
+            }
+
+            .confirmation-reviews>* {
+                padding-left: 5px;
+            }
+
+        }
+
+        .price-details {
+            margin-top: 26px;
+
+        }
+
+        .price {
+            margin-top: 24px;
+        }
+
+        .cleaning-fee {
+            margin-top: 10px;
+            letter-spacing: 0;
+        }
+
+        .service-fee {
+            margin-top: 10px;
+            padding-bottom: 22px;
+            letter-spacing: 0;
+            border-bottom: 1px solid $gray-clr2;
+        }
+
+        .total-price {
+            margin-top: 22px;
+            letter-spacing: 0;
+        }
+    }
+
+    .message-host {
+        margin-top: 32px;
+        border-bottom: 1px solid $gray-clr2;
+
+        & h3 {
+            margin-bottom: 20px;
+        }
+
+        & h5 {
+            margin-bottom: 4px;
+        }
+
+        & p {
+            letter-spacing: 0;
+        }
+
+        .host-details-preview {
+            color: red;
+        }
+
+        textarea {
+            border-radius: 8px;
+            width: 100%;
+            height: 125px;
+            margin-bottom: 24px;
+        }
+    }
+
+    .cancellation-policy {
+        margin-top: 34px;
+        border-bottom: 1px solid $gray-clr2;
+        padding-bottom: 16px;
+
+        & h3 {
+            margin-bottom: 26px;
+        }
+
+        & p {
+            letter-spacing: 0;
+            line-height: 1.28;
+        }
+    }
+
+    .declaration {
+        margin-top: 40px;
+        font-size: 12px;
+        line-height: 1.28;
+        letter-spacing: 0;
+
+        & span {
+            text-decoration: underline;
+            font-weight: 500;
+            // font-family: Circular-Semibold;
+            letter-spacing: 0.15px;
+        }
+    }
+}
+
+.confirm-btn {
+    margin-top: 24px;
+    width: 204px;
+    height: 80px;
+
+    .btn-txt {
+        font-size: 18px;
+        font-weight: 400;
+        letter-spacing: 0.4px;
+    }
+}

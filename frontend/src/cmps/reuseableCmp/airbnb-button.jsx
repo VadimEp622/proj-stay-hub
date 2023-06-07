@@ -6,7 +6,7 @@ export function AirbnbButton({ text, onClickButton = () => { } }) {
             {utilService.createDivsForButtonContainer()}
             <div className="content">
                 <button className="action-btn" >
-                    <span>{text}</span>
+                    <span className="btn-txt">{text}</span>
                 </button>
             </div>
         </div>
