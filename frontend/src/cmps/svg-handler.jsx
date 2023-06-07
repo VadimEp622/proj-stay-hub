@@ -25,7 +25,7 @@ import { ReactComponent as Wifi } from '../assets/img/airbnb-assets/wifi.svg'
 import { ReactComponent as AirCond } from '../assets/img/airbnb-assets/air-cond.svg'
 import { ReactComponent as Verified } from '../assets/img/airbnb-assets/verified.svg'
 import { ReactComponent as TickDecline } from '../assets/img/tick-decline/tick-decline.svg'
-
+import { ReactComponent as Exit } from '../assets/img/airbnb-assets/exit.svg'
 
 
 
@@ -93,6 +93,8 @@ const SvgHandler = ({ svgName }) => {
                 return <Verified />
             case TICK_DECLINE:
                 return <TickDecline />
+            case 'exit':
+                return <Exit />
             default:
                 return <Heart16 />
         }

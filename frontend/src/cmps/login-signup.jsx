@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux'
 import { AirbnbButton } from './reuseableCmp/airbnb-button'
 import { setModal } from '../store/stay.actions'
 import { useClickOutside } from '../customHooks/clickOutsideModal'
+import SvgHandler from './svg-handler'
 
 
 export function LoginSignup({ isSignUp }) {
@@ -62,7 +63,12 @@ export function LoginSignup({ isSignUp }) {
         setCredentials({ ...credentials, imgUrl })
     }
 
-    function changeModal(ev, modal) {
+    function onCloseModal(ev) {
+        ev.stopPropagation()
+        setModal(false)
+    }
+
+    function onChangeModal(ev, modal) {
         ev.stopPropagation()
         setModal(modal)
     }
@@ -72,7 +78,7 @@ export function LoginSignup({ isSignUp }) {
     return (
         <div className="login-page" ref={dropdownRef}>
             <header className='login-header'>
-                <div className="close">X</div>
+                <div className="close" onClick={(ev) => onCloseModal(ev)}><SvgHandler svgName={'exit'} /></div>
                 <h4 className="fs16">
                     {isSignUp ? 'Sign up' : 'Log in'}
                 </h4>
@@ -127,7 +133,7 @@ export function LoginSignup({ isSignUp }) {
                     <div className="divider-text">or</div>
                     <div className="divider-line"></div>
                 </div>
-                <section className="second-button-wrapper">                <button className="button-second-option" onClick={(ev) => changeModal(ev, modalText)}>{isSignUp ? 'Log in' : 'Sign Up'}</button>
+                <section className="second-button-wrapper">                <button className="button-second-option" onClick={(ev) => onChangeModal(ev, modalText)}>{isSignUp ? 'Log in' : 'Sign Up'}</button>
                 </section>
             </section>
         </div>
