@@ -23,7 +23,7 @@ export function LoginSignup(props) {
 
     function handleChange(ev) {
         const field = ev.target.name
-        const value = ev.target.value
+        const { value } = ev.target
         setCredentials({ ...credentials, [field]: value })
     }
 
@@ -51,18 +51,18 @@ export function LoginSignup(props) {
 
     return (
         <div className="login-page">
-            <p>
-                <button className="btn-link" onClick={toggleSignup}>{!isSignup ? 'Signup' : 'Login'}</button>
-            </p>
+            <h4 className="header-login">
+                {!isSignup ? 'Signup' : 'Log in'}
+            </h4>
             {!isSignup && <form className="login-form" onSubmit={onLogin}>
-                <select
+                {/* <select
                     name="username"
                     value={credentials.username}
                     onChange={handleChange}
                 >
                     <option value="">Select User</option>
                     {users.map(user => <option key={user._id} value={user.username}>{user.fullname}</option>)}
-                </select>
+                </select> */}
                 {/* <input
                         type="text"
                         name="username"
@@ -80,11 +80,11 @@ export function LoginSignup(props) {
                         onChange={handleChange}
                         required
                     /> */}
-                <button>Login!</button>
+                <button>Log in</button>
             </form>}
             <div className="signup-section">
                 {isSignup && <form className="signup-form" onSubmit={onSignup}>
-                    <input
+                    {/* <input
                         type="text"
                         name="fullname"
                         value={credentials.fullname}
@@ -109,7 +109,7 @@ export function LoginSignup(props) {
                         required
                     />
                     <ImgUploader onUploaded={onUploaded} />
-                    <button >Signup!</button>
+                    <button >Signup!</button> */}
                 </form>}
             </div>
         </div>
