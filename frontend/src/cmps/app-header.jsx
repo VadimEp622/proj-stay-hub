@@ -30,6 +30,7 @@ import { CLOSE_EXPANDED_HEADER, OPEN_EXPANDED_HEADER, SET_UNCLICKABLE_BG } from 
 import { LongTxt } from './long-txt.jsx'
 import { DropDown } from './dropdown-menu.jsx'
 import { useClickOutside } from '../customHooks/clickOutsideModal.js'
+import { Logo } from './logo.jsx'
 
 export function AppHeader({ isStayDetailsPage }) {
     // const isUnclickableBg = useSelector(storeState => storeState.systemModule.system)
@@ -231,42 +232,27 @@ export function AppHeader({ isStayDetailsPage }) {
     return (
         <Fragment>
             <header className={`app-header-container full ${!isStayDetailsPage ? 'main-layout' : 'details-layout'} always-clickable-bg`}>
-                {/* <section> */}
-                <nav className="app-header">
-                    <section className="logo-container">
-                        {
-                            routes.map(route =>
-                                route.isLogo &&
-                                <NavLink
-                                    className={'page-navbar'}
-                                    key={route.path}
-                                    to={route.path}
-                                >
-                                    <article className="logo-svg">
-                                        <SvgHandler svgName={LOGO} />
-                                        <span>{route.label}</span>
-                                    </article>
-                                </NavLink>
-                            )
-                        }
-                    </section>
 
-                    <section className="filter-container">
+                <nav className="app-header">
+                    <Logo />
+
+                    <section className="searchbar-toggle-container">
 
                         {
                             !isFilterExpanded &&
-                            <button className="filter" onClick={onExpandedFilter}>
+                            <button className="searchbar-closed" onClick={onExpandedFilter}>
                                 <article>Anywhere</article>
                                 <article>Any week</article>
                                 <article>Add guests</article>
-                                <aside className="filter-search-circle">
+                                <aside className="search-circle">
                                     <SvgHandler svgName={SEARCH} />
                                 </aside>
                             </button>
                         }
 
-                        {isFilterExpanded &&
-                            <section className="filter-expanded">
+                        {
+                            isFilterExpanded &&
+                            <section className="searchbar-open">
                                 <section className="experiences-tab">
 
                                     <article
@@ -296,11 +282,8 @@ export function AppHeader({ isStayDetailsPage }) {
                                 </section>
                             </section>
                         }
-
-
-
-
                     </section>
+
                     <div className="user-container-parent">
                         <section className="user-container" ref={dropdownRef} onClick={(ev) => onSetDropDown(ev)}>
                             <section className="user-navbar">
@@ -375,9 +358,6 @@ export function AppHeader({ isStayDetailsPage }) {
                         </form>
                     }
                 </section>
-
-                {/* </section> */}
-
 
             </header>
 
