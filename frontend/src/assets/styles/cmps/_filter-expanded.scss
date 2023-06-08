@@ -245,8 +245,55 @@
 
                 & .filter-date-picker {
                     margin-inline: auto;
+                    color: inherit;
 
-                    td {
+                    & .rdp-head {
+                        & th {
+                            font-size: rem(12px);
+                            font-family: Circular-Bold;
+                            color: $gray-clr0;
+                            line-height: 16px;
+                            text-transform: capitalize;
+                        }
+                    }
+
+                    & .rdp-months {
+                        & .rdp-caption_label {
+                            font-size: rem(16px);
+                            line-height: 20px;
+                            font-family: Circular-SemiBold;
+                            font-weight: 400;
+                        }
+                    }
+
+                    // & .rdp-cell {
+                    //     & .rdp-day {
+                    //         font-family: Circular-SemiBold;
+                    //         font-weight: 400;
+                    //         // &:hover{
+                    //             border: 1.5px solid rgb(34, 34, 34);
+                    //             // background-color: inherit;
+                    //         // }
+                    //     }
+                    // }
+
+                    & .rdp-nav{
+                        svg{
+                            width: 12px;
+                            height: 16px;
+                        }
+                    }
+
+                    // & .rdp-button{
+                    //     width: 32px;
+                    //     height: 32px;
+                    //     align-items: center;
+                    //     &:hover{
+                    //         background-color: $gray-clr5;
+                    //     }
+                    // }
+
+                    & td {
                         position: relative;
 
                         & :is(.day-range-start, .day-range-end) {
@@ -312,7 +359,7 @@
 
                                 &.pet-service {
                                     font-family: Circular-Semibold;
-                                    color: rgb(113, 113, 113);
+                                    color: $gray-clr0;
                                     cursor: not-allowed;
                                 }
                             }
