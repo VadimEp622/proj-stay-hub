@@ -79,7 +79,7 @@ export function FilterExpanded(
 
     return (
         <section className={`filter-expanded-container full main-layout${isFilterExpanded ? '' : ' folded'}`} >
-            <section className="filter-expanded" ref={dropdownRef}>
+            <section className={`filter-expanded${selectedFilterBox === 'all' ? ' all' : ''}`} ref={dropdownRef}>
                 <article className={`where-container${selectedFilterBox === 'where' ? ' active' : ''}`} name="where" onClick={onSetSelectedFilterBox} >
                     <section className="where">
                         <h3>Where</h3>
