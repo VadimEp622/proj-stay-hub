@@ -61,7 +61,6 @@ export function FilterExpanded(
     }, [isFilterExpanded])
 
 
-
     function onClickModal() {
         if (isFilterExpanded) {
             if (!isFirstTimeExpandedRef.current) {
@@ -83,7 +82,7 @@ export function FilterExpanded(
                 <article className={`where-container${selectedFilterBox === 'where' ? ' active' : ''}`} name="where" onClick={onSetSelectedFilterBox} >
                     <section className="where">
                         <h3>Where</h3>
-                        <input name="filterText" value={filterBy.filterText} onChange={handleChange} placeholder="Search destinations"></input>
+                        <input name="filterText" value={filterBy.filterText || filterBy.country} onChange={handleChange} placeholder="Search destinations"></input>
                     </section>
                 </article>
                 <article className={`check-in-container${selectedFilterBox === 'check-in' ? ' active' : ''}`} name="check-in" onClick={onSetSelectedFilterBox}>

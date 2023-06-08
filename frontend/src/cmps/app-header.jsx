@@ -29,6 +29,7 @@ export function AppHeader({ isStayDetailsPage }) {
     const [filterBy, setFilterBy] = useState({
         filterText: '',
         from: '',
+        country: '',
         to: '',
         capacity: 0,
         guests: {
@@ -70,6 +71,7 @@ export function AppHeader({ isStayDetailsPage }) {
             if (!filterBy.to) filter.to = filterBy.from + utilService.getTimeDiffBy('day')//if picked ONLY check-in date
             else filter.to = filterBy.to
         }
+        if (filterBy.country) filter.country = filterBy.country
         if (filterBy.capacity) filter.capacity = filterBy.capacity
         if (filterBy.guests) setGuests(filterBy.guests)
         updateFilterBy(filter)
@@ -79,6 +81,7 @@ export function AppHeader({ isStayDetailsPage }) {
         const field = target.name
         const value = (target.type === 'number') ? +target.value : target.value
         setFilterBy(prevFilter => ({ ...prevFilter, [field]: value }))
+        console.log(filterBy)
     }
 
     function handleGuestCountChange(type, value) {

@@ -867,7 +867,7 @@ const STAYS_TRUE_DEMO_TEMP = [
             "id": "31635864"
         },
         "loc": {
-            "country": "Spain",
+            "country": "Italy",
             "countryCode": "ES",
             "city": "Barcelona",
             "address": "Barcelona, Catalunya, Spain",
@@ -937,7 +937,7 @@ const STAYS_TRUE_DEMO_TEMP = [
         "host": {
             "_id": "622f3404e36c59e6164fb63a",
             "fullname": "Isabel",
-            "location": "Barcelona, Catalonia, Spain",
+            "location": "Rome, Italy",
             "about": "Mi nombre es Isabel, pero me llamo Isa. Nací en Vigo (Galicia). Con 20 años me fuí a vivir a Madrid con intención de ser actriz; ahora resido en Barcelona desde los 28. Soy una joven de 43 años, cantante de Jazz. Me gusta salir, pero también quedarme en casa a leer o ver alguna buena película.\r\nHe compartido piso muchos años, pero estas serán mis primeras experiencias como anfitriona.\r\n\r\n¡Sed bienvenidos!\r\n",
             "responseTime": "within an hour",
             "thumbnailUrl": "https://a0.muscache.com/im/pictures/72a579ce-37d7-466e-9c25-9876ee8de037.jpg?aki_policy=profile_small",
@@ -946,10 +946,10 @@ const STAYS_TRUE_DEMO_TEMP = [
             "id": "35858044"
         },
         "loc": {
-            "country": "Spain",
-            "countryCode": "ES",
-            "city": "Barcelona",
-            "address": "Barcelona, Catalonia, Spain",
+            "country": "Italy",
+            "countryCode": "IT",
+            "city": "Rome",
+            "address": "Rome, Italy",
             "lat": 2.17561,
             "lan": 41.38701
         },
@@ -2368,7 +2368,7 @@ const STAYS_TRUE_DEMO_TEMP = [
         "host": {
             "_id": "622f3405e36c59e6164fb898",
             "fullname": "Kadirga",
-            "location": "Istanbul, İstanbul, Turkey",
+            "location": "25 Rue de la Harpe, Paris, France",
             "about": "",
             "responseTime": "within an hour",
             "thumbnailUrl": "https://a0.muscache.com/im/pictures/user/7620074d-86d6-49c3-b7fe-cafe084051dd.jpg?aki_policy=profile_small",
@@ -2377,10 +2377,10 @@ const STAYS_TRUE_DEMO_TEMP = [
             "id": "98780303"
         },
         "loc": {
-            "country": "Turkey",
-            "countryCode": "TR",
-            "city": "Istanbul",
-            "address": "Fatih, İstanbul, Turkey",
+            "country": "France",
+            "countryCode": "FR",
+            "city": "Paris",
+            "address": "25 Rue de la Harpe, Paris, France",
             "lat": 28.96755,
             "lan": 41.00488
         },
