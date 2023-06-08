@@ -226,8 +226,8 @@
                 border-radius: 32px;
                 margin-block-start: 44px;
                 box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.04), 0 8px 16px rgba(0, 0, 0, 0.15);
-                padding-block: 32px;
-                padding-inline: 16px;
+                padding-inline: 32px;
+                padding-block: 16px;
 
 
                 &.where {
@@ -286,45 +286,74 @@
                 }
 
                 & .guest-count-filter {
+                    padding-inline: 6px;
+
                     & .card {
                         white-space: nowrap;
                         display: flex;
                         justify-content: space-between;
-                        padding-block: em(24px);
+                        padding-block: 24px;
+                        padding-inline-end: 4px;
                         width: 326px;
 
-                        & p {
-                            margin: 0;
+                        & .txt-content {
+                            & h3 {
+                                font-size: rem(16px);
+                                line-height: 20px;
+                                letter-spacing: normal;
+                                font-family: Circular-Semibold;
+                                font-weight: 400;
+                            }
+
+                            & p {
+                                padding-block-start: 4px;
+                                color: $gray-clr0;
+                                margin: 0;
+
+                                &.pet-service {
+                                    font-family: Circular-Semibold;
+                                    color: rgb(113, 113, 113);
+                                    cursor: not-allowed;
+                                }
+                            }
                         }
+
 
                         &:not(:last-child) {
                             content: '';
                             border-bottom: 1px solid rgb(235, 235, 235);
                         }
 
-                        .custom-btn-guest-count {
-                            background-color: rgb(255, 255, 255);
-                            color: rgb(113, 113, 113);
-                            border: 1px solid rgb(176, 176, 176);
-                            border-radius: 50%;
-                            width: 30px;
-                            height: 30px;
-                            font-weight: 700;
-                            cursor: pointer;
-                            font-size: 13.5px;
+                        & .stepper {
+                            display: flex;
+                            align-items: center;
+                            gap: 15px;
+
+                            & .custom-btn-guest-count {
+                                background-color: rgb(255, 255, 255);
+                                color: rgb(113, 113, 113);
+                                border: 1px solid rgb(176, 176, 176);
+                                border-radius: 50%;
+                                width: 30px;
+                                height: 30px;
+                                font-weight: 700;
+                                cursor: pointer;
+                                font-size: 13.5px;
+                            }
+
+                            & span {
+                                // margin-inline: 10px;
+                                text-align: center;
+                                font-weight: 600;
+                            }
                         }
 
-                        & span {
-                            margin-inline: 10px;
-                            text-align: center;
-                            font-weight: 600;
-                        }
 
-                        .pet-service {
-                            font-weight: 600;
-                            color: rgb(113, 113, 113);
-                            cursor: pointer;
-                        }
+                        // .pet-service {
+                        //     font-weight: 600;
+                        //     color: rgb(113, 113, 113);
+                        //     cursor: not-allowed;
+                        // }
 
                         .custom-btn-guest-count:hover {
                             border-color: rgb(34, 34, 34);
