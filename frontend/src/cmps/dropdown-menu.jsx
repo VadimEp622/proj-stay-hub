@@ -1,18 +1,37 @@
 import { useSelector } from "react-redux";
 import { LoginSignup } from "./login-signup";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { setModal } from "../store/stay.actions";
 import { Link } from "react-router-dom";
+import { logout } from "../store/user.actions";
 
 export function DropDown({ setIsDropDownActive }) {
     const loggedInUser = useSelector(storeState => storeState.userModule.user)
     const [logInClicked, setLogInClicked] = useState(false)
+    const dropdownRef = useRef(null);
 
     function openModal(ev, modal) {
         ev.stopPropagation()
         setIsDropDownActive(false)
         setModal(modal)
     }
+
+    useEffect(() => {
+        function handleClickInside(ev) {
+            setIsDropDownActive(false);
+        }
+
+        if (dropdownRef.current) {
+            dropdownRef.current.addEventListener("click", handleClickInside);
+        }
+
+        return () => {
+            if (dropdownRef.current) {
+                dropdownRef.current.removeEventListener("click", handleClickInside);
+            }
+        };
+    }, [setIsDropDownActive]);
+
 
     return (
         <>
@@ -26,7 +45,7 @@ export function DropDown({ setIsDropDownActive }) {
                         <div className="dropdown-option">Manage listings</div>
                         <div className="dropdown-option">Dashboard</div>
                         <div className="dropdown-line"></div>
-                        <div className="dropdown-option">Logout</div>
+                        <div className="dropdown-option" onClick={logout}>Logout</div>
                     </>
                 ) : (
                     <>

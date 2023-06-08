@@ -9,6 +9,7 @@
     "@testing-library/user-event": "^12.1.10",
     "axios": "^0.21.4",
     "focus-trap-react": "^10.1.4",
+    "formik": "^2.4.1",
     "google-map-react": "^2.2.1",
     "rc-slider": "^10.2.0",
     "react": "^18.2.0",
@@ -38,7 +39,8 @@
     "workbox-range-requests": "^6.5.4",
     "workbox-routing": "^6.5.4",
     "workbox-strategies": "^6.5.4",
-    "workbox-streams": "^6.5.4"
+    "workbox-streams": "^6.5.4",
+    "yup": "^1.2.0"
   },
   "scripts": {
     "start": "react-scripts start",
