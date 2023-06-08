@@ -7,11 +7,11 @@ import { DateFilter } from "../app-header-date-filter.jsx"
 import { GuestCountFilter } from "../guest-count-filter.jsx"
 import { LongTxt } from "../long-txt.jsx"
 import SvgHandler from "../svg-handler.jsx"
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { createElement } from 'react';
 import { useClickOutside } from "../../customHooks/clickOutsideModal.js"
 import { store } from "../../store/store.js"
-import { CLOSE_EXPANDED_HEADER_MODAL } from "../../store/system.reducer.js"
+import { CLOSE_EXPANDED_HEADER_MODAL, OPEN_EXPANDED_HEADER_MODAL } from "../../store/system.reducer.js"
 import { useSelector } from "react-redux"
 
 
@@ -47,9 +47,32 @@ export function FilterExpanded(
     }
 
     const isExpandedModalOpen = useSelector(storeState => storeState.systemModule.isExpandedModalOpen)
+    const isFirstTimeExpandedRef = useRef(true)
+
+
+    useEffect(() => {
+        // console.log('isExpandedModalOpen', isExpandedModalOpen)
+        // console.log('isFirstTimeExpandedRef', isFirstTimeExpandedRef)
+        // store.dispatch({ type: OPEN_EXPANDED_HEADER_MODAL })
+    }, [])
+
+    useEffect(() => {
+        if (!isFilterExpanded) isFirstTimeExpandedRef.current = true
+    }, [isFilterExpanded])
+
+
 
     function onClickModal() {
-        store.dispatch({ type: CLOSE_EXPANDED_HEADER_MODAL })
+        if (isFilterExpanded) {
+            if (!isFirstTimeExpandedRef.current) {
+                console.log('HELLO')
+                store.dispatch({ type: CLOSE_EXPANDED_HEADER_MODAL })
+                setSelectedFilterBox('all')
+            } else {
+                store.dispatch({ type: OPEN_EXPANDED_HEADER_MODAL })
+            }
+            isFirstTimeExpandedRef.current = false
+        }
     }
 
     const dropdownRef = useClickOutside(onClickModal)
@@ -101,22 +124,23 @@ export function FilterExpanded(
                 </article>
                 <div className="size-less">
 
-                    {isExpandedModalOpen && <div className={`modal ${selectedFilterBox}`}>
-                        {
-                            (selectedFilterBox === 'where') &&
-                            <LocationFilter filterBy={filterBy} onSubmit={onSubmit} handleChange={handleChange} />
-                        }
-                        {
-                            (selectedFilterBox === 'check-in' || selectedFilterBox === 'check-out') &&
-                            <DateFilter filterBy={filterBy} onSetFilterDates={onSetFilterDates} />
-                        }
-                        {
-                            selectedFilterBox === 'who' &&
-                            <GuestCountFilter filterBy={filterBy} setFilterBy={setFilterBy} handleGuestCountChange={handleGuestCountChange} />
-                        }
-                    </div>}
+                    {isExpandedModalOpen && selectedFilterBox !== 'all' &&
+                        < div className={`modal ${selectedFilterBox}`}>
+                            {
+                                (selectedFilterBox === 'where') &&
+                                <LocationFilter filterBy={filterBy} onSubmit={onSubmit} handleChange={handleChange} />
+                            }
+                            {
+                                (selectedFilterBox === 'check-in' || selectedFilterBox === 'check-out') &&
+                                <DateFilter filterBy={filterBy} onSetFilterDates={onSetFilterDates} />
+                            }
+                            {
+                                selectedFilterBox === 'who' &&
+                                <GuestCountFilter filterBy={filterBy} setFilterBy={setFilterBy} handleGuestCountChange={handleGuestCountChange} />
+                            }
+                        </div>}
                 </div>
             </section>
-        </section>
+        </section >
     )
 }

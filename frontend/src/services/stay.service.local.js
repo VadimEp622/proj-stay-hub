@@ -1424,6 +1424,910 @@ const STAYS_TRUE_DEMO_TEMP = [
             }
         ],
         "likedByUsers": []
+    },
+    {
+        "_id": "622f337a75c7d36e498aaaff",
+        "name": "Heroísmo IV",
+        "type": "Castles",
+        "imgUrls": [
+            "http://res.cloudinary.com/dmtlr2viw/image/upload/v1663436823/af6elioxovkhvp6cg1un.jpg",
+            "http://res.cloudinary.com/dmtlr2viw/image/upload/v1663437327/epcnh2tzpafwmvi3srcp.jpg",
+            "http://res.cloudinary.com/dmtlr2viw/image/upload/v1663437310/tus71yfpnvgulenrli6a.jpg",
+            "http://res.cloudinary.com/dmtlr2viw/image/upload/v1663436453/ndl8odasqgnyquvsbalp.jpg",
+            "http://res.cloudinary.com/dmtlr2viw/image/upload/v1663436821/b4ejulqdhsvyseyfnfr0.jpg"
+        ],
+        "price": 29,
+        "summary": "If the dates you wish are not available, we have other options in the same location. You can find them on my profile. My goal is for you to have your days with the most comfort i can propose. I want you to taste all the feelings in Porto, as our food, as our best places, our best pointviews. I just love to help you enjoying this beautiful city :)",
+        "capacity": 2,
+        "amenities": [
+            "TV",
+            "Cable TV",
+            "Internet",
+            "Wifi",
+            "Kitchen",
+            "Free street parking",
+            "Heating",
+            "First aid kit",
+            "Safety card",
+            "Fire extinguisher",
+            "Essentials",
+            "Shampoo",
+            "24-hour check-in",
+            "Hangers",
+            "Hair dryer",
+            "translation missing: en.hosting_amenity_49",
+            "translation missing: en.hosting_amenity_50",
+            "Room-darkening shades",
+            "Hot water",
+            "Bed linens",
+            "Extra pillows and blankets",
+            "Microwave",
+            "Refrigerator",
+            "Dishes and silverware",
+            "Cooking basics",
+            "Stove",
+            "Single level home",
+            "Long term stays allowed",
+            "Host greets you",
+            "Handheld shower head"
+        ],
+        "bathrooms": 1,
+        "bedrooms": 0,
+        "roomType": "Entire home/apt",
+        "host": {
+            "_id": "622f3401e36c59e6164fab5c",
+            "fullname": "Apartments2Enjoy",
+            "location": "Porto, Porto District, Portugal",
+            "about": "Welcome!\r\nThe apartments has all the things to provide you a perfect days in Porto. It is located in a very central area, inside a typical oporto building. \r\nI will give you lots of informations about Porto, my personal tips, and I'll always be available to help you with anything. All I want is for you to go home knowing Porto and inevitably loving the city! :)\r\n\r\n",
+            "responseTime": "within a day",
+            "thumbnailUrl": "https://a0.muscache.com/im/pictures/f3e85f0c-e28d-4698-9da9-2f203aea1f3d.jpg?aki_policy=profile_small",
+            "pictureUrl": "https://a0.muscache.com/im/pictures/f3e85f0c-e28d-4698-9da9-2f203aea1f3d.jpg?aki_policy=profile_x_medium",
+            "isSuperhost": true,
+            "id": "9320470"
+        },
+        "loc": {
+            "country": "Portugal",
+            "countryCode": "PT",
+            "city": "Porto",
+            "address": "Porto, Porto, Portugal",
+            "lat": -8.59275,
+            "lan": 41.1462
+        },
+        "reviews": [
+            {
+                "at": "2016-02-06T05:00:00.000Z",
+                "by": {
+                    "_id": "622f3404e36c59e6164fb449",
+                    "fullname": "Tejovra",
+                    "imgUrl": "https://robohash.org/41111599?set=set1",
+                    "id": "41111599"
+                },
+                "txt": "Nuno and Francisca were extremely kind and helpful people. They made us feel very welcome and the house is surprisingly spacious. The wifi connection did struggle in our room but maybe we just had bad luck. They were even kind enough to extend our stay last minute. The service was top quality and the shower was amazing. Highly recommend staying here."
+            },
+            {
+                "at": "2016-02-21T05:00:00.000Z",
+                "by": {
+                    "_id": "622f3403e36c59e6164fafcc",
+                    "fullname": "Sara",
+                    "imgUrl": "https://robohash.org/52749020?set=set1",
+                    "id": "52749020"
+                },
+                "txt": "Muito simpáticos e atenciosos. O apartamento é muito confortável e com pequenos detalhes que fazem a diferença. Muito perto do metro, o que é óptimo para deslocações necessárias."
+            },
+            {
+                "at": "2016-03-06T05:00:00.000Z",
+                "by": {
+                    "_id": "622f3403e36c59e6164faf68",
+                    "fullname": "Jennifer",
+                    "imgUrl": "https://robohash.org/55700681?set=set1",
+                    "id": "55700681"
+                },
+                "txt": "Bonjour, Notre séjour a été très agréable. Nous avons été très bien accueillies. Nuno nous a donné de nombreux conseils, lieux de visites... Le logement était également très bien. Nous avons vraiment pu profiter de Porto. Le métro est tout proche du logement. C'était vraiment un très bon séjour. Merci encore. "
+            },
+            {
+                "at": "2016-03-22T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3404e36c59e6164fb5b1",
+                    "fullname": "Irune",
+                    "imgUrl": "https://robohash.org/13478831?set=set1",
+                    "id": "13478831"
+                },
+                "txt": "Our stay at Heroísmo IV was the perfect Airbnb experience. When we got there, Francisca was waiting for us. She was extremely nice and accommodating, she showed us the apartment and gave us a map of the city and plenty of tips about what to visit, where to eat, etc. The apartment is really small but has absolutely everything you need. It's clean, new, has a really nice kitchen, a very comfortable bed and is near the city center (we walked everyday). I highly recommend staying at Nuno's place. ¡Gracias por todo, Francisca! Porto is a beautiful city, we hope to come back soon!"
+            },
+            {
+                "at": "2016-04-30T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3403e36c59e6164fb0c1",
+                    "fullname": "Marlene",
+                    "imgUrl": "https://robohash.org/61125497?set=set1",
+                    "id": "61125497"
+                },
+                "txt": "A nice litte appartement. We arrived very late but were kindly greeted by the host. She showed us arround and gave us very useful tips (where to go/ where to eat/ etc.). The appartement is located directly to a metro station and has a Lidl and other grocery stores very near by.  It was a perfect stay!"
+            },
+            {
+                "at": "2016-05-11T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3402e36c59e6164fae67",
+                    "fullname": "Елизавета",
+                    "imgUrl": "https://robohash.org/20996941?set=set1",
+                    "id": "20996941"
+                },
+                "txt": "Квартира не большая и очень уютная. В ней есть все необходимое. Отличное расположение рядом с метро. Я получила много полезной информации при заселении. Во время сильного дождя в ней сыро, но это не испортило отдых."
+            },
+            {
+                "at": "2016-08-05T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3404e36c59e6164fb3e7",
+                    "fullname": "Teresa",
+                    "imgUrl": "https://robohash.org/5868654?set=set1",
+                    "id": "5868654"
+                },
+                "txt": "Desde o primeiro contacto, a comunicação foi muito fácil e clara. Colocaram à nossa disposição uma série de hipóteses de transporte a partir do aeroporto, bem como a possibilidade de termos em casa cabazes de alimentos. Assim que chegamos, com toda a sua simpatia, tinhamos a Mariana à nossa espera, recebeu-nos explicando os vários  pontos importantes para quem chega: locais a visitar, restaurantes, transportes...\r\nGostámos muito do espaço, do Porto, fazemos questão de voltar em breve. Local excelente!"
+            },
+            {
+                "at": "2016-08-11T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3407e36c59e6164fbf5b",
+                    "fullname": "Joyce",
+                    "imgUrl": "https://robohash.org/39810791?set=set1",
+                    "id": "39810791"
+                },
+                "txt": "Francisca was very friendly and was waiting for us, she took the time to explain us everything about the flat, she even let us good adresses of restaurants, coffees and places to visit in Porto.\r\nThe flat is 10 minutes by foot from the center, with no stairs to climb, good for our heavy luggages! It is very calm and we even had a table outside where we took our breakfasts. The flat is tiny but very functional, clean, and well equipped.\r\nIt is perfect for a short time in Porto."
+            },
+            {
+                "at": "2016-08-27T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3406e36c59e6164fbaad",
+                    "fullname": "Jess",
+                    "imgUrl": "https://robohash.org/35186577?set=set1",
+                    "id": "35186577"
+                },
+                "txt": "The apartment is great value for money and the location is fantastic. We arrived before the check in time but were greeted promptly and could leave our luggage to explore the city straight away. Francisca gave us a lot of good advice and recommendations for the city, which was very helpful. "
+            },
+            {
+                "at": "2016-09-27T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3402e36c59e6164faeed",
+                    "fullname": "Jennifer",
+                    "imgUrl": "https://robohash.org/34970659?set=set1",
+                    "id": "34970659"
+                },
+                "txt": "Thank you for hosting us Nuno. Our trip was perfect. The host was very kind. And the apartment is beautiful, near the center and is well think : it has everything for a few days."
+            },
+            {
+                "at": "2016-12-11T05:00:00.000Z",
+                "by": {
+                    "_id": "622f3401e36c59e6164fab65",
+                    "fullname": "Joana",
+                    "imgUrl": "https://robohash.org/60496781?set=set1",
+                    "id": "60496781"
+                },
+                "txt": "Estúdio muito simpático e limpo. Ideal para uma ou duas pessoas, para explorar o Porto durante um par de dias. Estação de metro à porta. Perto da zona histórica do Porto — faz-se bem a pé. Pastelaria ideal para pequeno almoço mesmo à porta."
+            },
+            {
+                "at": "2017-01-01T05:00:00.000Z",
+                "by": {
+                    "_id": "622f3405e36c59e6164fb749",
+                    "fullname": "Nicolas",
+                    "imgUrl": "https://robohash.org/106998486?set=set1",
+                    "id": "106998486"
+                },
+                "txt": "L'emplacement est parfait, dans un quartier calme et à proximité immédiate du métro et du centre-ville. Seul bémol: l'absence d'eau chaude à la douche (un seul ballon d'eau chaude disponible pour plusieurs appartements), franchement regrettable en plein coeur de l'hiver. Ce qui du coup entraîne un rapport qualité-prix un peu cher"
+            },
+            {
+                "at": "2017-03-17T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3403e36c59e6164fb10c",
+                    "fullname": "Marina",
+                    "imgUrl": "https://robohash.org/115887917?set=set1",
+                    "id": "115887917"
+                },
+                "txt": "El apartamento esta genial, es pequeño pero tiene todo lo necesario, cama super grande y cómoda, el apartamento está en general como nuevo y se ve exactamente como las fotos, estaba todo suuuuper limpio y tienen un radiador que calienta el habitáculo en muy poco tiempo. Nos recibió Rita, y de maravilla, nos dio un montón de información sobre Porto en un momento y nos dejó un montón de mapas e info útil. la zona es tranquila y tiene un montos de aparcamiento seguro en la misma calle. Aun que no está en el mismo centro de la ciudad se llega a el en un paseo de poco más de 10 mins, además en la misma puerta hay una parada de metro. Ha sido una experiencia genial quedarnos aquí para visitar la ciudad. Muchas gracias por la amabilidad, si volvemos a la ciudad no dudaríamos en volver a quedarnos aquí."
+            },
+            {
+                "at": "2017-04-13T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3402e36c59e6164fad5b",
+                    "fullname": "Diogo",
+                    "imgUrl": "https://robohash.org/122269906?set=set1",
+                    "id": "122269906"
+                },
+                "txt": "Gostamos muito do espaco, pequeno mas muito agradavel. Excelente para passar apenas uns dias. Obrigada ao Nuno que esperou por nos ate tarde e que ainda tirou um tempinho para nos explicar e dar umas dicas sobre a cidade! Aconselho!"
+            },
+            {
+                "at": "2017-06-02T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3405e36c59e6164fb79e",
+                    "fullname": "Anastasia",
+                    "imgUrl": "https://robohash.org/9456078?set=set1",
+                    "id": "9456078"
+                },
+                "txt": "Небольшая, но очень уютная квартирка со всем необходимым! Завтракать на свежем воздухе очень приятно, в кухне можно приготовить все, что захочешь! Очень гостеприимная хозяйка, рассказала много интересного о местах поблизости и в городе!"
+            },
+            {
+                "at": "2017-06-18T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3401e36c59e6164fab70",
+                    "fullname": "Raphael",
+                    "imgUrl": "https://robohash.org/32418543?set=set1",
+                    "id": "32418543"
+                },
+                "txt": "Excelente Studio, muito bem localizado e com todas as comodidades necessárias para uma pequena estadia."
+            },
+            {
+                "at": "2017-06-30T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3406e36c59e6164fbc99",
+                    "fullname": "Judith",
+                    "imgUrl": "https://robohash.org/47537690?set=set1",
+                    "id": "47537690"
+                },
+                "txt": "The flat is situated right next to a metro station. Also perfect, if you arrive by car - free parking just in front. 15 mins walk to downtown but lot of cheap cafes and restaurants full of locals around.\nThe check-in was perfect. We got lots of information, what to do/see/where to eat. Thanks for that. \nThe Apartement is very small but for a short city visit, big enough. If you stay for a week or so, I would recommend a larger Apartement.  "
+            },
+            {
+                "at": "2017-07-11T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3405e36c59e6164fb694",
+                    "fullname": "Marta",
+                    "imgUrl": "https://robohash.org/20010340?set=set1",
+                    "id": "20010340"
+                },
+                "txt": "Fantástica estancia en Oporto. Apartamento pequeño pero suficiente para pasar unos días en  Oporto una pareja. Situado un poco a las afueras pero muy buena comunicación  con el centro (parada de metro y autobús enfrente del apartamento).\nAtención inmejorable del anfitrión, respondiendo muy rápido a nuestras consultas y gestionando nuestra llegada. El único fallo es que la lavadora no se podía utilizar. Muy recomendable para pasar unos días en Oporto relación calidad-precio.\n"
+            },
+            {
+                "at": "2017-07-30T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3402e36c59e6164fadc4",
+                    "fullname": "Aron",
+                    "imgUrl": "https://robohash.org/31601157?set=set1",
+                    "id": "31601157"
+                },
+                "txt": "We had a very nice welcome where we received tips about the neighbourhood. Those we tried turned out excellent. It's a 15 to 20 minute walk to the centre, the room is small but it has everything you need and is well maintained. Very close to the subway, a small outdoor area where you can sit. \nTip: sandwiches (pork with cheese) from casa guedes"
+            },
+            {
+                "at": "2017-11-15T05:00:00.000Z",
+                "by": {
+                    "_id": "622f3406e36c59e6164fba79",
+                    "fullname": "Márcio",
+                    "imgUrl": "https://robohash.org/50134628?set=set1",
+                    "id": "50134628"
+                },
+                "txt": "Excelente relação preço qualidade, muito boa comodidade e excelentes acessos. Muitas opções para as refeições por perto e metro à porta. Recomendo."
+            }
+        ],
+        "likedByUsers": []
+    },
+    {
+        "_id": "622f337a75c7d36e498aab00",
+        "name": "Monte dos Burgos - Cosy Room",
+        "type": "Campers",
+        "imgUrls": [
+            "http://res.cloudinary.com/dmtlr2viw/image/upload/v1663436993/yzxnnw83e9qyas022au4.jpg",
+            "http://res.cloudinary.com/dmtlr2viw/image/upload/v1663436329/cvylwkta0uannbxm3zns.jpg",
+            "http://res.cloudinary.com/dmtlr2viw/image/upload/v1663437168/vbmfmdmwrxt7xfwbsw7c.jpg",
+            "http://res.cloudinary.com/dmtlr2viw/image/upload/v1663436821/b4ejulqdhsvyseyfnfr0.jpg",
+            "http://res.cloudinary.com/dmtlr2viw/image/upload/v1663436553/hbkx9lwxjd0wabqk0bmo.jpg"
+        ],
+        "price": 26,
+        "summary": "The neighbourhood is a quiet, family residential area, 20 minutes by bus from the historic center of Porto and 20 minutes from the beach (Matosinhos - where you may eat very GOOD fish!). You will love to stay in a very spacious, familiar and bright room, where you can enjoy a large and flowery garden, comfortable kitchen and laundry with washer and dryer machine. My space is good for couples, solo adventures, and business travelers!",
+        "capacity": 2,
+        "amenities": [
+            "Wifi",
+            "Kitchen",
+            "Free parking on premises",
+            "Pets live on this property",
+            "Cat(s)",
+            "Washer",
+            "Dryer",
+            "First aid kit",
+            "Fire extinguisher",
+            "Essentials",
+            "Shampoo",
+            "Lock on bedroom door",
+            "Hangers",
+            "Hair dryer",
+            "Iron",
+            "Laptop friendly workspace",
+            "translation missing: en.hosting_amenity_49",
+            "translation missing: en.hosting_amenity_50"
+        ],
+        "bathrooms": 1,
+        "bedrooms": 1,
+        "roomType": "Private room",
+        "host": {
+            "_id": "622f3404e36c59e6164fb54f",
+            "fullname": "Patrícia Sousa Casimiro",
+            "location": "Senhora da Hora, Porto, Portugal",
+            "about": "",
+            "responseTime": "a few days or more",
+            "thumbnailUrl": "https://a0.muscache.com/im/pictures/87b9ccba-154a-4546-8cbe-8bdb25ddb36c.jpg?aki_policy=profile_small",
+            "pictureUrl": "https://a0.muscache.com/im/pictures/87b9ccba-154a-4546-8cbe-8bdb25ddb36c.jpg?aki_policy=profile_x_medium",
+            "isSuperhost": false,
+            "id": "80558077"
+        },
+        "loc": {
+            "country": "Portugal",
+            "countryCode": "PT",
+            "city": "Porto",
+            "address": "Porto, Porto District, Portugal",
+            "lat": -8.63082,
+            "lan": 41.18075
+        },
+        "reviews": [
+            {
+                "at": "2016-08-11T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3402e36c59e6164fad68",
+                    "fullname": "Celeste",
+                    "imgUrl": "https://robohash.org/38181630?set=set1",
+                    "id": "38181630"
+                },
+                "txt": "We had a very nice stay in the house and felt at home. The room is big and light, we had a private bathroom, could use the kitchen and the nice garden. Patricia picked us up at the station of the metro, the bus is near. Patricia and Chris are very open and welcoming people, we talked about Portugal, Fado, Porto ... Also, they gave us several tips to see in Porto. When we are in Porto again we will come back!! We really recommand to stay here. Thanks Patricia and Casimiro!"
+            },
+            {
+                "at": "2016-08-14T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3402e36c59e6164fadf0",
+                    "fullname": "Martin",
+                    "imgUrl": "https://robohash.org/32511082?set=set1",
+                    "id": "32511082"
+                },
+                "txt": "Patricia and Chris has been wonderful hosts. They help us very much with all questions we had. We enjoyed our stay very much."
+            },
+            {
+                "at": "2016-08-15T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3402e36c59e6164faedf",
+                    "fullname": "Sandra",
+                    "imgUrl": "https://robohash.org/66617047?set=set1",
+                    "id": "66617047"
+                },
+                "txt": "Une chambre très spacieuse et une salle de bain privée : au top ! \r\nChristian et Patricia ont été très accueillants et nous nous sommes tout de suite sentis comme chez nous ! "
+            },
+            {
+                "at": "2016-08-20T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3404e36c59e6164fb3ed",
+                    "fullname": "Erika",
+                    "imgUrl": "https://robohash.org/78636529?set=set1",
+                    "id": "78636529"
+                },
+                "txt": "Des hôtes très accueillant et à l'écoute de leurs invités! De supers adresses à conseiller. \r\nUne maison décorée avec goût et avec une sublime salle de bain privée.\r\nLe centre est très facile d'accès en bus car inaccessible en voiture. \r\nTrès facile de se garer dans la rue de nos hôtes.\r\nUn excellent rapport qualité prix!"
+            },
+            {
+                "at": "2016-08-22T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3405e36c59e6164fb9bd",
+                    "fullname": "Guy",
+                    "imgUrl": "https://robohash.org/88496638?set=set1",
+                    "id": "88496638"
+                },
+                "txt": "Patricia et Casimir ont été très accueillants et nous ont donné toutes les informations pratiques pour se rendre au centre de Porto en bus. La chambre est spacieuse et la salle de bain privée est juste à coté. Le quartier est très calme et le séjour était très agréable."
+            }
+        ],
+        "likedByUsers": []
+    },
+    {
+        "_id": "622f337a75c7d36e498aab01",
+        "name": "Nice Cosy Room In Taksim",
+        "type": "Islands",
+        "imgUrls": [
+            "http://res.cloudinary.com/dmtlr2viw/image/upload/v1663437241/wt0seud4ot4cmdrztdzz.jpg",
+            "http://res.cloudinary.com/dmtlr2viw/image/upload/v1663436867/yocip4igdbruuh2grzpf.jpg",
+            "http://res.cloudinary.com/dmtlr2viw/image/upload/v1663436460/qi3vkpts37b4k0dedosc.jpg",
+            "http://res.cloudinary.com/dmtlr2viw/image/upload/v1663436261/hwqt72njlhf9hkqou9ka.jpg",
+            "http://res.cloudinary.com/dmtlr2viw/image/upload/v1663437040/oarfkdxx7gyyvcynvwko.jpg"
+        ],
+        "price": 105,
+        "summary": "Welcome if you want to stay at a cozy flat with local experience.:) It is in the center of Istanbul.The neighborhood is safe and close to attractions.Transportation is easy. I will help you always.",
+        "capacity": 2,
+        "amenities": [
+            "TV",
+            "Cable TV",
+            "Internet",
+            "Wifi",
+            "Air conditioning",
+            "Kitchen",
+            "Heating",
+            "Washer",
+            "Essentials",
+            "Shampoo"
+        ],
+        "bathrooms": 1,
+        "bedrooms": 1,
+        "roomType": "Private room",
+        "host": {
+            "_id": "622f3402e36c59e6164fae4d",
+            "fullname": "Nihat",
+            "location": "Istanbul",
+            "about": "I live alone in Taksim area and i work at bar.\r\nI like meet new friends from all of the world.\r\nI like to Travel a lot ofcourse if i have free time :) East Asia , Sun , Sea , Sand , Movie  :) ",
+            "responseTime": "within an hour",
+            "thumbnailUrl": "https://a0.muscache.com/im/pictures/user/6bf03261-e7ac-4e0e-8121-3828612bbb6a.jpg?aki_policy=profile_small",
+            "pictureUrl": "https://a0.muscache.com/im/pictures/user/6bf03261-e7ac-4e0e-8121-3828612bbb6a.jpg?aki_policy=profile_x_medium",
+            "isSuperhost": true,
+            "id": "5823933"
+        },
+        "loc": {
+            "country": "Turkey",
+            "countryCode": "TR",
+            "city": "Istanbul",
+            "address": "Taksim, Cihangir, Istanbul , Beyoğlu, Turkey",
+            "lat": 28.98648,
+            "lan": 41.03376
+        },
+        "reviews": [
+            {
+                "at": "2014-04-06T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3406e36c59e6164fbcc7",
+                    "fullname": "Quentin",
+                    "imgUrl": "https://robohash.org/12424603?set=set1",
+                    "id": "12424603"
+                },
+                "txt": "I greatly appreciated both the location of the place (very central) and the appartment per se (clean and comfortable, with a very cosy room and with Wi-Fi). \r\n\r\nNihat was perfect host, quite welcoming and helpful about places to go (or avoid) and things to do in town. \r\n\r\nHosça kal!\r\n\r\n\r\n"
+            },
+            {
+                "at": "2015-04-02T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3405e36c59e6164fb7f6",
+                    "fullname": "Steve",
+                    "imgUrl": "https://robohash.org/10300292?set=set1",
+                    "id": "10300292"
+                },
+                "txt": "Nice room in a flat well located. Nihat is very nce and helpful. Good experience."
+            },
+            {
+                "at": "2015-05-19T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3404e36c59e6164fb624",
+                    "fullname": "Jess",
+                    "imgUrl": "https://robohash.org/8641944?set=set1",
+                    "id": "8641944"
+                },
+                "txt": "We had a fantastic stay in this charming apartment. The location was perfect and Nihat welcomed us even when we made a late reservation and arrived early. He works at a bar no far from there- a great place to have a drink after seeing the sites! I highly recommend this place!"
+            },
+            {
+                "at": "2015-08-25T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3406e36c59e6164fbcb6",
+                    "fullname": "Irina",
+                    "imgUrl": "https://robohash.org/42110174?set=set1",
+                    "id": "42110174"
+                },
+                "txt": "The flat is clean and and very good located, 3 minutes walk to Taksim Square. The bedroom is quiet at night, even though there is a crowded area next to the flat. Nihat was always extremely quick in answering our emails and let us feel comfortable. He is really kind and discrete, we met him few times cause he works in the evening. "
+            },
+            {
+                "at": "2015-09-21T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3402e36c59e6164fae1a",
+                    "fullname": "Matthew",
+                    "imgUrl": "https://robohash.org/40562632?set=set1",
+                    "id": "40562632"
+                },
+                "txt": "Nihat went out of his way to accommodate our very early arrival and some unforeseeable challenges.  A great host!"
+            },
+            {
+                "at": "2015-11-09T05:00:00.000Z",
+                "by": {
+                    "_id": "622f3407e36c59e6164fc03f",
+                    "fullname": "Valon",
+                    "imgUrl": "https://robohash.org/47981428?set=set1",
+                    "id": "47981428"
+                },
+                "txt": "Nice place and host, very good location :)"
+            },
+            {
+                "at": "2015-12-28T05:00:00.000Z",
+                "by": {
+                    "_id": "622f3405e36c59e6164fb7a0",
+                    "fullname": "Amanda",
+                    "imgUrl": "https://robohash.org/29625938?set=set1",
+                    "id": "29625938"
+                },
+                "txt": "Everything was great about the room and the location."
+            },
+            {
+                "at": "2016-01-09T05:00:00.000Z",
+                "by": {
+                    "_id": "622f3404e36c59e6164fb3fe",
+                    "fullname": "Mathieu & Hilal",
+                    "imgUrl": "https://robohash.org/50390021?set=set1",
+                    "id": "50390021"
+                },
+                "txt": "The stay at Nihat's place was really pleasant. The apartment is very clean and confortable, and located in a very vibrant and animated neighborhood with many restaurants, cafes, bars, shops just nearby. Just a 5 min walk to the Taksim Metro station makes it easy to access any other parts of the city pretty quickly. Nihat was also a great and welcoming host. We totally recommend this place for your stay in Istanbul, especially if you want to experience the local life to the fullest ! "
+            },
+            {
+                "at": "2016-03-20T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3403e36c59e6164fb225",
+                    "fullname": "Christie",
+                    "imgUrl": "https://robohash.org/48957037?set=set1",
+                    "id": "48957037"
+                },
+                "txt": "The host canceled this reservation 30 days before arrival. This is an automated posting."
+            },
+            {
+                "at": "2017-05-11T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3402e36c59e6164fad81",
+                    "fullname": "Vanessa",
+                    "imgUrl": "https://robohash.org/551888?set=set1",
+                    "id": "551888"
+                },
+                "txt": "I stayed at Nihat's for a week. It was exactly as the pics, very nice room. A little bit cold but he offers heating and AC. The apt is cozy and central, close to nice restaurants and bars. Have in mind is on the 4th fl no elevator. Nihat is a very easygoing guy who's open to help with any question or tip about the city. Totally recommend! thanks Nihat! "
+            },
+            {
+                "at": "2017-05-21T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3404e36c59e6164fb2d1",
+                    "fullname": "Florentin",
+                    "imgUrl": "https://robohash.org/75066050?set=set1",
+                    "id": "75066050"
+                },
+                "txt": "Nihat is a very nice host, he is very helpful and creates an agreeable atmosphere inside the flat. Thank you :)"
+            },
+            {
+                "at": "2017-08-27T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3402e36c59e6164fae29",
+                    "fullname": "Harshak",
+                    "imgUrl": "https://robohash.org/19784722?set=set1",
+                    "id": "19784722"
+                },
+                "txt": "Nice cozy place very close to Taksim Square. Nihat is helpful and informative."
+            },
+            {
+                "at": "2017-09-26T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3406e36c59e6164fbc70",
+                    "fullname": "Haytham",
+                    "imgUrl": "https://robohash.org/10741329?set=set1",
+                    "id": "10741329"
+                },
+                "txt": "nice apartment with good location. the room was clean and neat. Nihat was helpful and supportive. totally recommend his accommodation"
+            },
+            {
+                "at": "2017-10-03T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3404e36c59e6164fb5fd",
+                    "fullname": "Vural",
+                    "imgUrl": "https://robohash.org/14053758?set=set1",
+                    "id": "14053758"
+                },
+                "txt": "Nihat is a very friendly host and makes you really feel comfortable. I have had a great stay and recommend it to anyone who wants to stay very central (Cihangir), the hip and modern part of the city with cozy venues and great cafes just a 3min walk. The place is very close to Taksim Square, etc...everything as described in the prior conments. I will definitely come again! Cheers vural"
+            },
+            {
+                "at": "2017-12-03T05:00:00.000Z",
+                "by": {
+                    "_id": "622f3406e36c59e6164fba05",
+                    "fullname": "Wasseem",
+                    "imgUrl": "https://robohash.org/2072593?set=set1",
+                    "id": "2072593"
+                },
+                "txt": "I totally recommend this place. Great experience staying at Nihat’s apartment. To start with, Nihat is a wonderful friendly person who I was happy to meet. He was very friendly at house, and we had the chance to spend time together outside. Staying with him reflects the true meaning of this website, which is living as a local with a local person. Thank you Nihat. \nRegarding the apartment, it is exactly as described. The room is nice and bed is comfortable. It was clean and well prepared for us. \nRegarding the neighborhood, it is very close to Taksim square and Istiklal Street with few minutes walk. As normal as it is in Istanbul, there is a short hill you need to walk to get to the square, which was totally fine with us. \n\nIn general, next time I visit Istanbul I would first check the availability with Nihat before searching others."
+            },
+            {
+                "at": "2018-02-23T05:00:00.000Z",
+                "by": {
+                    "_id": "622f3402e36c59e6164fac4c",
+                    "fullname": "Mr Joseph",
+                    "imgUrl": "https://robohash.org/10668432?set=set1",
+                    "id": "10668432"
+                },
+                "txt": "Nihat was an amazing host. He picked me up from the bus stop, gave me some great tips on what to do in Istanbul and just an all round great guy. If you're looking for somewhere close to Taksim then Nihat's place is great. Highly recommend him! Thanks Nihat."
+            },
+            {
+                "at": "2018-03-05T05:00:00.000Z",
+                "by": {
+                    "_id": "622f3405e36c59e6164fb8b8",
+                    "fullname": "Gökçe",
+                    "imgUrl": "https://robohash.org/64172965?set=set1",
+                    "id": "64172965"
+                },
+                "txt": "Nihat is so hospitable person. Me and My boyfriend stayed 6 days in Nihat's place and everything was perfect. Nihat is so tactful person despite he was working so hard, he all the time asked us 'do we need anything?' he was so clean and his house is exactly same with the pictures.\nI'm highly recommend his place! \nthank you Nihat!"
+            },
+            {
+                "at": "2018-04-01T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3405e36c59e6164fb952",
+                    "fullname": "Bruno",
+                    "imgUrl": "https://robohash.org/6316350?set=set1",
+                    "id": "6316350"
+                },
+                "txt": "Very helping and welcoming host. Perfect location for a few days in Istanbul."
+            },
+            {
+                "at": "2018-04-04T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3405e36c59e6164fb73d",
+                    "fullname": "Vichapas",
+                    "imgUrl": "https://robohash.org/68234834?set=set1",
+                    "id": "68234834"
+                },
+                "txt": "Nihat was very nice, polite and very helpful to us. He let us drop our baggages off in the morning and left them for a little longer when we checked out. The location is great as it is near Taksim Square. There are local grocery shops nearby if you want to buy some food or snacks."
+            },
+            {
+                "at": "2018-04-23T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3403e36c59e6164fb0fe",
+                    "fullname": "Show",
+                    "imgUrl": "https://robohash.org/107816748?set=set1",
+                    "id": "107816748"
+                },
+                "txt": "Nihat is very nice host, and came to wait for me in the shuttle bus station near Taksim squre, His house is very convenient for travel. He is very experirenced and warm host, the room super clean and warm, and house has everything, next time i will choose his house again in istanbul. miss you nihat. see you next time."
+            }
+        ],
+        "likedByUsers": []
+    },
+    {
+        "_id": "622f337a75c7d36e498aab02",
+        "name": "Penthouse Sands of Kahana Sandy Swimmable Beach",
+        "type": "Caves",
+        "imgUrls": [
+            "http://res.cloudinary.com/dmtlr2viw/image/upload/v1663436917/mqkfjmfpmyqpqmzmqgau.jpg",
+            "http://res.cloudinary.com/dmtlr2viw/image/upload/v1663436204/wzbrvr4mcsuub6gvwbry.jpg",
+            "http://res.cloudinary.com/dmtlr2viw/image/upload/v1663436523/ptcgbydjsamgf67a0npw.jpg",
+            "http://res.cloudinary.com/dmtlr2viw/image/upload/v1663436597/l90ukcpzpv6yvv6vhsnd.jpg",
+            "http://res.cloudinary.com/dmtlr2viw/image/upload/v1663436368/noebywqae4x0u42srsv3.jpg"
+        ],
+        "price": 800,
+        "summary": "Price includes nightly rate & 14.42% tax.  Our fully remodeled 9th floor Penthouse unit offers the most amazing views.  The entire front of the condo is windows offering you a fantastic view of beautiful Pacific Ocean, Molokai & Lana'i.  Perfect location for watching beautiful sunsets, see our resident sea turtles & an excellent place for spotting whales during the whale migration season. This spacious two level 3 bedroom and 3 full bath Penthouse unit has over 2,050 sq ft of living space w/ AC.",
+        "capacity": 9,
+        "amenities": [
+            "TV",
+            "Cable TV",
+            "Internet",
+            "Wifi",
+            "Air conditioning",
+            "Pool",
+            "Kitchen",
+            "Free parking on premises",
+            "Gym",
+            "Elevator",
+            "Hot tub",
+            "Family/kid friendly",
+            "Washer",
+            "Dryer",
+            "Smoke detector",
+            "Carbon monoxide detector",
+            "First aid kit",
+            "Safety card",
+            "Fire extinguisher",
+            "Essentials",
+            "Shampoo",
+            "Lock on bedroom door",
+            "24-hour check-in",
+            "Hangers",
+            "Hair dryer",
+            "Iron",
+            "Laptop friendly workspace",
+            "Self check-in",
+            "Building staff",
+            "Private entrance",
+            "Bathtub",
+            "Baby bath",
+            "High chair",
+            "Children’s books and toys",
+            "Crib",
+            "Pack ’n Play/travel crib",
+            "Children’s dinnerware",
+            "Hot water",
+            "Bed linens",
+            "Extra pillows and blankets",
+            "Microwave",
+            "Coffee maker",
+            "Refrigerator",
+            "Dishwasher",
+            "Dishes and silverware",
+            "Cooking basics",
+            "Oven",
+            "Stove",
+            "BBQ grill",
+            "Patio or balcony",
+            "Beach essentials",
+            "Step-free access",
+            "Disabled parking spot",
+            "Step-free access",
+            "Step-free access",
+            "Step-free access",
+            "Beachfront",
+            "Pool with pool hoist"
+        ],
+        "bathrooms": 3,
+        "bedrooms": 3,
+        "roomType": "Entire home/apt",
+        "host": {
+            "_id": "622f3405e36c59e6164fb6ba",
+            "fullname": "Cynthia",
+            "location": "California, United States",
+            "about": "My husband and I are Real Estate Investors.  We enjoy traveling and no matter where we go, we always find ourselves looking at properties.  Since we still have school age children I have found that a beach vacation is usually the most enjoyable for everyone.  Living on the West Coast, Hawaii continued to be a place that we would return to time and time again.",
+            "responseTime": "within an hour",
+            "thumbnailUrl": "https://a0.muscache.com/im/pictures/07c98f2f-9ffe-4ed8-82ca-1e9cd00c673f.jpg?aki_policy=profile_small",
+            "pictureUrl": "https://a0.muscache.com/im/pictures/07c98f2f-9ffe-4ed8-82ca-1e9cd00c673f.jpg?aki_policy=profile_x_medium",
+            "isSuperhost": true,
+            "id": "82827178"
+        },
+        "loc": {
+            "country": "United States",
+            "countryCode": "US",
+            "city": "Maui",
+            "address": "Lahaina, HI, United States",
+            "lat": -156.68034,
+            "lan": 20.97104
+        },
+        "reviews": [
+            {
+                "at": "2016-12-08T05:00:00.000Z",
+                "by": {
+                    "_id": "622f3407e36c59e6164fbfd3",
+                    "fullname": "Therese",
+                    "imgUrl": "https://robohash.org/5536819?set=set1",
+                    "id": "5536819"
+                },
+                "txt": "We have just returned from a fabulous holiday at Cynthia's condo on Maui. Everything was fantastic. From the moment we booked Cynthia could not have been more helpful with everything and was always ready and willing to answer all of our queries. Cynthia provided us with an extensive list of recommendations for our stay on Maui and we were not disappointed. The condo is located in a quiet but convenient neighbourhood and close to many amenities. We found the condo extremely spacious and it accommodated our party of 3 adults and two teenaged children with no problem at all. Cynthia's condo is the penthouse and is set right on the beach so we were treated to gorgeous Hawaiian sunsets every night, as well as being able to see turtles and whales from our balcony. The condo is beautifully presented and very well equipped - we could not have asked for anything more for our nine day stay. \r\nMahalo Cynthia "
+            },
+            {
+                "at": "2017-03-23T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3406e36c59e6164fbb9b",
+                    "fullname": "Alexandra",
+                    "imgUrl": "https://robohash.org/29101218?set=set1",
+                    "id": "29101218"
+                },
+                "txt": "The location was great and the view was incredible! You are right on the beach and it is a great place for families with kids. Highly recommend staying here!"
+            },
+            {
+                "at": "2017-04-28T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3403e36c59e6164fb19f",
+                    "fullname": "Daisy",
+                    "imgUrl": "https://robohash.org/111663869?set=set1",
+                    "id": "111663869"
+                },
+                "txt": "This place was beyond my expectations. There were no hidden surprises. Knew exactly what to expect, and Cynthia was always there to answer any quesions. The view is spectacular. Beautiful location. I highly recommend this place."
+            },
+            {
+                "at": "2017-07-29T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3402e36c59e6164fac44",
+                    "fullname": "Peter",
+                    "imgUrl": "https://robohash.org/54509004?set=set1",
+                    "id": "54509004"
+                },
+                "txt": "Very nice location with good beach. Penthouse is nice sized and comfortable. Amenities are good. Location is very good with close proximity to Lahaina and Kapalua."
+            },
+            {
+                "at": "2017-11-03T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3405e36c59e6164fb70f",
+                    "fullname": "Megan",
+                    "imgUrl": "https://robohash.org/5818782?set=set1",
+                    "id": "5818782"
+                },
+                "txt": "If you want a one-stop, stress-free vacation, in a beautiful location with all the amenities you need....this is it!  We lucked out with perfect weather too.  Cynthia provides basic amenities, pool towels, bookie boards, snorkeling gear, and the comfort of being in a cozy home.  It was really easy to run up to the Condo for my 9-month old nap times or a quick snack, without being too separated from the family.  The onsite pools, restaurant and of course restaurant/bar became our home bases for the week.  Miso Phat Sushi (across the street) and Maui Brewing were awesome near-by/within walking distance restaurants.  My family and I can't stop bragging about our trip and what a wonderful family/group set-up this Condo is!  We recommend renting a car due to the distance from the airport, but the Condo/Resort has onsite parking."
+            },
+            {
+                "at": "2018-01-30T05:00:00.000Z",
+                "by": {
+                    "_id": "622f3402e36c59e6164fae2f",
+                    "fullname": "Brenda",
+                    "imgUrl": "https://robohash.org/151153465?set=set1",
+                    "id": "151153465"
+                },
+                "txt": "Such a beautiful location in Paradise! The amazing balconies provided us with gathering spots for our morning coffee to watch the whales and gorgeous sunsets each evening. During our week long stay, we decided to visit Costco, the local fish market and the farmers market and ate 4 dinners in the condo.  The kitchen has everything you need, and the barbques downstairs were perfect for grilling.  Cynthia left us plenty of information for dining in the vicinity, so we had 3 nice dinners out. The guide she sent us before our visit was very informative and helped us to plan our outings while in Maui. Cynthia also checked in with us during our visit, making sure we had everything we needed. We are already planning a return visit to #391 at the Sands of Kahana in the near future!"
+            },
+            {
+                "at": "2018-03-24T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3403e36c59e6164fb04f",
+                    "fullname": "Daria",
+                    "imgUrl": "https://robohash.org/38292402?set=set1",
+                    "id": "38292402"
+                },
+                "txt": "We had such a great time at Cynthia's condo.  Everything was sparkling clean. The check in and check out were seamless.  We loved that the condo came with some beach gear for our use (snorkels, boogie boards, water shoes...).  The views from the balconies are outstanding.  There is a nice and swimmable beach right downstairs, as well as a volleyball court and a casual restaurant. Great location with easy access to beach rentals, groceries, and anything else you might need during your stay.  Cynthia was very quick to respond to any questions we had. Loved the place! Would definitely stay again."
+            },
+            {
+                "at": "2018-04-14T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3402e36c59e6164faec7",
+                    "fullname": "Amy",
+                    "imgUrl": "https://robohash.org/95449574?set=set1",
+                    "id": "95449574"
+                },
+                "txt": "This place was incredible. From the views to the thoughtfulness in everything in the condo. While climbing nine flights of stairs during an unexpected elevator renovation (that ends in May!) does not sound fun, it was actually not bad at all for the adults in our party, as well as the 3 sub-8 year old children, and allowed us to think we were earning all the delicious calories we ate and drank.\n\nI cannot rave enough about the amenities that are incredibly family friendly, including a full sized high chair, travel crib, toddler (and big kid) friendly toys for both indoors and at the beach. Cynthia is very quick to respond to communication and is clear as to what she can provide as a host, as well as her expectation of guests. She was as incredible as her Kahana home was and we'd highly recommend this place for anyone, including those with small children."
+            },
+            {
+                "at": "2018-05-19T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3406e36c59e6164fba90",
+                    "fullname": "Stacey",
+                    "imgUrl": "https://robohash.org/69659100?set=set1",
+                    "id": "69659100"
+                },
+                "txt": "This place is amazing. We will be back!"
+            },
+            {
+                "at": "2018-06-03T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3406e36c59e6164fbb28",
+                    "fullname": "Rebekah",
+                    "imgUrl": "https://robohash.org/154101405?set=set1",
+                    "id": "154101405"
+                },
+                "txt": "What an amazing place to stay with a spectacular view!! The beach out front is awesome and we saw turtles daily! Cynthia was great with communication and making our stay feel just like home. Hope to stay here again!!"
+            },
+            {
+                "at": "2018-08-25T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3407e36c59e6164fbda0",
+                    "fullname": "Chris",
+                    "imgUrl": "https://robohash.org/170664766?set=set1",
+                    "id": "170664766"
+                },
+                "txt": "Fantastic unit. Amazing sunsets."
+            },
+            {
+                "at": "2018-09-13T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3406e36c59e6164fbc74",
+                    "fullname": "Esther",
+                    "imgUrl": "https://robohash.org/4059349?set=set1",
+                    "id": "4059349"
+                },
+                "txt": "Enjoyed our stay very much! The condo was clean, spacious and with all the amenities of a home away from home. Cynthia was very responsive, even checking up on us when the tropical storm warnings went out. Thankfully, the storm didn’t dampen our stay. Enjoyed many beautiful Maui sunsets from the home!"
+            },
+            {
+                "at": "2018-10-18T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3403e36c59e6164fb016",
+                    "fullname": "Elaine",
+                    "imgUrl": "https://robohash.org/73108150?set=set1",
+                    "id": "73108150"
+                },
+                "txt": "The place has amazing ocean views!!! Cynthia provided beach chairs, gears, and toys for the kids. The entire condo is well organized and our family had such a great time. Appreciate all the little touches you provided for your guests. Will definitely stay there again when we return on Maui! :)"
+            },
+            {
+                "at": "2019-01-11T05:00:00.000Z",
+                "by": {
+                    "_id": "622f3403e36c59e6164fb239",
+                    "fullname": "Dan",
+                    "imgUrl": "https://robohash.org/217281282?set=set1",
+                    "id": "217281282"
+                },
+                "txt": "This condo was very spacious.  We had eight people (ages 5-85) and there was plenty of space for everyone.  Cynthia was readily accessible if we needed anything.  The view from the lanai was breathtaking and we watched whales every morning.  The condo was stocked with plenty of snorkel gear, boogie boards, beach chairs, sand toys for the kids, board games, puzzles, etc.  The kitchen had plenty of pots, pans, dishes, utensils, etc.  Thanks for the great stay!"
+            },
+            {
+                "at": "2019-01-22T05:00:00.000Z",
+                "by": {
+                    "_id": "622f3403e36c59e6164faf7d",
+                    "fullname": "Jess",
+                    "imgUrl": "https://robohash.org/20450315?set=set1",
+                    "id": "20450315"
+                },
+                "txt": "Very clean. Cleanest Airbnb we have stayed at. Beautiful home and beautiful view of the sunset from the apartment. Loved that they had binoculars to see the whales jumping out in the distance."
+            },
+            {
+                "at": "2019-02-14T05:00:00.000Z",
+                "by": {
+                    "_id": "622f3403e36c59e6164fb1af",
+                    "fullname": "Anna-Mae",
+                    "imgUrl": "https://robohash.org/76192807?set=set1",
+                    "id": "76192807"
+                },
+                "txt": "If you are wanting a beautiful place right on the beach when you visit Kaanapali with your family , then this is the place for you ! Gorgeous full ocean view from the large deck ,large spacious rooms, super clean, lots of extras and great communication with Cynthia! We came here with our 3 adult kids and their spouses and loved everything about this place .. well stocked kitchen , lots of towels, beach toys (boogie boards were a hit ) comfortable beds ..and then there is outside !  Beautiful clean beach right outfront, nice pool and grounds , very helpful staff and amenities close by ... we watched whales and turtles right from our beach and deck, amazing !! This condo made our trip to Maui a real treat ..chose Cynthia's condo , you will not be disappointed !!"
+            },
+            {
+                "at": "2019-02-27T05:00:00.000Z",
+                "by": {
+                    "_id": "622f3405e36c59e6164fb766",
+                    "fullname": "Lj",
+                    "imgUrl": "https://robohash.org/69116372?set=set1",
+                    "id": "69116372"
+                },
+                "txt": "I cannot say enough good things about this condo. There was more than enough space for my friends and I to spread out. Each room was beautifully decorated. the bathrooms we're impeccably remodeled, I even took inspiration pictures! Cynthia thought of everything to make this a home away from home. AC was in every room, but with the trade winds, we never needed it. Don't hesitate, book this place now!!!"
+            }
+        ],
+        "likedByUsers": []
     }
 ]
 
