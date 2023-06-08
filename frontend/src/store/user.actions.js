@@ -4,7 +4,7 @@ import { store } from '../store/store.js'
 
 import { showErrorMsg } from '../services/event-bus.service.js'
 import { LOADING_DONE, LOADING_START } from "./system.reducer.js";
-import { REMOVE_USER, SET_GUESTS, SET_ORDER, SET_USER, SET_USERS, SET_WATCHED_USER } from "./user.reducer.js";
+import { ADD_TO_WISHLIST, REMOVE_USER, REMOVE_FROM_WISHLIST, SET_GUESTS, SET_ORDER, SET_USER, SET_USERS, SET_WATCHED_USER } from "./user.reducer.js";
 
 export async function loadUsers() {
     try {
@@ -88,4 +88,12 @@ export function setGuests(guests) {
 
 export function setOrder(order) {
     store.dispatch({ type: SET_ORDER, order })
+}
+
+export function AddToWishlist(wishlist) {
+    store.dispatch({ type: ADD_TO_WISHLIST, wishlist })
+}
+
+export function removeFromWishlist(wishListID) {
+    store.dispatch({ type: REMOVE_FROM_WISHLIST, wishListID })
 }

@@ -6,18 +6,47 @@ import { HEART, STAR, WHITE_HEART } from "../services/svg.service";
 import { CarouselImage } from "./carousel";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { useSelector } from "react-redux";
+import { setModal } from "../store/stay.actions";
+import { AddToWishlist, removeFromWishlist } from "../store/user.actions";
+import { useEffect } from "react"
+
 export function StayPreview({ stay }) {
 
-    const [isHeartClicked, setIsHeartClicked] = useState(false)
-    const heartSvg = isHeartClicked ? 'heart-red' : 'heart-white'
+    const [isLikeClicked, setIsLikeClicked] = useState(false)
+    const likeSVG = isLikeClicked ? 'heart-red' : 'heart-white'
+    const loggedInUser = useSelector(storeState => storeState.userModule.user)
+    const wishedListItems = useSelector(storeState => storeState.userModule.user.wishlist)
+    console.log(wishedListItems)
+    function onLikeClicked(ev) {
+        if (ev) {
+            ev.preventDefault()
+            ev.stopPropagation()
+        }
+        if (!loggedInUser) {
+            setModal('logIn')
+            return
+        }
+        if (likeSVG === 'heart-red') removeFromWishlist(stay._id)
+        else {
+            AddToWishlist(stay)
+        }
+        setIsLikeClicked(prevHeart => !prevHeart)
+    }
+
+    useEffect(() => {
+        const likedId = wishedListItems.some((wishlist) => wishlist._id === stay._id)
+        setIsLikeClicked(likedId)
+    }, [wishedListItems, stay._id])
+
 
     return (
         <section className="stay-preview" key={stay._id}>
             <div className="img-container">
                 <CarouselImage imgs={stay.imgUrls} stay={stay} />
             </div>
-            <div className="heart-svg" onClick={() => setIsHeartClicked(prevHeart => !prevHeart)}>
-                <SvgHandler svgName={heartSvg} />
+            <div className="heart-svg" onClick={(ev) => onLikeClicked(ev)}>
+                <SvgHandler svgName={likeSVG} />
             </div>
             <Link to={`/stay/${stay._id}`} target="_blank">
                 <div className="preview-info">
