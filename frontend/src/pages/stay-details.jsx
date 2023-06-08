@@ -66,7 +66,7 @@ export function StayDetails() {
     const reviews = stay.reviews.length > 1 ? 'reviews' : 'review'
     const capitalizedReviewsString = reviews.charAt(0).toUpperCase() + reviews.slice(1)
 
-    return <Fragment>
+    return <>
         <div>
             <Helmet>
                 <title>{stay.name}</title>
@@ -297,5 +297,5 @@ export function StayDetails() {
 
             </section>
         </section >
-    </Fragment>
+    </>
 }

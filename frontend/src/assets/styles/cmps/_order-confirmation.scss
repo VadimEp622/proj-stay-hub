@@ -1,9 +1,16 @@
 .order-confirmation {
     margin-top: 50px;
+    .confirmation-header {
+        transform: translate(-18px, 0);
 
-    & h2 {
-        font-size: rem(32px);
-        margin-bottom: 52px;
+        & .return-btn {
+
+            transform: translate(-18px, 11px);
+        }
+        & h2 {
+            font-size: rem(32px);
+            margin-bottom: 52px;
+        }
     }
 }
 

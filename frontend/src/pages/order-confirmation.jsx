@@ -1,16 +1,17 @@
 import { useClickOutside } from "../customHooks/clickOutsideModal";
-import { STAR } from "../services/svg.service";
+import { LEFT_ARROW, STAR } from "../services/svg.service";
 import { AirbnbButton } from "../cmps/reuseableCmp/airbnb-button";
 import { utilService } from "../services/util.service";
 import SvgHandler from "../cmps/svg-handler";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 export function OrderConfirmation() {
     const orderObject = useSelector(storeState => storeState.userModule.order)
     console.log(orderObject)
     const { stayDetails, guestsNumber, checkIn, checkOut, orderPrice, nightsCount, nightsPrice, seller } = orderObject
     console.log(seller)
-    const { reviewsCount, type, summary, rate, image } = stayDetails
+    const { reviewsCount, type, summary, rate, image, id } = stayDetails
     const { total, serviceFee, cleaningFee, price } = orderPrice
     const formattedTimeRange = utilService.getFormattedTimeRange(checkIn, checkOut)
     const sellerFirstName = seller.fullname.substring(0, seller.fullname.indexOf(' '))
@@ -21,7 +22,12 @@ export function OrderConfirmation() {
 
     return (
         <section className="order-confirmation" >
-            <h2>Confirm and pay</h2>
+            <section className="confirmation-header flex">
+                <Link className="return-btn" to={`/stay/${id}`}>
+                    <SvgHandler svgName={LEFT_ARROW} />
+                </Link>
+                <h2>Confirm and pay</h2>
+            </section>
             <section className="confirmation-container">
                 <div className="confirmation-details">
 
@@ -100,7 +106,7 @@ export function OrderConfirmation() {
                 <p className="declaration">By selecting the button below, I agree to the <span>Host's House Rules, Ground rules for guests, Airbnb's Rebooking and Refund Policy</span>, and that Airbnb can <span>charge my payment method</span>  if I'm responsible for damage.</p>
             </section>
             <section className="confirm-btn">
-               <AirbnbButton text={'Confirm and pay'} /> 
+                <AirbnbButton text={'Confirm and pay'} />
             </section>
         </section>
     )

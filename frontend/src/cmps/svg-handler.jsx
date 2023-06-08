@@ -26,11 +26,19 @@ import { ReactComponent as AirCond } from '../assets/img/airbnb-assets/air-cond.
 import { ReactComponent as Verified } from '../assets/img/airbnb-assets/verified.svg'
 import { ReactComponent as TickDecline } from '../assets/img/tick-decline/tick-decline.svg'
 import { ReactComponent as Exit } from '../assets/img/airbnb-assets/exit.svg'
+<<<<<<< HEAD
 import { ReactComponent as Exclamation } from '../assets/img/airbnb-assets/exclamationmark.svg'
+=======
+import { ReactComponent as LeftArrow } from '../assets/img/airbnb-assets/left-arrow.svg'
+
+
+
+
+>>>>>>> f2432f3349759215cefe650022a71ed368378e32
 
 import {
     HEART_16, RED_HEART_16, LOGO, RED_HEART, SEARCH, SHARE, STAR, STAR_16, USER_NAV_BARS,
-    USER_NAV_PROFILE, WHITE_HEART, LOCATION, KEY, CHECKIN, SEARCH_2, TICK_DECLINE, VERIFIED
+    USER_NAV_PROFILE, WHITE_HEART, LOCATION, KEY, CHECKIN, SEARCH_2, TICK_DECLINE, VERIFIED, LEFT_ARROW
 } from '../services/svg.service'
 
 
@@ -68,6 +76,8 @@ const SvgHandler = ({ svgName }) => {
                 return <Key />
             case CHECKIN:
                 return <Checkin />
+            case LEFT_ARROW:
+                return <LeftArrow />
             case 'TV':
                 return <TV />
             case 'Wifi':

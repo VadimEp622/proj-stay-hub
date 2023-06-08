@@ -7,7 +7,7 @@
     cursor: pointer;
 
     .price-preview span {
-        font-family: cereal-bold;
+        font-family: Circular-Semibold;
         letter-spacing: 0.5px;
     }
 
@@ -42,20 +42,17 @@
     }
 
     .preview-info {
-        margin-block-start: 0.5rem;
+        margin-top: rem(13px);
         line-height: 1.13rem;
         font-family: cereal-std;
         padding: 0;
-        margin: 0;
     }
 
     .preview-header {
         display: flex;
         @include between();
-        margin-block-start: rem(14px);
 
         p:first-child {
-            font-family: cereal_W_Md;
             font-size: 15px;
             letter-spacing: 0.75px;
         }
@@ -111,9 +108,14 @@
 
 .stay-info {
 
-    p:first-child,
-    p:nth-child(2) {
-        margin-block-start: 5px;
+    p:first-child {
+        margin-block-start: 2px;
         color: $gray-clr0;
+    }
+
+    p:nth-child(2) {
+        margin-block-start: 3px;
+        color: $gray-clr0;
+
     }
 }
