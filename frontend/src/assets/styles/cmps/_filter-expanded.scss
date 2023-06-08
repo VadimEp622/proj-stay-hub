@@ -220,19 +220,6 @@
             height: 0;
             width: 0;
 
-            & .modal:has(.guest-count-filter) {
-                right: 0;
-            }
-
-            & .modal:has(.filter-date-picker) {
-                right: 0;
-                left: 0;
-            }
-
-            & .modal:has(.location-filter) {
-                left: 0;
-            }
-
             & .modal {
                 position: absolute;
                 background-color: $gray-clr-1;
@@ -241,6 +228,20 @@
                 box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.04), 0 8px 16px rgba(0, 0, 0, 0.15);
                 padding-block: 32px;
                 padding-inline: 16px;
+
+
+                &.where {
+                    left: 0;
+                }
+
+                &:is(.check-in, .check-out) {
+                    left: 0;
+                    right: 0;
+                }
+
+                &.who {
+                    right: 0;
+                }
 
                 & .filter-date-picker {
                     margin-inline: auto;

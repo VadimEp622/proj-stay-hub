@@ -85,7 +85,7 @@ export function FilterExpanded(
                     </section>
                 </article>
                 <div className="size-less">
-                    <div className="modal">
+                    <div className={`modal ${selectedFilterBox}`}>
                         {
                             (selectedFilterBox === 'where') &&
                             <LocationFilter filterBy={filterBy} onSubmit={onSubmit} handleChange={handleChange} />
