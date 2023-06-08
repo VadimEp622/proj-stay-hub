@@ -32,11 +32,13 @@ export function RootCmp() {
     return (
         <>
             {isUnclickableBg && <div className="main-screen" onClick={(ev) => closeBackground(ev)}></div>}
-            <div className="modal-wrapper" >
-                <div className="modal-wrapper-second" >
-                    {isModalOpen && <DynamicCmp modalType={isModalOpen} />}
+            {isModalOpen && (
+                <div className="modal-wrapper">
+                    <div className="modal-wrapper-second">
+                        <DynamicCmp modalType={isModalOpen} />
+                    </div>
                 </div>
-            </div>
+            )}
 
             <section className={`app ${!isStayDetailsPage ? 'main-layout' : 'details-layout'} ${isUnclickableBg && 'unclickable-background'}`}>
                 <AppHeader isStayDetailsPage={isStayDetailsPage} />
