@@ -125,7 +125,7 @@ export function FilterExpanded(
                 <div className="size-less">
 
                     {isExpandedModalOpen && selectedFilterBox !== 'all' &&
-                        < div className={`modal ${selectedFilterBox}`}>
+                        < div className={`modal ${`${selectedFilterBox}-modal`}`}>
                             {
                                 (selectedFilterBox === 'where') &&
                                 <LocationFilter filterBy={filterBy} onSubmit={onSubmit} handleChange={handleChange} />
