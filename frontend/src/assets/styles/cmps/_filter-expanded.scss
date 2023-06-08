@@ -328,6 +328,9 @@
                             display: flex;
                             align-items: center;
                             gap: 15px;
+                            width: 104px;
+                            justify-content: space-between;
+
 
                             & .custom-btn-guest-count {
                                 background-color: rgb(255, 255, 255);
@@ -342,9 +345,8 @@
                             }
 
                             & span {
-                                // margin-inline: 10px;
-                                text-align: center;
-                                font-weight: 600;
+                                font-size: rem(16px);
+                                color: $black-clr1;
                             }
                         }
 
