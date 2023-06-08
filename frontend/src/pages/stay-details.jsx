@@ -40,13 +40,16 @@ export function StayDetails() {
         if (!stay || !stay.reviews || stay.reviews.length === 0) return null;
 
         const criteria = stay.reviews.reduce((acc, review) => {
+            if (!review.reviewInputs) return
             Object.entries(review.reviewInputs).forEach(([input, value]) => {
-                const capitalizedInput = input.charAt(0).toUpperCase() + input.slice(1);
-                acc[capitalizedInput] = acc[capitalizedInput] ? (acc[capitalizedInput] + value) : value;
-            });
-            return acc;
-        }, {});
+                const capitalizedInput = input.charAt(0).toUpperCase() + input.slice(1)
+                acc[capitalizedInput] = acc[capitalizedInput] ? (acc[capitalizedInput] + value) : value
+            })
+            return acc
+        }, {})
+        console.log('criteria', criteria)
 
+        if (!criteria) return []
         Object.entries(criteria).forEach(([input, value]) => {
             criteria[input] = value / stay.reviews.length;
         });
@@ -200,7 +203,7 @@ export function StayDetails() {
             <section className="map-container" id='location'>
                 <h3 className='fs22'>Where you'll be</h3>
                 <div className="map">
-                    <GoogleMap loc={stay.loc.coordinates} />
+                    <GoogleMap loc={{ lat: stay.loc.lat, lan: stay.loc.lan }} />
                 </div>
                 <section className='location-about'>
                     <h3 className='fs16'>{stay.loc.city}, {stay.loc.country}</h3>
