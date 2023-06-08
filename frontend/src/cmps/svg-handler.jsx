@@ -26,10 +26,7 @@ import { ReactComponent as AirCond } from '../assets/img/airbnb-assets/air-cond.
 import { ReactComponent as Verified } from '../assets/img/airbnb-assets/verified.svg'
 import { ReactComponent as TickDecline } from '../assets/img/tick-decline/tick-decline.svg'
 import { ReactComponent as Exit } from '../assets/img/airbnb-assets/exit.svg'
-
-
-
-
+import { ReactComponent as Exclamation } from '../assets/img/airbnb-assets/exclamationmark.svg'
 
 import {
     HEART_16, RED_HEART_16, LOGO, RED_HEART, SEARCH, SHARE, STAR, STAR_16, USER_NAV_BARS,
@@ -95,6 +92,8 @@ const SvgHandler = ({ svgName }) => {
                 return <TickDecline />
             case 'exit':
                 return <Exit />
+            case 'exclamation':
+                return <Exclamation />
             default:
                 return <Heart16 />
         }

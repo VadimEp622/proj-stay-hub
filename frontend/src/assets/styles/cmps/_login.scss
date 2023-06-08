@@ -90,6 +90,24 @@
             height: 100%;
             flex-direction: column;
 
+            & .aside-required {
+                width: 100%;
+
+                & .aside-required-modal {
+                    padding-block: 20px;
+                    display: flex;
+
+                    & .exclamation {
+                        padding: 16px 0px 16px 12px;
+                        width: 48px;
+                        margin-inline-end: 10px;
+                        background-color: rgb(252, 100, 45);
+                        border-color: rgb(252, 100, 45);
+                    }
+                }
+
+            }
+
             & .login-input {
                 border: 1px solid $gray-clr2;
                 height: 56px;
