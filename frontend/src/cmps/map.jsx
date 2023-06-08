@@ -9,7 +9,11 @@ function Marker() {
 
 
 export default function SimpleMap({ loc }) {
-    const { lat, lng } = loc
+    //IMPORTANT NOTE: DEMO DATA CONFUSED LAT AND LAN.
+    //ALSO:           GoogleMapReact ONLY WORKS WITH LNG KEY, NOT LAN KEY
+    console.log('loc', loc)
+    const lng = loc.lat
+    const lat = loc.lan
     const [center, setCenter] = useState({ lat, lng })
     const [zoom, setZoom] = useState(12)
     const Popper = () => <div className="map-popper"><AiFillHome /><div className="popper-wedge"></div></div>
@@ -22,8 +26,8 @@ export default function SimpleMap({ loc }) {
                     center={center}
                     zoom={zoom}
                     defaultZoom={zoom}>
-                    <Popper lat={loc.lat} lng={loc.lng} />
-                    {/* <Marker lat={loc.lat} lng={loc.lng} /> */}
+                    <Popper lat={lat} lng={lng} />
+                    {/* <Marker lat={lat} lng={lng} /> */}
                 </GoogleMapReact>
             </div>
         </div>

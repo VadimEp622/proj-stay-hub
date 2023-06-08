@@ -73,6 +73,7 @@
         min-width: 30px;
         min-height: 30px;
         border-radius: 50%;
+        z-index: 9;
     }
 
     &:hover .react-multiple-carousel__arrow {

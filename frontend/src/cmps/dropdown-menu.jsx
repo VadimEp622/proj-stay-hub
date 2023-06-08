@@ -2,6 +2,7 @@ import { useSelector } from "react-redux";
 import { LoginSignup } from "./login-signup";
 import { useState } from "react";
 import { setModal } from "../store/stay.actions";
+import { Link } from "react-router-dom";
 
 export function DropDown({ setIsDropDownActive }) {
     const loggedInUser = useSelector(storeState => storeState.userModule.user)
@@ -16,11 +17,11 @@ export function DropDown({ setIsDropDownActive }) {
     return (
         <>
             <div className="dropdown-navbar flex">
+                <Link to={`/wishlists`}><div className="dropdown-option">Wishlist</div></Link>
                 {loggedInUser ? (
                     <>
                         <div className="dropdown-option">Messages</div>
                         <div className="dropdown-option">Trips</div>
-                        <div className="dropdown-option">Wishlist</div>
                         <div className="dropdown-line"></div>
                         <div className="dropdown-option">Manage listings</div>
                         <div className="dropdown-option">Dashboard</div>

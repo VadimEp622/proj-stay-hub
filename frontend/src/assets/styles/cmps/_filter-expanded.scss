@@ -6,7 +6,6 @@
     grid-template-columns: repeat(3, 1fr);
     transition: all 0.2s;
     position: absolute;
-    z-index: 1;
     background-color: white;
     box-shadow: rgb(0 0 0 / 8%) 0 1px 0;
     margin-block-start: 80px;
@@ -25,6 +24,10 @@
         border-radius: 32px;
         border: 1px solid $gray-clr3;
         position: relative;
+
+        &.all {
+            background-color: white;
+        }
 
         &>* {
 
@@ -226,8 +229,9 @@
                 border-radius: 32px;
                 margin-block-start: 44px;
                 box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.04), 0 8px 16px rgba(0, 0, 0, 0.15);
-                padding-block: 32px;
-                padding-inline: 16px;
+                padding-inline: 32px;
+                padding-block: 16px;
+                cursor: default;
 
 
                 &.where {
@@ -245,8 +249,55 @@
 
                 & .filter-date-picker {
                     margin-inline: auto;
+                    color: inherit;
 
-                    td {
+                    & .rdp-head {
+                        & th {
+                            font-size: rem(12px);
+                            font-family: Circular-Bold;
+                            color: $gray-clr0;
+                            line-height: 16px;
+                            text-transform: capitalize;
+                        }
+                    }
+
+                    & .rdp-months {
+                        & .rdp-caption_label {
+                            font-size: rem(16px);
+                            line-height: 20px;
+                            font-family: Circular-SemiBold;
+                            font-weight: 400;
+                        }
+                    }
+
+                    // & .rdp-cell {
+                    //     & .rdp-day {
+                    //         font-family: Circular-SemiBold;
+                    //         font-weight: 400;
+                    //         // &:hover{
+                    //             border: 1.5px solid rgb(34, 34, 34);
+                    //             // background-color: inherit;
+                    //         // }
+                    //     }
+                    // }
+
+                    & .rdp-nav {
+                        svg {
+                            width: 12px;
+                            height: 16px;
+                        }
+                    }
+
+                    // & .rdp-button{
+                    //     width: 32px;
+                    //     height: 32px;
+                    //     align-items: center;
+                    //     &:hover{
+                    //         background-color: $gray-clr5;
+                    //     }
+                    // }
+
+                    & td {
                         position: relative;
 
                         & :is(.day-range-start, .day-range-end) {
@@ -286,45 +337,76 @@
                 }
 
                 & .guest-count-filter {
+                    padding-inline: 6px;
+
                     & .card {
                         white-space: nowrap;
                         display: flex;
                         justify-content: space-between;
-                        padding-block: em(24px);
+                        padding-block: 24px;
+                        padding-inline-end: 4px;
                         width: 326px;
 
-                        & p {
-                            margin: 0;
+                        & .txt-content {
+                            & h3 {
+                                font-size: rem(16px);
+                                line-height: 20px;
+                                letter-spacing: normal;
+                                font-family: Circular-Semibold;
+                                font-weight: 400;
+                            }
+
+                            & p {
+                                padding-block-start: 4px;
+                                color: $gray-clr0;
+                                margin: 0;
+
+                                &.pet-service {
+                                    font-family: Circular-Semibold;
+                                    color: $gray-clr0;
+                                    cursor: not-allowed;
+                                }
+                            }
                         }
+
 
                         &:not(:last-child) {
                             content: '';
                             border-bottom: 1px solid rgb(235, 235, 235);
                         }
 
-                        .custom-btn-guest-count {
-                            background-color: rgb(255, 255, 255);
-                            color: rgb(113, 113, 113);
-                            border: 1px solid rgb(176, 176, 176);
-                            border-radius: 50%;
-                            width: 30px;
-                            height: 30px;
-                            font-weight: 700;
-                            cursor: pointer;
-                            font-size: 13.5px;
+                        & .stepper {
+                            display: flex;
+                            align-items: center;
+                            gap: 15px;
+                            width: 104px;
+                            justify-content: space-between;
+
+
+                            & .custom-btn-guest-count {
+                                background-color: rgb(255, 255, 255);
+                                color: rgb(113, 113, 113);
+                                border: 1px solid rgb(176, 176, 176);
+                                border-radius: 50%;
+                                width: 30px;
+                                height: 30px;
+                                font-weight: 700;
+                                cursor: pointer;
+                                font-size: 13.5px;
+                            }
+
+                            & span {
+                                font-size: rem(16px);
+                                color: $black-clr1;
+                            }
                         }
 
-                        & span {
-                            margin-inline: 10px;
-                            text-align: center;
-                            font-weight: 600;
-                        }
 
-                        .pet-service {
-                            font-weight: 600;
-                            color: rgb(113, 113, 113);
-                            cursor: pointer;
-                        }
+                        // .pet-service {
+                        //     font-weight: 600;
+                        //     color: rgb(113, 113, 113);
+                        //     cursor: not-allowed;
+                        // }
 
                         .custom-btn-guest-count:hover {
                             border-color: rgb(34, 34, 34);

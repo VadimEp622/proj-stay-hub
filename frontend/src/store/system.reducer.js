@@ -6,12 +6,15 @@ export const OPEN_EXPANDED_HEADER = 'OPEN_EXPANDED_HEADER'
 export const CLOSE_EXPANDED_HEADER = 'CLOSE_EXPANDED_HEADER'
 export const OPEN_DROPDOWN_BAR = 'OPEN_DROPDOWN_BAR'
 export const CLOSE_DROPDOWN_BAR = 'CLOSE_DROPDOWN_BAR'
+export const OPEN_EXPANDED_HEADER_MODAL = 'OPEN_EXPANDED_HEADER_MODAL'
+export const CLOSE_EXPANDED_HEADER_MODAL = 'CLOSE_EXPANDED_HEADER_MODAL'
 
 
 const initialState = {
   isLoading: false,
   isUnclickableBg: false,
   isFilterExpanded: false,
+  isExpandedModalOpen: false
 }
 
 export function systemReducer(state = initialState, action = {}) {
@@ -28,6 +31,10 @@ export function systemReducer(state = initialState, action = {}) {
       return { ...state, isFilterExpanded: false }
     case OPEN_EXPANDED_HEADER:
       return { ...state, isFilterExpanded: true }
+    case OPEN_EXPANDED_HEADER_MODAL:
+      return { ...state, isExpandedModalOpen: true }
+    case CLOSE_EXPANDED_HEADER_MODAL:
+      return { ...state, isExpandedModalOpen: false }
     default: return state
   }
 }
