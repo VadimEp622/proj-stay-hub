@@ -28,8 +28,6 @@ import { ReactComponent as TickDecline } from '../assets/img/tick-decline/tick-d
 import { ReactComponent as Exit } from '../assets/img/airbnb-assets/exit.svg'
 import { ReactComponent as LeftArrow } from '../assets/img/airbnb-assets/left-arrow.svg'
 import { ReactComponent as Exclamation } from '../assets/img/airbnb-assets/exclamationmark.svg'
-import { ReactComponent as Exclamation } from '../assets/img/airbnb-assets/exclamationmark.svg'
-import { ReactComponent as LeftArrow } from '../assets/img/airbnb-assets/left-arrow.svg'
 
 import {
     HEART_16, RED_HEART_16, LOGO, RED_HEART, SEARCH, SHARE, STAR, STAR_16, USER_NAV_BARS,
