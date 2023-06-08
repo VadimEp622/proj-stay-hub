@@ -15,7 +15,7 @@ import { OrderConfirmation } from './pages/order-confirmation'
 import { DynamicCmp } from './cmps/reuseableCmp/dynamicCmp'
 import { CLOSE_EXPANDED_HEADER, REMOVE_UNCLICKABLE_BG } from './store/system.reducer'
 import { store } from './store/store'
-import { WishList } from './pages/wishlists'
+import { WishList } from './pages/wishlist'
 
 export function RootCmp() {
     const isUnclickableBg = useSelector(storeState => storeState.systemModule.isUnclickableBg)
@@ -47,7 +47,7 @@ export function RootCmp() {
                     <Routes>
                         {routes.map(route => <Route key={route.path} exact={true} element={route.component} path={route.path} />)}
                         <Route path="user/:id" element={<UserDetails />} />
-                        <Route path="wishlists" element={<WishList />} />
+                        <Route path="wishlist" element={<WishList />} />
                         <Route path="stay/:stayId" element={<StayDetails />} />
                         <Route path="stay/book/:stayId" element={<OrderConfirmation />} />
                     </Routes>

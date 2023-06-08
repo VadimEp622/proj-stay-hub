@@ -9,7 +9,7 @@ export function WishList() {
 
     if (wishList.length === 0 || !wishList) {
         return (
-            <div>
+            <div className="wishlist-container">
                 <h1>Wishlist</h1>
                 <h3>No saves yet</h3>
                 <p>As you search, click the heart icon to save your favorite places and Experiences to a wishlist.</p>
@@ -22,7 +22,7 @@ export function WishList() {
 
     else {
         return (
-            <div>
+            <div className="wishlist-container">
                 <h1>Wishlist</h1>
                 <section>
                     <StayList stays={wishList} />
