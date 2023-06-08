@@ -15,6 +15,7 @@ import { Logo } from './header/logo.jsx'
 import { SearchbarToggler } from './header/searchbar-toggler.jsx'
 import { MainNavMenu } from './header/main-nav-menu.jsx'
 import { FilterExpanded } from './header/filter-expanded.jsx'
+import { OPEN_EXPANDED_HEADER_MODAL } from '../store/system.reducer.js'
 
 
 
@@ -134,14 +135,13 @@ export function AppHeader({ isStayDetailsPage }) {
     }
 
     function onSetSelectedFilterBox(ev) {
-        // const value = ev.currentTarget.getAttribute('class')
-        // console.log('value', value)
+        console.log('ev', ev)
         ev.preventDefault()
+        store.dispatch({ type: OPEN_EXPANDED_HEADER_MODAL })
         const field = ev.currentTarget.getAttribute('name')
         console.log('field', field)
         if (selectedFilterBox !== field) setSelectedFilterBox(field)
     }
-
 
 
     return (
@@ -169,6 +169,7 @@ export function AppHeader({ isStayDetailsPage }) {
                     selectedExperienceTab={selectedExperienceTab}
                     selectedFilterBox={selectedFilterBox}
                     onSetSelectedFilterBox={onSetSelectedFilterBox}
+                    setSelectedFilterBox={setSelectedFilterBox}
                 />
 
             </header>

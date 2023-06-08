@@ -7,6 +7,13 @@ import { DateFilter } from "../app-header-date-filter.jsx"
 import { GuestCountFilter } from "../guest-count-filter.jsx"
 import { LongTxt } from "../long-txt.jsx"
 import SvgHandler from "../svg-handler.jsx"
+import { useState } from "react"
+import { createElement } from 'react';
+import { useClickOutside } from "../../customHooks/clickOutsideModal.js"
+import { store } from "../../store/store.js"
+import { CLOSE_EXPANDED_HEADER_MODAL } from "../../store/system.reducer.js"
+import { useSelector } from "react-redux"
+
 
 export function FilterExpanded(
     {
@@ -20,8 +27,8 @@ export function FilterExpanded(
         selectedExperienceTab,
         selectedFilterBox,
         onSetSelectedFilterBox,
+        setSelectedFilterBox
     }) {
-
 
     function displayGuestsFilter() {
         // ******** At least 1 Adult from this point ********
@@ -39,10 +46,19 @@ export function FilterExpanded(
         return guestsStr
     }
 
+    const isExpandedModalOpen = useSelector(storeState => storeState.systemModule.isExpandedModalOpen)
+
+    function onClickModal() {
+        store.dispatch({ type: CLOSE_EXPANDED_HEADER_MODAL })
+    }
+
+
+    const dropdownRef = useClickOutside(onClickModal)
+
     return (
         <section className={`filter-expanded-container full main-layout${isFilterExpanded ? '' : ' folded'}`} >
-            <section className="filter-expanded">
-                <article className={`where-container${selectedFilterBox === 'where' ? ' active' : ''}`} name="where" onClick={onSetSelectedFilterBox}>
+            <section className="filter-expanded" ref={dropdownRef}>
+                <article className={`where-container${selectedFilterBox === 'where' ? ' active' : ''}`} name="where" onClick={onSetSelectedFilterBox} >
                     <section className="where">
                         <h3>Where</h3>
                         <input name="filterText" value={filterBy.filterText} onChange={handleChange} placeholder="Search destinations"></input>
@@ -85,7 +101,8 @@ export function FilterExpanded(
                     </section>
                 </article>
                 <div className="size-less">
-                    <div className={`modal ${selectedFilterBox}`}>
+
+                    {isExpandedModalOpen && <div className={`modal ${selectedFilterBox}`}>
                         {
                             (selectedFilterBox === 'where') &&
                             <LocationFilter filterBy={filterBy} onSubmit={onSubmit} handleChange={handleChange} />
@@ -98,7 +115,7 @@ export function FilterExpanded(
                             selectedFilterBox === 'who' &&
                             <GuestCountFilter filterBy={filterBy} setFilterBy={setFilterBy} handleGuestCountChange={handleGuestCountChange} />
                         }
-                    </div>
+                    </div>}
                 </div>
             </section>
         </section>

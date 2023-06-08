@@ -15,14 +15,14 @@
         position: absolute;
         top: 3%;
         left: 85%;
-        right: rem(15px); 
+        right: rem(15px);
     }
 
     .img-container {
         height: 100%;
         border-radius: 12px;
         overflow: hidden;
-        
+
         img {
             aspect-ratio: 1.08 / 0.99;
             object-fit: cover;
@@ -76,6 +76,7 @@
         min-width: 30px;
         min-height: 30px;
         border-radius: 50%;
+        z-index: 9;
     }
 
     &:hover .react-multiple-carousel__arrow {
