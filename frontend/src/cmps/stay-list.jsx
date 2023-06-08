@@ -1,8 +1,11 @@
-import { Link } from "react-router-dom";
-import { StayPreview } from "./stay-preview";
+import { Link } from "react-router-dom"
+import { StayPreview } from "./stay-preview"
+import { useSelector } from "react-redux"
 
-export function StayList({ stays, isLoadingRef }) {
-    if (isLoadingRef.current) return <section className="loading">Loading...</section>
+export function StayList({ stays }) {
+    const isLoading = useSelector(storeState => storeState.systemModule.isLoading)
+
+    if (isLoading) return <section className="loading">Loading...</section>
     return (
         <ul className="stays-list">
             {stays.length < 1 && <span>No Stays Available</span>}

@@ -2328,6 +2328,1084 @@ const STAYS_TRUE_DEMO_TEMP = [
             }
         ],
         "likedByUsers": []
+    },
+    {
+        "_id": "622f337a75c7d36e498aab03",
+        "name": "+Spacious Studio&Kitchenette near Blue Mosque+",
+        "type": "OMG!",
+        "imgUrls": [
+            "http://res.cloudinary.com/dmtlr2viw/image/upload/v1663436321/g2cs1w7tkxsx58penq9j.jpg",
+            "http://res.cloudinary.com/dmtlr2viw/image/upload/v1663436542/e96nrbkjz8mecvsbzukk.jpg",
+            "http://res.cloudinary.com/dmtlr2viw/image/upload/v1663437250/o8uutj3t2bvfafvxkr9j.jpg",
+            "http://res.cloudinary.com/dmtlr2viw/image/upload/v1663436957/ehhcyscwtvxw55mptkok.jpg",
+            "http://res.cloudinary.com/dmtlr2viw/image/upload/v1663436294/mvhb3iazpiar6duvy9we.jpg"
+        ],
+        "price": 264,
+        "summary": "A spacious, private studio with high speed Wi-Fi wireless internet. It is located in historical district of Sultanahmet oldcity center. It's Only 10 minutes (by walking) away from Sultanahmet  Blue Mosque, Hagia Sophia, Topkapı Palace, Underground Cistern and Hippodrome. This area is called Kadirga and it's famous with it's local restaurants. There are more gorcery stores and supermarkets in this are since it's not %100 touristic area. There is children playground right in front of the building.",
+        "capacity": 5,
+        "amenities": [
+            "TV",
+            "Wifi",
+            "Air conditioning",
+            "Kitchen",
+            "Paid parking off premises",
+            "Heating",
+            "Family/kid friendly",
+            "Fire extinguisher",
+            "Essentials",
+            "Shampoo",
+            "Hangers",
+            "Hair dryer",
+            "Iron",
+            "Hot water",
+            "Microwave",
+            "Refrigerator",
+            "Host greets you"
+        ],
+        "bathrooms": 1,
+        "bedrooms": 0,
+        "roomType": "Entire home/apt",
+        "host": {
+            "_id": "622f3405e36c59e6164fb898",
+            "fullname": "Kadirga",
+            "location": "Istanbul, İstanbul, Turkey",
+            "about": "",
+            "responseTime": "within an hour",
+            "thumbnailUrl": "https://a0.muscache.com/im/pictures/user/7620074d-86d6-49c3-b7fe-cafe084051dd.jpg?aki_policy=profile_small",
+            "pictureUrl": "https://a0.muscache.com/im/pictures/user/7620074d-86d6-49c3-b7fe-cafe084051dd.jpg?aki_policy=profile_x_medium",
+            "isSuperhost": false,
+            "id": "98780303"
+        },
+        "loc": {
+            "country": "Turkey",
+            "countryCode": "TR",
+            "city": "Istanbul",
+            "address": "Fatih, İstanbul, Turkey",
+            "lat": 28.96755,
+            "lan": 41.00488
+        },
+        "reviews": [
+            {
+                "at": "2016-11-06T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3404e36c59e6164fb5a5",
+                    "fullname": "Sime",
+                    "imgUrl": "https://robohash.org/65556580?set=set1",
+                    "id": "65556580"
+                },
+                "txt": "地点很方便,房间也很大,有好多张床,如果是家庭出游将是不错的选择｡"
+            },
+            {
+                "at": "2016-11-09T05:00:00.000Z",
+                "by": {
+                    "_id": "622f3406e36c59e6164fbcdd",
+                    "fullname": "Liberato",
+                    "imgUrl": "https://robohash.org/77131064?set=set1",
+                    "id": "77131064"
+                },
+                "txt": "The room was great. I was able to get the much needed Rest and relaxation I was looking for. What stood out for me was Emre's concern for my piece of mind. I approached him with a few minor concerns and he went to great lengths to ensure that I would have a restful stay at his hotel. He was extremely helpful in helping me secure ground transportation to my next destination, as I had failed miserably ha in get attempted to do it on my own. Stay here, the neighborhood will give you a true taste of Istanbul, a healthy step away from the too touristy neighborhoods."
+            },
+            {
+                "at": "2016-12-10T05:00:00.000Z",
+                "by": {
+                    "_id": "622f3406e36c59e6164fbb72",
+                    "fullname": "Tash",
+                    "imgUrl": "https://robohash.org/3276660?set=set1",
+                    "id": "3276660"
+                },
+                "txt": "Great place, very friendly host, I would recommend this place to anyone."
+            },
+            {
+                "at": "2017-01-26T05:00:00.000Z",
+                "by": {
+                    "_id": "622f3408e36c59e6164fc07f",
+                    "fullname": "Magdi",
+                    "imgUrl": "https://robohash.org/65666427?set=set1",
+                    "id": "65666427"
+                },
+                "txt": "With a good honest people everything is great, thanks boys "
+            },
+            {
+                "at": "2017-02-06T05:00:00.000Z",
+                "by": {
+                    "_id": "622f3403e36c59e6164fb1d3",
+                    "fullname": "Daria",
+                    "imgUrl": "https://robohash.org/109484218?set=set1",
+                    "id": "109484218"
+                },
+                "txt": "Thanks for your nice guest house"
+            },
+            {
+                "at": "2017-02-26T05:00:00.000Z",
+                "by": {
+                    "_id": "622f3404e36c59e6164fb406",
+                    "fullname": "Ziying",
+                    "imgUrl": "https://robohash.org/40753110?set=set1",
+                    "id": "40753110"
+                },
+                "txt": "这个房间性价比真的很好呀!位置也ok,离景点不远｡但是离metro有点远,去交通点上坡好累｡洗手间还是有点脏,去的时候地上有小虫｡厕所马桶有点摇摇欲坠,厕所门锁不上｡但是看在这价钱,休息几晚能接受｡"
+            },
+            {
+                "at": "2017-03-12T05:00:00.000Z",
+                "by": {
+                    "_id": "622f3403e36c59e6164fb0da",
+                    "fullname": "Florianne",
+                    "imgUrl": "https://robohash.org/117885577?set=set1",
+                    "id": "117885577"
+                },
+                "txt": "The flat is perfect for preople who want to visit Istanbul! thanks"
+            },
+            {
+                "at": "2017-04-10T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3405e36c59e6164fb843",
+                    "fullname": "Zakiuddin",
+                    "imgUrl": "https://robohash.org/116676576?set=set1",
+                    "id": "116676576"
+                },
+                "txt": "place is closer to main attractions and at the same time in quite locality. i recomend fellow travellers to try kadirga park when visiting istanbul. good for families."
+            },
+            {
+                "at": "2017-04-26T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3407e36c59e6164fbebe",
+                    "fullname": "Kristy",
+                    "imgUrl": "https://robohash.org/66755882?set=set1",
+                    "id": "66755882"
+                },
+                "txt": "Emre wad a great host. His communication before and during our stay had been absolutely top notch. He was very helpful and accommodating and we would stay with him again,  no question! "
+            },
+            {
+                "at": "2017-06-14T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3407e36c59e6164fbfdf",
+                    "fullname": "Bas",
+                    "imgUrl": "https://robohash.org/4966099?set=set1",
+                    "id": "4966099"
+                },
+                "txt": "I had a great time staying here. Emre has a wealth of local useful information. Ask him anything and he'll basically plan your holiday for you :) I was greeted when I arrived by one of his staff and quickly shown to my room. The room was basic but spacious, clean and safe - great value for money. Istanbul is incredibly beautiful and very exciting. There's a supermarket literally across the road, as is the Istanbul photography museum. The Hagia Sophia and Blue Mosque are a stone throw away. Lots of restaurants and cafes in the area. Easy to walk everywhere and public transport is easy, cheap, mosern, safe and fast - speak to Emre and he'll quickly help you get your head around it. Stay here, you won't regret it. "
+            },
+            {
+                "at": "2017-06-17T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3403e36c59e6164fb299",
+                    "fullname": "Mahgrine",
+                    "imgUrl": "https://robohash.org/6629816?set=set1",
+                    "id": "6629816"
+                },
+                "txt": "The place is near to the tram, around 8-10 mins walk. The room is clean, big, and comfy. The only drawback is that I didn't expect that I need to go uphill every time I'm going out from the house. Nevertheless, it's a great location. You can reach the Grand Bazar, Blue Mosque, Hagia Sophia and TopKapi Palace by walking, approx. 20mins.  "
+            },
+            {
+                "at": "2017-08-17T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3407e36c59e6164fbd57",
+                    "fullname": "Tolga",
+                    "imgUrl": "https://robohash.org/48053238?set=set1",
+                    "id": "48053238"
+                },
+                "txt": "Nice apartment overall. Its located at the bottom of a hill so expect a hike whenever you want to go anywhere. There's a supermarket just down the road which stocks things you'll need on a daily basis which is very handy. The park across the road does get very loud and stays busy well after midnight so keep that in mind."
+            },
+            {
+                "at": "2017-09-24T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3404e36c59e6164fb4ad",
+                    "fullname": "Öner",
+                    "imgUrl": "https://robohash.org/29635802?set=set1",
+                    "id": "29635802"
+                },
+                "txt": "+ :\nBien situé, je n'ai pas eu du mal à visiter les lieux proches. \n\n- : \n* Tous les équipements n'y étaient pas (sèche cheveux, lave linge...)\n\n* la porte d'entrée est juste au niveau de la porte d'entrée du bâtiment. On entend donc tous les gens qui passent avec le claquement de porte. Pas super la nuit. \n\n* wifi ne capte pas bien. \n\n* la lumière de salle de bain fonctionne avec un détecteur de mouvement qui ne capte pas si vous êtes dans la douche. Il faut donc utiliser le flash de son portable."
+            },
+            {
+                "at": "2017-10-03T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3403e36c59e6164fb129",
+                    "fullname": "Med Zied",
+                    "imgUrl": "https://robohash.org/36523012?set=set1",
+                    "id": "36523012"
+                },
+                "txt": "Good location"
+            },
+            {
+                "at": "2017-10-14T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3406e36c59e6164fbb01",
+                    "fullname": "Danielle",
+                    "imgUrl": "https://robohash.org/70117115?set=set1",
+                    "id": "70117115"
+                },
+                "txt": "Fantastic little apartment, ideal for a weekend break in Istanbul. Located on a road with lots of good cheap street food, only ten minutes walk from the main tourist spots of Sultanahmet including the blue mosque and Hagia Sophia. Great road of restaurants just three minutes away with great atmosphere and decent prices - although everyone will try and lure you in! It's a very steep climb up a hill to public transport but not a problem if you enjoy a walk!\n\nApartment has everything you need for a comfortable stay. Only problem is the noise. The doorbell is loud and people coming in and out kept us awake one night!"
+            },
+            {
+                "at": "2017-10-21T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3402e36c59e6164fae6a",
+                    "fullname": "Arifur",
+                    "imgUrl": "https://robohash.org/154348770?set=set1",
+                    "id": "154348770"
+                },
+                "txt": "Ganz bequem und guter Lage. Jederzeit kann ich Empfehlen. Emre ist nette man und freundlich. Die Zimmer ist preiswert. Blaue Moschee nur 6-7 min zu fuss."
+            },
+            {
+                "at": "2017-10-30T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3402e36c59e6164fad87",
+                    "fullname": "Nass",
+                    "imgUrl": "https://robohash.org/22615931?set=set1",
+                    "id": "22615931"
+                },
+                "txt": "Appartement simple, des lits un frigo,\nLes - :  pas toujours le nécessaire de cuisine, plaque vieille..pas de machine a laver, assez froid (pas de chauffage, la clim chauffe mal) fortes odeurs dans la salle de bain, et les draps sont pas changé de la semaine...les serviette retiré mais pas rajouter...\n\nLes + : \nBon emplacement loin du tumulte de la ville mais dans le centre historique de Sulthanamey.Emre est réactif,plein de petits boui boui autour, restaurants, ménage fait durant le séjour, et quartier calme !"
+            },
+            {
+                "at": "2017-11-06T05:00:00.000Z",
+                "by": {
+                    "_id": "622f3401e36c59e6164fab5f",
+                    "fullname": "Fadi",
+                    "imgUrl": "https://robohash.org/152749523?set=set1",
+                    "id": "152749523"
+                },
+                "txt": "Mr Emre was very helpful and friendly with us help us showing around especially being Turkish interpter when needed.\nHighly recommended place to stay in Old Istanbul "
+            },
+            {
+                "at": "2017-11-19T05:00:00.000Z",
+                "by": {
+                    "_id": "622f3403e36c59e6164fb185",
+                    "fullname": "Igor",
+                    "imgUrl": "https://robohash.org/5445704?set=set1",
+                    "id": "5445704"
+                },
+                "txt": "Удобное расположение до основных достопримечательностей (пешая доступность). Оперативные ответы и помощь от хозяина квартиры."
+            },
+            {
+                "at": "2018-01-03T05:00:00.000Z",
+                "by": {
+                    "_id": "622f3402e36c59e6164faca0",
+                    "fullname": "Sarah",
+                    "imgUrl": "https://robohash.org/103139094?set=set1",
+                    "id": "103139094"
+                },
+                "txt": "L'appartement d'Emre est davantage une petite chambre d’hôtel où l'on a les équipements attendus sauf la machine à laver. L'appartement est globalement assez propre.\nIl est très bien placé (à 10 min à pied de la mosquée bleue et de sainte Sophie) et dans un quartier authentique. Nous avons aussi apprécié qu'il y ait en face un supérette où nous avons pu faire des courses.\nEmre est très réactif et très sympa. Nous recommandons cet appartement."
+            }
+        ],
+        "likedByUsers": []
+    },
+    {
+        "_id": "622f337a75c7d36e498aab04",
+        "name": "Grand apartment Sagrada Familia",
+        "type": "Lakefront",
+        "imgUrls": [
+            "http://res.cloudinary.com/dmtlr2viw/image/upload/v1663436811/ym5nh1anownexsyzgbqq.jpg",
+            "http://res.cloudinary.com/dmtlr2viw/image/upload/v1663436772/nplkpwclhrdvvspkpmbg.jpg",
+            "http://res.cloudinary.com/dmtlr2viw/image/upload/v1663437033/rhw6gycttaimzocc1poz.jpg",
+            "http://res.cloudinary.com/dmtlr2viw/image/upload/v1663436897/iz1ik9nibj3sobzrqomf.jpg",
+            "http://res.cloudinary.com/dmtlr2viw/image/upload/v1663436353/wqah1dfim6hcosaq0ve3.jpg"
+        ],
+        "price": 169,
+        "summary": "4 rooms apartment in the heart of the right “Eixample” broadening. Perfect location in the notorious area of Sagrada Familia that will ensure and unforgettable stay in Barcelona. HUTB-003275",
+        "capacity": 8,
+        "amenities": [
+            "TV",
+            "Internet",
+            "Wifi",
+            "Air conditioning",
+            "Kitchen",
+            "Paid parking off premises",
+            "Smoking allowed",
+            "Buzzer/wireless intercom",
+            "Family/kid friendly",
+            "Washer",
+            "Dryer",
+            "Essentials",
+            "Shampoo",
+            "Hangers",
+            "Hair dryer",
+            "Iron",
+            "Laptop friendly workspace",
+            "Hot water",
+            "Host greets you"
+        ],
+        "bathrooms": 2,
+        "bedrooms": 4,
+        "roomType": "Entire home/apt",
+        "host": {
+            "_id": "622f3406e36c59e6164fbbf5",
+            "fullname": "Alexandra Y Juan",
+            "location": "Barcelona, Catalonia, Spain",
+            "about": "Hola, \r\n\r\nSomos Alexandra y Juan dos amigos que estamos enamorados de Barcelona, nuestras pasiones son viajar y conocer gente por lo que nos encantaría compartir con vosotros nuestros espacios  para que disfrutéis a vuestro gusto de toda la cultura, actualidad y diversidad de ofertas que la ciudad os ofrece.\r\nPara nosotros lo mas importante es que nuestros huéspedes puedan aprovechar al máximo su estancia en Barcelona,  que viváis vuestra historia  reflejada en  rincones únicos de la ciudad y por supuesto nuestra mayor satisfacción es que os sintáis como en casa según lo que busquéis.\r\n\r\nHello, \r\n\r\nWe are Alexandra and Juan two friends who are in love with Barcelona, our passion is to travel and meet new people so we would love to share our spaces with you and that you can enjoy the culture, the present and the diversity of offers that the city has to offer. \r\nFor us the most important thing is that our guests can make the most of their stay in Barcelona, that you live our history full of unique places and of course our greatest satisfaction is that you feel as if you where at home according to what you are looking for.",
+            "responseTime": "within an hour",
+            "thumbnailUrl": "https://a0.muscache.com/im/pictures/user/3fceba9a-ce84-4841-88df-b699105119b4.jpg?aki_policy=profile_small",
+            "pictureUrl": "https://a0.muscache.com/im/pictures/user/3fceba9a-ce84-4841-88df-b699105119b4.jpg?aki_policy=profile_x_medium",
+            "isSuperhost": false,
+            "id": "54320669"
+        },
+        "loc": {
+            "country": "Spain",
+            "countryCode": "ES",
+            "city": "Barcelona",
+            "address": "Barcelona, Catalunya, Spain",
+            "lat": 2.18146,
+            "lan": 41.39716
+        },
+        "reviews": [
+            {
+                "at": "2016-03-30T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3402e36c59e6164faec0",
+                    "fullname": "Lenny",
+                    "imgUrl": "https://robohash.org/36457037?set=set1",
+                    "id": "36457037"
+                },
+                "txt": "L'accès au logement est pratique. Il y a un parking à 10 mètres (20€ par jour).\r\nLa résidence est bien tenue. Deux ascenseurs pour accéder au 6ème étage. L'appartement est parfaitement silencieux, pas de bruit sur la rue.\r\nLe logement est idéal pour les groupes, il est propre, en très bon état. Deux jeux de clés sont à disposition. Je recommande vivement ce logement.\r\nPour se rendre en ville, il est situé à 15 minutes de sites à voir, les taxis passent dans la rue, tout est pratique.\r\nEnfin la terrasse est superbe, avec vue sur la tour AGBAR.\r\n\r\nMerci pour votre accueil, on revient bientôt!"
+            },
+            {
+                "at": "2016-04-05T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3403e36c59e6164fb082",
+                    "fullname": "Albe Birio",
+                    "imgUrl": "https://robohash.org/33200324?set=set1",
+                    "id": "33200324"
+                },
+                "txt": "The apartment is really amazing, in the city centre and with everything we needed. Regina was really helpful we our needs."
+            },
+            {
+                "at": "2016-04-17T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3402e36c59e6164faeeb",
+                    "fullname": "Daniel",
+                    "imgUrl": "https://robohash.org/9256716?set=set1",
+                    "id": "9256716"
+                },
+                "txt": "Great stay, very nice flat as described. Nice balcony and well located! Host was nice and easy to communicate to"
+            },
+            {
+                "at": "2016-04-30T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3402e36c59e6164fad11",
+                    "fullname": "Bram",
+                    "imgUrl": "https://robohash.org/64345234?set=set1",
+                    "id": "64345234"
+                },
+                "txt": "Everything was fine.\r\nApartment was clean.\r\nA couple useful items weren't available, like a trash can or a drying rack fro the dishes. But obviously thats an easy thing to buy.\r\nOverall a nice place.\r\n\r\nNothing to do with the host, but the walls are paper thin. You can hear what the neighbours are doing on every side of the flat."
+            },
+            {
+                "at": "2016-05-08T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3407e36c59e6164fbcec",
+                    "fullname": "Joel",
+                    "imgUrl": "https://robohash.org/16946925?set=set1",
+                    "id": "16946925"
+                },
+                "txt": "Bon accueil et appartement propre et conforme à la description"
+            },
+            {
+                "at": "2016-05-16T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3405e36c59e6164fb73f",
+                    "fullname": "Paul",
+                    "imgUrl": "https://robohash.org/64496561?set=set1",
+                    "id": "64496561"
+                },
+                "txt": "Superbe appartement! Un parking à deux pas qui nous a été d'une grande utilité. Regina est très accueillante, je recommande cet appartement. "
+            },
+            {
+                "at": "2016-05-23T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3406e36c59e6164fba01",
+                    "fullname": "Daniel",
+                    "imgUrl": "https://robohash.org/29800397?set=set1",
+                    "id": "29800397"
+                },
+                "txt": "We has a great time at Regina's place. The flat is clean and as shown on the pictures.\r\n"
+            },
+            {
+                "at": "2016-07-10T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3406e36c59e6164fbb75",
+                    "fullname": "Guowei",
+                    "imgUrl": "https://robohash.org/45005783?set=set1",
+                    "id": "45005783"
+                },
+                "txt": "The apartment and the location is good, but the service is not as good as expect. \n\nI have booked a pick-up service from the householder, but there are some problems happened about the plane causing the flight delayed. I have informed the householder at once. When we arrived at the airport, we could not find the driver waiting for us at the arrival with our name. Then, I tried to ask for the help from the householder to meet the driver at the airport. After almost one-hour waiting, we are refused by the driver to meet at the airport and He asked us to find his car at the park. How ridiculous! This service costs 20 euro each person but we cannot even have the right to be picked up. We were so angry and chose to take the taxi. At the same time, I texted the householder that we were tired of waiting for the driver and we were on the way to ur apartment by taxi.\n\nThe householder didn't tell me that I should phone another guy to tell him that we were on the way to the apartment until We arrived. What all she talked about were the money of the pick-up service. We spent another 45 minutes to wait for the guy to send the key. Again, when he came, he talked about the money. We asked for the service, but u did not provide it with us. How dare u to ask for the payment? Besides, do u know what? We are totally seven people, so this service should cost 140 euro totally. But two taxis only cost us 70 euro. The driver knows the guy and the householder. I doubt that they are on the business to play trick with me.\n\nBarcelona is a really nice city to travel, but this experience does make a bad impression on me. \n "
+            },
+            {
+                "at": "2016-07-16T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3407e36c59e6164fbf02",
+                    "fullname": "Glen",
+                    "imgUrl": "https://robohash.org/47750495?set=set1",
+                    "id": "47750495"
+                },
+                "txt": "The apartment has a good location convenient to metro and walking distance to Sagrada Familia and many good eating options. Spacious with a nice balcony. Air conditioning units are in the main hallway and the dining/living room, but the rooms are hard to cool down (it was hot when we were there). "
+            },
+            {
+                "at": "2016-07-23T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3407e36c59e6164fbd6b",
+                    "fullname": "Andrea",
+                    "imgUrl": "https://robohash.org/77802327?set=set1",
+                    "id": "77802327"
+                },
+                "txt": "Hola todo muy bien, excelente ubicacion y el trato my amable. El unico comentario es el de reparar la "
+            },
+            {
+                "at": "2016-07-29T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3402e36c59e6164fad90",
+                    "fullname": "Jacob",
+                    "imgUrl": "https://robohash.org/12803690?set=set1",
+                    "id": "12803690"
+                },
+                "txt": "What an amazing place to stay! It is a very roomy and comfortable place, that is in a great location. The deck area is amazing and we spent most of our time there just hanging out taking in the views. Reginan had great communication and made it very simple for us to arrive. If i ever go back to Barcelona, i would 100% stay here again! "
+            },
+            {
+                "at": "2016-08-08T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3403e36c59e6164fb0e3",
+                    "fullname": "Yuri",
+                    "imgUrl": "https://robohash.org/67801763?set=set1",
+                    "id": "67801763"
+                },
+                "txt": "Tutto andava molto bene ,l'appartamento corrispondeva esattamente alle foto del sito. Le stanze ed i bagni erano puliti , come pure la cucina. La terrazza era molto bella e la vista era apprezzabile. Oltre ai vari letti vi era anche la possibilità di dormire su un divano letto particolarmente comodo. L'aria condizionata funzionava e rinfrescava bene tutto l'appartamento. L'unico problemino c'è stato con la porta del bagno che è stato facile chiudere, ma non più riaprire, ma c'è stato subito un pronto intervento da parte dei responsabili dell'appartamento, che hanno aiutato ad uscire la persona che era rimasta chiusa all'interno. Salvo questo però Il quartiere era tranquillo , c'erano vari baretti attorno e anche dei piccoli centri commerciali ( di tipo alimentare ). Era in oltre possibile raggiungere a piedi vari bar dove potersi divertire. I taxi per arrivare nel centro della movida variano con i prezzi dai 5 ai 7 euro a corsa. La fermata della metro era a 5 min a piedi dall'appartamento. Dal centro partiva una navetta che portava direttamente all'aeroporto per soli 4 euro e 90. "
+            },
+            {
+                "at": "2016-08-28T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3406e36c59e6164fbc92",
+                    "fullname": "Anne-Sophie",
+                    "imgUrl": "https://robohash.org/11856961?set=set1",
+                    "id": "11856961"
+                },
+                "txt": "Regina is a really nice host and the apartment is perfect for big group due to its perfect location, 5 min drive or 15 min walk for the beach and near the perfect tourist places !\nI recommend 100% this clean and well decorated apartment !\n"
+            },
+            {
+                "at": "2016-09-19T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3405e36c59e6164fb647",
+                    "fullname": "Julie",
+                    "imgUrl": "https://robohash.org/3087963?set=set1",
+                    "id": "3087963"
+                },
+                "txt": "Regina was a great host- first she replied very quickly to my booking inquiry, and was always very responsive with queries/ messages.\r\nThe flat is HUGE and very well located, very modern and nicely decorated. Regina had organised someone to meet us on arrival so check in was easy. Check out was easy  llew as we just had to leave the flat at the agreed time. I would only say that the check out time of 11am is a bit early, especially for a city when you can have dinner quite late... although upon our request, Regina allowed us nicely to stay until 12pm.\r\nThey were two sets of keys which was very convenient for a big group. \r\nI have suggested to regina that it would be great to have a few more amenities provided such as toilet paper and coffee/tea for example, but overall we were very pleased with our stay at Regina's place. Thank you Regina!\r\n\r\n"
+            },
+            {
+                "at": "2016-09-23T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3403e36c59e6164fb09e",
+                    "fullname": "Manuel",
+                    "imgUrl": "https://robohash.org/46225617?set=set1",
+                    "id": "46225617"
+                },
+                "txt": "El departamento es fantástico y tiene una terraza bastante amplia para disfrutar. Tanto los anfitriones como Maks (el concierge) fueron muy amables y dispuestos a ayudar."
+            },
+            {
+                "at": "2016-10-21T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3408e36c59e6164fc065",
+                    "fullname": "Maxim",
+                    "imgUrl": "https://robohash.org/6800997?set=set1",
+                    "id": "6800997"
+                },
+                "txt": "Very good location.\r\n\r\nReally close to all major attractions. Plenty of shops and restaurants nearby. ( BTW you can go to the sushi bar - 5 minutes walk - Kyoka II, with unlimited food. Menu in Spanish only :) )\r\n\r\nApartments are comfortable and clean. I think it should be really good for a family vacations.\r\n\r\nIMHO some minimal improvements must be made (broken shower hose support, etc) but it's truly minor. \r\n\r\nOverall - pleasant experience."
+            },
+            {
+                "at": "2016-10-24T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3401e36c59e6164fab87",
+                    "fullname": "Rebecca",
+                    "imgUrl": "https://robohash.org/29589939?set=set1",
+                    "id": "29589939"
+                },
+                "txt": "Regina's apartment was as listed on her profile - there was sufficient space for all 8 of us, and had all of the amenities listed on the page. It was a very good area. I would recommend anyone in a bigger group looking to stay in a central location. "
+            },
+            {
+                "at": "2016-10-31T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3407e36c59e6164fbfe5",
+                    "fullname": "Luke",
+                    "imgUrl": "https://robohash.org/44480371?set=set1",
+                    "id": "44480371"
+                },
+                "txt": "Great apartment if you are a larger group and need more space. The bedrooms are all great and as described, plus having two bathrooms was good. The terrace is a fantastic bonus, with amazing views! "
+            },
+            {
+                "at": "2016-11-02T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3403e36c59e6164fafc3",
+                    "fullname": "Karla",
+                    "imgUrl": "https://robohash.org/22279916?set=set1",
+                    "id": "22279916"
+                },
+                "txt": "El apartamento es incluso mejor a como aparece en las fotos. La ubicación excelente. Queda cerca de todo y se puede ir caminando a diferentes puntos de interes como la sagrada familia y la marina o para los que prefieren el metro tiene cerca varias paradas de metro lo que resulta muy conveniente.  Lo recomendamos cien por ciento. Si volvemos a Barcelona definitivamente nos quedariamos nuevamente aqui."
+            },
+            {
+                "at": "2016-11-14T05:00:00.000Z",
+                "by": {
+                    "_id": "622f3403e36c59e6164faf4f",
+                    "fullname": "Katherine",
+                    "imgUrl": "https://robohash.org/12265394?set=set1",
+                    "id": "12265394"
+                },
+                "txt": "We stayed here with 8 people for a fun weekend in Barcelona and this apartment was a great home base for us. The apartment is exactly what the pictures showed and Regina and Juan were great hosts. Location is a little bit out of the way if you want to be central but proximity to la Sagrada Familia was nice!"
+            }
+        ],
+        "likedByUsers": []
+    },
+    {
+        "_id": "622f337a75c7d36e498aab05",
+        "name": "Spacious and quiet duplex apartment in Poble Sec",
+        "type": "Islands",
+        "imgUrls": [
+            "http://res.cloudinary.com/dmtlr2viw/image/upload/v1663436397/nde7l2hrwezdfzbvhczj.jpg",
+            "http://res.cloudinary.com/dmtlr2viw/image/upload/v1663436539/jy85me6y4bcsgfjvytwv.jpg",
+            "http://res.cloudinary.com/dmtlr2viw/image/upload/v1663436948/vgfxpvmcpd2q40qxtuv3.jpg",
+            "http://res.cloudinary.com/dmtlr2viw/image/upload/v1663436801/mcuu1w2188ndpd6hezzt.jpg",
+            "http://res.cloudinary.com/dmtlr2viw/image/upload/v1663436907/abikktroqknzhch6b9ly.jpg"
+        ],
+        "price": 130,
+        "summary": "Spacious apartment in a peculiar building in the central neighbourhood of Poble Sec, with patio and terrace, ideal for families with children or groups. Walking distance from center, Montjuïc, Plaza España, Fira Montjuïc/Gran Vía, Sant Antoni, Raval.",
+        "capacity": 7,
+        "amenities": [
+            "TV",
+            "Cable TV",
+            "Internet",
+            "Wifi",
+            "Air conditioning",
+            "Kitchen",
+            "Paid parking off premises",
+            "Buzzer/wireless intercom",
+            "Heating",
+            "Family/kid friendly",
+            "Washer",
+            "Smoke detector",
+            "Carbon monoxide detector",
+            "First aid kit",
+            "Safety card",
+            "Fire extinguisher",
+            "Essentials",
+            "Shampoo",
+            "24-hour check-in",
+            "Hangers",
+            "Hair dryer",
+            "Iron",
+            "Laptop friendly workspace",
+            "Outlet covers",
+            "Bathtub",
+            "High chair",
+            "Stair gates",
+            "Children’s books and toys",
+            "Crib",
+            "Pack ’n Play/travel crib",
+            "Room-darkening shades",
+            "Children’s dinnerware",
+            "Hot water",
+            "Bed linens",
+            "Extra pillows and blankets",
+            "Ethernet connection",
+            "Microwave",
+            "Coffee maker",
+            "Refrigerator",
+            "Dishwasher",
+            "Dishes and silverware",
+            "Cooking basics",
+            "Oven",
+            "Stove",
+            "Patio or balcony",
+            "Luggage dropoff allowed",
+            "Long term stays allowed",
+            "Wide doorway",
+            "Well-lit path to entrance",
+            "Wide entryway",
+            "Host greets you"
+        ],
+        "bathrooms": 2,
+        "bedrooms": 3,
+        "roomType": "Entire home/apt",
+        "host": {
+            "_id": "622f3403e36c59e6164fb08c",
+            "fullname": "Cristina",
+            "location": "Barcelona, Catalonia, Spain",
+            "about": "(ES) Soy mujer, mamá y traductora. Me gusta tener tiempo para pensar, viajar, jugar con mis hijas y descubrir algo nuevo cada día. A veces por trabajo tengo que viajar, y entonces mi amiga Yamila, gran mujer y fantástica anfitriona, amante del campo y fotógrafa de profesión, me ayuda con los huéspedes.\r\n\r\n(EN) I am a woman, a mother and a translator. I like having time to think, to travel, to play with my daughters and to discover something new every day. Sometimes I have to travel because of my job: in those occasions my friend Yamila, great woman and fantastic host, outdoor lover and photographer, helps me out with guests.",
+            "responseTime": "within an hour",
+            "thumbnailUrl": "https://a0.muscache.com/im/users/6107595/profile_pic/1442432675/original.jpg?aki_policy=profile_small",
+            "pictureUrl": "https://a0.muscache.com/im/users/6107595/profile_pic/1442432675/original.jpg?aki_policy=profile_x_medium",
+            "isSuperhost": true,
+            "id": "6107595"
+        },
+        "loc": {
+            "country": "Spain",
+            "countryCode": "ES",
+            "city": "Barcelona",
+            "address": "Barcelona, Catalunya, Spain",
+            "lat": 2.15566,
+            "lan": 41.37479
+        },
+        "reviews": [
+            {
+                "at": "2013-05-12T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3403e36c59e6164fb132",
+                    "fullname": "Jean-Pierre",
+                    "imgUrl": "https://robohash.org/768849?set=set1",
+                    "id": "768849"
+                },
+                "txt": "Yamila appartement was just perfect for us!\r\nThe location in Poble sec is very close to BCN city center and the neighborhood is so quiet without any traffic like everywhere else in the city\r\nThe appartement is very clean, well equipped with very recent furniture, 2 bathrooms, 3 bedrooms, 2 balconies, 1 terrace, large kitchen and lounge.\r\nYamila was a perfect host with us also.\r\nI fully recommend this appartment"
+            },
+            {
+                "at": "2013-06-17T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3402e36c59e6164fadce",
+                    "fullname": "Ove M.",
+                    "imgUrl": "https://robohash.org/6146923?set=set1",
+                    "id": "6146923"
+                },
+                "txt": "El piso esta muy guay, en una zona muy bien comunicada y con muchos restaurantes y bares cerca. Lo hemos pasado muy bien en este piso y volveriamos a alquilarlo."
+            },
+            {
+                "at": "2013-07-12T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3403e36c59e6164fb078",
+                    "fullname": "Andrew",
+                    "imgUrl": "https://robohash.org/6597264?set=set1",
+                    "id": "6597264"
+                },
+                "txt": "Awesome accommodations! Huge apartment that was obviously recently renovated and well maintained. The building is in a residential (read: non-touristy) part of Spain so if you are looking for a real taste of local culture this is the place to stay. 2 blocks from the subway and we were downtown in just a couple stops. The apartment is in building with a common courtyard (common for the style). The other people that live in the building were very friendly and helpful answering any questions we had. My son was even able to play with the other children (despite the language barrier). Awesome experience -- would definietly rent again."
+            },
+            {
+                "at": "2013-08-06T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3407e36c59e6164fbce7",
+                    "fullname": "Juan Daniel",
+                    "imgUrl": "https://robohash.org/6259139?set=set1",
+                    "id": "6259139"
+                },
+                "txt": "Experiencia bastante agradable, puntuales, el piso muy limpio, ordenado y esta genial, muy bien situado, muy recomendable."
+            },
+            {
+                "at": "2013-08-09T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3406e36c59e6164fba44",
+                    "fullname": "Carey",
+                    "imgUrl": "https://robohash.org/7317566?set=set1",
+                    "id": "7317566"
+                },
+                "txt": "The apartment is exactly as pictured. Very spacious, comfortable, and clean with a well equipped kitchen and nice terraces on both levels. The neighborhood is well situated - it is not at all touristy but close to transportation at Plaza España and Poble Sec metro stops so you can easily get to all the places you want to visit. We stayed here for 3 nights with our two children and found it perfect. We were able to walk or take the metro everywhere we wanted to go, but have a quieter place to sleep and relax. There is a park down the street and a supermarket directly across. Xavi met us on arrival and was very nice and helpful throughout our stay. When my husband accidentally left a few things in the apartment, Xavi collected them and met us upon our return to Barcelona a few days later to return them. Thanks, Xavi! It was a great stay in Barcelona and I would definitely recommend the apartment to anyone looking for space and comfort in a close but quieter neighborhood. "
+            },
+            {
+                "at": "2013-08-25T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3407e36c59e6164fbfa0",
+                    "fullname": "Julie",
+                    "imgUrl": "https://robohash.org/3129321?set=set1",
+                    "id": "3129321"
+                },
+                "txt": "Great flat in a very good location, very close from subway which brings you to wherever you want in a few minutes. Xabi has been really nice and we didn't miss anything in the flat. Thank you"
+            },
+            {
+                "at": "2013-09-16T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3402e36c59e6164fae47",
+                    "fullname": "Ron",
+                    "imgUrl": "https://robohash.org/8464703?set=set1",
+                    "id": "8464703"
+                },
+                "txt": "Yamila is a great hostess, the apartment is very comfortable.\r\nVery close to the metro. And a convenient store. A tv was missed, otherwise everything was great."
+            },
+            {
+                "at": "2013-10-27T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3407e36c59e6164fc002",
+                    "fullname": "Christine",
+                    "imgUrl": "https://robohash.org/3185553?set=set1",
+                    "id": "3185553"
+                },
+                "txt": "Appartement conforme aux indications, très propre. Le quartier est calme mais tout de même assez proche de tout (2 stations de métro de la rambla et des plages...). Super Bon séjour !\r\n"
+            },
+            {
+                "at": "2013-11-05T05:00:00.000Z",
+                "by": {
+                    "_id": "622f3405e36c59e6164fb814",
+                    "fullname": "Jeremie",
+                    "imgUrl": "https://robohash.org/9083747?set=set1",
+                    "id": "9083747"
+                },
+                "txt": "Una estancia perfecta, el piso es muy grande y muy bien equipado. La descripción corresponde perfectamente a la casa. 100% recomendable."
+            },
+            {
+                "at": "2014-02-27T05:00:00.000Z",
+                "by": {
+                    "_id": "622f3404e36c59e6164fb306",
+                    "fullname": "Kirstin",
+                    "imgUrl": "https://robohash.org/10268141?set=set1",
+                    "id": "10268141"
+                },
+                "txt": "Super apartement, clean, spacios, great located and pretty quiet. Yamila is very nice, polite and helpful. I strongly can recommend the apartement. "
+            },
+            {
+                "at": "2014-03-04T05:00:00.000Z",
+                "by": {
+                    "_id": "622f3406e36c59e6164fbbcc",
+                    "fullname": "Oliver",
+                    "imgUrl": "https://robohash.org/3385007?set=set1",
+                    "id": "3385007"
+                },
+                "txt": "A very nice place and a great host!\r\nThe apartment is exactly as you can see in the pictures, everthing is clean and Yamila is just a call (or e-mail) away if you need help."
+            },
+            {
+                "at": "2014-03-18T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3404e36c59e6164fb476",
+                    "fullname": "Okan",
+                    "imgUrl": "https://robohash.org/10270886?set=set1",
+                    "id": "10270886"
+                },
+                "txt": "EVERYTHING WAS GREAT. Yamila is very hospitable, very helpful. You can find everything you need at home.We will rent this House again barcelona 2015 Marathon."
+            },
+            {
+                "at": "2014-03-25T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3404e36c59e6164fb510",
+                    "fullname": "Lisa",
+                    "imgUrl": "https://robohash.org/13007630?set=set1",
+                    "id": "13007630"
+                },
+                "txt": "Cristina and her friend Yamilia did a wonderful job of making us feel at home and were also very helpful with other miscellaneous necessities (calling us a taxi to take us to the airport on departure).  The duplex was very nice and spacious, clean, charming, outfitted with everything we needed, with comfortable beds and a very nice kitchen (with an induction cooktop!).  The property is older and there was some remodeling noise for a few hours from the neighboring apartment, which we could hear through what seemed to be a shared skylight, but it was very brief and not a concern (unless noise privacy is a very high priority, which it wasn't for us).  We didn't even use the third bedroom with bunk beds, but it would be ideal for a family.  The metro was close enough, and the bakery just downstairs, together with the grocery store literally across the street, were a wonderful convenience.  We went nearly everywhere by metro, and the location was central enough that at the end of the day, if we were too tired to make our way back by metro, an easy cab ride back to the apartment never exceeded 8 euros (which would've been the cost of the metro for all four of us anyway).  Overall, the apartment was a nice, comfortable bargain for family travel - not the most modern, but charming and fully met our needs."
+            },
+            {
+                "at": "2014-04-12T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3404e36c59e6164fb5a8",
+                    "fullname": "Danielle",
+                    "imgUrl": "https://robohash.org/10549520?set=set1",
+                    "id": "10549520"
+                },
+                "txt": "Appartement trés agréable et trés bien situé à 2 pas d'une station de métro et de la place d'Espagne.\r\nToutes les pièces sont très agréables et les terrasses aussi.\r\nSupermarché en face et excellente boulangerie au pied de l'immeuble.\r\nImmeuble très calme.\r\nPas de cafetière électrique ni d'essoreuse à salade mais l'électroménager est top.\r\nDéco soignée.\r\nMerci, nous avons passé une excellente semaine !  "
+            },
+            {
+                "at": "2014-04-27T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3406e36c59e6164fbc22",
+                    "fullname": "Henrik",
+                    "imgUrl": "https://robohash.org/7244993?set=set1",
+                    "id": "7244993"
+                },
+                "txt": "We stayed at Christina´s place for two weeks and were happy with the flat. The location is good: close to metro, and also bakery, convenience store etc is near.\r\nExcellent restaurants also nearby.  "
+            },
+            {
+                "at": "2014-05-01T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3403e36c59e6164fb07b",
+                    "fullname": "Marie-Pierre",
+                    "imgUrl": "https://robohash.org/5115465?set=set1",
+                    "id": "5115465"
+                },
+                "txt": "Magnifique appartement, très calme dans un quartier sympathique. Boulangerie juste à côté, idéale le matin. Les enfants ont adoré!  Cristina et Yamila toujours à l'écoute par mail ou par tel. Nous gardons un excellent souvenir de ces vacances en famille à Barcelone. Un grand merci à nos hôtes. \r\nMarie-Pierre, Arnaud, Pierre et Benjamin"
+            },
+            {
+                "at": "2014-05-05T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3406e36c59e6164fbb13",
+                    "fullname": "Céline",
+                    "imgUrl": "https://robohash.org/4125966?set=set1",
+                    "id": "4125966"
+                },
+                "txt": "Espectacular!\r\nEl piso era grande, confortable, limpio, y muy bien equipado, sobre todo en la cocina. Es un piso luminoso con terracitas perfectas para comer fuera, y un silencia muy apreciable durante la noche, una maravilla.\r\nEl piso está super bien situado, hay un supermercado en frente y una panadería muy buena justo al lado, la acogida fue perfecta y la logística (entrega y recogida de la llave...) muy sencilla. Muy recomendable."
+            },
+            {
+                "at": "2014-05-08T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3404e36c59e6164fb401",
+                    "fullname": "Véronique",
+                    "imgUrl": "https://robohash.org/11540553?set=set1",
+                    "id": "11540553"
+                },
+                "txt": "Réactive et bon contact téléphonique."
+            },
+            {
+                "at": "2014-06-17T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3402e36c59e6164faf30",
+                    "fullname": "Thorsten",
+                    "imgUrl": "https://robohash.org/9056447?set=set1",
+                    "id": "9056447"
+                },
+                "txt": "The Hous is great. It´s a super cosy place in a nice neighborhood. You find evrerything you need in the House, plus you got two terraces and a padio.\r\nIt is super located, everything you need is close, Supermarket, Bakery and Restaurants just in front of the Door. Metro station around the corner also the placa espanya Montjuïc a few minutes walk away.\r\nYamila (friend of Christina) is a great host, she was super nice and open for every question we had. She also called us a taxi to take us to the airport at 5! in the morning.\r\nWe will for sure come back and book that place again.\r\nWould totally recommend that House for a great stay in Barcelona.\r\nThank you.\r\n \r\n"
+            },
+            {
+                "at": "2014-06-21T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3407e36c59e6164fbf72",
+                    "fullname": "Birgit",
+                    "imgUrl": "https://robohash.org/16129927?set=set1",
+                    "id": "16129927"
+                },
+                "txt": "GREAT!!! Christina and Yamila are very hospitable and very helpful. \r\nThe flat was very nice and spacious, clean and outfitted with everything we needed. The flat is super located (metro station, supermarket, bakery, ...).\r\n\r\nWe will come back : )\r\nThank you!"
+            }
+        ],
+        "likedByUsers": []
+    },
+    {
+        "_id": "622f337a75c7d36e498aab06",
+        "name": "*CoZy Private Williamsburg Home*",
+        "type": "Beachfront",
+        "imgUrls": [
+            "http://res.cloudinary.com/dmtlr2viw/image/upload/v1663436394/kscsvxyn0uro9tjhefeb.jpg",
+            "http://res.cloudinary.com/dmtlr2viw/image/upload/v1663437269/u6wxkpazgvqdxiceky9l.jpg",
+            "http://res.cloudinary.com/dmtlr2viw/image/upload/v1663436978/mhqf1tttzqr33ecrrwb2.jpg",
+            "http://res.cloudinary.com/dmtlr2viw/image/upload/v1663436811/ym5nh1anownexsyzgbqq.jpg",
+            "http://res.cloudinary.com/dmtlr2viw/image/upload/v1663436453/ndl8odasqgnyquvsbalp.jpg"
+        ],
+        "price": 225,
+        "summary": "*NO PARTIES OR EVENTS* **Minutes From MANHATTAN / NYC BY TRAIN* 1 BLOCK FROM GRAND ST. First Floor Newly Renovated And Furnished Williamsburg Apartment Duplex  Back yard access. Wood Floors. Wifi. Marble & Granite Bathroom. *NEW-CLEAN* *BAKYARD PATIO* *CABLE TV*",
+        "capacity": 4,
+        "amenities": [
+            "TV",
+            "Cable TV",
+            "Internet",
+            "Wifi",
+            "Air conditioning",
+            "Kitchen",
+            "Smoking allowed",
+            "Hot tub",
+            "Buzzer/wireless intercom",
+            "Heating",
+            "Family/kid friendly",
+            "Smoke detector",
+            "Carbon monoxide detector",
+            "First aid kit",
+            "Safety card",
+            "Fire extinguisher",
+            "Essentials",
+            "Shampoo",
+            "24-hour check-in",
+            "Hangers",
+            "Hair dryer",
+            "Iron",
+            "Laptop friendly workspace"
+        ],
+        "bathrooms": 1,
+        "bedrooms": 2,
+        "roomType": "Entire home/apt",
+        "host": {
+            "_id": "622f3405e36c59e6164fb9ad",
+            "fullname": "Sal",
+            "location": "US",
+            "about": "",
+            "responseTime": "within an hour",
+            "thumbnailUrl": "https://a0.muscache.com/im/pictures/217e78d8-bb65-46c5-af28-ecd1939e1945.jpg?aki_policy=profile_small",
+            "pictureUrl": "https://a0.muscache.com/im/pictures/217e78d8-bb65-46c5-af28-ecd1939e1945.jpg?aki_policy=profile_x_medium",
+            "isSuperhost": false,
+            "id": "62130666"
+        },
+        "loc": {
+            "country": "United States",
+            "countryCode": "US",
+            "city": "New York",
+            "address": "Brooklyn, NY, United States",
+            "lat": -73.94854,
+            "lan": 40.70998
+        },
+        "reviews": [
+            {
+                "at": "2016-03-23T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3402e36c59e6164facca",
+                    "fullname": "Franz",
+                    "imgUrl": "https://robohash.org/3010632?set=set1",
+                    "id": "3010632"
+                },
+                "txt": "The host canceled this reservation the day before arrival. This is an automated posting."
+            },
+            {
+                "at": "2016-05-09T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3403e36c59e6164faf76",
+                    "fullname": "Shanna",
+                    "imgUrl": "https://robohash.org/23181786?set=set1",
+                    "id": "23181786"
+                },
+                "txt": "Fantastic place. Clean and convenient to all of Williamsburg. My parents actually stayed here and the host was great to them, checking in all the time and making sure they had everything they needed. "
+            },
+            {
+                "at": "2016-05-15T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3404e36c59e6164fb2cc",
+                    "fullname": "Agustin",
+                    "imgUrl": "https://robohash.org/60482808?set=set1",
+                    "id": "60482808"
+                },
+                "txt": "Todo perfecto, ningun problema. Departamento muy lindo en una zona muy buena."
+            },
+            {
+                "at": "2016-05-20T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3404e36c59e6164fb2d9",
+                    "fullname": "Raymond",
+                    "imgUrl": "https://robohash.org/27629646?set=set1",
+                    "id": "27629646"
+                },
+                "txt": "everything nice and easy and good neighborhood too.\r\nI enjoyed my trim to NYC.\r\nThanks!"
+            },
+            {
+                "at": "2016-05-24T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3402e36c59e6164fac18",
+                    "fullname": "Robert",
+                    "imgUrl": "https://robohash.org/5008015?set=set1",
+                    "id": "5008015"
+                },
+                "txt": "Great apartment and backyard patio in a great location!!\nWalk to anything you could want in Willimsburg or a short subway or uber ride to NYC for everything else. Nicely updated apartment with easy on street parking and wonderful hosts and recommendations. Highly recommend!!"
+            },
+            {
+                "at": "2016-06-09T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3407e36c59e6164fbe19",
+                    "fullname": "Jack",
+                    "imgUrl": "https://robohash.org/75277003?set=set1",
+                    "id": "75277003"
+                },
+                "txt": "This place was awesome. Huge space in a perfect location close to bars and restaurants etc. The owner was very nice and accommodating. Took me a while to pick out an Air bnb in NYC because they were all too \"lived in\" this one didnt feel like i was invading somebody's home. Kind of like a two story hotel- i loved it. Also great backyard"
+            },
+            {
+                "at": "2016-06-11T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3402e36c59e6164fad2e",
+                    "fullname": "Nick",
+                    "imgUrl": "https://robohash.org/14272400?set=set1",
+                    "id": "14272400"
+                },
+                "txt": "Everything was wonderful! Sal was very easy to work with and made sure that we had a great stay. We had a great stay; I'll definitely be back soon!"
+            },
+            {
+                "at": "2016-07-29T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3405e36c59e6164fb6dc",
+                    "fullname": "Rocio",
+                    "imgUrl": "https://robohash.org/76415018?set=set1",
+                    "id": "76415018"
+                },
+                "txt": "neighborhood is pleasant and host was excellent"
+            },
+            {
+                "at": "2016-09-12T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3407e36c59e6164fbf07",
+                    "fullname": "Marek",
+                    "imgUrl": "https://robohash.org/2752452?set=set1",
+                    "id": "2752452"
+                },
+                "txt": "Great place for NY trip. Subway nearby. The host is on every call, very helpful. There was a plumbing problem during our stay, fixed immidetly by Sal. \nDefinitly can recomend the place"
+            },
+            {
+                "at": "2016-09-20T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3403e36c59e6164fb092",
+                    "fullname": "Eric",
+                    "imgUrl": "https://robohash.org/74173817?set=set1",
+                    "id": "74173817"
+                },
+                "txt": "The hosting was taken care of by Luis, who was fantastic and went out of his way to make me feel welcome.  He was terrific.  \r\n\r\nNeighborhood was good and the L train was easy to get to and the place was super clean."
+            },
+            {
+                "at": "2016-09-23T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3403e36c59e6164fb12b",
+                    "fullname": "Micheal",
+                    "imgUrl": "https://robohash.org/51661745?set=set1",
+                    "id": "51661745"
+                },
+                "txt": "The apartment is on the ground floor it's a 2BR-1B with a living room kitchen combo. One bedroom downstairs. It was very comfortable, newly remodeled, modern and Luis is a jewel (he even went so far as to go get us some canoli and sfoglitella from the best Italian bakery in Williamsbug when my Italian wife asked him about them). Fairly close to the L & M subway lines. Maybe 10 minutes to Union Square hub in Manhattan. \r\n\r\nHighly recommended. "
+            },
+            {
+                "at": "2016-09-25T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3402e36c59e6164fae81",
+                    "fullname": "Carolyn",
+                    "imgUrl": "https://robohash.org/91512091?set=set1",
+                    "id": "91512091"
+                },
+                "txt": "We had a great stay! The host was very flexible about check-in and check-out time, and made it clear he was available if we needed anything (we didn't.) Location was perfect, 5 minutes to L train into Manhattan, but on a quiet street. Spacious enough to sleep four friends very comfortably (two beds + two futon-style couches). We really enjoyed sitting out on the back patio as well. "
+            },
+            {
+                "at": "2016-10-03T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3404e36c59e6164fb40c",
+                    "fullname": "Stuart",
+                    "imgUrl": "https://robohash.org/35311290?set=set1",
+                    "id": "35311290"
+                },
+                "txt": "Sal was most helpful and reafy to help with anything.  The apartment is in a super location close to all Williamsburg smenities and the L line. I would recommrnd jt to anyone and would certainly stay there again if I had the chance."
+            },
+            {
+                "at": "2016-10-06T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3404e36c59e6164fb327",
+                    "fullname": "Martin",
+                    "imgUrl": "https://robohash.org/12765279?set=set1",
+                    "id": "12765279"
+                },
+                "txt": "The host was Great! Very helpful, even with my elderly father. My son lives nearby, so I knew it was a great neighborhood! Free bottled water and coffee was nice. Beautiful patio and the apartment was clean, beautifully furnished and so comfortable. I would definitely stay there again!,"
+            },
+            {
+                "at": "2016-10-14T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3405e36c59e6164fb779",
+                    "fullname": "Gianna",
+                    "imgUrl": "https://robohash.org/4143463?set=set1",
+                    "id": "4143463"
+                },
+                "txt": "Really good experience. We didn't spend much time hanging out in the apartment (though the patio was tempting) but it was close to friends, train, and plenty of good food. Will certainly book again!"
+            },
+            {
+                "at": "2016-10-23T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3405e36c59e6164fb762",
+                    "fullname": "Lene",
+                    "imgUrl": "https://robohash.org/12285705?set=set1",
+                    "id": "12285705"
+                },
+                "txt": "We arrived late at night, but Louis was waiting for us. He even showed us a place to buy dinner, although it was after midnight.\r\nThe neighbourhood is great and you can be in Manhattan in 20 minutes.\r\nThe appartemt was really nice and suited us well (2 adults and 2 teenagers). Louis was only a phone call away if we had questions and he popped by a few times to chek on us.\r\nWould definitely stay again."
+            },
+            {
+                "at": "2016-11-02T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3407e36c59e6164fbffb",
+                    "fullname": "Jacques",
+                    "imgUrl": "https://robohash.org/51298937?set=set1",
+                    "id": "51298937"
+                },
+                "txt": "Le duplex est parfaitement situé dans Brooklyn, à 5 minutes à pied du métro et du centre de Williamsburg, quartier le plus en vogue de Brooklyn. L'appartment n'est qu'à 15 minutes en métro du cœur de Manhattan.\nNous remercions tout particulièrement Luis pour son accueil et ses conseils."
+            },
+            {
+                "at": "2016-11-05T04:00:00.000Z",
+                "by": {
+                    "_id": "622f3404e36c59e6164fb378",
+                    "fullname": "Erin",
+                    "imgUrl": "https://robohash.org/5143901?set=set1",
+                    "id": "5143901"
+                },
+                "txt": "Sal was an excellent host. The apartment was really great and also he was really responsive and accommodating!"
+            },
+            {
+                "at": "2016-11-14T05:00:00.000Z",
+                "by": {
+                    "_id": "622f3407e36c59e6164fbfc7",
+                    "fullname": "Barry",
+                    "imgUrl": "https://robohash.org/30950396?set=set1",
+                    "id": "30950396"
+                },
+                "txt": "We had a great time staying here. Host was waiting for us upon arrival. Super friendly guy, real NYer. Apartment was spotless when we arrived and had everything you would need. Truth be told the pictures on the site don't do it justice. Great location walking distance to nice bars, restaurants etc. I'll be staying here next time i'm back in NY for sure. 10/10"
+            },
+            {
+                "at": "2016-12-12T05:00:00.000Z",
+                "by": {
+                    "_id": "622f3404e36c59e6164fb439",
+                    "fullname": "Adam",
+                    "imgUrl": "https://robohash.org/48672348?set=set1",
+                    "id": "48672348"
+                },
+                "txt": "Sal was great! I booked his place to house two trainees coming in to nyc from las vegas for work and he was super helpful with meeting up with them to get the keys to the place. The apartment was great, located in a safe part of williamsburg, very convenient to trains, restaurant and bars! He checked in with the two ladies during their stay to ensure that everything was going well. I would recommend this place to anyone who is looking for a friendly host and a nice place to stay in williamsburg brooklyn! "
+            }
+        ],
+        "likedByUsers": []
     }
 ]
 

@@ -16,13 +16,11 @@ export function StayIndex() {
     const stays = useSelector(storeState => storeState.stayModule.stays)
     const filterBy = useSelector(storeState => storeState.stayModule.filterBy)
     const [isFilterModalOpen, setIsFilterModalOpen] = useState(false)
-    const isLoadingRef = useRef(true)
     const isUnclickableBg = useSelector(storeState => storeState.systemModule.system)
     const isFilterExpanded = useSelector(storeState => storeState.systemModule.isFilterExpanded)
+
     useEffect(() => {
-        isLoadingRef.current = true
         loadStays()
-            .then(isLoadingRef.current = false)
     }, [filterBy])
 
 
@@ -37,7 +35,8 @@ export function StayIndex() {
 
     async function onAddStay() {
         const stay = stayService.getEmptyStay()
-        stay.vendor = prompt('Vendor?')
+        stay.name = prompt('Name?')
+        stay.description = prompt('description?')
         try {
             const savedStay = await addStay(stay)
             showSuccessMsg(`Stay added (id: ${savedStay._id})`)
@@ -91,7 +90,7 @@ export function StayIndex() {
                     setIsFilterModalOpen={setIsFilterModalOpen} />)
             }
             <UpperFilter />
-            <StayList stays={stays} isLoadingRef={isLoadingRef} />
+            <StayList stays={stays} />
             {/* below for aesthetic proposes - when there's no views to display */}
             {/* {stays.length > 0 && <DatePicker />} */}
             {false && <DatePicker />}

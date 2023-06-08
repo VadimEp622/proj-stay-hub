@@ -191,8 +191,6 @@
 
 
 
-
-
         &:hover {
             cursor: pointer;
         }
@@ -234,16 +232,20 @@
                 cursor: default;
 
 
-                &.where {
+                &.where-modal {
                     left: 0;
+                    padding-inline: 16px;
+                    padding-block-start: 16px;
+                    padding-block-end:32px;
+                    width: 478px;
                 }
 
-                &:is(.check-in, .check-out) {
+                &:is(.check-in-modal, .check-out-modal) {
                     left: 0;
                     right: 0;
                 }
 
-                &.who {
+                &.who-modal {
                     right: 0;
                 }
 

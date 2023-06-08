@@ -1,0 +1,89 @@
+.location-filter {
+    width: 100%;
+    margin-block-start: 8px;
+    margin-block-end: 32px;
+    padding-block-start: 16px;
+    padding-inline: 20px;
+
+    & h4 {
+        padding-block: 8px;
+        margin-block-end: 20px;
+        margin-inline-start: 5px;
+        line-height: 18px;
+        font-family: Circular-Bold;
+        font-weight: 400;
+        letter-spacing: 0;
+    }
+
+    & .locations {
+        display: grid;
+        grid-template-columns: repeat(3, 124px);
+        grid-template-rows: repeat(2, 150px);
+        grid-template-areas:
+            "flexible middle-east italy"
+            "south-america france united-states";
+        column-gap: 13px;
+        row-gap: 32px;
+
+        &>* {
+            display: flex;
+            flex-direction: column;
+            padding-block: 4px;
+            padding-inline: 4px;
+            min-width: 132px;
+            min-height: 158px;
+
+            & button {
+                background-color: inherit;
+                width: 100%;
+                height: 124px;
+                padding: 0;
+                margin: 0;
+                border: 1px solid $gray-clr3;
+                border-radius: 12px;
+                overflow: hidden;
+                transition: border-color 0.15s;
+
+                & img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+
+                &:hover {
+                    border-color: $black-clr0;
+                }
+            }
+
+            & span {
+                margin-block-start: 8px;
+                margin-inline: 2px;
+                color: $black-clr1;
+            }
+        }
+
+        & .flexible {
+            grid-area: flexible;
+        }
+
+        & .middle-east {
+            grid-area: middle-east;
+        }
+
+        & .italy {
+            grid-area: italy;
+        }
+
+        & .south-america {
+            grid-area: south-america;
+        }
+
+        & .france {
+            grid-area: france;
+        }
+
+        & .united-states {
+            grid-area: united-states;
+        }
+    }
+}
