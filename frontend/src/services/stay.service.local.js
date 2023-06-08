@@ -1509,18 +1509,20 @@ function getEmptyStay() {
 
 
 // *********************** PRIVATE FUNCTIONS ***********************
-// TEST DATA
-
-// storageService.post(STORAGE_KEY, {vendor: 'Subali Rahok 2', price: 980}).then(x => console.log(x))
 
 function _createDemoStays() {
     gStays = utilService.loadFromStorage(STAY_STORAGE_KEY) || []
     if (gStays.length > 0) return gStays
 
+
+    // To toggle between BIG DEMO DATA/OUR HANDMADE DEMO DATA:
     // Change This Manually to TRUE/FALSE and clear local storage!!
+    // ***********************************************
     // ***********************************************
     const BIG_DEMO_DATA = true
     // ***********************************************
+    // ***********************************************
+
 
     if (BIG_DEMO_DATA) {
         gStays = STAYS_TRUE_DEMO_TEMP
