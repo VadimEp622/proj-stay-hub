@@ -21,7 +21,6 @@ export function LoginSignup({ isSignUp }) {
         setModal(false)
     }
 
-
     useEffect(() => {
         loadUsers()
     }, [])
@@ -35,13 +34,12 @@ export function LoginSignup({ isSignUp }) {
         const field = ev.target.name
         const { value } = ev.target
         setCredentials({ ...credentials, [field]: value })
+        console.log(credentials)
     }
 
     async function onLogin(ev = null) {
         if (ev) ev.preventDefault()
         if (!credentials.username) return
-        // props.onLogin(credentials)
-        console.log('entered login button')
         try {
             const user = await login(credentials)
             showSuccessMsg(`Welcome: ${user.fullname}`)
@@ -50,6 +48,16 @@ export function LoginSignup({ isSignUp }) {
         } catch (err) {
             showErrorMsg('Cannot login')
         }
+    }
+
+    function onSubmit(ev) {
+        console.log('hi')
+        if (ev) {
+            ev.preventDefault()
+        }
+        onCloseModal(ev)
+        if (text === 'Sign up') onSignup()
+        else onLogin()
     }
 
     function onSignup(ev = null) {
@@ -65,6 +73,7 @@ export function LoginSignup({ isSignUp }) {
 
     function onCloseModal(ev) {
         ev.stopPropagation()
+        console.log('hi')
         setModal(false)
     }
 
@@ -85,7 +94,7 @@ export function LoginSignup({ isSignUp }) {
             </header>
             <section className='main-login'>
                 <h3 className="welcome">Welcome to Stay Hub</h3>
-                <form className="login-form flex justify-center align-center" onSubmit={onLogin}>
+                <form className="login-form flex justify-center align-center" onSubmit={onSubmit}>
                     {isSignUp && <input
                         type="text"
                         name="fullname"
@@ -125,7 +134,7 @@ export function LoginSignup({ isSignUp }) {
                     <p className="text-in-login">
                         We'll call or text you to confirm your number. Standard message and data rates apply. <span className="underline">Privacy Policy</span>
                     </p>
-                    <section className="button-login-wrapper"><AirbnbButton text={text} />
+                    <section className="button-login-wrapper" onClick={(ev) => onSubmit(ev)}><AirbnbButton text={text} />
                     </section>
                 </form>
                 <div className="divider">
@@ -133,7 +142,7 @@ export function LoginSignup({ isSignUp }) {
                     <div className="divider-text">or</div>
                     <div className="divider-line"></div>
                 </div>
-                <section className="second-button-wrapper">                <button className="button-second-option" onClick={(ev) => onChangeModal(ev, modalText)}>{isSignUp ? 'Log in' : 'Sign Up'}</button>
+                <section className="second-button-wrapper"><button className="button-second-option" type="button" onClick={(ev) => onChangeModal(ev, modalText)}>{isSignUp ? 'Log in' : 'Sign Up'}</button>
                 </section>
             </section>
         </div>
