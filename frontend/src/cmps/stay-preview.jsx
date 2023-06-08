@@ -26,8 +26,8 @@ export function StayPreview({ stay }) {
                         <p className="review-rate"><SvgHandler svgName={STAR} /><span>{reviewService.getAverageReview(stay)}</span></p>
                     </div>
                     <div className="stay-info">
-                        <p>{utilService.getFormattedTimeRange(stay.checkIn, stay.checkOut)}</p>
                         <p>Lorem, ipsum dolor.</p>
+                        <p>{utilService.getFormattedTimeRange(stay.checkIn, stay.checkOut)}</p>
                         <p className="price-preview"><span>${stay.price.toLocaleString()}</span> night</p>
                     </div>
                 </div>

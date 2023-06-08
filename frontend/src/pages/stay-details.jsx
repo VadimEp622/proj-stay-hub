@@ -63,7 +63,7 @@ export function StayDetails() {
     const reviews = stay.reviews.length > 1 ? 'reviews' : 'review'
     const capitalizedReviewsString = reviews.charAt(0).toUpperCase() + reviews.slice(1)
 
-    return <Fragment>
+    return <>
         <div>
             <Helmet>
                 <title>{stay.name}</title>
@@ -84,6 +84,9 @@ export function StayDetails() {
                         <span className='info-loc'>{stay.loc.city}, {stay.loc.country}</span>
                     </section>
                     <section className='btns flex'>
+                        <Link className="return-btn" to={`/stay/${id}`}>
+                            WISHLIST
+                        </Link>
                         <div className='share-btn flex'>
                             <SvgHandler svgName={SHARE} />
                             <span>Share</span>
@@ -294,5 +297,5 @@ export function StayDetails() {
 
             </section>
         </section >
-    </Fragment>
+    </>
 }
