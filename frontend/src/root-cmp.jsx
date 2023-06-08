@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { Routes, Route } from 'react-router'
 import { useParams, useLocation } from 'react-router-dom'
 import { stayService } from './services/stay.service.local'// needed to init demo data to localStorage (do not delete)
@@ -21,11 +21,11 @@ export function RootCmp() {
     const isModalOpen = useSelector(storeState => storeState.stayModule.isModalOpen)
     // const modalType = useSelector((storeState) => storeState.stayModule.modalType)
     return (
-        <Fragment>
+        <>
             <div className="main-screen-unclickable">
                 <div className="modal-wrapper" >
                     <div className="modal-wrapper-second" >
-                        {/* {!isModalOpen && <LoginSignup />} */}
+                        {/* {isModalOpen && <LoginSignup />} */}
                         {isModalOpen && <DynamicCmp modalType={isModalOpen} />}
                     </div>
                 </div>
@@ -44,6 +44,6 @@ export function RootCmp() {
 
             </section>
 
-        </Fragment>
+        </>
     )
 }
