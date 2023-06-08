@@ -29,7 +29,7 @@
 .links-label {
     font-size: 12px;
     font-weight: 700;
-    color: $clr3;
+    color: $gray-clr0;
     position: relative;
 }
 
@@ -37,7 +37,7 @@
 .links-box:hover {
     cursor: pointer;
     opacity: 0.8;
-    border-bottom: 0.5px $clr3;
+    border-bottom: 0.5px $gray-clr0;
 }
 
 .selected-box {

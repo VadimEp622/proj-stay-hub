@@ -64,8 +64,8 @@
             cursor: pointer;
             transition: box-shadow 0.2s ease, transform 0.1s ease;
             padding: 13px 23px;
-            background: $clr6;
-            border-color: $black-clr2;
+            background: $gray-clr-1;
+            border-color: $black-clr1;
             font-size: 14px;
             font-weight: 600;
             font-family: Circular-Regular;
@@ -82,7 +82,7 @@
 
         & .button-second-option:hover {
             border-color: #000000;
-            background: $clr8;
+            background: $gray-clr5;
         }
 
         & .login-form {
