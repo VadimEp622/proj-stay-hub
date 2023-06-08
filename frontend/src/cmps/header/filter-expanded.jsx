@@ -52,7 +52,6 @@ export function FilterExpanded(
         store.dispatch({ type: CLOSE_EXPANDED_HEADER_MODAL })
     }
 
-
     const dropdownRef = useClickOutside(onClickModal)
 
     return (
