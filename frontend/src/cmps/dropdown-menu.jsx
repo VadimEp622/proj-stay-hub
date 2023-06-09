@@ -55,7 +55,7 @@ export function DropDown({ setIsDropDownActive }) {
                         </div>
                         <div className="dropdown-option" onClick={(ev) => openModal(ev, 'signUp')}>Sign up</div>
                         <div className="dropdown-line"></div>
-                        <div className="dropdown-option">Stayhub your home</div>
+                        <Link to={`/dashboard/stay/add`}><div className="dropdown-option">Stayhub your home</div></Link>
                     </>
                 )}
             </div>

@@ -17,6 +17,7 @@ import { CLOSE_EXPANDED_HEADER, REMOVE_UNCLICKABLE_BG } from './store/system.red
 import { store } from './store/store'
 import { WishList } from './pages/wishlist'
 import { MyTrips } from './pages/trips'
+import { AddStay } from './pages/add-stay'
 
 export function RootCmp() {
     const isUnclickableBg = useSelector(storeState => storeState.systemModule.isUnclickableBg)
@@ -49,6 +50,7 @@ export function RootCmp() {
                         {routes.map(route => <Route key={route.path} exact={true} element={route.component} path={route.path} />)}
                         <Route path="user/:id" element={<UserDetails />} />
                         <Route path="wishlist" element={<WishList />} />
+                        <Route path="/dashboard/stay/add" element={<AddStay />} />
                         <Route path="trips" element={<MyTrips />} />
                         <Route path="stay/:stayId" element={<StayDetails />} />
                         <Route path="stay/book/:stayId" element={<OrderConfirmation />} />

@@ -1,65 +1,29 @@
 import { useState, useEffect } from 'react'
 import { userService } from '../services/user.service'
-import { ImgUploader } from './reuseableCmp/img-uploader'
 import { login, signup } from '../store/user.actions'
 import { useSelector } from 'react-redux'
-import { AirbnbButton } from './reuseableCmp/airbnb-button'
-import SvgHandler from './svg-handler'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 import { utilService } from '../services/util.service'
-import { Redirect } from "react-router-dom"
+import { Navigate } from 'react-router-dom';
 import { stayService } from '../services/stay.service.local'
 import { showErrorMsg } from '../services/event-bus.service'
-
-function onDropdownClickOutside() {
-    setModal(false)
-}
-
-useEffect(() => {
-    loadUsers()
-}, [])
-
-function onSubmit(values) {
-    console.log(values)
-    console.log('hi from submit')
-    if (text === 'Sign up') onSignup(values)
-    else onLogin(values)
-}
-
-
-async function loadUsers() {
-    const users = await userService.getUsers();
-    setUsers(users);
-}
+import Slider from 'rc-slider'
+import 'rc-slider/assets/index.css'
+import SvgHandler from '../cmps/svg-handler'
+import { setModal } from '../store/stay.actions'
+import Select from 'react-select'
+import { RenderErrorMessage } from '../cmps/errormessage'
 
 function handleChange(ev) {
     const field = ev.target.name;
     const { value } = ev.target;
-    setCredentials({ ...credentials, [field]: value });
-    console.log(credentials);
+    // setCredentials({ ...credentials, [field]: value });
 }
 
-async function onLogin(values) {
-    if (!values.username) return
-    try {
-        const user = await login(values)
-        showSuccessMsg(`Welcome: ${user.fullname}`)
-        setModal(false)
-    } catch (err) {
-        showErrorMsg('Cannot login')
-    }
-}
-
-async function onSignup(values) {
-    if (!values.username || !values.password || !values.fullname) return
-    setModal(false)
-    signup(values)
-}
-
-function onUploaded(imgUrl) {
-    setCredentials({ ...credentials, imgUrl })
-}
+// function onUploaded(imgUrl) {
+//     setCredentials({ ...credentials, imgUrl })
+// }
 
 
 const validationSchema = Yup.object().shape({
@@ -78,109 +42,195 @@ const validationSchema = Yup.object().shape({
     description: Yup.string()
         .min(10, 'Description must have at least 10 characters')
         .required('Description is required'),
-});
+    capacity: Yup.number()
+        .required('Capacity is required')
+        .positive('Capacity must be a positive number'),
+    bedrooms: Yup.number()
+        .required('Number of bedrooms is required')
+        .positive('Number of bedrooms must be a positive number'),
+    amenities: Yup.array().required('Please select at least one amenity'),
+    labels: Yup.array().required('Please select at least one label'),
+})
+
+
+const SliderField = ({ field, form, ...props }) => {
+    const { name, value } = field;
+    const { setFieldValue } = form;
+
+    const handleSliderChange = (newValue) => {
+        setFieldValue(name, newValue);
+    };
+
+    return (
+        <Slider
+            {...props}
+            value={value}
+            onChange={handleSliderChange}
+        />
+    )
+}
+
+const amenitiesOptions = [
+    { value: 'wifi', label: 'Wi-Fi' },
+    { value: 'parking', label: 'Parking' },
+    { value: 'pool', label: 'Swimming Pool' },
+]
+
+const labelOptions = [
+    { value: 'Cabins', label: 'Cabins' },
+    { value: 'Rooms', label: 'Rooms' },
+    { value: 'Design', label: 'Design' },
+    { value: 'Islands', label: 'Islands' },
+    { value: 'Countryside', label: 'Countryside' },
+    { value: 'Lakefront', label: 'Lakefront' },
+    { value: 'Beachfront', label: 'Beachfront' },
+    { value: 'Mansions', label: 'Mansions' },
+    { value: 'Arctic', label: 'Arctic' },
+]
+
+const customStyles = {
+    control: (provided) => ({
+        ...provided,
+        borderColor: 'gray',
+    }),
+}
+
+
+const MultiSelectField = ({ field, form: { setFieldValue }, options }) => {
+    const handleSelectChange = (selectedOptions) => {
+        setFieldValue(field.name, selectedOptions);
+    };
+
+    return (
+        <Select
+            {...field}
+            options={options}
+            isMulti
+            onChange={handleSelectChange}
+            onBlur={() => field.onBlur(field.name)}
+        />
+    )
+}
+
 
 export function AddStay() {
     const loggedInUser = useSelector(storeState => storeState.userModule.user)
     const [stayToAdd, setStayToAdd] = useState(stayService.getEmptyStay())
 
-    if (!loggedInUser) {
-        showErrorMsg('You must be logged in to enter this page')
-        return <Redirect to="/" />
+    // if (!loggedInUser) {
+    //     showErrorMsg('You must be logged in to enter this page')
+    //     return <Navigate to="/" />
+    // }
+
+    async function onSubmit(values) {
+        if (!values.name || !values.city || !values.country) return
+        setStayToAdd(values)
     }
+
+
     return (
         <section className="add-stay" >
             <section className="main-add-stay">
                 <Formik
-                    initialValues={credentials}
+                    initialValues={stayToAdd}
                     validationSchema={validationSchema}
                     onSubmit={onSubmit}
                 >
                     {({ errors, touched }) => (
                         <Form className="login-form flex justify-center align-center">
-                            {isSignUp && (
-                                <Field
-                                    type="text"
-                                    name="staytitle"
-                                    className="login-input"
-                                    placeholder="Add a title for your stay"
-                                    required
-                                />
-                            )}
                             <Field
                                 type="text"
-                                name="username"
+                                name="staytitle"
                                 className="login-input"
-                                placeholder="Username"
+                                placeholder="Add a title for your stay"
                                 required
                             />
                             <Field
-                                type="password"
-                                name="password"
+                                type="text"
+                                name="city"
                                 className="login-input"
-                                placeholder="Password"
+                                placeholder="Please enter the city name"
                                 required
                             />
-                            {
-                                errors.password && touched.password
-                                    ? (
-                                        <aside className="aside-required">
-                                            <div className="aside-required-modal">
-                                                <div className="exclamation"><SvgHandler svgName={'exclamation'} /></div>
-                                                <div className="aside-required-modal-text">{errors.password}</div>
-                                            </div>
-                                        </aside>
-                                    )
-                                    : null}
-                            {
-                                errors.fullname && touched.fullname
-                                    ? (
-                                        <aside className="aside-required">
-                                            <div className="aside-required-modal">
-                                                <div className="exclamation"><SvgHandler svgName={'exclamation'} /></div>
-                                                <div className="aside-required-modal-text">{errors.fullname}</div></div>
-                                        </aside>
-                                    )
-                                    : null
-                            }
-                            {errors.username && touched.username
-                                ? (
-                                    <aside className="aside-required">
-                                        <div className="aside-required-modal">
-                                            <div className="exclamation"><SvgHandler svgName={'exclamation'} /></div>
-                                            <div className="aside-required-modal-text">{errors.username}</div>
-                                        </div>
-                                    </aside>)
-                                : null}
+                            <Field
+                                type="text"
+                                name="country"
+                                className="login-input"
+                                placeholder="Please enter the country name"
+                                required
+                            />
+                            <Field
+                                type="text"
+                                name="street"
+                                className="login-input"
+                                placeholder="Please enter the street name"
+                                required
+                            />
+                            <Field
+                                type="number"
+                                name="capacity"
+                                className="login-input"
+                                placeholder="Please enter the capacity of people allowed to stay at this stay"
+                                required
+                                min={0}
+                                max={16}
+                            />
+                            <Field
+                                type="number"
+                                name="bedrooms"
+                                className="login-input"
+                                placeholder="Please enter the number of bedrooms"
+                                required
+                                min={0}
+                            />
+                            <Field
+                                type="number"
+                                name="price"
+                                className="login-input"
+                                placeholder="Please enter the price per night"
+                                required
+                                component={SliderField}
+                                min={25}
+                                max={1000}
+                            />
+                            <Field
+                                name="labels"
+                                component={({ field, form }) => (
+                                    <Select
+                                        options={labelOptions}
+                                        isMulti
+                                        value={field.value}
+                                        onChange={(selectedOptions) => form.setFieldValue(field.name, selectedOptions)}
+                                        onBlur={field.onBlur}
+                                        styles={customStyles}
+                                    />
+                                )}
+                            />
+                            <div className="form-group">
+                                <label htmlFor="amenities">Amenities:</label>
+                                <Field name="amenities" component={MultiSelectField} options={amenitiesOptions} />
+                            </div>
+                            <RenderErrorMessage fieldName="stayTitle" errors={errors} touched={touched} />
+                            <RenderErrorMessage fieldName="city" errors={errors} touched={touched} />
+                            <RenderErrorMessage fieldName="country" errors={errors} touched={touched} />
+                            <RenderErrorMessage fieldName="street" errors={errors} touched={touched} />
+                            <RenderErrorMessage fieldName="capacity" errors={errors} touched={touched} />
 
-                            <p className="text-in-login">
-                                {phraseText} <span className="underline">Privacy Policy</span>
-                            </p>
-                            <section className="button-login-wrapper" onClick={() => document.querySelector('.action-btn').click()}>
-                                <div className="btn-container" onClick={() => document.querySelector('.action-btn').click()}>
+                            {/* <section className="add-stay-button-wrapper" onClick={onSubmit}>
+                                <div className="add-stay-button-container" onClick={onSubmit}>
                                     {utilService.createDivsForButtonContainer()}
                                     <div className="content">
                                         <button className="action-btn" type="submit">
-                                            <span className="btn-txt">{text}</span>
+                                            <span className="btn-txt">Add</span>
                                         </button>
                                     </div>
                                 </div>
-                            </section>
+                            </section> */}
                         </Form>
                     )}
                 </Formik>
-                <div className="divider">
-                    <div className="divider-line"></div>
-                    <div className="divider-text">or</div>
-                    <div className="divider-line"></div>
-                </div>
-                <section className="second-button-wrapper">
-                    <button className="button-second-option" type="button" onClick={ev => onChangeModal(ev, modalText)}>
-                        {isSignUp ? 'Log in' : 'Sign Up'}
-                    </button>
-                </section>
             </section>
         </section >
-    );
+    )
 }
 
