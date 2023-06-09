@@ -42,6 +42,8 @@ export function StayPreview({ stay }) {
         setIsLikeClicked(likedId)
     }, [wishedListItems, stay._id])
 
+    const bedrooms = stay.bedrooms > 1 ? 'bedrooms' : 'bedroom'
+
     return (
         <section className="stay-preview" key={stay._id}>
             <div className="img-container">
@@ -58,7 +60,8 @@ export function StayPreview({ stay }) {
                     </div>
                     <div className="stay-info">
                     {!isWishlistPage ? <p>Lorem, ipsum dolor.</p> : <p>{stay.type}</p> }
-                        <p>{utilService.getFormattedTimeRange(stay.checkIn, stay.checkOut)}</p>
+                    {isWishlistPage ? <p>{stay.bedrooms} {bedrooms} </p> : '' }
+                    <p>{utilService.getFormattedTimeRange(stay.checkIn, stay.checkOut)}</p>
                         <p className="price-preview"><span>${stay.price.toLocaleString()}</span> night</p>
                     </div>
                 </div>
