@@ -15,12 +15,12 @@
         letter-spacing: 0px;
     }
 
-    & p {
+    & .wishlist-msg {
         margin-top: 20px;
         margin-bottom: 26px;
     }
 
-    & button {
+    & .explore {
         height: rem(48px);
         width: rem(160px);
         background-color: $black-clr1;
@@ -29,5 +29,10 @@
         line-height: rem(20px);
         border-radius: rem(8px);
         letter-spacing: 0.8px;
+    }
+
+    & .button-log-in-wrapper {
+        height: rem(48px);
+        width: rem(92px);
     }
 }
