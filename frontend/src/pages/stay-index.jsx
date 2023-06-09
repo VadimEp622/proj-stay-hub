@@ -5,7 +5,7 @@ import { loadStays, addStay, updateStay, removeStay, addToCart } from '../store/
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 import { stayService } from '../services/stay.service.js'
 import { Link } from 'react-router-dom'
-import { UpperFilter } from '../cmps/upper-filter.jsx'
+import { CategoryFilter } from '../cmps/category-filter.jsx'
 import { StayList } from '../cmps/stay-list.jsx'
 import { DatePicker } from '../cmps/date-picker.jsx'
 import { FilterModal } from '../cmps/filter.jsx'
@@ -89,7 +89,7 @@ export function StayIndex() {
                 isFilterModalOpen && (<FilterModal stays={stays}
                     setIsFilterModalOpen={setIsFilterModalOpen} />)
             }
-            <UpperFilter />
+            <CategoryFilter />
             <StayList stays={stays} />
             {/* below for aesthetic proposes - when there's no views to display */}
             {/* {stays.length > 0 && <DatePicker />} */}
