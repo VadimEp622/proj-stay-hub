@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react"
 import Carousel from "react-multi-carousel"
 import { Link } from "react-router-dom"
 
-// import "react-multi-carousel/lib/styles.css"
+import "react-multi-carousel/lib/styles.css"
 
 
 import { ARROW_LEFT, ARROW_RIGHT } from "../services/svg.service.js"
