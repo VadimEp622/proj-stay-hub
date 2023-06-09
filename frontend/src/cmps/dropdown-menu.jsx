@@ -37,10 +37,11 @@ export function DropDown({ setIsDropDownActive }) {
         <>
             <div className="dropdown-navbar flex">
                 <Link to={`/wishlist`}><div className="dropdown-option">Wishlist</div></Link>
+                <Link to={`/trips`}><div className="dropdown-option">Trips</div></Link>
+
                 {loggedInUser ? (
                     <>
                         <div className="dropdown-option">Messages</div>
-                        <div className="dropdown-option">Trips</div>
                         <div className="dropdown-line"></div>
                         <div className="dropdown-option">Manage listings</div>
                         <div className="dropdown-option">Dashboard</div>

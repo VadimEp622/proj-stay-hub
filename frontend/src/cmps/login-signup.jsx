@@ -206,34 +206,34 @@ export function LoginSignup({ isSignUp }) {
     }
 
     async function onLogin(values) {
-        if (!values.username) return;
+        if (!values.username) return
         try {
-            const user = await login(values);
-            showSuccessMsg(`Welcome: ${user.fullname}`);
-            setModal(false);
+            const user = await login(values)
+            showSuccessMsg(`Welcome: ${user.fullname}`)
+            setModal(false)
         } catch (err) {
-            showErrorMsg('Cannot login');
+            showErrorMsg('Cannot login')
         }
     }
 
     async function onSignup(values) {
-        if (!values.username || !values.password || !values.fullname) return;
-        setModal(false);
-        signup(values);
+        if (!values.username || !values.password || !values.fullname) return
+        setModal(false)
+        signup(values)
     }
 
     function onUploaded(imgUrl) {
-        setCredentials({ ...credentials, imgUrl });
+        setCredentials({ ...credentials, imgUrl })
     }
 
     function onCloseModal(ev) {
-        if (ev) ev.stopPropagation();
-        setModal(false);
+        if (ev) ev.stopPropagation()
+        setModal(false)
     }
 
     function onChangeModal(ev, modal) {
-        ev.stopPropagation();
-        setModal(modal);
+        ev.stopPropagation()
+        setModal(modal)
     }
 
     const text = isSignUp ? 'Sign up' : 'Login';

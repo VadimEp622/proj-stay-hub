@@ -3484,6 +3484,9 @@ function getEmptyStay() {
         imgUrls: [],
         summary: '',
         capacity: '',
+        labels: '',
+        bedrooms: '',
+        amenities: ''
     }
 }
 
