@@ -114,6 +114,7 @@ const MultiSelectField = ({ field, form: { setFieldValue }, options }) => {
 }
 
 
+
 export function AddStay() {
     const loggedInUser = useSelector(storeState => storeState.userModule.user)
     const [stayToAdd, setStayToAdd] = useState(stayService.getEmptyStay())
@@ -125,6 +126,13 @@ export function AddStay() {
 
     async function onSubmit(values) {
         if (!values.name || !values.city || !values.country) return
+        // const uploadedImages = [];
+        // for (const file of values.images) {
+        //     const secureUrl = await uploadImage(file);
+        //     uploadedImages.push(secureUrl);
+        // }
+        // console.log("Uploaded Images:", uploadedImages);
+
         setStayToAdd(values)
     }
 
@@ -146,6 +154,21 @@ export function AddStay() {
                 >
                     {({ errors, touched }) => (
                         <Form className="login-form flex justify-center align-center">
+                            {/* <Field
+                                type="file"
+                                name="images"
+                                multiple
+                                onChange={(event) => {
+                                    const files = event.currentTarget.files;
+                                    const imagesArray = Array.from(files).map((file) =>
+                                        Object.assign(file, {
+                                            preview: URL.createObjectURL(file),
+                                            id: uuidv4(),
+                                        })
+                                    )
+                                    setFieldValue("images", imagesArray);
+                                }}
+                            /> */}
                             <Field
                                 type="text"
                                 name="staytitle"
