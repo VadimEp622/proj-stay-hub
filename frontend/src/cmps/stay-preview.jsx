@@ -59,9 +59,9 @@ export function StayPreview({ stay }) {
                         <p className="review-rate"><SvgHandler svgName={STAR} /><span>{reviewService.getAverageReview(stay)}</span></p>
                     </div>
                     <div className="stay-info">
-                    {!isWishlistPage ? <p>Lorem, ipsum dolor.</p> : <p>{stay.type}</p> }
-                    {isWishlistPage ? <p>{stay.bedrooms} {bedrooms} </p> : '' }
-                    <p>{utilService.getFormattedTimeRange(stay.checkIn, stay.checkOut)}</p>
+                        {!isWishlistPage ? <p>Lorem, ipsum dolor.</p> : <p>{stay.type}</p>}
+                        {isWishlistPage ? <p>{stay.bedrooms} {bedrooms} </p> : ''}
+                        <p>{utilService.getFormattedTimeRange(stay.checkIn, stay.checkOut)}</p>
                         <p className="price-preview"><span>${stay.price.toLocaleString()}</span> night</p>
                     </div>
                 </div>

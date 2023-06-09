@@ -16,6 +16,7 @@ import { DynamicCmp } from './cmps/reuseableCmp/dynamicCmp'
 import { CLOSE_EXPANDED_HEADER, REMOVE_UNCLICKABLE_BG } from './store/system.reducer'
 import { store } from './store/store'
 import { WishList } from './pages/wishlist'
+import { MyTrips } from './pages/trips'
 
 export function RootCmp() {
     const isUnclickableBg = useSelector(storeState => storeState.systemModule.isUnclickableBg)

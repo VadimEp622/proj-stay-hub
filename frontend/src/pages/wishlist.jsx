@@ -20,7 +20,7 @@ export function WishList() {
         <div className="wishlist-container">
             <h1>Wishlist</h1>
             <h3>Log in to view your wishlists</h3>
-            <p>You can create, view, or edit wishlists once you've logged in</p>
+            <p className="wishlist-msg">You can create, view, or edit wishlists once you've logged in</p>
             <div className="button-log-in-wrapper" onClick={handleLoginClick}>
                 <AirbnbButton text={'Log in'} />
             </div>
