@@ -14,6 +14,10 @@ import SvgHandler from '../cmps/svg-handler'
 import { setModal } from '../store/stay.actions'
 import Select from 'react-select'
 import { RenderErrorMessage } from '../cmps/errormessage'
+// import { v4 as uuidv4 } from "uuid";
+// import { CloudinaryContext, Image } from "cloudinary-react";
+// import { cloudinaryConfig, uploadImage } from "../services/cloudinaryutils";
+
 
 function handleChange(ev) {
     const field = ev.target.name;
@@ -112,29 +116,6 @@ const MultiSelectField = ({ field, form: { setFieldValue }, options }) => {
     )
 }
 
-export const cloudinaryConfig = () => {
-    cloudinary.config({
-        cloud_name: "YOUR_CLOUD_NAME",
-        api_key: "YOUR_API_KEY",
-        api_secret: "YOUR_API_SECRET",
-    });
-};
-
-export const uploadImage = (file) => {
-    return new Promise((resolve, reject) => {
-        cloudinary.uploader.upload(
-            file,
-            { resource_type: "auto", folder: "YOUR_FOLDER_NAME" },
-            (error, result) => {
-                if (error) {
-                    reject(error);
-                } else {
-                    resolve(result.secure_url);
-                }
-            }
-        );
-    });
-};
 
 
 export function AddStay() {
@@ -148,12 +129,12 @@ export function AddStay() {
 
     async function onSubmit(values) {
         if (!values.name || !values.city || !values.country) return
-        const uploadedImages = [];
-        for (const file of values.images) {
-            const secureUrl = await uploadImage(file);
-            uploadedImages.push(secureUrl);
-        }
-        console.log("Uploaded Images:", uploadedImages);
+        // const uploadedImages = [];
+        // for (const file of values.images) {
+        //     const secureUrl = await uploadImage(file);
+        //     uploadedImages.push(secureUrl);
+        // }
+        // console.log("Uploaded Images:", uploadedImages);
 
         setStayToAdd(values)
     }
@@ -163,13 +144,13 @@ export function AddStay() {
         <section className="add-stay" >
             <section className="main-add-stay">
                 {/* Display the uploaded images */}
-                <div className="image-grid">
+                {/* <div className="image-grid">
                     {values?.images?.map((image) => (
                         <div className="image-preview" key={image.id}>
                             <img src={image.preview} alt={`Image ${image.id}`} />
                         </div>
                     ))}
-                </div>
+                </div> */}
 
                 <Formik
                     initialValues={stayToAdd}
@@ -178,7 +159,7 @@ export function AddStay() {
                 >
                     {({ errors, touched }) => (
                         <Form className="login-form flex justify-center align-center">
-                            <Field
+                            {/* <Field
                                 type="file"
                                 name="images"
                                 multiple
@@ -192,7 +173,7 @@ export function AddStay() {
                                     )
                                     setFieldValue("images", imagesArray);
                                 }}
-                            />
+                            /> */}
                             <Field
                                 type="text"
                                 name="staytitle"
