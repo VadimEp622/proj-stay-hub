@@ -112,6 +112,30 @@ const MultiSelectField = ({ field, form: { setFieldValue }, options }) => {
     )
 }
 
+export const cloudinaryConfig = () => {
+    cloudinary.config({
+        cloud_name: "YOUR_CLOUD_NAME",
+        api_key: "YOUR_API_KEY",
+        api_secret: "YOUR_API_SECRET",
+    });
+};
+
+export const uploadImage = (file) => {
+    return new Promise((resolve, reject) => {
+        cloudinary.uploader.upload(
+            file,
+            { resource_type: "auto", folder: "YOUR_FOLDER_NAME" },
+            (error, result) => {
+                if (error) {
+                    reject(error);
+                } else {
+                    resolve(result.secure_url);
+                }
+            }
+        );
+    });
+};
+
 
 export function AddStay() {
     const loggedInUser = useSelector(storeState => storeState.userModule.user)
@@ -124,6 +148,13 @@ export function AddStay() {
 
     async function onSubmit(values) {
         if (!values.name || !values.city || !values.country) return
+        const uploadedImages = [];
+        for (const file of values.images) {
+            const secureUrl = await uploadImage(file);
+            uploadedImages.push(secureUrl);
+        }
+        console.log("Uploaded Images:", uploadedImages);
+
         setStayToAdd(values)
     }
 
@@ -131,6 +162,15 @@ export function AddStay() {
     return (
         <section className="add-stay" >
             <section className="main-add-stay">
+                {/* Display the uploaded images */}
+                <div className="image-grid">
+                    {values?.images?.map((image) => (
+                        <div className="image-preview" key={image.id}>
+                            <img src={image.preview} alt={`Image ${image.id}`} />
+                        </div>
+                    ))}
+                </div>
+
                 <Formik
                     initialValues={stayToAdd}
                     validationSchema={validationSchema}
@@ -138,6 +178,21 @@ export function AddStay() {
                 >
                     {({ errors, touched }) => (
                         <Form className="login-form flex justify-center align-center">
+                            <Field
+                                type="file"
+                                name="images"
+                                multiple
+                                onChange={(event) => {
+                                    const files = event.currentTarget.files;
+                                    const imagesArray = Array.from(files).map((file) =>
+                                        Object.assign(file, {
+                                            preview: URL.createObjectURL(file),
+                                            id: uuidv4(),
+                                        })
+                                    )
+                                    setFieldValue("images", imagesArray);
+                                }}
+                            />
                             <Field
                                 type="text"
                                 name="staytitle"
