@@ -12,42 +12,18 @@ import SvgHandler from "./svg-handler.jsx"
 
 export function PreviewImageCarousel({ imgs, stay }) {
 
-    // const CustomRightArrow = ({ onClick, ...rest }) => {
-    //     const {
-    //         onMove,
-    //         carouselState: { currentSlide, deviceType }
-    //     } = rest
-    //     // onMove means if dragging or swiping in progress.
-    //     return <button onClick={() => onClick()} />
-    // }
-
-    // const arrowStyle = {
-    //     background: "transparent",
-    //     border: 0,
-    //     color: "red",
-    //     fontSize: "80px",
-    //     position: 'absolute'
-    // };
 
     const CustomLeftArrow = ({ onClick }) => (
         <button className="custom-arrow left" onClick={onClick} >
             <SvgHandler svgName={ARROW_LEFT} />
         </button >
-    );
+    )
+
     const CustomRightArrow = ({ onClick }) => (
         <button className="custom-arrow right" onClick={onClick}  >
             <SvgHandler svgName={ARROW_RIGHT} />
         </button >
-    );
-
-    console.log('CustomLeftArrow', CustomLeftArrow)
-
-    // const CustomLeft = ({ onClick }) => (
-    //     <button className="arrow left" onClick={onClick} style={arrowStyle}>
-    //         <ArrowBackIcon style={{ fontSize: "50px" }} />
-    //     </button>
-    // );
-
+    )
 
     const responsive = {
         desktop: {
@@ -76,16 +52,9 @@ export function PreviewImageCarousel({ imgs, stay }) {
     return (
         <Carousel
             additionalTransfrom={0}
-
             arrows
-            // arrows={false}
-            // arrows={true}
-
             centerMode={false}
-            // className='carousel'
-            // containerClass='container'
             className="preview-image-carousel"
-            // containerClass="preview-image-carousel-container"
             customTransition="transform 300ms ease-in-out"
             dotListClass="dot-container"
             draggable={false}
@@ -110,12 +79,12 @@ export function PreviewImageCarousel({ imgs, stay }) {
                     <Link key={index} to={`/stay/${stay._id}`} target="_blank">
                         <img
                             src={img}
-                            // style={{
-                            //     // display: "block",
-                            //     // height: "100%",
-                            //     // width: "100%",
-                            //     // margin: "auto",
-                            // }}
+                        // style={{
+                        //     // display: "block",
+                        //     // height: "100%",
+                        //     // width: "100%",
+                        //     // margin: "auto",
+                        // }}
                         />
                     </Link>
                 ))
