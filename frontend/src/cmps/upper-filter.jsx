@@ -1,6 +1,6 @@
-import React, { useEffect, useRef, useState } from "react";
-import { CarouselImage2 } from "./carousel2";
-import { updateFilterBy } from "../store/stay.actions";
+import React, { useEffect, useRef, useState } from "react"
+import { CarouselImage2 } from "./carousel2"
+import { updateFilterBy } from "../store/stay.actions"
 
 export function UpperFilter() {
     // const labels = getLabels(stays)

@@ -1,4 +1,13 @@
 import React from 'react'
+
+// ************************************** ARROWS **************************************
+import { ReactComponent as ArrowLeftFat } from '../assets/img/arrows/arrow-left-fat.svg'
+import { ReactComponent as ArrowLeft } from '../assets/img/arrows/arrow-left.svg'
+import { ReactComponent as ArrowRightFat } from '../assets/img/arrows/arrow-right-fat.svg'
+import { ReactComponent as ArrowRight } from '../assets/img/arrows/arrow-right.svg'
+import { ReactComponent as ArrowUp } from '../assets/img/arrows/arrow-up.svg'
+
+// ************************************** ... **************************************
 import { ReactComponent as Logo } from '../assets/img/logo/logo-airbnb.svg'
 import { ReactComponent as UserNavBar } from '../assets/img/user-nav/user-nav-bars.svg'
 import { ReactComponent as UserNavProfile } from '../assets/img/user-nav/user-nav-profile.svg'
@@ -31,7 +40,7 @@ import { ReactComponent as Exclamation } from '../assets/img/airbnb-assets/excla
 
 import {
     HEART_16, RED_HEART_16, LOGO, RED_HEART, SEARCH, SHARE, STAR, STAR_16, USER_NAV_BARS,
-    USER_NAV_PROFILE, WHITE_HEART, LOCATION, KEY, CHECKIN, SEARCH_2, TICK_DECLINE, VERIFIED
+    USER_NAV_PROFILE, WHITE_HEART, LOCATION, KEY, CHECKIN, SEARCH_2, TICK_DECLINE, VERIFIED, ARROW_LEFT_FAT, ARROW_LEFT, ARROW_RIGHT, ARROW_RIGHT_FAT, ARROW_UP
 } from '../services/svg.service'
 
 
@@ -39,6 +48,19 @@ const SvgHandler = ({ svgName }) => {
 
     function svgIdentifier(name) {
         switch (name) {
+            // ************************************** ARROWS **************************************
+            case ARROW_LEFT_FAT:
+                return <ArrowLeftFat />
+            case ARROW_LEFT:
+                return <ArrowLeft />
+            case ARROW_RIGHT_FAT:
+                return <ArrowRightFat />
+            case ARROW_RIGHT:
+                return <ArrowRight />
+            case ARROW_UP:
+                return <ArrowUp />
+
+            // ************************************** ... **************************************
             case USER_NAV_BARS:
                 return <UserNavBar />
             case LOGO:

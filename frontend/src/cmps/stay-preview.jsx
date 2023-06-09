@@ -1,15 +1,23 @@
-import { reviewService } from "../services/review.service";
-import { utilService } from "../services/util.service";
+import { useState, useEffect } from "react"
+import { Link, useLocation } from "react-router-dom"
+import { useSelector } from "react-redux"
+
+
 // import star from '../assets/img/star.svg'
-import SvgHandler from "./svg-handler";
-import { HEART, STAR, WHITE_HEART } from "../services/svg.service";
-import { CarouselImage } from "./carousel";
-import { Link, useLocation } from "react-router-dom";
-import { useState } from "react";
-import { useSelector } from "react-redux";
-import { setModal } from "../store/stay.actions";
-import { AddToWishlist, removeFromWishlist } from "../store/user.actions";
-import { useEffect } from "react"
+
+
+import { utilService } from "../services/util.service.js"
+import { reviewService } from "../services/review.service.js"
+import { HEART, STAR, WHITE_HEART } from "../services/svg.service.js"
+
+
+import { setModal } from "../store/stay.actions.js"
+import { AddToWishlist, removeFromWishlist } from "../store/user.actions.js"
+
+
+import SvgHandler from "./svg-handler.jsx"
+import { PreviewImageCarousel } from "./preview-image-carousel.jsx"
+
 
 export function StayPreview({ stay }) {
 
@@ -47,7 +55,7 @@ export function StayPreview({ stay }) {
     return (
         <section className="stay-preview" key={stay._id}>
             <div className="img-container">
-                <CarouselImage imgs={stay.imgUrls} stay={stay} />
+                <PreviewImageCarousel imgs={stay.imgUrls} stay={stay} />
             </div>
             <div className="heart-svg" onClick={(ev) => onLikeClicked(ev)}>
                 <SvgHandler svgName={likeSVG} />
@@ -59,9 +67,9 @@ export function StayPreview({ stay }) {
                         <p className="review-rate"><SvgHandler svgName={STAR} /><span>{reviewService.getAverageReview(stay)}</span></p>
                     </div>
                     <div className="stay-info">
-                    {!isWishlistPage ? <p>Lorem, ipsum dolor.</p> : <p>{stay.type}</p> }
-                    {isWishlistPage ? <p>{stay.bedrooms} {bedrooms} </p> : '' }
-                    <p>{utilService.getFormattedTimeRange(stay.checkIn, stay.checkOut)}</p>
+                        {!isWishlistPage ? <p>Lorem, ipsum dolor.</p> : <p>{stay.type}</p>}
+                        {isWishlistPage ? <p>{stay.bedrooms} {bedrooms} </p> : ''}
+                        <p>{utilService.getFormattedTimeRange(stay.checkIn, stay.checkOut)}</p>
                         <p className="price-preview"><span>${stay.price.toLocaleString()}</span> night</p>
                     </div>
                 </div>

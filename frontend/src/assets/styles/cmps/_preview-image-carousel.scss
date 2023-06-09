@@ -1,0 +1,34 @@
+.preview-image-carousel {
+    & .custom-arrow {
+        border: 0;
+        color: $black-clr1;
+        background-color: $transparent-clr1;
+        font-size: 80px;
+        position: absolute;
+        height: 32px;
+        width: 32px;
+        border-radius: 32px;
+        opacity: 0;
+        transition: all 0.25s ease;
+
+        & svg {
+            width: 12px;
+            margin-inline: auto;
+        }
+
+        &.left {
+            left: 0;
+            margin-inline-start: 12px;
+        }
+
+        &.right {
+            right: 0;
+            margin-inline-end: 12px;
+        }
+
+        &:hover {
+            background-color: $gray-clr-1;
+            transform: scale(1.04);
+        }
+    }
+}

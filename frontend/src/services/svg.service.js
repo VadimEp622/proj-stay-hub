@@ -1,3 +1,11 @@
+// ************************************** ARROWS **************************************
+export const ARROW_LEFT_FAT = 'ARROW_LEFT_FAT'
+export const ARROW_LEFT = 'ARROW_LEFT'
+export const ARROW_RIGHT_FAT = 'ARROW_RIGHT_FAT'
+export const ARROW_RIGHT = 'ARROW_RIGHT'
+export const ARROW_UP = 'ARROW_UP'
+
+// ************************************** ... **************************************
 export const LOGO = 'logo'
 export const USER_NAV_BARS = 'user_nav-bars'
 export const USER_NAV_PROFILE = 'user-nav-profile'
