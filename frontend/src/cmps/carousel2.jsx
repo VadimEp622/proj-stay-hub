@@ -1,9 +1,41 @@
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
+import Carousel from "react-multi-carousel"
+import "react-multi-carousel/lib/styles.css"
 
 export function CarouselImage2({ images, handleClick }) {
     const isMobileDevice = window.innerWidth <= 464
     // console.log(images)
+
+    const responsive = {
+        largeDesktop: {
+            breakpoint: {
+                max: 4000,
+                min: 1600
+            },
+            items: 1,
+        },
+        desktop: {
+            breakpoint: {
+                max: 1600,
+                min: 1024
+            },
+            items: 1,
+        },
+        tablet: {
+            breakpoint: {
+                max: 1024,
+                min: 464
+            },
+            items: 3,
+        },
+        mobile: {
+            breakpoint: {
+                max: 464,
+                min: 0
+            },
+            items: 2,
+        },
+    }
+
     return (
         <Carousel
             additionalTransfrom={0}
@@ -23,36 +55,7 @@ export function CarouselImage2({ images, handleClick }) {
             renderArrowsWhenDisabled={false}
             renderButtonGroupOutside={false}
             renderDotsOutside={false}
-            responsive={{
-                largeDesktop: {
-                    breakpoint: {
-                        max: 4000,
-                        min: 1600
-                    },
-                    items: 1,
-                },
-                desktop: {
-                    breakpoint: {
-                        max: 1600,
-                        min: 1024
-                    },
-                    items: 1,
-                },
-                tablet: {
-                    breakpoint: {
-                        max: 1024,
-                        min: 464
-                    },
-                    items: 3,
-                },
-                mobile: {
-                    breakpoint: {
-                        max: 464,
-                        min: 0
-                    },
-                    items: 2,
-                },
-            }}
+            responsive={responsive}
             rewind={false}
             rewindWithAnimation={false}
             rtl={false}
@@ -62,15 +65,17 @@ export function CarouselImage2({ images, handleClick }) {
             slidesToSlide={1}
             swipeable
         >
-            {images.map((img, index) => {
-                // console.log(img.imgSrc)
-                return (
-                    <img
-                        key={index}
-                        src={img.imgSrc}
-                    />
-                );
-            })}
+            {
+                images.map((img, index) => {
+                    // console.log(img.imgSrc)
+                    return (
+                        <img
+                            key={index}
+                            src={img.imgSrc}
+                        />
+                    )
+                })
+            }
         </Carousel>
     )
 }
