@@ -4,7 +4,7 @@ import { utilService } from "../services/util.service";
 import SvgHandler from "./svg-handler";
 import { HEART, STAR, WHITE_HEART } from "../services/svg.service";
 import { CarouselImage } from "./carousel";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { setModal } from "../store/stay.actions";
@@ -16,8 +16,11 @@ export function StayPreview({ stay }) {
     const [isLikeClicked, setIsLikeClicked] = useState(false)
     const likeSVG = isLikeClicked ? 'heart-red' : 'heart-white'
     const loggedInUser = useSelector(storeState => storeState.userModule.user)
-    const wishedListItems = useSelector(storeState => storeState.userModule.user.wishlist)
-    console.log(wishedListItems)
+    const wishedListItems = useSelector(storeState => storeState.userModule.user?.wishlist)
+    const location = useLocation()
+    const isWishlistPage = location.pathname.includes('/wishlist')
+
+
     function onLikeClicked(ev) {
         if (ev) {
             ev.preventDefault()
@@ -35,10 +38,9 @@ export function StayPreview({ stay }) {
     }
 
     useEffect(() => {
-        const likedId = wishedListItems.some((wishlist) => wishlist._id === stay._id)
+        const likedId = wishedListItems?.some((wishlist) => wishlist._id === stay._id)
         setIsLikeClicked(likedId)
     }, [wishedListItems, stay._id])
-
 
     return (
         <section className="stay-preview" key={stay._id}>
@@ -55,7 +57,7 @@ export function StayPreview({ stay }) {
                         <p className="review-rate"><SvgHandler svgName={STAR} /><span>{reviewService.getAverageReview(stay)}</span></p>
                     </div>
                     <div className="stay-info">
-                        <p>Lorem, ipsum dolor.</p>
+                    {!isWishlistPage ? <p>Lorem, ipsum dolor.</p> : <p>{stay.type}</p> }
                         <p>{utilService.getFormattedTimeRange(stay.checkIn, stay.checkOut)}</p>
                         <p className="price-preview"><span>${stay.price.toLocaleString()}</span> night</p>
                     </div>
