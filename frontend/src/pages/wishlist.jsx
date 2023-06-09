@@ -5,7 +5,7 @@ import { Link } from "react-router-dom"
 
 
 export function WishList() {
-    const wishList = useSelector(storeState => storeState.userModule.user.wishlist)
+    const wishList = useSelector(storeState => storeState.userModule.user?.wishlist)
 
     if (wishList.length === 0 || !wishList) {
         return (
