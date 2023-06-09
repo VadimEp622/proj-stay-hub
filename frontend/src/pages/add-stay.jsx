@@ -14,6 +14,7 @@ import SvgHandler from '../cmps/svg-handler'
 import { setModal } from '../store/stay.actions'
 import Select from 'react-select'
 import { RenderErrorMessage } from '../cmps/errormessage'
+import { ImgUploader } from '../cmps/reuseableCmp/img-uploader'
 
 function handleChange(ev) {
     const field = ev.target.name;
@@ -131,6 +132,13 @@ export function AddStay() {
     return (
         <section className="add-stay" >
             <section className="main-add-stay">
+                <section className='img-upload-container'>
+                    <ImgUploader />
+                    <ImgUploader />
+                    <ImgUploader />
+                    <ImgUploader />
+                    <ImgUploader />
+                </section>
                 <Formik
                     initialValues={stayToAdd}
                     validationSchema={validationSchema}

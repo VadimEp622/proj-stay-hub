@@ -18,14 +18,17 @@ export function MyTrips() {
     }
     else {
         return (
-            <div className="Trips">
+            <div className="trips">
+                <h1>Trips</h1>
             {loggedInUser.orders ? (
                 <p>Please view your trips</p>
             ) : (
                 <>
-                    <div className="trips-header">No trips booked..yet!</div>
+                <section className="no-trips">
+                    <div className="no-trips-header">No trips booked...yet!</div> <span></span>
                     <p>Time to dust off your bags and start planning your next adventure</p>
                     <button>Start searching</button>
+                </section>
                 </>
             )}
         </div>
