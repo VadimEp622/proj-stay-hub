@@ -4,13 +4,13 @@ import { AirbnbButton } from "../cmps/reuseableCmp/airbnb-button";
 import { utilService } from "../services/util.service";
 import SvgHandler from "../cmps/svg-handler";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
+import { addConfirmedTrip } from "../store/user.actions";
 
 export function OrderConfirmation() {
     const orderObject = useSelector(storeState => storeState.userModule.order)
-    console.log(orderObject)
+    if (!orderObject || !orderObject.stayDetails || !orderObject.orderPrice) return <div>Loading..</div>
     const { stayDetails, guestsNumber, checkIn, checkOut, orderPrice, nightsCount, nightsPrice, seller } = orderObject
-    console.log(seller)
     const { reviewsCount, type, summary, rate, image, id } = stayDetails
     const { total, serviceFee, cleaningFee, price } = orderPrice
     const formattedTimeRange = utilService.getFormattedTimeRange(checkIn, checkOut)
@@ -20,6 +20,31 @@ export function OrderConfirmation() {
         day: 'numeric',
     });
 
+    function removeUndefinedProperties(orderObject) {
+        for (const prop in orderObject) {
+            if (orderObject[prop] === undefined || Number.isNaN(orderObject[prop])) {
+                delete orderObject[prop];
+            } else if (typeof orderObject[prop] === 'object') {
+                removeUndefinedProperties(orderObject[prop]);
+                if (Object.keys(orderObject[prop]).length === 0) {
+                    delete orderObject[prop];
+                }
+            }
+        }
+        return orderObject;
+    }
+
+    function onOrderConfirm(ev) {
+        if (ev) {
+            ev.stopPropagation()
+            ev.preventDefault()
+        }
+        console.log(orderObject)
+        removeUndefinedProperties(orderObject)
+        console.log(orderObject)
+        addConfirmedTrip(orderObject)
+
+    }
     return (
         <section className="order-confirmation" >
             <section className="confirmation-header flex">
@@ -105,7 +130,7 @@ export function OrderConfirmation() {
                 </aside>
                 <p className="declaration">By selecting the button below, I agree to the <span>Host's House Rules, Ground rules for guests, Airbnb's Rebooking and Refund Policy</span>, and that Airbnb can <span>charge my payment method</span>  if I'm responsible for damage.</p>
             </section>
-            <section className="confirm-btn">
+            <section className="confirm-btn" onClick={onOrderConfirm}>
                 <AirbnbButton text={'Confirm and pay'} />
             </section>
         </section>

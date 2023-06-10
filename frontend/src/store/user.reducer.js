@@ -12,7 +12,7 @@ export const SET_GUESTS = 'SET_GUESTS'
 export const SET_ORDER = 'SET_ORDER'
 export const ADD_TO_WISHLIST = 'ADD_TO_WISHLIST'
 export const REMOVE_FROM_WISHLIST = 'REMOVE_FROM_WISHLIST'
-
+export const ADD_CONFIRMED_TRIP = 'ADD_CONFIRMED_TRIP'
 
 const initialState = {
     count: 10,
@@ -48,6 +48,15 @@ export function userReducer(state = initialState, action) {
                 users: state.users.filter(user => user._id !== action.userId)
             }
             break
+        case ADD_CONFIRMED_TRIP:
+            newState = {
+                ...state,
+                user: {
+                    ...state.user,
+                    trips: [...state.user.trips, action.trip]
+                }
+            };
+            break;
         case SET_USERS:
             newState = { ...state, users: action.users }
             break
