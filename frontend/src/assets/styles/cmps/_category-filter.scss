@@ -1,113 +1,222 @@
-.category-carousel-container {
+.category-filter {
     display: grid;
     grid-template-columns: auto auto;
-    gap:100px;
+    align-items: center;
 
-    & .category-bar ul {
-        padding-block-start: 20px;
-        gap: 32px;
-        // max-width: 80vw;
+    & .category-carousel-container {
+        // display: block;
         // width: 80vw;
-        // max-width: 100%;
+        display: grid;
+        grid-template-columns: auto;
+        position: relative;
+        // gap: 100px;
 
-        & li {
-            // POSSIBLY TEMPORARY IMPORTANT TO OVERRIDE AUTOMATIC WIDTH ALLOCATION IN react-multi-carousel,
-            // CALCULATED ACCORDING TO CONTAINER WIDTH AND ITEMS
-            width: 100% !important;
 
-            margin-block-start: 12px;
-            margin-block-end: 8px;
+        & .category-bar {
+            position: unset !important;
+            margin-inline-end: 30px;
 
-            &:first-child .img-container {
+            & .custom-arrow-container {
+                display: grid;
+                grid-template-columns: 1fr auto;
+                align-items: center;
+                height: 100%;
                 width: fit-content;
-            }
+                position: absolute;
+                opacity: 1;
 
-            &:not(:first-child) .img-container {
-                min-width: 56px;
-            }
+                &.right {
+                    right: 0;
+                    background-image: linear-gradient(to right, rgb(255 255 255/0), white 40px);
 
-            & .img-container {
-                display: flex;
-                flex-direction: column;
-                // height: 48px;
-                color: $gray-clr0;
-                gap: 8px;
-                padding-block: 4px;
+                    &::before {
+                        content: '';
+                        height: 100%;
+                        width: 40px;
+                    }
 
-                & img {
-                    width: 24px;
-                    height: 24px;
-                    display: block;
-                    margin-inline: auto;
-                    opacity: 0.6425339366515838;
-                    transition: opacity 200ms ease, transform 200ms ease;
+                    & .custom-arrow {
+                        grid-column: 2;
+                    }
                 }
 
-                & label {
-                    font-family: Circular-Semibold;
-                    font-size: 12px;
-                    line-height: 16px;
-                    letter-spacing: 0;
-                    text-align: center;
-                    display: block;
-                    width: fit-content;
-                    margin-inline: auto;
-
-                    & span {
-                        display: block;
-                        transition: opacity 200ms ease, transform 200ms ease;
-                        white-space: nowrap;
-                    }
+                &.left {
+                    left: 0;
+                    background-image: linear-gradient(to left, rgb(255 255 255/0), white 40px);
 
                     &::after {
                         content: '';
-                        position: relative;
-                        display: block;
-                        background-color: black;
-                        width: 100%;
-                        height: 2px;
-                        opacity: 0;
-                        bottom: -12px;
+                        height: 100%;
+                        width: 40px;
+                    }
+
+                    & .custom-arrow {
+                        grid-column: 1;
                     }
                 }
 
-                &.active {
-                    & img {
-                        opacity: 1;
-                    }
 
-                    & label {
-                        color: $black-clr0;
+                & .custom-arrow {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border-radius: 32px;
+                    width: 28px;
+                    height: 28px;
+                    padding: 0;
+                    margin: 0;
+                    background-color: inherit;
+                    border: 0.5px solid rgb(0 0 0/0.3);
+                    transition: box-shadow 0.2s ease, ;
+                    margin-block-start: 20px;
 
-                        &::after {
-                            opacity: 1;
-                        }
+                    &:hover {
+                        cursor: pointer;
+                        transform: scale(1.04);
+                        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+
                     }
                 }
             }
 
-            &:hover {
-                cursor: pointer;
+            & ul {
+                padding-block-start: 20px;
+                // gap: 32px;
+                // max-width: 5801.550px;
+                // max-width: 80vw;
 
-                & .img-container {
-                    & img {
-                        opacity: 1;
+
+                // width: 80vw;
+                // max-width: 100%;
+                // width: 90%;
+                // overflow: hidden !important;
+
+                // &>* {
+                //     &:not(:first-child) {
+                //         left: -15px;
+                //     }
+                // }
+
+                & .category-item {
+                    // POSSIBLY TEMPORARY IMPORTANT TO OVERRIDE AUTOMATIC WIDTH ALLOCATION IN react-multi-carousel,
+                    // CALCULATED ACCORDING TO CONTAINER WIDTH AND ITEMS
+                    // width: 100% !important;
+                    // max-width: min-content;
+                    // width: 100%;
+                    // padding-inline-end: 70px;
+                    // display: flex;
+                    margin-block-start: 12px;
+                    margin-block-end: 8px;
+                    // margin-inline: -135px;
+                    // padding-inline-end: 60px;
+
+                    &:first-child {
+                        // padding-inline-end: 30px;
                     }
 
-                    & label {
-                        color: $black-clr0;
+
+                    &:not(:first-child) {
+                        left: -34px;
+                        // left: -200px;
+                        // padding-inline: 50px;
+                    }
+
+                    &:first-child .img-container {
+                        width: fit-content;
+                    }
+
+                    &:not(:first-child) .img-container {
+                        min-width: 56px;
+                        margin-inline: auto;
+                    }
+
+                    & .img-container {
+                        display: flex;
+                        flex-direction: column;
+                        // height: 48px;
+                        color: $gray-clr0;
+                        gap: 8px;
+                        padding-block: 4px;
+                        width: 200px;
+                        width: 100%;
+                        width: min-content;
+
+                        & img {
+                            width: 24px;
+                            height: 24px;
+                            display: block;
+                            margin-inline: auto;
+                            opacity: 0.6425339366515838;
+                            transition: opacity 200ms ease, transform 200ms ease;
+                        }
+
+                        & label {
+                            font-family: Circular-Semibold;
+                            font-size: 12px;
+                            line-height: 16px;
+                            letter-spacing: 0;
+                            text-align: center;
+                            display: block;
+                            width: fit-content;
+                            margin-inline: auto;
+
+                            & span {
+                                display: block;
+                                transition: opacity 200ms ease, transform 200ms ease;
+                                white-space: nowrap;
+                            }
+
+                            &::after {
+                                content: '';
+                                position: relative;
+                                display: block;
+                                background-color: black;
+                                width: 100%;
+                                height: 2px;
+                                opacity: 0;
+                                bottom: -12px;
+                            }
+                        }
+
+                        &.active {
+                            & img {
+                                opacity: 1;
+                            }
+
+                            & label {
+                                color: $black-clr0;
+
+                                &::after {
+                                    opacity: 1;
+                                }
+                            }
+                        }
+                    }
+
+                    &:hover {
                         cursor: pointer;
-                    }
 
-                    &:not(.active) label::after {
-                        opacity: 1;
-                        background-color: $gray-clr3;
-                    }
-                }
+                        & .img-container {
+                            & img {
+                                opacity: 1;
+                            }
 
-                &:active :is(img,
-                    label span) {
-                    transform: scale(0.96);
+                            & label {
+                                color: $black-clr0;
+                                cursor: pointer;
+                            }
+
+                            &:not(.active) label::after {
+                                opacity: 1;
+                                background-color: $gray-clr3;
+                            }
+                        }
+
+                        &:active :is(img,
+                            label span) {
+                            transform: scale(0.96);
+                        }
+                    }
                 }
             }
         }
