@@ -11,7 +11,7 @@ import { showErrorMsg } from '../services/event-bus.service'
 import Slider from 'rc-slider'
 import 'rc-slider/assets/index.css'
 import SvgHandler from '../cmps/svg-handler'
-import { setModal } from '../store/stay.actions'
+import { addStay, setModal } from '../store/stay.actions'
 import Select from 'react-select'
 import { RenderErrorMessage } from '../cmps/errormessage'
 import { ImgUploader } from '../cmps/reuseableCmp/img-uploader'
@@ -28,15 +28,15 @@ function handleChange(ev) {
 
 
 const validationSchema = Yup.object().shape({
-    stayTitle: Yup.string()
+    name: Yup.string()
         .min(6, 'Stay title must have at least 6 characters')
         .required('Stay title is required'),
+        country: Yup.string()
+            .min(3, 'Country name must have at least 3 characters')
+            .required('Country name is required'),
     city: Yup.string()
         .min(3, 'City name must have at least 3 characters')
         .required('City name is required'),
-    country: Yup.string()
-        .min(3, 'Country name must have at least 3 characters')
-        .required('Country name is required'),
     street: Yup.string()
         .min(3, 'Street name must have at least 3 characters')
         .required('Street name is required'),
@@ -124,36 +124,44 @@ export function AddStay() {
     //     return <Navigate to="/" />
     // }
 
-    async function onSubmit(values) {
+   async function onSubmit(values) {
+    console.log(values)
+    try {
         if (!values.name || !values.city || !values.country) return
         // const uploadedImages = [];
         // for (const file of values.images) {
-        //     const secureUrl = await uploadImage(file);
-        //     uploadedImages.push(secureUrl);
-        // }
-        // console.log("Uploaded Images:", uploadedImages);
-
-        setStayToAdd(values)
+            //     const secureUrl = await uploadImage(file);
+            //     uploadedImages.push(secureUrl);
+            // }
+            // console.log("Uploaded Images:", uploadedImages);
+            
+            setStayToAdd(values)
+            addStay(stayToAdd)
+        }
+        catch (err) {
+            console.error(`Cannot save stay: `, err)
+            throw err
+        }
     }
 
 
     return (
         <section className="add-stay" >
             <section className="main-add-stay">
-                <section className='img-upload-container'>
+                {/* <section className='img-upload-container'>
                     <ImgUploader />
                     <ImgUploader />
                     <ImgUploader />
                     <ImgUploader />
                     <ImgUploader />
-                </section>
+                </section> */}
                 <Formik
                     initialValues={stayToAdd}
                     validationSchema={validationSchema}
                     onSubmit={onSubmit}
                 >
                     {({ errors, touched }) => (
-                        <Form className="login-form flex justify-center align-center">
+                        <Form className="add-stay-form flex">
                             {/* <Field
                                 type="file"
                                 name="images"
@@ -171,37 +179,44 @@ export function AddStay() {
                             /> */}
                             <Field
                                 type="text"
-                                name="staytitle"
+                                name="name"
                                 className="login-input"
-                                placeholder="Add a title for your stay"
-                                required
-                            />
-                            <Field
-                                type="text"
-                                name="city"
-                                className="login-input"
-                                placeholder="Please enter the city name"
+                                placeholder="Stay title"
                                 required
                             />
                             <Field
                                 type="text"
                                 name="country"
                                 className="login-input"
-                                placeholder="Please enter the country name"
+                                placeholder="Country name"
+                                required
+                            />
+                            <Field
+                                type="text"
+                                name="city"
+                                className="login-input"
+                                placeholder="City name"
                                 required
                             />
                             <Field
                                 type="text"
                                 name="street"
                                 className="login-input"
-                                placeholder="Please enter the street name"
+                                placeholder="Street name"
+                                required
+                            />
+                            <Field
+                                type="text"
+                                name="description"
+                                className="login-input"
+                                placeholder="Description"
                                 required
                             />
                             <Field
                                 type="number"
                                 name="capacity"
                                 className="login-input"
-                                placeholder="Please enter the capacity of people allowed to stay at this stay"
+                                placeholder="Allowed people capacity"
                                 required
                                 min={0}
                                 max={16}
@@ -210,7 +225,7 @@ export function AddStay() {
                                 type="number"
                                 name="bedrooms"
                                 className="login-input"
-                                placeholder="Please enter the number of bedrooms"
+                                placeholder="Number of bedrooms"
                                 required
                                 min={0}
                             />
@@ -218,7 +233,7 @@ export function AddStay() {
                                 type="number"
                                 name="price"
                                 className="login-input"
-                                placeholder="Please enter the price per night"
+                                placeholder="Price per night"
                                 required
                                 component={SliderField}
                                 min={25}
@@ -241,14 +256,15 @@ export function AddStay() {
                                 <label htmlFor="amenities">Amenities:</label>
                                 <Field name="amenities" component={MultiSelectField} options={amenitiesOptions} />
                             </div>
-                            <RenderErrorMessage fieldName="stayTitle" errors={errors} touched={touched} />
-                            <RenderErrorMessage fieldName="city" errors={errors} touched={touched} />
+                            <RenderErrorMessage fieldName="name" errors={errors} touched={touched} />
                             <RenderErrorMessage fieldName="country" errors={errors} touched={touched} />
+                            <RenderErrorMessage fieldName="city" errors={errors} touched={touched} />
                             <RenderErrorMessage fieldName="street" errors={errors} touched={touched} />
+                            <RenderErrorMessage fieldName="description" errors={errors} touched={touched} />
                             <RenderErrorMessage fieldName="capacity" errors={errors} touched={touched} />
 
-                            {/* <section className="add-stay-button-wrapper" onClick={onSubmit}>
-                                <div className="add-stay-button-container" onClick={onSubmit}>
+                            <section className="add-stay-button-wrapper">
+                                <div className="add-stay-button-container" >
                                     {utilService.createDivsForButtonContainer()}
                                     <div className="content">
                                         <button className="action-btn" type="submit">
@@ -256,7 +272,7 @@ export function AddStay() {
                                         </button>
                                     </div>
                                 </div>
-                            </section> */}
+                            </section>
                         </Form>
                     )}
                 </Formik>
