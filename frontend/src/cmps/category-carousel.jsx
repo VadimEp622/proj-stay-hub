@@ -13,14 +13,14 @@ export function CategoryCarousel({ images, selectedCategory, handleClick }) {
                 max: 4000,
                 min: 1600
             },
-            items: 1,
+            items: 3,
         },
         desktop: {
             breakpoint: {
                 max: 1600,
                 min: 1024
             },
-            items: 1,
+            items: 3,
         },
         tablet: {
             breakpoint: {
@@ -34,7 +34,7 @@ export function CategoryCarousel({ images, selectedCategory, handleClick }) {
                 max: 464,
                 min: 0
             },
-            items: 2,
+            items: 3,
         },
     }
 
@@ -43,44 +43,46 @@ export function CategoryCarousel({ images, selectedCategory, handleClick }) {
             // additionalTransfrom={0}
             // arrows={!isMobileDevice}
             // centerMode={false}
-            className="category-bar"
             // dotListClass=""
-            // draggable={isMobileDevice}
+            draggable={isMobileDevice}
             // focusOnSelect={false}
             // infinite
-            itemClass=""
             // keyBoardControl
-            // minimumTouchDrag={80}
-            // renderArrowsWhenDisabled={false}
-            // renderButtonGroupOutside={false}
             // renderDotsOutside={false}
+            // rewindWithAnimation={false}
+            // shouldResetAutoplay
+            // showDots={false}
+            // sliderClass=""
+            partialVisible={true}
+            minimumTouchDrag={80}
+            renderArrowsWhenDisabled={false}
+            arrows
+            className="category-bar"
+            itemClass=""
+            renderButtonGroupOutside={false}
             responsive={responsive}
-        // rewind={false}
-        // rewindWithAnimation={false}
-        // rtl={false}
-        // shouldResetAutoplay
-        // showDots={false}
-        // sliderClass=""
-        // slidesToSlide={1}
-        // swipeable
+            rewind={false}
+            rtl={false}
+            slidesToSlide={1}
+            swipeable={true}
         >
             {
                 images.map((img, index) => (
                     // <section className={`category-preview-container${selectedCategory === img.label ? ' active' : ''}`} onClick={(ev) => handleClick(ev, img.label)}>
                     //     <section className={`category-preview`}>
-                            <section key={index} className={`img-container${selectedCategory === img.label ? ' active' : ''}`} onClick={(ev) => handleClick(ev, img.label)}>
-                                <img
-                                    key={index}
-                                    src={img.imgSrc}
-                                // height={100}
-                                // width={100}
-                                // style={{
-                                //     // height: "24px",
-                                //     // width: "24px",
-                                // }}
-                                />
-                                <label><span>{img.label}</span></label>
-                            </section>
+                    <section key={index} className={`img-container${selectedCategory === img.label ? ' active' : ''}`} onClick={(ev) => handleClick(ev, img.label)}>
+                        <img
+                            key={index}
+                            src={img.imgSrc}
+                        // height={100}
+                        // width={100}
+                        // style={{
+                        //     // height: "24px",
+                        //     // width: "24px",
+                        // }}
+                        />
+                        <label><span>{img.label}</span></label>
+                    </section>
                     //     </section>
                     // </section>
                 ))
