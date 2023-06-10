@@ -26,7 +26,7 @@ export function MyTrips() {
                     <h3 className="reservations-header">Upcoming reservations</h3>
                     <div className="upcoming-reservation">
                         <section className="reservation-container">
-                            {/* Reservation details section */}
+                            Reservation details section
                         </section>
                         <aside className="explore-things-to-do">
                             {/* Explore things to do */}

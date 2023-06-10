@@ -43,6 +43,7 @@ async function add({ txt, aboutUserId }) {
 }
 
 function getAverageReview(stay) {
+  if(stay.reviews.length === 0) return
   let count = 0
   const totalRate = stay.reviews.reduce((acc, review) => {
     acc += review.rate

@@ -3479,14 +3479,15 @@ function getEmptyStay() {
     return {
         name: '',
         description: '',
-        price: '',
+        price: utilService.getRandomIntInclusive(90, 670),
         type: '',
         imgUrls: [],
         summary: '',
         capacity: '',
         labels: '',
         bedrooms: '',
-        amenities: ''
+        amenities: '',
+        reviews: [],
     }
 }
 

@@ -57,6 +57,7 @@ function getEmptyStay() {
         imgUrls: [],
         summary: "Fantastic duplex apartment...",
         capacity: utilService.getRandomIntInclusive(1, 10),
+        reviews: [],
     }
 }
 

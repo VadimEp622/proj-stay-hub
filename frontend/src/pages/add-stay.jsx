@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 import { utilService } from '../services/util.service'
-import { Navigate } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { stayService } from '../services/stay.service.local'
 import { showErrorMsg } from '../services/event-bus.service'
 import Slider from 'rc-slider'
@@ -118,50 +118,53 @@ const MultiSelectField = ({ field, form: { setFieldValue }, options }) => {
 export function AddStay() {
     const loggedInUser = useSelector(storeState => storeState.userModule.user)
     const [stayToAdd, setStayToAdd] = useState(stayService.getEmptyStay())
+    console.log(stayToAdd);
 
     // if (!loggedInUser) {
     //     showErrorMsg('You must be logged in to enter this page')
     //     return <Navigate to="/" />
     // }
 
-    async function onSubmit(values) {
-        console.log(values)
-        try {
-            if (!values.name || !values.city || !values.country) return
-            // const uploadedImages = [];
-            // for (const file of values.images) {
-            //     const secureUrl = await uploadImage(file);
-            //     uploadedImages.push(secureUrl);
-            // }
-            // console.log("Uploaded Images:", uploadedImages);
-            const updatedStayToAdd = {
-                ...values,
-                loc: {
-                    country: values.country,
-                    city: values.city,
-                }
-            }
+    function onUploaded(url) {
+        console.log(stayToAdd.imgUrls);
+        console.log('url:', url);
+        setStayToAdd({ ...stayToAdd, imgUrls: [...stayToAdd.imgUrls, url] })
+      }
+    
 
-            setStayToAdd(updatedStayToAdd)
-            addStay(stayToAdd)
+      async function onSubmit(values) {
+        try {
+          if (!values.name || !values.city || !values.country) return
+      
+          const updatedStayToAdd = {
+            ...values,
+            loc: {
+              country: values.country,
+              city: values.city,
+            },
+            imgUrls: stayToAdd.imgUrls, // Include existing imgUrls in updatedStayToAdd
+          };
+      
+          // console.log(stayToAdd);
+          await addStay(updatedStayToAdd)
+          return <Link to="/" />
+        } catch (err) {
+          console.error(`Cannot save stay: `, err)
+          throw err
         }
-        catch (err) {
-            console.error(`Cannot save stay: `, err)
-            throw err
-        }
-    }
+      }
 
 
     return (
         <section className="add-stay" >
             <section className="main-add-stay">
-                {/* <section className='img-upload-container'>
-                    <ImgUploader />
-                    <ImgUploader />
-                    <ImgUploader />
-                    <ImgUploader />
-                    <ImgUploader />
-                </section> */}
+                <section className='img-upload-container'>
+                    <ImgUploader onUploaded={onUploaded}/>
+                    <ImgUploader onUploaded={onUploaded}/>
+                    <ImgUploader onUploaded={onUploaded}/>
+                    <ImgUploader onUploaded={onUploaded}/>
+                    <ImgUploader onUploaded={onUploaded}/>
+                </section>
                 <Formik
                     initialValues={stayToAdd}
                     validationSchema={validationSchema}
