@@ -12,7 +12,7 @@ import omg from "../assets/img/category-bar/omg.jpeg"
 import rooms from "../assets/img/category-bar/rooms.jpeg"
 
 export function CategoryFilter() {
-    // const labels = getLabels(stays)
+    const [selectedCategory, setSelectedCategory] = useState('OMG!')
 
     const images = [
         {
@@ -40,7 +40,7 @@ export function CategoryFilter() {
             imgSrc: islands
         },
         {
-            label: "mansions",
+            label: "Mansions",
             imgSrc: mansions
         },
         {
@@ -49,23 +49,23 @@ export function CategoryFilter() {
         },
     ]
 
-    const [selectedFilter, setSelectedFilter] = useState()
 
-    function handleClick(label) {
-        setSelectedFilter(label)
-        updateFilterBy({ labels: label })
+    function handleClick(ev, label) {
         console.log(label)
+        ev.preventDefault()
+        setSelectedCategory(label)
+        updateFilterBy({ labels: label })
     }
 
     return (
-        <section className="filter-carousel-container">
+        <section className="filter-carousel-container category-carousel-container">
             {/* {images.map((image, idx) => {
                 return <div key={idx} className={`links-box ${image.label === selectedFilter && "selected-box"}`} onClick={() => handleClick(image.label)}>
                     <img src={image.imgSrc} className="links-img" />
                     <p className={`links-label ${image.label === selectedFilter && "selected-label"}`}>{image.label}</p>
                 </div>
             })} */}
-            <CategoryCarousel handleClick={handleClick} images={images} />
+            <CategoryCarousel images={images} selectedCategory={selectedCategory} handleClick={handleClick} />
         </section>
     )
 }

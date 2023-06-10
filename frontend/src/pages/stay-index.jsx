@@ -78,11 +78,11 @@ export function StayIndex() {
 
     return (
         <section className="stay-index">
-            <button className="filter-opener" onClick={openFilterModal}>
+            {/* <button className="filter-opener" onClick={openFilterModal}>
                 <div className="filter-button-content">
                     Main Filter
                 </div>
-            </button>
+            </button> */}
 
 
             {

@@ -1,80 +1,105 @@
-.filter-carousel-container {
-    & .filter-bar {
+.category-carousel-container .category-bar ul {
+    padding-block-start: 20px;
+    gap: 32px;
 
-        & ul {
-            gap: 16px;
+    & li {
+        // POSSIBLY TEMPORARY IMPORTANT TO OVERRIDE AUTOMATIC WIDTH ALLOCATION IN react-multi-carousel,
+        // CALCULATED ACCORDING TO CONTAINER WIDTH AND ITEMS
+        width: 100% !important;
 
-            & .filter-icon-preview {
-                // POSSIBLY TEMPORARY IMPORTANT TO OVERRIDE AUTOMATIC WIDTH ALLOCATION IN react-multi-carousel,
-                // CALCULATED ACCORDING TO CONTAINER WIDTH AND ITEMS
-                width: 100% !important;
+        margin-block-start: 12px;
+        margin-block-end: 8px;
 
+        &:first-child .img-container {
+            width: fit-content;
+        }
+
+        &:not(:first-child) .img-container {
+            min-width: 56px;
+        }
+
+        & .img-container {
+            display: flex;
+            flex-direction: column;
+            // height: 48px;
+            color: $gray-clr0;
+            gap: 8px;
+            padding-block: 4px;
+
+            & img {
+                width: 24px;
+                height: 24px;
+                display: block;
+                margin-inline: auto;
+                opacity: 0.6425339366515838;
+                transition: opacity 200ms ease, transform 200ms ease;
+            }
+
+            & label {
+                font-family: Circular-Semibold;
+                font-size: 12px;
+                line-height: 16px;
+                letter-spacing: 0;
+                text-align: center;
+                display: block;
+                width: fit-content;
+                margin-inline: auto;
+
+                & span {
+                    display: block;
+                    transition: opacity 200ms ease, transform 200ms ease;
+                }
+
+                &::after {
+                    content: '';
+                    position: relative;
+                    display: block;
+                    background-color: black;
+                    width: 100%;
+                    height: 2px;
+                    opacity: 0;
+                    bottom: -12px;
+                }
+            }
+
+            &.active {
                 & img {
-                    width: 24px;
-                    height: 24px;
+                    opacity: 1;
+                }
+
+                & label {
+                    color: $black-clr0;
+
+                    &::after {
+                        opacity: 1;
+                    }
                 }
             }
         }
+
+        &:hover {
+            cursor: pointer;
+
+            & .img-container {
+                & img {
+                    opacity: 1;
+                }
+
+                & label {
+                    color: $black-clr0;
+                    cursor: pointer;
+                }
+
+                &:not(.active) label::after {
+                    opacity: 1;
+                    background-color: $gray-clr3;
+                }
+            }
+
+            &:active :is(img,
+                label span) {
+                transform: scale(0.96);
+            }
+        }
     }
-
-    // height: 200px;
-    // width: 200px;
-
-    // width: 100vw;
-    // height: 500px;
 }
-
-
-// .filter-div {
-//     padding: 0.5rem 0;
-//     display: flex;
-//     justify-content: flex-start;
-//     align-items: center;
-//     overflow: hidden;
-// }
-
-// .links-img {
-//     width: 1.5rem;
-//     height: 1.5rem;
-//     object-fit: contain;
-//     opacity: 0.6425339366515838;
-//     transition: opacity 0.2s ease, transform 0.2s ease;
-// }
-
-// .links-box {
-//     display: flex;
-//     flex-direction: column;
-//     justify-content: center;
-//     gap: 8px;
-//     align-items: center;
-//     margin-right: 2rem;
-//     // opacity: 0.5;
-//     min-width: 80px;
-//     position: relative;
-// }
-
-// .links-label {
-//     font-size: 12px;
-//     font-weight: 700;
-//     color: $gray-clr0;
-//     position: relative;
-// }
-
-
-// .links-box:hover {
-//     cursor: pointer;
-//     opacity: 0.8;
-//     border-bottom: 0.5px $gray-clr0;
-// }
-
-// .selected-box {
-//     opacity: 1;
-//     border-bottom: 0.5px solid black;
-//     transition: color 0.2s ease;
-//     width: fit-content;
-//     // position: absolute;
-// }
-
-// .selected-label {
-//     font-weight: 800;
-// }

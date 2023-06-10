@@ -3,7 +3,7 @@ import "react-multi-carousel/lib/styles.css"
 
 
 
-export function CategoryCarousel({ images, handleClick }) {
+export function CategoryCarousel({ images, selectedCategory, handleClick }) {
     const isMobileDevice = window.innerWidth <= 464
     console.log(images)
 
@@ -43,12 +43,12 @@ export function CategoryCarousel({ images, handleClick }) {
             // additionalTransfrom={0}
             // arrows={!isMobileDevice}
             // centerMode={false}
-            className="filter-bar"
+            className="category-bar"
             // dotListClass=""
             // draggable={isMobileDevice}
             // focusOnSelect={false}
             // infinite
-            itemClass="filter-icon-preview"
+            itemClass=""
             // keyBoardControl
             // minimumTouchDrag={80}
             // renderArrowsWhenDisabled={false}
@@ -66,18 +66,23 @@ export function CategoryCarousel({ images, handleClick }) {
         >
             {
                 images.map((img, index) => (
-                    <section className="img-container">
-                        <img
-                            key={index}
-                            src={img.imgSrc}
-                        // height={100}
-                        // width={100}
-                        // style={{
-                        //     // height: "24px",
-                        //     // width: "24px",
-                        // }}
-                        />
-                    </section>
+                    // <section className={`category-preview-container${selectedCategory === img.label ? ' active' : ''}`} onClick={(ev) => handleClick(ev, img.label)}>
+                    //     <section className={`category-preview`}>
+                            <section key={index} className={`img-container${selectedCategory === img.label ? ' active' : ''}`} onClick={(ev) => handleClick(ev, img.label)}>
+                                <img
+                                    key={index}
+                                    src={img.imgSrc}
+                                // height={100}
+                                // width={100}
+                                // style={{
+                                //     // height: "24px",
+                                //     // width: "24px",
+                                // }}
+                                />
+                                <label><span>{img.label}</span></label>
+                            </section>
+                    //     </section>
+                    // </section>
                 ))
             }
         </Carousel>
