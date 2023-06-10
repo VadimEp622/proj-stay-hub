@@ -23,16 +23,15 @@ export function OrderContainer({ stay }) {
     const totalPrice = nightsPrice + cleaningFee + serviceFee
     const guestsObject = useSelector(storeState => storeState.userModule.guests)
     const [orderObject, setOrderObject] = useState({})
-    // const loggedInUser = useSelector(storeState => storeState.userModule.user)
+    const user = useSelector(storeState => storeState.userModule.user)
     const guestsString = userService.buildGuestsString(guestsObject)
     const [openModal, setOpenModal] = useState(false)
     let guestCount = 1
     useEffect(() => {
         setOrderObject({
-            // buyer: {
-            //     fullname: user.fullName,
-            //     _id: user.id
-            // },
+            buyer: {
+                _id: user._id
+            },
             seller: {
                 fullname: stay.host.fullname,
                 _id: stay.host._id,

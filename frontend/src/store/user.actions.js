@@ -101,5 +101,12 @@ export function removeFromWishlist(wishListID) {
 }
 
 export async function addConfirmedTrip(trip) {
-    store.dispatch({ type: ADD_CONFIRMED_TRIP, trip })
+    const tripToSend = trip
+    try {
+        await userService.update(trip.buyer._id, 'trips', tripToSend)
+        store.dispatch({ type: ADD_CONFIRMED_TRIP, trip })
+    } catch (err) {
+        showErrorMsg('Cannot add confirmed trip')
+        console.error('Cannot add confirmed trip', err)
+    }
 }
