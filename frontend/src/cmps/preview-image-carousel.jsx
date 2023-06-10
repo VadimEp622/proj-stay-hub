@@ -76,7 +76,7 @@ export function PreviewImageCarousel({ imgs, stay }) {
         >
             {
                 imgs.map((img, index) => (
-                    <Link key={index} to={`/stay/${stay._id}`} target="_blank">
+                    <Link key={index} to={`/stay/${stay._id}`}>
                         <img
                             src={img}
                         // style={{

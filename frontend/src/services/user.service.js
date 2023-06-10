@@ -79,14 +79,45 @@ async function changeScore(by) {
 
 
 function saveLocalUser(user) {
-    user = { _id: user._id, fullname: user.fullname, imgUrl: user.imgUrl, wishlist: [] }
+    user = { _id: user._id, fullname: user.fullname, imgUrl: user.imgUrl, wishlist: [], trips: [] }
+    console.log('user from session storage', user)
     sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
     return user
 }
 
+// function saveLocalUser(user) {
+//     const userData = {
+//         _id: user._id,
+//         fullname: user.fullname,
+//         imgUrl: user.imgUrl,
+//         wishlist: [],
+//         trips: []
+//     }
+
+//     const encodedData = encodeURIComponent(JSON.stringify(userData));
+//     document.cookie = `loggedInUser=${encodedData}; path=/`;
+//     return userData;
+// }
+
+
 function getLoggedinUser() {
     return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER))
 }
+
+// function getLoggedinUser() {
+//     const cookieValue = document.cookie
+//         .split('; ')
+//         .find(row => row.startsWith(`${STORAGE_KEY_LOGGEDIN_USER}=`))
+//     console.log(cookieValue)
+
+//     if (cookieValue) {
+//         const decodedValue = decodeURIComponent(cookieValue.split('=')[1])
+//         return JSON.parse(decodedValue)
+//     }
+
+//     return null
+// }
+
 
 function buildGuestsString(guestsObject) {
     const { adults = 0, children = 0, infants = 0, pets = 0 } = guestsObject
