@@ -31,9 +31,9 @@ const validationSchema = Yup.object().shape({
     name: Yup.string()
         .min(6, 'Stay title must have at least 6 characters')
         .required('Stay title is required'),
-        country: Yup.string()
-            .min(3, 'Country name must have at least 3 characters')
-            .required('Country name is required'),
+    country: Yup.string()
+        .min(3, 'Country name must have at least 3 characters')
+        .required('Country name is required'),
     city: Yup.string()
         .min(3, 'City name must have at least 3 characters')
         .required('City name is required'),
@@ -124,18 +124,25 @@ export function AddStay() {
     //     return <Navigate to="/" />
     // }
 
-   async function onSubmit(values) {
-    console.log(values)
-    try {
-        if (!values.name || !values.city || !values.country) return
-        // const uploadedImages = [];
-        // for (const file of values.images) {
+    async function onSubmit(values) {
+        console.log(values)
+        try {
+            if (!values.name || !values.city || !values.country) return
+            // const uploadedImages = [];
+            // for (const file of values.images) {
             //     const secureUrl = await uploadImage(file);
             //     uploadedImages.push(secureUrl);
             // }
             // console.log("Uploaded Images:", uploadedImages);
-            
-            setStayToAdd(values)
+            const updatedStayToAdd = {
+                ...values,
+                loc: {
+                    country: values.country,
+                    city: values.city,
+                }
+            }
+
+            setStayToAdd(updatedStayToAdd)
             addStay(stayToAdd)
         }
         catch (err) {
