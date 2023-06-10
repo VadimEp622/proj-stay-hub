@@ -4,10 +4,11 @@ import { AirbnbButton } from "../cmps/reuseableCmp/airbnb-button";
 import { utilService } from "../services/util.service";
 import SvgHandler from "../cmps/svg-handler";
 import { useSelector } from "react-redux";
-import { Link, Navigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { addConfirmedTrip } from "../store/user.actions";
 
 export function OrderConfirmation() {
+    const navigate = useNavigate()
     const orderObject = useSelector(storeState => storeState.userModule.order)
     if (!orderObject || !orderObject.stayDetails || !orderObject.orderPrice) return <div>Loading..</div>
     const { stayDetails, guestsNumber, checkIn, checkOut, orderPrice, nightsCount, nightsPrice, seller } = orderObject
@@ -33,18 +34,24 @@ export function OrderConfirmation() {
         }
         return orderObject;
     }
+    async function handleOrderConfirm(ev) {
+        await onOrderConfirm(ev)
+        navigate('/trips')
+    }
 
-    function onOrderConfirm(ev) {
+    async function onOrderConfirm(ev) {
         if (ev) {
             ev.stopPropagation()
             ev.preventDefault()
         }
-        console.log(orderObject)
         removeUndefinedProperties(orderObject)
-        console.log(orderObject)
-        addConfirmedTrip(orderObject)
-
+        try {
+            await addConfirmedTrip(orderObject)
+        } catch (error) {
+            console.error('Error adding confirmed trip:', error)
+        }
     }
+
     return (
         <section className="order-confirmation" >
             <section className="confirmation-header flex">
@@ -130,7 +137,7 @@ export function OrderConfirmation() {
                 </aside>
                 <p className="declaration">By selecting the button below, I agree to the <span>Host's House Rules, Ground rules for guests, Airbnb's Rebooking and Refund Policy</span>, and that Airbnb can <span>charge my payment method</span>  if I'm responsible for damage.</p>
             </section>
-            <section className="confirm-btn" onClick={onOrderConfirm}>
+            <section className="confirm-btn" onClick={handleOrderConfirm}>
                 <AirbnbButton text={'Confirm and pay'} />
             </section>
         </section>

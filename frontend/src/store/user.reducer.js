@@ -49,14 +49,11 @@ export function userReducer(state = initialState, action) {
             }
             break
         case ADD_CONFIRMED_TRIP:
-            newState = {
-                ...state,
-                user: {
-                    ...state.user,
-                    trips: [...state.user.trips, action.trip]
-                }
-            };
-            break;
+            const trip = action.trip
+            console.log(trip)
+            console.log('user', state.user)
+            newState = { ...state, user: { ...state.user, trips: [...state.user.trips, action.trip] } }
+            break
         case SET_USERS:
             newState = { ...state, users: action.users }
             break

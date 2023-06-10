@@ -46,6 +46,7 @@ export async function login(credentials) {
 export async function signup(credentials) {
     try {
         const user = await userService.signup(credentials)
+        console.log('user from signUp', user)
         store.dispatch({
             type: SET_USER,
             user
@@ -99,13 +100,6 @@ export function removeFromWishlist(wishListID) {
     store.dispatch({ type: REMOVE_FROM_WISHLIST, wishListID })
 }
 
-export function addConfirmedTrip(trip) {
-    try {
-        store.dispatch({ type: ADD_CONFIRMED_TRIP, trip })
-        Navigate('/trip')
-    }
-    catch (err) {
-        showErrorMsg('Cannot add confirmed trip', err)
-        console.error(err)
-    }
+export async function addConfirmedTrip(trip) {
+    store.dispatch({ type: ADD_CONFIRMED_TRIP, trip })
 }

@@ -60,7 +60,7 @@ export function StayPreview({ stay }) {
             <div className="heart-svg" onClick={(ev) => onLikeClicked(ev)}>
                 <SvgHandler svgName={likeSVG} />
             </div>
-            <Link to={`/stay/${stay._id}`} target="_blank">
+            <Link to={`/stay/${stay._id}`}>
                 <div className="preview-info">
                     <div className="preview-header">
                         <p>{stay.loc.city}, {stay.loc.country}</p>
