@@ -26,4 +26,18 @@
 
     }
 
+    .add-stay-form {
+        background-color: antiquewhite;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        align-items: flex-end;
+    }
+
+    .add-stay-button-container {
+        position: relative;
+        height: 70px;
+        width: 160px;
+    }
+
+
 }
