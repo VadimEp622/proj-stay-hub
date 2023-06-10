@@ -15,7 +15,6 @@ export const REMOVE_FROM_WISHLIST = 'REMOVE_FROM_WISHLIST'
 export const ADD_CONFIRMED_TRIP = 'ADD_CONFIRMED_TRIP'
 
 const initialState = {
-    count: 10,
     user: userService.getLoggedinUser(),
     users: [],
     watchedUser: null,
@@ -49,9 +48,6 @@ export function userReducer(state = initialState, action) {
             }
             break
         case ADD_CONFIRMED_TRIP:
-            const trip = action.trip
-            console.log(trip)
-            console.log('user', state.user)
             newState = { ...state, user: { ...state.user, trips: [...state.user.trips, action.trip] } }
             break
         case SET_USERS:

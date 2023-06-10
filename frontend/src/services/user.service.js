@@ -38,15 +38,19 @@ function remove(userId) {
     // return httpService.delete(`user/${userId}`)
 }
 
-async function update({ _id, score }) {
-    const user = await storageService.get('user', _id)
-    user.score = score
-    await storageService.put('user', user)
+async function update(_id, type, data) {
+    const user = await storageService.get('user', _id);
+    if (!user[type]) {
+        user[type] = [];
+    }
+    user[type].push(data);
+    await storageService.put('user', user);
 
-    // const user = await httpService.put(`user/${_id}`, {_id, score})
-    // Handle case in which admin updates other user's details
-    if (getLoggedinUser()._id === user._id) saveLocalUser(user)
-    return user
+    if (getLoggedinUser()._id === user._id) {
+        saveLocalUser(user);
+    }
+
+    return user;
 }
 
 async function login(userCred) {
@@ -58,7 +62,8 @@ async function login(userCred) {
     }
 }
 async function signup(userCred) {
-    userCred.trips = []
+    userCred.trip = []
+    userCred.wishlist = []
     if (!userCred.imgUrl) userCred.imgUrl = 'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png'
     const user = await storageService.post('user', userCred)
     // const user = await httpService.post('auth/signup', userCred)
@@ -79,7 +84,7 @@ async function changeScore(by) {
 
 
 function saveLocalUser(user) {
-    user = { _id: user._id, fullname: user.fullname, imgUrl: user.imgUrl, wishlist: [], trips: [] }
+    user = { _id: user._id, fullname: user.fullname, imgUrl: user.imgUrl, wishlist: user.wishlist, trips: user.trips }
     console.log('user from session storage', user)
     sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
     return user
