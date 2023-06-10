@@ -1,50 +1,75 @@
 import Carousel from "react-multi-carousel"
 import "react-multi-carousel/lib/styles.css"
+import { ARROW_LEFT_FAT, ARROW_RIGHT_FAT } from "../services/svg.service"
+import SvgHandler from "./svg-handler"
 
 
 
 export function CategoryCarousel({ images, selectedCategory, handleClick }) {
     const isMobileDevice = window.innerWidth <= 464
-    console.log(images)
+    // console.log(images)
+
+    // const maxScrollWidth = "5801.550px"
+    // const maxTranslate="-4750px"
+
+
+    const CustomLeftArrow = ({ onClick }) => (
+        <section className="custom-arrow-container left">
+            <button className="custom-arrow left" onClick={onClick} >
+                <SvgHandler svgName={ARROW_LEFT_FAT} />
+            </button >
+        </section>
+    )
+
+    const CustomRightArrow = ({ onClick }) => (
+        <section className="custom-arrow-container right">
+            <button className="custom-arrow right" onClick={onClick}  >
+                <SvgHandler svgName={ARROW_RIGHT_FAT} />
+            </button >
+        </section>
+    )
+
+    // function afterChange(previousSlide, _ref) {
+    //     var currentSlide = _ref.currentSlide; _ref.onMove;
+    //     return alert("previous slide is " + previousSlide + " currentSlide is " + currentSlide)
+    // }
 
     const responsive = {
-        largeDesktop: {
-            breakpoint: {
-                max: 4000,
-                min: 1600
-            },
-            items: 3,
-        },
         desktop: {
-            breakpoint: {
-                max: 1600,
-                min: 1024
-            },
-            items: 3,
-        },
-        tablet: {
-            breakpoint: {
-                max: 1024,
-                min: 464
-            },
-            items: 3,
+          breakpoint: {
+            max: 3000,
+            min: 1024
+          },
+          items: 12,
+          slidesToSlide: 6
         },
         mobile: {
-            breakpoint: {
-                max: 464,
-                min: 0
-            },
-            items: 3,
+          breakpoint: {
+            max: 464,
+            min: 0
+          },
+          items: 6,
+          slidesToSlide: 3
         },
-    }
+        tablet: {
+          breakpoint: {
+            max: 1024,
+            min: 464
+          },
+          items: 3,
+          slidesToSlide: 3
+        }
+      }
 
     return (
         <Carousel
+            // afterChange={function (previousSlide, _ref) { var currentSlide = _ref.currentSlide; _ref.onMove; return alert("previous slide is " + previousSlide + " currentSlide is " + currentSlide) }}
             // additionalTransfrom={0}
             // arrows={!isMobileDevice}
-            // centerMode={false}
+            centerMode={false}
             // dotListClass=""
             draggable={isMobileDevice}
+            partialVisible={false}
             // focusOnSelect={false}
             // infinite
             // keyBoardControl
@@ -53,38 +78,36 @@ export function CategoryCarousel({ images, selectedCategory, handleClick }) {
             // shouldResetAutoplay
             // showDots={false}
             // sliderClass=""
-            partialVisible={true}
+            // partialVisible={true}
+            customLeftArrow={<CustomLeftArrow />}
+            customRightArrow={<CustomRightArrow />}
             minimumTouchDrag={80}
             renderArrowsWhenDisabled={false}
             arrows
             className="category-bar"
-            itemClass=""
+            itemClass="category-item width-100-percent"
             renderButtonGroupOutside={false}
             responsive={responsive}
-            rewind={false}
+            rewind={true}
             rtl={false}
             slidesToSlide={1}
             swipeable={true}
+            infinite={false}
         >
             {
                 images.map((img, index) => (
-                    // <section className={`category-preview-container${selectedCategory === img.label ? ' active' : ''}`} onClick={(ev) => handleClick(ev, img.label)}>
-                    //     <section className={`category-preview`}>
-                    <section key={index} className={`img-container${selectedCategory === img.label ? ' active' : ''}`} onClick={(ev) => handleClick(ev, img.label)}>
+                    <section
+                        key={index}
+                        className={`img-container${selectedCategory === img.label ? ' active' : ''}`}
+                        onClick={(ev) => handleClick(ev, img.label)}
+                        // style={{width:"fit-content"}}
+                    >
                         <img
                             key={index}
                             src={img.imgSrc}
-                        // height={100}
-                        // width={100}
-                        // style={{
-                        //     // height: "24px",
-                        //     // width: "24px",
-                        // }}
                         />
                         <label><span>{img.label}</span></label>
                     </section>
-                    //     </section>
-                    // </section>
                 ))
             }
         </Carousel>

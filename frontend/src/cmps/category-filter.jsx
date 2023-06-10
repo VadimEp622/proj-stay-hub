@@ -328,9 +328,23 @@ export function CategoryFilter() {
     }
 
     return (
-        <section className="category-carousel-container">
-            <CategoryCarousel images={images} selectedCategory={selectedCategory} handleClick={handleClick} />
-            <button style={{justifySelf:"end",marginBlockStart:'20px'}}>Some Button</button>
+        <section className="category-filter">
+            <section className="category-carousel-container">
+                <CategoryCarousel images={images} selectedCategory={selectedCategory} handleClick={handleClick} />
+            </section>
+            <button
+                className="btn-main-filter"
+                style={{
+                    justifySelf: "end",
+                    marginBlockStart: "20px",
+                    width: "88.563px",
+                    height: "32px",
+                    marginInlineStart: "24px"
+                }}>
+                <span>
+                    Filters
+                </span>
+            </button>
         </section>
     )
 }
