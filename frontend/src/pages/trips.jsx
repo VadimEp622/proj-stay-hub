@@ -20,75 +20,57 @@ export function MyTrips() {
         return (
             <div className="trips">
                 <h1>Trips</h1>
-            {loggedInUser.orders ? (
-                <p>Please view your trips</p>
-            ) : (
-                <>
-                <section className="no-trips">
-                    <div className="no-trips-header">No trips booked...yet!</div> <span></span>
-                    <p>Time to dust off your bags and start planning your next adventure</p>
-                    <button>Start searching</button>
-                </section>
-                </>
-            )}
-        </div>
-        //     <section className="trips-container">
-        //         <h3>Trips</h3>
-        //             { console.log('Orders:',loggedInUser.orders)}
-        //         <div className="Trips">
-        //             {loggedInUser.orders ? (
-        //                 <p>Please view your trips</p>
-        //             ) : (
-        //                 <>
-        //                     <div className="trips-header">No trips booked..yet!</div>
-        //                     <p>Time to dust off your bags and start planning your next adventure</p>
-        //                     <button>Start searching</button>
-        //                 </>
-        //             )}
-        //         </div>
-        //         <div className="upcoming-reservation">
-        //             <h3>Upcoming reservations</h3>
-        //             <div className="upcoming-reservation">
-        //                 {/* תוסיף פה לפי התמונה של תומי */}
-        //             </div>
-        //             <aside className="explore-things-to-do">
-        //                 <h5>Explore things to do near {loggedInUser.orders[0].city}</h5>
-        //                 <div className="things-to-do">
-        //                     <div className="things-todo">
-        //                         Just for you
-        //                         {utilService.getRandomIntInclusive(10, 20)} experiences
-        //                     </div>
-        //                     <div className="things-todo">
-        //                         Top-rated
-        //                         {utilService.getRandomIntInclusive(30, 50)} experiences
-        //                     </div>
-        //                     <div className="things-todo">
-        //                         Sports
-        //                         {utilService.getRandomIntInclusive(50, 70)} experiences
-        //                     </div>
-        //                     <div className="things-todo">
-        //                         Tours
-        //                         {utilService.getRandomIntInclusive(100, 200)} experiences
-        //                     </div>
-        //                     <div className="things-todo">
-        //                         Sightseeing
-        //                         {utilService.getRandomIntInclusive(100, 200)} experiences
-        //                     </div>
-        //                     <div className="things-todo">
-        //                         Show more
-        //                         {utilService.getRandomIntInclusive(300, 500)} experiences
-        //                     </div>
-        //                 </div>
-        //             </aside>
-        //         </div>
-        //         <div className="where-you-been">
-        //             <h3>Where you've been</h3>
-        //             <div className="last-trips">
-
-        //             </div>
-        //         </div>
-        //     </section>
+                {loggedInUser.trips ? (
+                    <section className="trips-container">
+                        {console.log('trips', loggedInUser.trips)}
+                        <h3 className="reservations-header">Upcoming reservations</h3>
+                        <div className="upcoming-reservation">
+                            <section className="reservation-container">
+                            reservations details section
+                            </section>
+                            <aside className="explore-things-to-do">
+                                <h5>Explore things to do near {loggedInUser.trips[0]?.city}</h5>
+                                <div className="things-to-do">
+                                    <div className="things-todo">
+                                        Just for you
+                                        {utilService.getRandomIntInclusive(10, 20)} experiences
+                                    </div>
+                                    <div className="things-todo">
+                                        Top-rated
+                                        {utilService.getRandomIntInclusive(30, 50)} experiences
+                                    </div>
+                                    <div className="things-todo">
+                                        Sports
+                                        {utilService.getRandomIntInclusive(30, 60)} experiences
+                                    </div>
+                                    <div className="things-todo">
+                                        Tours
+                                        {utilService.getRandomIntInclusive(50, 120)} experiences
+                                    </div>
+                                    <div className="things-todo">
+                                        Sightseeing
+                                        {utilService.getRandomIntInclusive(50, 120)} experiences
+                                    </div>
+                                    <div className="things-todo">
+                                        Show more
+                                        {utilService.getRandomIntInclusive(300, 500)} experiences
+                                    </div>
+                                </div>
+                            </aside>
+                        </div>
+                        <section className=""></section>
+                    </section>
+                ) : (
+                    <>
+                        <section className="no-trips">
+                        <h1>Trips</h1>
+                            <div className="no-trips-header">No trips booked...yet!</div> <span></span>
+                            <p>Time to dust off your bags and start planning your next adventure</p>
+                            <button>Start searching</button>
+                        </section>
+                    </>
+                )}
+            </div>
         )
-
     }
 }
