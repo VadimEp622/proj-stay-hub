@@ -23,7 +23,7 @@ export function MyTrips() {
                 const filteredTrips = orders.filter(
                     (order) => order.buyer._id === loggedInUser._id
                 );
-                setTrips(filteredTrips);
+                setTrips(filteredTrips)
             } catch (error) {
                 showErrorMsg('Error fetching orders');
             }
