@@ -39,8 +39,8 @@ export function OrderContainer({ stay, randomDate }) {
                 image: stay.host.img,
                 joined: randomDate.split(' ')[1]
             },
-            checkIn: stay.availableDates[0].to,
-            checkOut: stay.availableDates[0].from,
+            checkIn: stay.availableDates[0].from,
+            checkOut: stay.availableDates[0].to,
             orderPrice: {
                 total: totalPrice,
                 serviceFee: serviceFee,
@@ -56,6 +56,14 @@ export function OrderContainer({ stay, randomDate }) {
                 rate: stay.reviews.rate,
                 summary: stay.summary,
                 image: stay.imgUrls[0]
+            },
+            thingsToDo: {
+                "Just-for-you": utilService.getRandomIntInclusive(10, 20),
+                "Top-rated": utilService.getRandomIntInclusive(30, 50),
+                "Sports": utilService.getRandomIntInclusive(30, 60),
+                "Tours": utilService.getRandomIntInclusive(50, 120),
+                "Sightseeing": utilService.getRandomIntInclusive(50, 120),
+                "more": utilService.getRandomIntInclusive(300, 500),
             },
             nightsCount: nightsCount,
             nightsPrice: nightsPrice
