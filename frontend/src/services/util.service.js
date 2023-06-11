@@ -13,7 +13,8 @@ export const utilService = {
     getTimeDiffBy,
     checkMinMaxPrices,
     createDivsForButtonContainer,
-    convertTimestampToDate
+    convertTimestampToDate,
+    addCommas
 }
 
 function makeId(length = 6) {
@@ -155,3 +156,6 @@ function convertTimestampToDate(timestamp) {
     return formattedDate;
 }
 
+function addCommas(num) {
+    return num.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}

@@ -72,7 +72,7 @@ export function OrderContainer({ stay }) {
             <section className="order-modal-form flex">
                 {/* <DatePicker stay={stay} /> */}
                 <div className="order-container-header flex align-baseline">
-                    <h2><span>${stay.price.toLocaleString()}</span> night</h2>
+                    <h2><span>${utilService.addCommas(stay.price)}</span> night</h2>
                     <div className="order-rate flex align-baseline">
                         <span > <SvgHandler svgName={STAR} /></span>
                         <span className="review-rate">{reviewService.getAverageReview(stay)}</span>
@@ -105,11 +105,11 @@ export function OrderContainer({ stay }) {
                     <p>You won't be charged yet</p>
                     <section className="flex space-between">
                         <p className="underline">${stay.price.toLocaleString()} x {nightsCount} nights</p>
-                        <p>${nightsPrice.toLocaleString()}</p>
+                        <p>${utilService.addCommas(nightsPrice)}</p>
                     </section>
                     <section className="flex space-between">
                         <p className="underline">Cleaning fee</p>
-                        <span>${cleaningFee.toLocaleString()}</span>
+                        <span>${utilService.addCommas(cleaningFee)}</span>
                     </section>
                     <div className="flex space-between" >
                         <p className="underline">StayHub service fee</p>
@@ -118,7 +118,7 @@ export function OrderContainer({ stay }) {
                     <hr />
                     <div className="total-price-container flex space-between fs16">
                         <h5>Total</h5>
-                        <h5>${totalPrice.toLocaleString()}</h5>
+                        <h5>${utilService.addCommas(totalPrice)}</h5>
                     </div>
                 </section>
             </section>

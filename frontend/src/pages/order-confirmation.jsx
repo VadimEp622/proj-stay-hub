@@ -112,26 +112,26 @@ export function OrderConfirmation() {
                     <div className="price-details">
                         <h3 className="fs22">Price details</h3>
                         <div className="price flex space-between fs16">
-                            <div className="inside-price">${price.toLocaleString()} x {nightsCount} night{nightsCount !== 1 && 's'}</div>
+                            <div className="inside-price">${utilService.addCommas(price)} x {nightsCount} night{nightsCount !== 1 && 's'}</div>
                             <div className="price-total">
-                                ${nightsPrice}
+                                ${utilService.addCommas(nightsPrice)}
                             </div>
                         </div>
                         <div className="cleaning-fee flex flex space-between fs16">
                             <div className="inside-price underline">Cleaning fee</div>
                             <div className="price-total">
-                                ${cleaningFee}
+                                ${utilService.addCommas(cleaningFee)}
                             </div>
                         </div>
                         <div className="service-fee flex flex space-between fs16">
                             <div className="inside-price underline">StayHub service fee</div>
                             <div className="price-total">
-                                ${serviceFee}
+                                ${utilService.addCommas(serviceFee)}
                             </div>
                         </div>
                         <div className="total-price flex space-between fs16">
                             <span>Total (USD)</span>
-                            <span>${total.toLocaleString()}</span>
+                            <span>${utilService.addCommas(total)}</span>
                         </div>
                     </div>
                 </aside>
