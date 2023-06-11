@@ -70,7 +70,7 @@ export function StayPreview({ stay }) {
             Math.sin(dLon / 2) * Math.sin(dLon / 2) * Math.cos(lat1) * Math.cos(lat2)
         var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
         var d = R * c
-        return d
+        return d.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",")
     }
 
     // Converts numeric degrees to radians
@@ -93,7 +93,7 @@ export function StayPreview({ stay }) {
                         <p className="review-rate"><SvgHandler svgName={STAR} /><span>{reviewService.getAverageReview(stay)}</span></p>
                     </div>
                     <div className="stay-info">
-                        {!isWishlistPage ? <p>{calcCrow(lat, lng, stay.loc.lat, stay.loc.lan).toFixed(0)} kilometers away</p> : <p>{stay.type}</p>}
+                        {!isWishlistPage ? <p>{calcCrow(lat, lng, stay.loc.lat, stay.loc.lan)} kilometers away</p> : <p>{stay.type}</p>}
                         {isWishlistPage ? <p>{stay.bedrooms} {bedrooms} </p> : ''}
                         <p>{utilService.getFormattedTimeRange(stay.checkIn, stay.checkOut)}</p>
                         <p className="price-preview"><span>${stay.price.toLocaleString()}</span> night</p>
