@@ -47,7 +47,6 @@ export function StayDetails() {
             })
             return acc
         }, {})
-        console.log('criteria', criteria)
 
         if (!criteria) return []
         Object.entries(criteria).forEach(([input, value]) => {
@@ -65,7 +64,6 @@ export function StayDetails() {
     const reviewsInputs = displayReviewsCriteria()
     const reviews = stay.reviews.length > 1 ? 'reviews' : 'review'
     const capitalizedReviewsString = reviews.charAt(0).toUpperCase() + reviews.slice(1)
-    console.log(stay)
     return <>
         <div>
             <Helmet>
@@ -121,7 +119,7 @@ export function StayDetails() {
                             <span className='dot'>•</span>
                             <span>1 bath</span>
                         </section>
-                        <img src="https://a0.muscache.com/im/pictures/user/59da4e65-e5a0-4fde-b4d9-e48f20c1ba43.jpg?im_w=240" alt="host image" />
+                        <img src={stay.host.pictureUrl} alt="host image" />
                     </section>
                     <section className='stay-highlights'>
                         <div className='highlight flex'>
@@ -242,10 +240,10 @@ export function StayDetails() {
                         </section>
                         <section className="about-host fs16">
                             <div className="house-rules">
-                                <p>When I finished my studies at interior design in Florence I returned to the place that inspires me the most, Santorini.</p>
+                                <p>{stay.host.about}</p>
                                 <h4>During your stay</h4>
                                 <p>
-                                    We live permanently at Casa San Gabriel with our family and are on site to answer any questions our guests have.
+                                    We live permanently in {stay.host.location} with our family and are on site to answer any questions our guests have.
                                     We cook for our guests once a week and hold a weekly pizza night.
                                 </p>
 
@@ -260,7 +258,7 @@ export function StayDetails() {
                     <section className='owner-communication flex'>
                         <h3 className='fs16'>Language: English</h3>
                         <h3 className='fs16'>Response rate: 100%</h3>
-                        <h3 className='fs16'>Response time: within a couple of hours</h3>
+                        <h3 className='fs16'>Response time: {stay.host.responseTime}</h3>
                         <button className='fs16'>Contact Host</button>
                         <section className='protection-info flex align-center fs12'>
                             <img src="https://res.cloudinary.com/dnhn4zsy0/image/upload/v1685913828/airbnb-orotect_ohgcnp.svg" alt="airbnb protect" />

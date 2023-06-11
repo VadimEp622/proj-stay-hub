@@ -7,7 +7,8 @@ export const reviewService = {
   add,
   query,
   remove,
-  getAverageReview
+  getAverageReview,
+  formatDateString
 }
 
 function query(filterBy) {
@@ -42,17 +43,47 @@ async function add({ txt, aboutUserId }) {
   return addedReview
 }
 
+// function getAverageReview(stay) {
+//   let count = 0
+//   const totalRate = stay.reviews.reduce((acc, review) => {
+//     acc += review.rate
+//     count++
+//     return acc
+//   }, 0)
+//   const averageRate = totalRate / count
+
+//   const formattedRate = averageRate % 1 === 0 ? averageRate.toFixed(1) : averageRate.toFixed(2)
+
+//   return formattedRate
+// }
+
 function getAverageReview(stay) {
-  if(stay.reviews.length === 0) return
-  let count = 0
-  const totalRate = stay.reviews.reduce((acc, review) => {
-    acc += review.rate
-    count++
-    return acc
-  }, 0)
-  const averageRate = totalRate / count
+  if (!stay.reviews || stay.reviews.length === 0) {
+    return 0;
+  }
 
-  const formattedRate = averageRate % 1 === 0 ? averageRate.toFixed(1) : averageRate.toFixed(2)
+  let totalRate = 0;
+  let count = 0;
 
-  return formattedRate
+  stay.reviews.forEach((review) => {
+    if (review.reviewInputs && typeof review.reviewInputs === "object") {
+      Object.values(review.reviewInputs).forEach((rate) => {
+        if (typeof rate === "number") {
+          totalRate += rate;
+          count++;
+        }
+      });
+    }
+  });
+
+  const averageRate = totalRate / count;
+  const formattedRate = averageRate % 1 === 0 ? Math.round(averageRate) : averageRate.toFixed(2);
+  stay.reviews.rate = formattedRate;
+  return formattedRate;
+}
+
+function formatDateString(dateString) {
+  const date = new Date(dateString);
+  const options = { month: 'long', year: 'numeric' };
+  return date.toLocaleDateString('en-US', options);
 }

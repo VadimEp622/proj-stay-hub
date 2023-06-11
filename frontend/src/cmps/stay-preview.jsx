@@ -77,6 +77,7 @@ export function StayPreview({ stay }) {
     function toRad(Value) {
         return Value * Math.PI / 180
     }
+    console.log(stay)
 
     return (
         <section className="stay-preview" key={stay._id}>
@@ -95,7 +96,7 @@ export function StayPreview({ stay }) {
                     <div className="stay-info">
                         {!isWishlistPage ? <p>{calcCrow(lat, lng, stay.loc.lat, stay.loc.lan)} kilometers away</p> : <p>{stay.type}</p>}
                         {isWishlistPage ? <p>{stay.bedrooms} {bedrooms} </p> : ''}
-                        <p>{utilService.getFormattedTimeRange(stay.checkIn, stay.checkOut)}</p>
+                        {/* <p>{utilService.getFormattedTimeRange(stay.availableDates.from, stay.availableDates.to)}</p> */}
                         <p className="price-preview"><span>${utilService.addCommas(stay.price)}</span> night</p>
                     </div>
                 </div>

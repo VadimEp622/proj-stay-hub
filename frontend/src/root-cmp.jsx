@@ -22,6 +22,7 @@ import { store } from './store/store'
 import { WishList } from './pages/wishlist'
 import { MyTrips } from './pages/trips'
 import { AddStay } from './pages/add-stay'
+import { JSONStringify } from './cmps/strinfigy'
 
 export function RootCmp() {
     const isUnclickableBg = useSelector(storeState => storeState.systemModule.isUnclickableBg)
@@ -58,6 +59,7 @@ export function RootCmp() {
                         <Route path="trips" element={<MyTrips />} />
                         <Route path="stay/:stayId" element={<StayDetails />} />
                         <Route path="stay/book/:stayId" element={<OrderConfirmation />} />
+                        <Route path="stay/stringify" element={<JSONStringify />} />
                     </Routes>
                 </main>
                 <AppFooter isStayDetailsPage={isStayDetailsPage} />

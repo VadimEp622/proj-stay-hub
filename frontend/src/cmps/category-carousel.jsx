@@ -33,33 +33,33 @@ export function CategoryCarousel({ images, selectedCategory, handleClick }) {
     //     var currentSlide = _ref.currentSlide; _ref.onMove;
     //     return alert("previous slide is " + previousSlide + " currentSlide is " + currentSlide)
     // }
-
+    console.log(window.innerWidth)
     const responsive = {
         desktop: {
-          breakpoint: {
-            max: 3000,
-            min: 1024
-          },
-          items: 12,
-          slidesToSlide: 6
+            breakpoint: {
+                max: 3000,
+                min: 1200
+            },
+            items: 17,
+            slidesToSlide: 6
         },
         mobile: {
-          breakpoint: {
-            max: 464,
-            min: 0
-          },
-          items: 6,
-          slidesToSlide: 3
+            breakpoint: {
+                max: 464,
+                min: 0
+            },
+            items: 6,
+            slidesToSlide: 3
         },
         tablet: {
-          breakpoint: {
-            max: 1024,
-            min: 464
-          },
-          items: 3,
-          slidesToSlide: 3
+            breakpoint: {
+                max: 1100,
+                min: 464
+            },
+            items: 12,
+            slidesToSlide: 3
         }
-      }
+    }
 
     return (
         <Carousel
@@ -100,7 +100,7 @@ export function CategoryCarousel({ images, selectedCategory, handleClick }) {
                         key={index}
                         className={`img-container${selectedCategory === img.label ? ' active' : ''}`}
                         onClick={(ev) => handleClick(ev, img.label)}
-                        // style={{width:"fit-content"}}
+                    // style={{width:"fit-content"}}
                     >
                         <img
                             key={index}

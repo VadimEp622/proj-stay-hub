@@ -14,7 +14,8 @@ export const utilService = {
     checkMinMaxPrices,
     createDivsForButtonContainer,
     convertTimestampToDate,
-    addCommas
+    addCommas,
+    getRandomNumberDecimal
 }
 
 function makeId(length = 6) {
@@ -74,6 +75,7 @@ function getFutureTime(amount, item) {
 
     return TODAY
 }
+
 
 function getTimeDiffBy(item) {
     const MINUTE = 1000 * 60
@@ -158,4 +160,10 @@ function convertTimestampToDate(timestamp) {
 
 function addCommas(num) {
     return num.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+function getRandomNumberDecimal(min, max) {
+    const randomNum = Math.random() * (max - min) + min;
+    const roundedNum = Math.floor(randomNum * 10) / 10;
+    return roundedNum;
 }
