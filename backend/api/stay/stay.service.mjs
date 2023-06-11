@@ -7,11 +7,16 @@ const { ObjectId } = mongodb
 const PAGE_SIZE = 3
 
 
-async function query(filterBy = { txt: '' }) {
+async function query(filterBy = { country: '', city: '' }) {
     try {
         const criteria = {
-            vendor: { $regex: filterBy.txt, $options: 'i' }
+            // loc: {
+            //     country: { $regex: filterBy.country, $options: 'i' },
+            //     city: { $regex: filterBy.city, $options: 'i' }
+            // }
+            // name:''
         }
+        console.log('criteria', criteria)
         const collection = await dbService.getCollection('stay')
         var stayCursor = await collection.find(criteria)
 
@@ -20,6 +25,7 @@ async function query(filterBy = { txt: '' }) {
         }
 
         const stays = stayCursor.toArray()
+        console.log('stays', stays)
         return stays
     } catch (err) {
         logger.error('cannot find stays', err)

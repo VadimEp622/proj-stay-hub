@@ -16,28 +16,28 @@ window.cs = carService
 
 
 async function query(filterBy = { txt: '', price: 0 }) {
-    return httpService.get('car', filterBy)
+    return httpService.get('stay', filterBy)
 }
 function getById(carId) {
-    return httpService.get(`car/${carId}`)
+    return httpService.get(`stay/${carId}`)
 }
 
 async function remove(carId) {
-    return httpService.delete(`car/${carId}`)
+    return httpService.delete(`stay/${carId}`)
 }
 async function save(car) {
     var savedCar
     if (car._id) {
-        savedCar = await httpService.put(`car/${car._id}`, car)
+        savedCar = await httpService.put(`stay/${car._id}`, car)
 
     } else {
-        savedCar = await httpService.post('car', car)
+        savedCar = await httpService.post('stay', car)
     }
     return savedCar
 }
 
 async function addCarMsg(carId, txt) {
-    const savedMsg = await httpService.post(`car/${carId}/msg`, {txt})
+    const savedMsg = await httpService.post(`stay/${carId}/msg`, {txt})
     return savedMsg
 }
 

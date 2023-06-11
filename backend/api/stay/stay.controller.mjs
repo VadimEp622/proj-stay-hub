@@ -4,9 +4,11 @@ import { logger } from '../../services/logger.service.mjs'
 export async function getStays(req, res) {
   try {
     logger.debug('Getting Stays:', req.query)
+
     const filterBy = {
-      txt: req.query.txt || '',
-      pageIdx: req.query.pageIdx
+      // country: req.query.country || '',
+      // city: req.query.city || '',
+      // pageIdx: req.query.pageIdx
     }
     const stays = await stayService.query(filterBy)
     res.json(stays)
