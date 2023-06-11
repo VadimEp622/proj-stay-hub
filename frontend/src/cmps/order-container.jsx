@@ -127,7 +127,7 @@ export function OrderContainer({ stay, randomDate }) {
             <div className="modal-container">{openModal && <OrderConfirmation setOpenModal={setOpenModal} orderObject={orderObject} />}
             </div>
             <section className='order-spacial-info flex'>
-                <p><span>Lower price.</span> Your dates are ${(stay.price * 0.4).toFixed(0)} less than the average nightly rate of the last 60 days.</p>
+                <p><span>Lower price.</span> Your dates are ${(stay.price * 0.4).toFixed(0)} less per night compared to the average nightly rate of the last 60 days.</p>
                 <div><SvgHandler svgName={RED_TAG} /></div>
             </section>
         </section>

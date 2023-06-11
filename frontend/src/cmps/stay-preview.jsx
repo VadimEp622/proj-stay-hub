@@ -45,7 +45,21 @@ export function StayPreview({ stay }) {
         setIsLikeClicked(likedId)
     }, [wishedListItems, stay._id])
 
-    const bedrooms = stay.bedrooms > 1 ? 'bedrooms' : 'bedroom'
+    const bedrooms = stay.bedrooms > 1 ? 'Bedrooms' : 'Bedroom'
+    const bathrooms = stay.bathrooms > 1 ? 'Bathrooms' : 'Bathroom'
+    let phrase
+    if (filterBy.from && filterBy.to) {
+        if (stay.bedrooms === 0 || isNaN(stay.bedrooms) || typeof stay.bedrooms === 'undefined') {
+            phrase = stay.bathrooms + " " + bathrooms
+        } else if (stay.bedrooms) {
+            phrase = stay.bedrooms + " " + bedrooms
+        }
+    } else {
+        phrase = utilService.getFormattedTimeRange(stay.availableDates[0].from, stay.availableDates[0].to);
+    }
+
+
+
 
     if ("geolocation" in navigator) {
         navigator.geolocation.watchPosition(
@@ -102,7 +116,7 @@ export function StayPreview({ stay }) {
                             <p>{stay.type}</p>
                         )}
                         {isWishlistPage ? <p>{stay.bedrooms} {bedrooms} </p> : ''}
-                        <p>{utilService.getFormattedTimeRange(stay.availableDates[0].from, stay.availableDates[0].to)}</p>
+                        <p>{phrase}</p>
                         <p className="price-preview"><span>${utilService.addCommas(stay.price)}</span> night</p>
                     </div>
                 </div>
