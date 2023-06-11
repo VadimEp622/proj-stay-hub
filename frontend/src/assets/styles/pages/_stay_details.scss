@@ -328,6 +328,7 @@
 
         h3 {
             padding-bottom: 24px;
+            font-weight: 800;
         }
 
         .location-about {
@@ -383,6 +384,13 @@
         }
 
         .mini-owner-info {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+
+            h3 {
+                padding-bottom: 8px;
+            }
 
             span {
                 color: $gray-clr0;

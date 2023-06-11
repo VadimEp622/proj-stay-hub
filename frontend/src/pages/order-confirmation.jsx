@@ -1,8 +1,8 @@
 import { useClickOutside } from "../customHooks/clickOutsideModal";
-import { LEFT_ARROW, STAR } from "../services/svg.service";
+import { ARROW_LEFT, STAR } from "../services/svg.service";
+import SvgHandler from "../cmps/svg-handler";
 import { AirbnbButton } from "../cmps/reuseableCmp/airbnb-button";
 import { utilService } from "../services/util.service";
-import SvgHandler from "../cmps/svg-handler";
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { addConfirmedTrip } from "../store/user.actions";
@@ -56,7 +56,7 @@ export function OrderConfirmation() {
         <section className="order-confirmation" >
             <section className="confirmation-header flex">
                 <Link className="return-btn" to={`/stay/${id}`}>
-                    <SvgHandler svgName={LEFT_ARROW} />
+                    <SvgHandler svgName={ARROW_LEFT} />
                 </Link>
                 <h2>Confirm and pay</h2>
             </section>
@@ -82,7 +82,7 @@ export function OrderConfirmation() {
                     <h5 className="fs16">Message the Host</h5>
                     <p>Let the Host know why you're traveling and when you'll check in.</p>
                     <div className="host-details-preview">
-                        {sellerFirstName}
+                        {seller.FirstName}
                         {seller.image}
                         Joined in 2020
                     </div>
