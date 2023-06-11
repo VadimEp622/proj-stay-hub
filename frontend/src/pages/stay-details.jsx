@@ -106,7 +106,7 @@ export function StayDetails() {
                     for (let i = 0; i < 5; i++) {
                         const url = stay.imgUrls[i];
                         images.push(
-                            <div className="img" key={i}>
+                            <div className="img" key={url}>
                                 <img src={url} alt={`Image ${i}`} className="fade-image" />
                                 <div className="overlay"></div>
                             </div>
