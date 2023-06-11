@@ -39,8 +39,8 @@ export function OrderContainer({ stay, randomDate }) {
                 image: stay.host.img,
                 joined: randomDate.split(' ')[1]
             },
-            checkIn: stay.availableDates[0].to,
-            checkOut: stay.availableDates[0].from,
+            checkIn: stay.availableDates[0].from,
+            checkOut: stay.availableDates[0].to,
             orderPrice: {
                 total: totalPrice,
                 serviceFee: serviceFee,

@@ -40,13 +40,13 @@ export function MyTrips() {
     const currentDate = new Date();
 
     const upcomingTrips = trips
-        .filter((trip) => new Date(trip.stayDetails.checkOut) > currentDate)
+        .filter((trip) => new Date(trip.checkOut) > currentDate)
         .reverse();
 
     const pastTrips = trips
-        .filter((trip) => new Date(trip.stayDetails.checkOut) <= currentDate)
+        .filter((trip) => new Date(trip.checkOut) <= currentDate)
         .reverse();
-
+    console.log(upcomingTrips)
     return (
         <div className="trips">
             <h1>Trips</h1>
@@ -56,18 +56,18 @@ export function MyTrips() {
                     <div className="upcoming-reservation">
                         <section className="reservation-container">
                             {upcomingTrips.map((trip, index) => {
-                                const locationSubstring = trip.stayDetails.loc.substring(0, trip.stayDetails.loc.indexOf(','));
+                                const locationSubstring = trip.stayDetails.loc.address.substring(0, trip.stayDetails.loc.address.indexOf(','));
                                 return (
                                     <div key={index}>
                                         {trip.stayDetails.city}
                                         Entire rental unit hosted by {trip.seller.fullname}
                                         <div className="inside-upcoming-reservation">
-                                            {trip.checkIn} - {trip.checkOut}
-                                            {locationSubstring}
-                                            {trip.stayDetails.loc.city}
-                                            {trip.stayDetails.loc.country}
+                                            {utilService.getFormattedTimeRange(trip.checkIn, trip.checkOut)}
+                                            {locationSubstring}, {trip.stayDetails.loc.city}, {trip.stayDetails.loc.country}
                                         </div>
-                                        <div className="upcoming-reservation-picture">{trip.stayDetails.image}</div>
+                                        <div className="upcoming-reservation-picture">
+                                            <img src={trip.stayDetails.image} alt="Stay Image" />
+                                        </div>
                                         <aside className="explore-things-to-do">
                                             {/* Explore things to do */}
                                             <h5>Explore things to do near {trip.stayDetails.city}</h5>
@@ -113,7 +113,9 @@ export function MyTrips() {
                                             {trip.stayDetails.loc.city}
                                             {trip.stayDetails.loc.country}
                                         </div>
-                                        <div className="past-trip-picture">{trip.stayDetails.image}</div>
+                                        <div className="past-trip-picture">
+                                            <img src={trip.stayDetails.image} alt="Stay Image" />
+                                        </div>
                                     </div>
                                 );
                             })}
