@@ -405,11 +405,17 @@
         .sub-details-highlights {
             width: 45%;
 
+
+            h4:nth-of-type(2) {
+                padding-right: 20px;
+            }
+
             h4 {
                 padding-left: 12px;
                 padding-right: 4px;
                 letter-spacing: 0;
             }
+
 
             span {
                 padding-right: 24px;

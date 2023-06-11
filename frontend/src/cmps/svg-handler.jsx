@@ -36,11 +36,12 @@ import { ReactComponent as AirCond } from '../assets/img/airbnb-assets/air-cond.
 import { ReactComponent as Verified } from '../assets/img/airbnb-assets/verified.svg'
 import { ReactComponent as TickDecline } from '../assets/img/tick-decline/tick-decline.svg'
 import { ReactComponent as Exit } from '../assets/img/airbnb-assets/exit.svg'
-import { ReactComponent as LeftArrow } from '../assets/img/airbnb-assets/left-arrow.svg'
 import { ReactComponent as Exclamation } from '../assets/img/airbnb-assets/exclamationmark.svg'
+import { ReactComponent as Superhost } from '../assets/img/superhost/super-host.svg'
+import { ReactComponent as BlackSuperhost16 } from '../assets/img/superhost/superhost-black-16.svg'
 
 import {
-    HEART_16, RED_HEART_16, LOGO, RED_HEART, SEARCH, SHARE, STAR, STAR_16, USER_NAV_BARS, RED_TAG,
+    HEART_16, RED_HEART_16, LOGO, RED_HEART, SEARCH, SHARE, STAR, STAR_16, USER_NAV_BARS, RED_TAG, SUPERHOST, BLACK_SUPERHOST_16,
     USER_NAV_PROFILE, WHITE_HEART, LOCATION, KEY, CHECKIN, SEARCH_2, TICK_DECLINE, VERIFIED, ARROW_LEFT_FAT, ARROW_LEFT, ARROW_RIGHT, ARROW_RIGHT_FAT, ARROW_UP
 } from '../services/svg.service'
 
@@ -94,6 +95,10 @@ const SvgHandler = ({ svgName }) => {
                 return <Key />
             case CHECKIN:
                 return <Checkin />
+            case SUPERHOST:
+                return <Superhost />
+            case BLACK_SUPERHOST_16:
+                return <BlackSuperhost16 />
             case 'TV':
                 return <TV />
             case 'Wifi':

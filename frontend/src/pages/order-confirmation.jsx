@@ -96,7 +96,7 @@ export function OrderConfirmation() {
                         <img src={image} alt="stay-image" />
                         <div className="detail">
                             <p className="fs12">{type}</p>
-                            <p>{summary}</p>
+                            <span className="short-summary">{summary}</span>
                             <section className="confirmation-reviews flex align-center">
                                 {reviewsCount > 0 && (
                                     <>
