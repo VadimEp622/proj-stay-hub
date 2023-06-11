@@ -55,7 +55,7 @@
 
 
 
-            &:not(.who-container)>*,
+            &:not(.who-container,.size-less)>*,
             &.who-container .who-search .who {
 
                 padding-block: 12.8124px;
@@ -249,94 +249,94 @@
                     right: 0;
                 }
 
-                & .filter-date-picker {
-                    margin-inline: auto;
-                    color: inherit;
+                // & .filter-date-picker {
+                //     margin-inline: auto;
+                //     color: inherit;
 
-                    & .rdp-head {
-                        & th {
-                            font-size: rem(12px);
-                            font-family: Circular-Bold;
-                            color: $gray-clr0;
-                            line-height: 16px;
-                            text-transform: capitalize;
-                        }
-                    }
+                //     & .rdp-head {
+                //         & th {
+                //             font-size: rem(12px);
+                //             font-family: Circular-Bold;
+                //             color: $gray-clr0;
+                //             line-height: 16px;
+                //             text-transform: capitalize;
+                //         }
+                //     }
 
-                    & .rdp-months {
-                        & .rdp-caption_label {
-                            font-size: rem(16px);
-                            line-height: 20px;
-                            font-family: Circular-SemiBold;
-                            font-weight: 400;
-                        }
-                    }
+                //     & .rdp-months {
+                //         & .rdp-caption_label {
+                //             font-size: rem(16px);
+                //             line-height: 20px;
+                //             font-family: Circular-SemiBold;
+                //             font-weight: 400;
+                //         }
+                //     }
 
-                    // & .rdp-cell {
-                    //     & .rdp-day {
-                    //         font-family: Circular-SemiBold;
-                    //         font-weight: 400;
-                    //         // &:hover{
-                    //             border: 1.5px solid rgb(34, 34, 34);
-                    //             // background-color: inherit;
-                    //         // }
-                    //     }
-                    // }
+                //     // & .rdp-cell {
+                //     //     & .rdp-day {
+                //     //         font-family: Circular-SemiBold;
+                //     //         font-weight: 400;
+                //     //         // &:hover{
+                //     //             border: 1.5px solid rgb(34, 34, 34);
+                //     //             // background-color: inherit;
+                //     //         // }
+                //     //     }
+                //     // }
 
-                    & .rdp-nav {
-                        svg {
-                            width: 12px;
-                            height: 16px;
-                        }
-                    }
+                //     & .rdp-nav {
+                //         svg {
+                //             width: 12px;
+                //             height: 16px;
+                //         }
+                //     }
 
-                    // & .rdp-button{
-                    //     width: 32px;
-                    //     height: 32px;
-                    //     align-items: center;
-                    //     &:hover{
-                    //         background-color: $gray-clr5;
-                    //     }
-                    // }
+                //     // & .rdp-button{
+                //     //     width: 32px;
+                //     //     height: 32px;
+                //     //     align-items: center;
+                //     //     &:hover{
+                //     //         background-color: $gray-clr5;
+                //     //     }
+                //     // }
 
-                    & td {
-                        position: relative;
+                //     & td {
+                //         position: relative;
 
-                        & :is(.day-range-start, .day-range-end) {
-                            background-color: rgb(34, 34, 34);
-                            border-radius: 100%;
-                        }
+                //         & :is(.day-range-start, .day-range-end) {
+                //             background-color: rgb(34, 34, 34);
+                //             border-radius: 100%;
+                //         }
 
-                        &:has(.day-range-end, .day-range-start) {
-                            &::before {
-                                content: "";
-                                position: absolute;
-                                top: 0;
-                                width: 50%;
-                                height: 100%;
-                                background-color: #f7f7f7;
-                            }
-                        }
+                //         &:has(.day-range-end, .day-range-start) {
+                //             &::before {
+                //                 content: "";
+                //                 position: absolute;
+                //                 top: 0;
+                //                 width: 50%;
+                //                 height: 100%;
+                //                 background-color: #f7f7f7;
+                //             }
+                //         }
 
-                        &:has(.day-range-start) {
-                            &::before {
-                                right: 0;
-                            }
-                        }
+                //         &:has(.day-range-start) {
+                //             &::before {
+                //                 right: 0;
+                //             }
+                //         }
 
-                        &:has(.day-range-end) {
-                            &::before {
-                                left: 0;
-                            }
-                        }
+                //         &:has(.day-range-end) {
+                //             &::before {
+                //                 left: 0;
+                //             }
+                //         }
 
-                        & .day-range-middle {
-                            background-color: #f7f7f7;
-                            color: #222222;
-                            border-radius: 0;
-                        }
-                    }
-                }
+                //         & .day-range-middle {
+                //             background-color: #f7f7f7;
+                //             color: #222222;
+                //             border-radius: 0;
+                //         }
+                //     }
+                // }
 
                 & .guest-count-filter {
                     padding-inline: 6px;
