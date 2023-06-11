@@ -22,7 +22,7 @@
 
     .confirmation-details {
         padding-bottom: 16px;
-        border-bottom: 1px solid $gray-clr2;
+        border-bottom: 1px solid $gray-clr3;
     }
 
     .trip-detail {
@@ -47,7 +47,7 @@
         position: sticky;
 
         .confirmation-preview {
-            border-bottom: 1px solid $gray-clr2;
+            border-bottom: 1px solid $gray-clr3;
             padding-bottom: 24px;
 
             img {
@@ -59,6 +59,7 @@
             }
 
             .detail> :first-child {
+                color: $gray-clr0;
                 margin-bottom: 0;
             }
 
@@ -91,18 +92,19 @@
             margin-top: 10px;
             padding-bottom: 22px;
             letter-spacing: 0;
-            border-bottom: 1px solid $gray-clr2;
+            border-bottom: 1px solid $gray-clr3;
         }
 
         .total-price {
             margin-top: 22px;
             letter-spacing: 0;
+            font-family: Circular-semibold;
         }
     }
 
     .message-host {
         margin-top: 32px;
-        border-bottom: 1px solid $gray-clr2;
+        border-bottom: 1px solid $gray-clr3;
 
         & h3 {
             margin-bottom: 20px;
@@ -122,6 +124,7 @@
 
         textarea {
             border-radius: 8px;
+            border-color: $gray-clr3;
             width: 100%;
             height: 125px;
             margin-bottom: 24px;
@@ -131,7 +134,7 @@
 
     .cancellation-policy {
         margin-top: 34px;
-        border-bottom: 1px solid $gray-clr2;
+        border-bottom: 1px solid $gray-clr3;
         padding-bottom: 16px;
 
         & h3 {
