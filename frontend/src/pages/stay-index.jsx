@@ -10,7 +10,7 @@ import { StayList } from '../cmps/stay-list.jsx'
 import { DatePicker } from '../cmps/date-picker.jsx'
 import { FilterModal } from '../cmps/filter.jsx'
 import { store } from '../store/store.js'
-import { CLOSE_EXPANDED_HEADER, REMOVE_UNCLICKABLE_BG } from '../store/system.reducer.js'
+import { CLOSE_EXPANDED_HEADER, CLOSE_EXPANDED_HEADER_MODAL, REMOVE_UNCLICKABLE_BG } from '../store/system.reducer.js'
 
 export function StayIndex() {
     const stays = useSelector(storeState => storeState.stayModule.stays)
@@ -23,6 +23,18 @@ export function StayIndex() {
         loadStays()
     }, [filterBy])
 
+    useEffect(() => {
+        function handleScroll() {
+            store.dispatch({ type: CLOSE_EXPANDED_HEADER })
+            store.dispatch({ type: CLOSE_EXPANDED_HEADER_MODAL })
+            store.dispatch({ type: REMOVE_UNCLICKABLE_BG })
+        }
+
+        window.addEventListener('scroll', handleScroll)
+        return () => {
+            window.removeEventListener('scroll', handleScroll)
+        }
+    }, [])
 
     async function onRemoveStay(stayId) {
         try {
