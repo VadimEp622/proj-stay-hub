@@ -58,7 +58,7 @@ export function MyTrips() {
                                 const locationSubstring = trip.stayDetails.loc.address.substring(0, trip.stayDetails.loc.address.indexOf(','));
                                 return (
                                     <div className="upcoming-reservation" key={index}>
-                                        <section className='reservation-container flex'>
+                                        <section className='reservation-container '>
                                             <section className='reservation-info'>
                                                 <section className="reservation-header">
                                                     <h2> {trip.stayDetails.loc.city}</h2>
