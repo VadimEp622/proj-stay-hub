@@ -9,7 +9,7 @@ import { DetailsHeader } from '../cmps/details-header.jsx'
 import { DetailsReviews } from '../cmps/details-reviews.jsx'
 import { getDate } from '../services/stay.service.js'
 import SvgHandler from '../cmps/svg-handler.jsx'
-import { HEART_16, RED_HEART_16, SHARE, STAR, STAR_16, LOCATION, CHECKIN, KEY, VERIFIED, RED_TAG } from '../services/svg.service.js'
+import { HEART_16, RED_HEART_16, SHARE, STAR, STAR_16, LOCATION, CHECKIN, KEY, VERIFIED, RED_TAG, BLACK_SUPERHOST_16 } from '../services/svg.service.js'
 import { DatePicker } from '../cmps/date-picker.jsx'
 import GoogleMap from '../cmps/map.jsx'
 import { Helmet } from 'react-helmet';
@@ -227,16 +227,12 @@ export function StayDetails() {
                             <h4>
                                 Identity verified
                             </h4>
-                            {stay.superhost && (
-                                <>
-                                    <SvgHandler svgName={STAR} />
-                                    Superhost
-                                </>
-                            )}
                             {stay.host.isSuperhost && (
                                 <>
-                                    <p>{stay.host.fullname} is a Superhost</p>
-                                    <p>Superhosts are experienced, highly rated hosts who are committed to providing great stays for guests.</p>
+                                    <SvgHandler svgName={BLACK_SUPERHOST_16} />
+                                    <h4>
+                                      Superhost  
+                                    </h4>
                                 </>
                             )}
                         </section>
