@@ -36,7 +36,8 @@ async function query(filterBy = { country: '', city: '' }) {
 async function getById(stayId) {
     try {
         const collection = await dbService.getCollection('stay')
-        const stay = collection.findOne({ _id: ObjectId(stayId) })
+        // const stay = collection.findOne({ _id: ObjectId(stayId) })
+        const stay = collection.findOne({ _id: stayId })
         return stay
     } catch (err) {
         logger.error(`while finding stay ${stayId}`, err)
@@ -47,7 +48,7 @@ async function getById(stayId) {
 async function remove(stayId) {
     try {
         const collection = await dbService.getCollection('stay')
-        await collection.deleteOne({ _id: ObjectId(stayId) })
+        await collection.deleteOne({ _id: stayId })
         return stayId
     } catch (err) {
         logger.error(`cannot remove stay ${stayId}`, err)
@@ -73,10 +74,10 @@ async function update(stay) {
             price: stay.price
         }
         const collection = await dbService.getCollection('stay')
-        await collection.updateOne({ _id: ObjectId(stay._id) }, { $set: stayToSave })
+        await collection.updateOne({ _id: stay._id }, { $set: stayToSave })
         return stay
     } catch (err) {
-        logger.error(`cannot update stay ${stayId}`, err)
+        logger.error(`cannot update stay ${stay._id}`, err)
         throw err
     }
 }
@@ -85,7 +86,7 @@ async function addStayMsg(stayId, msg) {
     try {
         msg.id = utilService.makeId()
         const collection = await dbService.getCollection('stay')
-        await collection.updateOne({ _id: ObjectId(stayId) }, { $push: { msgs: msg } })
+        await collection.updateOne({ _id: stayId }, { $push: { msgs: msg } })
         return msg
     } catch (err) {
         logger.error(`cannot add stay msg ${stayId}`, err)
@@ -96,7 +97,7 @@ async function addStayMsg(stayId, msg) {
 async function removeStayMsg(stayId, msgId) {
     try {
         const collection = await dbService.getCollection('stay')
-        await collection.updateOne({ _id: ObjectId(stayId) }, { $pull: { msgs: { id: msgId } } })
+        await collection.updateOne({ _id: stayId }, { $pull: { msgs: { id: msgId } } })
         return msgId
     } catch (err) {
         logger.error(`cannot add stay msg ${stayId}`, err)
