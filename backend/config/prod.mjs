@@ -1,4 +1,4 @@
 export default {
-  dbURL: 'mongodb+srv://theUser:thePass@cluster0-klgzh.mongodb.net/test?retryWrites=true&w=majority',
-  dbName : 'StayHub_db'
+  dbURL: 'mongodb+srv://stayhub123:stayhub123@sprint4-airbnbdemo-stay.cmk0lqm.mongodb.net/?retryWrites=true&w=majority',
+  dbName: 'StayHub_db'
 }
