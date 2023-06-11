@@ -73,6 +73,10 @@ export function CategoryFilter() {
 
     const images = [
         {
+            label: "Trending",
+            imgSrc: trending
+        },
+        {
             label: "OMG!",
             imgSrc: omg
         },
@@ -127,10 +131,6 @@ export function CategoryFilter() {
         {
             label: "Tropical",
             imgSrc: tropical
-        },
-        {
-            label: "Trending",
-            imgSrc: trending
         },
         {
             label: "Countryside",
