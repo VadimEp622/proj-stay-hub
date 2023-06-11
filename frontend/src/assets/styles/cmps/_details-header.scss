@@ -82,15 +82,17 @@
     bottom: 0;
     right: 100px;
     height: 1px;
-    background-color: rgba(128, 128, 128, .3);
-    width: 100vw;
+    background-color: $gray-clr4;
+    width: calc(100vw - 200px);
+  
 }
 
 .details-header::before {
     content: "";
     position: absolute;
     bottom: 0;
+    left: 0;
     height: 1px;
-    background-color: rgba(128, 128, 128, .3);
-    width: 100vw;
+    background-color: $gray-clr4;
+    width: calc(100vw - 170px);
 }

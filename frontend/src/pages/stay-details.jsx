@@ -9,7 +9,7 @@ import { DetailsHeader } from '../cmps/details-header.jsx'
 import { DetailsReviews } from '../cmps/details-reviews.jsx'
 import { getDate } from '../services/stay.service.js'
 import SvgHandler from '../cmps/svg-handler.jsx'
-import { HEART_16, RED_HEART_16, SHARE, STAR, STAR_16, LOCATION, CHECKIN, KEY, VERIFIED } from '../services/svg.service.js'
+import { HEART_16, RED_HEART_16, SHARE, STAR, STAR_16, LOCATION, CHECKIN, KEY, VERIFIED, RED_TAG } from '../services/svg.service.js'
 import { DatePicker } from '../cmps/date-picker.jsx'
 import GoogleMap from '../cmps/map.jsx'
 import { Helmet } from 'react-helmet';
@@ -290,7 +290,6 @@ export function StayDetails() {
                         <p>Review the Host's full cancellation policy which applies even if you cancel for illness for disruptions caused by COVID-19</p>
                     </div>
                 </section>
-
             </section>
         </section >
     </>

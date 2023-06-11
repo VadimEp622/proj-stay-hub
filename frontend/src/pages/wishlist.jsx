@@ -31,7 +31,7 @@ export function WishList() {
             <div className="wishlist-container">
                 <h1>Wishlist</h1>
                 <h3>No saves yet</h3>
-                <p>As you search, click the heart icon to save your favorite places and Experiences to a wishlist.</p>
+                <p className="no-wishlist">As you search, click the heart icon to save your favorite places and Experiences to a wishlist.</p>
                 <Link to={`/`}>
                     <button className="explore">Start exploring</button>
                 </Link>

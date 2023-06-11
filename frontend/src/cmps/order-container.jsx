@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux"
 import { reviewService } from "../services/review.service"
 import { stayService } from "../services/stay.service"
-import { STAR } from "../services/svg.service"
+import { STAR, RED_TAG } from "../services/svg.service"
 import { utilService } from "../services/util.service"
 // import DatePicker from "./date-picker"
 import SvgHandler from "./svg-handler"
@@ -115,7 +115,6 @@ export function OrderContainer({ stay }) {
                         <p className="underline">StayHub service fee</p>
                         <span>${serviceFee.toLocaleString()}</span>
                     </div>
-                    <hr />
                     <div className="total-price-container flex space-between fs16">
                         <h5>Total</h5>
                         <h5>${utilService.addCommas(totalPrice)}</h5>
@@ -124,6 +123,10 @@ export function OrderContainer({ stay }) {
             </section>
             <div className="modal-container">{openModal && <OrderConfirmation setOpenModal={setOpenModal} orderObject={orderObject} />}
             </div>
+            <section className='order-spacial-info flex'>
+                    <p><span>Lower price.</span> Your dates are ${stay.price * 0.4} less than the avg. nightly rate of the last 60 days.</p>
+                    <div><SvgHandler svgName={RED_TAG} /></div>
+            </section>
         </section>
     )
 }
