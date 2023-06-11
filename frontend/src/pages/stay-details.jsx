@@ -260,7 +260,7 @@ export function StayDetails() {
                     <section className='owner-communication flex'>
                         <h3 className='fs16'>Language: English</h3>
                         <h3 className='fs16'>Response rate: 100%</h3>
-                        <h3 className='fs16'>Response time: {stay.host.responseTime}</h3>
+                        <h3 className='fs16'>Response time: {stay.host.responseTime ? stay.host.responseTime : 'Within couple of hours'}</h3>
                         <button className='fs16'>Contact Host</button>
                         <section className='protection-info flex align-center fs12'>
                             <img src="https://res.cloudinary.com/dnhn4zsy0/image/upload/v1685913828/airbnb-orotect_ohgcnp.svg" alt="airbnb protect" />
