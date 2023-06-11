@@ -101,7 +101,8 @@ const STAYS_TRUE_DEMO_TEMP = [
             "lan": 20.93792
         },
         "reviews": [
-            {
+            {   
+                "rate": 4,
                 "at": "2016-06-12T04:00:00.000Z",
                 "by": {
                     "_id": "622f3407e36c59e6164fc004",
@@ -111,7 +112,8 @@ const STAYS_TRUE_DEMO_TEMP = [
                 },
                 "txt": "I had a great experience working with Patty and Peter.  Both were very attentive in sorting out the booking details and following up directly when I had questions.  I rented a 2 bedroom unit at the Westin Villas  in Maui and both the unit and property was absolutely amazing.  I think we had the best unit on the resort complete with 2 outdoor patios with direct access  to  the  beach.  I would HIGHLY recommend renting with Patty and Peter."
             },
-            {
+            {   
+                "rate": 5,
                 "at": "2016-07-28T04:00:00.000Z",
                 "by": {
                     "_id": "622f3403e36c59e6164fb204",
@@ -122,6 +124,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Peter quickly responded to any questions I had before, and during the trip. Will use again, highly recommend. "
             },
             {
+                "rate": 5,
                 "at": "2016-09-11T04:00:00.000Z",
                 "by": {
                     "_id": "622f3405e36c59e6164fb703",
@@ -132,6 +135,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "We had the perfect location for a room, first floor right in front of the pool. The resort is beautiful, and the staff is so friendly! I enjoyed it so much, we talked about buying a timeshare ourselves."
             },
             {
+                "rate": 5,
                 "at": "2017-01-07T05:00:00.000Z",
                 "by": {
                     "_id": "622f3404e36c59e6164fb37f",
@@ -142,6 +146,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Beautiful location. Patty & Peter were super helpful and easy to work with!"
             },
             {
+                "rate": 4,
                 "at": "2017-04-07T04:00:00.000Z",
                 "by": {
                     "_id": "622f3403e36c59e6164fb105",
@@ -151,7 +156,8 @@ const STAYS_TRUE_DEMO_TEMP = [
                 },
                 "txt": "Great spot for the kids and family and close to beach and everything at the resort. We will definitely be back."
             },
-            {
+            {   
+                "rate": 5,
                 "at": "2017-05-09T04:00:00.000Z",
                 "by": {
                     "_id": "622f3402e36c59e6164fabbe",
@@ -161,7 +167,8 @@ const STAYS_TRUE_DEMO_TEMP = [
                 },
                 "txt": "The unit and the Westin offer variety of amenities you can possibly ask for. Sofa beds are very comfortable to sleep in. But there is charge for ocean view upgrade. Overall, I highly recommend to book with Patty and Peter. "
             },
-            {
+            {   
+                "rate": 4,
                 "at": "2018-02-24T05:00:00.000Z",
                 "by": {
                     "_id": "622f3404e36c59e6164fb4af",
@@ -172,6 +179,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "We spent a great week at Patty and Peter's place. The place was exactly as shown in the pictures, very comfortable, nice view, with all amenities. The resort is great with several pools, a long beach, many restaurants, and of course a lot of great activities all around."
             },
             {
+                "rate": 5,
                 "at": "2018-06-16T04:00:00.000Z",
                 "by": {
                     "_id": "622f3405e36c59e6164fb87b",
@@ -181,7 +189,8 @@ const STAYS_TRUE_DEMO_TEMP = [
                 },
                 "txt": "This place was perfect for my family. We had plenty of room to spread out and the service could not have been any better"
             },
-            {
+            {   
+                "rate": 4,
                 "at": "2018-06-29T04:00:00.000Z",
                 "by": {
                     "_id": "622f3405e36c59e6164fb713",
@@ -248,6 +257,7 @@ const STAYS_TRUE_DEMO_TEMP = [
         },
         "reviews": [
             {
+                "rate": 5,
                 "at": "2016-07-07T04:00:00.000Z",
                 "by": {
                     "_id": "622f3407e36c59e6164fc058",
@@ -258,6 +268,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "The place was great, as was the host! I would recommend staying here."
             },
             {
+                "rate": 4,
                 "at": "2016-07-08T04:00:00.000Z",
                 "by": {
                     "_id": "622f3403e36c59e6164fb274",
@@ -267,7 +278,8 @@ const STAYS_TRUE_DEMO_TEMP = [
                 },
                 "txt": "J'ai adoré rester là. Très acceuillant."
             },
-            {
+            {   
+                "rate": 5,
                 "at": "2016-07-12T04:00:00.000Z",
                 "by": {
                     "_id": "622f3405e36c59e6164fb87c",
@@ -277,7 +289,8 @@ const STAYS_TRUE_DEMO_TEMP = [
                 },
                 "txt": "Angel est un hôte très sympa et arrangeant ! L'appartement est agréable à vivre et propre. Proche du métro et du centre ville. Nous avons passé un très bon séjour !"
             },
-            {
+            {   
+                "rate": 5,
                 "at": "2016-08-02T04:00:00.000Z",
                 "by": {
                     "_id": "622f3408e36c59e6164fc082",
@@ -383,6 +396,7 @@ const STAYS_TRUE_DEMO_TEMP = [
         },
         "reviews": [
             {
+                "rate": 5,
                 "at": "2016-07-18T04:00:00.000Z",
                 "by": {
                     "_id": "622f3403e36c59e6164fb090",
@@ -393,6 +407,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Mes parents ont passé un excellent séjour à Porto dans l'appartement de Maria qui est bien équipé, confortable et très propre. Il est situé au coeur du centre ville et tout est accessible à pied. Si vous venez en voiture, prévoir de se garer dans le parking souterrain payant juste à côté. Mes parents remercient chaudement Maria et son mari qui ont été adorables, notamment par leur accueil chaleureux."
             },
             {
+                "rate": 5,
                 "at": "2016-08-10T04:00:00.000Z",
                 "by": {
                     "_id": "622f3404e36c59e6164fb4e7",
@@ -403,6 +418,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "El apartamento es perfecto para una  estancia, esta perfectamente dotado para cubrir las necesidades de un viaje de recreo, situado perfectamente para acceder a pie a las zonas más interesantes de Oporto. María una perfecta anfitriona que te facilitará una inolvidable estancia en Oporto. Ha sido una gran experiencia."
             },
             {
+                "rate": 4,
                 "at": "2016-08-14T04:00:00.000Z",
                 "by": {
                     "_id": "622f3403e36c59e6164fb110",
@@ -413,6 +429,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Thierry, Patricia, Anaïs et Manon,\r\nMaria et son mari nous attendaient avec gentillesse et sourires, Maria a toujours répondu à mes mails et SMS en cours de voyage.   Ils nous ont aidé à monter les valises, Il y avait une bouteille d'eau au frais, très appréciable ainsi que des petits gâteaux et une bouteille de vin dans le frigo...L'appartement était très propre rien ne manquait, conforme à la description, bien situé, nous avons tout fait à pieds ...Très à l'écoute de nos demandes Maria et son mari sont charmants, nous nous sommes sentis en famille, nous reviendrons et je recommande fortement ce logement ...Nous avons pu apprécier notre séjour sans tracas.  "
             },
             {
+                "rate": 5,
                 "at": "2016-09-12T04:00:00.000Z",
                 "by": {
                     "_id": "622f3401e36c59e6164fab5b",
@@ -423,6 +440,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Thanks Maria for your warm welcome. The appartement was really clean. It has everything that we needed for our stay and is really well located. It was easy to park for free near the appartement. Thanks!"
             },
             {
+                "rate": 5,
                 "at": "2017-05-13T04:00:00.000Z",
                 "by": {
                     "_id": "622f3403e36c59e6164fb27c",
@@ -433,6 +451,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "L appartement de Maria est tres bien situe, propre et surtout tres calme. Il ne manque rien . Maria nous a tres bien recus . Je recommande cet appartement."
             },
             {
+                "rate": 5,
                 "at": "2017-06-13T04:00:00.000Z",
                 "by": {
                     "_id": "622f3407e36c59e6164fbd3c",
@@ -443,6 +462,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Maria is a great host and we loved this apartment! It was bright, clean, airy and well-equipped and Maria gave us a thorough introduction to how everything worked. The bed was comfortable (it is not made for tall people though) and nights were quiet as both living room and bedroom are facing the backyard, not the street. Only in the morning we could not sleep in as there was loud construction noise during the day. The metro station is only a few minutes walk away and the city center is at walking distance. We also got a sweet welcome with Portuguese wine."
             },
             {
+                "rate": 5,
                 "at": "2017-06-30T04:00:00.000Z",
                 "by": {
                     "_id": "622f3407e36c59e6164fbd39",
@@ -453,6 +473,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Appartement très bien situé, tout le vieux porto se fait à pied. Très propre, indépendant et fonctionnel. Metro au pied en venant de l'aéroport, ligne directe 15 minutes environ.\nRestaurants et épiceries typiques au pied de l'immeuble. Climatisation et télé dans toutes les pièces, calme et quartier pittoresque. À recommander pour 3 ou 4. Accueil simple, gentil et efficace comme Maria la propriétaire.\n"
             },
             {
+                "rate": 5,
                 "at": "2017-08-01T04:00:00.000Z",
                 "by": {
                     "_id": "622f3406e36c59e6164fbc52",
@@ -463,6 +484,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "apartamento bien situado, agradable, bonito, muy limpio y con una anfitriona maravillosa dispuesta a resolver cualquier inconveniente que se pueda presentar. lo recomiendo sin lugar a dudas.\ngracias Mariapor su gentileza"
             },
             {
+                "rate": 5,
                 "at": "2017-08-11T04:00:00.000Z",
                 "by": {
                     "_id": "622f3406e36c59e6164fbb3f",
@@ -473,6 +495,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Appartement très propre et très bien situé, bien agencé. Quartier très vivant mais appartement calme car ne donne pas sur la rue. Nous avons passé un très bon séjour chez Maria qui nous a très bien accueilli."
             },
             {
+                "rate": 5,
                 "at": "2017-09-21T04:00:00.000Z",
                 "by": {
                     "_id": "622f3403e36c59e6164fb06f",
@@ -483,6 +506,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Apartamento agradable, muy limpio y muy bien equipado, en zona tranquila pero accesible para llegar a todos lados de a pie. Maria y Arturo nos recibieron con un rico vino del Douro y galletitas y muy buenas recomendaciones para pasear y comer."
             },
             {
+                "rate": 5,
                 "at": "2017-10-17T04:00:00.000Z",
                 "by": {
                     "_id": "622f3405e36c59e6164fb78f",
@@ -493,6 +517,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Нам очень понравилась квартира,светлая,уютная,на 3-м этаже,с большим балконом,в квартире есть все самое необходимое,стиральная машина,утюг,кровати очень удобные,красивое постельное белье,вся обстановка в квартире сделана с душой,все время прибывания чувствовали себя как дома.\nМария по приезду подарила нам бутылку вина из долины реки Дору,из красивых бокалов мы его с удовольствием выпили,спасибо за презент.\nВ этой маленькой уютной квартире -3 телевизора!!!!Смотреть было некогда,наслаждались красивым городом и окрестностями Порту."
             },
             {
+                "rate": 5,
                 "at": "2017-12-09T05:00:00.000Z",
                 "by": {
                     "_id": "622f3402e36c59e6164fad62",
@@ -503,6 +528,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Muy contentos con todo. El piso estaba bastante cerca del centro, Maria y su marido estaban incluso antes de la hora de nuestra llegada. El piso esta muy bien equipado: cafetera, botiquín, lavadora etc. Super super limpio todo y las camas muy comodas y acogedores. Y al ser un piso interior, no se oia nada de ruido. Recomendable!"
             },
             {
+                "rate": 5,
                 "at": "2018-01-09T05:00:00.000Z",
                 "by": {
                     "_id": "622f3403e36c59e6164fb1c3",
@@ -513,6 +539,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Eu e minha amiga ficamos um mês no apartamento e foi uma otima experiencia!\nMuito bem localizado, perto de tudo! Não tivemos nenhuma dificuldade em encontrar o local, que fica a minutos da estação do metrô e é muito perto da região central.\nÓtima infraestrutura, limpeza e organização.\nFomos muito bem recebidas e bem auxiliadas pela Maria, que com certeza é uma ótima anfitriã!\nRecomendo muito a estadia, não poderia ter sido melhor!"
             },
             {
+                "rate": 5,
                 "at": "2018-02-27T05:00:00.000Z",
                 "by": {
                     "_id": "622f3404e36c59e6164fb5f5",
@@ -523,6 +550,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Respostas sempre rápidas; excelente recepção ; sempre simpática e disponível."
             },
             {
+                "rate": 5,
                 "at": "2018-06-24T04:00:00.000Z",
                 "by": {
                     "_id": "622f3402e36c59e6164fad10",
@@ -533,6 +561,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Clean, quiet and centrally located. Very welcoming host as well."
             },
             {
+                "rate": 5,
                 "at": "2018-07-18T04:00:00.000Z",
                 "by": {
                     "_id": "622f3408e36c59e6164fc075",
@@ -543,6 +572,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "O Espaço de Maria é de extremo bom gosto. Tudo extremamente limpo, pratico e organizado nos mínimos detalhes.  Boa localização perto de tudo.  Sem falar na Simpatia e disponibilidade da Maria que com suas dicas tornou nossa estadia em Porto melhor do que esperávamos. Recomendadíssimo !"
             },
             {
+                "rate": 5,
                 "at": "2018-12-09T05:00:00.000Z",
                 "by": {
                     "_id": "622f3406e36c59e6164fbad8",
@@ -553,6 +583,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Alojamiento coqueto y acogedor, muy limpio y bien ubicado, tiene 2 habitaciones y todo lo necesario para poder pasar unos días en Oporto, buena ubicación cerca de Sta Catarina. Nos ha gustado mucho la estancia, la atención de María inmejorable. Muchas gracias por su atención y amabilidad"
             },
             {
+                "rate": 5,
                 "at": "2018-12-29T05:00:00.000Z",
                 "by": {
                     "_id": "622f3407e36c59e6164fbede",
@@ -624,6 +655,7 @@ const STAYS_TRUE_DEMO_TEMP = [
         },
         "reviews": [
             {
+                "rate": 5,
                 "at": "2013-05-27T04:00:00.000Z",
                 "by": {
                     "_id": "622f3407e36c59e6164fbfd2",
@@ -634,6 +666,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Shaila's place is amazing! It's new, it's clean and it's big! And Shaila is very accommodating, we found everything we needed (cooking, coffee) and more. Given that we were the first guests she hosted through airbnb I can say that she did an amazing job! \r\n"
             },
             {
+                "rate": 5,
                 "at": "2013-06-04T04:00:00.000Z",
                 "by": {
                     "_id": "622f3403e36c59e6164fb048",
@@ -644,6 +677,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Great, quiet place to stay. It is great having Shaila just upstairs to answer any questions, and especially to give great tips on places to go. "
             },
             {
+                "rate": 5,
                 "at": "2013-06-13T04:00:00.000Z",
                 "by": {
                     "_id": "622f3406e36c59e6164fba55",
@@ -654,6 +688,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Shaila and Alex are wonderful hosts really, they helped us every time we needed with directions, the internet, the supermarket, the post office !!! (thank you guys !!!).The place and the neighbord are great, 8 blocks far from the apartment you have the subway and 30 min. later you are in the island, we moved early in the morning, late at night (sometimes we came back at 2am) and everything turned out great.Definetly I would come back to their apartment, It's bigger than ours in Argentina !!! I look forward to stay there again and, next time, go out with you guys and have a beer or anything.\r\nBye !!! - Guido and Carla - "
             },
             {
+                "rate": 5,
                 "at": "2013-06-20T04:00:00.000Z",
                 "by": {
                     "_id": "622f3407e36c59e6164fbf76",
@@ -664,6 +699,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Shaila and Alex were incredibly accommodating and me and my girlfriend enjoyed our stay thoroughly. Highly recommended. The place was very private and homely. I didn't really know anything about New York and was nervous about staying in bed stuy but it was safe and friendly everywhere I went. Very easy to get to the airport and manhattan by train."
             },
             {
+                "rate": 5,
                 "at": "2013-06-25T04:00:00.000Z",
                 "by": {
                     "_id": "622f3407e36c59e6164fbe9d",
@@ -674,6 +710,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Great place to stay in Brooklyn! Alex gave us a really useful list of nice restaurants and coffee places near the place (We are very happy to have discovered, the restaurant \"Saraghina\", thanks to Alex's map!).  The apartment is vast, furnished with taste and very convenient. We highly recommend!"
             },
             {
+                "rate": 5,
                 "at": "2013-07-03T04:00:00.000Z",
                 "by": {
                     "_id": "622f3402e36c59e6164fad91",
@@ -684,6 +721,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "I can recommend to everyone to come to this beautiful apartment, Shaila and Alex are great hosts and the neighbourhood is very friendly everywhere we go.\r\nIt really felt like home."
             },
             {
+                "rate": 5,
                 "at": "2013-07-12T04:00:00.000Z",
                 "by": {
                     "_id": "622f3401e36c59e6164fab81",
@@ -694,6 +732,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "My sister and I loved staying here! The apartment is very spacious and recently renovated so it looks amazing. The kitchen has everything you need with Alex and Shalia stocking it with a few basics. The neighbourhood is a little shabby, especially compared to the home we stayed in. We were told by some people in Manhattan that the neighbour of Bed-Stuy used to be very dangerous and just to be careful walking around at night. Walking from the subway after dark was a little daunting but we remained safe. We did catch a cab a few times from Manhattan as it was very late. Overall, it was a positive experience with Alex and Shalia being very helpful, even going out of their way to let us store our luggage at Shalia's work the day we were to fly out. They were great hosts."
             },
             {
+                "rate": 5,
                 "at": "2013-07-24T04:00:00.000Z",
                 "by": {
                     "_id": "622f3405e36c59e6164fb785",
@@ -704,6 +743,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "We just met Alex when we checked in, but anyhow he had been a very friendly and helpful host. He was reachable anytime and answered my mails prompt.\r\nThe apartment was great! It was really beautiful and big. It has a perfectly equipped kitchen and there are also a few basics for breakfast and cooking. The bed is very comfortable. It is not that soundproofed as we are accustomed to (the steps from upstairs waked me every day - my son slept well, he did not hear it), but I think that is normal for american houses. But apart from this it is very quiet.\r\nThe neighbourhood is great! It is very authentic, people are friendly and helpful if required, no problems even late at night. We loved staying there!\r\nIn any case: apartment, host and neighbourhood are high recommended! If we are in New York again, we certainly return to this place!"
             },
             {
+                "rate": 4,
                 "at": "2013-07-29T04:00:00.000Z",
                 "by": {
                     "_id": "622f3404e36c59e6164fb515",
@@ -714,6 +754,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Hello! \n\nWe just spent 5 days in the big apple and we drove in to this Brooklyn location.  The host where incredibly attentive and just wonderful, the apartment spotless, hip & modern and really comfortable. \n\nDo not be intimidated by the transitioning neighborhood as we encountered that many residents are very friendly and helpful (directions) and this particular street has a real interest in making a real change hence empowering their community.\n\nThe subway is a little ways (12 to 15 min.) walk. We would use our vehicle to drive to the subway station (there are two corresponding)  and park nearby to facilitate the to and from.  If you need quick access to the subway at all hours of the day and night this may not be the place for you.\n\nThe apt. is an excellent value  for the money (as per  many  manhattan locations offer around  the same nightly  $$ rate but have to share their apt ).\n\n\n\n"
             },
             {
+                "rate": 5,
                 "at": "2013-09-07T04:00:00.000Z",
                 "by": {
                     "_id": "622f3403e36c59e6164fb079",
@@ -724,6 +765,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "We really had a wonderful time in NYC thanks to Alex’s house. It’s just as big, beautiful and clean as it seems in the pictures. Alex has an incredible apartment in the basement that makes you feel like home after being out all day knowing the big city. All the furniture and the kitchen appliances are new.\r\n\r\nThe location is perfect for visiting Brooklyn and Manhattan (only 15-20 to Brooklyn Bridge and South Manhattan or 25-30 min to Times Square in the underground).\r\n\r\nAlso, Alex gave us some good advices the first day for having all we needed in the neighbourhood. Don’t miss Saraghina’s brunch (10 minutes walking from the house)! He even let us to keep our luggage in the house until we left to the airport in the evening on our last day in the city."
             },
             {
+                "rate": 5,
                 "at": "2013-10-09T04:00:00.000Z",
                 "by": {
                     "_id": "622f3402e36c59e6164fabc4",
@@ -734,6 +776,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "The appartment was really clean, pretty spacious and kitchen was very well equipped! Its totally in line with all the information posted. \r\n\r\nAlex was very nice host, even allowed us to keep the luggage  after check out as we had a flight in the evening. Thank you once again for that! \r\n\r\nThe neighboorhood itself was safe, we had no issues at all, however I`d prefer staying   in Brooklyn districts closer to Manhattan area next time as  we were travelling to Midtown up to 1h. Being a citizen of the huge city too (Moscow, Russia) , underground is not our favorite place to be  :) \r\n\r\nOverall , it was a great stay. \r\n\r\n\r\n\r\n"
             },
             {
+                "rate": 5,
                 "at": "2013-11-01T04:00:00.000Z",
                 "by": {
                     "_id": "622f3402e36c59e6164fada2",
@@ -744,6 +787,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Communication with Alex was spot on.  He happily answered any questions and made it easy for me to arrive late at night and went above and beyond to help me have a good stay. \r\nThe apartment has been tastefully refurbished.  Extremely clean, and with all you could need for cooking.  The bed is so comfy.  The apartment is peaceful at night and I slept so well.   Some noise travels from Alex' apartment upstairs but it is only a little during the day.\r\nThe area is a bit out of the main hub of Williamsburg and Bushwick but everything is easily accessible with a short walk or the subway about 8 mins walk away.\r\nAlex left me a list of great stores, cafes and restaurants in the immediate area.  \r\nSome people may be concerned about the area at face value as it is a white minority but I felt safe at all times.  People seemed friendly.\r\n\r\n"
             },
             {
+                "rate": 5,
                 "at": "2013-11-10T05:00:00.000Z",
                 "by": {
                     "_id": "622f3406e36c59e6164fb9f9",
@@ -754,6 +798,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Was an amazing stay, we charm your apartment and were very friendly. Thank you for all your attentions."
             },
             {
+                "rate": 5,
                 "at": "2013-11-14T05:00:00.000Z",
                 "by": {
                     "_id": "622f3402e36c59e6164fae8c",
@@ -764,6 +809,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Shaila and Alex are wonderful hosts - very accommodating, friendly, and easy to communicate with. We found it fairly easy to get around the city from Bed-Stuy, even with the weekend subway schedule. The apartment is lovely, bright, and very clean, and overall it was a pleasure to stay for a few nights. It's been recently renovated and thoughtfully decorated - we felt quite comfortable during our stay and appreciated the art and other nice touches throughout. I'd highly recommend staying with Shaila and Alex."
             },
             {
+                "rate": 5,
                 "at": "2013-12-01T05:00:00.000Z",
                 "by": {
                     "_id": "622f3407e36c59e6164fbf31",
@@ -774,6 +820,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Great apartment, really spacious & has a lovely homely feel to it. Alex & Shaila were very helpful & welcoming, bed was really comfortable, good transport links, only a 20 min subway ride into manhattan, the area is really nice & quiet, unlike manhattan.\r\n\r\nThanks Alex & Shaila for having us ! Enjoy the Gin !! "
             },
             {
+                "rate": 5,
                 "at": "2014-01-04T05:00:00.000Z",
                 "by": {
                     "_id": "622f3407e36c59e6164fbdab",
@@ -784,6 +831,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "The apartment is spacious and well furnished, the kitchen very well equipped and the bed very confortable. Sheila and alex were friendly and the comunication with them was easy.the neighborhood is very nice with typical town house, and very quite. Also the people Who lives there was very kind and helped us on many occasion. \nDefinitely raccommend you to spend your holidays in NY in the lovely apartment of sheila&alex! "
             },
             {
+                "rate": 5,
                 "at": "2014-03-11T04:00:00.000Z",
                 "by": {
                     "_id": "622f3404e36c59e6164fb2c1",
@@ -794,6 +842,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "We had a great time staying with Alex & Shaila. The apartment is just as depicted in the photos. Lots of space and very comfortable.  The house is located really close to buses and subway which was very convenient. The neighbourhood is fine with a couple of nice places to eat nearby.\r\n\r\nShaila and alex were really friendly and easy to communicate with if needed.  \r\n\r\nWe stayed for 2 months and would recommend it to others who are looking for a place in Brooklyn."
             },
             {
+                "rate": 5,
                 "at": "2014-03-26T04:00:00.000Z",
                 "by": {
                     "_id": "622f3405e36c59e6164fb8fc",
@@ -804,6 +853,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Upon arriving, Alex was very helpful giving directions to the location. , he gave us a brief overview of everything, and let us settle in. It was a very cozy place to come back to after long days out exploring New York. The subways are very close. We preferred heading up to broadway to catch our trains (Depending where we were going) only because it was much more pleasant on sunny days to be above grounds if we could. It was great to have all amenities available, and at such a reasonable price.The only thing I will mention is that if you do plan on sleeping in- it might not happen as they do have a newborn who you can sometimes hear in the morning if you are a light sleeper.\r\nOverall,  I would recommend you stay at Alex & Shailas airbnb! It was a great and pleasant environment."
             },
             {
+                "rate": 5,
                 "at": "2014-04-10T04:00:00.000Z",
                 "by": {
                     "_id": "622f3404e36c59e6164fb41e",
@@ -814,6 +864,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "We felt very happy those days at the home of Alex and Shaila. It is a very warm and comfortable place, it was like being at home."
             },
             {
+                "rate": 4,
                 "at": "2014-04-21T04:00:00.000Z",
                 "by": {
                     "_id": "622f3403e36c59e6164fb087",
@@ -876,6 +927,7 @@ const STAYS_TRUE_DEMO_TEMP = [
         },
         "reviews": [
             {
+                "rate": 5,
                 "at": "2016-07-12T04:00:00.000Z",
                 "by": {
                     "_id": "622f3407e36c59e6164fbebb",
@@ -886,6 +938,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Host: Marian gave us a warm welcome and treated us kindly from the very beginning. She offered us help, told us what to visit and even put water, milk and orange juice in the fridge! We could have breakfast at her place which was perfect because she has a little sweet balcony! \r\nLocation: calmly situated in a side street, very near to the Placa Catalunya, the Rambla and the gothic area of Barcelona (very beautiful:)) so you have the old cultural center as well as all the restaurants and bars just nearby.\r\nHouse/Room: the appartment is not a huge, but I think you have everything you need (beautiful sitting room, balcony, kitchen) in it. You have to share the appartment with Marian so pay attention and don't be too loud in the evening!!\r\ndisadvantage: the heat is terrible in summer and there is no air-condition..\r\n\r\nI would overall recommend it to everybody!! But if you want to party and stay up late, take a hostel or another appartment."
             },
             {
+                "rate": 5,
                 "at": "2016-08-11T04:00:00.000Z",
                 "by": {
                     "_id": "622f3403e36c59e6164faf56",
@@ -955,6 +1008,7 @@ const STAYS_TRUE_DEMO_TEMP = [
         },
         "reviews": [
             {
+                "rate": 5,
                 "at": "2016-02-24T05:00:00.000Z",
                 "by": {
                     "_id": "622f3405e36c59e6164fb95e",
@@ -965,6 +1019,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Una instancia muy céntrica en uno de estos edificios antiguos del Barri Gotic. No es poco haber conseguido estar en el centro de Barcelona en la misma semana del Mobile World Congress. Isabel es un encanto de anfitrión."
             },
             {
+                "rate": 5,
                 "at": "2016-03-24T04:00:00.000Z",
                 "by": {
                     "_id": "622f3403e36c59e6164fafa6",
@@ -975,6 +1030,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "The host canceled this reservation 2 days before arrival. This is an automated posting."
             },
             {
+                "rate": 5,
                 "at": "2016-04-07T04:00:00.000Z",
                 "by": {
                     "_id": "622f3406e36c59e6164fbaf2",
@@ -985,6 +1041,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Chambre très bien située et hôtesse très sympathique. Merci encore Isabel pour l'accueil !"
             },
             {
+                "rate": 5,
                 "at": "2016-04-13T04:00:00.000Z",
                 "by": {
                     "_id": "622f3407e36c59e6164fbdc3",
@@ -995,6 +1052,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Sheets weren't clean... Shower has very low water pressure. Room is only good for sleeping. It's in a good location but that's about it. Isabel could've provided more information about what's around the house during check in... Overall just decent enough to sleep"
             },
             {
+                "rate": 5,
                 "at": "2016-04-25T04:00:00.000Z",
                 "by": {
                     "_id": "622f3401e36c59e6164fabad",
@@ -1005,6 +1063,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Isabel est accueillante. L'appartement est charmant, correspond aux images. Très bien situé, à côté de Palau de la musica, dans un vieil immeuble plein de charme un peu désuet. Amateurs de confort et décor \"tendance\" s'abstenir. Chez Isabel on se trouve dans une authentique ambiance d'artiste. Merci beaucoup, je garderai le souvenir de cet accueil lié aux souvenirs de Barcelone."
             },
             {
+                "rate": 5,
                 "at": "2016-05-04T04:00:00.000Z",
                 "by": {
                     "_id": "622f3405e36c59e6164fb967",
@@ -1015,6 +1074,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Es un piso con mucho encanto, muy tranquilo y en un lugar inmejorable. La anfitriona, Isabel, es amable y facilitadora. El piso es una construcción antigua, lo que le da un ambiente genial pero también hace que el agua de la ducha salga con poquísima presión y sea un poco incómodo a veces. A parte de esto, si tuviese que poner alguna queja sería la hora del chekout, ya que las diez de la mañana me parece un poco pronto. \r\nEn conjunto tuvimos una muy buena experiencia y repetiríamos sin duda."
             },
             {
+                "rate": 4,
                 "at": "2016-05-12T04:00:00.000Z",
                 "by": {
                     "_id": "622f3406e36c59e6164fbb88",
@@ -1025,6 +1085,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Isabel was a wonderful host even if she was not there. She was in touch with me by mobile constantly. Thank you so much!\r\nThe house it's nice and was very clean and quite in the night.Perfect location. All you need for few days in Barcelona!"
             },
             {
+                "rate": 5,
                 "at": "2016-05-16T04:00:00.000Z",
                 "by": {
                     "_id": "622f3405e36c59e6164fb715",
@@ -1035,6 +1096,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Isabel's place was perfect. It was cozy, clean and quiet. She was a very gracious host and was always there to answer my questions about getting around Barcelona. "
             },
             {
+                "rate": 5,
                 "at": "2016-05-25T04:00:00.000Z",
                 "by": {
                     "_id": "622f3403e36c59e6164fb0b2",
@@ -1045,6 +1107,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Great room with lots of sunlight in a charming apartment. Fantastic location."
             },
             {
+                "rate": 5,
                 "at": "2016-06-10T04:00:00.000Z",
                 "by": {
                     "_id": "622f3403e36c59e6164fb1f7",
@@ -1055,6 +1118,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Isa was a kind and gracious host with a lovely appartment in a centric and vibrant area. We loved our stay and surely will visit again."
             },
             {
+                "rate": 5,
                 "at": "2016-06-16T04:00:00.000Z",
                 "by": {
                     "_id": "622f3404e36c59e6164fb623",
@@ -1065,6 +1129,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "SUPER cute place with lots of charm!! Perfect for my first trip to Barcelona:) Amazing location! Gracias Isabel for helping me find last minute accommodations! \r\n"
             },
             {
+                "rate": 5,
                 "at": "2016-06-23T04:00:00.000Z",
                 "by": {
                     "_id": "622f3407e36c59e6164fc013",
@@ -1075,6 +1140,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Isabel was a great host. She met me at the local bar where she worked and took me to her home a street away. The flight of stairs up to here place was a bit daunting but I can see why she lives up there.. It was beautiful! The room and whole place was clean, tidy and very welcoming. I saw Isabel twice, when I arrived and when I left, but it was perfect. \n\nThe facilities were great. The pressure in the shower was weak but it didn't bother me one bit. It is a bit noisy being in the heart of the city, but I can imagine it would be anywhere in this area. It was lovely to have a balcony, and the location was very convenient. Thanks.x"
             },
             {
+                "rate": 5,
                 "at": "2016-06-28T04:00:00.000Z",
                 "by": {
                     "_id": "622f3403e36c59e6164fb0af",
@@ -1085,6 +1151,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Isabel was good host. Location is perfect."
             },
             {
+                "rate": 5,
                 "at": "2016-07-03T04:00:00.000Z",
                 "by": {
                     "_id": "622f3403e36c59e6164fb23a",
@@ -1095,6 +1162,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Super piso, super barrio! \r\nThe guest welcomed us well."
             },
             {
+                "rate": 5,
                 "at": "2016-07-11T04:00:00.000Z",
                 "by": {
                     "_id": "622f3403e36c59e6164fb21c",
@@ -1105,6 +1173,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "It was really nice to stay at Isabels place. She is very uncomplicated and nice and the flat is super located for exploring bcn. For me it was perfect!:)"
             },
             {
+                "rate": 5,
                 "at": "2016-07-23T04:00:00.000Z",
                 "by": {
                     "_id": "622f3407e36c59e6164fbd7f",
@@ -1115,6 +1184,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "IT was the perfect stay to Discover the city-a super location with sometimes noisy tourists (even we we're tourists but hopefully not so noisy) but that's part of the location i guess :-). We loved the colourful house and we Will Be go back for a next stay. thank you!"
             },
             {
+                "rate": 5,
                 "at": "2016-07-30T04:00:00.000Z",
                 "by": {
                     "_id": "622f3403e36c59e6164fb1ac",
@@ -1125,6 +1195,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Isa is a very lovely, sensitive, artistic and gorgeous person. She is respectful of one's privacy but always ready to give support when asked upon. Be it in spoken or written form I always got my answers from her within no times. She also proofed to be very flexible in terms of arrival and departure times which I appreciated a great deal. If you are a fan of jazz music (like I am), make sure to double check ahead of time about her current concert dates so as not to miss your hostess on stage like I did (grumble ;-)).\n\nThe room I occupied was the smaller one of two that Isabel rents out. So if her flat is fully rented out there can be a maximum of 4 guests plus your hostess in the flat, which can cause some bathroom jam, especially during the hot and humid summer times, when the need for a cool shower is inherent to everyone's desire. \nMy room was as depicted. If you plan on using it for double occupancy, I recommend taking Isa's larger room (unless the two of you are very much in love and want to cuddle up close ;-)). Also, if you need a table for writing, ask for the larger room as well, which comes along with one.\nThe flat itself is absolutely enchanting and furnished with love and an artistic eye to details. It's location is a dream for touristic explorations with anything within walking distance. \nTherefore, I can easily recommend both Isabel and her flat to anyone wishing to immerge himself into the local customs and get a good doze of what it is like \"to live like a true Barcelonian\".  \n\nQuerida Isa, muchas gracias por tu hospedalid génial! Volveré a ciencia cierta!\nSaludos y besos\nLiliana"
             },
             {
+                "rate": 5,
                 "at": "2016-08-10T04:00:00.000Z",
                 "by": {
                     "_id": "622f3405e36c59e6164fb8e1",
@@ -1135,6 +1206,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "The apartment is very centrally located, in the heart of the gothic part of the city and a couple of blocks from the Placa de Catalunya which makes transportation and sightseeing very easy. It's a 20 minute walk from the beach which is a plus. It's located in a very old building on the top floor, so it is rather stuffy and warm in the apartment. The room overlooks a very narrow street/alley so it's rather dark and it's easy to hear the noise coming from the street and the neighboring apartments. There are a few other rooms in the house that are being rented out, so other people will be staying in the house which makes it a necessity to lock the room when you leave the apartment. \n\nIt's important to note that this place has a very strict check out time. On our last day, we had an evening flight but had to check out in the morning. When we asked if we could check out late, Isa told us to take our stuff to the train station and use the lockers there, but the train station does not have lockers. We ended up renting a locker  at a place called \"Barcelona lockers\". That, I would say changed all the plans for the last day. \n\n"
             },
             {
+                "rate": 5,
                 "at": "2016-08-26T04:00:00.000Z",
                 "by": {
                     "_id": "622f3406e36c59e6164fbcb4",
@@ -1145,6 +1217,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "I was happy to experience Isabels home as described here. It was spacious, bright and original, with lovely colours and beautiful artwork surrounding me in every room. Isabel is a creative, sensitive and respectful person, with an open mind- yet she has the necessary boundaries that are required to organize an environment where so many different people are going to stay and hopefully enjoy. \nThe street itself is very lively, but the noises didn't bother me at all as i could easily block them out with earplugs. The location could not have been more sentral, still it's on \"the right side\" of the Rambla, where you can find more independent shops, restaurants, cafes and bars compared to the same leveled streets towards Raval. It is an old and very charming building, so if you want an minimalistic experience with cold, stainless steel and elevators this is not the place for you! And perhaps you are not the right person for this place either ;) I had to leave earlier due to illness, and was so sorry i couldn't stay throughout the whole month as planned. Hope to be seeing Isabel and her welcoming surroundings again one day "
             },
             {
+                "rate": 5,
                 "at": "2016-09-07T04:00:00.000Z",
                 "by": {
                     "_id": "622f3405e36c59e6164fb85f",
@@ -1223,6 +1296,7 @@ const STAYS_TRUE_DEMO_TEMP = [
         },
         "reviews": [
             {
+                "rate": 5,
                 "at": "2016-03-26T04:00:00.000Z",
                 "by": {
                     "_id": "622f3405e36c59e6164fb8b4",
@@ -1233,6 +1307,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Kevin was very welcoming and thorough with all information. The description of the property was accurate. It's also near the MTA if you want to get to another part of the city. Kevin got in touch before I arrived, and his brother was there to meet me and show me where everything was, which was great. Last but not least, he had provided a great information on the local area with recommendations for places to eat, etc., which I found really useful.\r\n"
             },
             {
+                "rate": 5,
                 "at": "2016-04-17T04:00:00.000Z",
                 "by": {
                     "_id": "622f3407e36c59e6164fbdb9",
@@ -1243,6 +1318,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Kevin was nice. And he was very responsive via text, which I appreciate. The listing is in East Harlem, which isn't for everyone. The area is not very posh, but, for me, it feels like home, so I tend to stay there whenever I go to New York. The listing description was accurate enough, with respect to the way the apartment looks. If you can't deal with noise at night, however, this might not be the place for you. The neighbors were surprisingly noisy in the wee hours of the night and virtually silent during the day. This apartment is close to the subway, which was very useful."
             },
             {
+                "rate": 5,
                 "at": "2016-04-23T04:00:00.000Z",
                 "by": {
                     "_id": "622f3407e36c59e6164fbdca",
@@ -1253,6 +1329,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Kevin was very helpful and communicative during the whole time. The apartment is very nice, and within walking distance to the subway. Would definitely stay there again."
             },
             {
+                "rate": 5,
                 "at": "2016-04-24T04:00:00.000Z",
                 "by": {
                     "_id": "622f3402e36c59e6164fae69",
@@ -1263,6 +1340,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "I had a wonderful stay at Kevin's apartment. The apartment is very close to the six train line. Everything in the apartment was spotless clean. I definitely recommend this apartment to others. Thank you Kevin for hosting me!"
             },
             {
+                "rate": 5,
                 "at": "2016-05-04T04:00:00.000Z",
                 "by": {
                     "_id": "622f3407e36c59e6164fbf23",
@@ -1273,6 +1351,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Kevin fue excelente anfitrión. Se mantuvo en contacto con nosotros y fue muy comprensivo aún cuando llegamos más tarde de la hora acordada para el check in porque nos perdimos en el subway. También fue muy comprensivo para acordar el check out de acuerdo a la hora que fue más conveniente para nosotros, aún cuando también se nos hizo tarde. Nos proveyó de un matress de aire para nuestra amiga que vino de M.A. y se quedó una noche con nosotros. El barrio nos pareció bien, no tuvimos ningún incidente. Muchos puertoriqueños y Dominicanos, así que nos sentimos como en casa. Todo fue muy cómodo y limpio. Los vecinos hicieron mucho ruido en las noches, pero no fue problema para nosotros. Una sugerencia sería poner un espejo de cuerpo completo en alguna parte del apartento. En resumen, el apartamento fue perfecto para nosotros, nos volveríamos a quedar y claro que lo recomendaría! Muchas Gracias Kevin por tu ayuda!"
             },
             {
+                "rate": 5,
                 "at": "2016-05-08T04:00:00.000Z",
                 "by": {
                     "_id": "622f3405e36c59e6164fb6a4",
@@ -1283,6 +1362,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Kevin was really thoughtful about everything. He gave me all information needed while staying on his house. The house was very clean."
             },
             {
+                "rate": 5,
                 "at": "2016-05-11T04:00:00.000Z",
                 "by": {
                     "_id": "622f3407e36c59e6164fc063",
@@ -1293,6 +1373,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Kevin is a really nice host, flexible and very responsive. The apartment is a 4th-floor walk up, well-maintained and exactly as advertised in the listing. The apartment has all the basic things--it's especially nice to have a kitchen and comfy sofa. There's no TV and wifi, but you probably don't need it anyway since you are here to see New York city! It is just a short 5-min walk from the subway station, so very convenient. Street noise is not a problem although you can hear the neighbors at times (the kids next door can be noisy). East Harlem is a bustling Latino neighborhood with many local eateries and shops. The food selection is supposed to be great (too bad we didn't get to try any). There is a grocery store right outside the building. There're always locals hanging out in front but we were never bothered. All and all, a good choice if you are looking to stay in this part of the city."
             },
             {
+                "rate": 5,
                 "at": "2016-05-17T04:00:00.000Z",
                 "by": {
                     "_id": "622f3401e36c59e6164fab7d",
@@ -1303,6 +1384,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Kevin was an excellent host. Everything was absolutely as described. The apartment is lovely and very clean. There are numerous windows in every room and there is plenty of light! Would definitely stay again!"
             },
             {
+                "rate": 5,
                 "at": "2016-05-19T04:00:00.000Z",
                 "by": {
                     "_id": "622f3407e36c59e6164fbe7b",
@@ -1313,6 +1395,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Great experience, we enjoyed ourselves for the night we stayed, only issue really were the neighbors being loud all night made it hard to sleep."
             },
             {
+                "rate": 5,
                 "at": "2016-05-21T04:00:00.000Z",
                 "by": {
                     "_id": "622f3407e36c59e6164fbefb",
@@ -1323,6 +1406,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Kevin's place is exactly as other reviewers describe it:  nice and clean, spacious and very convenient as a base to explore and enjoy NYC. \r\n\r\nThe Neighborhood is definitely classic East Harlem.  Very real NYC vibe. Not a tourist area.  \r\n\r\nThe neighbors are noisy sometimes, so if you are a light sleeper, that could be a problem. But I didn't have any trouble. \r\n\r\nIt would have been nice to have wireless, but I didn't come to NYC to play online, so I didn't mind that too much.  \r\n\r\nKevin was a very nice, responsive host! "
             },
             {
+                "rate": 5,
                 "at": "2016-05-22T04:00:00.000Z",
                 "by": {
                     "_id": "622f3404e36c59e6164fb484",
@@ -1333,6 +1417,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Kevin made my friend and I feel really welcomed. The apartment was very clean!"
             },
             {
+                "rate": 5,
                 "at": "2016-05-26T04:00:00.000Z",
                 "by": {
                     "_id": "622f3403e36c59e6164fb208",
@@ -1343,6 +1428,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Me and my husband stayed in the apartment this was our first time using this site and Kevin made us feel like we are regulars. We stayed one night and it was wonderful. Kevin contacted us right away and was really good with getting us whatever we need to stay there. The area is the only bad thing but when we went in the apartment you really forget about the outside."
             },
             {
+                "rate": 4,
                 "at": "2016-05-29T04:00:00.000Z",
                 "by": {
                     "_id": "622f3404e36c59e6164fb52c",
@@ -1353,6 +1439,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Kevin is easy to get in touch with and waited for us to arrive Even if it was already late in the evening. He even asked if everything was fine during our stay.\nThe appartment is perfectly situated to visit Manhattan island. Just note the neighbours are noisy if it is important to you."
             },
             {
+                "rate": 5,
                 "at": "2016-06-06T04:00:00.000Z",
                 "by": {
                     "_id": "622f3405e36c59e6164fb803",
@@ -1363,6 +1450,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Kevin was absolutely wonderful. He was very responsive and communicative and I could tell he takes great pride in being an exceptional host. His place was exactly as described, as shown in the pictures and also very clean. The neighborhood is great and the room is a great price for someone looking to stay in the city and explore. It's right next to the trains, neighborhood gems but also commonly known stores for anyone who isn't familiar with the area. "
             },
             {
+                "rate": 5,
                 "at": "2016-06-11T04:00:00.000Z",
                 "by": {
                     "_id": "622f3406e36c59e6164fbc21",
@@ -1373,6 +1461,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "everything was correct , very good condition to this price"
             },
             {
+                "rate": 5,
                 "at": "2016-06-14T04:00:00.000Z",
                 "by": {
                     "_id": "622f3407e36c59e6164fbdfe",
@@ -1383,6 +1472,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "This is my first time using Airbnb. Kevin responded quickly to my inquiry about booking his apartment. Once booked he was very easy to reach via phone or text if I needed to. His one bedroom apartment was very clean and nicely furnished. It is central to a lot of restaurants and neighborhood shopping should you need something and a couple blocks from the subway and buses. Kevin was a great host. He was there to greet me, show me around the apartment and tell me a bit about the area. He also has maps and booklets about what to visit while in New York City. There is wifi in the apartment which is great. Kevin checked in with me just to make sure everything was ok during my trip. I had a wonderful stay at his apartment and would book it again! "
             },
             {
+                "rate": 5,
                 "at": "2016-06-20T04:00:00.000Z",
                 "by": {
                     "_id": "622f3404e36c59e6164fb4de",
@@ -1393,6 +1483,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Kevin was a phenomenal host, he was very accommodating about arrival and check out times and provided me with a ton of useful information to navigate the area and make my stay as pleasant as possible. The apartment is two blocks from the subway and easy to navigate from. I would definitely recommend staying at Kevin's for all those considering a trip to New York."
             },
             {
+                "rate": 5,
                 "at": "2016-06-24T04:00:00.000Z",
                 "by": {
                     "_id": "622f3407e36c59e6164fbd08",
@@ -1403,6 +1494,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "The apartment is as described. Kevin is very pleasant and was kind to helped me bring my belongings to the apartment. The apartment is cozy in a great location. I will definitely be using this apartment again"
             },
             {
+                "rate": 5,
                 "at": "2016-07-03T04:00:00.000Z",
                 "by": {
                     "_id": "622f3405e36c59e6164fb7a6",
@@ -1413,6 +1505,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Kevin's a great guy, but if you're looking for a hotel-like experience, this is NOT it... This however, IS a genuine NYC experience. Noisy & inconsiderate neighbors, dirty streets, dangerous vibes... All in all your safe, and anyone you actually talk to will be cool... Kevin was also very considerate and did everything he could to add comfort to my stay, he even warned me of the noisy neighbors in advance... This place is good for people who already know NYC, and need an affordable, SHORT-TERM (like 1-2days), place to crash uptown..."
             },
             {
+                "rate": 5,
                 "at": "2016-07-13T04:00:00.000Z",
                 "by": {
                     "_id": "622f3405e36c59e6164fb80a",
@@ -1495,6 +1588,7 @@ const STAYS_TRUE_DEMO_TEMP = [
         },
         "reviews": [
             {
+                "rate": 5,
                 "at": "2016-02-06T05:00:00.000Z",
                 "by": {
                     "_id": "622f3404e36c59e6164fb449",
@@ -1505,6 +1599,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Nuno and Francisca were extremely kind and helpful people. They made us feel very welcome and the house is surprisingly spacious. The wifi connection did struggle in our room but maybe we just had bad luck. They were even kind enough to extend our stay last minute. The service was top quality and the shower was amazing. Highly recommend staying here."
             },
             {
+                "rate": 4,
                 "at": "2016-02-21T05:00:00.000Z",
                 "by": {
                     "_id": "622f3403e36c59e6164fafcc",
@@ -1515,6 +1610,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Muito simpáticos e atenciosos. O apartamento é muito confortável e com pequenos detalhes que fazem a diferença. Muito perto do metro, o que é óptimo para deslocações necessárias."
             },
             {
+                "rate": 5,
                 "at": "2016-03-06T05:00:00.000Z",
                 "by": {
                     "_id": "622f3403e36c59e6164faf68",
@@ -1525,6 +1621,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Bonjour, Notre séjour a été très agréable. Nous avons été très bien accueillies. Nuno nous a donné de nombreux conseils, lieux de visites... Le logement était également très bien. Nous avons vraiment pu profiter de Porto. Le métro est tout proche du logement. C'était vraiment un très bon séjour. Merci encore. "
             },
             {
+                "rate": 5,
                 "at": "2016-03-22T04:00:00.000Z",
                 "by": {
                     "_id": "622f3404e36c59e6164fb5b1",
@@ -1535,6 +1632,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Our stay at Heroísmo IV was the perfect Airbnb experience. When we got there, Francisca was waiting for us. She was extremely nice and accommodating, she showed us the apartment and gave us a map of the city and plenty of tips about what to visit, where to eat, etc. The apartment is really small but has absolutely everything you need. It's clean, new, has a really nice kitchen, a very comfortable bed and is near the city center (we walked everyday). I highly recommend staying at Nuno's place. ¡Gracias por todo, Francisca! Porto is a beautiful city, we hope to come back soon!"
             },
             {
+                "rate": 5,
                 "at": "2016-04-30T04:00:00.000Z",
                 "by": {
                     "_id": "622f3403e36c59e6164fb0c1",
@@ -1545,6 +1643,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "A nice litte appartement. We arrived very late but were kindly greeted by the host. She showed us arround and gave us very useful tips (where to go/ where to eat/ etc.). The appartement is located directly to a metro station and has a Lidl and other grocery stores very near by.  It was a perfect stay!"
             },
             {
+                "rate": 5,
                 "at": "2016-05-11T04:00:00.000Z",
                 "by": {
                     "_id": "622f3402e36c59e6164fae67",
@@ -1555,6 +1654,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Квартира не большая и очень уютная. В ней есть все необходимое. Отличное расположение рядом с метро. Я получила много полезной информации при заселении. Во время сильного дождя в ней сыро, но это не испортило отдых."
             },
             {
+                "rate": 5,
                 "at": "2016-08-05T04:00:00.000Z",
                 "by": {
                     "_id": "622f3404e36c59e6164fb3e7",
@@ -1565,6 +1665,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Desde o primeiro contacto, a comunicação foi muito fácil e clara. Colocaram à nossa disposição uma série de hipóteses de transporte a partir do aeroporto, bem como a possibilidade de termos em casa cabazes de alimentos. Assim que chegamos, com toda a sua simpatia, tinhamos a Mariana à nossa espera, recebeu-nos explicando os vários  pontos importantes para quem chega: locais a visitar, restaurantes, transportes...\r\nGostámos muito do espaço, do Porto, fazemos questão de voltar em breve. Local excelente!"
             },
             {
+                "rate": 5,
                 "at": "2016-08-11T04:00:00.000Z",
                 "by": {
                     "_id": "622f3407e36c59e6164fbf5b",
@@ -1575,6 +1676,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Francisca was very friendly and was waiting for us, she took the time to explain us everything about the flat, she even let us good adresses of restaurants, coffees and places to visit in Porto.\r\nThe flat is 10 minutes by foot from the center, with no stairs to climb, good for our heavy luggages! It is very calm and we even had a table outside where we took our breakfasts. The flat is tiny but very functional, clean, and well equipped.\r\nIt is perfect for a short time in Porto."
             },
             {
+                "rate": 5,
                 "at": "2016-08-27T04:00:00.000Z",
                 "by": {
                     "_id": "622f3406e36c59e6164fbaad",
@@ -1585,6 +1687,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "The apartment is great value for money and the location is fantastic. We arrived before the check in time but were greeted promptly and could leave our luggage to explore the city straight away. Francisca gave us a lot of good advice and recommendations for the city, which was very helpful. "
             },
             {
+                "rate": 4,
                 "at": "2016-09-27T04:00:00.000Z",
                 "by": {
                     "_id": "622f3402e36c59e6164faeed",
@@ -1595,6 +1698,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Thank you for hosting us Nuno. Our trip was perfect. The host was very kind. And the apartment is beautiful, near the center and is well think : it has everything for a few days."
             },
             {
+                "rate": 5,
                 "at": "2016-12-11T05:00:00.000Z",
                 "by": {
                     "_id": "622f3401e36c59e6164fab65",
@@ -1605,6 +1709,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Estúdio muito simpático e limpo. Ideal para uma ou duas pessoas, para explorar o Porto durante um par de dias. Estação de metro à porta. Perto da zona histórica do Porto — faz-se bem a pé. Pastelaria ideal para pequeno almoço mesmo à porta."
             },
             {
+                "rate": 5,
                 "at": "2017-01-01T05:00:00.000Z",
                 "by": {
                     "_id": "622f3405e36c59e6164fb749",
@@ -1615,6 +1720,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "L'emplacement est parfait, dans un quartier calme et à proximité immédiate du métro et du centre-ville. Seul bémol: l'absence d'eau chaude à la douche (un seul ballon d'eau chaude disponible pour plusieurs appartements), franchement regrettable en plein coeur de l'hiver. Ce qui du coup entraîne un rapport qualité-prix un peu cher"
             },
             {
+                "rate": 5,
                 "at": "2017-03-17T04:00:00.000Z",
                 "by": {
                     "_id": "622f3403e36c59e6164fb10c",
@@ -1625,6 +1731,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "El apartamento esta genial, es pequeño pero tiene todo lo necesario, cama super grande y cómoda, el apartamento está en general como nuevo y se ve exactamente como las fotos, estaba todo suuuuper limpio y tienen un radiador que calienta el habitáculo en muy poco tiempo. Nos recibió Rita, y de maravilla, nos dio un montón de información sobre Porto en un momento y nos dejó un montón de mapas e info útil. la zona es tranquila y tiene un montos de aparcamiento seguro en la misma calle. Aun que no está en el mismo centro de la ciudad se llega a el en un paseo de poco más de 10 mins, además en la misma puerta hay una parada de metro. Ha sido una experiencia genial quedarnos aquí para visitar la ciudad. Muchas gracias por la amabilidad, si volvemos a la ciudad no dudaríamos en volver a quedarnos aquí."
             },
             {
+                "rate": 5,
                 "at": "2017-04-13T04:00:00.000Z",
                 "by": {
                     "_id": "622f3402e36c59e6164fad5b",
@@ -1635,6 +1742,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Gostamos muito do espaco, pequeno mas muito agradavel. Excelente para passar apenas uns dias. Obrigada ao Nuno que esperou por nos ate tarde e que ainda tirou um tempinho para nos explicar e dar umas dicas sobre a cidade! Aconselho!"
             },
             {
+                "rate": 5,
                 "at": "2017-06-02T04:00:00.000Z",
                 "by": {
                     "_id": "622f3405e36c59e6164fb79e",
@@ -1645,6 +1753,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Небольшая, но очень уютная квартирка со всем необходимым! Завтракать на свежем воздухе очень приятно, в кухне можно приготовить все, что захочешь! Очень гостеприимная хозяйка, рассказала много интересного о местах поблизости и в городе!"
             },
             {
+                "rate": 5,
                 "at": "2017-06-18T04:00:00.000Z",
                 "by": {
                     "_id": "622f3401e36c59e6164fab70",
@@ -1655,6 +1764,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Excelente Studio, muito bem localizado e com todas as comodidades necessárias para uma pequena estadia."
             },
             {
+                "rate": 5,
                 "at": "2017-06-30T04:00:00.000Z",
                 "by": {
                     "_id": "622f3406e36c59e6164fbc99",
@@ -1665,6 +1775,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "The flat is situated right next to a metro station. Also perfect, if you arrive by car - free parking just in front. 15 mins walk to downtown but lot of cheap cafes and restaurants full of locals around.\nThe check-in was perfect. We got lots of information, what to do/see/where to eat. Thanks for that. \nThe Apartement is very small but for a short city visit, big enough. If you stay for a week or so, I would recommend a larger Apartement.  "
             },
             {
+                "rate": 5,
                 "at": "2017-07-11T04:00:00.000Z",
                 "by": {
                     "_id": "622f3405e36c59e6164fb694",
@@ -1675,6 +1786,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Fantástica estancia en Oporto. Apartamento pequeño pero suficiente para pasar unos días en  Oporto una pareja. Situado un poco a las afueras pero muy buena comunicación  con el centro (parada de metro y autobús enfrente del apartamento).\nAtención inmejorable del anfitrión, respondiendo muy rápido a nuestras consultas y gestionando nuestra llegada. El único fallo es que la lavadora no se podía utilizar. Muy recomendable para pasar unos días en Oporto relación calidad-precio.\n"
             },
             {
+                "rate": 5,
                 "at": "2017-07-30T04:00:00.000Z",
                 "by": {
                     "_id": "622f3402e36c59e6164fadc4",
@@ -1685,6 +1797,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "We had a very nice welcome where we received tips about the neighbourhood. Those we tried turned out excellent. It's a 15 to 20 minute walk to the centre, the room is small but it has everything you need and is well maintained. Very close to the subway, a small outdoor area where you can sit. \nTip: sandwiches (pork with cheese) from casa guedes"
             },
             {
+                "rate": 5,
                 "at": "2017-11-15T05:00:00.000Z",
                 "by": {
                     "_id": "622f3406e36c59e6164fba79",
@@ -1755,6 +1868,7 @@ const STAYS_TRUE_DEMO_TEMP = [
         },
         "reviews": [
             {
+                "rate": 5,
                 "at": "2016-08-11T04:00:00.000Z",
                 "by": {
                     "_id": "622f3402e36c59e6164fad68",
@@ -1765,6 +1879,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "We had a very nice stay in the house and felt at home. The room is big and light, we had a private bathroom, could use the kitchen and the nice garden. Patricia picked us up at the station of the metro, the bus is near. Patricia and Chris are very open and welcoming people, we talked about Portugal, Fado, Porto ... Also, they gave us several tips to see in Porto. When we are in Porto again we will come back!! We really recommand to stay here. Thanks Patricia and Casimiro!"
             },
             {
+                "rate": 5,
                 "at": "2016-08-14T04:00:00.000Z",
                 "by": {
                     "_id": "622f3402e36c59e6164fadf0",
@@ -1775,6 +1890,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Patricia and Chris has been wonderful hosts. They help us very much with all questions we had. We enjoyed our stay very much."
             },
             {
+                "rate": 5,
                 "at": "2016-08-15T04:00:00.000Z",
                 "by": {
                     "_id": "622f3402e36c59e6164faedf",
@@ -1785,6 +1901,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Une chambre très spacieuse et une salle de bain privée : au top ! \r\nChristian et Patricia ont été très accueillants et nous nous sommes tout de suite sentis comme chez nous ! "
             },
             {
+                "rate": 5,
                 "at": "2016-08-20T04:00:00.000Z",
                 "by": {
                     "_id": "622f3404e36c59e6164fb3ed",
@@ -1795,6 +1912,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Des hôtes très accueillant et à l'écoute de leurs invités! De supers adresses à conseiller. \r\nUne maison décorée avec goût et avec une sublime salle de bain privée.\r\nLe centre est très facile d'accès en bus car inaccessible en voiture. \r\nTrès facile de se garer dans la rue de nos hôtes.\r\nUn excellent rapport qualité prix!"
             },
             {
+                "rate": 5,
                 "at": "2016-08-22T04:00:00.000Z",
                 "by": {
                     "_id": "622f3405e36c59e6164fb9bd",
@@ -1857,6 +1975,7 @@ const STAYS_TRUE_DEMO_TEMP = [
         },
         "reviews": [
             {
+                "rate": 5,
                 "at": "2014-04-06T04:00:00.000Z",
                 "by": {
                     "_id": "622f3406e36c59e6164fbcc7",
@@ -1867,6 +1986,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "I greatly appreciated both the location of the place (very central) and the appartment per se (clean and comfortable, with a very cosy room and with Wi-Fi). \r\n\r\nNihat was perfect host, quite welcoming and helpful about places to go (or avoid) and things to do in town. \r\n\r\nHosça kal!\r\n\r\n\r\n"
             },
             {
+                "rate": 5,
                 "at": "2015-04-02T04:00:00.000Z",
                 "by": {
                     "_id": "622f3405e36c59e6164fb7f6",
@@ -1877,6 +1997,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Nice room in a flat well located. Nihat is very nce and helpful. Good experience."
             },
             {
+                "rate": 4,
                 "at": "2015-05-19T04:00:00.000Z",
                 "by": {
                     "_id": "622f3404e36c59e6164fb624",
@@ -1887,6 +2008,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "We had a fantastic stay in this charming apartment. The location was perfect and Nihat welcomed us even when we made a late reservation and arrived early. He works at a bar no far from there- a great place to have a drink after seeing the sites! I highly recommend this place!"
             },
             {
+                "rate": 5,
                 "at": "2015-08-25T04:00:00.000Z",
                 "by": {
                     "_id": "622f3406e36c59e6164fbcb6",
@@ -1897,6 +2019,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "The flat is clean and and very good located, 3 minutes walk to Taksim Square. The bedroom is quiet at night, even though there is a crowded area next to the flat. Nihat was always extremely quick in answering our emails and let us feel comfortable. He is really kind and discrete, we met him few times cause he works in the evening. "
             },
             {
+                "rate": 5,
                 "at": "2015-09-21T04:00:00.000Z",
                 "by": {
                     "_id": "622f3402e36c59e6164fae1a",
@@ -1907,6 +2030,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Nihat went out of his way to accommodate our very early arrival and some unforeseeable challenges.  A great host!"
             },
             {
+                "rate": 5,
                 "at": "2015-11-09T05:00:00.000Z",
                 "by": {
                     "_id": "622f3407e36c59e6164fc03f",
@@ -1917,6 +2041,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Nice place and host, very good location :)"
             },
             {
+                "rate": 5,
                 "at": "2015-12-28T05:00:00.000Z",
                 "by": {
                     "_id": "622f3405e36c59e6164fb7a0",
@@ -1927,6 +2052,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Everything was great about the room and the location."
             },
             {
+                "rate": 5,
                 "at": "2016-01-09T05:00:00.000Z",
                 "by": {
                     "_id": "622f3404e36c59e6164fb3fe",
@@ -1937,6 +2063,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "The stay at Nihat's place was really pleasant. The apartment is very clean and confortable, and located in a very vibrant and animated neighborhood with many restaurants, cafes, bars, shops just nearby. Just a 5 min walk to the Taksim Metro station makes it easy to access any other parts of the city pretty quickly. Nihat was also a great and welcoming host. We totally recommend this place for your stay in Istanbul, especially if you want to experience the local life to the fullest ! "
             },
             {
+                "rate": 5,
                 "at": "2016-03-20T04:00:00.000Z",
                 "by": {
                     "_id": "622f3403e36c59e6164fb225",
@@ -1947,6 +2074,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "The host canceled this reservation 30 days before arrival. This is an automated posting."
             },
             {
+                "rate": 5,
                 "at": "2017-05-11T04:00:00.000Z",
                 "by": {
                     "_id": "622f3402e36c59e6164fad81",
@@ -1957,6 +2085,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "I stayed at Nihat's for a week. It was exactly as the pics, very nice room. A little bit cold but he offers heating and AC. The apt is cozy and central, close to nice restaurants and bars. Have in mind is on the 4th fl no elevator. Nihat is a very easygoing guy who's open to help with any question or tip about the city. Totally recommend! thanks Nihat! "
             },
             {
+                "rate": 5,
                 "at": "2017-05-21T04:00:00.000Z",
                 "by": {
                     "_id": "622f3404e36c59e6164fb2d1",
@@ -1967,6 +2096,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Nihat is a very nice host, he is very helpful and creates an agreeable atmosphere inside the flat. Thank you :)"
             },
             {
+                "rate": 5,
                 "at": "2017-08-27T04:00:00.000Z",
                 "by": {
                     "_id": "622f3402e36c59e6164fae29",
@@ -1977,6 +2107,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Nice cozy place very close to Taksim Square. Nihat is helpful and informative."
             },
             {
+                "rate": 5,
                 "at": "2017-09-26T04:00:00.000Z",
                 "by": {
                     "_id": "622f3406e36c59e6164fbc70",
@@ -1987,6 +2118,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "nice apartment with good location. the room was clean and neat. Nihat was helpful and supportive. totally recommend his accommodation"
             },
             {
+                "rate": 5,
                 "at": "2017-10-03T04:00:00.000Z",
                 "by": {
                     "_id": "622f3404e36c59e6164fb5fd",
@@ -1997,6 +2129,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Nihat is a very friendly host and makes you really feel comfortable. I have had a great stay and recommend it to anyone who wants to stay very central (Cihangir), the hip and modern part of the city with cozy venues and great cafes just a 3min walk. The place is very close to Taksim Square, etc...everything as described in the prior conments. I will definitely come again! Cheers vural"
             },
             {
+                "rate": 5,
                 "at": "2017-12-03T05:00:00.000Z",
                 "by": {
                     "_id": "622f3406e36c59e6164fba05",
@@ -2007,6 +2140,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "I totally recommend this place. Great experience staying at Nihat’s apartment. To start with, Nihat is a wonderful friendly person who I was happy to meet. He was very friendly at house, and we had the chance to spend time together outside. Staying with him reflects the true meaning of this website, which is living as a local with a local person. Thank you Nihat. \nRegarding the apartment, it is exactly as described. The room is nice and bed is comfortable. It was clean and well prepared for us. \nRegarding the neighborhood, it is very close to Taksim square and Istiklal Street with few minutes walk. As normal as it is in Istanbul, there is a short hill you need to walk to get to the square, which was totally fine with us. \n\nIn general, next time I visit Istanbul I would first check the availability with Nihat before searching others."
             },
             {
+                "rate": 5,
                 "at": "2018-02-23T05:00:00.000Z",
                 "by": {
                     "_id": "622f3402e36c59e6164fac4c",
@@ -2017,6 +2151,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Nihat was an amazing host. He picked me up from the bus stop, gave me some great tips on what to do in Istanbul and just an all round great guy. If you're looking for somewhere close to Taksim then Nihat's place is great. Highly recommend him! Thanks Nihat."
             },
             {
+                "rate": 5,
                 "at": "2018-03-05T05:00:00.000Z",
                 "by": {
                     "_id": "622f3405e36c59e6164fb8b8",
@@ -2027,6 +2162,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Nihat is so hospitable person. Me and My boyfriend stayed 6 days in Nihat's place and everything was perfect. Nihat is so tactful person despite he was working so hard, he all the time asked us 'do we need anything?' he was so clean and his house is exactly same with the pictures.\nI'm highly recommend his place! \nthank you Nihat!"
             },
             {
+                "rate": 5,
                 "at": "2018-04-01T04:00:00.000Z",
                 "by": {
                     "_id": "622f3405e36c59e6164fb952",
@@ -2037,6 +2173,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Very helping and welcoming host. Perfect location for a few days in Istanbul."
             },
             {
+                "rate": 5,
                 "at": "2018-04-04T04:00:00.000Z",
                 "by": {
                     "_id": "622f3405e36c59e6164fb73d",
@@ -2047,6 +2184,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Nihat was very nice, polite and very helpful to us. He let us drop our baggages off in the morning and left them for a little longer when we checked out. The location is great as it is near Taksim Square. There are local grocery shops nearby if you want to buy some food or snacks."
             },
             {
+                "rate": 4,
                 "at": "2018-04-23T04:00:00.000Z",
                 "by": {
                     "_id": "622f3403e36c59e6164fb0fe",
@@ -2157,6 +2295,7 @@ const STAYS_TRUE_DEMO_TEMP = [
         },
         "reviews": [
             {
+                "rate": 5,
                 "at": "2016-12-08T05:00:00.000Z",
                 "by": {
                     "_id": "622f3407e36c59e6164fbfd3",
@@ -2167,6 +2306,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "We have just returned from a fabulous holiday at Cynthia's condo on Maui. Everything was fantastic. From the moment we booked Cynthia could not have been more helpful with everything and was always ready and willing to answer all of our queries. Cynthia provided us with an extensive list of recommendations for our stay on Maui and we were not disappointed. The condo is located in a quiet but convenient neighbourhood and close to many amenities. We found the condo extremely spacious and it accommodated our party of 3 adults and two teenaged children with no problem at all. Cynthia's condo is the penthouse and is set right on the beach so we were treated to gorgeous Hawaiian sunsets every night, as well as being able to see turtles and whales from our balcony. The condo is beautifully presented and very well equipped - we could not have asked for anything more for our nine day stay. \r\nMahalo Cynthia "
             },
             {
+                "rate": 5,
                 "at": "2017-03-23T04:00:00.000Z",
                 "by": {
                     "_id": "622f3406e36c59e6164fbb9b",
@@ -2177,6 +2317,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "The location was great and the view was incredible! You are right on the beach and it is a great place for families with kids. Highly recommend staying here!"
             },
             {
+                "rate": 5,
                 "at": "2017-04-28T04:00:00.000Z",
                 "by": {
                     "_id": "622f3403e36c59e6164fb19f",
@@ -2187,6 +2328,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "This place was beyond my expectations. There were no hidden surprises. Knew exactly what to expect, and Cynthia was always there to answer any quesions. The view is spectacular. Beautiful location. I highly recommend this place."
             },
             {
+                "rate": 5,
                 "at": "2017-07-29T04:00:00.000Z",
                 "by": {
                     "_id": "622f3402e36c59e6164fac44",
@@ -2197,6 +2339,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Very nice location with good beach. Penthouse is nice sized and comfortable. Amenities are good. Location is very good with close proximity to Lahaina and Kapalua."
             },
             {
+                "rate": 5,
                 "at": "2017-11-03T04:00:00.000Z",
                 "by": {
                     "_id": "622f3405e36c59e6164fb70f",
@@ -2207,6 +2350,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "If you want a one-stop, stress-free vacation, in a beautiful location with all the amenities you need....this is it!  We lucked out with perfect weather too.  Cynthia provides basic amenities, pool towels, bookie boards, snorkeling gear, and the comfort of being in a cozy home.  It was really easy to run up to the Condo for my 9-month old nap times or a quick snack, without being too separated from the family.  The onsite pools, restaurant and of course restaurant/bar became our home bases for the week.  Miso Phat Sushi (across the street) and Maui Brewing were awesome near-by/within walking distance restaurants.  My family and I can't stop bragging about our trip and what a wonderful family/group set-up this Condo is!  We recommend renting a car due to the distance from the airport, but the Condo/Resort has onsite parking."
             },
             {
+                "rate": 5,
                 "at": "2018-01-30T05:00:00.000Z",
                 "by": {
                     "_id": "622f3402e36c59e6164fae2f",
@@ -2217,6 +2361,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Such a beautiful location in Paradise! The amazing balconies provided us with gathering spots for our morning coffee to watch the whales and gorgeous sunsets each evening. During our week long stay, we decided to visit Costco, the local fish market and the farmers market and ate 4 dinners in the condo.  The kitchen has everything you need, and the barbques downstairs were perfect for grilling.  Cynthia left us plenty of information for dining in the vicinity, so we had 3 nice dinners out. The guide she sent us before our visit was very informative and helped us to plan our outings while in Maui. Cynthia also checked in with us during our visit, making sure we had everything we needed. We are already planning a return visit to #391 at the Sands of Kahana in the near future!"
             },
             {
+                "rate": 5,
                 "at": "2018-03-24T04:00:00.000Z",
                 "by": {
                     "_id": "622f3403e36c59e6164fb04f",
@@ -2226,7 +2371,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 },
                 "txt": "We had such a great time at Cynthia's condo.  Everything was sparkling clean. The check in and check out were seamless.  We loved that the condo came with some beach gear for our use (snorkels, boogie boards, water shoes...).  The views from the balconies are outstanding.  There is a nice and swimmable beach right downstairs, as well as a volleyball court and a casual restaurant. Great location with easy access to beach rentals, groceries, and anything else you might need during your stay.  Cynthia was very quick to respond to any questions we had. Loved the place! Would definitely stay again."
             },
-            {
+            {"rate": 4,
                 "at": "2018-04-14T04:00:00.000Z",
                 "by": {
                     "_id": "622f3402e36c59e6164faec7",
@@ -2237,6 +2382,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "This place was incredible. From the views to the thoughtfulness in everything in the condo. While climbing nine flights of stairs during an unexpected elevator renovation (that ends in May!) does not sound fun, it was actually not bad at all for the adults in our party, as well as the 3 sub-8 year old children, and allowed us to think we were earning all the delicious calories we ate and drank.\n\nI cannot rave enough about the amenities that are incredibly family friendly, including a full sized high chair, travel crib, toddler (and big kid) friendly toys for both indoors and at the beach. Cynthia is very quick to respond to communication and is clear as to what she can provide as a host, as well as her expectation of guests. She was as incredible as her Kahana home was and we'd highly recommend this place for anyone, including those with small children."
             },
             {
+                "rate": 5,
                 "at": "2018-05-19T04:00:00.000Z",
                 "by": {
                     "_id": "622f3406e36c59e6164fba90",
@@ -2247,6 +2393,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "This place is amazing. We will be back!"
             },
             {
+                "rate": 5,
                 "at": "2018-06-03T04:00:00.000Z",
                 "by": {
                     "_id": "622f3406e36c59e6164fbb28",
@@ -2257,6 +2404,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "What an amazing place to stay with a spectacular view!! The beach out front is awesome and we saw turtles daily! Cynthia was great with communication and making our stay feel just like home. Hope to stay here again!!"
             },
             {
+                "rate": 5,
                 "at": "2018-08-25T04:00:00.000Z",
                 "by": {
                     "_id": "622f3407e36c59e6164fbda0",
@@ -2267,6 +2415,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Fantastic unit. Amazing sunsets."
             },
             {
+                "rate": 5,
                 "at": "2018-09-13T04:00:00.000Z",
                 "by": {
                     "_id": "622f3406e36c59e6164fbc74",
@@ -2277,6 +2426,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Enjoyed our stay very much! The condo was clean, spacious and with all the amenities of a home away from home. Cynthia was very responsive, even checking up on us when the tropical storm warnings went out. Thankfully, the storm didn’t dampen our stay. Enjoyed many beautiful Maui sunsets from the home!"
             },
             {
+                "rate": 5,
                 "at": "2018-10-18T04:00:00.000Z",
                 "by": {
                     "_id": "622f3403e36c59e6164fb016",
@@ -2287,6 +2437,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "The place has amazing ocean views!!! Cynthia provided beach chairs, gears, and toys for the kids. The entire condo is well organized and our family had such a great time. Appreciate all the little touches you provided for your guests. Will definitely stay there again when we return on Maui! :)"
             },
             {
+                "rate": 5,
                 "at": "2019-01-11T05:00:00.000Z",
                 "by": {
                     "_id": "622f3403e36c59e6164fb239",
@@ -2297,6 +2448,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "This condo was very spacious.  We had eight people (ages 5-85) and there was plenty of space for everyone.  Cynthia was readily accessible if we needed anything.  The view from the lanai was breathtaking and we watched whales every morning.  The condo was stocked with plenty of snorkel gear, boogie boards, beach chairs, sand toys for the kids, board games, puzzles, etc.  The kitchen had plenty of pots, pans, dishes, utensils, etc.  Thanks for the great stay!"
             },
             {
+                "rate": 5,
                 "at": "2019-01-22T05:00:00.000Z",
                 "by": {
                     "_id": "622f3403e36c59e6164faf7d",
@@ -2307,6 +2459,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Very clean. Cleanest Airbnb we have stayed at. Beautiful home and beautiful view of the sunset from the apartment. Loved that they had binoculars to see the whales jumping out in the distance."
             },
             {
+                "rate": 5,
                 "at": "2019-02-14T05:00:00.000Z",
                 "by": {
                     "_id": "622f3403e36c59e6164fb1af",
@@ -2317,6 +2470,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "If you are wanting a beautiful place right on the beach when you visit Kaanapali with your family , then this is the place for you ! Gorgeous full ocean view from the large deck ,large spacious rooms, super clean, lots of extras and great communication with Cynthia! We came here with our 3 adult kids and their spouses and loved everything about this place .. well stocked kitchen , lots of towels, beach toys (boogie boards were a hit ) comfortable beds ..and then there is outside !  Beautiful clean beach right outfront, nice pool and grounds , very helpful staff and amenities close by ... we watched whales and turtles right from our beach and deck, amazing !! This condo made our trip to Maui a real treat ..chose Cynthia's condo , you will not be disappointed !!"
             },
             {
+                "rate": 5,
                 "at": "2019-02-27T05:00:00.000Z",
                 "by": {
                     "_id": "622f3405e36c59e6164fb766",
@@ -2386,6 +2540,7 @@ const STAYS_TRUE_DEMO_TEMP = [
         },
         "reviews": [
             {
+                "rate": 5,
                 "at": "2016-11-06T04:00:00.000Z",
                 "by": {
                     "_id": "622f3404e36c59e6164fb5a5",
@@ -2396,6 +2551,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "地点很方便,房间也很大,有好多张床,如果是家庭出游将是不错的选择｡"
             },
             {
+                "rate": 5,
                 "at": "2016-11-09T05:00:00.000Z",
                 "by": {
                     "_id": "622f3406e36c59e6164fbcdd",
@@ -2406,6 +2562,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "The room was great. I was able to get the much needed Rest and relaxation I was looking for. What stood out for me was Emre's concern for my piece of mind. I approached him with a few minor concerns and he went to great lengths to ensure that I would have a restful stay at his hotel. He was extremely helpful in helping me secure ground transportation to my next destination, as I had failed miserably ha in get attempted to do it on my own. Stay here, the neighborhood will give you a true taste of Istanbul, a healthy step away from the too touristy neighborhoods."
             },
             {
+                "rate": 5,
                 "at": "2016-12-10T05:00:00.000Z",
                 "by": {
                     "_id": "622f3406e36c59e6164fbb72",
@@ -2416,6 +2573,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Great place, very friendly host, I would recommend this place to anyone."
             },
             {
+                "rate": 5,
                 "at": "2017-01-26T05:00:00.000Z",
                 "by": {
                     "_id": "622f3408e36c59e6164fc07f",
@@ -2426,6 +2584,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "With a good honest people everything is great, thanks boys "
             },
             {
+                "rate": 5,
                 "at": "2017-02-06T05:00:00.000Z",
                 "by": {
                     "_id": "622f3403e36c59e6164fb1d3",
@@ -2436,6 +2595,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Thanks for your nice guest house"
             },
             {
+                "rate": 4,
                 "at": "2017-02-26T05:00:00.000Z",
                 "by": {
                     "_id": "622f3404e36c59e6164fb406",
@@ -2446,6 +2606,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "这个房间性价比真的很好呀!位置也ok,离景点不远｡但是离metro有点远,去交通点上坡好累｡洗手间还是有点脏,去的时候地上有小虫｡厕所马桶有点摇摇欲坠,厕所门锁不上｡但是看在这价钱,休息几晚能接受｡"
             },
             {
+                "rate": 5,
                 "at": "2017-03-12T05:00:00.000Z",
                 "by": {
                     "_id": "622f3403e36c59e6164fb0da",
@@ -2456,6 +2617,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "The flat is perfect for preople who want to visit Istanbul! thanks"
             },
             {
+                "rate": 5,
                 "at": "2017-04-10T04:00:00.000Z",
                 "by": {
                     "_id": "622f3405e36c59e6164fb843",
@@ -2466,6 +2628,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "place is closer to main attractions and at the same time in quite locality. i recomend fellow travellers to try kadirga park when visiting istanbul. good for families."
             },
             {
+                "rate": 5,
                 "at": "2017-04-26T04:00:00.000Z",
                 "by": {
                     "_id": "622f3407e36c59e6164fbebe",
@@ -2476,6 +2639,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Emre wad a great host. His communication before and during our stay had been absolutely top notch. He was very helpful and accommodating and we would stay with him again,  no question! "
             },
             {
+                "rate": 5,
                 "at": "2017-06-14T04:00:00.000Z",
                 "by": {
                     "_id": "622f3407e36c59e6164fbfdf",
@@ -2486,6 +2650,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "I had a great time staying here. Emre has a wealth of local useful information. Ask him anything and he'll basically plan your holiday for you :) I was greeted when I arrived by one of his staff and quickly shown to my room. The room was basic but spacious, clean and safe - great value for money. Istanbul is incredibly beautiful and very exciting. There's a supermarket literally across the road, as is the Istanbul photography museum. The Hagia Sophia and Blue Mosque are a stone throw away. Lots of restaurants and cafes in the area. Easy to walk everywhere and public transport is easy, cheap, mosern, safe and fast - speak to Emre and he'll quickly help you get your head around it. Stay here, you won't regret it. "
             },
             {
+                "rate": 5,
                 "at": "2017-06-17T04:00:00.000Z",
                 "by": {
                     "_id": "622f3403e36c59e6164fb299",
@@ -2496,6 +2661,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "The place is near to the tram, around 8-10 mins walk. The room is clean, big, and comfy. The only drawback is that I didn't expect that I need to go uphill every time I'm going out from the house. Nevertheless, it's a great location. You can reach the Grand Bazar, Blue Mosque, Hagia Sophia and TopKapi Palace by walking, approx. 20mins.  "
             },
             {
+                "rate": 4,
                 "at": "2017-08-17T04:00:00.000Z",
                 "by": {
                     "_id": "622f3407e36c59e6164fbd57",
@@ -2506,6 +2672,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Nice apartment overall. Its located at the bottom of a hill so expect a hike whenever you want to go anywhere. There's a supermarket just down the road which stocks things you'll need on a daily basis which is very handy. The park across the road does get very loud and stays busy well after midnight so keep that in mind."
             },
             {
+                "rate": 5,
                 "at": "2017-09-24T04:00:00.000Z",
                 "by": {
                     "_id": "622f3404e36c59e6164fb4ad",
@@ -2516,6 +2683,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "+ :\nBien situé, je n'ai pas eu du mal à visiter les lieux proches. \n\n- : \n* Tous les équipements n'y étaient pas (sèche cheveux, lave linge...)\n\n* la porte d'entrée est juste au niveau de la porte d'entrée du bâtiment. On entend donc tous les gens qui passent avec le claquement de porte. Pas super la nuit. \n\n* wifi ne capte pas bien. \n\n* la lumière de salle de bain fonctionne avec un détecteur de mouvement qui ne capte pas si vous êtes dans la douche. Il faut donc utiliser le flash de son portable."
             },
             {
+                "rate": 5,
                 "at": "2017-10-03T04:00:00.000Z",
                 "by": {
                     "_id": "622f3403e36c59e6164fb129",
@@ -2526,6 +2694,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Good location"
             },
             {
+                "rate": 5,
                 "at": "2017-10-14T04:00:00.000Z",
                 "by": {
                     "_id": "622f3406e36c59e6164fbb01",
@@ -2536,6 +2705,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Fantastic little apartment, ideal for a weekend break in Istanbul. Located on a road with lots of good cheap street food, only ten minutes walk from the main tourist spots of Sultanahmet including the blue mosque and Hagia Sophia. Great road of restaurants just three minutes away with great atmosphere and decent prices - although everyone will try and lure you in! It's a very steep climb up a hill to public transport but not a problem if you enjoy a walk!\n\nApartment has everything you need for a comfortable stay. Only problem is the noise. The doorbell is loud and people coming in and out kept us awake one night!"
             },
             {
+                "rate": 5,
                 "at": "2017-10-21T04:00:00.000Z",
                 "by": {
                     "_id": "622f3402e36c59e6164fae6a",
@@ -2546,6 +2716,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Ganz bequem und guter Lage. Jederzeit kann ich Empfehlen. Emre ist nette man und freundlich. Die Zimmer ist preiswert. Blaue Moschee nur 6-7 min zu fuss."
             },
             {
+                "rate": 5,
                 "at": "2017-10-30T04:00:00.000Z",
                 "by": {
                     "_id": "622f3402e36c59e6164fad87",
@@ -2556,6 +2727,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Appartement simple, des lits un frigo,\nLes - :  pas toujours le nécessaire de cuisine, plaque vieille..pas de machine a laver, assez froid (pas de chauffage, la clim chauffe mal) fortes odeurs dans la salle de bain, et les draps sont pas changé de la semaine...les serviette retiré mais pas rajouter...\n\nLes + : \nBon emplacement loin du tumulte de la ville mais dans le centre historique de Sulthanamey.Emre est réactif,plein de petits boui boui autour, restaurants, ménage fait durant le séjour, et quartier calme !"
             },
             {
+                "rate": 4,
                 "at": "2017-11-06T05:00:00.000Z",
                 "by": {
                     "_id": "622f3401e36c59e6164fab5f",
@@ -2566,6 +2738,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Mr Emre was very helpful and friendly with us help us showing around especially being Turkish interpter when needed.\nHighly recommended place to stay in Old Istanbul "
             },
             {
+                "rate": 5,
                 "at": "2017-11-19T05:00:00.000Z",
                 "by": {
                     "_id": "622f3403e36c59e6164fb185",
@@ -2576,6 +2749,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Удобное расположение до основных достопримечательностей (пешая доступность). Оперативные ответы и помощь от хозяина квартиры."
             },
             {
+                "rate": 5,
                 "at": "2018-01-03T05:00:00.000Z",
                 "by": {
                     "_id": "622f3402e36c59e6164faca0",
@@ -2647,6 +2821,7 @@ const STAYS_TRUE_DEMO_TEMP = [
         },
         "reviews": [
             {
+                "rate": 5,
                 "at": "2016-03-30T04:00:00.000Z",
                 "by": {
                     "_id": "622f3402e36c59e6164faec0",
@@ -2657,6 +2832,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "L'accès au logement est pratique. Il y a un parking à 10 mètres (20€ par jour).\r\nLa résidence est bien tenue. Deux ascenseurs pour accéder au 6ème étage. L'appartement est parfaitement silencieux, pas de bruit sur la rue.\r\nLe logement est idéal pour les groupes, il est propre, en très bon état. Deux jeux de clés sont à disposition. Je recommande vivement ce logement.\r\nPour se rendre en ville, il est situé à 15 minutes de sites à voir, les taxis passent dans la rue, tout est pratique.\r\nEnfin la terrasse est superbe, avec vue sur la tour AGBAR.\r\n\r\nMerci pour votre accueil, on revient bientôt!"
             },
             {
+                "rate": 5,
                 "at": "2016-04-05T04:00:00.000Z",
                 "by": {
                     "_id": "622f3403e36c59e6164fb082",
@@ -2667,6 +2843,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "The apartment is really amazing, in the city centre and with everything we needed. Regina was really helpful we our needs."
             },
             {
+                "rate": 4,
                 "at": "2016-04-17T04:00:00.000Z",
                 "by": {
                     "_id": "622f3402e36c59e6164faeeb",
@@ -2677,6 +2854,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Great stay, very nice flat as described. Nice balcony and well located! Host was nice and easy to communicate to"
             },
             {
+                "rate": 5,
                 "at": "2016-04-30T04:00:00.000Z",
                 "by": {
                     "_id": "622f3402e36c59e6164fad11",
@@ -2687,6 +2865,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Everything was fine.\r\nApartment was clean.\r\nA couple useful items weren't available, like a trash can or a drying rack fro the dishes. But obviously thats an easy thing to buy.\r\nOverall a nice place.\r\n\r\nNothing to do with the host, but the walls are paper thin. You can hear what the neighbours are doing on every side of the flat."
             },
             {
+                "rate": 5,
                 "at": "2016-05-08T04:00:00.000Z",
                 "by": {
                     "_id": "622f3407e36c59e6164fbcec",
@@ -2697,6 +2876,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Bon accueil et appartement propre et conforme à la description"
             },
             {
+                "rate": 5,
                 "at": "2016-05-16T04:00:00.000Z",
                 "by": {
                     "_id": "622f3405e36c59e6164fb73f",
@@ -2707,6 +2887,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Superbe appartement! Un parking à deux pas qui nous a été d'une grande utilité. Regina est très accueillante, je recommande cet appartement. "
             },
             {
+                "rate": 5,
                 "at": "2016-05-23T04:00:00.000Z",
                 "by": {
                     "_id": "622f3406e36c59e6164fba01",
@@ -2717,6 +2898,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "We has a great time at Regina's place. The flat is clean and as shown on the pictures.\r\n"
             },
             {
+                "rate": 5,
                 "at": "2016-07-10T04:00:00.000Z",
                 "by": {
                     "_id": "622f3406e36c59e6164fbb75",
@@ -2727,6 +2909,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "The apartment and the location is good, but the service is not as good as expect. \n\nI have booked a pick-up service from the householder, but there are some problems happened about the plane causing the flight delayed. I have informed the householder at once. When we arrived at the airport, we could not find the driver waiting for us at the arrival with our name. Then, I tried to ask for the help from the householder to meet the driver at the airport. After almost one-hour waiting, we are refused by the driver to meet at the airport and He asked us to find his car at the park. How ridiculous! This service costs 20 euro each person but we cannot even have the right to be picked up. We were so angry and chose to take the taxi. At the same time, I texted the householder that we were tired of waiting for the driver and we were on the way to ur apartment by taxi.\n\nThe householder didn't tell me that I should phone another guy to tell him that we were on the way to the apartment until We arrived. What all she talked about were the money of the pick-up service. We spent another 45 minutes to wait for the guy to send the key. Again, when he came, he talked about the money. We asked for the service, but u did not provide it with us. How dare u to ask for the payment? Besides, do u know what? We are totally seven people, so this service should cost 140 euro totally. But two taxis only cost us 70 euro. The driver knows the guy and the householder. I doubt that they are on the business to play trick with me.\n\nBarcelona is a really nice city to travel, but this experience does make a bad impression on me. \n "
             },
             {
+                "rate": 5,
                 "at": "2016-07-16T04:00:00.000Z",
                 "by": {
                     "_id": "622f3407e36c59e6164fbf02",
@@ -2737,6 +2920,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "The apartment has a good location convenient to metro and walking distance to Sagrada Familia and many good eating options. Spacious with a nice balcony. Air conditioning units are in the main hallway and the dining/living room, but the rooms are hard to cool down (it was hot when we were there). "
             },
             {
+                "rate": 5,
                 "at": "2016-07-23T04:00:00.000Z",
                 "by": {
                     "_id": "622f3407e36c59e6164fbd6b",
@@ -2747,6 +2931,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Hola todo muy bien, excelente ubicacion y el trato my amable. El unico comentario es el de reparar la "
             },
             {
+                "rate": 5,
                 "at": "2016-07-29T04:00:00.000Z",
                 "by": {
                     "_id": "622f3402e36c59e6164fad90",
@@ -2757,6 +2942,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "What an amazing place to stay! It is a very roomy and comfortable place, that is in a great location. The deck area is amazing and we spent most of our time there just hanging out taking in the views. Reginan had great communication and made it very simple for us to arrive. If i ever go back to Barcelona, i would 100% stay here again! "
             },
             {
+                "rate": 5,
                 "at": "2016-08-08T04:00:00.000Z",
                 "by": {
                     "_id": "622f3403e36c59e6164fb0e3",
@@ -2767,6 +2953,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Tutto andava molto bene ,l'appartamento corrispondeva esattamente alle foto del sito. Le stanze ed i bagni erano puliti , come pure la cucina. La terrazza era molto bella e la vista era apprezzabile. Oltre ai vari letti vi era anche la possibilità di dormire su un divano letto particolarmente comodo. L'aria condizionata funzionava e rinfrescava bene tutto l'appartamento. L'unico problemino c'è stato con la porta del bagno che è stato facile chiudere, ma non più riaprire, ma c'è stato subito un pronto intervento da parte dei responsabili dell'appartamento, che hanno aiutato ad uscire la persona che era rimasta chiusa all'interno. Salvo questo però Il quartiere era tranquillo , c'erano vari baretti attorno e anche dei piccoli centri commerciali ( di tipo alimentare ). Era in oltre possibile raggiungere a piedi vari bar dove potersi divertire. I taxi per arrivare nel centro della movida variano con i prezzi dai 5 ai 7 euro a corsa. La fermata della metro era a 5 min a piedi dall'appartamento. Dal centro partiva una navetta che portava direttamente all'aeroporto per soli 4 euro e 90. "
             },
             {
+                "rate": 4,
                 "at": "2016-08-28T04:00:00.000Z",
                 "by": {
                     "_id": "622f3406e36c59e6164fbc92",
@@ -2777,6 +2964,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Regina is a really nice host and the apartment is perfect for big group due to its perfect location, 5 min drive or 15 min walk for the beach and near the perfect tourist places !\nI recommend 100% this clean and well decorated apartment !\n"
             },
             {
+                "rate": 5,
                 "at": "2016-09-19T04:00:00.000Z",
                 "by": {
                     "_id": "622f3405e36c59e6164fb647",
@@ -2787,6 +2975,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Regina was a great host- first she replied very quickly to my booking inquiry, and was always very responsive with queries/ messages.\r\nThe flat is HUGE and very well located, very modern and nicely decorated. Regina had organised someone to meet us on arrival so check in was easy. Check out was easy  llew as we just had to leave the flat at the agreed time. I would only say that the check out time of 11am is a bit early, especially for a city when you can have dinner quite late... although upon our request, Regina allowed us nicely to stay until 12pm.\r\nThey were two sets of keys which was very convenient for a big group. \r\nI have suggested to regina that it would be great to have a few more amenities provided such as toilet paper and coffee/tea for example, but overall we were very pleased with our stay at Regina's place. Thank you Regina!\r\n\r\n"
             },
             {
+                "rate": 5,
                 "at": "2016-09-23T04:00:00.000Z",
                 "by": {
                     "_id": "622f3403e36c59e6164fb09e",
@@ -2797,6 +2986,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "El departamento es fantástico y tiene una terraza bastante amplia para disfrutar. Tanto los anfitriones como Maks (el concierge) fueron muy amables y dispuestos a ayudar."
             },
             {
+                "rate": 4,
                 "at": "2016-10-21T04:00:00.000Z",
                 "by": {
                     "_id": "622f3408e36c59e6164fc065",
@@ -2807,6 +2997,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Very good location.\r\n\r\nReally close to all major attractions. Plenty of shops and restaurants nearby. ( BTW you can go to the sushi bar - 5 minutes walk - Kyoka II, with unlimited food. Menu in Spanish only :) )\r\n\r\nApartments are comfortable and clean. I think it should be really good for a family vacations.\r\n\r\nIMHO some minimal improvements must be made (broken shower hose support, etc) but it's truly minor. \r\n\r\nOverall - pleasant experience."
             },
             {
+                "rate": 5,
                 "at": "2016-10-24T04:00:00.000Z",
                 "by": {
                     "_id": "622f3401e36c59e6164fab87",
@@ -2817,6 +3008,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Regina's apartment was as listed on her profile - there was sufficient space for all 8 of us, and had all of the amenities listed on the page. It was a very good area. I would recommend anyone in a bigger group looking to stay in a central location. "
             },
             {
+                "rate": 5,
                 "at": "2016-10-31T04:00:00.000Z",
                 "by": {
                     "_id": "622f3407e36c59e6164fbfe5",
@@ -2827,6 +3019,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Great apartment if you are a larger group and need more space. The bedrooms are all great and as described, plus having two bathrooms was good. The terrace is a fantastic bonus, with amazing views! "
             },
             {
+                "rate": 5,
                 "at": "2016-11-02T04:00:00.000Z",
                 "by": {
                     "_id": "622f3403e36c59e6164fafc3",
@@ -2837,6 +3030,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "El apartamento es incluso mejor a como aparece en las fotos. La ubicación excelente. Queda cerca de todo y se puede ir caminando a diferentes puntos de interes como la sagrada familia y la marina o para los que prefieren el metro tiene cerca varias paradas de metro lo que resulta muy conveniente.  Lo recomendamos cien por ciento. Si volvemos a Barcelona definitivamente nos quedariamos nuevamente aqui."
             },
             {
+                "rate": 4,
                 "at": "2016-11-14T05:00:00.000Z",
                 "by": {
                     "_id": "622f3403e36c59e6164faf4f",
@@ -2940,6 +3134,7 @@ const STAYS_TRUE_DEMO_TEMP = [
         },
         "reviews": [
             {
+                "rate": 4,
                 "at": "2013-05-12T04:00:00.000Z",
                 "by": {
                     "_id": "622f3403e36c59e6164fb132",
@@ -2950,6 +3145,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Yamila appartement was just perfect for us!\r\nThe location in Poble sec is very close to BCN city center and the neighborhood is so quiet without any traffic like everywhere else in the city\r\nThe appartement is very clean, well equipped with very recent furniture, 2 bathrooms, 3 bedrooms, 2 balconies, 1 terrace, large kitchen and lounge.\r\nYamila was a perfect host with us also.\r\nI fully recommend this appartment"
             },
             {
+                "rate": 5,
                 "at": "2013-06-17T04:00:00.000Z",
                 "by": {
                     "_id": "622f3402e36c59e6164fadce",
@@ -2960,6 +3156,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "El piso esta muy guay, en una zona muy bien comunicada y con muchos restaurantes y bares cerca. Lo hemos pasado muy bien en este piso y volveriamos a alquilarlo."
             },
             {
+                "rate": 5,
                 "at": "2013-07-12T04:00:00.000Z",
                 "by": {
                     "_id": "622f3403e36c59e6164fb078",
@@ -2970,6 +3167,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Awesome accommodations! Huge apartment that was obviously recently renovated and well maintained. The building is in a residential (read: non-touristy) part of Spain so if you are looking for a real taste of local culture this is the place to stay. 2 blocks from the subway and we were downtown in just a couple stops. The apartment is in building with a common courtyard (common for the style). The other people that live in the building were very friendly and helpful answering any questions we had. My son was even able to play with the other children (despite the language barrier). Awesome experience -- would definietly rent again."
             },
             {
+                "rate": 5,
                 "at": "2013-08-06T04:00:00.000Z",
                 "by": {
                     "_id": "622f3407e36c59e6164fbce7",
@@ -2980,6 +3178,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Experiencia bastante agradable, puntuales, el piso muy limpio, ordenado y esta genial, muy bien situado, muy recomendable."
             },
             {
+                "rate": 5,
                 "at": "2013-08-09T04:00:00.000Z",
                 "by": {
                     "_id": "622f3406e36c59e6164fba44",
@@ -2990,6 +3189,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "The apartment is exactly as pictured. Very spacious, comfortable, and clean with a well equipped kitchen and nice terraces on both levels. The neighborhood is well situated - it is not at all touristy but close to transportation at Plaza España and Poble Sec metro stops so you can easily get to all the places you want to visit. We stayed here for 3 nights with our two children and found it perfect. We were able to walk or take the metro everywhere we wanted to go, but have a quieter place to sleep and relax. There is a park down the street and a supermarket directly across. Xavi met us on arrival and was very nice and helpful throughout our stay. When my husband accidentally left a few things in the apartment, Xavi collected them and met us upon our return to Barcelona a few days later to return them. Thanks, Xavi! It was a great stay in Barcelona and I would definitely recommend the apartment to anyone looking for space and comfort in a close but quieter neighborhood. "
             },
             {
+                "rate": 5,
                 "at": "2013-08-25T04:00:00.000Z",
                 "by": {
                     "_id": "622f3407e36c59e6164fbfa0",
@@ -3000,6 +3200,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Great flat in a very good location, very close from subway which brings you to wherever you want in a few minutes. Xabi has been really nice and we didn't miss anything in the flat. Thank you"
             },
             {
+                "rate": 4,
                 "at": "2013-09-16T04:00:00.000Z",
                 "by": {
                     "_id": "622f3402e36c59e6164fae47",
@@ -3010,6 +3211,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Yamila is a great hostess, the apartment is very comfortable.\r\nVery close to the metro. And a convenient store. A tv was missed, otherwise everything was great."
             },
             {
+                "rate": 4,
                 "at": "2013-10-27T04:00:00.000Z",
                 "by": {
                     "_id": "622f3407e36c59e6164fc002",
@@ -3020,6 +3222,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Appartement conforme aux indications, très propre. Le quartier est calme mais tout de même assez proche de tout (2 stations de métro de la rambla et des plages...). Super Bon séjour !\r\n"
             },
             {
+                "rate": 5,
                 "at": "2013-11-05T05:00:00.000Z",
                 "by": {
                     "_id": "622f3405e36c59e6164fb814",
@@ -3030,6 +3233,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Una estancia perfecta, el piso es muy grande y muy bien equipado. La descripción corresponde perfectamente a la casa. 100% recomendable."
             },
             {
+                "rate": 5,
                 "at": "2014-02-27T05:00:00.000Z",
                 "by": {
                     "_id": "622f3404e36c59e6164fb306",
@@ -3040,6 +3244,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Super apartement, clean, spacios, great located and pretty quiet. Yamila is very nice, polite and helpful. I strongly can recommend the apartement. "
             },
             {
+                "rate": 5,
                 "at": "2014-03-04T05:00:00.000Z",
                 "by": {
                     "_id": "622f3406e36c59e6164fbbcc",
@@ -3050,6 +3255,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "A very nice place and a great host!\r\nThe apartment is exactly as you can see in the pictures, everthing is clean and Yamila is just a call (or e-mail) away if you need help."
             },
             {
+                "rate": 5,
                 "at": "2014-03-18T04:00:00.000Z",
                 "by": {
                     "_id": "622f3404e36c59e6164fb476",
@@ -3060,6 +3266,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "EVERYTHING WAS GREAT. Yamila is very hospitable, very helpful. You can find everything you need at home.We will rent this House again barcelona 2015 Marathon."
             },
             {
+                "rate": 5,
                 "at": "2014-03-25T04:00:00.000Z",
                 "by": {
                     "_id": "622f3404e36c59e6164fb510",
@@ -3070,6 +3277,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Cristina and her friend Yamilia did a wonderful job of making us feel at home and were also very helpful with other miscellaneous necessities (calling us a taxi to take us to the airport on departure).  The duplex was very nice and spacious, clean, charming, outfitted with everything we needed, with comfortable beds and a very nice kitchen (with an induction cooktop!).  The property is older and there was some remodeling noise for a few hours from the neighboring apartment, which we could hear through what seemed to be a shared skylight, but it was very brief and not a concern (unless noise privacy is a very high priority, which it wasn't for us).  We didn't even use the third bedroom with bunk beds, but it would be ideal for a family.  The metro was close enough, and the bakery just downstairs, together with the grocery store literally across the street, were a wonderful convenience.  We went nearly everywhere by metro, and the location was central enough that at the end of the day, if we were too tired to make our way back by metro, an easy cab ride back to the apartment never exceeded 8 euros (which would've been the cost of the metro for all four of us anyway).  Overall, the apartment was a nice, comfortable bargain for family travel - not the most modern, but charming and fully met our needs."
             },
             {
+                "rate": 4,
                 "at": "2014-04-12T04:00:00.000Z",
                 "by": {
                     "_id": "622f3404e36c59e6164fb5a8",
@@ -3080,6 +3288,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Appartement trés agréable et trés bien situé à 2 pas d'une station de métro et de la place d'Espagne.\r\nToutes les pièces sont très agréables et les terrasses aussi.\r\nSupermarché en face et excellente boulangerie au pied de l'immeuble.\r\nImmeuble très calme.\r\nPas de cafetière électrique ni d'essoreuse à salade mais l'électroménager est top.\r\nDéco soignée.\r\nMerci, nous avons passé une excellente semaine !  "
             },
             {
+                "rate": 5,
                 "at": "2014-04-27T04:00:00.000Z",
                 "by": {
                     "_id": "622f3406e36c59e6164fbc22",
@@ -3090,6 +3299,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "We stayed at Christina´s place for two weeks and were happy with the flat. The location is good: close to metro, and also bakery, convenience store etc is near.\r\nExcellent restaurants also nearby.  "
             },
             {
+                "rate": 5,
                 "at": "2014-05-01T04:00:00.000Z",
                 "by": {
                     "_id": "622f3403e36c59e6164fb07b",
@@ -3100,6 +3310,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Magnifique appartement, très calme dans un quartier sympathique. Boulangerie juste à côté, idéale le matin. Les enfants ont adoré!  Cristina et Yamila toujours à l'écoute par mail ou par tel. Nous gardons un excellent souvenir de ces vacances en famille à Barcelone. Un grand merci à nos hôtes. \r\nMarie-Pierre, Arnaud, Pierre et Benjamin"
             },
             {
+                "rate": 5,
                 "at": "2014-05-05T04:00:00.000Z",
                 "by": {
                     "_id": "622f3406e36c59e6164fbb13",
@@ -3110,6 +3321,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Espectacular!\r\nEl piso era grande, confortable, limpio, y muy bien equipado, sobre todo en la cocina. Es un piso luminoso con terracitas perfectas para comer fuera, y un silencia muy apreciable durante la noche, una maravilla.\r\nEl piso está super bien situado, hay un supermercado en frente y una panadería muy buena justo al lado, la acogida fue perfecta y la logística (entrega y recogida de la llave...) muy sencilla. Muy recomendable."
             },
             {
+                "rate": 5,
                 "at": "2014-05-08T04:00:00.000Z",
                 "by": {
                     "_id": "622f3404e36c59e6164fb401",
@@ -3120,6 +3332,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Réactive et bon contact téléphonique."
             },
             {
+                "rate": 4,
                 "at": "2014-06-17T04:00:00.000Z",
                 "by": {
                     "_id": "622f3402e36c59e6164faf30",
@@ -3130,6 +3343,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "The Hous is great. It´s a super cosy place in a nice neighborhood. You find evrerything you need in the House, plus you got two terraces and a padio.\r\nIt is super located, everything you need is close, Supermarket, Bakery and Restaurants just in front of the Door. Metro station around the corner also the placa espanya Montjuïc a few minutes walk away.\r\nYamila (friend of Christina) is a great host, she was super nice and open for every question we had. She also called us a taxi to take us to the airport at 5! in the morning.\r\nWe will for sure come back and book that place again.\r\nWould totally recommend that House for a great stay in Barcelona.\r\nThank you.\r\n \r\n"
             },
             {
+                "rate": 5,
                 "at": "2014-06-21T04:00:00.000Z",
                 "by": {
                     "_id": "622f3407e36c59e6164fbf72",
@@ -3205,6 +3419,7 @@ const STAYS_TRUE_DEMO_TEMP = [
         },
         "reviews": [
             {
+                "rate": 4,
                 "at": "2016-03-23T04:00:00.000Z",
                 "by": {
                     "_id": "622f3402e36c59e6164facca",
@@ -3215,6 +3430,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "The host canceled this reservation the day before arrival. This is an automated posting."
             },
             {
+                "rate": 5,
                 "at": "2016-05-09T04:00:00.000Z",
                 "by": {
                     "_id": "622f3403e36c59e6164faf76",
@@ -3225,6 +3441,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Fantastic place. Clean and convenient to all of Williamsburg. My parents actually stayed here and the host was great to them, checking in all the time and making sure they had everything they needed. "
             },
             {
+                "rate": 5,
                 "at": "2016-05-15T04:00:00.000Z",
                 "by": {
                     "_id": "622f3404e36c59e6164fb2cc",
@@ -3235,6 +3452,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Todo perfecto, ningun problema. Departamento muy lindo en una zona muy buena."
             },
             {
+                "rate": 5,
                 "at": "2016-05-20T04:00:00.000Z",
                 "by": {
                     "_id": "622f3404e36c59e6164fb2d9",
@@ -3245,6 +3463,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "everything nice and easy and good neighborhood too.\r\nI enjoyed my trim to NYC.\r\nThanks!"
             },
             {
+                "rate": 5,
                 "at": "2016-05-24T04:00:00.000Z",
                 "by": {
                     "_id": "622f3402e36c59e6164fac18",
@@ -3255,6 +3474,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Great apartment and backyard patio in a great location!!\nWalk to anything you could want in Willimsburg or a short subway or uber ride to NYC for everything else. Nicely updated apartment with easy on street parking and wonderful hosts and recommendations. Highly recommend!!"
             },
             {
+                "rate": 5,
                 "at": "2016-06-09T04:00:00.000Z",
                 "by": {
                     "_id": "622f3407e36c59e6164fbe19",
@@ -3265,6 +3485,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "This place was awesome. Huge space in a perfect location close to bars and restaurants etc. The owner was very nice and accommodating. Took me a while to pick out an Air bnb in NYC because they were all too \"lived in\" this one didnt feel like i was invading somebody's home. Kind of like a two story hotel- i loved it. Also great backyard"
             },
             {
+                "rate": 4,
                 "at": "2016-06-11T04:00:00.000Z",
                 "by": {
                     "_id": "622f3402e36c59e6164fad2e",
@@ -3275,6 +3496,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Everything was wonderful! Sal was very easy to work with and made sure that we had a great stay. We had a great stay; I'll definitely be back soon!"
             },
             {
+                "rate": 5,
                 "at": "2016-07-29T04:00:00.000Z",
                 "by": {
                     "_id": "622f3405e36c59e6164fb6dc",
@@ -3285,6 +3507,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "neighborhood is pleasant and host was excellent"
             },
             {
+                "rate": 5,
                 "at": "2016-09-12T04:00:00.000Z",
                 "by": {
                     "_id": "622f3407e36c59e6164fbf07",
@@ -3295,6 +3518,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Great place for NY trip. Subway nearby. The host is on every call, very helpful. There was a plumbing problem during our stay, fixed immidetly by Sal. \nDefinitly can recomend the place"
             },
             {
+                "rate": 5,
                 "at": "2016-09-20T04:00:00.000Z",
                 "by": {
                     "_id": "622f3403e36c59e6164fb092",
@@ -3305,6 +3529,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "The hosting was taken care of by Luis, who was fantastic and went out of his way to make me feel welcome.  He was terrific.  \r\n\r\nNeighborhood was good and the L train was easy to get to and the place was super clean."
             },
             {
+                "rate": 5,
                 "at": "2016-09-23T04:00:00.000Z",
                 "by": {
                     "_id": "622f3403e36c59e6164fb12b",
@@ -3315,6 +3540,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "The apartment is on the ground floor it's a 2BR-1B with a living room kitchen combo. One bedroom downstairs. It was very comfortable, newly remodeled, modern and Luis is a jewel (he even went so far as to go get us some canoli and sfoglitella from the best Italian bakery in Williamsbug when my Italian wife asked him about them). Fairly close to the L & M subway lines. Maybe 10 minutes to Union Square hub in Manhattan. \r\n\r\nHighly recommended. "
             },
             {
+                "rate": 5,
                 "at": "2016-09-25T04:00:00.000Z",
                 "by": {
                     "_id": "622f3402e36c59e6164fae81",
@@ -3325,6 +3551,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "We had a great stay! The host was very flexible about check-in and check-out time, and made it clear he was available if we needed anything (we didn't.) Location was perfect, 5 minutes to L train into Manhattan, but on a quiet street. Spacious enough to sleep four friends very comfortably (two beds + two futon-style couches). We really enjoyed sitting out on the back patio as well. "
             },
             {
+                "rate": 5,
                 "at": "2016-10-03T04:00:00.000Z",
                 "by": {
                     "_id": "622f3404e36c59e6164fb40c",
@@ -3335,6 +3562,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Sal was most helpful and reafy to help with anything.  The apartment is in a super location close to all Williamsburg smenities and the L line. I would recommrnd jt to anyone and would certainly stay there again if I had the chance."
             },
             {
+                "rate": 5,
                 "at": "2016-10-06T04:00:00.000Z",
                 "by": {
                     "_id": "622f3404e36c59e6164fb327",
@@ -3345,6 +3573,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "The host was Great! Very helpful, even with my elderly father. My son lives nearby, so I knew it was a great neighborhood! Free bottled water and coffee was nice. Beautiful patio and the apartment was clean, beautifully furnished and so comfortable. I would definitely stay there again!,"
             },
             {
+                "rate": 4,
                 "at": "2016-10-14T04:00:00.000Z",
                 "by": {
                     "_id": "622f3405e36c59e6164fb779",
@@ -3355,6 +3584,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Really good experience. We didn't spend much time hanging out in the apartment (though the patio was tempting) but it was close to friends, train, and plenty of good food. Will certainly book again!"
             },
             {
+                "rate": 5,
                 "at": "2016-10-23T04:00:00.000Z",
                 "by": {
                     "_id": "622f3405e36c59e6164fb762",
@@ -3365,6 +3595,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "We arrived late at night, but Louis was waiting for us. He even showed us a place to buy dinner, although it was after midnight.\r\nThe neighbourhood is great and you can be in Manhattan in 20 minutes.\r\nThe appartemt was really nice and suited us well (2 adults and 2 teenagers). Louis was only a phone call away if we had questions and he popped by a few times to chek on us.\r\nWould definitely stay again."
             },
             {
+                "rate": 5,
                 "at": "2016-11-02T04:00:00.000Z",
                 "by": {
                     "_id": "622f3407e36c59e6164fbffb",
@@ -3375,6 +3606,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Le duplex est parfaitement situé dans Brooklyn, à 5 minutes à pied du métro et du centre de Williamsburg, quartier le plus en vogue de Brooklyn. L'appartment n'est qu'à 15 minutes en métro du cœur de Manhattan.\nNous remercions tout particulièrement Luis pour son accueil et ses conseils."
             },
             {
+                "rate": 5,
                 "at": "2016-11-05T04:00:00.000Z",
                 "by": {
                     "_id": "622f3404e36c59e6164fb378",
@@ -3385,6 +3617,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "Sal was an excellent host. The apartment was really great and also he was really responsive and accommodating!"
             },
             {
+                "rate": 5,
                 "at": "2016-11-14T05:00:00.000Z",
                 "by": {
                     "_id": "622f3407e36c59e6164fbfc7",
@@ -3395,6 +3628,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 "txt": "We had a great time staying here. Host was waiting for us upon arrival. Super friendly guy, real NYer. Apartment was spotless when we arrived and had everything you would need. Truth be told the pictures on the site don't do it justice. Great location walking distance to nice bars, restaurants etc. I'll be staying here next time i'm back in NY for sure. 10/10"
             },
             {
+                "rate": 5,
                 "at": "2016-12-12T05:00:00.000Z",
                 "by": {
                     "_id": "622f3404e36c59e6164fb439",

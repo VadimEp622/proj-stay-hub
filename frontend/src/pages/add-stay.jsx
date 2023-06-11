@@ -142,7 +142,7 @@ export function AddStay() {
               country: values.country,
               city: values.city,
             },
-            imgUrls: stayToAdd.imgUrls, // Include existing imgUrls in updatedStayToAdd
+            imgUrls: stayToAdd.imgUrls,
           };
       
           // console.log(stayToAdd);
