@@ -1,8 +1,8 @@
 import mongoDB from 'mongodb'
-const {MongoClient} = mongoDB
+const { MongoClient } = mongoDB
 
-import {config} from '../config/index.mjs'
-import {logger}  from './logger.service.mjs'
+import { config } from '../config/index.mjs'
+import { logger } from './logger.service.mjs'
 
 export const dbService = {
     getCollection
@@ -11,6 +11,7 @@ export const dbService = {
 var dbConn = null
 
 async function getCollection(collectionName) {
+    console.log('collectionName', collectionName)
     try {
         const db = await connect()
         const collection = await db.collection(collectionName)

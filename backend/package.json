@@ -5,10 +5,9 @@
     "main": "server.mjs",
     "scripts": {
         "start": "nodemon server.mjs",
-        "server:dev": "nodemon server.mjs",
-        "server:prod": "set NODE_ENV=production&&node server.mjs",
-        "server:prod:mac": "export NODE_ENV=production&&node server.mjs"
-        
+        "dev": "nodemon server.mjs",
+        "prod": "set NODE_ENV=production&&node server.mjs",
+        "prod:mac": "export NODE_ENV=production&&node server.mjs"
     },
     "author": "Me",
     "license": "ISC",
