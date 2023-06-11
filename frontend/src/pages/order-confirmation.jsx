@@ -15,25 +15,25 @@ export function OrderConfirmation() {
     const { reviewsCount, type, summary, rate, image, id } = stayDetails
     const { total, serviceFee, cleaningFee, price } = orderPrice
     const formattedTimeRange = utilService.getFormattedTimeRange(checkIn, checkOut)
-    const sellerFirstName = seller.fullname.substring(0, seller.fullname.indexOf(' '))
+    // const sellerFirstName = seller.fullname.substring(0, seller.fullname.indexOf(' '))
     const formattedDate = new Date(utilService.getFutureTime(2, 'day')).toLocaleDateString(undefined, {
         month: 'short',
         day: 'numeric',
     });
 
-    function removeUndefinedProperties(orderObject) {
-        for (const prop in orderObject) {
-            if (orderObject[prop] === undefined || Number.isNaN(orderObject[prop])) {
-                delete orderObject[prop];
-            } else if (typeof orderObject[prop] === 'object') {
-                removeUndefinedProperties(orderObject[prop]);
-                if (Object.keys(orderObject[prop]).length === 0) {
-                    delete orderObject[prop];
-                }
-            }
-        }
-        return orderObject;
-    }
+    // function removeUndefinedProperties(orderObject) {
+    //     for (const prop in orderObject) {
+    //         if (orderObject[prop] === undefined || Number.isNaN(orderObject[prop])) {
+    //             delete orderObject[prop];
+    //         } else if (typeof orderObject[prop] === 'object') {
+    //             removeUndefinedProperties(orderObject[prop]);
+    //             if (Object.keys(orderObject[prop]).length === 0) {
+    //                 delete orderObject[prop];
+    //             }
+    //         }
+    //     }
+    //     return orderObject;
+    // }
     async function handleOrderConfirm(ev) {
         await onOrderConfirm(ev)
         navigate('/trips')
@@ -44,7 +44,7 @@ export function OrderConfirmation() {
             ev.stopPropagation()
             ev.preventDefault()
         }
-        removeUndefinedProperties(orderObject)
+        // removeUndefinedProperties(orderObject)
         try {
             await addConfirmedTrip(orderObject)
         } catch (error) {

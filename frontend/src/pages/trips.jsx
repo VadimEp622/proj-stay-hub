@@ -23,7 +23,7 @@ export function MyTrips() {
                 const filteredTrips = orders.filter(
                     (order) => order.buyer._id === loggedInUser._id
                 );
-                setTrips(filteredTrips);
+                setTrips(filteredTrips)
             } catch (error) {
                 showErrorMsg('Error fetching orders');
             }
@@ -62,7 +62,7 @@ export function MyTrips() {
                                         {trip.stayDetails.city}
                                         Entire rental unit hosted by {trip.seller.fullname}
                                         <div className="inside-upcoming-reservation">
-                                            {trip.stayDetails.checkIn} - {trip.stayDetails.checkOut}
+                                            {trip.checkIn} - {trip.checkOut}
                                             {locationSubstring}
                                             {trip.stayDetails.loc.city}
                                             {trip.stayDetails.loc.country}
@@ -108,7 +108,7 @@ export function MyTrips() {
                                         {trip.stayDetails.city}
                                         Entire rental unit hosted by {trip.seller.fullname}
                                         <div className="inside-past-trip">
-                                            {trip.stayDetails.checkIn} - {trip.stayDetails.checkOut}
+                                            {trip.checkIn} - {trip.checkOut}
                                             {locationSubstring}
                                             {trip.stayDetails.loc.city}
                                             {trip.stayDetails.loc.country}
