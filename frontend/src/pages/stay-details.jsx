@@ -1,7 +1,7 @@
 import { useEffect, useState, Fragment } from 'react'
 import { useParams, useNavigate, Link } from 'react-router-dom'
 
-import { stayService } from "../services/stay.service.local.js"
+import { stayService } from "../services/stay.service.js"
 import { showErrorMsg } from "../services/event-bus.service.js"
 import { reviewService } from '../services/review.service.js'
 import { OrderContainer } from '../cmps/order-container.jsx'
@@ -9,9 +9,10 @@ import { DetailsHeader } from '../cmps/details-header.jsx'
 import { DetailsReviews } from '../cmps/details-reviews.jsx'
 import { getDate } from '../services/stay.service.js'
 import SvgHandler from '../cmps/svg-handler.jsx'
-import { HEART_16, RED_HEART_16, SHARE, STAR, STAR_16, LOCATION, CHECKIN, KEY, VERIFIED, RED_TAG } from '../services/svg.service.js'
+import { HEART_16, RED_HEART_16, SHARE, STAR, STAR_16, LOCATION, CHECKIN, KEY, VERIFIED, RED_TAG, BLACK_SUPERHOST_16 } from '../services/svg.service.js'
 import GoogleMap from '../cmps/map.jsx'
 import { Helmet } from 'react-helmet';
+import { utilService } from '../services/util.service.js'
 
 export function StayDetails() {
     const [stay, setStay] = useState(null)
@@ -58,11 +59,12 @@ export function StayDetails() {
         const percentage = (value / 5) * 100
         return percentage.toFixed(1)
     }
-
+    console.log('stay', stay)
     if (!stay) return <div>Loading...</div>
     const reviewsInputs = displayReviewsCriteria()
     const reviews = stay.reviews.length > 1 ? 'reviews' : 'review'
     const capitalizedReviewsString = reviews.charAt(0).toUpperCase() + reviews.slice(1)
+    const randomDateJoined = utilService.getRandomMonthAndYear()
     return <>
         <div>
             <Helmet>
@@ -164,7 +166,7 @@ export function StayDetails() {
                     </div>
                 </section>
                 <section className='order-container'>
-                    <OrderContainer stay={stay} />
+                    <OrderContainer stay={stay} randomDate={randomDateJoined} />
                 </section>
             </section>
 
@@ -207,7 +209,7 @@ export function StayDetails() {
                     <img src="https://a0.muscache.com/im/pictures/user/59da4e65-e5a0-4fde-b4d9-e48f20c1ba43.jpg?im_w=240" alt="host image" />
                     <section className='mini-owner-info'>
                         <h3 className='fs22'>Hosted by {stay.host.fullname}</h3>
-                        <span>Joined in March 2014</span>
+                        <span>Joined in {randomDateJoined}</span>
                     </section>
                 </div>
                 <div className="sub-details flex">
@@ -224,16 +226,12 @@ export function StayDetails() {
                             <h4>
                                 Identity verified
                             </h4>
-                            {stay.superhost && (
-                                <>
-                                    <SvgHandler svgName={STAR} />
-                                    Superhost
-                                </>
-                            )}
                             {stay.host.isSuperhost && (
                                 <>
-                                    <p>{stay.host.fullname} is a Superhost</p>
-                                    <p>Superhosts are experienced, highly rated hosts who are committed to providing great stays for guests.</p>
+                                    <SvgHandler svgName={BLACK_SUPERHOST_16} />
+                                    <h4>
+                                      Superhost  
+                                    </h4>
                                 </>
                             )}
                         </section>
@@ -257,7 +255,7 @@ export function StayDetails() {
                     <section className='owner-communication flex'>
                         <h3 className='fs16'>Language: English</h3>
                         <h3 className='fs16'>Response rate: 100%</h3>
-                        <h3 className='fs16'>Response time: {stay.host.responseTime}</h3>
+                        <h3 className='fs16'>Response time: {stay.host.responseTime ? stay.host.responseTime : 'Within couple of hours'}</h3>
                         <button className='fs16'>Contact Host</button>
                         <section className='protection-info flex align-center fs12'>
                             <img src="https://res.cloudinary.com/dnhn4zsy0/image/upload/v1685913828/airbnb-orotect_ohgcnp.svg" alt="airbnb protect" />

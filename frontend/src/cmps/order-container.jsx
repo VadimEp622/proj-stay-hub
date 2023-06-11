@@ -12,11 +12,11 @@ import { setOrder } from "../store/user.actions"
 import { Link } from "react-router-dom"
 import { AirbnbButton } from "./reuseableCmp/airbnb-button"
 
-export function OrderContainer({ stay }) {
+export function OrderContainer({ stay, randomDate }) {
 
-    const checkIn = stayService.getDate(stay.checkIn)
-    const checkOut = stayService.getDate(stay.checkOut)
-    const nightsCount = stayService.calculateHowManyNights(stay.checkIn, stay.checkOut)
+    const checkIn = stayService.getDate(stay.availableDates[0].from)
+    const checkOut = stayService.getDate(stay.availableDates[0].to)
+    const nightsCount = stayService.calculateHowManyNights(stay.availableDates[0].from, stay.availableDates[0].to)
     const nightsPrice = nightsCount * (stay.price)
     const cleaningFee = utilService.getRandomIntInclusive(100, 500)
     const serviceFee = utilService.getRandomIntInclusive(100, 500)
@@ -30,15 +30,17 @@ export function OrderContainer({ stay }) {
     useEffect(() => {
         setOrderObject({
             buyer: {
-                _id: user ? user._id : ''
+                _id: user ? user._id : '',
+                name: user ? user.fullname : ''
             },
             seller: {
                 fullname: stay.host.fullname,
                 _id: stay.host._id,
-                image: stay.host.img
+                image: stay.host.img,
+                joined: randomDate.split(' ')[1]
             },
-            checkIn: stay.checkIn,
-            checkOut: stay.checkOut,
+            checkIn: stay.availableDates[0].from,
+            checkOut: stay.availableDates[0].to,
             orderPrice: {
                 total: totalPrice,
                 serviceFee: serviceFee,
@@ -48,11 +50,20 @@ export function OrderContainer({ stay }) {
             guestsNumber: guestCount,
             stayDetails: {
                 reviewsCount: stay.reviews.length,
+                loc: stay.loc,
                 type: stay.type,
                 id: stay._id,
-                rate: stay.rate,
+                rate: stay.reviews.rate,
                 summary: stay.summary,
                 image: stay.imgUrls[0]
+            },
+            thingsToDo: {
+                "Just-for-you": utilService.getRandomIntInclusive(10, 20),
+                "Top-rated": utilService.getRandomIntInclusive(30, 50),
+                "Sports": utilService.getRandomIntInclusive(30, 60),
+                "Tours": utilService.getRandomIntInclusive(50, 120),
+                "Sightseeing": utilService.getRandomIntInclusive(50, 120),
+                "more": utilService.getRandomIntInclusive(300, 500),
             },
             nightsCount: nightsCount,
             nightsPrice: nightsPrice
@@ -124,7 +135,7 @@ export function OrderContainer({ stay }) {
             <div className="modal-container">{openModal && <OrderConfirmation setOpenModal={setOpenModal} orderObject={orderObject} />}
             </div>
             <section className='order-spacial-info flex'>
-                <p><span>Lower price.</span> Your dates are ${stay.price * 0.4} less than the avg. nightly rate of the last 60 days.</p>
+                <p><span>Lower price.</span> Your dates are ${(stay.price * 0.4).toFixed(0)} less per night compared to the average nightly rate of the last 60 days.</p>
                 <div><SvgHandler svgName={RED_TAG} /></div>
             </section>
         </section>

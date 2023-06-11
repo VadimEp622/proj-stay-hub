@@ -17,6 +17,7 @@ export function StayPreview({ stay }) {
     const likeSVG = isLikeClicked ? 'heart-red' : 'heart-white'
     const loggedInUser = useSelector(storeState => storeState.userModule.user)
     const wishedListItems = useSelector(storeState => storeState.userModule.user?.wishlist)
+    const filterBy = useSelector(storeState => storeState.stayModule.filterBy)
     const location = useLocation()
     const isWishlistPage = location.pathname.includes('/wishlist')
     const [lat, setLat] = useState(null)
@@ -44,7 +45,18 @@ export function StayPreview({ stay }) {
         setIsLikeClicked(likedId)
     }, [wishedListItems, stay._id])
 
-    const bedrooms = stay.bedrooms > 1 ? 'bedrooms' : 'bedroom'
+    const bedrooms = stay.bedrooms > 1 ? 'Bedrooms' : 'Bedroom'
+    const bathrooms = stay.bathrooms > 1 ? 'Bathrooms' : 'Bathroom'
+    let phrase
+    if (filterBy.from && filterBy.to) {
+        if (stay.bedrooms === 0 || isNaN(stay.bedrooms) || typeof stay.bedrooms === 'undefined') {
+            phrase = stay.bathrooms + " " + bathrooms
+        } else if (stay.bedrooms) {
+            phrase = stay.bedrooms + " " + bedrooms
+        }
+    } else {
+        phrase = utilService.getFormattedTimeRange(stay.availableDates[0].from, stay.availableDates[0].to);
+    }
 
     if ("geolocation" in navigator) {
         navigator.geolocation.watchPosition(
@@ -77,7 +89,6 @@ export function StayPreview({ stay }) {
     function toRad(Value) {
         return Value * Math.PI / 180
     }
-    // console.log(stay)
 
     return (
         <section className="stay-preview" key={stay._id}>
@@ -94,9 +105,15 @@ export function StayPreview({ stay }) {
                         <p className="review-rate"><SvgHandler svgName={STAR} /><span>{reviewService.getAverageReview(stay)}</span></p>
                     </div>
                     <div className="stay-info">
-                        {!isWishlistPage ? <p>{calcCrow(lat, lng, stay.loc.lat, stay.loc.lan)} kilometers away</p> : <p>{stay.type}</p>}
+                        {!isWishlistPage ? (
+                            <p>
+                                {filterBy.labels ? filterBy.labels : `${calcCrow(lat, lng, stay.loc.lat, stay.loc.lan)} kilometers away`}
+                            </p>
+                        ) : (
+                            <p>{stay.type}</p>
+                        )}
                         {isWishlistPage ? <p>{stay.bedrooms} {bedrooms} </p> : ''}
-                        {/* <p>{utilService.getFormattedTimeRange(stay.availableDates.from, stay.availableDates.to)}</p> */}
+                        <p>{phrase}</p>
                         <p className="price-preview"><span>${utilService.addCommas(stay.price)}</span> night</p>
                     </div>
                 </div>

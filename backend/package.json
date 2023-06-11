@@ -12,7 +12,7 @@
     "author": "Me",
     "license": "ISC",
     "dependencies": {
-        "bcrypt": "^5.0.0",
+        "bcrypt": "^5.1.0",
         "cookie-parser": "^1.4.6",
         "cors": "^2.8.5",
         "cryptr": "^6.0.3",
