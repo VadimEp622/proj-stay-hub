@@ -15,7 +15,8 @@ export const utilService = {
     createDivsForButtonContainer,
     convertTimestampToDate,
     addCommas,
-    getRandomNumberDecimal
+    getRandomNumberDecimal,
+    getRandomMonthAndYear
 }
 
 function makeId(length = 6) {
@@ -166,4 +167,20 @@ function getRandomNumberDecimal(min, max) {
     const randomNum = Math.random() * (max - min) + min;
     const roundedNum = Math.floor(randomNum * 10) / 10;
     return roundedNum;
+}
+
+function getRandomMonthAndYear() {
+    const startYear = 2014;
+    const endYear = 2022;
+
+    const months = [
+        "January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+    ];
+
+    const randomYear = Math.floor(Math.random() * (endYear - startYear + 1)) + startYear;
+    const randomMonthIndex = Math.floor(Math.random() * 12);
+    const randomMonth = months[randomMonthIndex];
+
+    return `${randomMonth} ${randomYear}`;
 }

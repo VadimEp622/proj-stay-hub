@@ -82,9 +82,8 @@ export function OrderConfirmation() {
                     <h5 className="fs16">Message the Host</h5>
                     <p>Let the Host know why you're traveling and when you'll check in.</p>
                     <div className="host-details-preview">
-                        {seller.FirstName}
                         {seller.image}
-                        Joined in 2020
+                        {seller.fullname} joined in {seller.joined}
                     </div>
                     <textarea name="" id="" cols="30" rows="10"></textarea>
                 </div>

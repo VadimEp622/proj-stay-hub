@@ -102,7 +102,7 @@ export function StayPreview({ stay }) {
                             <p>{stay.type}</p>
                         )}
                         {isWishlistPage ? <p>{stay.bedrooms} {bedrooms} </p> : ''}
-                        {/* <p>{utilService.getFormattedTimeRange(stay.availableDates.from, stay.availableDates.to)}</p> */}
+                        <p>{utilService.getFormattedTimeRange(stay.availableDates[0].from, stay.availableDates[0].to)}</p>
                         <p className="price-preview"><span>${utilService.addCommas(stay.price)}</span> night</p>
                     </div>
                 </div>

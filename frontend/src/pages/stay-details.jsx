@@ -1,7 +1,7 @@
 import { useEffect, useState, Fragment } from 'react'
 import { useParams, useNavigate, Link } from 'react-router-dom'
 
-import { stayService } from "../services/stay.service.local.js"
+import { stayService } from "../services/stay.service.js"
 import { showErrorMsg } from "../services/event-bus.service.js"
 import { reviewService } from '../services/review.service.js'
 import { OrderContainer } from '../cmps/order-container.jsx'
@@ -13,6 +13,7 @@ import { HEART_16, RED_HEART_16, SHARE, STAR, STAR_16, LOCATION, CHECKIN, KEY, V
 import { DatePicker } from '../cmps/date-picker.jsx'
 import GoogleMap from '../cmps/map.jsx'
 import { Helmet } from 'react-helmet';
+import { utilService } from '../services/util.service.js'
 
 export function StayDetails() {
     const [stay, setStay] = useState(null)
@@ -64,6 +65,7 @@ export function StayDetails() {
     const reviewsInputs = displayReviewsCriteria()
     const reviews = stay.reviews.length > 1 ? 'reviews' : 'review'
     const capitalizedReviewsString = reviews.charAt(0).toUpperCase() + reviews.slice(1)
+    const randomDateJoined = utilService.getRandomMonthAndYear()
     return <>
         <div>
             <Helmet>
@@ -165,7 +167,7 @@ export function StayDetails() {
                     </div>
                 </section>
                 <section className='order-container'>
-                    <OrderContainer stay={stay} />
+                    <OrderContainer stay={stay} randomDate={randomDateJoined} />
                 </section>
             </section>
 
@@ -208,7 +210,7 @@ export function StayDetails() {
                     <img src="https://a0.muscache.com/im/pictures/user/59da4e65-e5a0-4fde-b4d9-e48f20c1ba43.jpg?im_w=240" alt="host image" />
                     <section className='mini-owner-info'>
                         <h3 className='fs22'>Hosted by {stay.host.fullname}</h3>
-                        <span>Joined in March 2014</span>
+                        <span>Joined in {randomDateJoined}</span>
                     </section>
                 </div>
                 <div className="sub-details flex">
