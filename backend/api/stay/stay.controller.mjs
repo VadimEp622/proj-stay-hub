@@ -11,7 +11,8 @@ export async function getStays(req, res) {
       // pageIdx: req.query.pageIdx
     }
     const stays = await stayService.query(filterBy)
-    res.json(stays)
+    const slicedStays = stays.slice(0, 30)
+    res.json(slicedStays)
   } catch (err) {
     logger.error('Failed to get stays', err)
     res.status(400).send({ err: 'Failed to get stays' })
