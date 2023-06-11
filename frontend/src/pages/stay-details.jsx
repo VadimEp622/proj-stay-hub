@@ -65,7 +65,7 @@ export function StayDetails() {
     const reviewsInputs = displayReviewsCriteria()
     const reviews = stay.reviews.length > 1 ? 'reviews' : 'review'
     const capitalizedReviewsString = reviews.charAt(0).toUpperCase() + reviews.slice(1)
-
+    console.log(stay)
     return <>
         <div>
             <Helmet>
@@ -112,7 +112,7 @@ export function StayDetails() {
                 <section className='stay-review-details'>
                     <section className='about-host flex space-between'>
                         <section className='host-info'>
-                            <h2>Entire villa hosted by {stay.owner ? stay.owner : 'Juan'}</h2>
+                            <h2>Entire villa hosted by {stay.host.fullname}</h2>
                             <span>4 guests</span>
                             <span className='dot'>•</span>
                             <span>1 bedroom</span>
@@ -209,7 +209,7 @@ export function StayDetails() {
                 <div className="mini-owner flex align-center">
                     <img src="https://a0.muscache.com/im/pictures/user/59da4e65-e5a0-4fde-b4d9-e48f20c1ba43.jpg?im_w=240" alt="host image" />
                     <section className='mini-owner-info'>
-                        <h3 className='fs22'>Hosted by {stay.owner ? stay.owner : 'Juan'}</h3>
+                        <h3 className='fs22'>Hosted by {stay.host.fullname}</h3>
                         <span>Joined in March 2014</span>
                     </section>
                 </div>
@@ -233,9 +233,9 @@ export function StayDetails() {
                                     Superhost
                                 </>
                             )}
-                            {stay.superhost && (
+                            {stay.host.isSuperhost && (
                                 <>
-                                    <p>{stay.owner} is a Superhost</p>
+                                    <p>{stay.host.fullname} is a Superhost</p>
                                     <p>Superhosts are experienced, highly rated hosts who are committed to providing great stays for guests.</p>
                                 </>
                             )}
@@ -249,7 +249,7 @@ export function StayDetails() {
                                     We cook for our guests once a week and hold a weekly pizza night.
                                 </p>
 
-                                <h4>Christina is a Superhost</h4>
+                                <h4>{stay.host.fullname} is a Superhost</h4>
                                 <p>
                                     Superhosts are experienced, highly rated hosts who are committed to providing great stays for guests.
                                 </p>

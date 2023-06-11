@@ -101,9 +101,17 @@ const STAYS_TRUE_DEMO_TEMP = [
             "lan": 20.93792
         },
         "reviews": [
-            {   
+            {
                 "rate": 4,
                 "at": "2016-06-12T04:00:00.000Z",
+                "reviewInputs": {
+                    "Cleanliness": 5,
+                    "Communication": 5,
+                    "Check-in": 5,
+                    "Accuracy": 5,
+                    "Location": 5,
+                    "Value": 5,
+                },
                 "by": {
                     "_id": "622f3407e36c59e6164fc004",
                     "fullname": "Kiesha",
@@ -112,9 +120,17 @@ const STAYS_TRUE_DEMO_TEMP = [
                 },
                 "txt": "I had a great experience working with Patty and Peter.  Both were very attentive in sorting out the booking details and following up directly when I had questions.  I rented a 2 bedroom unit at the Westin Villas  in Maui and both the unit and property was absolutely amazing.  I think we had the best unit on the resort complete with 2 outdoor patios with direct access  to  the  beach.  I would HIGHLY recommend renting with Patty and Peter."
             },
-            {   
+            {
                 "rate": 5,
                 "at": "2016-07-28T04:00:00.000Z",
+                "reviewInputs": {
+                    "Cleanliness": 5,
+                    "Communication": 5,
+                    "Check-in": 5,
+                    "Accuracy": 5,
+                    "Location": 5,
+                    "Value": 5,
+                },
                 "by": {
                     "_id": "622f3403e36c59e6164fb204",
                     "fullname": "Chris",
@@ -126,6 +142,14 @@ const STAYS_TRUE_DEMO_TEMP = [
             {
                 "rate": 5,
                 "at": "2016-09-11T04:00:00.000Z",
+                "reviewInputs": {
+                    "Cleanliness": 5,
+                    "Communication": 5,
+                    "Check-in": 5,
+                    "Accuracy": 5,
+                    "Location": 5,
+                    "Value": 5,
+                },
                 "by": {
                     "_id": "622f3405e36c59e6164fb703",
                     "fullname": "Kim",
@@ -137,6 +161,14 @@ const STAYS_TRUE_DEMO_TEMP = [
             {
                 "rate": 5,
                 "at": "2017-01-07T05:00:00.000Z",
+                "reviewInputs": {
+                    "Cleanliness": 5,
+                    "Communication": 5,
+                    "Check-in": 5,
+                    "Accuracy": 5,
+                    "Location": 5,
+                    "Value": 5,
+                },
                 "by": {
                     "_id": "622f3404e36c59e6164fb37f",
                     "fullname": "Tracy",
@@ -147,6 +179,14 @@ const STAYS_TRUE_DEMO_TEMP = [
             },
             {
                 "rate": 4,
+                "reviewInputs": {
+                    "Cleanliness": 5,
+                    "Communication": 5,
+                    "Check-in": 5,
+                    "Accuracy": 5,
+                    "Location": 5,
+                    "Value": 5,
+                },
                 "at": "2017-04-07T04:00:00.000Z",
                 "by": {
                     "_id": "622f3403e36c59e6164fb105",
@@ -156,9 +196,17 @@ const STAYS_TRUE_DEMO_TEMP = [
                 },
                 "txt": "Great spot for the kids and family and close to beach and everything at the resort. We will definitely be back."
             },
-            {   
+            {
                 "rate": 5,
                 "at": "2017-05-09T04:00:00.000Z",
+                "reviewInputs": {
+                    "Cleanliness": 5,
+                    "Communication": 5,
+                    "Check-in": 5,
+                    "Accuracy": 5,
+                    "Location": 5,
+                    "Value": 5,
+                },
                 "by": {
                     "_id": "622f3402e36c59e6164fabbe",
                     "fullname": "Binh",
@@ -167,9 +215,17 @@ const STAYS_TRUE_DEMO_TEMP = [
                 },
                 "txt": "The unit and the Westin offer variety of amenities you can possibly ask for. Sofa beds are very comfortable to sleep in. But there is charge for ocean view upgrade. Overall, I highly recommend to book with Patty and Peter. "
             },
-            {   
+            {
                 "rate": 4,
                 "at": "2018-02-24T05:00:00.000Z",
+                "reviewInputs": {
+                    "Cleanliness": 5,
+                    "Communication": 5,
+                    "Check-in": 5,
+                    "Accuracy": 5,
+                    "Location": 5,
+                    "Value": 5,
+                },
                 "by": {
                     "_id": "622f3404e36c59e6164fb4af",
                     "fullname": "Samy",
@@ -181,6 +237,14 @@ const STAYS_TRUE_DEMO_TEMP = [
             {
                 "rate": 5,
                 "at": "2018-06-16T04:00:00.000Z",
+                "reviewInputs": {
+                    "Cleanliness": 5,
+                    "Communication": 5,
+                    "Check-in": 5,
+                    "Accuracy": 5,
+                    "Location": 5,
+                    "Value": 5,
+                },
                 "by": {
                     "_id": "622f3405e36c59e6164fb87b",
                     "fullname": "Breanne",
@@ -189,20 +253,27 @@ const STAYS_TRUE_DEMO_TEMP = [
                 },
                 "txt": "This place was perfect for my family. We had plenty of room to spread out and the service could not have been any better"
             },
-            {   
+            {
                 "rate": 4,
                 "at": "2018-06-29T04:00:00.000Z",
-                "by": {
-                    "_id": "622f3405e36c59e6164fb713",
-                    "fullname": "Kimberly",
-                    "imgUrl": "https://robohash.org/100535039?set=set1",
-                    "id": "100535039"
+                "reviewInputs": {
+                    "Cleanliness": 5,
+                    "Communication": 5,
+                    "Check-in": 5,
+                    "Accuracy": 5,
+                    "Location": 5,
+                    "Value": 5,
                 },
-                "txt": "We love Westin Kaanapalli"
-            }
-        ],
-        "likedByUsers": []
+                "_id": "622f3405e36c59e6164fb713",
+                "fullname": "Kimberly",
+                "imgUrl": "https://robohash.org/100535039?set=set1",
+                "id": "100535039",
+                "txt": "We love Westin Kaanapalli",
+                "likedByUsers": [],
+            },
+        ]
     },
+
     {
         "_id": "622f337a75c7d36e498aaaf9",
         "name": "Belle chambre à côté Metro Papineau",
@@ -278,7 +349,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 },
                 "txt": "J'ai adoré rester là. Très acceuillant."
             },
-            {   
+            {
                 "rate": 5,
                 "at": "2016-07-12T04:00:00.000Z",
                 "by": {
@@ -289,7 +360,7 @@ const STAYS_TRUE_DEMO_TEMP = [
                 },
                 "txt": "Angel est un hôte très sympa et arrangeant ! L'appartement est agréable à vivre et propre. Proche du métro et du centre ville. Nous avons passé un très bon séjour !"
             },
-            {   
+            {
                 "rate": 5,
                 "at": "2016-08-02T04:00:00.000Z",
                 "by": {
@@ -2371,7 +2442,8 @@ const STAYS_TRUE_DEMO_TEMP = [
                 },
                 "txt": "We had such a great time at Cynthia's condo.  Everything was sparkling clean. The check in and check out were seamless.  We loved that the condo came with some beach gear for our use (snorkels, boogie boards, water shoes...).  The views from the balconies are outstanding.  There is a nice and swimmable beach right downstairs, as well as a volleyball court and a casual restaurant. Great location with easy access to beach rentals, groceries, and anything else you might need during your stay.  Cynthia was very quick to respond to any questions we had. Loved the place! Would definitely stay again."
             },
-            {"rate": 4,
+            {
+                "rate": 4,
                 "at": "2018-04-14T04:00:00.000Z",
                 "by": {
                     "_id": "622f3402e36c59e6164faec7",
