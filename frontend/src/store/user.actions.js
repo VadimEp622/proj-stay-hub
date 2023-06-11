@@ -6,6 +6,7 @@ import { showErrorMsg } from '../services/event-bus.service.js'
 import { LOADING_DONE, LOADING_START } from "./system.reducer.js";
 import { ADD_TO_WISHLIST, REMOVE_USER, REMOVE_FROM_WISHLIST, SET_GUESTS, SET_ORDER, SET_USER, SET_USERS, SET_WATCHED_USER, ADD_CONFIRMED_TRIP } from "./user.reducer.js";
 import { Navigate } from "react-router-dom";
+import { orderService } from "../services/order.service.js";
 
 export async function loadUsers() {
     try {
@@ -101,9 +102,9 @@ export function removeFromWishlist(wishListID) {
 }
 
 export async function addConfirmedTrip(trip) {
-    const tripToSend = trip
     try {
-        await userService.update(trip.buyer._id, 'trips', tripToSend)
+        await orderService.sendOrder(trip)
+        await userService.update(trip.buyer._id, 'trips', trip)
         store.dispatch({ type: ADD_CONFIRMED_TRIP, trip })
     } catch (err) {
         showErrorMsg('Cannot add confirmed trip')

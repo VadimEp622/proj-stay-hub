@@ -3,20 +3,37 @@ import { utilService } from "../services/util.service";
 import { showErrorMsg } from "../services/event-bus.service";
 import { useNavigate } from "react-router-dom";
 import { userService } from "../services/user.service";
+import { orderService } from "../services/order.service";
+import { useEffect } from "react";
+import { useState } from "react";
 
 export function MyTrips() {
     const loggedInUser = userService.getLoggedinUser()
+    const [trips, setTrips] = useState([]);
     const navigate = useNavigate()
     function handleSearchClick() {
         window.location.href = '/'
     }
 
+    useEffect(() => {
+        const fetchOrders = async () => {
+            try {
+                const orders = await orderService.getOrders();
+                setTrips(orders);
+            } catch (error) {
+                showErrorMsg('Error fetching orders');
+            }
+        }
+
+        fetchOrders()
+    }, [])
+
     if (!loggedInUser) {
-        showErrorMsg('You must be logged in to view your trips')
-        navigate('/')
-        return null
+        showErrorMsg('You must be logged in to view your trips');
+        return navigate('/');
     }
-    console.log(loggedInUser.trips)
+
+    console.log(trips)
     return (
         <div className="trips">
             <h1>Trips</h1>
@@ -58,7 +75,6 @@ export function MyTrips() {
                 </section>
             ) : (
                 <section className="no-trips">
-                    <h1>Trips</h1>
                     <div className="no-trips-header">No trips booked...yet!</div>
                     <p>Time to dust off your bags and start planning your next adventure</p>
                     <button onClick={handleSearchClick}>Start searching</button>

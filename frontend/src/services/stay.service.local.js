@@ -1,6 +1,7 @@
 import { storageService } from './async-storage.service.js'
 import { utilService } from './util.service.js'
 import { userService } from './user.service.js'
+import { BIG_DATA } from './data.service.js'
 
 const STAY_STORAGE_KEY = 'stay'
 
@@ -5099,7 +5100,9 @@ export const stayService = {
     save,
     remove,
     getEmptyStay,
-    addStayMsg
+    addStayMsg,
+    generateReviewInputs,
+    generateAvailableDates
 }
 window.cs = stayService
 
@@ -5184,12 +5187,14 @@ function _createDemoStays() {
     // ***********************************************
     // ***********************************************
     const BIG_DEMO_DATA = true
+    const BIG_DEMO_DATA_COMPLETE = false
     // ***********************************************
     // ***********************************************
-
-
     if (BIG_DEMO_DATA) {
-        gStays = STAYS_TRUE_DEMO_TEMP
+        if (BIG_DEMO_DATA_COMPLETE) gStays = BIG_DATA
+        else {
+            gStays = STAYS_TRUE_DEMO_TEMP
+        }
     } else {
 
         gStays.push(_createDemoStay(
@@ -5649,12 +5654,13 @@ function _calculateOverallRate(reviews) {
 
 generateAvailableDates(STAYS_TRUE_DEMO_TEMP)
 
+
 function generateAvailableDates(stays) {
     stays.forEach((stay) => {
         const from1 = utilService.getRandomIntInclusive(4, 100);
         const from2 = utilService.getRandomIntInclusive(4, 100);
-        const to1 = utilService.getRandomIntInclusive(from1, 100);
-        const to2 = utilService.getRandomIntInclusive(from2, 100);
+        const to1 = utilService.getRandomIntInclusive(from1 + 1, 100);
+        const to2 = utilService.getRandomIntInclusive(from2 + 1, 100);
 
         stay.availableDates = [
             {
@@ -5667,6 +5673,19 @@ function generateAvailableDates(stays) {
             },
         ];
     });
+}
 
-    console.log(stays);
+function generateReviewInputs(stays) {
+    stays.forEach((stay) => {
+        stay.reviews.forEach((review) => {
+            review.reviewInputs = {
+                cleanliness: utilService.getRandomNumberDecimal(4, 5),
+                communication: utilService.getRandomNumberDecimal(4, 5),
+                'check-in': utilService.getRandomNumberDecimal(4, 5),
+                accuracy: utilService.getRandomNumberDecimal(4, 5),
+                location: utilService.getRandomNumberDecimal(4, 5),
+                value: utilService.getRandomNumberDecimal(4, 5),
+            };
+        });
+    });
 }

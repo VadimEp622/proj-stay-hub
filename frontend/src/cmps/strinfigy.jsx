@@ -1,7 +1,9 @@
-import { STAYS_TRUE_DEMO_TEMP } from "../services/stay.service.local";
+import { BIG_DATA } from "../services/data.service";
+import { stayService } from "../services/stay.service.local";
 
 export function JSONStringify() {
-    const stays = STAYS_TRUE_DEMO_TEMP;
-
+    const stays = BIG_DATA;
+    stayService.generateReviewInputs(stays)
+    stayService.generateAvailableDates(stays)
     return JSON.stringify(stays);
 }

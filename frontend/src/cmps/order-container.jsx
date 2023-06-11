@@ -30,7 +30,7 @@ export function OrderContainer({ stay }) {
     useEffect(() => {
         setOrderObject({
             buyer: {
-                _id: user._id
+                _id: user ? user._id : ''
             },
             seller: {
                 fullname: stay.host.fullname,
@@ -124,8 +124,8 @@ export function OrderContainer({ stay }) {
             <div className="modal-container">{openModal && <OrderConfirmation setOpenModal={setOpenModal} orderObject={orderObject} />}
             </div>
             <section className='order-spacial-info flex'>
-                    <p><span>Lower price.</span> Your dates are ${stay.price * 0.4} less than the avg. nightly rate of the last 60 days.</p>
-                    <div><SvgHandler svgName={RED_TAG} /></div>
+                <p><span>Lower price.</span> Your dates are ${stay.price * 0.4} less than the avg. nightly rate of the last 60 days.</p>
+                <div><SvgHandler svgName={RED_TAG} /></div>
             </section>
         </section>
     )

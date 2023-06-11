@@ -13,12 +13,10 @@ export const userService = {
     getById,
     remove,
     update,
-    changeScore,
     buildGuestsString
 }
 
 window.userService = userService
-
 
 function getUsers() {
     return storageService.query('user')
@@ -73,15 +71,6 @@ async function logout() {
     sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER)
     // return await httpService.post('auth/logout')
 }
-
-async function changeScore(by) {
-    const user = getLoggedinUser()
-    if (!user) throw new Error('Not loggedin')
-    user.score = user.score + by || by
-    await update(user)
-    return user.score
-}
-
 
 function saveLocalUser(user) {
     user = { _id: user._id, fullname: user.fullname, imgUrl: user.imgUrl, wishlist: user.wishlist, trips: user.trips }
