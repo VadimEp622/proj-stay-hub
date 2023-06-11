@@ -101,19 +101,12 @@ export function StayDetails() {
                 </section>
             </section>
             <section className="img-container">
-                {(() => {
-                    const images = [];
-                    for (let i = 0; i < 5; i++) {
-                        const url = stay.imgUrls[i];
-                        images.push(
-                            <div className="img" key={url}>
-                                <img src={url} alt={`Image ${i}`} className="fade-image" />
-                                <div className="overlay"></div>
-                            </div>
-                        )
-                    }
-                    return images;
-                })()}
+                {stay.imgUrls.slice(0, 5).map((url, index) => (
+                    <div className="img" key={index}>
+                        <img src={url} alt={`Image ${index}`} className="fade-image" />
+                        <div className="overlay"></div>
+                    </div>
+                ))}
             </section>
             <section className='details-container'>
                 <section className='stay-review-details'>
@@ -157,11 +150,13 @@ export function StayDetails() {
                     <section className='amenities' id='amenities'>
                         <h3>What this place offers</h3>
                         <div className='amenities-list'>
-                            {stay.amenities.map(amenity => {
-                                return <div className="amenity fs16 flex" key={amenity}>
-                                    <SvgHandler svgName={amenity} />
-                                    <span>{amenity}</span>
-                                </div>
+                            {stay.amenities.slice(0, 8).map(amenity => {
+                                return (
+                                    <div className="amenity fs16 flex" key={amenity}>
+                                        <SvgHandler svgName={amenity} />
+                                        <span>{amenity}</span>
+                                    </div>
+                                );
                             })}
                         </div>
                     </section>
@@ -175,6 +170,7 @@ export function StayDetails() {
                     <OrderContainer stay={stay} />
                 </section>
             </section>
+
             {stay.reviews.length > 0 &&
                 <section className="reviews-container " id='reviews'>
                     <div className="review-title fs22 flex align-center"><SvgHandler svgName={STAR_16} />
