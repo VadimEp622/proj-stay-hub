@@ -41,11 +41,9 @@ export function MyTrips() {
 
     const upcomingTrips = trips
         .filter((trip) => new Date(trip.checkOut) > currentDate)
-        .filter((trip) => new Date(trip.checkOut) > currentDate)
         .reverse();
 
     const pastTrips = trips
-        .filter((trip) => new Date(trip.checkOut) <= currentDate)
         .filter((trip) => new Date(trip.checkOut) <= currentDate)
         .reverse();
     console.log(upcomingTrips)
@@ -57,7 +55,6 @@ export function MyTrips() {
                     <h3 className="reservations-header">Upcoming reservations</h3>
                         <section className="reservations-container">
                             {upcomingTrips.map((trip, index) => {
-                                const locationSubstring = trip.stayDetails.loc.address.substring(0, trip.stayDetails.loc.address.indexOf(','));
                                 const locationSubstring = trip.stayDetails.loc.address.substring(0, trip.stayDetails.loc.address.indexOf(','));
                                 return (
                                     <div className="upcoming-reservation" key={index}>
