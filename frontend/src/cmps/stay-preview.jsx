@@ -77,7 +77,7 @@ export function StayPreview({ stay }) {
     function toRad(Value) {
         return Value * Math.PI / 180
     }
-    console.log(stay)
+    // console.log(stay)
 
     return (
         <section className="stay-preview" key={stay._id}>
