@@ -4,7 +4,7 @@ import configDev from './dev.mjs'
 
 export var config
 
-if (false && process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === 'production') {
   config = configProd
 } else {
   config = configDev
