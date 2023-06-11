@@ -59,7 +59,7 @@ export function StayDetails() {
         const percentage = (value / 5) * 100
         return percentage.toFixed(1)
     }
-
+    console.log('stay', stay)
     if (!stay) return <div>Loading...</div>
     const reviewsInputs = displayReviewsCriteria()
     const reviews = stay.reviews.length > 1 ? 'reviews' : 'review'
