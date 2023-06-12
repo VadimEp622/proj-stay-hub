@@ -332,7 +332,7 @@ export function CategoryFilter() {
             <section className="category-carousel-container">
                 <CategoryCarousel images={images} selectedCategory={selectedCategory} handleClick={handleClick} />
             </section>
-            <button
+            {/* <button
                 className="btn-main-filter"
                 style={{
                     justifySelf: "end",
@@ -344,7 +344,7 @@ export function CategoryFilter() {
                 <span>
                     Filters
                 </span>
-            </button>
+            </button> */}
         </section>
     )
 }

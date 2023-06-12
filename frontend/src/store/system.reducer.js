@@ -8,13 +8,15 @@ export const OPEN_DROPDOWN_BAR = 'OPEN_DROPDOWN_BAR'
 export const CLOSE_DROPDOWN_BAR = 'CLOSE_DROPDOWN_BAR'
 export const OPEN_EXPANDED_HEADER_MODAL = 'OPEN_EXPANDED_HEADER_MODAL'
 export const CLOSE_EXPANDED_HEADER_MODAL = 'CLOSE_EXPANDED_HEADER_MODAL'
+export const SET_IS_SIGNING_UP = 'SET_IS_SIGNING_UP'
 
 
 const initialState = {
   isLoading: false,
   isUnclickableBg: false,
   isFilterExpanded: false,
-  isExpandedModalOpen: false
+  isExpandedModalOpen: false,
+  isSigningUp: false
 }
 
 export function systemReducer(state = initialState, action = {}) {
@@ -35,6 +37,8 @@ export function systemReducer(state = initialState, action = {}) {
       return { ...state, isExpandedModalOpen: true }
     case CLOSE_EXPANDED_HEADER_MODAL:
       return { ...state, isExpandedModalOpen: false }
+    case SET_IS_SIGNING_UP:
+      return { ...state, isSigningUp: action.isSigningUp }
     default: return state
   }
 }

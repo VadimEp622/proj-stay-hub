@@ -16,10 +16,10 @@ export function DropDown({ setIsDropDownActive }) {
         setModal(modal)
     }
 
+    function handleClickInside(ev) {
+        setIsDropDownActive(false);
+    }
     useEffect(() => {
-        function handleClickInside(ev) {
-            setIsDropDownActive(false);
-        }
 
         if (dropdownRef.current) {
             dropdownRef.current.addEventListener("click", handleClickInside);
@@ -40,8 +40,8 @@ export function DropDown({ setIsDropDownActive }) {
                 {loggedInUser ? (
                     <>
                         <div className="dropdown-option">Messages</div>
-                    <Link to={`/trips`}><div className="dropdown-option">Trips</div></Link>
-                    <Link to={`/wishlist`}><div className="dropdown-option">Wishlist</div></Link>
+                        <Link to={`/trips`}><div className="dropdown-option">Trips</div></Link>
+                        <Link to={`/wishlist`}><div className="dropdown-option">Wishlist</div></Link>
                         <div className="dropdown-line"></div>
                         <div className="dropdown-option">Manage listings</div>
                         <div className="dropdown-option">Dashboard</div>

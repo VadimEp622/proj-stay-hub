@@ -18,6 +18,7 @@ export function MainNavMenu() {
         ev.preventDefault()
         setIsDropDownActive(prevDropDown => !prevDropDown)
     }
+    console.log('HELLO!!!!')
 
     return (
         <section className="main-nav-menu-container" ref={dropdownRef} onClick={(ev) => onSetDropDown(ev)}>

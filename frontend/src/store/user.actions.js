@@ -52,8 +52,8 @@ export async function signup(credentials) {
             type: SET_USER,
             user
         })
-        socketService.login(user)
-        return user
+        // socketService.login(user)
+        // return user
     } catch (err) {
         console.log('Cannot signup', err)
         throw err
@@ -67,8 +67,9 @@ export async function logout() {
             type: SET_USER,
             user: null
         })
-        window.location.href = "/"
+        // window.location.href = "/"
         socketService.logout()
+        sessionStorage.removeItem('loggedinUser');
     } catch (err) {
         console.log('Cannot logout', err)
         throw err

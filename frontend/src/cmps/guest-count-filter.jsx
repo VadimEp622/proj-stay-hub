@@ -11,9 +11,21 @@ export function GuestCountFilter({ filterBy, handleGuestCountChange }) {
                     <p>Ages 13 or above</p>
                 </section>
                 <section className="stepper">
-                    <button className="custom-btn-guest-count" type="button" onClick={() => handleGuestCountChange('adults', -1)} disabled={filterBy.guests.adults === 0 || filterBy.guests.adults === 1 && filterBy.capacity > 1}>-</button>
+                    <button
+                        className="custom-btn-guest-count" type="button"
+                        onClick={() => handleGuestCountChange('adults', -1)}
+                        disabled={filterBy.guests.adults === 0 || filterBy.guests.adults === 1 && filterBy.capacity > 1}
+                    >
+                        <span>-</span>
+                    </button>
                     <span>{filterBy.guests.adults === 16 ? '16+' : filterBy.guests.adults}</span>
-                    <button className="custom-btn-guest-count" type="button" onClick={() => handleGuestCountChange('adults', 1)} disabled={filterBy.guests.adults === 16 || (filterBy.guests.adults + filterBy.guests.children === 16)}>+</button>
+                    <button className="custom-btn-guest-count"
+                        type="button"
+                        onClick={() => handleGuestCountChange('adults', 1)}
+                        disabled={filterBy.guests.adults === 16 || (filterBy.guests.adults + filterBy.guests.children === 16)}
+                    >
+                        <span>+</span>
+                    </button>
                 </section>
             </article>
 

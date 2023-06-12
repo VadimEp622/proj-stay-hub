@@ -1,8 +1,8 @@
-import {dbService} from '../../services/db.service.mjs'
-import {logger} from '../../services/logger.service.mjs'
-import {reviewService} from '../review/review.service.mjs'
+import { dbService } from '../../services/db.service.mjs'
+import { logger } from '../../services/logger.service.mjs'
+import { reviewService } from '../review/review.service.mjs'
 import mongodb from 'mongodb'
-const {ObjectId} = mongodb
+const { ObjectId } = mongodb
 
 export const userService = {
     query,
@@ -97,7 +97,8 @@ async function add(user) {
             password: user.password,
             fullname: user.fullname,
             imgUrl: user.imgUrl,
-            score: 100
+            wishlist: [],
+            trip: [],
         }
         const collection = await dbService.getCollection('user')
         await collection.insertOne(userToAdd)

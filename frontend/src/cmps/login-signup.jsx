@@ -157,6 +157,9 @@ import SvgHandler from './svg-handler'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 import { utilService } from '../services/util.service'
+import { SET_IS_SIGNING_UP } from '../store/system.reducer'
+import { store } from '../store/store'
+import { useRef } from 'react'
 
 const validationSchema = Yup.object().shape({
     username: Yup.string()
@@ -176,16 +179,24 @@ export function LoginSignup({ isSignUp }) {
     const [credentials, setCredentials] = useState({ username: '', password: '', fullname: '' })
     const [users, setUsers] = useState([])
     const dropdownRef = useClickOutside(onDropdownClickOutside)
+    const isModalOpen = useSelector(storeState => storeState.stayModule.isModalOpen)
+    // const isSigningUp = useSelector(storeState => storeState.systemModule.isSigningUp)
+    const isSigningUpRef = useRef(false)
+
 
     function onDropdownClickOutside() {
-        setModal(false)
+        if (isModalOpen) setModal(false)
     }
 
     useEffect(() => {
         loadUsers()
+        if (!isSigningUpRef.current) isSigningUpRef.current = true
+        // if (!isSigningUp) store.dispatch({ type: SET_IS_SIGNING_UP, action: true })
     }, [])
 
     function onSubmit(values) {
+        // if(!isSigningUp) return
+        if(!isSigningUpRef.current) return
         console.log(values)
         console.log('hi from submit')
         if (text === 'Sign up') onSignup(values)
@@ -198,42 +209,52 @@ export function LoginSignup({ isSignUp }) {
         setUsers(users);
     }
 
-    function handleChange(ev) {
-        const field = ev.target.name;
-        const { value } = ev.target;
-        setCredentials({ ...credentials, [field]: value });
-        console.log(credentials);
-    }
+    // function handleChange(ev) {
+    //     const field = ev.target.name;
+    //     const { value } = ev.target;
+    //     setCredentials({ ...credentials, [field]: value });
+    //     console.log(credentials);
+    // }
 
     async function onLogin(values) {
         if (!values.username) return
         try {
             const user = await login(values)
             showSuccessMsg(`Welcome: ${user.fullname}`)
-            setModal(false)
+            if (isModalOpen) setModal(false)
+            // store.dispatch({ type: SET_IS_SIGNING_UP, action: false })
         } catch (err) {
             showErrorMsg('Cannot login')
+        } finally {
+            isSigningUpRef.current = false
         }
     }
 
     async function onSignup(values) {
         if (!values.username || !values.password || !values.fullname) return
-        setModal(false)
+        if (isModalOpen) setModal(false)
         signup(values)
+        // store.dispatch({ type: SET_IS_SIGNING_UP, action: false })
+        isSigningUpRef.current = false
     }
 
-    function onUploaded(imgUrl) {
-        setCredentials({ ...credentials, imgUrl })
-    }
+    // function onUploaded(imgUrl) {
+    //     setCredentials({ ...credentials, imgUrl })
+    // }
 
     function onCloseModal(ev) {
         if (ev) ev.stopPropagation()
-        setModal(false)
+        if (isModalOpen) setModal(false)
     }
 
     function onChangeModal(ev, modal) {
         ev.stopPropagation()
         setModal(modal)
+    }
+
+
+    function handleOnClick(ev) {
+        ev.stopPropagation()
     }
 
     const text = isSignUp ? 'Sign up' : 'Login';
