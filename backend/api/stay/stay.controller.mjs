@@ -35,9 +35,9 @@ export async function getStays(req, res) {
 
     console.log('filterBy from stay.controller.js', filterBy)
     const stays = await stayService.query(filterBy)
-    const slicedStays = stays.slice(0, 30)
+    // const slicedStays = stays.slice(0, 30)
     // console.log('slicedStays', slicedStays)
-    res.json(slicedStays)
+    res.json(stays)
   } catch (err) {
     logger.error('Failed to get stays', err)
     res.status(400).send({ err: 'Failed to get stays' })
