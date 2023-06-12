@@ -15,19 +15,33 @@
   
   th,
   td {
-    padding: 5px;
+    // padding: 10px;
     text-align: left;
-    border: 1px solid $gray-clr3;
-    border-radius: 8px;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    width: 33%; 
+    height: 40px; 
+  }
+  
+  th:first-child,
+  td:first-child {
+    border-left: none; 
+    width: 40%; 
+  }
+  
+  th:last-child,
+  td:last-child {
+    border-right: none;
+    width: 30%; 
   }
   
   .actions {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-evenly;
     width: 100%;
   }
@@ -39,6 +53,9 @@
     cursor: pointer;
     font-weight: bold;
     margin-bottom: 4px;
+    margin-top: 4px;
+    padding-top: 5px;
+    padding-bottom: 5px;
   }
   
   .selection {
@@ -48,15 +65,13 @@
   .action-button.approve {
     background-color: $main-clr0;
     color: white;
-    padding: 5px 10px;
-    margin-bottom: 4px;
-    margin-top: 4px;
+  
+    
   }
   
   .action-button.reject {
     background-color: $gray-clr4;
     color: $gray-clr2;
-    padding: 5px 10px;
-    margin-top: 4px;
+   
   }
   
