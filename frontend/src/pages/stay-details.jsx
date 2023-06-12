@@ -28,9 +28,6 @@ export function StayDetails() {
 
     useEffect(() => {
         loadStay()
-
-
-
     }, [stayId])
 
 

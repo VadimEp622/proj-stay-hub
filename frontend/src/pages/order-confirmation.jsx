@@ -6,6 +6,7 @@ import { utilService } from "../services/util.service";
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { addConfirmedTrip } from "../store/user.actions";
+import { SOCKET_EMIT_STAY_RESERVED, socketService } from "../services/socket.service";
 
 export function OrderConfirmation() {
     const navigate = useNavigate()
@@ -47,6 +48,7 @@ export function OrderConfirmation() {
         // removeUndefinedProperties(orderObject)
         try {
             await addConfirmedTrip(orderObject)
+            socketService.emit(SOCKET_EMIT_STAY_RESERVED, orderObject.seller._id)
         } catch (error) {
             console.error('Error adding confirmed trip:', error)
         }

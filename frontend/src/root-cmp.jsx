@@ -23,7 +23,8 @@ import { AddStay } from './pages/add-stay'
 import { JSONStringify } from './cmps/strinfigy'
 import { MyDashboard } from './pages/my-dashboard'
 import { UserMsg } from './cmps/user-msg'
-import { socketService } from './services/socket.service'
+import { SOCKET_EMIT_USER_WATCH, socketService } from './services/socket.service'
+import { showSuccessMsg } from './services/event-bus.service'
 
 export function RootCmp() {
     const isUnclickableBg = useSelector(storeState => storeState.systemModule.isUnclickableBg)
@@ -44,7 +45,9 @@ export function RootCmp() {
     useEffect(() => {
         if (user) {
             socketService.login(user._id)
+            socketService.on(SOCKET_EMIT_USER_WATCH, () => { showSuccessMsg('A stay you own just got reserved') })
             return () => {
+                socketService.off(SOCKET_EMIT_USER_WATCH)
                 socketService.logout()
             }
         }
