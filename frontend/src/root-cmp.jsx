@@ -3,8 +3,6 @@ import { Routes, Route } from 'react-router'
 import { useParams, useLocation } from 'react-router-dom'
 
 
-
-
 import { stayService } from './services/stay.service.local'// needed to init demo data to localStorage (do not delete)
 
 import routes from './routes'
@@ -24,6 +22,7 @@ import { MyTrips } from './pages/trips'
 import { AddStay } from './pages/add-stay'
 import { JSONStringify } from './cmps/strinfigy'
 import { MyDashboard } from './pages/my-dashboard'
+import { UserMsg } from './cmps/user-msg'
 
 export function RootCmp() {
     const isUnclickableBg = useSelector(storeState => storeState.systemModule.isUnclickableBg)
@@ -65,7 +64,7 @@ export function RootCmp() {
                     </Routes>
                 </main>
                 <AppFooter isStayDetailsPage={isStayDetailsPage} />
-
+                <UserMsg />
             </section>
 
         </>
