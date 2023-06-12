@@ -44,9 +44,11 @@ function createSocketService() {
     },
     login(userId) {
       socket.emit(SOCKET_EMIT_LOGIN, userId)
+      console.log('socket logged in')
     },
     logout() {
       socket.emit(SOCKET_EMIT_LOGOUT)
+      console.log('socket logged out')
     },
     terminate() {
       socket = null
