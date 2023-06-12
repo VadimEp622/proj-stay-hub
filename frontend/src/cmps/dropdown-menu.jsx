@@ -11,6 +11,7 @@ export function DropDown({ setIsDropDownActive }) {
     const dropdownRef = useRef(null);
 
     function openModal(ev, modal) {
+        ev.preventDefault()
         ev.stopPropagation()
         setIsDropDownActive(false)
         setModal(modal)

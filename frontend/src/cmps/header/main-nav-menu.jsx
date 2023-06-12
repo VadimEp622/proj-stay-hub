@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 import { USER_NAV_BARS, USER_NAV_PROFILE } from "../../services/svg.service.js"
 import { useClickOutside } from "../../customHooks/clickOutsideModal.js"
@@ -12,6 +12,7 @@ export function MainNavMenu() {
     const dropdownRef = useClickOutside(onDropdownClickOutside)
     const user = useSelector(storeState => storeState.userModule.user)
 
+
     function onDropdownClickOutside() {
         setIsDropDownActive(false)
     }
@@ -20,7 +21,6 @@ export function MainNavMenu() {
         ev.preventDefault()
         setIsDropDownActive(prevDropDown => !prevDropDown)
     }
-    console.log('HELLO!!!!')
 
     return (
         <section className="main-nav-menu-container" ref={dropdownRef} onClick={(ev) => onSetDropDown(ev)}>
