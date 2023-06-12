@@ -41,6 +41,47 @@ import { ReactComponent as Exit } from '../assets/img/airbnb-assets/exit.svg'
 import { ReactComponent as Exclamation } from '../assets/img/airbnb-assets/exclamationmark.svg'
 import { ReactComponent as Superhost } from '../assets/img/superhost/super-host.svg'
 import { ReactComponent as BlackSuperhost16 } from '../assets/img/superhost/superhost-black-16.svg'
+import { ReactComponent as BabysitterRecommendations } from '../assets/img/airbnb-assets/babysitter-recommendation.svg'
+import { ReactComponent as BeachEssentials } from '../assets/img/airbnb-assets/beach-essentials.svg'
+import { ReactComponent as Bedlinens } from '../assets/img/airbnb-assets/Bed-linens.svg'
+import { ReactComponent as BooksReading } from '../assets/img/airbnb-assets/Books-reading.svg'
+import { ReactComponent as Breakfast } from '../assets/img/airbnb-assets/breakfast.svg'
+import { ReactComponent as CarbonMonoxide } from '../assets/img/airbnb-assets/carbon-monoxide.svg'
+import { ReactComponent as CoffeeMaker } from '../assets/img/airbnb-assets/coffee-maker.svg'
+import { ReactComponent as DedicatedWorkspace } from '../assets/img/airbnb-assets/dedicated-workspace.svg'
+import { ReactComponent as Dryer } from '../assets/img/airbnb-assets/dryer.svg'
+import { ReactComponent as Essentials } from '../assets/img/airbnb-assets/essentials.svg'
+import { ReactComponent as Ethernet } from '../assets/img/airbnb-assets/ethernet.svg'
+import { ReactComponent as ExtraPillows } from '../assets/img/airbnb-assets/extra-pillows.svg'
+import { ReactComponent as FireExtinguisher } from '../assets/img/airbnb-assets/fire-exntiguisher.svg'
+import { ReactComponent as FirstAidKit } from '../assets/img/airbnb-assets/first-aid-kit.svg'
+import { ReactComponent as FreeParking } from '../assets/img/airbnb-assets/free-parking-premises.svg'
+import { ReactComponent as FreeStreetParking } from '../assets/img/airbnb-assets/free-street-parking.svg'
+import { ReactComponent as GardenView } from '../assets/img/airbnb-assets/garden-view.svg'
+import { ReactComponent as Hangers } from '../assets/img/airbnb-assets/hangers.svg'
+import { ReactComponent as HDTV } from '../assets/img/airbnb-assets/HDTV.svg'
+import { ReactComponent as Heating } from '../assets/img/airbnb-assets/heating.svg'
+import { ReactComponent as HotWaterKettle } from '../assets/img/airbnb-assets/hot-water-kettle.svg'
+import { ReactComponent as InductionStove } from '../assets/img/airbnb-assets/induction-stove.svg'
+import { ReactComponent as Iron } from '../assets/img/airbnb-assets/iron.svg'
+import { ReactComponent as Keypad } from '../assets/img/airbnb-assets/keypad.svg'
+import { ReactComponent as LongTermStays } from '../assets/img/airbnb-assets/long-term-stays-allowed.svg'
+import { ReactComponent as Microwave } from '../assets/img/airbnb-assets/microwave.svg'
+import { ReactComponent as MiniFridge } from '../assets/img/airbnb-assets/mini-fridge.svg'
+import { ReactComponent as MountainView } from '../assets/img/airbnb-assets/Mountain-view.svg'
+import { ReactComponent as OceanView } from '../assets/img/airbnb-assets/Ocean-view.svg'
+import { ReactComponent as PrivateEntrance } from '../assets/img/airbnb-assets/private-entrance.svg'
+import { ReactComponent as RoomDarkening } from '../assets/img/airbnb-assets/room-darkening.svg'
+import { ReactComponent as Safe } from '../assets/img/airbnb-assets/safe.svg'
+import { ReactComponent as SelfCheckIn } from '../assets/img/airbnb-assets/self-check-in.svg'
+import { ReactComponent as ShowerGel } from '../assets/img/airbnb-assets/shower-gel.svg'
+import { ReactComponent as SmokeDetector } from '../assets/img/airbnb-assets/smoke-detector.svg'
+import { ReactComponent as StainlessSteel } from '../assets/img/airbnb-assets/stainless-steel-oven.svg'
+import { ReactComponent as WindowsGuards } from '../assets/img/airbnb-assets/Windows-guards.svg'
+import { ReactComponent as Dishwasher } from '../assets/img/airbnb-assets/dishwasher.svg'
+import { ReactComponent as Pool } from '../assets/img/airbnb-assets/pool.svg'
+
+
 
 import {
     HEART_16, RED_HEART_16, LOGO, RED_HEART, SEARCH, SHARE, STAR, STAR_12, STAR_16, USER_NAV_BARS, RED_TAG, SUPERHOST, BLACK_SUPERHOST_16, EYE,
@@ -113,7 +154,7 @@ const SvgHandler = ({ svgName }) => {
                 return <Kitchen />
             case 'Pets allowed':
                 return <Pets />
-            case 'Cooking basics':
+            case 'Dishes and silverware':
                 return <Dishes />
             case 'Hot tub':
                 return <HotTub />
@@ -131,8 +172,101 @@ const SvgHandler = ({ svgName }) => {
                 return <Exit />
             case 'exclamation':
                 return <Exclamation />
+            case 'Cable TV':
+                return <TV />
+            case 'Internet':
+                return < Ethernet />
+            case 'Wheelchair accessible':
+                return <StainlessSteel />
+            case 'Pool':
+                return < Pool />
+            case 'Free parking on premises':
+                return < FreeParking />
+            case 'Doorman':
+                return < OceanView />
+            case 'Elevator':
+                return <MiniFridge />
+            case 'Buzzer/wireless intercom':
+                return < Wifi />
+            case 'Heating':
+                return < Heating />
+            case 'Family/kid friendly':
+                return < BeachEssentials />
+            case 'Washer':
+                return <Dishwasher />
+            case 'Dryer':
+                return <Dryer />
+            case 'Smoke detector':
+                return <SmokeDetector />
+            case 'Carbon monoxide detector':
+                return <CarbonMonoxide />
+            case 'Essentials':
+                return <Essentials />
+            case 'Iron':
+                return <Iron />
+            case 'Free street door':
+                return <FreeStreetParking />
+            case 'Laptop friendly workspace':
+                return <Wifi />
+            case 'Private entrance':
+                return <PrivateEntrance />
+            case 'First aid kit':
+                return <FirstAidKit />
+            case 'Fire extinguisher':
+                return <FireExtinguisher />
+            case 'Shampoo':
+                return <ShowerGel />
+            case 'Lock on bedroom door':
+                return <Safe />
+            case 'Hangers':
+                return <Hangers />
+            case 'Crib':
+                return <Dishwasher />
+            case 'Room-darkening shades':
+                return <RoomDarkening />
+            case 'Hot water':
+                return <HotWaterKettle />
+            case 'Bed linens':
+                return < Bedlinens />
+            case 'Extra pillows and blankets':
+                return <ExtraPillows />
+            case 'Microwave':
+                return <Microwave />
+            case 'Coffee maker':
+                return <CoffeeMaker />
+            case 'Dishwasher':
+                return < Dishwasher />
+            case 'Ethernet connection':
+                return <Ethernet />
+            case 'Window guards':
+                return <WindowsGuards />
+            case 'Babysitter recommendations':
+                return <BabysitterRecommendations />
+            case 'Beach essentials':
+                return <BeachEssentials />
+            case 'Children’s books and toys':
+                return <BooksReading />
+            case 'Breakfast':
+                return <Breakfast />
+            case 'Laptop friendly workspace':
+                return <DedicatedWorkspace />
+            case 'Garden or backyard':
+                return <GardenView />
+            case 'Keypad':
+                return <Keypad />
+            case 'Stove':
+                return <InductionStove />
+            case 'Long term stays allowed':
+                return <LongTermStays />
+            case 'Mountain view':
+                return <MountainView />
+            case 'Lockbox':
+                return <Safe />
+            case 'Self check-in':
+                return <SelfCheckIn />
+
             default:
-                return <Heart16 />
+                return <HDTV />
         }
         return null
     }
