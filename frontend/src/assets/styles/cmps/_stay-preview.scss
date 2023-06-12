@@ -11,7 +11,7 @@
     cursor: pointer;
 
     .price-preview span {
-        font-family: Circular-Regular;
+        font-family: Circular-semibold;
         letter-spacing: 0.5px;
         font-weight: 600;
     }
@@ -43,6 +43,7 @@
         display: flex;
         @include between();
         gap: rem(3px);
+        justify-content: baseline;
 
         img {
             height: rem(14px);
@@ -54,6 +55,7 @@
         margin-top: rem(13px);
         line-height: 1.13rem;
         font-family: cereal-std;
+        font-size: 15px;
         padding: 0;
     }
 

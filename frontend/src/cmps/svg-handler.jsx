@@ -12,6 +12,7 @@ import { ReactComponent as Logo } from '../assets/img/logo/logo-airbnb.svg'
 import { ReactComponent as UserNavBar } from '../assets/img/user-nav/user-nav-bars.svg'
 import { ReactComponent as UserNavProfile } from '../assets/img/user-nav/user-nav-profile.svg'
 import { ReactComponent as Star } from '../assets/img/star/star.svg'
+import { ReactComponent as Star12 } from '../assets/img/star/star-12.svg'
 import { ReactComponent as Star16 } from '../assets/img/star/star-16.svg'
 import { ReactComponent as Share } from '../assets/img/share/share.svg'
 import { ReactComponent as Heart16 } from '../assets/img/heart/heart-16.svg'
@@ -42,7 +43,7 @@ import { ReactComponent as Superhost } from '../assets/img/superhost/super-host.
 import { ReactComponent as BlackSuperhost16 } from '../assets/img/superhost/superhost-black-16.svg'
 
 import {
-    HEART_16, RED_HEART_16, LOGO, RED_HEART, SEARCH, SHARE, STAR, STAR_16, USER_NAV_BARS, RED_TAG, SUPERHOST, BLACK_SUPERHOST_16, EYE,
+    HEART_16, RED_HEART_16, LOGO, RED_HEART, SEARCH, SHARE, STAR, STAR_12, STAR_16, USER_NAV_BARS, RED_TAG, SUPERHOST, BLACK_SUPERHOST_16, EYE,
     USER_NAV_PROFILE, WHITE_HEART, LOCATION, KEY, CHECKIN, SEARCH_2, TICK_DECLINE, VERIFIED, ARROW_LEFT_FAT, ARROW_LEFT, ARROW_RIGHT, ARROW_RIGHT_FAT, ARROW_UP
 } from '../services/svg.service'
 
@@ -74,6 +75,8 @@ const SvgHandler = ({ svgName }) => {
                 return <Star />
             case RED_TAG:
                 return <RedTag />
+            case STAR_12:
+                return <Star12 />
             case STAR_16:
                 return <Star16 />
             case SHARE:
