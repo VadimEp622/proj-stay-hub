@@ -45,7 +45,7 @@ export function DropDown({ setIsDropDownActive }) {
                         <Link to={`/wishlist`}><div className="dropdown-option">Wishlist</div></Link>
                         <div className="dropdown-line"></div>
                         <div className="dropdown-option">Manage listings</div>
-                        <div className="dropdown-option">Dashboard</div>
+                        <Link to={`/dashboard`}><div className="dropdown-option">Dashboard</div></Link>
                         <div className="dropdown-line"></div>
                         <div className="dropdown-option" onClick={logout}>Logout</div>
                     </>

@@ -7,7 +7,8 @@ export const orderService = {
     getOrderById,
     sendOrder,
     removeOrder,
-    getOrders
+    getOrders,
+    saveOrder
 }
 
 window.cs = orderService
@@ -32,4 +33,12 @@ async function removeOrder(orderId) {
 async function getOrders() {
     return storageService.query('orders')
     // return httpService.get(STORAGE_KEY)
+}
+
+async function saveOrder(order) {
+    var savedStay
+    if (order._id) {
+        savedStay = await storageService.put('orders', order)
+        return savedStay
+    }
 }

@@ -84,10 +84,11 @@ export function MyTrips() {
         .filter((trip) => new Date(trip.checkOut) > currentDate)
         .reverse();
 
+    console.log('trips', trips);
+
     const pastTrips = trips
         .filter((trip) => new Date(trip.checkOut) <= currentDate)
         .reverse();
-    console.log('pastTrips', pastTrips)
     return (
         <div className="trips">
             <h1>Trips</h1>
@@ -116,8 +117,8 @@ export function MyTrips() {
                                                 </section>
                                                 <section className="reservation-confirmation">
                                                     <span>Status:</span>
-                                                    <h4 style={{ color: index !== 0 ? 'green' : 'orange' }}>
-                                                        {index !== 0 ? 'Confirmed' : 'Pending'}
+                                                    <h4 className={trip.status.toLowerCase()}>
+                                                        {trip.status}
                                                     </h4>
                                                 </section>
                                             </section>
@@ -228,5 +229,5 @@ export function MyTrips() {
             )}
         </div>
     )
-    
+
 }
