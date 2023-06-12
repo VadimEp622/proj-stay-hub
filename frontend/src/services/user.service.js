@@ -38,12 +38,14 @@ function remove(userId) {
 
 //NO UPDATE USER YET
 async function update(_id, type, data) {
-    const user = await storageService.get('user', _id);
+    // const user = await storageService.get('user', _id);
+    const user = await httpService.get(`user/${_id}`);
     if (!user[type]) {
         user[type] = [];
     }
-    user[type].push(data);
-    await storageService.put('user', user);
+    user[type].push({ _id: data });
+    // await storageService.put('user', user);
+    await httpService.put(`user/${_id}`, user);
 
     if (getLoggedinUser()._id === user._id) {
         saveLocalUser(user);

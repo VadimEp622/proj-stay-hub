@@ -19,12 +19,13 @@ const initialState = {
     users: [],
     watchedUser: null,
     guests: {},
-    wishlist: [],
+    // wishlist: [],
     order: {}
 }
 
 export function userReducer(state = initialState, action) {
     var newState = state
+    let user
     switch (action.type) {
         // case INCREMENT:
         //     newState = { ...state, count: state.count + 1 }
@@ -54,10 +55,13 @@ export function userReducer(state = initialState, action) {
             newState = { ...state, users: action.users }
             break
         case ADD_TO_WISHLIST:
-            newState = { ...state, user: { ...state.user, wishlist: [...state.user.wishlist, action.wishlist] } }
+            user = { ...state.user, wishlist: [...state.user.wishlist, { _id: action.stay._id }] }
+            newState = { ...state, user }
             break
         case REMOVE_FROM_WISHLIST:
-            newState = { ...state, user: { ...state.user, wishlist: state.user.wishlist.filter((wishedStay) => wishedStay._id !== action.wishListID), }, }
+            user = { ...state.user, wishlist: state.user.wishlist.filter((wishedStay) => wishedStay._id !== action.stay._id) }
+            newState = { ...state, user }
+            // newState = { ...state, user: { ...state.user, wishlist: state.user.wishlist.filter((wishedStay) => wishedStay._id !== action.wishListID), }, }
             break
         case SET_SCORE:
             newState = { ...state, user: { ...state.user, score: action.score } }

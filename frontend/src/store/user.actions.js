@@ -94,12 +94,12 @@ export function setOrder(order) {
     store.dispatch({ type: SET_ORDER, order })
 }
 
-export function AddToWishlist(wishlist) {
-    store.dispatch({ type: ADD_TO_WISHLIST, wishlist })
+export function AddToWishlist(stay) {
+    store.dispatch({ type: ADD_TO_WISHLIST, stay })
 }
 
-export function removeFromWishlist(wishListID) {
-    store.dispatch({ type: REMOVE_FROM_WISHLIST, wishListID })
+export function removeFromWishlist(stay) {
+    store.dispatch({ type: REMOVE_FROM_WISHLIST, stay })
 }
 
 export async function addConfirmedTrip(trip) {
