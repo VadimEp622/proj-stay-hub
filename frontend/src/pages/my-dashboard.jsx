@@ -28,7 +28,7 @@ const data = {
     labels,
     datasets: [
         {
-            label: 'Dataset 1',
+            label: 'Revenue generated per month',
             data: revenue,
             backgroundColor: 'rgba(255, 99, 132, 0.5)',
         },

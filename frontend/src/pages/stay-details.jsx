@@ -13,6 +13,7 @@ import { HEART_16, RED_HEART_16, SHARE, STAR, STAR_16, LOCATION, CHECKIN, KEY, V
 import GoogleMap from '../cmps/map.jsx'
 import { Helmet } from 'react-helmet';
 import { utilService } from '../services/util.service.js'
+import { Loader } from '../cmps/reuseableCmp/loader.jsx'
 
 export function StayDetails() {
     const [stay, setStay] = useState(null)
@@ -59,8 +60,7 @@ export function StayDetails() {
         const percentage = (value / 5) * 100
         return percentage.toFixed(1)
     }
-    console.log('stay', stay)
-    if (!stay) return <div>Loading...</div>
+    if (!stay) return <section className="loading">Loading...</section>
     const reviewsInputs = displayReviewsCriteria()
     const reviews = stay.reviews.length > 1 ? 'reviews' : 'review'
     const capitalizedReviewsString = reviews.charAt(0).toUpperCase() + reviews.slice(1)
@@ -230,7 +230,7 @@ export function StayDetails() {
                                 <>
                                     <SvgHandler svgName={BLACK_SUPERHOST_16} />
                                     <h4>
-                                      Superhost  
+                                        Superhost
                                     </h4>
                                 </>
                             )}
