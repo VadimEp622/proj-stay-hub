@@ -185,18 +185,26 @@ export function LoginSignup({ isSignUp }) {
 
 
     function onDropdownClickOutside() {
-        if (isModalOpen) setModal(false)
+        if (isModalOpen) {
+            console.log('closing modal 1')
+            setModal(false)
+        }
     }
 
     useEffect(() => {
+        console.log('yo')
         loadUsers()
         if (!isSigningUpLoggingInRef.current) isSigningUpLoggingInRef.current = true
         // if (!isSigningUp) store.dispatch({ type: SET_IS_SIGNING_UP, action: true })
+        return () => {
+            console.log('yo closes')
+            isSigningUpLoggingInRef.current = false
+        }
     }, [])
 
     function onSubmit(values) {
         // if(!isSigningUp) return
-        if(!isSigningUpLoggingInRef.current) return
+        if (!isSigningUpLoggingInRef.current) return
         console.log(values)
         console.log('hi from submit')
         if (text === 'Sign up') onSignup(values)
@@ -221,18 +229,23 @@ export function LoginSignup({ isSignUp }) {
         try {
             const user = await login(values)
             showSuccessMsg(`Welcome: ${user.fullname}`)
-            if (isModalOpen) setModal(false)
+            if (isModalOpen) {
+                console.log('closing modal 2')
+                setModal(false)
+            }
             // store.dispatch({ type: SET_IS_SIGNING_UP, action: false })
+            isSigningUpLoggingInRef.current = false
         } catch (err) {
             showErrorMsg('Cannot login')
-        } finally {
-            isSigningUpLoggingInRef.current = false
         }
     }
 
     async function onSignup(values) {
         if (!values.username || !values.password || !values.fullname) return
-        if (isModalOpen) setModal(false)
+        if (isModalOpen) {
+            console.log('closing modal 3')
+            setModal(false)
+        }
         signup(values)
         // store.dispatch({ type: SET_IS_SIGNING_UP, action: false })
         isSigningUpLoggingInRef.current = false
@@ -244,11 +257,15 @@ export function LoginSignup({ isSignUp }) {
 
     function onCloseModal(ev) {
         if (ev) ev.stopPropagation()
-        if (isModalOpen) setModal(false)
+        if (isModalOpen) {
+            console.log('closing modal 4')
+            setModal(false)
+        }
     }
 
     function onChangeModal(ev, modal) {
         ev.stopPropagation()
+        setModal(false)
         setModal(modal)
     }
 
@@ -338,11 +355,18 @@ export function LoginSignup({ isSignUp }) {
                             <p className="text-in-login">
                                 {phraseText} <span className="underline">Privacy Policy</span>
                             </p>
-                            <section className="button-login-wrapper" onClick={() => document.querySelector('.action-btn').click()}>
+                            <section className="button-login-wrapper"
+                            //THIS ONCLICK CAUSED FORMIK TO LAUNCH TWICE THE ON-SUBMIT FUNCTION
+                            // onClick={() => {
+                            //     document.querySelector('.action-btn').click()
+                            // }}
+                            >
                                 <div className="btn-container" onClick={() => document.querySelector('.action-btn').click()}>
                                     {utilService.createDivsForButtonContainer()}
                                     <div className="content">
-                                        <button className="action-btn" type="submit">
+                                        <button className="action-btn"
+                                        // type="submit"
+                                        >
                                             <span className="btn-txt">{text}</span>
                                         </button>
                                     </div>
@@ -357,7 +381,10 @@ export function LoginSignup({ isSignUp }) {
                     <div className="divider-line"></div>
                 </div>
                 <section className="second-button-wrapper">
-                    <button className="button-second-option" type="button" onClick={ev => onChangeModal(ev, modalText)}>
+                    <button className="button-second-option"
+                        type="button"
+                        onClick={(ev) => onChangeModal(ev, modalText)
+                        }>
                         {isSignUp ? 'Log in' : 'Sign Up'}
                     </button>
                 </section>

@@ -15,6 +15,6 @@ export function DynamicCmp({ modalType }) {
             return <FilterModal />
             break
         default:
-            return null
+            return 
     }
 }

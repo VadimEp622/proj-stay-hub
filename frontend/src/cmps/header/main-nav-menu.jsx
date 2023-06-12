@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 import { USER_NAV_BARS, USER_NAV_PROFILE } from "../../services/svg.service.js"
 import { useClickOutside } from "../../customHooks/clickOutsideModal.js"
@@ -11,6 +11,11 @@ export function MainNavMenu() {
     const [isDropDownActive, setIsDropDownActive] = useState(false)
     const dropdownRef = useClickOutside(onDropdownClickOutside)
     const user = useSelector(storeState => storeState.userModule.user)
+
+    //DROP DOWN IS OKAY, NO PROBLEM
+    // useEffect(() => {
+    //     console.log('Hello isDropDownActive')
+    // }, [isDropDownActive])
 
     function onDropdownClickOutside() {
         setIsDropDownActive(false)
