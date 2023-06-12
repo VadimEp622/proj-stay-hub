@@ -22,6 +22,7 @@ import { ReactComponent as WhiteStrokedHeart } from '../assets/img/heart/heart-w
 import { ReactComponent as RedStrokedHeart } from '../assets/img/heart/heart-red.svg'
 import { ReactComponent as Location } from '../assets/img/location/location.svg'
 import { ReactComponent as Key } from '../assets/img/key/key.svg'
+import { ReactComponent as Eye } from '../assets/img/eye/eye.svg'
 import { ReactComponent as RedTag } from '../assets/img/tag/red tag.svg'
 import { ReactComponent as Checkin } from '../assets/img/self-checkin/self-checkin.svg'
 import { ReactComponent as Kitchen } from '../assets/img/airbnb-assets/kitchen.svg'
@@ -41,7 +42,7 @@ import { ReactComponent as Superhost } from '../assets/img/superhost/super-host.
 import { ReactComponent as BlackSuperhost16 } from '../assets/img/superhost/superhost-black-16.svg'
 
 import {
-    HEART_16, RED_HEART_16, LOGO, RED_HEART, SEARCH, SHARE, STAR, STAR_16, USER_NAV_BARS, RED_TAG, SUPERHOST, BLACK_SUPERHOST_16,
+    HEART_16, RED_HEART_16, LOGO, RED_HEART, SEARCH, SHARE, STAR, STAR_16, USER_NAV_BARS, RED_TAG, SUPERHOST, BLACK_SUPERHOST_16, EYE,
     USER_NAV_PROFILE, WHITE_HEART, LOCATION, KEY, CHECKIN, SEARCH_2, TICK_DECLINE, VERIFIED, ARROW_LEFT_FAT, ARROW_LEFT, ARROW_RIGHT, ARROW_RIGHT_FAT, ARROW_UP
 } from '../services/svg.service'
 
@@ -93,6 +94,8 @@ const SvgHandler = ({ svgName }) => {
                 return <Location />
             case KEY:
                 return <Key />
+            case EYE:
+                return <Eye />
             case CHECKIN:
                 return <Checkin />
             case SUPERHOST:
