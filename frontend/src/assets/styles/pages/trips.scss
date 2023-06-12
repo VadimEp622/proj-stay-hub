@@ -24,8 +24,8 @@
             display: grid;
             grid-template-columns: 2fr 1fr;
             height: 20vh;
-            gap: 32px;
-            margin-bottom: 24px;
+            gap: 48px;
+            margin-bottom: 48px;
 
             .reservation-container {
                 display: grid;
@@ -66,9 +66,9 @@
             }
 
             .reservation-date {
-                align-items:flex-start;
+                align-items: flex-start;
                 margin-top: 16px;
-                
+
             }
 
             .reservation-dates {
@@ -86,15 +86,23 @@
 
             .reservation-destination :last-child {
                 font-size: rem(10px);
-               
+
             }
         }
 
+        .explore-things-to-do {
+            h5 {
+                font-size: 14px;
+                letter-spacing: -0.5px;
+                font-weight: 600;
+            }
+        }
         .explore-things-to-do > :first-child {
             height: 10%;
         }
 
         .things-to-do {
+            padding-top: 12px;
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 8px;
@@ -104,7 +112,42 @@
 
         .to-do {
             display: flex;
+
+            img {
+                height: 46px;
+                width: 46px;
+                object-fit: cover;
+                border-radius: 8px;
+                margin-right: 16px;
+            }
+
+            .show-more {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 46px;
+                width: 46px;
+                object-fit: cover;
+                border-radius: 8px;
+                margin-right: 16px;
+                background-color: $gray-clr4;
+
+                svg {}
+            }
+        }
+
+        .todo-info {
+            display: flex;
             flex-direction: column;
+            justify-content: space-around;
+
+            h4 {
+                font-family: Circular-semibold;
+            }
+            span {
+                font-size: 12px;
+                color: $gray-clr2;
+            }
         }
     }
 
