@@ -38,6 +38,16 @@ export function RootCmp() {
         return () => {
             socketService.terminate()
         }
+    }, [])
+
+
+    useEffect(() => {
+        if (user) {
+            socketService.login(user._id)
+            return () => {
+                socketService.logout()
+            }
+        }
     }, [user])
 
     function closeBackground(ev) {

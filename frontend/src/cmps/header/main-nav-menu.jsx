@@ -12,10 +12,6 @@ export function MainNavMenu() {
     const dropdownRef = useClickOutside(onDropdownClickOutside)
     const user = useSelector(storeState => storeState.userModule.user)
 
-    //DROP DOWN IS OKAY, NO PROBLEM
-    // useEffect(() => {
-    //     console.log('Hello isDropDownActive')
-    // }, [isDropDownActive])
 
     function onDropdownClickOutside() {
         setIsDropDownActive(false)
@@ -25,7 +21,6 @@ export function MainNavMenu() {
         ev.preventDefault()
         setIsDropDownActive(prevDropDown => !prevDropDown)
     }
-    console.log('HELLO!!!!')
 
     return (
         <section className="main-nav-menu-container" ref={dropdownRef} onClick={(ev) => onSetDropDown(ev)}>

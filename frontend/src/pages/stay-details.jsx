@@ -14,6 +14,8 @@ import GoogleMap from '../cmps/map.jsx'
 import { Helmet } from 'react-helmet';
 import { utilService } from '../services/util.service.js'
 import { Loader } from '../cmps/reuseableCmp/loader.jsx'
+import { socketService } from '../services/socket.service.js'
+import { useSelector } from 'react-redux'
 
 export function StayDetails() {
     const [stay, setStay] = useState(null)
@@ -21,10 +23,17 @@ export function StayDetails() {
     const navigate = useNavigate()
     const reviewsToDisplay = stay?.reviews?.slice(0, 6)
     const [isLikeClicked, setIsLikeClicked] = useState(false)
+    const user = useSelector(storeState => storeState.userModule.user)
     const likeSvg = isLikeClicked ? RED_HEART_16 : HEART_16
+
     useEffect(() => {
         loadStay()
+
+
+
     }, [stayId])
+
+
 
     async function loadStay() {
         try {
@@ -60,6 +69,7 @@ export function StayDetails() {
         const percentage = (value / 5) * 100
         return percentage.toFixed(1)
     }
+
     if (!stay) return <section className="loading">Loading...</section>
     const reviewsInputs = displayReviewsCriteria()
     const reviews = stay.reviews.length > 1 ? 'reviews' : 'review'
