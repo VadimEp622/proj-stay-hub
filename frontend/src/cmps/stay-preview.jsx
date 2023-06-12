@@ -4,7 +4,7 @@ import { useSelector } from "react-redux"
 
 import { utilService } from "../services/util.service.js"
 import { reviewService } from "../services/review.service.js"
-import { HEART, STAR, WHITE_HEART } from "../services/svg.service.js"
+import { HEART, STAR, STAR_12, WHITE_HEART } from "../services/svg.service.js"
 
 import { setModal } from "../store/stay.actions.js"
 import { AddToWishlist, removeFromWishlist } from "../store/user.actions.js"
@@ -102,7 +102,7 @@ export function StayPreview({ stay }) {
                 <div className="preview-info">
                     <div className="preview-header">
                         <p>{stay.loc.city}, {stay.loc.country}</p>
-                        <p className="review-rate"><SvgHandler svgName={STAR} /><span>{reviewService.getAverageReview(stay)}</span></p>
+                        <p className="review-rate"><SvgHandler svgName={STAR_12} /><span>{reviewService.getAverageReview(stay)}</span></p>
                     </div>
                     <div className="stay-info">
                         {!isWishlistPage ? (
