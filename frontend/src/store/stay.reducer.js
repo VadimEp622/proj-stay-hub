@@ -93,7 +93,7 @@ export function stayReducer(state = initialState, action) {
             }
             break
         case UPDATE_FILTER_BY:
-            newState = { ...state, filterBy: { ...action.filterBy } }
+            newState = { ...state, filterBy: { ...state.filterBy,...action.filterBy } }
             break
         case SET_MODAL_OPEN:
             console.log(action.isModalOpen)

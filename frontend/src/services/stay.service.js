@@ -25,16 +25,16 @@ async function query(filterBy = {
     from: '',
     to: '',
     capacity: 0,
-    // labels: [],
+    label: '',
 }) {
-    const { country, city, from, to, capacity } = filterBy
+    const { country, city, from, to, capacity, label } = filterBy
     const filter = {
         country,
         city,
         from,
         to,
         capacity,
-        // labels,
+        label,
     }
     console.log('filterBy from stay.service.js', filter)
     return httpService.get(STORAGE_KEY, filter)

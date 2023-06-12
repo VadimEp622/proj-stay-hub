@@ -324,7 +324,7 @@ export function CategoryFilter() {
         console.log(label)
         ev.preventDefault()
         setSelectedCategory(label)
-        updateFilterBy({ labels: label })
+        updateFilterBy({ label: label })
     }
 
     return (

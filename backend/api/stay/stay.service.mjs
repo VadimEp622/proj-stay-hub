@@ -52,6 +52,11 @@ async function query(filterBy) {
             criteria.$and.push({ 'capacity': { $gte: filterBy.capacity } });
         }
 
+        if (filterBy.label) {
+            // criteria.$and.push({ 'type': { $regex: filterBy.label, $options: 'i' } });
+            criteria.$and.push({ 'type': filterBy.label });
+        }
+
 
         console.log('criteria', criteria)
         const collection = await dbService.getCollection('stay')

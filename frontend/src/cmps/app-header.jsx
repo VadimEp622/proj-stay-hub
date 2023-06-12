@@ -37,7 +37,7 @@ export function AppHeader({ isStayDetailsPage }) {
             children: 0,
             infants: 0,
             pets: 0
-        }
+        },
     })
     const isFilterExpanded = useSelector(storeState => storeState.systemModule.isFilterExpanded)
     const [selectedExperienceTab, setSelectedExperienceTab] = useState('stays')
@@ -59,7 +59,7 @@ export function AppHeader({ isStayDetailsPage }) {
                 children: 0,
                 infants: 0,
                 pets: 0
-            }
+            },
         }
 
         if (filterBy.filterText) {
@@ -74,6 +74,7 @@ export function AppHeader({ isStayDetailsPage }) {
         if (filterBy.country) filter.country = filterBy.country
         if (filterBy.capacity) filter.capacity = filterBy.capacity
         if (filterBy.guests) setGuests(filterBy.guests)
+        if (filterBy.label) filter.label = filterBy.label
         updateFilterBy(filter)
     }
 
