@@ -181,7 +181,7 @@ export function LoginSignup({ isSignUp }) {
     const dropdownRef = useClickOutside(onDropdownClickOutside)
     const isModalOpen = useSelector(storeState => storeState.stayModule.isModalOpen)
     // const isSigningUp = useSelector(storeState => storeState.systemModule.isSigningUp)
-    const isSigningUpRef = useRef(false)
+    const isSigningUpLoggingInRef = useRef(false)
 
 
     function onDropdownClickOutside() {
@@ -190,13 +190,13 @@ export function LoginSignup({ isSignUp }) {
 
     useEffect(() => {
         loadUsers()
-        if (!isSigningUpRef.current) isSigningUpRef.current = true
+        if (!isSigningUpLoggingInRef.current) isSigningUpLoggingInRef.current = true
         // if (!isSigningUp) store.dispatch({ type: SET_IS_SIGNING_UP, action: true })
     }, [])
 
     function onSubmit(values) {
         // if(!isSigningUp) return
-        if(!isSigningUpRef.current) return
+        if(!isSigningUpLoggingInRef.current) return
         console.log(values)
         console.log('hi from submit')
         if (text === 'Sign up') onSignup(values)
@@ -226,7 +226,7 @@ export function LoginSignup({ isSignUp }) {
         } catch (err) {
             showErrorMsg('Cannot login')
         } finally {
-            isSigningUpRef.current = false
+            isSigningUpLoggingInRef.current = false
         }
     }
 
@@ -235,7 +235,7 @@ export function LoginSignup({ isSignUp }) {
         if (isModalOpen) setModal(false)
         signup(values)
         // store.dispatch({ type: SET_IS_SIGNING_UP, action: false })
-        isSigningUpRef.current = false
+        isSigningUpLoggingInRef.current = false
     }
 
     // function onUploaded(imgUrl) {

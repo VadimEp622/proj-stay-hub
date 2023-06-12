@@ -23,7 +23,12 @@
         & .profile {
             color: #717171;
             height: 30px;
+            width: 30px;
             margin-left: auto;
+
+            & img {
+                border-radius: 32px;
+            }
         }
 
         &:hover {
