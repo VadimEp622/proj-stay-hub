@@ -12,17 +12,22 @@ const options = {
     responsive: true,
     plugins: {
         legend: {
-            position: 'top',
+            display: false,
         },
         title: {
             display: true,
             text: 'Occupancy rate',
         },
     },
+    scales: {
+        y: {
+            beginAtZero: true,
+        },
+    },
 };
 
 const labels = ['January', 'February', 'March', 'April', 'May', 'June'];
-const occupancyRate = [82, 90, 71, 76, 81, 89]
+const occupancyRate = [74, 47, 90, 63, 81, 34]
 const data = {
     labels,
     datasets: [
