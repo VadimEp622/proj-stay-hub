@@ -33,7 +33,7 @@ export function CategoryCarousel({ images, selectedCategory, handleClick }) {
     //     var currentSlide = _ref.currentSlide; _ref.onMove;
     //     return alert("previous slide is " + previousSlide + " currentSlide is " + currentSlide)
     // }
-    console.log(window.innerWidth)
+    // console.log(window.innerWidth)
     const responsive = {
         desktop: {
             breakpoint: {

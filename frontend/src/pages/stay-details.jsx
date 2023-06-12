@@ -10,7 +10,6 @@ import { DetailsReviews } from '../cmps/details-reviews.jsx'
 import { getDate } from '../services/stay.service.js'
 import SvgHandler from '../cmps/svg-handler.jsx'
 import { HEART_16, RED_HEART_16, SHARE, STAR, STAR_16, LOCATION, CHECKIN, KEY, VERIFIED, RED_TAG, BLACK_SUPERHOST_16 } from '../services/svg.service.js'
-import { DatePicker } from '../cmps/date-picker.jsx'
 import GoogleMap from '../cmps/map.jsx'
 import { Helmet } from 'react-helmet';
 import { utilService } from '../services/util.service.js'

@@ -4,16 +4,40 @@ import { logger } from '../../services/logger.service.mjs'
 export async function getStays(req, res) {
   try {
     logger.debug('Getting Stays:', req.query)
+    const { country, city, from, to, capacity, label } = req.query
 
     const filterBy = {
-      // country: req.query.country || '',
-      // city: req.query.city || '',
-      // pageIdx: req.query.pageIdx
+      country: '',
+      city: '',
+      from: '',
+      to: '',
+      capacity: 0,
+      label: '',
+
     }
+    if (country) filterBy.country = country
+    if (city) filterBy.city = city
+    if (from) filterBy.from = +from
+    if (to) filterBy.to = +to
+    if (capacity) filterBy.capacity = +capacity
+    if (label) filterBy.label = label
+
+
+    if (filterBy.country === 'Flexible') filterBy.country = filterBy.city
+    if (filterBy.country === 'Middle East') {
+      filterBy.country = 'Turkey'
+      filterBy.city = 'Turkey'
+    }
+    if (filterBy.country === 'South America') {
+      filterBy.country = 'Brazil'
+      filterBy.city = 'Brazil'
+    }
+
+    console.log('filterBy from stay.controller.js', filterBy)
     const stays = await stayService.query(filterBy)
-    const slicedStays = stays.slice(0, 30)
-    console.log('slicedStays:', slicedStays)
-    res.json(slicedStays)
+    // const slicedStays = stays.slice(0, 30)
+    // console.log('slicedStays', slicedStays)
+    res.json(stays)
   } catch (err) {
     logger.error('Failed to get stays', err)
     res.status(400).send({ err: 'Failed to get stays' })

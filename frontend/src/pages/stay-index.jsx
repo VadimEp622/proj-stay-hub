@@ -7,7 +7,7 @@ import { stayService } from '../services/stay.service.js'
 import { Link } from 'react-router-dom'
 import { CategoryFilter } from '../cmps/category-filter.jsx'
 import { StayList } from '../cmps/stay-list.jsx'
-import { DatePicker } from '../cmps/date-picker.jsx'
+
 import { FilterModal } from '../cmps/filter.jsx'
 import { store } from '../store/store.js'
 import { CLOSE_EXPANDED_HEADER, CLOSE_EXPANDED_HEADER_MODAL, REMOVE_UNCLICKABLE_BG } from '../store/system.reducer.js'
@@ -20,7 +20,8 @@ export function StayIndex() {
     const isFilterExpanded = useSelector(storeState => storeState.systemModule.isFilterExpanded)
 
     useEffect(() => {
-        loadStays()
+        if (Object.keys(filterBy).length > 0) loadStays(filterBy)
+        else loadStays()
     }, [filterBy])
 
     useEffect(() => {
@@ -103,9 +104,6 @@ export function StayIndex() {
             }
             <CategoryFilter />
             <StayList stays={stays} />
-            {/* below for aesthetic proposes - when there's no views to display */}
-            {/* {stays.length > 0 && <DatePicker />} */}
-            {false && <DatePicker />}
 
             {
                 isFilterExpanded &&

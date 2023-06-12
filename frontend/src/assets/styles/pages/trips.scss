@@ -16,22 +16,139 @@
             padding-bottom: 24px;
             font-size: 20px;
             letter-spacing: 0.25px;
-            font-weight: 600;
+            font-weight: 800;
             padding-left: 2px;
         }
 
         .upcoming-reservation {
             display: grid;
             grid-template-columns: 2fr 1fr;
+            height: 20vh;
+            gap: 48px;
+            margin-bottom: 48px;
+
+            .reservation-container {
+                display: grid;
+                height: 100%;
+                grid-template-columns: 1fr 1fr;
+                border-radius: 12px;
+                overflow: hidden;
+                box-shadow: rgba(0, 0, 0, 0.12) -6px 10px 16px;
+                position: relative;
+
+                .reservation-img {
+                    width: 100%;
+                    height: 100%;
+
+                    img {
+                        position: absolute;
+                        width: 50%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                }
+            }
+
+            .reservation-info {
+                height: 100%;
+                display: grid;
+                grid-template-rows: 50% 50%;
+                padding: 24px;
+            }
+
+            .reservation-header {
+                border-bottom: 1px solid $gray-clr4;
+            }
+
+            .reservation-header :first-child {
+                margin-bottom: rem(8px);
+                font-weight: 800;
+            }
+
+            .reservation-date {
+                align-items: flex-start;
+                margin-top: 16px;
+
+            }
+
+            .reservation-dates {
+                width: 20%;
+                border-right: 1px solid $gray-clr4;
+                padding-right: 16px;
+            }
+
+            .reservation-destination {
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: space-around;
+                padding-left: 16px;
+            }
+
+            .reservation-destination :last-child {
+                font-size: rem(10px);
+
+            }
+        }
+
+        .explore-things-to-do {
+            h5 {
+                font-size: 14px;
+                letter-spacing: -0.5px;
+                font-weight: 600;
+            }
+        }
+        .explore-things-to-do > :first-child {
+            height: 10%;
         }
 
         .things-to-do {
+            padding-top: 12px;
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 8px;
+            height: 90%;
+            align-content: space-between;
         }
 
-        .things-to-do>* {}
+        .to-do {
+            display: flex;
+
+            img {
+                height: 46px;
+                width: 46px;
+                object-fit: cover;
+                border-radius: 8px;
+                margin-right: 16px;
+            }
+
+            .show-more {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 46px;
+                width: 46px;
+                object-fit: cover;
+                border-radius: 8px;
+                margin-right: 16px;
+                background-color: $gray-clr4;
+
+                svg {}
+            }
+        }
+
+        .todo-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+
+            h4 {
+                font-family: Circular-semibold;
+            }
+            span {
+                font-size: 12px;
+                color: $gray-clr2;
+            }
+        }
     }
 
     .no-trips {

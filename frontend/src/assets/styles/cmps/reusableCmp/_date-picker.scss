@@ -1,0 +1,109 @@
+.date-picker {
+    margin-inline: auto;
+    color: inherit;
+
+    & .rdp-months {
+        display: flex;
+        justify-content: center;
+        gap: 54px;
+        padding-block-start: 84px;
+
+        & .rdp-caption {
+            & .rdp-caption_label {
+                font-size: rem(16px);
+                line-height: 20px;
+                font-family: Circular-SemiBold;
+                font-weight: 400;
+                text-align: center;
+            }
+
+            & .rdp-nav {
+                svg {
+                    width: 12px;
+                    height: 16px;
+                }
+            }
+        }
+
+        & .rdp-table {
+            border-collapse: collapse;
+
+            & .rdp-head {
+                & th {
+                    font-size: rem(12px);
+                    font-family: Circular-Bold;
+                    color: $gray-clr0;
+                    line-height: 16px;
+                    text-transform: capitalize;
+                }
+            }
+
+            & .rdp-tbody .rdp-cell {
+                position: relative;
+                padding: 0;
+
+                &:has(.day-range-start,
+                    .day-range-end,
+                    .day-range-middle) {
+                    background-color: #f7f7f7;
+                }
+
+                &:has(.day-range-start) {
+                    border-top-left-radius: 32px;
+                    border-bottom-left-radius: 32px;
+                }
+
+                &:has(.day-range-end) {
+                    border-top-right-radius: 32px;
+                    border-bottom-right-radius: 32px;
+                }
+
+                & .rdp-day {
+                    font-family: Circular-SemiBold;
+                    font-weight: 400;
+
+
+                    &:is(.day-range-start, .day-range-end) {
+                        background-color: rgb(34, 34, 34);
+                        border-radius: 32px;
+                        color: white;
+                    }
+
+                    &.day-range-middle {
+                        background-color: #f7f7f7;
+                        color: #222222;
+                    }
+                }
+
+            }
+
+        }
+
+        & .rdp-button {
+            width: 46px;
+            height: 46px;
+            align-items: center;
+            border: none;
+            background-color: inherit;
+            position: relative;
+
+            &.rdp-nav_button_next {
+                float: right;
+            }
+
+            &:not(.rdp-day_disabled, .rdp-nav_button_previous, .rdp-nav_button_next):hover {
+                border: 1px solid black;
+                border-radius: 32px;
+            }
+
+            &:is(.rdp-nav_button_previous, .rdp-nav_button_next) {
+                &:hover {
+                    cursor: pointer;
+                    background-color: $gray-clr5;
+                    border-radius: 32px;
+                }
+            }
+        }
+
+    }
+}

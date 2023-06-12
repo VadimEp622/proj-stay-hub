@@ -11,6 +11,8 @@ import { userService } from "../services/user.service"
 import { setOrder } from "../store/user.actions"
 import { Link } from "react-router-dom"
 import { AirbnbButton } from "./reuseableCmp/airbnb-button"
+import { DatePicker } from "./reuseableCmp/date-picker"
+import { useClickOutside } from "../customHooks/clickOutsideModal.js"
 
 export function OrderContainer({ stay, randomDate }) {
 
@@ -26,6 +28,15 @@ export function OrderContainer({ stay, randomDate }) {
     const user = useSelector(storeState => storeState.userModule.user)
     const guestsString = userService.buildGuestsString(guestsObject)
     const [openModal, setOpenModal] = useState(false)
+    const [isDateModalOpen, setIsDateModalOpen] = useState(false)
+
+    const dateModalRef = useClickOutside(onDateModalClickOutside)
+
+    function onDateModalClickOutside() {
+        // if (!isDateModalOpen) 
+        setIsDateModalOpen(false)
+    }
+
     let guestCount = 1
     useEffect(() => {
         setOrderObject({
@@ -79,6 +90,13 @@ export function OrderContainer({ stay, randomDate }) {
     }, [orderObject])
 
 
+    function openDateModal(ev) {
+        ev.preventDefault()
+        ev.stopPropagation()
+        setIsDateModalOpen(true)
+    }
+
+
     return (
         <section className="order-modal">
             <section className="order-modal-form flex">
@@ -92,8 +110,25 @@ export function OrderContainer({ stay, randomDate }) {
                         <span className="review-count">{stay.reviews.length} reviews</span>
                     </div>
                 </div>
-                <section className="order-data">
-                    <div className="order-date-container flex">
+                <section className="order-data"
+                    // style={{ zIndex: '1' }}
+                >
+                    {/* <div className="size-less-order-modal-container" style={{ width: '0px', height: '0px', position: 'relative', float: 'right' }}>
+                        {
+                            isDateModalOpen &&
+                            <section ref={dateModalRef} className="stay-details-date-modal" style={{
+                                borderRadius: '32px', right: '-23px', top: '-16px', position: 'absolute',
+                                backgroundColor: 'white', padding: '20px', zIndex: '1',
+                                boxShadow: 'rgba(0, 0, 0, 0.2) 0px 6px 20px'
+                            }}>
+                                <DatePicker />
+                            </section>
+                        }
+                    </div> */}
+                    <div className="order-date-container flex"
+                    // style={{ cursor: 'pointer', position: 'relative', zIndex: '1' }}
+                    // onClick={openDateModal}
+                    >
                         <div className="check-in flex">
                             <span className="uppertext">check-in</span>
                             <span>{checkIn}</span>

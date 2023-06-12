@@ -19,8 +19,25 @@ export const stayService = {
 window.cs = stayService
 
 
-async function query(filterBy = { name: '', price: 0 }) {
-    return httpService.get(STORAGE_KEY, filterBy)
+async function query(filterBy = {
+    country: '',
+    city: '',
+    from: '',
+    to: '',
+    capacity: 0,
+    label: '',
+}) {
+    const { country, city, from, to, capacity, label } = filterBy
+    const filter = {
+        country,
+        city,
+        from,
+        to,
+        capacity,
+        label,
+    }
+    console.log('filterBy from stay.service.js', filter)
+    return httpService.get(STORAGE_KEY, filter)
 }
 
 function getById(stayId) {
@@ -63,15 +80,15 @@ function getEmptyStay() {
 
 export function getDate(timeStamp) {
     const formatter = new Intl.DateTimeFormat('en-US', {
-      year: 'numeric',
-      month: '2-digit',
-      day: '2-digit'
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit'
     })
-  
+
     const formattedDate = formatter.format(timeStamp)
     return formattedDate.replace(/^0(\d)/, '$1')
-  }
-  
+}
+
 // Delete the following if no issues appears with the above function
 // export function getDate(timeStamp) {
 //     return new Intl.DateTimeFormat('en-US', { year: 'numeric', month: '2-digit', day: '2-digit' }).format(timeStamp)

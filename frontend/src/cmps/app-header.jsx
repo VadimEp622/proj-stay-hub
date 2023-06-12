@@ -37,7 +37,7 @@ export function AppHeader({ isStayDetailsPage }) {
             children: 0,
             infants: 0,
             pets: 0
-        }
+        },
     })
     const isFilterExpanded = useSelector(storeState => storeState.systemModule.isFilterExpanded)
     const [selectedExperienceTab, setSelectedExperienceTab] = useState('stays')
@@ -59,7 +59,7 @@ export function AppHeader({ isStayDetailsPage }) {
                 children: 0,
                 infants: 0,
                 pets: 0
-            }
+            },
         }
 
         if (filterBy.filterText) {
@@ -74,6 +74,7 @@ export function AppHeader({ isStayDetailsPage }) {
         if (filterBy.country) filter.country = filterBy.country
         if (filterBy.capacity) filter.capacity = filterBy.capacity
         if (filterBy.guests) setGuests(filterBy.guests)
+        if (filterBy.label) filter.label = filterBy.label
         updateFilterBy(filter)
     }
 
@@ -81,7 +82,7 @@ export function AppHeader({ isStayDetailsPage }) {
         const field = target.name
         const value = (target.type === 'number') ? +target.value : target.value
         setFilterBy(prevFilter => ({ ...prevFilter, [field]: value }))
-        console.log(filterBy)
+        // console.log(filterBy)
     }
 
     function handleGuestCountChange(type, value) {
@@ -138,11 +139,11 @@ export function AppHeader({ isStayDetailsPage }) {
     }
 
     function onSetSelectedFilterBox(ev) {
-        console.log('ev', ev)
+        // console.log('ev', ev)
         ev.preventDefault()
         store.dispatch({ type: OPEN_EXPANDED_HEADER_MODAL })
         const field = ev.currentTarget.getAttribute('name')
-        console.log('field', field)
+        // console.log('field', field)
         if (selectedFilterBox !== field) setSelectedFilterBox(field)
     }
 

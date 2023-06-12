@@ -69,7 +69,7 @@ import yurts from "../assets/img/category-bar/yurts.jpeg"
 
 
 export function CategoryFilter() {
-    const [selectedCategory, setSelectedCategory] = useState('OMG!')
+    const [selectedCategory, setSelectedCategory] = useState('Trending')
 
     const images = [
         {
@@ -324,7 +324,7 @@ export function CategoryFilter() {
         console.log(label)
         ev.preventDefault()
         setSelectedCategory(label)
-        updateFilterBy({ labels: label })
+        updateFilterBy({ label: label })
     }
 
     return (
