@@ -116,8 +116,8 @@ export function MyTrips() {
                                                 </section>
                                                 <section className="reservation-confirmation">
                                                     <span>Status:</span>
-                                                    <h4 style={{ color: trip.confirmed ? 'green' : 'orange' }}>
-                                                        {trip.confirmed ? 'Confirmed' : 'Pending...'}
+                                                    <h4 style={{ color: index !== 0 ? 'green' : 'orange' }}>
+                                                        {index !== 0 ? 'Confirmed' : 'Pending'}
                                                     </h4>
                                                 </section>
                                             </section>
@@ -181,10 +181,24 @@ export function MyTrips() {
                         })}
                     </section>
 
-                    {pastTrips.length > 0 && (
-                        <section className="where-you-been">
-                            <h3>Where you've been</h3>
-                            {pastTrips.map((trip, index) => {
+                    {/* {pastTrips.length > 0 && ( */}
+                    <section className="where-you-been">
+                        <h3>Where you've been</h3>
+                        <section className="past-trips">
+                            <section className="past-trip">
+                                <section className="past-trip-img">
+                                    <img src="https://a0.muscache.com/im/pictures/bcb75add-a00d-466b-ba7d-ef2fe8d8e7e6.jpg?im_w=1200" alt="Amsterdam" />
+                                </section>
+                                <section className="past-trip-info">
+                                    <h4>Amsterdam</h4>
+                                    <span>hosted by Denzel</span>
+                                    <span>Dec 7-11, 2022</span>
+                                </section>
+                            </section>
+
+                        </section>
+
+                        {/* {pastTrips.map((trip, index) => {
                                 const locationSubstring = trip.stayDetails.loc.substring(0, trip.stayDetails.loc.indexOf(','));
                                 return (
                                     <div key={index}>
@@ -201,9 +215,9 @@ export function MyTrips() {
                                         </div>
                                     </div>
                                 );
-                            })}
-                        </section>
-                    )}
+                            })} */}
+                    </section>
+                    {/* )} */}
                 </section>
             ) : (
                 <section className="no-trips">
@@ -214,4 +228,5 @@ export function MyTrips() {
             )}
         </div>
     )
+    
 }
