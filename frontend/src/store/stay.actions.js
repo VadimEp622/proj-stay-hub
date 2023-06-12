@@ -30,10 +30,10 @@ export function getActionUpdateStay(stay) {
 
 // ****************** Action senders ****************** :
 
-export async function loadStays() {
+export async function loadStays(filterBy) {
     try {
         store.dispatch({ type: LOADING_START })
-        const stays = await stayService.query()
+        const stays = await stayService.query(filterBy)
         store.dispatch({
             type: SET_STAYS,
             stays

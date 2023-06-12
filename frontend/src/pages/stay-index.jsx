@@ -20,7 +20,8 @@ export function StayIndex() {
     const isFilterExpanded = useSelector(storeState => storeState.systemModule.isFilterExpanded)
 
     useEffect(() => {
-        loadStays()
+        if (Object.keys(filterBy).length > 0) loadStays(filterBy)
+        else loadStays()
     }, [filterBy])
 
     useEffect(() => {

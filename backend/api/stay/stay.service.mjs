@@ -7,15 +7,52 @@ const { ObjectId } = mongodb
 const PAGE_SIZE = 3
 
 
-async function query(filterBy = { country: '', city: '' }) {
+async function query(filterBy) {
     try {
+        // const criteria = {
+        //     $or: [
+        //         { 'loc.country': { $regex: filterBy.country, $options: 'i' } },
+        //         { 'loc.city': { $regex: filterBy.city, $options: 'i' } }
+        //     ],
+        //     // 'availableDates': {
+        //     //     $or: [{
+        //     //         $and: [{
+
+        //     //             $gte: { 'from': filterBy.from },
+        //     //             $lte: { 'to': filterBy.to }
+        //     //         }]
+        //     //     }]
+        //     // }
+        // }
+
+
         const criteria = {
-            // loc: {
-            //     country: { $regex: filterBy.country, $options: 'i' },
-            //     city: { $regex: filterBy.city, $options: 'i' }
-            // }
-            // name:''
+            $and: [{
+                $or: [
+                    { 'loc.country': { $regex: filterBy.country, $options: 'i' } },
+                    { 'loc.city': { $regex: filterBy.city, $options: 'i' } }
+                ]
+            }]
         }
+
+        if (filterBy.from && filterBy.to) {
+            criteria.$and.push({
+                'availableDates': {
+                    $elemMatch: {
+                        $or: [
+                            { from: { $lte: filterBy.to }, to: { $gte: filterBy.from } },
+                            { from: { $gte: filterBy.from }, to: { $lte: filterBy.to } }
+                        ]
+                    }
+                }
+            })
+        }
+
+        if (filterBy.capacity > 0) {
+            criteria.$and.push({ 'capacity': { $gte: filterBy.capacity } });
+        }
+
+
         console.log('criteria', criteria)
         const collection = await dbService.getCollection('stay')
         var stayCursor = await collection.find(criteria)
@@ -25,7 +62,6 @@ async function query(filterBy = { country: '', city: '' }) {
         }
 
         const stays = stayCursor.toArray()
-        console.log('stays', stays)
         return stays
     } catch (err) {
         logger.error('cannot find stays', err)

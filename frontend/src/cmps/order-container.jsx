@@ -109,8 +109,10 @@ export function OrderContainer({ stay, randomDate }) {
                         <span className="review-count">{stay.reviews.length} reviews</span>
                     </div>
                 </div>
-                <section className="order-data" style={{ zIndex: '1' }}>
-                    <div className="size-less-order-modal-container" style={{ width: '0px', height: '0px', position: 'relative', float: 'right' }}>
+                <section className="order-data"
+                    // style={{ zIndex: '1' }}
+                >
+                    {/* <div className="size-less-order-modal-container" style={{ width: '0px', height: '0px', position: 'relative', float: 'right' }}>
                         {
                             isDateModalOpen &&
                             <section ref={dateModalRef} className="stay-details-date-modal" style={{
@@ -121,8 +123,11 @@ export function OrderContainer({ stay, randomDate }) {
                                 <DatePicker />
                             </section>
                         }
-                    </div>
-                    <div className="order-date-container flex" style={{cursor:'pointer', position: 'relative', zIndex: '1' }} onClick={openDateModal}>
+                    </div> */}
+                    <div className="order-date-container flex"
+                    // style={{ cursor: 'pointer', position: 'relative', zIndex: '1' }}
+                    // onClick={openDateModal}
+                    >
                         <div className="check-in flex">
                             <span className="uppertext">check-in</span>
                             <span>{checkIn}</span>

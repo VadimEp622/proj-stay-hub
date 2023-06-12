@@ -4,15 +4,22 @@ import { logger } from '../../services/logger.service.mjs'
 export async function getStays(req, res) {
   try {
     logger.debug('Getting Stays:', req.query)
+    const { country, city, from, to, capacity } = req.query
 
     const filterBy = {
-      // country: req.query.country || '',
-      // city: req.query.city || '',
-      // pageIdx: req.query.pageIdx
+      country,
+      city,
+      from,
+      to,
+      capacity: +capacity,
     }
+    if (filterBy.from) filterBy.from = +filterBy.from
+    if (filterBy.to) filterBy.to = +filterBy.to
+
+    console.log('filterBy from stay.controller.js', filterBy)
     const stays = await stayService.query(filterBy)
     const slicedStays = stays.slice(0, 30)
-    console.log('slicedStays:', slicedStays)
+    // console.log('slicedStays', slicedStays)
     res.json(slicedStays)
   } catch (err) {
     logger.error('Failed to get stays', err)

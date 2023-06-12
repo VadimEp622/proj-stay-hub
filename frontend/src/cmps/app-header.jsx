@@ -81,7 +81,7 @@ export function AppHeader({ isStayDetailsPage }) {
         const field = target.name
         const value = (target.type === 'number') ? +target.value : target.value
         setFilterBy(prevFilter => ({ ...prevFilter, [field]: value }))
-        console.log(filterBy)
+        // console.log(filterBy)
     }
 
     function handleGuestCountChange(type, value) {
@@ -138,11 +138,11 @@ export function AppHeader({ isStayDetailsPage }) {
     }
 
     function onSetSelectedFilterBox(ev) {
-        console.log('ev', ev)
+        // console.log('ev', ev)
         ev.preventDefault()
         store.dispatch({ type: OPEN_EXPANDED_HEADER_MODAL })
         const field = ev.currentTarget.getAttribute('name')
-        console.log('field', field)
+        // console.log('field', field)
         if (selectedFilterBox !== field) setSelectedFilterBox(field)
     }
 

@@ -27,7 +27,6 @@ export async function deleteOrder(req, res) {
         res.status(400).send({ err: 'Failed to delete order' })
     }
 }
-console.log('hi from controller')
 
 export async function addOrder(req, res) {
 
