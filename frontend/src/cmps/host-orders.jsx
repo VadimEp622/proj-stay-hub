@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
-<<<<<<< HEAD
 import { orderService } from '../services/order.service';
-=======
->>>>>>> 90d4816711d22d6f07cf41a50c33d2e85cbc3801
+import { useEffect } from 'react';
+import { showErrorMsg } from '../services/event-bus.service';
+import { userService } from '../services/user.service';
+import { utilService } from '../services/util.service';
 
 const data = [
   { guest: 'John Doe', dates: 'Jun 23-27', status: 'Pending' },
@@ -11,9 +12,10 @@ const data = [
 ];
 
 export function HostOrders() {
-<<<<<<< HEAD
   const [tableData, setTableData] = useState(data)
   const [orderedListings, setOrderedListings] = useState([])
+  const loggedInUser = userService.getLoggedinUser();
+
   const handleApprove = (index) => {
     const updatedData = [...tableData]
     updatedData[index].status = 'Approved'
@@ -67,7 +69,7 @@ export function HostOrders() {
             {orderedListings.map((order, index) => (
               <tr key={index}>
                 <td>{order.buyer.name}</td>
-                <td>{utilService.getFormattedTimeRange(stay.availableDates[0].from, stay.availableDates[0].to)}</td>
+                <td>{utilService.getFormattedTimeRange(order.availableDates[0].from, order.availableDates[0].to)}</td>
                 <td>
                   {order.status === 'Pending' ? (
                     <div className="actions">
@@ -110,57 +112,3 @@ export function HostOrders() {
     </div>
   )
 }
-=======
-    const [tableData, setTableData] = useState(data)
-
-    const handleApprove = (index) => {
-      const updatedData = [...tableData]
-      updatedData[index].status = 'Approved'
-      setTableData(updatedData)
-    };
-  
-    const handleReject = (index) => {
-      const updatedData = [...tableData]
-      updatedData[index].status = 'Rejected'
-      setTableData(updatedData)
-    };
-  
-    return (
-      <div className="table-wrapper">
-        <div className="table-container">
-          <table>
-            <thead>
-              <tr>
-                <th>Guest</th>
-                <th>Dates</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {tableData.map((item, index) => (
-                <tr key={index}>
-                  <td>{item.guest}</td>
-                  <td>{item.dates}</td>
-                  <td>
-                    {item.status === 'Pending' ? (
-                      <div className="actions">
-                        <button className="action-button approve" onClick={() => handleApprove(index)}>
-                          Approve
-                        </button>
-                        <button className="action-button reject" onClick={() => handleReject(index)}>
-                          Reject
-                        </button>
-                      </div>
-                    ) : (
-                      <div className="selection">{item.status}</div>
-                    )}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </div>
-    )
-  }
->>>>>>> 90d4816711d22d6f07cf41a50c33d2e85cbc3801
