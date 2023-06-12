@@ -42,9 +42,9 @@ import { ReactComponent as Exclamation } from '../assets/img/airbnb-assets/excla
 import { ReactComponent as Superhost } from '../assets/img/superhost/super-host.svg'
 import { ReactComponent as BlackSuperhost16 } from '../assets/img/superhost/superhost-black-16.svg'
 import { ReactComponent as BabysitterRecommendations } from '../assets/img/airbnb-assets/babysitter-recommendation.svg'
-import { ReactComponent as BeachEssentials } from '../assets/img/airbnb-assets/beach=essentials.svg'
-import { ReactComponent as Bedlinens } from '../assets/img/airbnb-assets/Bed=linens.svg'
-import { ReactComponent as BooksReading } from '../assets/img/airbnb-assets/books-reading.svg'
+import { ReactComponent as BeachEssentials } from '../assets/img/airbnb-assets/beach-essentials.svg'
+import { ReactComponent as Bedlinens } from '../assets/img/airbnb-assets/Bed-linens.svg'
+import { ReactComponent as BooksReading } from '../assets/img/airbnb-assets/Books-reading.svg'
 import { ReactComponent as Breakfast } from '../assets/img/airbnb-assets/breakfast.svg'
 import { ReactComponent as CarbonMonoxide } from '../assets/img/airbnb-assets/carbon-monoxide.svg'
 import { ReactComponent as CoffeeMaker } from '../assets/img/airbnb-assets/coffee-maker.svg'
@@ -53,7 +53,7 @@ import { ReactComponent as Dryer } from '../assets/img/airbnb-assets/dryer.svg'
 import { ReactComponent as Essentials } from '../assets/img/airbnb-assets/essentials.svg'
 import { ReactComponent as Ethernet } from '../assets/img/airbnb-assets/ethernet.svg'
 import { ReactComponent as ExtraPillows } from '../assets/img/airbnb-assets/extra-pillows.svg'
-import { ReactComponent as FireExtinguisher } from '../assets/img/airbnb-assets/fire=extinguisher.svg'
+import { ReactComponent as FireExtinguisher } from '../assets/img/airbnb-assets/fire-exntiguisher.svg'
 import { ReactComponent as FirstAidKit } from '../assets/img/airbnb-assets/first-aid-kit.svg'
 import { ReactComponent as FreeParking } from '../assets/img/airbnb-assets/free-parking-premises.svg'
 import { ReactComponent as FreeStreetParking } from '../assets/img/airbnb-assets/free-street-parking.svg'
@@ -266,7 +266,7 @@ const SvgHandler = ({ svgName }) => {
                 return <SelfCheckIn />
 
             default:
-                return <Heart16 />
+                return <HDTV />
         }
         return null
     }
