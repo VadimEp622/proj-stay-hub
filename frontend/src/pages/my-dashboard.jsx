@@ -73,11 +73,11 @@ export function MyDashboard() {
         <div className='dashboard-page'>
             <section className='reservations'></section>
             {/* <h3>Welcome back, {loggedInUser?.fullname}</h3> */}
-            <section className="dashboard">
+            {/* <section className="dashboard">
                 <h4>Total Orders</h4>
                 <p>{listings.length}</p>
-                {/* <p>The count of orders has been rising by an average of 20% MoM over the last three months.</p> */}
-            </section>
+                <p>The count of orders has been rising by an average of 20% MoM over the last three months.</p>
+            </section> */}
             {/* <section>
                 <h4>Rating</h4>
                 <p>4.8</p>
