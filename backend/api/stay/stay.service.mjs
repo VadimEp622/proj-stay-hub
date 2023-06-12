@@ -9,23 +9,6 @@ const PAGE_SIZE = 3
 
 async function query(filterBy) {
     try {
-        // const criteria = {
-        //     $or: [
-        //         { 'loc.country': { $regex: filterBy.country, $options: 'i' } },
-        //         { 'loc.city': { $regex: filterBy.city, $options: 'i' } }
-        //     ],
-        //     // 'availableDates': {
-        //     //     $or: [{
-        //     //         $and: [{
-
-        //     //             $gte: { 'from': filterBy.from },
-        //     //             $lte: { 'to': filterBy.to }
-        //     //         }]
-        //     //     }]
-        //     // }
-        // }
-
-
         const criteria = {
             $and: [{
                 $or: [
@@ -53,7 +36,6 @@ async function query(filterBy) {
         }
 
         if (filterBy.label) {
-            // criteria.$and.push({ 'type': { $regex: filterBy.label, $options: 'i' } });
             criteria.$and.push({ 'type': filterBy.label });
         }
 

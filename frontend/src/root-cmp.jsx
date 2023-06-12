@@ -23,6 +23,7 @@ import { WishList } from './pages/wishlist'
 import { MyTrips } from './pages/trips'
 import { AddStay } from './pages/add-stay'
 import { JSONStringify } from './cmps/strinfigy'
+import { MyDashboard } from './pages/my-dashboard'
 
 export function RootCmp() {
     const isUnclickableBg = useSelector(storeState => storeState.systemModule.isUnclickableBg)
@@ -55,6 +56,7 @@ export function RootCmp() {
                         {routes.map(route => <Route key={route.path} exact={true} element={route.component} path={route.path} />)}
                         <Route path="user/:id" element={<UserDetails />} />
                         <Route path="wishlist" element={<WishList />} />
+                        <Route path="/dashboard" element={<MyDashboard />} />
                         <Route path="/dashboard/stay/add" element={<AddStay />} />
                         <Route path="trips" element={<MyTrips />} />
                         <Route path="stay/:stayId" element={<StayDetails />} />

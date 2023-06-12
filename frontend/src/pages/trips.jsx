@@ -228,4 +228,5 @@ export function MyTrips() {
             )}
         </div>
     )
+    
 }
