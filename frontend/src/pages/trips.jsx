@@ -53,58 +53,67 @@ export function MyTrips() {
             {trips && trips.length > 0 ? (
                 <section className="trips-container">
                     <h3 className="reservations-header">Upcoming reservations</h3>
-                        <section className="reservations-container">
-                            {upcomingTrips.map((trip, index) => {
-                                const locationSubstring = trip.stayDetails.loc.address.substring(0, trip.stayDetails.loc.address.indexOf(','));
-                                return (
-                                    <div className="upcoming-reservation" key={index}>
-                                        <section className='reservation-container '>
-                                            <section className='reservation-info'>
-                                                <section className="reservation-header">
-                                                    <h2> {trip.stayDetails.loc.city}</h2>
-                                                    <h5> Entire rental unit hosted by {trip.seller.fullname}</h5>
-                                                </section>
+                    <section className="reservations-container">
+                        {upcomingTrips.map((trip, index) => {
+                            const locationSubstring = trip.stayDetails.loc.address.substring(0, trip.stayDetails.loc.address.indexOf(','));
+                            return (
+                                <div className="upcoming-reservation" key={index}>
+                                    <section className='reservation-container '>
+                                        <section className='reservation-info'>
+                                            <section className="reservation-header">
+                                                <h2> {trip.stayDetails.loc.city}</h2>
+                                                <h5> Entire rental unit hosted by {trip.seller.fullname}</h5>
+                                            </section>
+                                            <section className="reservation-date flex">
                                                 <section className="reservation-dates">
                                                     {utilService.getFormattedTimeRange(trip.checkIn, trip.checkOut)}
                                                 </section>
-                                                <section className="reservation-destination">
-                                                    {locationSubstring}, {trip.stayDetails.loc.city}, {trip.stayDetails.loc.country}
+                                                <section className="reservation-destination flex">
+                                                    <h4>{locationSubstring}</h4>
+                                                    <span>{trip.stayDetails.loc.city}</span>
+                                                    <span>{trip.stayDetails.loc.country}</span>
                                                 </section>
                                             </section>
-                                            <div className="reservation-img">
-                                                <img src={trip.stayDetails.image} alt="Stay Image" />
-                                            </div>
+
                                         </section>
-                                        <aside className="explore-things-to-do">
-                                            {/* Explore things to do */}
-                                            <h5>Explore things to do near {trip.stayDetails.city}</h5>
-                                            <div className="things-to-do">
-                                                {/* Random experiences */}
-                                                <div className="things-todo">
-                                                    Just for you {trip.thingsToDo['Just-for-you']} experiences
-                                                </div>
-                                                <div className="things-todo">
-                                                    Top-rated {trip.thingsToDo['Top-rated']} experiences
-                                                </div>
-                                                <div className="things-todo">
-                                                    Sports {trip.thingsToDo['Sports']} experiences
-                                                </div>
-                                                <div className="things-todo">
-                                                    Tours {trip.thingsToDo['Tours']} experiences
-                                                </div>
-                                                <div className="things-todo">
-                                                    Sightseeing {trip.thingsToDo['Sightseeing']} experiences
-                                                </div>
-                                                <div className="things-todo">
-                                                    Show more {trip.thingsToDo['more']} experiences
-                                                </div>
+                                        <div className="reservation-img">
+                                            <img src={trip.stayDetails.image} alt="Stay Image" />
+                                        </div>
+                                    </section>
+                                    <aside className="explore-things-to-do">
+                                        <h5>Explore things to do near {trip.stayDetails.city}</h5>
+                                        <div className="things-to-do">
+                                            <div className="to-do">
+                                                Just for you 
+                                                <span>{trip.thingsToDo['Just-for-you']} experiences</span>
                                             </div>
-                                        </aside>
-                                    </div>
-                                );
-                            })}
-                        </section>
-                   
+                                            <div className="to-do">
+                                                Top-rated 
+                                                <span>{trip.thingsToDo['Top-rated']} experiences</span>
+                                            </div>
+                                            <div className="to-do">
+                                                Sports 
+                                                <span>{trip.thingsToDo['Sports']} experiences</span>
+                                            </div>
+                                            <div className="to-do">
+                                                Tours 
+                                                <span>{trip.thingsToDo['Tours']} experiences</span>
+                                            </div>
+                                            <div className="to-do">
+                                                Sightseeing 
+                                                <span>{trip.thingsToDo['Sightseeing']} experiences</span>
+                                            </div>
+                                            <div className="to-do">
+                                                Show more 
+                                                <span>{trip.thingsToDo['more']} experiences</span>
+                                            </div>
+                                        </div>
+                                    </aside>
+                                </div>
+                            );
+                        })}
+                    </section>
+
                     {pastTrips.length > 0 && (
                         <section className="where-you-been">
                             <h3>Where you've been</h3>

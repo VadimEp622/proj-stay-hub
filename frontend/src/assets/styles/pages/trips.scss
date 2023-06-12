@@ -16,7 +16,7 @@
             padding-bottom: 24px;
             font-size: 20px;
             letter-spacing: 0.25px;
-            font-weight: 600;
+            font-weight: 800;
             padding-left: 2px;
         }
 
@@ -33,7 +33,7 @@
                 grid-template-columns: 1fr 1fr;
                 border-radius: 12px;
                 overflow: hidden;
-                box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
+                box-shadow: rgba(0, 0, 0, 0.12) -6px 10px 16px;
                 position: relative;
 
                 .reservation-img {
@@ -59,15 +59,53 @@
             .reservation-header {
                 border-bottom: 1px solid $gray-clr4;
             }
+
+            .reservation-header :first-child {
+                margin-bottom: rem(8px);
+                font-weight: 800;
+            }
+
+            .reservation-date {
+                align-items:flex-start;
+                margin-top: 16px;
+                
+            }
+
+            .reservation-dates {
+                width: 20%;
+                border-right: 1px solid $gray-clr4;
+                padding-right: 16px;
+            }
+
+            .reservation-destination {
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: space-around;
+                padding-left: 16px;
+            }
+
+            .reservation-destination :last-child {
+                font-size: rem(10px);
+               
+            }
+        }
+
+        .explore-things-to-do > :first-child {
+            height: 10%;
         }
 
         .things-to-do {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 8px;
+            height: 90%;
+            align-content: space-between;
         }
 
-        .things-to-do>* {}
+        .to-do {
+            display: flex;
+            flex-direction: column;
+        }
     }
 
     .no-trips {
