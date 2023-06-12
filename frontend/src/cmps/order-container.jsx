@@ -66,7 +66,8 @@ export function OrderContainer({ stay, randomDate }) {
                 "more": utilService.getRandomIntInclusive(300, 500),
             },
             nightsCount: nightsCount,
-            nightsPrice: nightsPrice
+            nightsPrice: nightsPrice,
+            status: "Pending"
         });
 
 
