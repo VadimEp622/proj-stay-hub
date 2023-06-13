@@ -41,7 +41,7 @@ async function query(filterBy) {
 
 
         const collection = await dbService.getCollection('stay')
-        var stays = await collection.find(criteria).limit(50).toArray()
+        var stays = await collection.find(criteria).limit(10).toArray()
         return stays
     } catch (err) {
         logger.error('cannot find stays', err)
