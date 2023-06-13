@@ -47,7 +47,7 @@ export function StayPreview({ stay }) {
             await userService.update(loggedInUser._id, 'wishlist', stay)
             setIsLikeClicked(false)
         }
-        setIsLikeClicked(prevHeart => !prevHeart)
+        // setIsLikeClicked(prevHeart => !prevHeart)
     }
 
     useEffect(() => {
