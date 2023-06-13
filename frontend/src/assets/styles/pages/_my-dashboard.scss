@@ -1,10 +1,29 @@
-.sales-dashboard {
-    margin-bottom: 24px;
-    .chart-container {
-        box-shadow: #0000001f 0 6px 16px;
-        padding: 24px;
-        border-radius: 12px;
-        max-height: 250px;
-        width: 100%;
+.dashboard-page {
+    margin: 24px 0;
+
+    .overview {
+        box-shadow: #0000001f 0 1px 12px;
+        font-family: Circular-semibold;
+        font-size: rem(22px);
+        padding: 12px;
+        margin-bottom: 24px;
+
+        h4 {
+            margin: 16px 0;
+        }
+        span {
+            font-family: Circular-bold;
+        }
+    }
+
+    .sales-dashboard {
+
+        .chart-container {
+            box-shadow: #0000001f 0 1px 12px;
+            padding: 24px;
+            border-radius: 12px;
+            max-height: 250px;
+            width: 100%;
+        }
     }
 }

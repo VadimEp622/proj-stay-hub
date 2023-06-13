@@ -31,18 +31,18 @@ export function HostOrders() {
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const orders = await orderService.getOrders();
+        const orders = await orderService.getOrders()
         const filteredTrips = orders.filter(
           (order) => order.seller._id === loggedInUser._id
         );
         setOrderedListings(filteredTrips)
       } catch (error) {
-        showErrorMsg('Error fetching orders');
+        showErrorMsg('Error fetching orders')
       }
     };
 
-    fetchOrders();
-  }, []);
+    fetchOrders()
+  }, [])
 
   function handleApprovedClick(trip) {
     trip.status = "Approved"

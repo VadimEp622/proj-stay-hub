@@ -21,10 +21,23 @@ const options = {
             text: 'Revenue overview',
         },
     },
-};
+    scales: {
+        y: {
+            beginAtZero: true,
+            ticks: {
+                callback: function (value) {
+                    return '$' + value
+                },
+            },
+        },
+    },
+}
 
-const labels = ['January', 'February', 'March', 'April', 'May', 'June'];
-const revenue = [3420, 1502, 5482, 3481, 4953, 1714];
+const labels = ['January', 'February', 'March', 'April', 'May', 'June']
+const revenue = [1710.5, 751.2, 2741.8, 1740, 2476, 857]
+const averageRevenue = (revenue.reduce((sum, value) => sum + value, 0) / revenue.length).toLocaleString(undefined,
+    { maximumFractionDigits: 2, })
+
 const data = {
     labels,
     datasets: [
@@ -44,33 +57,39 @@ const data = {
 };
 
 export function MyDashboard() {
-    const loggedInUser = userService.getLoggedinUser();
-    const [listings, setListings] = useState([]);
-    const navigate = useNavigate();
+    const loggedInUser = userService.getLoggedinUser()
+    const [listings, setListings] = useState([])
+    const navigate = useNavigate()
 
     useEffect(() => {
         const fetchOrders = async () => {
             try {
-                const listings = await stayService.query();
-                const filteredListings = listings.filter((listing) => listing.host._id === loggedInUser._id);
-                setListings(filteredListings);
+                const listings = await stayService.query()
+                const filteredListings = listings.filter((listing) => listing.host._id === loggedInUser._id)
+                setListings(filteredListings)
             } catch (error) {
-                showErrorMsg('Error fetching orders');
+                showErrorMsg('Error fetching orders')
             }
-        };
+        }
 
-        fetchOrders();
-    }, [loggedInUser]);
+        fetchOrders()
+    }, [loggedInUser])
 
     useEffect(() => {
         if (!loggedInUser) {
-            showErrorMsg('You must be logged in to view your listings');
-            navigate('/');
+            showErrorMsg('You must be logged in to view your listings')
+            navigate('/')
         }
-    }, [loggedInUser, navigate]);
+    }, [loggedInUser, navigate])
 
     return (
         <div className='dashboard-page'>
+            <section>
+                <section className='overview'>
+                    <h4>{revenue.length} Month Avg. Revenue: <span>${averageRevenue}</span></h4>
+                    <h4><span>{'1'}</span> Pending  </h4>
+                </section>
+            </section>
 
             <section className="orders">
                 <HostOrders />
