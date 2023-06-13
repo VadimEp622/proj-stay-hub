@@ -19,7 +19,7 @@ const initialState = {
     users: [],
     watchedUser: null,
     guests: {},
-    // wishlist: [],
+    wishlist: [],
     order: {}
 }
 
@@ -55,7 +55,7 @@ export function userReducer(state = initialState, action) {
             newState = { ...state, users: action.users }
             break
         case ADD_TO_WISHLIST:
-            user = { ...state.user, wishlist: [...state.user.wishlist, { _id: action.stay._id }] }
+            user = { ...state.user, wishlist: [...state.user.wishlist,  action.stay ] }
             newState = { ...state, user }
             break
         case REMOVE_FROM_WISHLIST:

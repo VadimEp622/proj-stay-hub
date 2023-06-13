@@ -1,15 +1,11 @@
 import { useSelector } from 'react-redux'
 import { Fragment, useRef, useState } from 'react'
-
-
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service.js'
 import { stayService } from '../services/stay.service.local.js'
 import { store } from '../store/store.js'
 import { login, logout, setGuests, signup } from '../store/user.actions.js'
 import { updateFilterBy } from '../store/stay.actions.js'
 import { utilService } from '../services/util.service.js'
-
-
 import { LoginSignup } from './login-signup.jsx'
 import { Logo } from './header/logo.jsx'
 import { SearchbarToggler } from './header/searchbar-toggler.jsx'
@@ -17,11 +13,8 @@ import { MainNavMenu } from './header/main-nav-menu.jsx'
 import { FilterExpanded } from './header/filter-expanded.jsx'
 import { OPEN_EXPANDED_HEADER_MODAL } from '../store/system.reducer.js'
 
-
-
 // header filter -> expanded-filter -> filter-modals
 // filter-bar -> main-filter
-
 
 export function AppHeader({ isStayDetailsPage }) {
     // const isUnclickableBg = useSelector(storeState => storeState.systemModule.system)
@@ -42,9 +35,6 @@ export function AppHeader({ isStayDetailsPage }) {
     const isFilterExpanded = useSelector(storeState => storeState.systemModule.isFilterExpanded)
     const [selectedExperienceTab, setSelectedExperienceTab] = useState('stays')
     const [selectedFilterBox, setSelectedFilterBox] = useState('where')
-
-
-
 
     function onSubmit(ev) {
         ev.preventDefault()
@@ -154,7 +144,7 @@ export function AppHeader({ isStayDetailsPage }) {
 
                 <nav className="app-header">
                     <Logo />
-                    <SearchbarToggler
+                   <SearchbarToggler
                         isFilterExpanded={isFilterExpanded}
                         selectedExperienceTab={selectedExperienceTab}
                         setSelectedExperienceTab={setSelectedExperienceTab}
@@ -162,7 +152,7 @@ export function AppHeader({ isStayDetailsPage }) {
                     <MainNavMenu />
                 </nav>
 
-                <FilterExpanded
+               <FilterExpanded
                     filterBy={filterBy}
                     setFilterBy={setFilterBy}
                     handleChange={handleChange}
@@ -175,17 +165,23 @@ export function AppHeader({ isStayDetailsPage }) {
                     onSetSelectedFilterBox={onSetSelectedFilterBox}
                     setSelectedFilterBox={setSelectedFilterBox}
                 />
-
             </header>
-
-            {/* {
-                isUnclickableBg &&
-                <aside
-                    className="unclickable-background"
-                    onClick={(ev) => onSetIsUnclickableBg(ev, false)}
-                ></aside>
-            } */}
-
         </Fragment >
     )
 }
+
+
+
+
+
+
+
+
+
+{/* {
+    isUnclickableBg &&
+    <aside
+        className="unclickable-background"
+        onClick={(ev) => onSetIsUnclickableBg(ev, false)}
+    ></aside>
+} */}
