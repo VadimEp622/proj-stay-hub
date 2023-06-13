@@ -35,20 +35,22 @@ export function StayPreview({ stay }) {
             return
         }
         if (likeSVG === 'heart-red') {
-            removeFromWishlist({stay})
+            removeFromWishlist({ stay })
             userService.update(loggedInUser._id, 'wishlist', stay._id)
+            setIsLikeClicked(true)
         }
         else {
-            AddToWishlist({stay})
+            AddToWishlist({ stay })
             userService.update(loggedInUser._id, 'wishlist', stay._id)
+            setIsLikeClicked(false)
         }
-        setIsLikeClicked(prevHeart => !prevHeart)
+        // setIsLikeClicked(prevHeart => !prevHeart)
     }
 
     useEffect(() => {
         const likedId = wishedListItems?.some((wishlist) => wishlist._id === stay._id)
         setIsLikeClicked(likedId)
-    }, [wishedListItems, stay._id])
+    }, [wishedListItems, stay._id,isLikeClicked])
 
     const bedrooms = stay.bedrooms > 1 ? 'Bedrooms' : 'Bedroom'
     const bathrooms = stay.bathrooms > 1 ? 'Bathrooms' : 'Bathroom'
