@@ -11,7 +11,6 @@ function Marker() {
 export default function SimpleMap({ loc }) {
     //IMPORTANT NOTE: DEMO DATA CONFUSED LAT AND LAN.
     //ALSO:           GoogleMapReact ONLY WORKS WITH LNG KEY, NOT LAN KEY
-    console.log('loc', loc)
     const lng = loc.lat
     const lat = loc.lan
     const [center, setCenter] = useState({ lat, lng })
