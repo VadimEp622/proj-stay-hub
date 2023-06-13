@@ -42,7 +42,7 @@ export function OrderContainer({ stay, randomDate }) {
         setOrderObject({
             buyer: {
                 _id: user ? user._id : '',
-                name: user ? user.fullname : ''
+                fullname: user ? user.fullname : ''
             },
             seller: {
                 fullname: stay.host.fullname,

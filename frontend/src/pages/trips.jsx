@@ -60,9 +60,10 @@ export function MyTrips() {
     useEffect(() => {
         const fetchOrders = async () => {
             try {
-                const orders = await orderService.getOrders();
+                const orders = await orderService.getOrders({ byUserId: loggedInUser._id });
+                console.log('orders', orders)
                 const filteredTrips = orders.filter(
-                    (order) => order.buyer._id === loggedInUser._id
+                    (order) => order.byUser._id === loggedInUser._id
                 );
                 setTrips(filteredTrips)
             } catch (error) {
