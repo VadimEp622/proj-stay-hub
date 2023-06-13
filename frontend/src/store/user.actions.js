@@ -95,6 +95,7 @@ export function setOrder(order) {
 }
 
 export function AddToWishlist(stay) {
+    console.log(stay)
     store.dispatch({ type: ADD_TO_WISHLIST, stay })
 }
 
