@@ -32,6 +32,7 @@ export function getActionUpdateStay(stay) {
 
 export async function loadStays(filterBy) {
     try {
+        console.log('hi from stay action, loadStays')
         store.dispatch({ type: LOADING_START })
         const stays = await stayService.query(filterBy)
         store.dispatch({
