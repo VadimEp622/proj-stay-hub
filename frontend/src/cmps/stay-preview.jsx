@@ -37,12 +37,12 @@ export function StayPreview({ stay }) {
         }
         if (likeSVG === 'heart-red') {
             console.log('hi')
-            removeFromWishlist({ stay })
+            removeFromWishlist( stay )
             userService.update(loggedInUser._id, 'wishlist', stay._id)
             setIsLikeClicked(true)
         }
         else {
-            AddToWishlist({ stay })
+            AddToWishlist( stay )
             console.log('hi')
             await userService.update(loggedInUser._id, 'wishlist', stay)
             setIsLikeClicked(false)
