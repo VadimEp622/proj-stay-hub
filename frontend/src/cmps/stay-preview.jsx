@@ -58,7 +58,7 @@ export function StayPreview({ stay }) {
         phrase = utilService.getFormattedTimeRange(stay.availableDates[0].from, stay.availableDates[0].to);
     }
 
-    if ("geolocation" in navigator) {
+    if ("geolocation" in navigator && !isWishlistPage) {
         navigator.geolocation.watchPosition(
             function (position) {
                 setLat(position.coords.latitude)
