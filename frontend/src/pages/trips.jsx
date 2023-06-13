@@ -82,13 +82,13 @@ export function MyTrips() {
     const currentDate = new Date();
 
     const upcomingTrips = trips
-        .filter((trip) => new Date(trip.checkOut) > currentDate)
+        .filter((trip) => new Date(trip.content.checkOut) > currentDate)
         .reverse();
 
     console.log('trips', trips);
 
     const pastTrips = trips
-        .filter((trip) => new Date(trip.checkOut) <= currentDate)
+        .filter((trip) => new Date(trip.content.checkOut) <= currentDate)
         .reverse();
     return (
         <div className="trips">
@@ -98,73 +98,73 @@ export function MyTrips() {
                     <h3 className="reservations-header">Upcoming reservations</h3>
                     <section className="reservations-container">
                         {upcomingTrips.map((trip, index) => {
-                            const locationSubstring = trip.stayDetails.loc.address.substring(0, trip.stayDetails.loc.address.indexOf(','));
+                            const locationSubstring = trip.content.stayDetails.loc.address.substring(0, trip.content.stayDetails.loc.address.indexOf(','));
                             return (
                                 <div className="upcoming-reservation" key={index}>
                                     <section className='reservation-container '>
                                         <section className='reservation-info'>
                                             <section className="reservation-header">
-                                                <h2> {trip.stayDetails.loc.city}</h2>
-                                                <h5> Entire rental unit hosted by {trip.seller.fullname}</h5>
+                                                <h2> {trip.content.stayDetails.loc.city}</h2>
+                                                <h5> Entire rental unit hosted by {trip.content.seller.fullname}</h5>
                                             </section>
                                             <section className="reservation-dates flex">
                                                 <section className="reservation-date">
-                                                    {utilService.getFormattedTimeRange(trip.checkIn, trip.checkOut)}
+                                                    {utilService.getFormattedTimeRange(trip.content.checkIn, trip.content.checkOut)}
                                                 </section>
                                                 <section className="reservation-destination flex">
                                                     <h4>{locationSubstring}</h4>
-                                                    <span>{trip.stayDetails.loc.city}</span>
-                                                    <span>{trip.stayDetails.loc.country}</span>
+                                                    <span>{trip.content.stayDetails.loc.city}</span>
+                                                    <span>{trip.content.stayDetails.loc.country}</span>
                                                 </section>
                                                 <section className="reservation-confirmation">
                                                     <span>Status:</span>
-                                                    <h4 className={trip.status.toLowerCase()}>
-                                                        {trip.status}
+                                                    <h4 className={trip.content.status.toLowerCase()}>
+                                                        {trip.content.status}
                                                     </h4>
                                                 </section>
                                             </section>
 
                                         </section>
                                         <div className="reservation-img">
-                                            <img src={trip.stayDetails.image} alt="Stay Image" />
+                                            <img src={trip.content.stayDetails.image} alt="Stay Image" />
                                         </div>
                                     </section>
                                     <aside className="explore-things-to-do">
-                                        <h5>Explore things to do near {trip.stayDetails.loc.city}</h5>
+                                        <h5>Explore things to do near {trip.content.stayDetails.loc.city}</h5>
                                         <div className="things-to-do">
                                             <div className="to-do">
                                                 <img src={explore.justForYou[Math.floor(Math.random() * explore.sightseeing.length)]} alt="to-do" />
                                                 <section className='todo-info'>
                                                     <h4>Just for you</h4>
-                                                    <span>{trip.thingsToDo['Just-for-you']} experiences</span>
+                                                    <span>{trip.content.thingsToDo['Just-for-you']} experiences</span>
                                                 </section>
                                             </div>
                                             <div className="to-do">
                                                 <img src={explore.topRated[Math.floor(Math.random() * explore.sightseeing.length)]} alt="top rated" />
                                                 <section className='todo-info'>
                                                     <h4>Top-rated</h4>
-                                                    <span>{trip.thingsToDo['Top-rated']} experiences</span>
+                                                    <span>{trip.content.thingsToDo['Top-rated']} experiences</span>
                                                 </section>
                                             </div>
                                             <div className="to-do">
                                                 <img src={explore.sports[Math.floor(Math.random() * explore.sightseeing.length)]} alt="sports" />
                                                 <section className='todo-info'>
                                                     <h4>Sports</h4>
-                                                    <span>{trip.thingsToDo['Sports']} experiences</span>
+                                                    <span>{trip.content.thingsToDo['Sports']} experiences</span>
                                                 </section>
                                             </div>
                                             <div className="to-do">
                                                 <img src={explore.tours[Math.floor(Math.random() * explore.sightseeing.length)]} alt="tours" />
                                                 <section className='todo-info'>
                                                     <h4>Tours</h4>
-                                                    <span>{trip.thingsToDo['Tours']} experiences</span>
+                                                    <span>{trip.content.thingsToDo['Tours']} experiences</span>
                                                 </section>
                                             </div>
                                             <div className="to-do">
                                                 <img src={explore.sightseeing[Math.floor(Math.random() * explore.sightseeing.length)]} alt="sightseeing" />
                                                 <section className='todo-info'>
                                                     <h4>Sightseeing</h4>
-                                                    <span>{trip.thingsToDo['Sightseeing']} experiences</span>
+                                                    <span>{trip.content.thingsToDo['Sightseeing']} experiences</span>
                                                 </section>
                                             </div>
                                             <div className="to-do">
@@ -173,7 +173,7 @@ export function MyTrips() {
                                                 </div>
                                                 <section className='todo-info'>
                                                     <h4>Show more</h4>
-                                                    <span>{trip.thingsToDo['more']} experiences</span>
+                                                    <span>{trip.content.thingsToDo['more']} experiences</span>
                                                 </section>
                                             </div>
                                         </div>
