@@ -1,6 +1,4 @@
 .app-header-container {
-
-
     height: 100%;
     box-shadow: rgb(0 0 0 / 8%) 0 1px 0;
     position: relative;
@@ -13,30 +11,27 @@
         grid-template-columns: 1fr auto 1fr;
         align-items: center;
         z-index: 11;
-
     }
-
-
 }
 
 
 @media (max-width: 600px) {
-    .searchbar-toggler-container {
+    .filter-expanded-container {
+        width: 0;
       display: none;
     }
-
-    .app-header {
-        padding: 0 10px;
-    }
-
-    .main-nav-menu-container {
-        grid-column: -1;
-    }
+    .searchbar-toggler-container {
+        display: none;
+      }
+  
+      .app-header {
+          padding: 0 10px;
+      }
+  
+      .main-nav-menu-container {
+          grid-column: -1;
+      }
   }
-
-
-
-
 
 
 

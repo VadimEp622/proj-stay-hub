@@ -60,17 +60,24 @@
     padding-bottom: 5px;
   }
   
+  .action-button.approve:hover {
+    background-color:hsl(120, 98%, 35%) ;
+  }
+  .action-button.reject:hover {
+    color: red;
+  }
+  
   .selection {
     font-weight: bold;
   }
   
   .action-button.approve {
-    background-color: $main-clr0;
+    background-color: #00C853;
     color: white;
   }
   
   .action-button.reject {
-    background-color: $gray-clr4;
+    background-color: $gray-clr5;
     color: $gray-clr2;
   }
   
