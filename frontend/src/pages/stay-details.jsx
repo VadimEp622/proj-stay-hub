@@ -147,7 +147,7 @@ export function StayDetails() {
                             }
                             {
                                 likeSvg === RED_HEART_16 &&
-                                <span>Unsave</span>
+                                <span>Save</span>
                             }
                             <div className="save-btn-overlay"></div>
                         </div>

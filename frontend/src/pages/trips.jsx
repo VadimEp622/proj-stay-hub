@@ -182,11 +182,20 @@ export function MyTrips() {
                             );
                         })}
                     </section>
+                </section>
+            ) : (
+                <section className="no-trips">
+                    <div className="no-trips-header">No trips booked...yet!</div>
+                    <p>Time to dust off your bags and start planning your next adventure</p>
+                    <button onClick={handleSearchClick}>Start searching</button>
+                </section>
+            )}
+
 
                     {/* {pastTrips.length > 0 && ( */}
                     <section className="where-you-been">
                         <h3>Where you've been</h3>
-                        <section className="past-trips">
+                        <section className="past-trips flex">
                             <section className="past-trip">
                                 <section className="past-trip-img">
                                     <img src="https://a0.muscache.com/im/pictures/bcb75add-a00d-466b-ba7d-ef2fe8d8e7e6.jpg?im_w=1200" alt="Amsterdam" />
@@ -240,14 +249,7 @@ export function MyTrips() {
                             })} */}
                     </section>
                     {/* )} */}
-                </section>
-            ) : (
-                <section className="no-trips">
-                    <div className="no-trips-header">No trips booked...yet!</div>
-                    <p>Time to dust off your bags and start planning your next adventure</p>
-                    <button onClick={handleSearchClick}>Start searching</button>
-                </section>
-            )}
+
         </div>
     )
 

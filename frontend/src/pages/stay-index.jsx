@@ -105,12 +105,12 @@ export function StayIndex() {
             <CategoryFilter />
             <StayList stays={stays} />
 
-            {
+            {/* {
                 isFilterExpanded &&
                 <button className="header-filter-unexpand" onClick={handleUnexpand}>
                     Un-expand header
                 </button>
-            }
+            } */}
 
         </section >
     )

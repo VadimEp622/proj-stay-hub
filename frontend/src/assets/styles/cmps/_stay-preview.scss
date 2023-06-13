@@ -43,7 +43,7 @@
         display: flex;
         @include between();
         gap: rem(3px);
-        justify-content: baseline;
+        align-items: baseline;
 
         img {
             height: rem(14px);
