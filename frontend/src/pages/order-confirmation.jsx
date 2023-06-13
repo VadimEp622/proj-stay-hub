@@ -48,7 +48,7 @@ export function OrderConfirmation() {
         // removeUndefinedProperties(orderObject)
         try {
             await addConfirmedTrip(orderObject)
-            // socketService.emit(SOCKET_EMIT_STAY_RESERVED, orderObject.seller._id)
+            socketService.emit(SOCKET_EMIT_STAY_RESERVED, orderObject.seller._id)
         } catch (error) {
             console.error('Error adding confirmed trip:', error)
         }

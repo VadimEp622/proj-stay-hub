@@ -34,24 +34,24 @@ export function RootCmp() {
     const user = useSelector(storeState => storeState.userModule.user)
 
 
-    // useEffect(() => {
-    //     socketService.setup()
-    //     return () => {
-    //         socketService.terminate()
-    //     }
-    // }, [])
+    useEffect(() => {
+        socketService.setup()
+        return () => {
+            socketService.terminate()
+        }
+    }, [])
 
 
-    // useEffect(() => {
-    //     if (user) {
-    //         socketService.login(user._id)
-    //         socketService.on(SOCKET_EMIT_USER_WATCH, () => { showSuccessMsg('A stay you own just got reserved') })
-    //         return () => {
-    //             socketService.off(SOCKET_EMIT_USER_WATCH)
-    //             socketService.logout()
-    //         }
-    //     }
-    // }, [user])
+    useEffect(() => {
+        if (user) {
+            socketService.login(user._id)
+            socketService.on(SOCKET_EMIT_USER_WATCH, () => { showSuccessMsg('A stay you own just got reserved') })
+            return () => {
+                socketService.off(SOCKET_EMIT_USER_WATCH)
+                socketService.logout()
+            }
+        }
+    }, [user])
 
     function closeBackground(ev) {
         ev.preventDefault()

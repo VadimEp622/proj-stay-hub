@@ -52,6 +52,7 @@ function emitTo({ type, data, label }) {
     else gIo.emit(type, data)
 }
 
+// {type->user-watch, data->a stay you own was just reserved, userId->hostId}
 async function emitToUser({ type, data, userId }) {
     userId = userId.toString()
     const socket = await _getUserSocket(userId)
