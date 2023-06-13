@@ -14,7 +14,7 @@ const options = {
     responsive: true,
     plugins: {
         legend: {
-           display: false,
+            display: false,
         },
         title: {
             display: true,
@@ -23,7 +23,7 @@ const options = {
     },
 };
 
-const labels = ['January', 'February', 'March', 'April', 'May', 'june'];
+const labels = ['January', 'February', 'March', 'April', 'May', 'June'];
 const revenue = [3420, 1502, 5482, 3481, 4953, 1714];
 const data = {
     labels,
@@ -32,12 +32,12 @@ const data = {
             label: 'Revenue generated per month',
             data: revenue,
             backgroundColor: [
-                'rgba(54, 162, 235, 0.5)',   
-                'rgba(255, 206, 86, 0.5)',    
-                'rgba(75, 192, 192, 0.5)',   
-                'rgba(153, 102, 255, 0.5)',  
-                'rgba(255, 159, 64, 0.5)',   
-                'rgba(128, 0, 128, 0.5)',   
+                'rgba(54, 162, 235, 0.5)',
+                'rgba(255, 206, 86, 0.5)',
+                'rgba(75, 192, 192, 0.5)',
+                'rgba(153, 102, 255, 0.5)',
+                'rgba(255, 159, 64, 0.5)',
+                'rgba(128, 0, 128, 0.5)',
             ],
         },
     ],
@@ -88,12 +88,12 @@ export function MyDashboard() {
             </section> */}
             <section className="sales-dashboard">
                 <section className='chart-container'>
-                    <Bar options={options} data={data} /> 
+                    <Bar options={options} data={data} />
                 </section>
-               <section className='chart-container'>
-                <LineChart />
-               </section>
-                
+                <section className='chart-container'>
+                    <LineChart />
+                </section>
+
             </section>
             <section className="orders">
                 <HostOrders />

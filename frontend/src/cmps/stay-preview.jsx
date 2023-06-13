@@ -25,7 +25,8 @@ export function StayPreview({ stay }) {
     const [lng, setLng] = useState(null)
 
 
-    function onLikeClicked(ev) {
+    async function onLikeClicked(ev) {
+        console.log(likeSVG)
         if (ev) {
             ev.preventDefault()
             ev.stopPropagation()
@@ -35,22 +36,24 @@ export function StayPreview({ stay }) {
             return
         }
         if (likeSVG === 'heart-red') {
+            console.log('hi')
             removeFromWishlist({ stay })
             userService.update(loggedInUser._id, 'wishlist', stay._id)
             setIsLikeClicked(true)
         }
         else {
             AddToWishlist({ stay })
-            userService.update(loggedInUser._id, 'wishlist', stay._id)
+            console.log('hi')
+            await userService.update(loggedInUser._id, 'wishlist', stay)
             setIsLikeClicked(false)
         }
-        // setIsLikeClicked(prevHeart => !prevHeart)
+        setIsLikeClicked(prevHeart => !prevHeart)
     }
 
     useEffect(() => {
         const likedId = wishedListItems?.some((wishlist) => wishlist._id === stay._id)
         setIsLikeClicked(likedId)
-    }, [wishedListItems, stay._id,isLikeClicked])
+    }, [wishedListItems, stay._id, isLikeClicked])
 
     const bedrooms = stay.bedrooms > 1 ? 'Bedrooms' : 'Bedroom'
     const bathrooms = stay.bathrooms > 1 ? 'Bathrooms' : 'Bathroom'
