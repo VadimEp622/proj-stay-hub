@@ -32,11 +32,9 @@ export async function getStays(req, res) {
       filterBy.country = 'Brazil'
       filterBy.city = 'Brazil'
     }
-
-    console.log('filterBy from stay.controller.js', filterBy)
+    console.log('hi before query')
     const stays = await stayService.query(filterBy)
-    // const slicedStays = stays.slice(0, 30)
-    // console.log('slicedStays', slicedStays)
+    console.log('hi after query')
     res.json(stays)
   } catch (err) {
     logger.error('Failed to get stays', err)

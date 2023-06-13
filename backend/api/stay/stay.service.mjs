@@ -40,15 +40,8 @@ async function query(filterBy) {
         }
 
 
-        console.log('criteria', criteria)
         const collection = await dbService.getCollection('stay')
-        var stayCursor = await collection.find(criteria)
-
-        if (filterBy.pageIdx !== undefined) {
-            stayCursor.skip(filterBy.pageIdx * PAGE_SIZE).limit(PAGE_SIZE)
-        }
-
-        const stays = stayCursor.toArray()
+        var stays = await collection.find(criteria).limit(50).toArray()
         return stays
     } catch (err) {
         logger.error('cannot find stays', err)

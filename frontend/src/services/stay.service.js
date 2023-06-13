@@ -36,7 +36,7 @@ async function query(filterBy = {
         capacity,
         label,
     }
-    console.log('filterBy from stay.service.js', filter)
+    console.log('hi from stayService frontend')
     return httpService.get(STORAGE_KEY, filter)
 }
 

@@ -35,20 +35,17 @@ export async function loadStays(filterBy) {
         console.log('hi from stay action, loadStays')
         store.dispatch({ type: LOADING_START })
         const stays = await stayService.query(filterBy)
+        console.log('hi after stays in action stay')
         store.dispatch({
             type: SET_STAYS,
             stays
         })
-
     } catch (err) {
         console.log('Cannot load stays', err)
         throw err
-    }
-
-    finally {
+    } finally {
         store.dispatch({ type: LOADING_DONE })
     }
-
 }
 
 export async function removeStay(stayId) {
