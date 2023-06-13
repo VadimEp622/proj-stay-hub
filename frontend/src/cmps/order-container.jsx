@@ -78,7 +78,8 @@ export function OrderContainer({ stay, randomDate }) {
             },
             nightsCount: nightsCount,
             nightsPrice: nightsPrice,
-            status: "Pending"
+            status: "Pending",
+            _id: utilService.makeId()
         });
 
 
@@ -111,7 +112,7 @@ export function OrderContainer({ stay, randomDate }) {
                     </div>
                 </div>
                 <section className="order-data"
-                    // style={{ zIndex: '1' }}
+                // style={{ zIndex: '1' }}
                 >
                     {/* <div className="size-less-order-modal-container" style={{ width: '0px', height: '0px', position: 'relative', float: 'right' }}>
                         {

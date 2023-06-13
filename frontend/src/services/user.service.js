@@ -37,13 +37,18 @@ function remove(userId) {
 }
 
 //NO UPDATE USER YET
-async function update(_id, type, data) {
+async function update(_id, type, data, action = 'update') {
     // const user = await storageService.get('user', _id);
     const user = await httpService.get(`user/${_id}`);
     if (!user[type]) {
         user[type] = [];
     }
-    user[type].push({ _id: data });
+    if (action === 'update') {
+        user[type].push(data);
+    } else {
+        const keyIndex = user[type].findIndex((typeItem) => typeItem._id === data._id)
+        user[type].splice(keyIndex, 1)
+    }
     // await storageService.put('user', user);
     await httpService.put(`user/${_id}`, user);
 

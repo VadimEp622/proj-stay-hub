@@ -3,6 +3,7 @@ import { StayList } from "../cmps/stay-list"
 import { Link } from "react-router-dom"
 import { AirbnbButton } from "../cmps/reuseableCmp/airbnb-button"
 import { setModal } from "../store/stay.actions"
+import { useEffect } from "react"
 
 
 
@@ -14,6 +15,14 @@ export function WishList() {
         ev.stopPropagation()
         setModal("logIn")
     }
+
+    useEffect(() => {
+        console.log('wishList 1', wishList)
+    }, [])
+
+    useEffect(() => {
+        console.log('wishList 2', wishList)
+    }, [wishList])
 
 
     if (!loggedInUser) return (

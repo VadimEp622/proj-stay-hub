@@ -20,6 +20,7 @@ export function StayIndex() {
     const isFilterExpanded = useSelector(storeState => storeState.systemModule.isFilterExpanded)
 
     useEffect(() => {
+        console.log('hi from Index')
         loadStays(filterBy)
     }, [filterBy])
 
