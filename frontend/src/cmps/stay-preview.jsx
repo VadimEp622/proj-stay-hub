@@ -11,6 +11,7 @@ import { AddToWishlist, removeFromWishlist } from "../store/user.actions.js"
 
 import SvgHandler from "./svg-handler.jsx"
 import { PreviewImageCarousel } from "./preview-image-carousel.jsx"
+import { userService } from "../services/user.service.js"
 
 export function StayPreview({ stay }) {
     const [isLikeClicked, setIsLikeClicked] = useState(false)
@@ -33,17 +34,23 @@ export function StayPreview({ stay }) {
             setModal('logIn')
             return
         }
-        if (likeSVG === 'heart-red') removeFromWishlist(stay._id)
-        else {
-            AddToWishlist(stay)
+        if (likeSVG === 'heart-red') {
+            removeFromWishlist({ stay })
+            userService.update(loggedInUser._id, 'wishlist', stay._id)
+            setIsLikeClicked(true)
         }
-        setIsLikeClicked(prevHeart => !prevHeart)
+        else {
+            AddToWishlist({ stay })
+            userService.update(loggedInUser._id, 'wishlist', stay._id)
+            setIsLikeClicked(false)
+        }
+        // setIsLikeClicked(prevHeart => !prevHeart)
     }
 
     useEffect(() => {
         const likedId = wishedListItems?.some((wishlist) => wishlist._id === stay._id)
         setIsLikeClicked(likedId)
-    }, [wishedListItems, stay._id])
+    }, [wishedListItems, stay._id,isLikeClicked])
 
     const bedrooms = stay.bedrooms > 1 ? 'Bedrooms' : 'Bedroom'
     const bathrooms = stay.bathrooms > 1 ? 'Bathrooms' : 'Bathroom'
