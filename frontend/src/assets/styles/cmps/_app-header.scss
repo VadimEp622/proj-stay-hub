@@ -1,10 +1,5 @@
 .app-header-container {
-    @include for-mobile-layout-header {
-    //   width: 0;
-    //   height: 0;
-    //   visibility: 0;
-    //   display: none !important;
-    }
+
 
     height: 100%;
     box-shadow: rgb(0 0 0 / 8%) 0 1px 0;
@@ -24,6 +19,20 @@
 
 }
 
+
+@media (max-width: 600px) {
+    .searchbar-toggler-container {
+      display: none;
+    }
+
+    .app-header {
+        padding: 0 10px;
+    }
+
+    .main-nav-menu-container {
+        grid-column: -1;
+    }
+  }
 
 
 

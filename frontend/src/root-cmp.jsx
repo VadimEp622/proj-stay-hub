@@ -72,8 +72,7 @@ export function RootCmp() {
             )}
 
             <section className={`app ${!isStayDetailsPage ? 'main-layout' : 'details-layout'} ${isUnclickableBg && 'unclickable-background'}`}>
-                {window.innerWidth > 750 && <AppHeader isStayDetailsPage={isStayDetailsPage}  />}
-
+               <AppHeader isStayDetailsPage={isStayDetailsPage} />
                 <main className="app-main">
                     <Routes>
                         {routes.map(route => <Route key={route.path} exact={true} element={route.component} path={route.path} />)}
