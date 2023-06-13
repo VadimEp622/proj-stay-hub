@@ -16,6 +16,9 @@ import { utilService } from '../services/util.service.js'
 import { Loader } from '../cmps/reuseableCmp/loader.jsx'
 import { socketService } from '../services/socket.service.js'
 import { useSelector } from 'react-redux'
+import { setModal } from '../store/stay.actions.js'
+import { AddToWishlist, removeFromWishlist } from '../store/user.actions.js'
+import { userService } from '../services/user.service.js'
 
 export function StayDetails() {
     const [stay, setStay] = useState(null)
@@ -23,13 +26,48 @@ export function StayDetails() {
     const navigate = useNavigate()
     const reviewsToDisplay = stay?.reviews?.slice(0, 6)
     const [isLikeClicked, setIsLikeClicked] = useState(false)
-    const user = useSelector(storeState => storeState.userModule.user)
+    const loggedInUser = useSelector(storeState => storeState.userModule.user)
+    const wishedListItems = useSelector(storeState => storeState.userModule.user?.wishlist)
     const likeSvg = isLikeClicked ? RED_HEART_16 : HEART_16
 
     useEffect(() => {
         loadStay()
+
+        // const likedId = wishedListItems?.some((wishlist) => wishlist._id === stayId)
+        // setIsLikeClicked((likedId))
     }, [stayId])
 
+
+    useEffect(() => {
+        // if(!loggedInUser)
+        const likedId = wishedListItems?.some((wishlist) => wishlist._id === stayId)
+        setIsLikeClicked((likedId))
+    }, [wishedListItems, stayId, isLikeClicked])
+
+
+    async function onLikeClicked(ev) {
+        console.log(likeSvg)
+        if (ev) {
+            ev.preventDefault()
+            ev.stopPropagation()
+        }
+        if (!loggedInUser) {
+            // setModal('logIn')
+            return
+        }
+        if (likeSvg === RED_HEART_16) {
+            console.log('hi from remove wishlist')
+            removeFromWishlist(stay)
+            await userService.update(loggedInUser._id, 'wishlist', stay, 'remove')
+            // setIsLikeClicked(false)
+        } else {
+            console.log('hi from add wishlist')
+            AddToWishlist(stay)
+            await userService.update(loggedInUser._id, 'wishlist', stay)
+            // setIsLikeClicked(true)
+        }
+        // setIsLikeClicked(prevHeart => !prevHeart)
+    }
 
 
     async function loadStay() {
@@ -98,9 +136,19 @@ export function StayDetails() {
                             <span>Share</span>
                             <div className="share-btn-overlay"></div>
                         </div>
-                        <div className='save-btn flex' onClick={() => setIsLikeClicked(prevHeart => !prevHeart)}>
+                        <div className='save-btn flex'
+                            // onClick={() => setIsLikeClicked(prevHeart => !prevHeart)}
+                            onClick={(ev) => onLikeClicked(ev)}
+                        >
                             <SvgHandler svgName={likeSvg} />
-                            <span>Save</span>
+                            {
+                                likeSvg === HEART_16 &&
+                                <span>Save</span>
+                            }
+                            {
+                                likeSvg === RED_HEART_16 &&
+                                <span>Unsave</span>
+                            }
                             <div className="save-btn-overlay"></div>
                         </div>
                     </section>

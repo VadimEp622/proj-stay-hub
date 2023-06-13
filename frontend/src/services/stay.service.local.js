@@ -5102,7 +5102,8 @@ export const stayService = {
     getEmptyStay,
     addStayMsg,
     generateReviewInputs,
-    generateAvailableDates
+    generateAvailableDates,
+    removeIdFromStays
 }
 window.cs = stayService
 
@@ -5688,4 +5689,12 @@ function generateReviewInputs(stays) {
             };
         });
     });
+}
+
+function removeIdFromStays(stays) {
+    const updatedStays = stays.map(stay => {
+        delete stay._id
+        return stay
+    })
+    return updatedStays
 }

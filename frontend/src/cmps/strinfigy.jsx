@@ -5,5 +5,6 @@ export function JSONStringify() {
     const stays = BIG_DATA;
     stayService.generateReviewInputs(stays)
     stayService.generateAvailableDates(stays)
-    return JSON.stringify(stays);
+    stayService.removeIdFromStays(stays)
+    return JSON.stringify(stays)
 }
