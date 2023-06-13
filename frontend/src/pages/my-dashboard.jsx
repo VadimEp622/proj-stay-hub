@@ -71,6 +71,10 @@ export function MyDashboard() {
 
     return (
         <div className='dashboard-page'>
+
+            <section className="orders">
+                <HostOrders />
+            </section>
             <section className='reservations'></section>
             {/* <h3>Welcome back, {loggedInUser?.fullname}</h3> */}
             {/* <section className="dashboard">
@@ -94,9 +98,6 @@ export function MyDashboard() {
                     <LineChart />
                 </section>
 
-            </section>
-            <section className="orders">
-                <HostOrders />
             </section>
         </div>
     );

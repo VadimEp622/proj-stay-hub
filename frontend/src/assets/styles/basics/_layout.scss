@@ -19,11 +19,10 @@
     // less than 760px
     // @include for-mobile-layout {
     @media (max-width: calc($mobile-breakpoint  + 40px)) {
-        grid-template-columns: 0 1fr 0;
+        grid-template-columns: 0 auto 0;
 
         & .app-main {
             padding:0 10px;
-
         }
     }
     // less than 750px
