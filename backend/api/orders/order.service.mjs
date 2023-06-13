@@ -29,9 +29,9 @@ async function query(filterBy = {}) {
             {
                 $lookup:
                 {
-                    from: 'user',
-                    localField: 'aboutUserId',
-                    foreignField: '_id',
+                    from: 'stay',
+                    localField: 'content.seller._id',
+                    foreignField: 'host._id',
                     as: 'aboutUser'
                 }
             },
