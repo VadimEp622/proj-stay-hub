@@ -23,7 +23,6 @@
         .upcoming-reservation {
             display: grid;
             grid-template-columns: 2fr 1fr;
-            height: 20vh;
             gap: 48px;
             margin-bottom: 48px;
 
@@ -49,15 +48,15 @@
                 }
             }
 
+            .reservation-header {
+                border-bottom: 1px solid $gray-clr4;
+            }
+
             .reservation-info {
-                height: 100%;
+                height: auto;
                 display: grid;
                 grid-template-rows: 50% 50%;
                 padding: 24px;
-            }
-
-            .reservation-header {
-                border-bottom: 1px solid $gray-clr4;
             }
 
             .reservation-header :first-child {
@@ -75,6 +74,7 @@
             .reservation-dates>* {
                 align-items: flex-start;
                 height: 100%;
+                flex: 1;
             }
 
             .reservation-date {

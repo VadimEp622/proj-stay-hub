@@ -116,7 +116,7 @@ export function MyTrips() {
                                                     <span>{trip.stayDetails.loc.country}</span>
                                                 </section>
                                                 <section className="reservation-confirmation">
-                                                    <span>Status</span>
+                                                    <span>Status:</span>
                                                     <h4 className={trip.status.toLowerCase()}>
                                                         {trip.status}
                                                     </h4>
