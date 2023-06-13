@@ -105,7 +105,7 @@ export function StayDetails() {
         return percentage.toFixed(1)
     }
 
-    if (!stay) return <section className="loading">Loading...</section>
+    if (!stay) return <section className="loading"><Loader /></section>
     const reviewsInputs = displayReviewsCriteria()
     const reviews = stay.reviews.length > 1 ? 'reviews' : 'review'
     const capitalizedReviewsString = reviews.charAt(0).toUpperCase() + reviews.slice(1)

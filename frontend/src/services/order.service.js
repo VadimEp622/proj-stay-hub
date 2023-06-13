@@ -20,8 +20,9 @@ async function getOrderById(orderID) {
 }
 
 async function sendOrder(order) {
-    await storageService.post('orders', order)
-    // await httpService.post('order', order)
+    console.log('order', order)
+    // await storageService.post('orders', order)
+    await httpService.post(STORAGE_KEY, order)
 }
 
 async function removeOrder(orderId) {
@@ -31,8 +32,8 @@ async function removeOrder(orderId) {
 }
 
 async function getOrders() {
-    return storageService.query('orders')
-    // return httpService.get(STORAGE_KEY)
+    // return storageService.query('orders')
+    return httpService.get(STORAGE_KEY)
 }
 
 async function saveOrder(order) {
