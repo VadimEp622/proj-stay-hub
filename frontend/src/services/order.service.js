@@ -13,6 +13,7 @@ export const orderService = {
 
 window.cs = orderService
 
+// NEED TO FIX AND CONNECTS ROUTES FOR BACKEND -> NEED TO THINK ABOUT WHAT EXACTLY WILL THE ORDER ROUTES BE.
 async function getOrderById(orderID) {
     const order = await storageService.get('orders', orderID)
     // return httpService.get(`order/${orderID}`)
@@ -31,9 +32,10 @@ async function removeOrder(orderId) {
 
 }
 
-async function getOrders() {
+async function getOrders(userId) {
     // return storageService.query('orders')
-    return httpService.get(STORAGE_KEY)
+    return httpService.get(STORAGE_KEY, userId)
+    // return httpService.get(`orders/${userId}`)
 }
 
 async function saveOrder(order) {
