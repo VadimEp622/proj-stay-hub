@@ -91,6 +91,7 @@ export function setGuests(guests) {
 }
 
 export function setOrder(order) {
+    console.log('Set order -> user.actions.js', order)
     store.dispatch({ type: SET_ORDER, order })
 }
 

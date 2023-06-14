@@ -7,9 +7,9 @@ const router = express.Router()
 
 router.get('/', log, getOrders)
 router.get('/:id', getOrderById)
-router.put('/', log, requireAuth, addOrder)
+router.post('/', log, requireAuth, addOrder)
 // router.post('/:id', log, requireAuth, updateOrder)
-router.post('/:id', log, updateOrder)
+router.put('/:id', log, updateOrder)
 router.delete('/:id', requireAuth, deleteOrder)
 
 export const orderRoutes = router

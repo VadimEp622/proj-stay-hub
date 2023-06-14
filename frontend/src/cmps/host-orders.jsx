@@ -34,6 +34,7 @@ export function HostOrders() {
     const fetchOrders = async () => {
       try {
         const orders = await orderService.getOrders()
+        console.log('orders -> host-order.jsx', orders)
         const filteredTrips = orders.filter(
           (order) => order.seller._id === loggedInUser._id
         );
@@ -47,13 +48,14 @@ export function HostOrders() {
   }, [])
 
   function handleApprovedClick(trip) {
-    trip.status = "Approved"
-    orderService.saveOrder(trip)
+    // console.log('trip', trip)
+    // trip.status = "Approved"
+    // orderService.saveOrder(trip)
   }
 
   function handleRejectedClick(trip) {
-    trip.status = "Rejected"
-    orderService.saveOrder(trip)
+    // trip.status = "Rejected"
+    // orderService.saveOrder(trip)
   }
 
   return (

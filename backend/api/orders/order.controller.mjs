@@ -6,8 +6,10 @@ import { orderService } from './order.service.mjs'
 
 export async function getOrders(req, res) {
     try {
-        console.log('req.query', req.query)
+        // console.log('req.query', req.query)
+        // console.log('req.body', req.body)
         const orders = await orderService.query(req.query)
+        // console.log('orders -> order.controller.mjsx', orders)
         res.send(orders)
     } catch (err) {
         logger.error('Cannot get orders', err)
