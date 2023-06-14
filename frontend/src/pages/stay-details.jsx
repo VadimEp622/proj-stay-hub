@@ -16,7 +16,7 @@ import { utilService } from '../services/util.service.js'
 import { Loader } from '../cmps/reuseableCmp/loader.jsx'
 import { socketService } from '../services/socket.service.js'
 import { useSelector } from 'react-redux'
-import {  setModal } from '../store/stay.actions.js'
+import { setModal } from '../store/stay.actions.js'
 import { AddToWishlist, removeFromWishlist } from '../store/user.actions.js'
 import { userService } from '../services/user.service.js'
 
@@ -106,7 +106,8 @@ export function StayDetails() {
     const reviews = stay.reviews.length > 1 ? 'reviews' : 'review'
     const capitalizedReviewsString = reviews.charAt(0).toUpperCase() + reviews.slice(1)
     const randomDateJoined = utilService.getRandomMonthAndYear()
-    const hostImgUrl = userService.randomHostImg()
+    const hostImgUrl = stay.host.isInDB ? stay.host.pictureUrl : userService.randomHostImg()
+
     return <>
         <div>
             <Helmet>
@@ -218,7 +219,7 @@ export function StayDetails() {
                     </div>
                 </section>
                 <section className='order-container'>
-                    <OrderContainer stay={stay} randomDate={randomDateJoined} hostImgUrl={hostImgUrl}/>
+                    <OrderContainer stay={stay} randomDate={randomDateJoined} hostImgUrl={hostImgUrl} />
                 </section>
             </section>
 

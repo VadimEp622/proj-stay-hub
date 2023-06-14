@@ -63,22 +63,24 @@ const data = {
 
 export function MyDashboard() {
     const loggedInUser = userService.getLoggedinUser()
-    const [listings, setListings] = useState([])
+    // const [listings, setListings] = useState([])
     const navigate = useNavigate()
 
-    useEffect(() => {
-        const fetchOrders = async () => {
-            try {
-                const listings = await stayService.query()
-                const filteredListings = listings.filter((listing) => listing.host._id === loggedInUser._id)
-                setListings(filteredListings)
-            } catch (error) {
-                showErrorMsg('Error fetching orders')
-            }
-        }
+    // useEffect(() => {
+    //     const fetchOrders = async () => {
+    //         try {
+    //             const listings = await stayService.query()
+    //             console.log('listings', listings)
+    //             const filteredListings = listings.filter((listing) => listing.host._id === loggedInUser._id)
+    //             console.log('filteredListings', filteredListings)
+    //             setListings(filteredListings)
+    //         } catch (error) {
+    //             showErrorMsg('Error fetching orders')
+    //         }
+    //     }
 
-        fetchOrders()
-    }, [loggedInUser])
+    //     fetchOrders()
+    // }, [loggedInUser])
 
     useEffect(() => {
         if (!loggedInUser) {
