@@ -1,15 +1,19 @@
 import io from 'socket.io-client'
 import { userService } from './user.service'
 
-export const SOCKET_EVENT_ADD_MSG = 'chat-add-msg'
 export const SOCKET_EMIT_SEND_MSG = 'chat-send-msg'
 export const SOCKET_EMIT_SET_TOPIC = 'chat-set-topic'
 export const SOCKET_EMIT_USER_WATCH = 'user-watch'
-export const SOCKET_EMIT_STAY_RESERVED = 'stay-reserved'
+// export const SOCKET_EMIT_STAY_RESERVED = 'stay-reserved'
+export const SOCKET_EMIT_SET_STAYID = 'stay-set-topic'
+
 // export const SOCKET_EVENT_SELLER_REPLY = 'reserve-watch'
+export const SOCKET_EVENT_ADD_MSG = 'chat-add-msg'
 export const SOCKET_EVENT_USER_UPDATED = 'user-updated'
 export const SOCKET_EVENT_REVIEW_ADDED = 'review-added'
 export const SOCKET_EVENT_REVIEW_ABOUT_YOU = 'review-about-you'
+export const SOCKET_EVENT_STAY_RESERVED = 'stay-reserved-send'
+export const SOCKET_EVENT_RESERVATION_REPLY = 'stay-reservation-reply'
 // export const SOCKET_EVENT_STAY_WATCH = 'stay-watch'
 
 const SOCKET_EMIT_LOGIN = 'set-user-socket'
@@ -43,6 +47,7 @@ function createSocketService() {
       else socket.off(eventName, cb)
     },
     emit(eventName, data) {
+      console.log('EMIT FRONT -> eventName, data', eventName, data)
       socket.emit(eventName, data)
     },
     login(userId) {

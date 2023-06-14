@@ -35,6 +35,20 @@ export function setupSocketAPI(http) {
             socket.join('watching:' + userId)
 
         })
+        socket.on('stay-set-topic', topic => {
+            // logger.info(`stay-reserved-watch from socket [id: ${socket.id}], on user ${userId}`)
+            // socket.join('watching:' + userId)
+            // // gIo.emitToUser({ type: 'user-watch', data: 'a stay you own has just been reserved', userId: orderToUpdate.content.seller._id })
+            // // gIo.emitToUser({ type: 'stay-reserved-send', data: 'a stay you own has just been reserved', userId: userId })
+            // gIo.emit('stay-reserved-send', 'a stay you own has just been reserved')
+            if (socket.myTopic === topic) return
+            if (socket.myTopic) {
+                socket.leave(socket.myTopic)
+                logger.info(`Socket is leaving topic ${socket.myTopic} [id: ${socket.id}]`)
+            }
+            socket.join(topic)
+            socket.myTopic = topic
+        })
         socket.on('set-user-socket', userId => {
             logger.info(`Setting socket.userId = ${userId} for socket [id: ${socket.id}]`)
             socket.userId = userId

@@ -32,9 +32,9 @@ export async function getStays(req, res) {
       filterBy.country = 'Brazil'
       filterBy.city = 'Brazil'
     }
-    console.log('hi before query')
+    // console.log('hi before query')
     const stays = await stayService.query(filterBy)
-    console.log('hi after query')
+    // console.log('hi after query')
     res.json(stays)
   } catch (err) {
     logger.error('Failed to get stays', err)

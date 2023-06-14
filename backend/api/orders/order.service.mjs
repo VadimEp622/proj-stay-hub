@@ -7,7 +7,7 @@ const { ObjectId } = mongodb
 async function query(filterBy = {}) {
     try {
         const criteria = _buildCriteria(filterBy)
-        console.log('criteria', criteria)
+        // console.log('criteria', criteria)
         const collection = await dbService.getCollection('order')
         // console.log('collection ->order.service.mjs', collection)
         // const reviews = await collection.find(criteria).toArray()
@@ -41,7 +41,7 @@ async function query(filterBy = {}) {
             // }
         ]).toArray()
         // console.log('orders -> order.service.mjs (query)', orders)
-        console.log('orders -> order.service.mjs (query),orders[0].content.buyer', orders[0].content.buyer)
+        // console.log('orders -> order.service.mjs (query),orders[0].content.buyer', orders[0].content.buyer)
         orders = orders.map(order => {
             order.byUser = { _id: order.content.buyer._id, fullname: order.content.buyer.fullname }
             order.aboutUser = { _id: order.content.seller._id, fullname: order.content.seller.fullname }
@@ -49,7 +49,7 @@ async function query(filterBy = {}) {
             delete order.aboutUserId
             return order
         })
-        console.log('orders', orders)
+        // console.log('orders', orders)
 
         return orders
     } catch (err) {
@@ -88,7 +88,7 @@ async function remove(orderId) {
 
 async function add(order) {
     try {
-        console.log('order in order.service.mjs', order)
+        // console.log('order in order.service.mjs', order)
         const orderToAdd = {
             byUserId: new ObjectId(order.buyer._id),
             aboutUserId: new ObjectId(order.seller._id),

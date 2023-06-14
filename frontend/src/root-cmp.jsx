@@ -23,7 +23,7 @@ import { AddStay } from './pages/add-stay'
 import { JSONStringify } from './cmps/strinfigy'
 import { MyDashboard } from './pages/my-dashboard'
 import { UserMsg } from './cmps/user-msg'
-import { SOCKET_EMIT_USER_WATCH, socketService } from './services/socket.service'
+import { SOCKET_EMIT_STAY_RESERVED, SOCKET_EMIT_USER_WATCH, socketService } from './services/socket.service'
 import { showSuccessMsg } from './services/event-bus.service'
 
 export function RootCmp() {
@@ -42,19 +42,14 @@ export function RootCmp() {
     }, [])
 
 
-    useEffect(() => {
-        if (user) {
-            socketService.login(user._id)
-            socketService.on(SOCKET_EMIT_USER_WATCH, (something) => { 
-                console.log('something', something)
-                showSuccessMsg('A stay you own just got reserved') 
-            })
-            return () => {
-                socketService.off(SOCKET_EMIT_USER_WATCH)
-                socketService.logout()
-            }
-        }
-    }, [user])
+    // useEffect(() => {
+    //     // if (user) {
+    //     socketService.login(user._id)
+    //     return () => {
+    //         socketService.logout()
+    //     }
+    //     // }
+    // }, [user])
 
     function closeBackground(ev) {
         ev.preventDefault()
@@ -75,7 +70,7 @@ export function RootCmp() {
             )}
 
             <section className={`app ${!isStayDetailsPage ? 'main-layout' : 'details-layout'} ${isUnclickableBg && 'unclickable-background'}`}>
-               <AppHeader isStayDetailsPage={isStayDetailsPage} />
+                <AppHeader isStayDetailsPage={isStayDetailsPage} />
                 <main className="app-main">
                     <Routes>
                         {routes.map(route => <Route key={route.path} exact={true} element={route.component} path={route.path} />)}
@@ -90,7 +85,7 @@ export function RootCmp() {
                     </Routes>
                 </main>
                 {window.innerWidth > 750 && <AppFooter isStayDetailsPage={isStayDetailsPage} />}
-
+                <UserMsg />
             </section>
 
         </>

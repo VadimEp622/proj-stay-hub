@@ -6,13 +6,31 @@ import { utilService } from "../services/util.service";
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { addConfirmedTrip } from "../store/user.actions";
-import { SOCKET_EMIT_STAY_RESERVED, socketService } from "../services/socket.service";
+import { SOCKET_EMIT_SET_STAYID, SOCKET_EMIT_STAY_RESERVED, SOCKET_EVENT_STAY_RESERVED, socketService } from "../services/socket.service";
+import { useEffect } from "react";
 
-export function OrderConfirmation({x}) {
-   
+export function OrderConfirmation({ x }) {
+
     const navigate = useNavigate()
     const orderObject = useSelector(storeState => storeState.userModule.order)
     console.log('orderObject', orderObject)
+
+    // useEffect(() => {
+    //     socketService.on(SOCKET_EMIT_SET_STAYID, doSomething)
+    //     socketService.emit(SOCKET_EMIT_SET_TOYID, toy._id)
+    //     return () => {
+    //         socketService.off(SOCKET_EMIT_SET_STAYID, doSomething)
+    //     }
+    // }, [])
+    function doSomething(something) {
+
+        console.log('something', something)
+    }
+
+
+
+
+
     // const hostImgUrl = useSelector(storeState => storeState.stayModule.currHostImgUrl)
     if (!orderObject || !orderObject.stayDetails || !orderObject.orderPrice) return <div>Loading..</div>
     const { stayDetails, guestsNumber, checkIn, checkOut, orderPrice, nightsCount, nightsPrice, seller } = orderObject
@@ -25,19 +43,7 @@ export function OrderConfirmation({x}) {
         day: 'numeric',
     });
 
-    // function removeUndefinedProperties(orderObject) {
-    //     for (const prop in orderObject) {
-    //         if (orderObject[prop] === undefined || Number.isNaN(orderObject[prop])) {
-    //             delete orderObject[prop];
-    //         } else if (typeof orderObject[prop] === 'object') {
-    //             removeUndefinedProperties(orderObject[prop]);
-    //             if (Object.keys(orderObject[prop]).length === 0) {
-    //                 delete orderObject[prop];
-    //             }
-    //         }
-    //     }
-    //     return orderObject;
-    // }
+
     async function handleOrderConfirm(ev) {
         await onOrderConfirm(ev)
         navigate('/trips')
@@ -52,7 +58,7 @@ export function OrderConfirmation({x}) {
         try {
             // console.log('orderObject', orderObject)
             await addConfirmedTrip(orderObject)
-            socketService.emit(SOCKET_EMIT_STAY_RESERVED, orderObject.seller._id)
+            socketService.emit(SOCKET_EVENT_STAY_RESERVED, orderObject.seller._id)
         } catch (error) {
             console.error('Error adding confirmed trip:', error)
         }

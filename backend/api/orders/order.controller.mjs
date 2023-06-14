@@ -66,30 +66,18 @@ export async function addOrder(req, res) {
         // const order = req.query
         // order.byUserId = loggedinUser._id
         const orderRes = await orderService.add(order)
+        console.log(`type: 'stay-reserved-send',
+        data: 'a stay you own has just been reserved',
+        userId: orderRes.content.seller._id
+        ------>`, orderRes.content.seller._id)
 
-        // // prepare the updated review for sending out
-        // order.aboutUser = await userService.getById(order.aboutUserId)
-
-        // Give the user credit for adding a review
-        // var user = await userService.getById(review.byUserId)
-        // user.score += 10
-        // loggedinUser = await userService.update(loggedinUser)
-        // order.byUser = loggedinUser
-
-        // // User info is saved also in the login-token, update it
-        // const loginToken = authService.getLoginToken(loggedinUser)
-        // res.cookie('loginToken', loginToken)
-
-        // delete order.aboutUserId
-        // delete order.byUserId
+        socketService.emitToUser({
+            type: 'stay-reserved-send',
+            data: orderRes._id,
+            userId: orderRes.content.seller._id
+        })
 
 
-        // WHAT IS THIS? =,=
-        // socketService.broadcast({ type: 'order-added', data: order, userId: loggedinUser._id })
-        // socketService.emitToUser({ type: 'order has been added', data: order, userId: order.seller._id })
-
-        // const fullUser = await userService.getById(loggedinUser._id)
-        // socketService.emitTo({ type: 'user-updated', data: fullUser, label: fullUser._id })
 
         res.send(order)
 
@@ -112,7 +100,13 @@ export async function updateOrder(req, res) {
     // console.log('orderToUpdate', orderToUpdate)
     try {
         const orderRes = await orderService.update(orderToUpdate)
-        socketService.emitToUser({ type:'user-watch', data:'a stay you own has just been reserved', userId:orderToUpdate.content.seller._id })
+
+
+        socketService.emitToUser({
+            type: 'stay-reservation-reply',
+            data: orderToUpdate.content.status,
+            userId: orderToUpdate.content.buyer._id
+        })
         res.send(orderRes)
     } catch (err) {
         logger.error('Failed to update order', err)
