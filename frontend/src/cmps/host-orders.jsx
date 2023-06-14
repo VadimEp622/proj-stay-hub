@@ -35,10 +35,11 @@ export function HostOrders() {
       try {
         const orders = await orderService.getOrders()
         console.log('orders -> host-order.jsx', orders)
-        const filteredTrips = orders.filter(
-          (order) => order.seller._id === loggedInUser._id
-        );
-        setOrderedListings(filteredTrips)
+        // const filteredTrips = orders.filter(
+        //   (order) => order.seller._id === loggedInUser._id
+        // );
+        // setOrderedListings(filteredTrips)
+        setOrderedListings(orders)
       } catch (error) {
         showErrorMsg('Error fetching orders')
       }
@@ -48,14 +49,15 @@ export function HostOrders() {
   }, [])
 
   function handleApprovedClick(trip) {
-    // console.log('trip', trip)
-    // trip.status = "Approved"
-    // orderService.saveOrder(trip)
+    console.log('trip', trip)
+    trip.status = "Approved"
+    orderService.saveOrder(trip)
+    // setOrderedListings(orders)
   }
 
   function handleRejectedClick(trip) {
-    // trip.status = "Rejected"
-    // orderService.saveOrder(trip)
+    trip.status = "Rejected"
+    orderService.saveOrder(trip)
   }
 
   return (
@@ -72,10 +74,19 @@ export function HostOrders() {
           <tbody>
             {orderedListings.map((order, index) => (
               <tr key={index}>
-                <td>{order.buyer.name}</td>
-                <td>{utilService.getFormattedTimeRange(order.availableDates[0].from, order.availableDates[0].to)}</td>
+                {/* <td>{order.content.buyer.fullname}</td> */}
                 <td>
-                  {order.status === 'Pending' ? (
+                  <section className='order-mini-user flex'>
+                    <img src={order.content.buyer.img} alt="guest" />
+                    <section className='mini-user-info flex'>
+                      <span> {order.content.buyer.fullname}</span>
+                      <span className='joined-in flex align-baseline'>Joined in {order.content.buyer.joined}</span>
+                    </section>
+                  </section>
+                </td>
+                <td>{utilService.getFormattedTimeRange(order.content.checkIn, order.content.checkOut)}</td>
+                <td>
+                  {order.content.status === 'Pending' ? (
                     <div className="actions">
                       <button className="action-button approve" onClick={() => handleApprovedClick(order)}>
                         Approve
@@ -85,7 +96,7 @@ export function HostOrders() {
                       </button>
                     </div>
                   ) : (
-                    <div className="selection">{order.status}</div>
+                    <div className="selection">{order.content.status}</div>
                   )}
                 </td>
               </tr>
@@ -100,7 +111,6 @@ export function HostOrders() {
                       <span className='joined-in flex align-baseline'>Joined in {item.join}</span>
                     </section>
                   </section>
-
                 </td>
                 <td>{item.dates}</td>
                 <td>

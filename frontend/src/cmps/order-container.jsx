@@ -45,7 +45,10 @@ export function OrderContainer({ stay, randomDate, hostImgUrl }) {
         setOrderObject({
             buyer: {
                 _id: user ? user._id : '',
-                fullname: user ? user.fullname : ''
+                fullname: user ? user.fullname : '',
+                img: user?.imgUrl,
+                // joined: randomDate.split(' ')[1]
+                joined: randomDate
             },
             seller: {
                 fullname: stay.host.fullname,
