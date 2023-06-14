@@ -54,7 +54,17 @@ async function query(filterBy = {}) {
         logger.error('cannot find reviews', err)
         throw err
     }
+}
 
+async function getById(orderId) {
+    try {
+        const collection = await dbService.getCollection('order')
+        const order = await collection.findOne({ _id: new ObjectId(orderId) })
+        return order
+    } catch (err) {
+        logger.error(`while finding order ${orderId}`, err)
+        throw err
+    }
 }
 
 async function remove(orderId) {
@@ -92,6 +102,38 @@ async function add(order) {
     }
 }
 
+async function update(order) {
+    try {
+        console.log('update order in order.service.mjs', order)
+        const orderToUpdate = {
+            ...order
+            // byUserId: new ObjectId(order.buyer._id),
+
+            // aboutUserId: new ObjectId(order._id),
+            // ...query({order:aboutU})
+            // content: {
+            //     status: order.status
+            // }
+        }
+        // const collection = await dbService.getCollection('order')
+        // await collection.insertOne(orderToUpdate)
+        // return orderToAdd
+
+
+        // const stayToSave = {
+        //     vendor: stay.vendor,
+        //     price: stay.price
+        // }
+        const collection = await dbService.getCollection('order')
+        await collection.updateOne({ _id: new ObjectId(orderToUpdate._id) }, { $set: orderToUpdate })
+        return orderToUpdate
+
+    } catch (err) {
+        logger.error('cannot update order', err)
+        throw err
+    }
+}
+
 function _buildCriteria(filterBy) {
     const criteria = {}
     if (filterBy.byUserId) criteria.byUserId = new ObjectId(filterBy.byUserId)
@@ -100,8 +142,10 @@ function _buildCriteria(filterBy) {
 
 export const orderService = {
     query,
+    getById,
     remove,
-    add
+    add,
+    update
 }
 
 
