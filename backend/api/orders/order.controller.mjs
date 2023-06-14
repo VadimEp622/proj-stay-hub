@@ -73,7 +73,7 @@ export async function addOrder(req, res) {
 
         socketService.emitToUser({
             type: 'stay-reserved-send',
-            data: orderRes._id,
+            data: orderRes.content.stayDetails.loc,
             userId: orderRes.content.seller._id
         })
 

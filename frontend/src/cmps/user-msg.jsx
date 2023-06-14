@@ -22,14 +22,14 @@ export function UserMsg() {
       showSuccessMsg(`New review about me ${review.txt}`)
     })
 
-    socketService.on(SOCKET_EVENT_STAY_RESERVED, (msg) => {
-      console.log(`New stay reservation about me ----> ${msg}`)
-      showSuccessMsg(`New stay reservation about me ${msg}`)
+    socketService.on(SOCKET_EVENT_STAY_RESERVED, (loc) => {
+      console.log(`New stay reservation about me ----> ${loc.country}, ${loc.city}`)
+      showSuccessMsg(`Pending reservation for: ${loc.country}, ${loc.city}`)
     })
 
-    socketService.on(SOCKET_EVENT_RESERVATION_REPLY, (msg) => {
-      console.log(`Host replied to your reservation ----> ${msg}`)
-      showSuccessMsg(`Your reservation has been ${msg}`)
+    socketService.on(SOCKET_EVENT_RESERVATION_REPLY, (reply) => {
+      console.log(`Host replied to your reservation ----> ${reply}`)
+      showSuccessMsg(`Your reservation has been ${reply}`)
     })
 
 
