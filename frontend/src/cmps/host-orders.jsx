@@ -48,17 +48,36 @@ export function HostOrders() {
     fetchOrders()
   }, [])
 
+  // function handleApprovedClick(trip) {
+  //   console.log('trip', trip)
+  //   trip.status = "Approved"
+  //   orderService.saveOrder(trip)
+  //   // setOrderedListings(orders)
+  // }
+
+  // function handleRejectedClick(trip) {
+  //   trip.status = "Rejected"
+  //   orderService.saveOrder(trip)
+  // }
+
   function handleApprovedClick(trip) {
-    console.log('trip', trip)
-    trip.status = "Approved"
-    orderService.saveOrder(trip)
-    // setOrderedListings(orders)
+    const updatedListings = orderedListings.map((listing) =>
+      listing.content._id === trip.content._id ? { ...listing, content: { ...listing.content, status: 'Approved' } } : listing
+    );
+    setOrderedListings(updatedListings);
+    orderService.saveOrder({ status: 'Approved', _id: trip._id });
   }
 
   function handleRejectedClick(trip) {
-    trip.status = "Rejected"
-    orderService.saveOrder(trip)
+    const updatedListings = orderedListings.map((listing) =>
+      listing.content._id === trip.content._id ? { ...listing, content: { ...listing.content, status: 'Rejected' } } : listing
+    );
+    setOrderedListings(updatedListings);
+    orderService.saveOrder({ status: 'Rejected', _id: trip._id });
   }
+
+
+
 
   return (
     <div className="table-wrapper">
