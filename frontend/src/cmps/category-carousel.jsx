@@ -38,9 +38,17 @@ export function CategoryCarousel({ images, selectedCategory, handleClick }) {
         desktop: {
             breakpoint: {
                 max: 3000,
-                min: 1200
+                min: 1500
             },
             items: 17,
+            slidesToSlide: 6
+        },
+        desktopSmall: {
+            breakpoint: {
+                max: 1500,
+                min: 464
+            },
+            items: 13,
             slidesToSlide: 6
         },
         mobile: {

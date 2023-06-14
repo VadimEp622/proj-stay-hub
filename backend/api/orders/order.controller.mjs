@@ -15,6 +15,19 @@ export async function getOrders(req, res) {
     }
 }
 
+export async function getOrderById(req, res) {
+    try {
+        const orderId = req.params.id
+        console.log('orderId', orderId)
+        // const orders = await orderService.query(orderId)
+        const order = await orderService.getById(orderId)
+        res.send(order)
+    } catch (err) {
+        logger.error('Cannot get orders', err)
+        res.status(400).send({ err: 'Failed to get orders' })
+    }
+}
+
 export async function deleteOrder(req, res) {
     try {
         const deletedCount = await orderService.remove(req.params.id)
@@ -84,3 +97,22 @@ export async function addOrder(req, res) {
     }
 }
 
+
+export async function updateOrder(req, res) {
+    // console.log('req.body', req.body)
+    const orderId = req.params.id
+    const orderStatus = req.body.status
+
+    // console.log('req.params.id', req.params.id)
+    const orderToUpdate = await orderService.getById(orderId)
+    // console.log('orderToUpdate', orderToUpdate)
+    orderToUpdate.content.status = orderStatus
+    // console.log('orderToUpdate', orderToUpdate)
+    try {
+        const orderRes = await orderService.update(orderToUpdate)
+        res.send(orderRes)
+    } catch (err) {
+        logger.error('Failed to update order', err)
+        res.status(400).send({ err: 'Failed to update order' })
+    }
+}

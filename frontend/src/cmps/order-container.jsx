@@ -86,6 +86,7 @@ export function OrderContainer({ stay, randomDate, hostImgUrl }) {
         });
     }, [])
 
+
     useEffect(() => {
         console.log(orderObject)
         setOrder(orderObject)
