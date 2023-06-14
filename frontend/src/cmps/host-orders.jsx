@@ -96,7 +96,9 @@ export function HostOrders() {
                       </button>
                     </div>
                   ) : (
-                    <div className="selection">{order.content.status}</div>
+                    // <div className="selection">{order.content.status}</div>
+                    <div className={`selection ${order.content.status === 'Approved' ? 'approved' : 'rejected'}`} > {order.content.status}</div>
+                    // <div className={`selection ${item.status === 'Approved' ? 'approved' : 'rejected'}`}>
                   )}
                 </td>
               </tr>
