@@ -39,9 +39,10 @@ async function getOrders(userId) {
 }
 
 async function saveOrder(order) {
-    var savedStay
-    if (order._id) {
-        savedStay = await storageService.put('orders', order)
-        return savedStay
-    }
+    let savedStay
+    // if (order._id) {
+    // savedStay = await storageService.put('orders', order)
+    savedStay = await httpService.put(`orders/${order._id}`, order)
+    return savedStay
+    // }
 }

@@ -9,37 +9,39 @@ async function query(filterBy = {}) {
         const criteria = _buildCriteria(filterBy)
         console.log('criteria', criteria)
         const collection = await dbService.getCollection('order')
+        // console.log('collection ->order.service.mjs', collection)
         // const reviews = await collection.find(criteria).toArray()
         var orders = await collection.aggregate([
             {
                 $match: criteria
             },
-            {
-                $lookup:
-                {
-                    from: 'user',
-                    localField: 'byUserId',
-                    foreignField: '_id',
-                    as: 'byUser'
-                }
-            },
-            {
-                $unwind: '$byUser'
-            },
-            {
-                $lookup:
-                {
-                    from: 'stay',
-                    localField: 'content.seller._id',
-                    foreignField: 'host._id',
-                    as: 'aboutUser'
-                }
-            },
-            {
-                $unwind: '$aboutUser'
-            }
+            // {
+            //     $lookup:
+            //     {
+            //         from: 'user',
+            //         localField: 'byUserId',
+            //         foreignField: '_id',
+            //         as: 'byUser'
+            //     }
+            // },
+            // {
+            //     $unwind: '$byUser'
+            // },
+            // {
+            //     $lookup:
+            //     {
+            //         from: 'stay',
+            //         localField: 'content.seller._id',
+            //         foreignField: 'host._id',
+            //         as: 'aboutUser'
+            //     }
+            // },
+            // {
+            //     $unwind: '$aboutUser'
+            // }
         ]).toArray()
-        // console.log('orders', orders)
+        // console.log('orders -> order.service.mjs (query)', orders)
+        console.log('orders -> order.service.mjs (query),orders[0].content.buyer', orders[0].content.buyer)
         orders = orders.map(order => {
             order.byUser = { _id: order.content.buyer._id, fullname: order.content.buyer.fullname }
             order.aboutUser = { _id: order.content.seller._id, fullname: order.content.seller.fullname }

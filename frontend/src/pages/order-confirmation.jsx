@@ -12,6 +12,7 @@ export function OrderConfirmation({x}) {
    
     const navigate = useNavigate()
     const orderObject = useSelector(storeState => storeState.userModule.order)
+    console.log('orderObject', orderObject)
     // const hostImgUrl = useSelector(storeState => storeState.stayModule.currHostImgUrl)
     if (!orderObject || !orderObject.stayDetails || !orderObject.orderPrice) return <div>Loading..</div>
     const { stayDetails, guestsNumber, checkIn, checkOut, orderPrice, nightsCount, nightsPrice, seller } = orderObject
@@ -49,6 +50,7 @@ export function OrderConfirmation({x}) {
         }
         // removeUndefinedProperties(orderObject)
         try {
+            // console.log('orderObject', orderObject)
             await addConfirmedTrip(orderObject)
             socketService.emit(SOCKET_EMIT_STAY_RESERVED, orderObject.seller._id)
         } catch (error) {

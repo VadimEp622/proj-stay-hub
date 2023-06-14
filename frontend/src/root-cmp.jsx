@@ -45,7 +45,10 @@ export function RootCmp() {
     useEffect(() => {
         if (user) {
             socketService.login(user._id)
-            socketService.on(SOCKET_EMIT_USER_WATCH, () => { showSuccessMsg('A stay you own just got reserved') })
+            socketService.on(SOCKET_EMIT_USER_WATCH, (something) => { 
+                console.log('something', something)
+                showSuccessMsg('A stay you own just got reserved') 
+            })
             return () => {
                 socketService.off(SOCKET_EMIT_USER_WATCH)
                 socketService.logout()

@@ -49,7 +49,7 @@ export function userReducer(state = initialState, action) {
             }
             break
         case ADD_CONFIRMED_TRIP:
-            newState = { ...state, user: { ...state.user, trips: [...state.user.trips, action.trip] } }
+            newState = { ...state, user: { ...state.user, trip: [...state.user.trip, action.trip] } }
             break
         case SET_USERS:
             newState = { ...state, users: action.users }

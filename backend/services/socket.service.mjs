@@ -58,7 +58,7 @@ async function emitToUser({ type, data, userId }) {
     const socket = await _getUserSocket(userId)
 
     if (socket) {
-        logger.info(`Emiting event: ${type} to user: ${userId} socket [id: ${socket.id}]`)
+        logger.info(`Emitting event: ${type} to user: ${userId} socket [id: ${socket.id}]`)
         socket.emit(type, data)
     } else {
         logger.info(`No active socket for user: ${userId}`)

@@ -6,8 +6,10 @@ import { orderService } from './order.service.mjs'
 
 export async function getOrders(req, res) {
     try {
-        console.log('req.query', req.query)
+        // console.log('req.query', req.query)
+        // console.log('req.body', req.body)
         const orders = await orderService.query(req.query)
+        // console.log('orders -> order.controller.mjsx', orders)
         res.send(orders)
     } catch (err) {
         logger.error('Cannot get orders', err)
@@ -110,6 +112,7 @@ export async function updateOrder(req, res) {
     // console.log('orderToUpdate', orderToUpdate)
     try {
         const orderRes = await orderService.update(orderToUpdate)
+        socketService.emitToUser({ type:'user-watch', data:'a stay you own has just been reserved', userId:orderToUpdate.content.seller._id })
         res.send(orderRes)
     } catch (err) {
         logger.error('Failed to update order', err)
