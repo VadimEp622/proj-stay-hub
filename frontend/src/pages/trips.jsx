@@ -208,16 +208,6 @@ export function MyTrips() {
                             </section>
                             <section className="past-trip">
                                 <section className="past-trip-img">
-                                    <img src="https://a0.muscache.com/im/pictures/95435d63-6c09-43de-a28f-f13158c32356.jpg?im_w=1200" alt="Amsterdam" />
-                                </section>
-                                <section className="past-trip-info">
-                                    <h4>Kampos, Greece</h4>
-                                    <span>hosted by Γεώργιος</span>
-                                    <span>Aug 3-12, 2017</span>
-                                </section>
-                            </section>
-                            <section className="past-trip">
-                                <section className="past-trip-img">
                                     <img src="https://a0.muscache.com/im/pictures/miso/Hosting-621355059288164481/original/1e01176e-da92-456e-b663-b8887483b87b.jpeg?im_w=1200" alt="Amsterdam" />
                                 </section>
                                 <section className="past-trip-info">
@@ -226,7 +216,16 @@ export function MyTrips() {
                                     <span>Jul 19-24, 2020</span>
                                 </section>
                             </section>
-
+                            <section className="past-trip">
+                                <section className="past-trip-img">
+                                    <img src="https://a0.muscache.com/im/pictures/95435d63-6c09-43de-a28f-f13158c32356.jpg?im_w=1200" alt="Amsterdam" />
+                                </section>
+                                <section className="past-trip-info">
+                                    <h4>Kampos, Greece</h4>
+                                    <span>hosted by Γεώργιος</span>
+                                    <span>Aug 3-12, 2017</span>
+                                </section>
+                            </section>
                         </section>
 
                         {/* {pastTrips.map((trip, index) => {

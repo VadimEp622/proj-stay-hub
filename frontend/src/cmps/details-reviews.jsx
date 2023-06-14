@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { reviewService } from "../services/review.service";
 import { Loader } from "./reuseableCmp/loader";
+import { userService } from "../services/user.service";
 
 export function DetailsReviews({ reviewsToDisplay, MAX_LENGTH = 120 }) {
   const [expanded, setExpanded] = useState(reviewsToDisplay.map(() => false));
@@ -39,7 +40,7 @@ export function DetailsReviews({ reviewsToDisplay, MAX_LENGTH = 120 }) {
         <div className="review-container flex" key={idx}>
           <section>
             <section className="mini-user flex">
-              {/* <img src={} alt="host image" /> */}
+              <img src={userService.randomHostImg()} alt="host image" />
               <section>
                 <h4 className="fs16">{review.by.fullname}</h4>
                 <span>{reviewService.formatDateString(review.at)}</span>

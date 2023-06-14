@@ -130,7 +130,25 @@
         }
 
         .host-details-preview {
-            color: red;
+            padding: 16px 0px 32px;
+
+            img {
+                width: 42px;
+                height: 42px;
+                border-radius: 50px;
+                object-fit: cover;
+                margin-right: 16px;
+            }
+
+            .host-mini-info {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .host-mini-info :first-child{
+                font-family: Circular-semibold;
+                font-size: rem(16px);
+            }
         }
 
         textarea {

@@ -8,9 +8,11 @@ import { Link, useNavigate } from "react-router-dom";
 import { addConfirmedTrip } from "../store/user.actions";
 import { SOCKET_EMIT_STAY_RESERVED, socketService } from "../services/socket.service";
 
-export function OrderConfirmation() {
+export function OrderConfirmation({x}) {
+   
     const navigate = useNavigate()
     const orderObject = useSelector(storeState => storeState.userModule.order)
+    // const hostImgUrl = useSelector(storeState => storeState.stayModule.currHostImgUrl)
     if (!orderObject || !orderObject.stayDetails || !orderObject.orderPrice) return <div>Loading..</div>
     const { stayDetails, guestsNumber, checkIn, checkOut, orderPrice, nightsCount, nightsPrice, seller } = orderObject
     const { reviewsCount, type, summary, rate, image, id } = stayDetails
@@ -83,9 +85,12 @@ export function OrderConfirmation() {
                     <h3 className="fs22">Required for your trip</h3>
                     <h5 className="fs16">Message the Host</h5>
                     <p>Let the Host know why you're traveling and when you'll check in.</p>
-                    <div className="host-details-preview">
-                        {seller.image}
-                        {seller.fullname} joined in {seller.joined}
+                    <div className="host-details-preview flex align-center">
+                        <img src={seller.img} alt="host" />
+                        <section className="host-mini-info">
+                            <span>{seller.fullname} </span>
+                            <span>joined in {seller.joined}</span>
+                        </section>
                     </div>
                     <textarea name="" id="" cols="30" rows="10"></textarea>
                 </div>

@@ -16,7 +16,7 @@ import { utilService } from '../services/util.service.js'
 import { Loader } from '../cmps/reuseableCmp/loader.jsx'
 import { socketService } from '../services/socket.service.js'
 import { useSelector } from 'react-redux'
-import { setModal } from '../store/stay.actions.js'
+import {  setModal } from '../store/stay.actions.js'
 import { AddToWishlist, removeFromWishlist } from '../store/user.actions.js'
 import { userService } from '../services/user.service.js'
 
@@ -32,14 +32,10 @@ export function StayDetails() {
 
     useEffect(() => {
         loadStay()
-
-        // const likedId = wishedListItems?.some((wishlist) => wishlist._id === stayId)
-        // setIsLikeClicked((likedId))
     }, [stayId])
 
 
     useEffect(() => {
-        // if(!loggedInUser)
         const likedId = wishedListItems?.some((wishlist) => wishlist._id === stayId)
         setIsLikeClicked((likedId))
     }, [wishedListItems, stayId, isLikeClicked])
@@ -110,6 +106,7 @@ export function StayDetails() {
     const reviews = stay.reviews.length > 1 ? 'reviews' : 'review'
     const capitalizedReviewsString = reviews.charAt(0).toUpperCase() + reviews.slice(1)
     const randomDateJoined = utilService.getRandomMonthAndYear()
+    const hostImgUrl = userService.randomHostImg()
     return <>
         <div>
             <Helmet>
@@ -175,7 +172,7 @@ export function StayDetails() {
                             <span className='dot'>•</span>
                             <span>1 bath</span>
                         </section>
-                        <img src={stay.host.pictureUrl} alt="host image" />
+                        <img src={hostImgUrl} alt="host image" />
                     </section>
                     <section className='stay-highlights'>
                         <div className='highlight flex'>
@@ -221,7 +218,7 @@ export function StayDetails() {
                     </div>
                 </section>
                 <section className='order-container'>
-                    <OrderContainer stay={stay} randomDate={randomDateJoined} />
+                    <OrderContainer stay={stay} randomDate={randomDateJoined} hostImgUrl={hostImgUrl}/>
                 </section>
             </section>
 
@@ -261,7 +258,7 @@ export function StayDetails() {
             </section>
             <section className="host-details-container">
                 <div className="mini-owner flex align-center">
-                    <img src="https://a0.muscache.com/im/pictures/user/59da4e65-e5a0-4fde-b4d9-e48f20c1ba43.jpg?im_w=240" alt="host image" />
+                    <img src={hostImgUrl} alt="host image" />
                     <section className='mini-owner-info'>
                         <h3 className='fs22'>Hosted by {stay.host.fullname}</h3>
                         <span>Joined in {randomDateJoined}</span>

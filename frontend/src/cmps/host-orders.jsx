@@ -1,20 +1,22 @@
 import React, { useState } from 'react'
-import { orderService } from '../services/order.service';
-import { useEffect } from 'react';
-import { showErrorMsg } from '../services/event-bus.service';
-import { userService } from '../services/user.service';
-import { utilService } from '../services/util.service';
+import { orderService } from '../services/order.service'
+import { useEffect } from 'react'
+import { showErrorMsg } from '../services/event-bus.service'
+import { userService } from '../services/user.service'
+import { utilService } from '../services/util.service'
+import SvgHandler from './svg-handler'
+import { STAR } from '../services/svg.service'
 
 const data = [
-  { guest: 'John Doe', dates: 'Jun 23-27', status: 'Pending' },
-  { guest: 'Jane Smith', dates: 'Mar 11-17', status: 'Approved' },
-  { guest: 'Michael Johnson', dates: 'Feb 15-18', status: 'Rejected' },
+  { guest: 'John Doe', imgUrl: userService.randomHostImg(), rate: '4.83', dates: 'Jun 23-27', status: 'Pending' },
+  { guest: 'Jane Smith', imgUrl: userService.randomHostImg(), rate: '4.7', dates: 'Mar 11-17', status: 'Approved' },
+  { guest: 'Michael Johnson', imgUrl: userService.randomHostImg(), rate: '4.91', dates: 'Feb 15-18', status: 'Rejected' },
 ];
 
 export function HostOrders() {
   const [tableData, setTableData] = useState(data)
   const [orderedListings, setOrderedListings] = useState([])
-  const loggedInUser = userService.getLoggedinUser();
+  const loggedInUser = userService.getLoggedinUser()
 
   const handleApprove = (index) => {
     const updatedData = [...tableData]
@@ -87,8 +89,17 @@ export function HostOrders() {
               </tr>
             ))}
             {tableData.map((item, index) => (
-              <tr key={index}>
-                <td>{item.guest}</td>
+              <tr key={index} className='order-table-row'>
+                <td>
+                  <section className='order-mini-user flex'>
+                    <img src={item.imgUrl} alt="guest" />
+                    <section className='mini-user-info flex'>
+                      <span> {item.guest}</span>
+                      <span className='flex align-baseline'><SvgHandler svgName={STAR}/>{item.rate}</span>
+                    </section>
+                  </section>
+                 
+                  </td>
                 <td>{item.dates}</td>
                 <td>
                   {item.status === 'Pending' ? (

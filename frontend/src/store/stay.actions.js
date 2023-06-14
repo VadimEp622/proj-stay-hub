@@ -3,7 +3,7 @@ import { stayService } from "../services/stay.service.js";
 import { userService } from "../services/user.service.js";
 import { store } from './store.js'
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
-import { ADD_STAY, ADD_TO_CART, CLEAR_CART, REMOVE_STAY, REMOVE_FROM_CART, SET_STAYS, UNDO_REMOVE_STAY, UPDATE_STAY, UPDATE_FILTER_BY, SET_GUESTS, SET_MODAL_OPEN } from "./stay.reducer.js";
+import { ADD_STAY, ADD_TO_CART, CLEAR_CART, REMOVE_STAY, REMOVE_FROM_CART, SET_STAYS, UNDO_REMOVE_STAY, UPDATE_STAY, UPDATE_FILTER_BY, SET_GUESTS, SET_MODAL_OPEN, SET_CURR_HOST_IMG_URL } from "./stay.reducer.js";
 import { SET_SCORE } from "./user.reducer.js";
 import { LOADING_DONE, LOADING_START } from "./system.reducer.js";
 
@@ -54,6 +54,15 @@ export async function removeStay(stayId) {
         store.dispatch(getActionRemoveStay(stayId))
     } catch (err) {
         console.log('Cannot remove stay', err)
+        throw err
+    }
+}
+
+export async function setHostImgUrl(imgUrl) {
+    try {
+        store.dispatch({ type: SET_CURR_HOST_IMG_URL, imgUrl })
+    } catch (err) {
+        console.log('Cannot set imgUrl', err)
         throw err
     }
 }

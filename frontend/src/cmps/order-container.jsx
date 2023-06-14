@@ -14,7 +14,10 @@ import { AirbnbButton } from "./reuseableCmp/airbnb-button"
 import { DatePicker } from "./reuseableCmp/date-picker"
 import { useClickOutside } from "../customHooks/clickOutsideModal.js"
 
-export function OrderContainer({ stay, randomDate }) {
+export function OrderContainer({ stay, randomDate, hostImgUrl }) {
+    // console.log('orderImg', hostImgUrl)
+    // const hostImgUrlPass = hostImgUrl
+    // console.log('orderImgPass', hostImgUrlPass)
 
     const checkIn = stayService.getDate(stay.availableDates[0].from)
     const checkOut = stayService.getDate(stay.availableDates[0].to)
@@ -31,7 +34,7 @@ export function OrderContainer({ stay, randomDate }) {
     const [isDateModalOpen, setIsDateModalOpen] = useState(false)
 
     const dateModalRef = useClickOutside(onDateModalClickOutside)
-
+    const x = '123'
     function onDateModalClickOutside() {
         // if (!isDateModalOpen) 
         setIsDateModalOpen(false)
@@ -47,7 +50,7 @@ export function OrderContainer({ stay, randomDate }) {
             seller: {
                 fullname: stay.host.fullname,
                 _id: stay.host._id,
-                image: stay.host.img,
+                img: hostImgUrl,
                 joined: randomDate.split(' ')[1]
             },
             checkIn: stay.availableDates[0].from,
@@ -81,8 +84,6 @@ export function OrderContainer({ stay, randomDate }) {
             status: "Pending",
             _id: utilService.makeId()
         });
-
-
     }, [])
 
     useEffect(() => {
@@ -90,13 +91,11 @@ export function OrderContainer({ stay, randomDate }) {
         setOrder(orderObject)
     }, [orderObject])
 
-
     function openDateModal(ev) {
         ev.preventDefault()
         ev.stopPropagation()
         setIsDateModalOpen(true)
     }
-
 
     return (
         <section className="order-modal">
@@ -169,8 +168,9 @@ export function OrderContainer({ stay, randomDate }) {
                     </div>
                 </section>
             </section>
-            <div className="modal-container">{openModal && <OrderConfirmation setOpenModal={setOpenModal} orderObject={orderObject} />}
-            </div>
+            {/* <div className="modal-container">
+                {openModal && <Test hostImgUrl={hostImgUrl}/>}
+            </div> */}
             <section className='order-spacial-info flex'>
                 <p><span>Lower price.</span> Your dates are ${(stay.price * 0.4).toFixed(0)} less per night compared to the average nightly rate of the last 60 days.</p>
                 <div><SvgHandler svgName={RED_TAG} /></div>

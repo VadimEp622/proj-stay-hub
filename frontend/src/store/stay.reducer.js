@@ -4,11 +4,11 @@ export const UNDO_REMOVE_STAY = 'UNDO_REMOVE_STAY'
 export const ADD_STAY = 'ADD_STAY'
 export const UPDATE_STAY = 'UPDATE_STAY'
 export const ADD_TO_CART = 'ADD_TO_CART'
-
 export const CLEAR_CART = 'CLEAR_CART'
 export const REMOVE_FROM_CART = 'REMOVE_FROM_CART'
 export const UPDATE_FILTER_BY = 'UPDATE_FILTER_BY'
 export const SET_MODAL_OPEN = 'SET_MODAL_OPEN'
+export const SET_CURR_HOST_IMG_URL = 'SET_CURR_HOST_IMG_URL'
 
 
 const initialState = {
@@ -17,7 +17,8 @@ const initialState = {
     lastRemovedStay: null,
     filterBy: {},
     guests: {},
-    isModalOpen: false
+    isModalOpen: false,
+    currHostImgUrl: ''
 }
 
 export function stayReducer(state = initialState, action) {
@@ -94,6 +95,9 @@ export function stayReducer(state = initialState, action) {
             break
         case UPDATE_FILTER_BY:
             newState = { ...state, filterBy: { ...state.filterBy,...action.filterBy } }
+            break
+        case SET_CURR_HOST_IMG_URL:
+            newState = { ...state, currHostImgUrl: action.imgUrl }
             break
         case SET_MODAL_OPEN:
             console.log(action.isModalOpen)
