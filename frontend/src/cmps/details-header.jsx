@@ -29,7 +29,7 @@ export function DetailsHeader({ stay }) {
         const reserveLink = document.querySelector('.reserve-container')
 
         const orderModalObserver = new IntersectionObserver(onOrderModalObserved, {
-            rootMargin: "-350px 0px 0px",
+            rootMargin: "-500px 0px 0px",
         });
 
         orderModalObserver.observe(orderModal)
