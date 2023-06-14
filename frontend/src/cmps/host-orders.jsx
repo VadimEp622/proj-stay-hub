@@ -8,9 +8,9 @@ import SvgHandler from './svg-handler'
 import { STAR } from '../services/svg.service'
 
 const data = [
-  { guest: 'John Doe', imgUrl: userService.randomHostImg(), rate: '4.83', dates: 'Jun 23-27', status: 'Pending' },
-  { guest: 'Jane Smith', imgUrl: userService.randomHostImg(), rate: '4.7', dates: 'Mar 11-17', status: 'Approved' },
-  { guest: 'Michael Johnson', imgUrl: userService.randomHostImg(), rate: '4.91', dates: 'Feb 15-18', status: 'Rejected' },
+  { guest: 'John Doe', imgUrl: userService.randomHostImg(), join: 'Mar 2023', dates: 'Jun 23-27', status: 'Pending' },
+  { guest: 'Jane Smith', imgUrl: userService.randomHostImg(), join: 'Jun 2015', dates: 'Mar 11-17', status: 'Approved' },
+  { guest: 'Michael Johnson', imgUrl: userService.randomHostImg(), join: 'Nov 2020', dates: 'Feb 15-18', status: 'Rejected' },
 ];
 
 export function HostOrders() {
@@ -95,11 +95,11 @@ export function HostOrders() {
                     <img src={item.imgUrl} alt="guest" />
                     <section className='mini-user-info flex'>
                       <span> {item.guest}</span>
-                      <span className='flex align-baseline'><SvgHandler svgName={STAR}/>{item.rate}</span>
+                      <span className='joined-in flex align-baseline'>Joined in {item.join}</span>
                     </section>
                   </section>
-                 
-                  </td>
+
+                </td>
                 <td>{item.dates}</td>
                 <td>
                   {item.status === 'Pending' ? (
@@ -112,7 +112,9 @@ export function HostOrders() {
                       </button>
                     </div>
                   ) : (
-                    <div className="selection">{item.status}</div>
+                    <div className={`selection ${item.status === 'Approved' ? 'approved' : 'rejected'}`}>
+                      {item.status}
+                    </div>
                   )}
                 </td>
               </tr>

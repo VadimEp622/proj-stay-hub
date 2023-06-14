@@ -30,6 +30,11 @@ const options = {
                 },
             },
         },
+        x: {
+            grid: {
+                display: false, // Hide the background lines for the x-axis
+            },
+        },
     },
 }
 
@@ -86,8 +91,11 @@ export function MyDashboard() {
         <div className='dashboard-page'>
             <section>
                 <section className='overview'>
-                    <h4>{revenue.length} Month Avg. Revenue: <span>${averageRevenue}</span></h4>
-                    <h4><span>{'1'}</span> Pending  </h4>
+                    <h4>{revenue.length} Months average</h4>
+                    <h5>Revenue: <span>${averageRevenue}</span></h5>
+                    <h5>Occupancy: <span>{61.83}%</span></h5>
+                    <h3><span>{'1'}</span> Pending order </h3>
+
                 </section>
             </section>
 

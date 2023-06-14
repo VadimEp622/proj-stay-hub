@@ -135,7 +135,7 @@ function buildGuestsString(guestsObject) {
 
 export function randomHostImg() {
     
-    return stayHostImgUrl[utilService.getRandomIntInclusive(0, stayHostImgUrl.length)]
+    return stayHostImgUrl[utilService.getRandomIntInclusive(0, stayHostImgUrl.length -1)]
 }
 
 const stayHostImgUrl = [

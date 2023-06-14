@@ -23,11 +23,21 @@ const options = {
         y: {
             beginAtZero: true,
         },
+        x: {
+            grid: {
+                display: false, // Hide the background lines for the x-axis
+            },
+        },
+        y: {
+            grid: {
+                display: true, // Hide the background lines for the y-axis
+            },
+        },
     },
 };
 
 const labels = ['January', 'February', 'March', 'April', 'May', 'June'];
-const occupancyRate = [74, 47, 90, 63, 81, 34]
+const occupancyRate = [74, 29, 90, 63, 81, 34]
 const data = {
     labels,
     datasets: [
