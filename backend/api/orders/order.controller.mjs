@@ -112,6 +112,7 @@ export async function updateOrder(req, res) {
     // console.log('orderToUpdate', orderToUpdate)
     try {
         const orderRes = await orderService.update(orderToUpdate)
+        socketService.emitToUser({ type:'user-watch', data:'a stay you own has just been reserved', userId:orderToUpdate.content.seller._id })
         res.send(orderRes)
     } catch (err) {
         logger.error('Failed to update order', err)
