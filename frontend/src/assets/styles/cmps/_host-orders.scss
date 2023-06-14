@@ -26,7 +26,6 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    width: 33%;
     height: 70px;
 
     .order-mini-user {
@@ -48,13 +47,13 @@
   th:first-child,
   td:first-child {
     border-left: none;
-    width: 40%;
+    width: 55%;
   }
 
   th:last-child,
   td:last-child {
     border-right: none;
-    width: 30%;
+    width: 20%;
   }
 
   .actions {
@@ -66,7 +65,7 @@
   }
 
   .actions>* {
-    width: 80%;
+    width: 90%;
     border-radius: 8px;
     border: none;
     cursor: pointer;
@@ -86,7 +85,10 @@
   }
 
   .selection {
-    font-weight: bold;
+    // font-weight: bold;
+    width: 90%;
+    color: $gray-clr2;
+    font-size: rem(14px);
   }
 
   .action-button.approve {
@@ -96,7 +98,8 @@
 
   .action-button.reject {
     background-color: $gray-clr5;
-    color: $gray-clr2;
+    color: rgb(241, 184, 184);
+
   }
 
 }
