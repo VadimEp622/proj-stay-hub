@@ -94,7 +94,7 @@ export function MyDashboard() {
                     <h4>{revenue.length} Months average</h4>
                     <h5>Revenue: <span>${averageRevenue}</span></h5>
                     <h5>Occupancy: <span>{61.83}%</span></h5>
-                    <h3><span>{'1'}</span> Pending order </h3>
+                    {/* <h3><span>{'1'}</span> Pending order </h3> */}
 
                 </section>
             </section>
