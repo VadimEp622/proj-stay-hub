@@ -167,7 +167,7 @@ export function StayDetails() {
                             <h2>Entire villa hosted by {stay.host.fullname}</h2>
                             <span>4 guests</span>
                             <span className='dot'>•</span>
-                            <span>1 bedroom</span>
+                            <span>2 bedrooms</span>
                             <span className='dot'>•</span>
                             <span>2 beds</span>
                             <span className='dot'>•</span>
