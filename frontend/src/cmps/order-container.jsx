@@ -129,10 +129,7 @@ export function OrderContainer({ stay, randomDate, hostImgUrl }) {
                             </section>
                         }
                     </div> */}
-                    <div className="order-date-container flex"
-                    // style={{ cursor: 'pointer', position: 'relative', zIndex: '1' }}
-                    // onClick={openDateModal}
-                    >
+                    <div className="order-date-container flex">
                         <div className="check-in flex">
                             <span className="uppertext">check-in</span>
                             <span>{checkIn}</span>
