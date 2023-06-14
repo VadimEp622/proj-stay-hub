@@ -9,46 +9,12 @@ const { ObjectId } = mongodb
 
 async function query(filterBy) {
     try {
-        const criteria = {
-            $and: [{
-                $or: [
-                    { 'loc.country': { $regex: filterBy.country, $options: 'i' } },
-                    { 'loc.city': { $regex: filterBy.city, $options: 'i' } }
-                ]
-            }]
-        }
-
-        if (filterBy.from && filterBy.to) {
-            criteria.$and.push({
-                'availableDates': {
-                    $elemMatch: {
-                        $or: [
-                            { from: { $lte: filterBy.to }, to: { $gte: filterBy.from } },
-                            { from: { $gte: filterBy.from }, to: { $lte: filterBy.to } }
-                        ]
-                    }
-                }
-            })
-        }
-
-        if (filterBy.capacity > 0) {
-            criteria.$and.push({ 'capacity': { $gte: filterBy.capacity } });
-        }
-
-        if (filterBy.label) {
-            criteria.$and.push({ 'type': filterBy.label });
-        }
-
-
+        const criteria = _createCriteria(filterBy)
         const collection = await dbService.getCollection('stay44')
-        var stays = await collection.find(criteria)
+        const stays = await collection
+            .find(criteria)
             .limit(20)
             .toArray()
-
-
-        // db.students.find().skip(10)
-
-
 
         return stays
     } catch (err) {
@@ -137,4 +103,39 @@ export const stayService = {
     update,
     addStayMsg,
     removeStayMsg
+}
+
+
+
+function _createCriteria(filterBy) {
+    const criteria = {
+        $and: [{
+            $or: [
+                { 'loc.country': { $regex: filterBy.country, $options: 'i' } },
+                { 'loc.city': { $regex: filterBy.city, $options: 'i' } }
+            ]
+        }]
+    }
+
+    if (filterBy.from && filterBy.to) {
+        criteria.$and.push({
+            'availableDates': {
+                $elemMatch: {
+                    $or: [
+                        { from: { $lte: filterBy.to }, to: { $gte: filterBy.from } },
+                        { from: { $gte: filterBy.from }, to: { $lte: filterBy.to } }
+                    ]
+                }
+            }
+        })
+    }
+
+    if (filterBy.capacity > 0) {
+        criteria.$and.push({ 'capacity': { $gte: filterBy.capacity } });
+    }
+
+    if (filterBy.label) {
+        criteria.$and.push({ 'type': filterBy.label });
+    }
+    return criteria
 }
