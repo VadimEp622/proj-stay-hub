@@ -38,6 +38,11 @@
       }
       .mini-user-info {
         flex-direction: column;
+
+        .joined-in {
+          font-size: rem(12px);
+          color: $gray-clr2;
+        }
       }
     }
 
@@ -89,6 +94,15 @@
     width: 90%;
     color: $gray-clr2;
     font-size: rem(14px);
+
+  }
+  
+  .approved {
+    color: rgb(167, 239, 167);
+  }
+
+  .rejected {
+    color: rgb(233, 171, 171);
   }
 
   .action-button.approve {
@@ -98,8 +112,7 @@
 
   .action-button.reject {
     background-color: $gray-clr5;
-    color: rgb(241, 184, 184);
-
+    color: 233, 171, 171;
   }
 
 }
