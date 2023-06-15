@@ -15,7 +15,7 @@ export function UserMsg() {
         timeoutIdRef.current = null
         clearTimeout(timeoutIdRef.current)
       }
-      timeoutIdRef.current = setTimeout(closeMsg, 13000)
+      timeoutIdRef.current = setTimeout(closeMsg, 500000)
     })
 
     socketService.on(SOCKET_EVENT_REVIEW_ABOUT_YOU, (review) => {
@@ -47,9 +47,11 @@ export function UserMsg() {
 
   if (!msg) return <span></span>
   return (
+  <section className="user-msg-container">
     <section className={`user-msg ${msg.type}`}>
       <button onClick={closeMsg}>x</button>
       {msg.txt}
     </section>
+  </section>
   )
 }
