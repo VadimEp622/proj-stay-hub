@@ -15,7 +15,7 @@ export function UserMsg() {
         timeoutIdRef.current = null
         clearTimeout(timeoutIdRef.current)
       }
-      timeoutIdRef.current = setTimeout(closeMsg, 500000)
+      timeoutIdRef.current = setTimeout(closeMsg, 3500)
     })
 
     socketService.on(SOCKET_EVENT_REVIEW_ABOUT_YOU, (review) => {
