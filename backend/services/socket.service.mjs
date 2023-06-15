@@ -50,12 +50,12 @@ export function setupSocketAPI(http) {
             socket.myTopic = topic
         })
 
-        // socket.on('stay-reserved-send', sellerId => {
-        //     logger.info(`Setting --stay-reserved-send-- socket.userId = ${sellerId} for socket [id: ${sellerId}]`)
-        //     // socket.sellerId = sellerId
-        //     console.log('sellerId', sellerId)
+        socket.on('stay-reserved-send', sellerId => {
+            logger.info(`Setting --stay-reserved-send-- socket.userId = ${sellerId} for socket [id: ${sellerId}]`)
+            socket.sellerId = sellerId
+            console.log('sellerId', sellerId)
         //     gIo.to(socket.sellerId).emit('notification-msg', 'something')
-        // })
+        })
 
         socket.on('set-user-socket', userId => {
             logger.info(`Setting socket.userId = ${userId} for socket [id: ${socket.id}]`)
