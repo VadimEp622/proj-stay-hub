@@ -40,6 +40,7 @@ export function OrderContainer({ stay, randomDate, hostImgUrl }) {
         setIsDateModalOpen(false)
     }
 
+
     let guestCount = 1
     useEffect(() => {
         setOrderObject({

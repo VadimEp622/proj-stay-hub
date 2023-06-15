@@ -43,12 +43,14 @@ export function RootCmp() {
 
 
     // useEffect(() => {
-    //     // if (user) {
-    //     socketService.login(user._id)
-    //     return () => {
-    //         socketService.logout()
+    //     if (user) {
+    //         socketService.login(user._id)
+    //         socketService.on('set-user-socket', user._id)
+    //         return () => {
+    //             socketService.logout()
+    //             socketService.off('set-user-socket')
+    //         }
     //     }
-    //     // }
     // }, [user])
 
     function closeBackground(ev) {

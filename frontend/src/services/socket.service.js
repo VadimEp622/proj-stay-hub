@@ -45,6 +45,7 @@ function createSocketService() {
       if (!socket) return;
       if (!cb) socket.removeAllListeners(eventName)
       else socket.off(eventName, cb)
+      console.log('socket is off')
     },
     emit(eventName, data) {
       console.log('EMIT FRONT -> eventName, data', eventName, data)

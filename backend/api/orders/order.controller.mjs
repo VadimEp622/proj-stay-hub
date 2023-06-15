@@ -107,6 +107,7 @@ export async function updateOrder(req, res) {
             data: orderToUpdate.content.status,
             userId: orderToUpdate.content.buyer._id
         })
+        
         res.send(orderRes)
     } catch (err) {
         logger.error('Failed to update order', err)

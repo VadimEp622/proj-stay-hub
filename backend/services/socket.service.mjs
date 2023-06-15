@@ -1,7 +1,7 @@
 import { logger } from './logger.service.mjs'
 import { Server } from 'socket.io'
 
-var gIo = null
+let gIo = null
 
 export function setupSocketAPI(http) {
     gIo = new Server(http, {
@@ -49,8 +49,17 @@ export function setupSocketAPI(http) {
             socket.join(topic)
             socket.myTopic = topic
         })
+
+        // socket.on('stay-reserved-send', sellerId => {
+        //     logger.info(`Setting --stay-reserved-send-- socket.userId = ${sellerId} for socket [id: ${sellerId}]`)
+        //     // socket.sellerId = sellerId
+        //     console.log('sellerId', sellerId)
+        //     gIo.to(socket.sellerId).emit('notification-msg', 'something')
+        // })
+
         socket.on('set-user-socket', userId => {
             logger.info(`Setting socket.userId = ${userId} for socket [id: ${socket.id}]`)
+            console.log('*************connected*************')
             socket.userId = userId
         })
         socket.on('unset-user-socket', () => {
