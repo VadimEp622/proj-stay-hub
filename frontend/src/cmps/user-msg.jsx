@@ -31,7 +31,7 @@ export function UserMsg() {
         timeoutIdRef.current = null
         clearTimeout(timeoutIdRef.current)
       }
-      timeoutIdRef.current = setTimeout(closeMsg, 3000)
+      timeoutIdRef.current = setTimeout(closeMsg, 3500)
     })
 
     // socketService.on('notification-msg',(msg)=>{
@@ -79,11 +79,13 @@ function closeMsg() {
   setMsg(null)
 }
 
-if (!msg) return <span></span>
-return (
-  <section className={`user-msg ${msg.type}`}>
-    <button onClick={closeMsg}>x</button>
-    {msg.txt}
+  if (!msg) return <span></span>
+  return (
+  <section className="user-msg-container">
+    <section className={`user-msg ${msg.type}`}>
+      <button onClick={closeMsg}>x</button>
+      {msg.txt}
+    </section>
   </section>
-)
+  )
 }

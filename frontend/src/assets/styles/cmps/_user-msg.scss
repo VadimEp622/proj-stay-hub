@@ -1,28 +1,33 @@
 .user-msg {
     color: white;
-    padding: 10px;
+    padding: 16px;
     font-size: 1.4em;
     position: fixed;
-    top: 0;
-    right: 0;
+    top: 8.5%; /* Position the container 10 pixels from the top */
+    left: 50%; /* Horizontally center the modal */
+    transform: translateX(-50%); /* Adjust for the half-width of the modal */
     background-color: grey;
     z-index: 11;
-    border-radius: 32px;
-}
+    border-radius: 12px;
+    width: 90%;
+    max-width: 400px;
 
-.user-msg button {
-    float: right;
-    border: 0;
-    border-radius: 50%;
-    margin: 5px;
-    background-color: #222;
-    color: white;
-}
+    button {
+        float: right;
+        border: 0;
+        border-radius: 50%;
+        margin: 5px;
+        background-color: #222;
+        color: white;
+    }
 
-.user-msg.success {
-    background-color: rgb(41, 189, 73);
-}
+    &.success {
+        background-color: rgba(36, 191, 70, 0.913);
+        box-shadow: rgba(0, 0, 0, 0.2) 6px 6px 16px;
+    }
 
-.user-msg.error {
-    background-color: rgb(216, 59, 59);
+    &.error {
+        background-color: rgb(216, 59, 59);
+        box-shadow: rgba(0, 0, 0, 0.2) 6px 6px 16px;
+    }
 }
