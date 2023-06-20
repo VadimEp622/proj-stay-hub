@@ -1,4 +1,3 @@
-
 // import { storageService } from './async-storage.service.js'
 import { httpService } from './http.service.js'
 import { utilService } from './util.service.js'
@@ -40,27 +39,28 @@ async function query(filterBy = {
     return httpService.get(STORAGE_KEY, filter)
 }
 
-function getById(stayId) {
+async function getById(stayId) {
     console.log('service:', stayId);
     return httpService.get(`stay/${stayId}`)
 }
 
-async function remove(stayId) {
-    return httpService.delete(`stay/${stayId}`)
-}
 async function save(stay) {
     let savedStay
     if (stay._id) {
         savedStay = await httpService.put(`stay/${stay._id}`, stay)
-
     } else {
         savedStay = await httpService.post('stay', stay)
     }
     return savedStay
 }
 
+async function remove(stayId) {
+    return httpService.delete(`stay/${stayId}`)
+}
+
+// Not Yet In Use
 async function addStayMsg(stayId, txt) {
-    const savedMsg = await httpService.post(`Stay/${stayId}/msg`, { txt })
+    const savedMsg = await httpService.post(`stay/${stayId}/msg`, { txt })
     return savedMsg
 }
 

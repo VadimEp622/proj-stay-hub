@@ -13,7 +13,7 @@ async function query(filterBy) {
         const collection = await dbService.getCollection('stay44')
         const stays = await collection
             .find(criteria)
-            .limit(20)
+            // .limit(20)
             .toArray()
 
         return stays
@@ -59,9 +59,10 @@ async function add(stay) {
 
 async function update(stay) {
     try {
+        // update specific keys in stay object(!!)
         const stayToSave = {
-            vendor: stay.vendor,
-            price: stay.price
+            // vendor: stay.vendor,
+            // price: stay.price
         }
         const collection = await dbService.getCollection('stay44')
         await collection.updateOne({ _id: new ObjectId(stay._id) }, { $set: stayToSave })
@@ -72,6 +73,7 @@ async function update(stay) {
     }
 }
 
+// Not Yet In Use
 async function addStayMsg(stayId, msg) {
     try {
         msg.id = utilService.makeId()
@@ -84,6 +86,7 @@ async function addStayMsg(stayId, msg) {
     }
 }
 
+// Not Yet In Use
 async function removeStayMsg(stayId, msgId) {
     try {
         const collection = await dbService.getCollection('stay44')
