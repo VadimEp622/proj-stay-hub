@@ -13,7 +13,7 @@ async function query(filterBy) {
         const collection = await dbService.getCollection('stay44')
         const stays = await collection
             .find(criteria)
-            // .limit(20)
+            .limit(20)
             .toArray()
 
         return stays

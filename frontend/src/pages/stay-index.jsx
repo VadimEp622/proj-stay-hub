@@ -101,6 +101,7 @@ export function StayIndex() {
                 isFilterModalOpen && (<FilterModal stays={stays}
                     setIsFilterModalOpen={setIsFilterModalOpen} />)
             }
+
             <CategoryFilter />
             <StayList stays={stays} />
 
@@ -110,7 +111,6 @@ export function StayIndex() {
                     Un-expand header
                 </button>
             } */}
-
         </section >
     )
 }

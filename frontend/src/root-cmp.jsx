@@ -31,7 +31,7 @@ export function RootCmp() {
     const location = useLocation()
     const isStayDetailsPage = location.pathname.includes('/stay/')
     const isModalOpen = useSelector(storeState => storeState.stayModule.isModalOpen)
-    const user = useSelector(storeState => storeState.userModule.user)
+    // const user = useSelector(storeState => storeState.userModule.user)
 
 
     useEffect(() => {

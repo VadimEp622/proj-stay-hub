@@ -38,34 +38,66 @@ export function CategoryCarousel({ images, selectedCategory, handleClick }) {
         desktop: {
             breakpoint: {
                 max: 3000,
-                min: 1500
+                min: 1700
             },
             items: 17,
             slidesToSlide: 6
         },
         desktopSmall: {
             breakpoint: {
-                max: 1500,
-                min: 464
+                max: 1700,
+                min: 1400
             },
             items: 13,
             slidesToSlide: 6
         },
-        mobile: {
+        tabletLarge: {
             breakpoint: {
-                max: 464,
-                min: 0
+                max: 1400,
+                min: 1200
+            },
+            items: 11,
+            slidesToSlide: 3
+        },
+        tabletMedium: {
+            breakpoint: {
+                max: 1200,
+                min: 1000
+            },
+            items: 9,
+            slidesToSlide: 3
+        },
+        tabletSmall: {
+            breakpoint: {
+                max: 1000,
+                min: 800
+            },
+            items: 7,
+            slidesToSlide: 3
+        },
+        mobileLarge: {
+            breakpoint: {
+                max: 800,
+                min: 600
             },
             items: 6,
             slidesToSlide: 3
         },
-        tablet: {
+        mobileMedium: {
             breakpoint: {
-                max: 1100,
-                min: 464
+                max: 600,
+                min: 500
             },
-            items: 12,
+            items: 4,
             slidesToSlide: 3
+        },
+        mobileSmall: {
+            breakpoint: {
+                max: 500,
+                min: 400
+            },
+            items: 3,
+            slidesToSlide: 2
         }
     }
 
