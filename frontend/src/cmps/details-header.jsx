@@ -9,7 +9,7 @@ export function DetailsHeader({ stay }) {
     const reviews = stay.reviews.length > 1 ? 'reviews' : 'review'
 
     useEffect(() => {
-        const header = document.querySelector('.img-container')
+        const header = document.querySelector('.stay-photos-container')
         const nav = document.querySelector('.details-header')
 
         const headerObserver = new IntersectionObserver(onHeaderObserved, {

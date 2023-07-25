@@ -4,7 +4,7 @@
     margin: auto;
     scroll-margin-top: 25px;
 
-    .stay-review {
+    .stay-title-container {
         flex-direction: column;
 
         h1 {
@@ -103,7 +103,7 @@
         aspect-ratio: 1.08 / 1;
     }
 
-    .img-container {
+    .stay-photos-container {
         margin-top: 24px;
         display: grid;
         grid-template-columns: repeat(4, 1fr);
@@ -144,7 +144,7 @@
         }
     }
 
-    .details-container {
+    .summary-container {
         padding-top: 48px;
         display: grid;
         grid-template-columns: 1.4fr 1fr;

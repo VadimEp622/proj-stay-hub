@@ -23,6 +23,9 @@ import { ThingsToKnow } from '../cmps/stay-details/things-to-know.jsx'
 import { HostDetails } from '../cmps/stay-details/host-details.jsx'
 import { StayMap } from '../cmps/stay-details/stay-map.jsx'
 import { StayReviews } from '../cmps/stay-details/stay-reviews.jsx'
+import { StayTitle } from '../cmps/stay-details/stay-title.jsx'
+import { StaySummary } from '../cmps/stay-details/stay-summary.jsx'
+import { StayPhotos } from '../cmps/stay-details/stay-photos.jsx'
 
 export function StayDetails() {
     const [stay, setStay] = useState(null)
@@ -69,7 +72,6 @@ export function StayDetails() {
         // setIsLikeClicked(prevHeart => !prevHeart)
     }
 
-
     async function loadStay() {
         try {
             const stay = await stayService.getById(stayId);
@@ -100,10 +102,6 @@ export function StayDetails() {
         return criteria;
     }
 
-    // function calculatePercentage(value) {
-    //     const percentage = (value / 5) * 100
-    //     return percentage.toFixed(1)
-    // }
 
     if (!stay) return <section className="loading"><Loader /></section>
     const reviewsInputs = displayReviewsCriteria()
@@ -111,122 +109,23 @@ export function StayDetails() {
     const capitalizedReviewsString = reviews.charAt(0).toUpperCase() + reviews.slice(1)
     const randomDateJoined = utilService.getRandomMonthAndYear()
     const hostImgUrl = stay.host.isInDB ? stay.host.pictureUrl : userService.randomHostImg()
+    const averageReviewScore = reviewService.getAverageReview(stay)
 
     return <>
-        <div>
-            <Helmet>
-                <title>{stay.name}</title>
-            </Helmet>
-        </div>
-
         <section className="stay-details" id='photos'>
             {<DetailsHeader stay={stay} />}
-            <section className='stay-review flex' >
-                <h1>{stay.name}</h1>
-                <section className='info-bar flex space-between align-center'>
-                    <section className='info flex'>
-                        <SvgHandler svgName={STAR} />
-                        <span>{reviewService.getAverageReview(stay)}</span>
-                        <span>•</span>
-                        <span className='info-review'>{stay.reviews.length} {reviews}</span>
-                        <span>•</span>
-                        <span className='info-loc'>{stay.loc.city}, {stay.loc.country}</span>
-                    </section>
-                    <section className='btns flex'>
-                        <div className='share-btn flex'>
-                            <SvgHandler svgName={SHARE} />
-                            <span>Share</span>
-                            <div className="share-btn-overlay"></div>
-                        </div>
-                        <div className='save-btn flex'
-                            // onClick={() => setIsLikeClicked(prevHeart => !prevHeart)}
-                            onClick={(ev) => onLikeClicked(ev)}
-                        >
-                            <SvgHandler svgName={likeSvg} />
-                            {
-                                likeSvg === HEART_16 &&
-                                <span>Save</span>
-                            }
-                            {
-                                likeSvg === RED_HEART_16 &&
-                                <span>Save</span>
-                            }
-                            <div className="save-btn-overlay"></div>
-                        </div>
-                    </section>
-                </section>
-            </section>
-            <section className="img-container">
-                {stay.imgUrls.slice(0, 5).map((url, index) => (
-                    <div className="img" key={index}>
-                        <img src={url} alt={`Image ${index}`} className="fade-image" />
-                        <div className="overlay"></div>
-                    </div>
-                ))}
-            </section>
-            <section className='details-container'>
-                <section className='stay-review-details'>
-                    <section className='about-host flex space-between'>
-                        <section className='host-info'>
-                            <h2>Entire villa hosted by {stay.host.fullname}</h2>
-                            <span>4 guests</span>
-                            <span className='dot'>•</span>
-                            <span>2 bedrooms</span>
-                            <span className='dot'>•</span>
-                            <span>2 beds</span>
-                            <span className='dot'>•</span>
-                            <span>1 bath</span>
-                        </section>
-                        <img src={hostImgUrl} alt="host image" />
-                    </section>
-                    <section className='stay-highlights'>
-                        <div className='highlight flex'>
-                            <span><SvgHandler svgName={LOCATION} /></span>
-                            <div className='highlight-txt'>
-                                <h3>Great location</h3>
-                                <p>100% of recent guests gave the location a 5-star rating.</p>
-                            </div>
-                        </div>
-                        <div className='highlight flex'>
-                            <span><SvgHandler svgName={KEY} />
-                            </span>
-                            <div className='highlight-txt'>
-                                <h3>Self check-in</h3>
-                                <p>Check yourself in with the lockbox.</p>
-                            </div>
-                        </div>
-                        <div className='highlight flex'>
-                            <span><SvgHandler svgName={CHECKIN} /></span>
-                            <div className='highlight-txt'>
-                                <h3>Free cancellation for 48 hours.</h3>
-                                <p></p>
-                            </div>
-                        </div>
-                    </section>
-                    <section className='amenities' id='amenities'>
-                        <h3>What this place offers</h3>
-                        <div className='amenities-list'>
-                            {stay.amenities.slice(0, 8).map(amenity => {
-                                return (
-                                    <div className="amenity fs16 flex" key={amenity}>
-                                        <SvgHandler svgName={amenity} />
-                                        <span>{amenity}</span>
-                                    </div>
-                                );
-                            })}
-                        </div>
-                    </section>
-                    <div className="date-container">
-                        <h3>Select check-in date</h3>
-                        <p>Add your travel dates for exact pricing</p>
-                        {/* <DatePicker /> */}
-                    </div>
-                </section>
-                <section className='order-container'>
-                    <OrderContainer stay={stay} randomDate={randomDateJoined} hostImgUrl={hostImgUrl} />
-                </section>
-            </section>
-
+            <StayTitle
+                stay={stay}
+                averageReviewScore={averageReviewScore}
+                likeSvg={likeSvg}
+                onLikeClicked={onLikeClicked}
+            />
+            <StayPhotos stay={stay} />
+            <StaySummary
+                stay={stay}
+                hostImgUrl={hostImgUrl}
+                randomDateJoined={randomDateJoined}
+            />
             {
                 stay.reviews.length > 0 &&
                 <StayReviews
@@ -235,7 +134,6 @@ export function StayDetails() {
                     reviewsToDisplay={reviewsToDisplay}
                 />
             }
-
             <StayMap stay={stay} />
             <HostDetails
                 stay={stay}
