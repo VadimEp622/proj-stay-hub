@@ -1,8 +1,7 @@
-import { reviewService } from "../../services/review.service";
 import { HEART_16, RED_HEART_16, SHARE, STAR } from "../../services/svg.service";
 import SvgHandler from "../svg-handler";
 
-export function StayTitle({ stay, averageReviewScore, likeSvg, onLikeClicked }) {
+export function StayTitle({ stay, averageReviewScore,likeSvg, onLikeClicked }) {
 
     return (
         <section className='stay-title-container flex' >

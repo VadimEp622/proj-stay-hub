@@ -1,9 +1,10 @@
 import { BLACK_SUPERHOST_16, STAR_16, VERIFIED } from "../../services/svg.service.js";
 import SvgHandler from "../svg-handler.jsx";
 
-export function HostDetails({ stay, hostImgUrl,randomDateJoined,capitalizedReviewsString }) {
+export function HostDetails({ stay, hostImgUrl, randomDateJoined }) {
 
-
+    const reviews = stay.reviews.length > 1 ? 'reviews' : 'review'
+    const capitalizedReviewsString = reviews.charAt(0).toUpperCase() + reviews.slice(1)
     return (
         <section className="host-details-container">
             <div className="mini-owner flex align-center">

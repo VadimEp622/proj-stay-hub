@@ -3,7 +3,9 @@ import { STAR_16 } from "../../services/svg.service.js";
 import { DetailsReviews } from "../details-reviews.jsx";
 import SvgHandler from "../svg-handler.jsx";
 
-export function StayReviews({ stay, reviewsInputs, reviewsToDisplay }) {
+export function StayReviews({ stay, reviewsInputs }) {
+
+    const reviewsToDisplay = stay.reviews.slice(0, 6)
 
     function calculatePercentage(value) {
         const percentage = (value / 5) * 100
