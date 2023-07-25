@@ -16,11 +16,12 @@ export default function SimpleMap({ loc }) {
     const [center, setCenter] = useState({ lat, lng })
     const [zoom, setZoom] = useState(12)
     const Popper = () => <div className="map-popper"><AiFillHome /><div className="popper-wedge"></div></div>
+    const API_KEY="AIzaSyAAWlKgdwuqVE_rU0R3Mtxje8-RlWbiwzc"
     return (
         <div>
             <div style={{ height: '60vh', width: '100%' }}>
                 <GoogleMapReact
-                    bootstrapURLKeys={{ key: "AIzaSyDyfAKpN05bJPgve7o6my-sutOHsaV6Y-A" }}
+                    bootstrapURLKeys={{ key: API_KEY }}
                     defaultCenter={center}
                     center={center}
                     zoom={zoom}

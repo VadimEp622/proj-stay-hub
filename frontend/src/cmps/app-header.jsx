@@ -16,6 +16,9 @@ import { OPEN_EXPANDED_HEADER_MODAL } from '../store/system.reducer.js'
 // header filter -> expanded-filter -> filter-modals
 // filter-bar -> main-filter
 
+// TODO: temporary hide "logo" and "nav menu" when screen is less than 700px, to keep only search bar
+// TODO: add new/different header for when screen size is less than 700px!!!!!
+
 export function AppHeader({ isStayDetailsPage }) {
     // const isUnclickableBg = useSelector(storeState => storeState.systemModule.system)
     const user = useSelector(storeState => storeState.userModule.user)
@@ -144,7 +147,7 @@ export function AppHeader({ isStayDetailsPage }) {
 
                 <nav className="app-header">
                     <Logo />
-                   <SearchbarToggler
+                    <SearchbarToggler
                         isFilterExpanded={isFilterExpanded}
                         selectedExperienceTab={selectedExperienceTab}
                         setSelectedExperienceTab={setSelectedExperienceTab}
@@ -152,7 +155,7 @@ export function AppHeader({ isStayDetailsPage }) {
                     <MainNavMenu />
                 </nav>
 
-               <FilterExpanded
+                <FilterExpanded
                     filterBy={filterBy}
                     setFilterBy={setFilterBy}
                     handleChange={handleChange}
