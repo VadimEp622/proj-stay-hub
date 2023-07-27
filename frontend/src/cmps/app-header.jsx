@@ -19,9 +19,8 @@ import { FilterExpanded } from './header/filter-expanded.jsx'
 
 
 
-// TODO-1: temporary hide "logo" and "nav menu" when screen is less than 700px, to keep only search bar
-// TODO-2: fix filter to make it work flawlessly 
-// TODO-3: add new/different header for when screen size is less than 700px!!!!!
+// TODO: fix filter to make it work flawlessly 
+// TODO: add new/different header for when screen size is less than 700px!!!!!
 
 export function AppHeader({ isStayDetailsPage }) {
     const [filterBy, setFilterBy] = useState({

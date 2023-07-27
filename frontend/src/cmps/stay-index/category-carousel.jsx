@@ -6,7 +6,7 @@ import "react-multi-carousel/lib/styles.css"
 import { ARROW_LEFT_FAT, ARROW_RIGHT_FAT } from "../../services/svg.service.js"
 
 // Components
-import SvgHandler from "../svg-handler"
+import SvgHandler from "../svg-handler.jsx"
 
 
 export function CategoryCarousel({ images, selectedCategory, handleClick }) {

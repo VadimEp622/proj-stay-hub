@@ -1,7 +1,10 @@
-import { reviewService } from "../../services/review.service.js";
-import { STAR_16 } from "../../services/svg.service.js";
-import { DetailsReviews } from "../details-reviews.jsx";
-import SvgHandler from "../svg-handler.jsx";
+// Services
+import { reviewService } from "../../services/review.service.js"
+import { STAR_16 } from "../../services/svg.service.js"
+
+// Components
+import { DetailsReviews } from "../details-reviews.jsx"
+import SvgHandler from "../svg-handler.jsx"
 
 export function StayReviews({ stay, reviewsInputs }) {
 

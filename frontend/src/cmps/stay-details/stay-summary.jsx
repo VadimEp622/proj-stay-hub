@@ -1,8 +1,11 @@
-import { CHECKIN, KEY, LOCATION } from "../../services/svg.service.js";
-import { OrderContainer } from "../order-container.jsx";
-import SvgHandler from "../svg-handler.jsx";
+// Services
+import { CHECKIN, KEY, LOCATION } from "../../services/svg.service.js"
 
-export function StaySummary({stay,hostImgUrl,randomDateJoined}) {
+// Components
+import { OrderContainer } from "../order-container.jsx"
+import SvgHandler from "../svg-handler.jsx"
+
+export function StaySummary({ stay, hostImgUrl, randomDateJoined }) {
 
     return (
         <section className='summary-container'>

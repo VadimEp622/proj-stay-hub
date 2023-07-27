@@ -11,6 +11,7 @@ import { categoryImages } from "../../services/category-images.service.js"
 import { CategoryCarousel } from "./category-carousel.jsx"
 
 // TODO: add "Your Search" category in category-filter cmp, for user input filter search results, outside of category filter results
+
 export function CategoryFilter() {
     const [selectedCategory, setSelectedCategory] = useState('OMG!')
 

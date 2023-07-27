@@ -1,5 +1,6 @@
-import { HEART_16, RED_HEART_16, SHARE, STAR } from "../../services/svg.service";
-import SvgHandler from "../svg-handler";
+import { HEART_16, RED_HEART_16, SHARE, STAR } from "../../services/svg.service.js"
+
+import SvgHandler from "../svg-handler.jsx"
 
 export function StayTitle({ stay, averageReviewScore,likeSvg, onLikeClicked }) {
 

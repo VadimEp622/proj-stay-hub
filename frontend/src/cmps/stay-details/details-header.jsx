@@ -1,9 +1,15 @@
+// Node modules
 import { useEffect } from 'react'
-import { reviewService } from "../../services/review.service"
-import { STAR } from "../../services/svg.service"
-import SvgHandler from "../svg-handler"
-import { utilService } from '../../services/util.service'
 import { Link } from 'react-router-dom'
+
+// Services
+import { reviewService } from "../../services/review.service.js"
+import { STAR } from "../../services/svg.service.js"
+import { utilService } from '../../services/util.service.js'
+
+// Components
+import SvgHandler from "../svg-handler.jsx"
+
 
 export function DetailsHeader({ stay }) {
     const reviews = stay.reviews.length > 1 ? 'reviews' : 'review'

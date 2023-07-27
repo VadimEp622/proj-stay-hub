@@ -20,7 +20,11 @@ import { PreviewImageCarousel } from "../preview-image-carousel.jsx"
 // stay-preview.jsx:78
 // Error getting user location: GeolocationPositionErrorcode: 1message: "User denied Geolocation"[[Prototype]]: GeolocationPositionError
 // (anonymous) @ stay-preview.jsx:78
-// TODO: find out why stay-preview asks for geolocation, and upon getting denied, spams with the above console.logs!
+// TODO-high-priority: find out why stay-preview asks for geolocation, and upon getting denied, spams with the above console.logs!
+
+// TODO-low-priority: distance from user suddenly gets changed, a few seconds after loading
+
+// **TODO: stay-preview should be a dumb component(!!!), that only display data, and not calculate inside it with functions(!!!)
 
 
 export function StayPreview({ stay }) {
@@ -69,7 +73,7 @@ export function StayPreview({ stay }) {
     const bathrooms = stay.bathrooms > 1 ? 'Bathrooms' : 'Bathroom'
 
     let phrase
-    
+
     if (filterBy.from && filterBy.to) {
         if (stay.bedrooms === 0 || isNaN(stay.bedrooms) || typeof stay.bedrooms === 'undefined') {
             phrase = stay.bathrooms + " " + bathrooms
@@ -112,6 +116,9 @@ export function StayPreview({ stay }) {
         return Value * Math.PI / 180
     }
 
+
+    const distanceFromUser = calcCrow(lat, lng, stay.loc.lat, stay.loc.lan)
+    const averageReviewScore = reviewService.getAverageReview(stay)
     return (
         <section className="stay-preview" key={stay._id}>
             <div className="img-container">
@@ -124,12 +131,12 @@ export function StayPreview({ stay }) {
                 <div className="preview-info">
                     <div className="preview-header">
                         <p>{stay.loc.city}, {stay.loc.country}</p>
-                        <p className="review-rate"><SvgHandler svgName={STAR_12} /><span>{reviewService.getAverageReview(stay)}</span></p>
+                        <p className="review-rate"><SvgHandler svgName={STAR_12} /><span>{averageReviewScore}</span></p>
                     </div>
                     <div className="stay-info">
                         {!isWishlistPage ? (
                             <p>
-                                {filterBy.labels ? filterBy.labels : `${calcCrow(lat, lng, stay.loc.lat, stay.loc.lan)} kilometers away`}
+                                {filterBy.labels ? filterBy.labels : `${distanceFromUser} kilometers away`}
                             </p>
                         ) : (
                             <p>{stay.type}</p>

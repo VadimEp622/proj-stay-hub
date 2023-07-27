@@ -13,6 +13,8 @@ import { StayList } from '../cmps/stay-index/stay-list.jsx'
 import { FilterModal } from '../cmps/filter.jsx'
 
 
+// TODO: remove category filter when screen width is less than 700px (build a custom hook with an event listener!)
+
 export function StayIndex() {
     const stays = useSelector(storeState => storeState.stayModule.stays)
     const filterBy = useSelector(storeState => storeState.stayModule.filterBy)
