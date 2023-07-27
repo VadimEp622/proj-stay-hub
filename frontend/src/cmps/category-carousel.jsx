@@ -7,11 +7,6 @@ import SvgHandler from "./svg-handler"
 
 export function CategoryCarousel({ images, selectedCategory, handleClick }) {
     const isMobileDevice = window.innerWidth <= 464
-    // console.log(images)
-
-    // const maxScrollWidth = "5801.550px"
-    // const maxTranslate="-4750px"
-
 
     const CustomLeftArrow = ({ onClick }) => (
         <section className="custom-arrow-container left">
@@ -29,11 +24,6 @@ export function CategoryCarousel({ images, selectedCategory, handleClick }) {
         </section>
     )
 
-    // function afterChange(previousSlide, _ref) {
-    //     var currentSlide = _ref.currentSlide; _ref.onMove;
-    //     return alert("previous slide is " + previousSlide + " currentSlide is " + currentSlide)
-    // }
-    // console.log(window.innerWidth)
     const responsive = {
         desktop: {
             breakpoint: {
@@ -103,22 +93,9 @@ export function CategoryCarousel({ images, selectedCategory, handleClick }) {
 
     return (
         <Carousel
-            // afterChange={function (previousSlide, _ref) { var currentSlide = _ref.currentSlide; _ref.onMove; return alert("previous slide is " + previousSlide + " currentSlide is " + currentSlide) }}
-            // additionalTransfrom={0}
-            // arrows={!isMobileDevice}
             centerMode={false}
-            // dotListClass=""
             draggable={isMobileDevice}
             partialVisible={false}
-            // focusOnSelect={false}
-            // infinite
-            // keyBoardControl
-            // renderDotsOutside={false}
-            // rewindWithAnimation={false}
-            // shouldResetAutoplay
-            // showDots={false}
-            // sliderClass=""
-            // partialVisible={true}
             customLeftArrow={<CustomLeftArrow />}
             customRightArrow={<CustomRightArrow />}
             minimumTouchDrag={80}
@@ -140,11 +117,11 @@ export function CategoryCarousel({ images, selectedCategory, handleClick }) {
                         key={index}
                         className={`img-container${selectedCategory === img.label ? ' active' : ''}`}
                         onClick={(ev) => handleClick(ev, img.label)}
-                    // style={{width:"fit-content"}}
                     >
                         <img
                             key={index}
                             src={img.imgSrc}
+                            alt={index}
                         />
                         <label><span>{img.label}</span></label>
                     </section>

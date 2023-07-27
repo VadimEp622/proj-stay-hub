@@ -1,38 +1,59 @@
-import { AboutUs } from './pages/about-us.jsx'
 import { StayIndex } from './pages/stay-index.jsx'
-import { ReviewIndex } from './pages/review-index.jsx'
-import { ChatApp } from './pages/chat-app.jsx'
-import { AdminApp } from './pages/admin-app.jsx'
+import { StayDetails } from './pages/stay-details.jsx'
+import { OrderConfirmation } from './pages/order-confirmation.jsx'
+import { UserDetails } from './pages/user-details.jsx'
+import { WishList } from './pages/wishlist.jsx'
+import { MyDashboard } from './pages/my-dashboard.jsx'
+import { AddStay } from './pages/add-stay.jsx'
+import { MyTrips } from './pages/trips.jsx'
+import { JSONStringify } from './cmps/strinfigy.jsx'
 
-
-// Routes accessible from the main navigation (in AppHeader)
 const routes = [
     {
         path: '/',
         component: <StayIndex />,
-        label: 'StayHub',
-        isLogo: true,
+        label: 'StayHub'
     },
-    // {
-    //     path: 'review',
-    //     component: <ReviewIndex />,
-    //     label: 'Reviews'
-    // },
-    // {
-    //     path: 'chat',
-    //     component: <ChatApp />,
-    //     label: 'Chat'
-    // },
-    // {
-    //     path: 'about',
-    //     component: <AboutUs />,
-    //     label: 'About us'
-    // },
-    // {
-    //     path: 'admin',
-    //     component: <AdminApp />,
-    //     label: 'Admin Only'
-    // }
+    {
+        path: 'stay/:stayId',
+        component: <StayDetails />,
+        label: 'StayDetails'
+    },
+    {
+        path: 'stay/book/:stayId',
+        component: <OrderConfirmation />,
+        label: 'OrderConfirmation'
+    },
+    {
+        path: 'user/:id',
+        component: <UserDetails />,
+        label: 'UserDetails'
+    },
+    {
+        path: 'wishlist',
+        component: < WishList/>,
+        label: 'WishList'
+    },
+    {
+        path: '/dashboard',
+        component: < MyDashboard/>,
+        label: 'MyDashboard'
+    },
+    {
+        path: '/dashboard/stay/add',
+        component: <AddStay />,
+        label: 'AddStay'
+    },
+    {
+        path: 'trips',
+        component: < MyTrips/>,
+        label: 'MyTrips'
+    },
+    {
+        path: 'stay/stringify',
+        component: < JSONStringify/>,
+        label: 'JSONStringify'
+    }
 ]
 
 export default routes

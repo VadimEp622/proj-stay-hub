@@ -1,27 +1,28 @@
+// Node Modules
+import { useState } from 'react'
 import { useSelector } from 'react-redux'
-import { Fragment, useRef, useState } from 'react'
-import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service.js'
-import { stayService } from '../services/stay.service.local.js'
+
+// Store
 import { store } from '../store/store.js'
-import { login, logout, setGuests, signup } from '../store/user.actions.js'
 import { updateFilterBy } from '../store/stay.actions.js'
+import { setGuests } from '../store/user.actions.js'
+import { OPEN_EXPANDED_HEADER_MODAL } from '../store/system.reducer.js'
+
+// Services
 import { utilService } from '../services/util.service.js'
-import { LoginSignup } from './login-signup.jsx'
+
+// Components
 import { Logo } from './header/logo.jsx'
 import { SearchbarToggler } from './header/searchbar-toggler.jsx'
 import { MainNavMenu } from './header/main-nav-menu.jsx'
 import { FilterExpanded } from './header/filter-expanded.jsx'
-import { OPEN_EXPANDED_HEADER_MODAL } from '../store/system.reducer.js'
 
-// header filter -> expanded-filter -> filter-modals
-// filter-bar -> main-filter
+
 
 // TODO: temporary hide "logo" and "nav menu" when screen is less than 700px, to keep only search bar
 // TODO: add new/different header for when screen size is less than 700px!!!!!
 
 export function AppHeader({ isStayDetailsPage }) {
-    // const isUnclickableBg = useSelector(storeState => storeState.systemModule.system)
-    const user = useSelector(storeState => storeState.userModule.user)
     const [filterBy, setFilterBy] = useState({
         filterText: '',
         from: '',
@@ -38,6 +39,7 @@ export function AppHeader({ isStayDetailsPage }) {
     const isFilterExpanded = useSelector(storeState => storeState.systemModule.isFilterExpanded)
     const [selectedExperienceTab, setSelectedExperienceTab] = useState('stays')
     const [selectedFilterBox, setSelectedFilterBox] = useState('where')
+
 
     function onSubmit(ev) {
         ev.preventDefault()
@@ -75,7 +77,6 @@ export function AppHeader({ isStayDetailsPage }) {
         const field = target.name
         const value = (target.type === 'number') ? +target.value : target.value
         setFilterBy(prevFilter => ({ ...prevFilter, [field]: value }))
-        // console.log(filterBy)
     }
 
     function handleGuestCountChange(type, value) {
@@ -132,59 +133,38 @@ export function AppHeader({ isStayDetailsPage }) {
     }
 
     function onSetSelectedFilterBox(ev) {
-        // console.log('ev', ev)
         ev.preventDefault()
         store.dispatch({ type: OPEN_EXPANDED_HEADER_MODAL })
         const field = ev.currentTarget.getAttribute('name')
-        // console.log('field', field)
         if (selectedFilterBox !== field) setSelectedFilterBox(field)
     }
 
 
     return (
-        <Fragment>
-            <header className={`app-header-container full ${!isStayDetailsPage ? 'main-layout' : 'details-layout'} always-clickable-bg`}>
-
-                <nav className="app-header">
-                    <Logo />
-                    <SearchbarToggler
-                        isFilterExpanded={isFilterExpanded}
-                        selectedExperienceTab={selectedExperienceTab}
-                        setSelectedExperienceTab={setSelectedExperienceTab}
-                    />
-                    <MainNavMenu />
-                </nav>
-
-                <FilterExpanded
-                    filterBy={filterBy}
-                    setFilterBy={setFilterBy}
-                    handleChange={handleChange}
-                    handleGuestCountChange={handleGuestCountChange}
-                    onSubmit={onSubmit}
-                    onSetFilterDates={onSetFilterDates}
+        <header className={`app-header-container full ${!isStayDetailsPage ? 'main-layout' : 'details-layout'} always-clickable-bg`}>
+            <nav className="app-header">
+                <Logo />
+                <SearchbarToggler
                     isFilterExpanded={isFilterExpanded}
                     selectedExperienceTab={selectedExperienceTab}
-                    selectedFilterBox={selectedFilterBox}
-                    onSetSelectedFilterBox={onSetSelectedFilterBox}
-                    setSelectedFilterBox={setSelectedFilterBox}
+                    setSelectedExperienceTab={setSelectedExperienceTab}
                 />
-            </header>
-        </Fragment >
+                <MainNavMenu />
+            </nav>
+
+            <FilterExpanded
+                filterBy={filterBy}
+                setFilterBy={setFilterBy}
+                handleChange={handleChange}
+                handleGuestCountChange={handleGuestCountChange}
+                onSubmit={onSubmit}
+                onSetFilterDates={onSetFilterDates}
+                isFilterExpanded={isFilterExpanded}
+                selectedExperienceTab={selectedExperienceTab}
+                selectedFilterBox={selectedFilterBox}
+                onSetSelectedFilterBox={onSetSelectedFilterBox}
+                setSelectedFilterBox={setSelectedFilterBox}
+            />
+        </header>
     )
 }
-
-
-
-
-
-
-
-
-
-{/* {
-    isUnclickableBg &&
-    <aside
-        className="unclickable-background"
-        onClick={(ev) => onSetIsUnclickableBg(ev, false)}
-    ></aside>
-} */}

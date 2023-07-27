@@ -1,30 +1,26 @@
+// Node Modules
 import React, { useEffect } from 'react'
 import { Routes, Route } from 'react-router'
-import { useParams, useLocation } from 'react-router-dom'
-
-
-import { stayService } from './services/stay.service.local'// needed to init demo data to localStorage (do not delete)
-
-import routes from './routes'
-
-import { AppHeader } from './cmps/app-header'
-import { AppFooter } from './cmps/app-footer'
-import { UserDetails } from './pages/user-details'
-import { StayDetails } from './pages/stay-details'
+import { useLocation } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import { LoginSignup } from './cmps/login-signup'
-import { OrderConfirmation } from './pages/order-confirmation'
-import { DynamicCmp } from './cmps/reuseableCmp/dynamicCmp'
-import { CLOSE_EXPANDED_HEADER, REMOVE_UNCLICKABLE_BG } from './store/system.reducer'
-import { store } from './store/store'
-import { WishList } from './pages/wishlist'
-import { MyTrips } from './pages/trips'
-import { AddStay } from './pages/add-stay'
-import { JSONStringify } from './cmps/strinfigy'
-import { MyDashboard } from './pages/my-dashboard'
-import { UserMsg } from './cmps/user-msg'
-import { SOCKET_EMIT_STAY_RESERVED, SOCKET_EMIT_USER_WATCH, socketService } from './services/socket.service'
-import { showSuccessMsg } from './services/event-bus.service'
+
+// Routes
+import routes from './routes.js'
+
+// Store
+import { store } from './store/store.js'
+import { CLOSE_EXPANDED_HEADER, REMOVE_UNCLICKABLE_BG } from './store/system.reducer.js'
+
+// Services
+import { socketService,  SOCKET_EMIT_STAY_RESERVED, SOCKET_EMIT_USER_WATCH} from './services/socket.service.js'
+
+// Components
+import { AppHeader } from './cmps/app-header.jsx'
+import { AppFooter } from './cmps/app-footer.jsx'
+import { DynamicCmp } from './cmps/reuseableCmp/dynamicCmp.jsx'
+import { UserMsg } from './cmps/user-msg.jsx'
+
+
 
 export function RootCmp() {
     const isUnclickableBg = useSelector(storeState => storeState.systemModule.isUnclickableBg)
@@ -59,7 +55,6 @@ export function RootCmp() {
         store.dispatch({ type: CLOSE_EXPANDED_HEADER })
         store.dispatch({ type: REMOVE_UNCLICKABLE_BG })
     }
-    // const modalType = useSelector((storeState) => storeState.stayModule.modalType)
     return (
         <>
             {isUnclickableBg && <div className="main-screen" onClick={(ev) => closeBackground(ev)}></div>}
@@ -76,20 +71,11 @@ export function RootCmp() {
                 <main className="app-main">
                     <Routes>
                         {routes.map(route => <Route key={route.path} exact={true} element={route.component} path={route.path} />)}
-                        <Route path="user/:id" element={<UserDetails />} />
-                        <Route path="wishlist" element={<WishList />} />
-                        <Route path="/dashboard" element={<MyDashboard />} />
-                        <Route path="/dashboard/stay/add" element={<AddStay />} />
-                        <Route path="trips" element={<MyTrips />} />
-                        <Route path="stay/:stayId" element={<StayDetails />} />
-                        <Route path="stay/book/:stayId" element={<OrderConfirmation />} />
-                        <Route path="stay/stringify" element={<JSONStringify />} />
                     </Routes>
                 </main>
                 {window.innerWidth > 750 && <AppFooter isStayDetailsPage={isStayDetailsPage} />}
                 <UserMsg />
             </section>
-
         </>
     )
 }

@@ -13,6 +13,12 @@ import SvgHandler from "./svg-handler.jsx"
 import { PreviewImageCarousel } from "./preview-image-carousel.jsx"
 import { userService } from "../services/user.service.js"
 
+// stay-preview.jsx:78
+// Error getting user location: GeolocationPositionErrorcode: 1message: "User denied Geolocation"[[Prototype]]: GeolocationPositionError
+// (anonymous) @ stay-preview.jsx:78
+// TODO: find out why stay-preview asks for geolocation, and upon getting denied, spams with the above console.logs!
+
+
 export function StayPreview({ stay }) {
     const [isLikeClicked, setIsLikeClicked] = useState(false)
     const likeSVG = isLikeClicked ? 'heart-red' : 'heart-white'
