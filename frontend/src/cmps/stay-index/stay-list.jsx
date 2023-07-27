@@ -1,7 +1,6 @@
-import { Link } from "react-router-dom"
-import { StayPreview } from "./stay-preview"
 import { useSelector } from "react-redux"
-import { Loader } from "./reuseableCmp/loader"
+import { StayPreview } from "./stay-preview.jsx"
+import { Loader } from "../reuseableCmp/loader.jsx"
 
 export function StayList({ stays }) {
     const isLoading = useSelector(storeState => storeState.systemModule.isLoading)

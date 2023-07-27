@@ -2,14 +2,14 @@
 import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 
-// Services
+// Store
 import { store } from '../store/store.js'
-import { CLOSE_EXPANDED_HEADER, CLOSE_EXPANDED_HEADER_MODAL, REMOVE_UNCLICKABLE_BG } from '../store/system.reducer.js'
 import { loadStays } from '../store/stay.actions.js'
+import { CLOSE_EXPANDED_HEADER, CLOSE_EXPANDED_HEADER_MODAL, REMOVE_UNCLICKABLE_BG } from '../store/system.reducer.js'
 
 // Components
-import { CategoryFilter } from '../cmps/category-filter.jsx'
-import { StayList } from '../cmps/stay-list.jsx'
+import { CategoryFilter } from '../cmps/stay-index/category-filter.jsx'
+import { StayList } from '../cmps/stay-index/stay-list.jsx'
 import { FilterModal } from '../cmps/filter.jsx'
 
 

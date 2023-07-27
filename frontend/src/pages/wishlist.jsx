@@ -1,9 +1,14 @@
-import { useSelector } from "react-redux"
-import { StayList } from "../cmps/stay-list"
-import { Link } from "react-router-dom"
-import { AirbnbButton } from "../cmps/reuseableCmp/airbnb-button"
-import { setModal } from "../store/stay.actions"
+// Node modules
 import { useEffect } from "react"
+import { useSelector } from "react-redux"
+import { Link } from "react-router-dom"
+
+// Store
+import { setModal } from "../store/stay.actions.js"
+
+// Components
+import { StayList } from "../cmps/stay-index/stay-list.jsx"
+import { AirbnbButton } from "../cmps/reuseableCmp/airbnb-button.jsx"
 
 
 

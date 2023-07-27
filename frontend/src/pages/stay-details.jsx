@@ -4,17 +4,19 @@ import { useParams, useNavigate} from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
 // Services
-// import { socketService } from '../services/socket.service.js'
 import { userService } from '../services/user.service.js'
 import { stayService } from "../services/stay.service.js"
 import { showErrorMsg } from "../services/event-bus.service.js"
 import { reviewService } from '../services/review.service.js'
 import { utilService } from '../services/util.service.js'
-import { AddToWishlist, removeFromWishlist } from '../store/user.actions.js'
 import { HEART_16, RED_HEART_16} from '../services/svg.service.js'
+// import { socketService } from '../services/socket.service.js'
+
+// Store
+import { AddToWishlist, removeFromWishlist } from '../store/user.actions.js'
 
 // Components
-import { DetailsHeader } from '../cmps/details-header.jsx'
+import { DetailsHeader } from '../cmps/stay-details/details-header.jsx'
 import { Loader } from '../cmps/reuseableCmp/loader.jsx'
 import { ThingsToKnow } from '../cmps/stay-details/things-to-know.jsx'
 import { HostDetails } from '../cmps/stay-details/host-details.jsx'

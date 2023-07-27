@@ -1,8 +1,12 @@
+// Node modules
 import Carousel from "react-multi-carousel"
 import "react-multi-carousel/lib/styles.css"
-import { ARROW_LEFT_FAT, ARROW_RIGHT_FAT } from "../services/svg.service"
-import SvgHandler from "./svg-handler"
 
+// Services
+import { ARROW_LEFT_FAT, ARROW_RIGHT_FAT } from "../../services/svg.service.js"
+
+// Components
+import SvgHandler from "../svg-handler"
 
 
 export function CategoryCarousel({ images, selectedCategory, handleClick }) {

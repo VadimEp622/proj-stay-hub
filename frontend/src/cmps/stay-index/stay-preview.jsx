@@ -1,17 +1,21 @@
+// Node modules
 import { useState, useEffect } from "react"
 import { Link, useLocation } from "react-router-dom"
 import { useSelector } from "react-redux"
 
-import { utilService } from "../services/util.service.js"
-import { reviewService } from "../services/review.service.js"
-import { HEART, STAR, STAR_12, WHITE_HEART } from "../services/svg.service.js"
+// Services
+import { utilService } from "../../services/util.service.js"
+import { reviewService } from "../../services/review.service.js"
+import { userService } from "../../services/user.service.js"
+import { STAR_12 } from "../../services/svg.service.js"
 
-import { setModal } from "../store/stay.actions.js"
-import { AddToWishlist, removeFromWishlist } from "../store/user.actions.js"
+// Store
+import { setModal } from "../../store/stay.actions.js"
+import { AddToWishlist, removeFromWishlist } from "../../store/user.actions.js"
 
-import SvgHandler from "./svg-handler.jsx"
-import { PreviewImageCarousel } from "./preview-image-carousel.jsx"
-import { userService } from "../services/user.service.js"
+// Components
+import SvgHandler from "../svg-handler.jsx"
+import { PreviewImageCarousel } from "../preview-image-carousel.jsx"
 
 // stay-preview.jsx:78
 // Error getting user location: GeolocationPositionErrorcode: 1message: "User denied Geolocation"[[Prototype]]: GeolocationPositionError
@@ -63,7 +67,9 @@ export function StayPreview({ stay }) {
 
     const bedrooms = stay.bedrooms > 1 ? 'Bedrooms' : 'Bedroom'
     const bathrooms = stay.bathrooms > 1 ? 'Bathrooms' : 'Bathroom'
+
     let phrase
+    
     if (filterBy.from && filterBy.to) {
         if (stay.bedrooms === 0 || isNaN(stay.bedrooms) || typeof stay.bedrooms === 'undefined') {
             phrase = stay.bathrooms + " " + bathrooms

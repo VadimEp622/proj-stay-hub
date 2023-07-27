@@ -1,8 +1,8 @@
 import { useEffect } from 'react'
-import { reviewService } from "../services/review.service"
-import { STAR } from "../services/svg.service"
-import SvgHandler from "./svg-handler"
-import { utilService } from '../services/util.service'
+import { reviewService } from "../../services/review.service"
+import { STAR } from "../../services/svg.service"
+import SvgHandler from "../svg-handler"
+import { utilService } from '../../services/util.service'
 import { Link } from 'react-router-dom'
 
 export function DetailsHeader({ stay }) {
