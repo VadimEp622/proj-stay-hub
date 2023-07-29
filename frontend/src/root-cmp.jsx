@@ -17,7 +17,7 @@ import { socketService,  SOCKET_EMIT_STAY_RESERVED, SOCKET_EMIT_USER_WATCH} from
 // Components
 import { AppHeader } from './cmps/app-header.jsx'
 import { AppFooter } from './cmps/app-footer.jsx'
-import { DynamicCmp } from './cmps/reuseableCmp/dynamicCmp.jsx'
+import { DynamicCmp } from './cmps/_reuseable-cmps/dynamicCmp.jsx'
 import { UserMsg } from './cmps/user-msg.jsx'
 
 
