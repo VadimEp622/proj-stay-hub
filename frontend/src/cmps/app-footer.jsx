@@ -1,12 +1,18 @@
-
+// Node modules
 import { useState } from 'react'
 import { useSelector } from 'react-redux'
-import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 
-import { removeFromCart, checkout } from '../store/stay.actions'
+// Services
+import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service.js'
+import { TICK_DECLINE } from '../services/svg.service.js'
+
+// Store
+import { removeFromCart, checkout } from '../store/stay.actions.js'
+
+// Components
 import { UserMsg } from './user-msg.jsx'
-import SvgHandler from './svg-handler'
-import { TICK_DECLINE } from '../services/svg.service'
+import SvgHandler from './svg-handler.jsx'
+
 
 export function AppFooter( {isStayDetailsPage} ) {
     const [isCartShown, setIsCartShown] = useState(false)

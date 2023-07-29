@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux"
-import { StayPreview } from "./stay-preview.jsx"
+import { StayPreview } from "./stay-list/stay-preview.jsx"
 import { Loader } from "../reuseableCmp/loader.jsx"
 
 export function StayList({ stays }) {

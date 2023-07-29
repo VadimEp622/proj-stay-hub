@@ -1,14 +1,17 @@
-import { useSelector } from "react-redux";
-import { LoginSignup } from "./login-signup";
-import { useEffect, useRef, useState } from "react";
-import { setModal } from "../store/stay.actions";
-import { Link } from "react-router-dom";
-import { logout } from "../store/user.actions";
+// Node modules
+import { useEffect, useRef, useState } from "react"
+import { useSelector } from "react-redux"
+import { Link } from "react-router-dom"
+
+// Store
+import { setModal } from "../../../store/stay.actions.js"
+import { logout } from "../../../store/user.actions.js"
+
 
 export function DropDown({ setIsDropDownActive }) {
     const loggedInUser = useSelector(storeState => storeState.userModule.user)
     const [logInClicked, setLogInClicked] = useState(false)
-    const dropdownRef = useRef(null);
+    const dropdownRef = useRef(null)
 
     function openModal(ev, modal) {
         ev.preventDefault()
@@ -18,20 +21,20 @@ export function DropDown({ setIsDropDownActive }) {
     }
 
     function handleClickInside(ev) {
-        setIsDropDownActive(false);
+        setIsDropDownActive(false)
     }
     useEffect(() => {
 
         if (dropdownRef.current) {
-            dropdownRef.current.addEventListener("click", handleClickInside);
+            dropdownRef.current.addEventListener("click", handleClickInside)
         }
 
         return () => {
             if (dropdownRef.current) {
-                dropdownRef.current.removeEventListener("click", handleClickInside);
+                dropdownRef.current.removeEventListener("click", handleClickInside)
             }
-        };
-    }, [setIsDropDownActive]);
+        }
+    }, [setIsDropDownActive])
 
 
     return (
@@ -60,9 +63,6 @@ export function DropDown({ setIsDropDownActive }) {
                     </>
                 )}
             </div>
-            {/* <div className="login-component" style={{ width: '100vw', height: '100vh' }}>
-                <LoginSignup />
-            </div> */}
         </>
     )
 }

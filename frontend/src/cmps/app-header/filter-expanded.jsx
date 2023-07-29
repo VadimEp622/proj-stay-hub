@@ -15,7 +15,7 @@ import { useClickOutside } from "../../customHooks/clickOutsideModal.js"
 
 // Components
 import { LocationFilter } from "../location-filter.jsx"
-import { DateFilter } from "./app-header-date-filter.jsx"
+import { DateFilter } from "./filter-expanded/date-filter.jsx"
 import { GuestCountFilter } from "../guest-count-filter.jsx"
 import { LongTxt } from "../long-txt.jsx"
 import SvgHandler from "../svg-handler.jsx"

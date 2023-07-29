@@ -4,18 +4,18 @@ import { Link, useLocation } from "react-router-dom"
 import { useSelector } from "react-redux"
 
 // Services
-import { utilService } from "../../services/util.service.js"
-import { reviewService } from "../../services/review.service.js"
-import { userService } from "../../services/user.service.js"
-import { STAR_12 } from "../../services/svg.service.js"
+import { utilService } from "../../../services/util.service.js"
+import { reviewService } from "../../../services/review.service.js"
+import { userService } from "../../../services/user.service.js"
+import { STAR_12 } from "../../../services/svg.service.js"
 
 // Store
-import { setModal } from "../../store/stay.actions.js"
-import { AddToWishlist, removeFromWishlist } from "../../store/user.actions.js"
+import { setModal } from "../../../store/stay.actions.js"
+import { AddToWishlist, removeFromWishlist } from "../../../store/user.actions.js"
 
 // Components
-import SvgHandler from "../svg-handler.jsx"
-import { PreviewImageCarousel } from "../preview-image-carousel.jsx"
+import SvgHandler from "../../svg-handler.jsx"
+import { PreviewImageCarousel } from "../../preview-image-carousel.jsx"
 
 // stay-preview.jsx:78
 // Error getting user location: GeolocationPositionErrorcode: 1message: "User denied Geolocation"[[Prototype]]: GeolocationPositionError

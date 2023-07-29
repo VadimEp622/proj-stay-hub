@@ -12,10 +12,10 @@ import { OPEN_EXPANDED_HEADER_MODAL } from '../store/system.reducer.js'
 import { utilService } from '../services/util.service.js'
 
 // Components
-import { Logo } from './header/logo.jsx'
-import { SearchbarToggler } from './header/searchbar-toggler.jsx'
-import { MainNavMenu } from './header/main-nav-menu.jsx'
-import { FilterExpanded } from './header/filter-expanded.jsx'
+import { Logo } from './app-header/logo.jsx'
+import { SearchbarToggler } from './app-header/searchbar-toggler.jsx'
+import { MainNavMenu } from './app-header/main-nav-menu.jsx'
+import { FilterExpanded } from './app-header/filter-expanded.jsx'
 
 
 

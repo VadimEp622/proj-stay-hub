@@ -6,7 +6,7 @@ import { WishList } from './pages/wishlist.jsx'
 import { MyDashboard } from './pages/my-dashboard.jsx'
 import { AddStay } from './pages/add-stay.jsx'
 import { MyTrips } from './pages/trips.jsx'
-import { JSONStringify } from './cmps/strinfigy.jsx'
+import { JSONStringify } from './cmps/stringify.jsx'
 
 const routes = [
     {

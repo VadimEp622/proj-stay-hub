@@ -1,11 +1,17 @@
-import { useEffect, useState } from "react"
+// Node modules
+import { useState } from "react"
+import { useSelector } from "react-redux"
 
+// Services
 import { USER_NAV_BARS, USER_NAV_PROFILE } from "../../services/svg.service.js"
+
+// Custom hooks
 import { useClickOutside } from "../../customHooks/clickOutsideModal.js"
 
-import { DropDown } from "../dropdown-menu.jsx"
+// Components
+import { DropDown } from "./main-nav-menu/dropdown-menu.jsx"
 import SvgHandler from "../svg-handler.jsx"
-import { useSelector } from "react-redux"
+
 
 export function MainNavMenu() {
     const [isDropDownActive, setIsDropDownActive] = useState(false)
@@ -28,7 +34,7 @@ export function MainNavMenu() {
                 <article className="bars"><SvgHandler svgName={USER_NAV_BARS} /></article>
                 <article className="profile">
                     {!user && <SvgHandler svgName={USER_NAV_PROFILE} />}
-                    {user && user.imgUrl && <img src={user.imgUrl} />}
+                    {user && user.imgUrl && <img src={user.imgUrl} alt="user" />}
                     {user && user.imgUrl.length < 1 && <SvgHandler svgName={USER_NAV_PROFILE} />}
                 </article>
             </section>
