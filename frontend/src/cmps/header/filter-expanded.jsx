@@ -1,18 +1,25 @@
-import { SEARCH_2 } from "../../services/svg.service.js"
-
+// Node modules
+import { useEffect, useRef} from "react"
+import { useSelector } from "react-redux"
 import { format } from 'date-fns'
 
+// Store
+import { store } from "../../store/store.js"
+import { CLOSE_EXPANDED_HEADER_MODAL, OPEN_EXPANDED_HEADER_MODAL } from "../../store/system.reducer.js"
+
+// Services
+import { SEARCH_2 } from "../../services/svg.service.js"
+
+// Custom Hooks
+import { useClickOutside } from "../../customHooks/clickOutsideModal.js"
+
+// Components
 import { LocationFilter } from "../location-filter.jsx"
 import { DateFilter } from "./app-header-date-filter.jsx"
 import { GuestCountFilter } from "../guest-count-filter.jsx"
 import { LongTxt } from "../long-txt.jsx"
 import SvgHandler from "../svg-handler.jsx"
-import { useEffect, useRef, useState } from "react"
-import { createElement } from 'react';
-import { useClickOutside } from "../../customHooks/clickOutsideModal.js"
-import { store } from "../../store/store.js"
-import { CLOSE_EXPANDED_HEADER_MODAL, OPEN_EXPANDED_HEADER_MODAL } from "../../store/system.reducer.js"
-import { useSelector } from "react-redux"
+
 
 
 export function FilterExpanded(
@@ -29,6 +36,16 @@ export function FilterExpanded(
         onSetSelectedFilterBox,
         setSelectedFilterBox
     }) {
+    const isExpandedModalOpen = useSelector(storeState => storeState.systemModule.isExpandedModalOpen)
+    const isFirstTimeExpandedRef = useRef(true)
+    const dropdownRef = useClickOutside(onClickModal)
+
+
+    useEffect(() => {
+        if (!isFilterExpanded) isFirstTimeExpandedRef.current = true
+    }, [isFilterExpanded])
+
+
 
     function displayGuestsFilter() {
         // ******** At least 1 Adult from this point ********
@@ -46,21 +63,6 @@ export function FilterExpanded(
         return guestsStr
     }
 
-    const isExpandedModalOpen = useSelector(storeState => storeState.systemModule.isExpandedModalOpen)
-    const isFirstTimeExpandedRef = useRef(true)
-
-
-    useEffect(() => {
-        // console.log('isExpandedModalOpen', isExpandedModalOpen)
-        // console.log('isFirstTimeExpandedRef', isFirstTimeExpandedRef)
-        // store.dispatch({ type: OPEN_EXPANDED_HEADER_MODAL })
-    }, [])
-
-    useEffect(() => {
-        if (!isFilterExpanded) isFirstTimeExpandedRef.current = true
-    }, [isFilterExpanded])
-
-
     function onClickModal() {
         if (isFilterExpanded) {
             if (!isFirstTimeExpandedRef.current) {
@@ -74,7 +76,6 @@ export function FilterExpanded(
         }
     }
 
-    const dropdownRef = useClickOutside(onClickModal)
 
     return (
         <section className={`filter-expanded-container full main-layout${isFilterExpanded ? '' : ' folded'}`} >

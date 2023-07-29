@@ -22,6 +22,9 @@ import { FilterExpanded } from './header/filter-expanded.jsx'
 // TODO: fix filter to make it work flawlessly 
 // TODO: add new/different header for when screen size is less than 700px!!!!!
 
+// TODO-high-priority: there are no "Italy" & "France" stays in database!!! need to manually add, or change some existing ones 
+// TODO-low-priority: change in filterBy, "country" and "city" keys, to "where" key. (must also change in backend, so keep in mind the deployment)
+
 export function AppHeader({ isStayDetailsPage }) {
     const [filterBy, setFilterBy] = useState({
         filterText: '',
