@@ -29,7 +29,7 @@ export function AppHeader({ isStayDetailsPage }) {
     const [filterBy, setFilterBy] = useState({
         filterText: '',
         from: '',
-        country: '',
+        // country: '',
         to: '',
         capacity: 0,
         guests: {

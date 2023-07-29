@@ -7,12 +7,12 @@ import unitedStates from "../assets/img/locations/united-states.webp"
 
 export function LocationFilter({ filterBy, handleChange }) {
 
-    function handleLocationClick(ev, country) {
+    function handleLocationClick(ev, filterText) {
         if (ev) {
             ev.stopPropagation()
             ev.preventDefault()
         }
-        handleChange({ target: { name: 'country', value: country } })
+        handleChange({ target: { name: 'filterText', value: filterText } })
     }
 
     return (
@@ -20,7 +20,7 @@ export function LocationFilter({ filterBy, handleChange }) {
             <h4>Search by region</h4>
             <section className="locations">
                 <article className="flexible">
-                    <button onClick={(ev) => handleLocationClick(ev, 'Flexible')}>
+                    <button onClick={(ev) => handleLocationClick(ev, '')}>
                         <img src={flexible} alt='flexible' />
                     </button>
                     <span>I'm flexible</span>
