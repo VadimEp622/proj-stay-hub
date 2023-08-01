@@ -14,7 +14,7 @@ import SvgHandler from '../cmps/svg-handler'
 import { addStay, setModal } from '../store/stay.actions'
 import Select from 'react-select'
 import { RenderErrorMessage } from '../cmps/errormessage'
-import { ImgUploader } from '../cmps/reuseableCmp/img-uploader'
+import { ImgUploader } from '../cmps/_reuseable-cmps/img-uploader'
 
 function handleChange(ev) {
     const field = ev.target.name;

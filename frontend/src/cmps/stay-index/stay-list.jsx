@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux"
 import { StayPreview } from "./stay-list/stay-preview.jsx"
-import { Loader } from "../reuseableCmp/loader.jsx"
+import { Loader } from "../_reuseable-cmps/loader.jsx"
 
 export function StayList({ stays }) {
     const isLoading = useSelector(storeState => storeState.systemModule.isLoading)

@@ -15,12 +15,17 @@
 
 // ************** Components **************
 // Reuseable 
-@import "cmps/reusableCmp/date-picker";
-@import "cmps/reusableCmp/loader";
+@import "cmps/_reuseable-cmps/date-picker";
+@import "cmps/_reuseable-cmps/loader";
 // header 
 @import "cmps/header/date-filter";
 
 
+// __checked__ //
+@import "cmps/gray-viewport";
+
+
+// __unchecked__ //
 @import "cmps/app-header";
 @import "cmps/details-header";
 @import "cmps/details-reviews";
@@ -38,7 +43,6 @@
 @import "cmps/dropdown";
 @import "cmps/login";
 @import "cmps/modal";
-@import "cmps/main-screen";
 @import "cmps/logo";
 @import "cmps/searchbar-toggler";
 @import "cmps/main-nav-menu";

@@ -10,8 +10,8 @@ import { OrderConfirmation } from "../pages/order-confirmation"
 import { userService } from "../services/user.service"
 import { setOrder } from "../store/user.actions"
 import { Link } from "react-router-dom"
-import { AirbnbButton } from "./reuseableCmp/airbnb-button"
-import { DatePicker } from "./reuseableCmp/date-picker"
+import { AirbnbButton } from "./_reuseable-cmps/airbnb-button"
+import { DatePicker } from "./_reuseable-cmps/date-picker"
 import { useClickOutside } from "../customHooks/clickOutsideModal.js"
 
 export function OrderContainer({ stay, randomDate, hostImgUrl }) {

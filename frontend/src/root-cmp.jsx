@@ -57,7 +57,7 @@ export function RootCmp() {
     }
     return (
         <>
-            {isUnclickableBg && <div className="main-screen" onClick={(ev) => closeBackground(ev)}></div>}
+            {isUnclickableBg && <div className="gray-viewport" onClick={(ev) => closeBackground(ev)}></div>}
             {isModalOpen && (
                 <div className="modal-wrapper">
                     <div className="modal-wrapper-second">

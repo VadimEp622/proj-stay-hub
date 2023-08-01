@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { reviewService } from "../services/review.service";
-import { Loader } from "./reuseableCmp/loader";
+import { Loader } from "./_reuseable-cmps/loader";
 import { userService } from "../services/user.service";
 
 export function DetailsReviews({ reviewsToDisplay, MAX_LENGTH = 120 }) {

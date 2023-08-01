@@ -1,7 +1,7 @@
 import { useClickOutside } from "../customHooks/clickOutsideModal";
 import { ARROW_LEFT, STAR } from "../services/svg.service";
 import SvgHandler from "../cmps/svg-handler";
-import { AirbnbButton } from "../cmps/reuseableCmp/airbnb-button";
+import { AirbnbButton } from "../cmps/_reuseable-cmps/airbnb-button";
 import { utilService } from "../services/util.service";
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";

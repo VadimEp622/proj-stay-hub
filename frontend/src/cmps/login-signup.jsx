@@ -1,11 +1,11 @@
 
 import { useState, useEffect } from 'react'
 import { userService } from '../services/user.service'
-import { ImgUploader } from './reuseableCmp/img-uploader'
+import { ImgUploader } from './_reuseable-cmps/img-uploader'
 import { login, signup } from '../store/user.actions'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { useSelector } from 'react-redux'
-import { AirbnbButton } from './reuseableCmp/airbnb-button'
+import { AirbnbButton } from './_reuseable-cmps/airbnb-button'
 import { setModal } from '../store/stay.actions'
 import { useClickOutside } from '../customHooks/clickOutsideModal'
 import SvgHandler from './svg-handler'

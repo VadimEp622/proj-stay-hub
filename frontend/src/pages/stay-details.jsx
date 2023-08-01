@@ -17,7 +17,7 @@ import { AddToWishlist, removeFromWishlist } from '../store/user.actions.js'
 
 // Components
 import { DetailsHeader } from '../cmps/stay-details/details-header.jsx'
-import { Loader } from '../cmps/reuseableCmp/loader.jsx'
+import { Loader } from '../cmps/_reuseable-cmps/loader.jsx'
 import { ThingsToKnow } from '../cmps/stay-details/things-to-know.jsx'
 import { HostDetails } from '../cmps/stay-details/host-details.jsx'
 import { StayMap } from '../cmps/stay-details/stay-map.jsx'

@@ -8,7 +8,7 @@ import { setModal } from "../store/stay.actions.js"
 
 // Components
 import { StayList } from "../cmps/stay-index/stay-list.jsx"
-import { AirbnbButton } from "../cmps/reuseableCmp/airbnb-button.jsx"
+import { AirbnbButton } from "../cmps/_reuseable-cmps/airbnb-button.jsx"
 
 
 
