@@ -31,7 +31,7 @@ export function DetailsHeader({ stay }) {
             })
         }
 
-        const orderModal = document.querySelector('.order-modal')
+        const orderModal = document.querySelector('.order-sidebar')
         const reserveLink = document.querySelector('.reserve-container')
 
         const orderModalObserver = new IntersectionObserver(onOrderModalObserved, {

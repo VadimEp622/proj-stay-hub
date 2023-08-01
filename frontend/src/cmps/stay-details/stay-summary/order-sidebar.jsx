@@ -1,20 +1,20 @@
 import { useSelector } from "react-redux"
-import { reviewService } from "../services/review.service"
-import { stayService } from "../services/stay.service"
-import { STAR, RED_TAG } from "../services/svg.service"
-import { utilService } from "../services/util.service"
+import { reviewService } from "../../../services/review.service"
+import { stayService } from "../../../services/stay.service"
+import { STAR, RED_TAG } from "../../../services/svg.service"
+import { utilService } from "../../../services/util.service"
 // import DatePicker from "./date-picker"
-import SvgHandler from "./svg-handler"
+import SvgHandler from "../../svg-handler"
 import { useEffect, useState } from "react"
-import { OrderConfirmation } from "../pages/order-confirmation"
-import { userService } from "../services/user.service"
-import { setOrder } from "../store/user.actions"
+import { OrderConfirmation } from "../../../pages/order-confirmation"
+import { userService } from "../../../services/user.service"
+import { setOrder } from "../../../store/user.actions"
 import { Link } from "react-router-dom"
-import { AirbnbButton } from "./_reuseable-cmps/airbnb-button"
-import { DatePicker } from "./_reuseable-cmps/date-picker"
-import { useClickOutside } from "../customHooks/clickOutsideModal.js"
+import { AirbnbButton } from "../../_reuseable-cmps/airbnb-button"
+import { DatePicker } from "../../_reuseable-cmps/date-picker"
+import { useClickOutside } from "../../../customHooks/clickOutsideModal.js"
 
-export function OrderContainer({ stay, randomDate, hostImgUrl }) {
+export function OrderSidebar({ stay, randomDate, hostImgUrl }) {
     // console.log('orderImg', hostImgUrl)
     // const hostImgUrlPass = hostImgUrl
     // console.log('orderImgPass', hostImgUrlPass)
@@ -103,7 +103,7 @@ export function OrderContainer({ stay, randomDate, hostImgUrl }) {
     }
 
     return (
-        <section className="order-modal">
+        <section className="order-sidebar">
             <section className="order-modal-form flex">
                 {/* <DatePicker stay={stay} /> */}
                 <div className="order-container-header flex align-baseline">
