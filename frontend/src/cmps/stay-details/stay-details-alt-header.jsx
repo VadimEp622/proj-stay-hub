@@ -16,11 +16,11 @@ export function StayDetailsAltHeader({ stay }) {
 
     useEffect(() => {
         const header = document.querySelector('.stay-photos-container')
-        const nav = document.querySelector('.details-header')
+        const nav = document.querySelector('.stay-details-alt-header-container')
 
         const headerObserver = new IntersectionObserver(onHeaderObserved, {
             rootMargin: "-5px 0px 0px",
-        });
+        })
 
         headerObserver.observe(header)
 
@@ -36,7 +36,7 @@ export function StayDetailsAltHeader({ stay }) {
 
         const orderModalObserver = new IntersectionObserver(onOrderModalObserved, {
             rootMargin: "-500px 0px 0px",
-        });
+        })
 
         orderModalObserver.observe(orderModal)
 
