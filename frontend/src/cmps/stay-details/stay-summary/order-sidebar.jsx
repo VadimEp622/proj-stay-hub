@@ -1,18 +1,32 @@
+// Node modules
 import { useSelector } from "react-redux"
-import { reviewService } from "../../../services/review.service"
-import { stayService } from "../../../services/stay.service"
-import { STAR, RED_TAG } from "../../../services/svg.service"
-import { utilService } from "../../../services/util.service"
-// import DatePicker from "./date-picker"
-import SvgHandler from "../../svg-handler"
 import { useEffect, useState } from "react"
-import { OrderConfirmation } from "../../../pages/order-confirmation"
-import { userService } from "../../../services/user.service"
-import { setOrder } from "../../../store/user.actions"
 import { Link } from "react-router-dom"
-import { AirbnbButton } from "../../_reuseable-cmps/airbnb-button"
-import { DatePicker } from "../../_reuseable-cmps/date-picker"
+
+// Services
+import { reviewService } from "../../../services/review.service.js"
+import { stayService } from "../../../services/stay.service.js"
+import { STAR, RED_TAG } from "../../../services/svg.service.js"
+import { utilService } from "../../../services/util.service.js"
+import { userService } from "../../../services/user.service.js"
+
+// Store
+import { setOrder } from "../../../store/user.actions.js"
+
+// Custom Hooks
 import { useClickOutside } from "../../../customHooks/clickOutsideModal.js"
+
+// Components
+import SvgHandler from "../../svg-handler.jsx"
+import { OrderConfirmation } from "../../../pages/order-confirmation.jsx"
+import { AirbnbButton } from "../../_reuseable-cmps/airbnb-button.jsx"
+import { DatePicker } from "../../_reuseable-cmps/date-picker.jsx"
+// import DatePicker from "./date-picker.jsx"
+
+
+// TODO: figure out what the hell's going on here
+// TODO-priority-high: make sure if not logged in, cant order!, open login/register modal instead! 
+
 
 export function OrderSidebar({ stay, randomDate, hostImgUrl }) {
     // console.log('orderImg', hostImgUrl)
