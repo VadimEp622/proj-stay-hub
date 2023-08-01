@@ -3,7 +3,7 @@ import { reviewService } from "../../services/review.service.js"
 import { STAR_16 } from "../../services/svg.service.js"
 
 // Components
-import { DetailsReviews } from "../details-reviews.jsx"
+import { StayReviewList } from "./stay-reviews/stay-review-list.jsx"
 import SvgHandler from "../svg-handler.jsx"
 
 export function StayReviews({ stay, reviewsInputs }) {
@@ -34,7 +34,7 @@ export function StayReviews({ stay, reviewsInputs }) {
                 ))}
             </div>
             <section className='reviews-sum'>
-                <DetailsReviews
+                <StayReviewList
                     reviewsToDisplay={reviewsToDisplay}
                     key={reviewsToDisplay.id}
                 />

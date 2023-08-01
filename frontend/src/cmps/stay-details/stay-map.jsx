@@ -1,4 +1,4 @@
-import GoogleMap from '../map.jsx'
+import GoogleMap from '../_reuseable-cmps/map.jsx'
 
 export function StayMap({ stay }) {
 

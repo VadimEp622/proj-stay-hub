@@ -1,0 +1,98 @@
+.summary-container {
+    padding-top: 48px;
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    border-bottom: 1px solid #dddddd;
+
+    & .summary {
+        & .overview-container {
+            border-bottom: $border-bottom;
+            padding-bottom: 24px;
+
+            & img {
+                width: 53px;
+                height: 53px;
+                border-radius: 50px;
+                object-fit: cover;
+            }
+
+            .overview {
+                h2 {
+                    font-size: rem(22px);
+                    margin-bottom: 0.3em;
+                }
+
+                & span {
+                    font-size: rem(16px);
+                }
+            }
+
+            .dot {
+                margin: 0 0.15rem;
+            }
+        }
+
+        & .highlights-container {
+            grid-column: 1;
+            padding-top: 32px;
+            padding-bottom: 8px;
+            border-bottom: $border-bottom;
+
+            .highlight {
+                margin-bottom: 8px;
+
+                .highlight-txt {
+                    margin-left: 16px;
+
+                    h3 {
+                        font-size: rem(16px);
+                        margin-bottom: 0.475rem;
+                    }
+                }
+            }
+        }
+
+        & .amenities {
+            grid-column: 1;
+            padding-top: 50px;
+            padding-bottom: 50px;
+            border-bottom: $border-bottom;
+            scroll-margin-top: 80px;
+
+            h3 {
+                font-size: rem(22px);
+                padding-bottom: 24px;
+                margin: 0;
+                letter-spacing: 0.0125rem;
+            }
+
+            .amenities-list {
+                display: grid;
+                grid-template-columns: 1fr 0.95fr;
+
+                .amenity {
+                    align-items: self-end;
+                    padding-bottom: 16px;
+
+                    &.amenity * {
+                        margin-right: 1em;
+                        font-size: rem(16px);
+                        letter-spacing: 0.0125rem;
+                    }
+                }
+            }
+        }
+
+        & .date-container {
+            padding-top: 48px;
+            padding-bottom: 48px;
+        }
+    }
+
+    & .order-sidebar-container {
+        grid-column: 2;
+        margin-bottom: 2rem;
+        width: 100%;
+        position: relative;
+    }
+}

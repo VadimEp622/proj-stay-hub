@@ -1,0 +1,25 @@
+.things-to-know {
+    margin-top: 50px;
+
+    h2 {
+        font-size: rem(22px);
+        margin-bottom: 28px;
+    }
+
+    .rules-container {
+        justify-content: flex-start;
+        line-break: strict;
+    }
+
+    .rules-container > * {
+        width: 33.3333%;
+    }
+
+    h4 {
+        margin-bottom: 12px;
+    }
+
+    p {
+        margin-bottom: 10px;
+    }
+}

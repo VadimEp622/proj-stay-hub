@@ -1,9 +1,15 @@
-import { useState } from "react";
-import { reviewService } from "../services/review.service";
-import { Loader } from "./_reuseable-cmps/loader";
-import { userService } from "../services/user.service";
+// Node modules
+import { useState } from "react"
 
-export function DetailsReviews({ reviewsToDisplay, MAX_LENGTH = 120 }) {
+// Services
+import { reviewService } from "../../../services/review.service.js"
+import { userService } from "../../../services/user.service.js"
+
+// Components
+import { Loader } from "../../_reuseable-cmps/loader.jsx"
+
+
+export function StayReviewList({ reviewsToDisplay, MAX_LENGTH = 120 }) {
   const [expanded, setExpanded] = useState(reviewsToDisplay.map(() => false));
   const [usedPhotos, setUsedPhotos] = useState([]);
 

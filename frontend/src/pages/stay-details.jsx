@@ -16,15 +16,16 @@ import { HEART_16, RED_HEART_16} from '../services/svg.service.js'
 import { AddToWishlist, removeFromWishlist } from '../store/user.actions.js'
 
 // Components
-import { DetailsHeader } from '../cmps/stay-details/details-header.jsx'
 import { Loader } from '../cmps/_reuseable-cmps/loader.jsx'
-import { ThingsToKnow } from '../cmps/stay-details/things-to-know.jsx'
-import { HostDetails } from '../cmps/stay-details/host-details.jsx'
+import { StayDetailsAltHeader } from '../cmps/stay-details/stay-details-alt-header.jsx'
+import { ThingsToKnow } from '../cmps/stay-details/stay-things-to-know.jsx'
+import { HostDetails } from '../cmps/stay-details/stay-host-details.jsx'
 import { StayMap } from '../cmps/stay-details/stay-map.jsx'
 import { StayReviews } from '../cmps/stay-details/stay-reviews.jsx'
 import { StayTitle } from '../cmps/stay-details/stay-title.jsx'
 import { StaySummary } from '../cmps/stay-details/stay-summary.jsx'
 import { StayPhotos } from '../cmps/stay-details/stay-photos.jsx'
+
 
 export function StayDetails() {
     const [stay, setStay] = useState(null)
@@ -111,7 +112,7 @@ export function StayDetails() {
 
     return <>
         <section className="stay-details" id='photos'>
-            <DetailsHeader stay={stay} />
+            <StayDetailsAltHeader stay={stay} />
             <StayTitle
                 stay={stay}
                 averageReviewScore={averageReviewScore}

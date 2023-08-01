@@ -4,7 +4,6 @@
 @import "setup/functions";
 @import "setup/mixins";
 
-
 // ************** Basics **************
 @import "basics/base";
 @import "basics/helpers";
@@ -12,14 +11,26 @@
 @import "basics/links";
 @import "basics/forms";
 
-
 // ************** Components **************
-// Reuseable 
+// Reuseable
 @import "cmps/_reuseable-cmps/date-picker";
 @import "cmps/_reuseable-cmps/loader";
 
 // *** header ***
 @import "cmps/header/date-filter";
+
+// *** stay-details ***   ---->TODO: needs cleaning up
+@import "cmps/stay-details/stay-title";
+@import "cmps/stay-details/stay-photos";
+@import "cmps/stay-details/stay-summary";
+@import "cmps/stay-details/stay-reviews";
+@import "cmps/stay-details/stay-map";
+@import "cmps/stay-details/stay-host-details";
+@import "cmps/stay-details/stay-things-to-know";
+@import "cmps/stay-details/stay-details-alt-header";
+// *** stay-details/stay-reviews ***   ---->TODO: needs cleaning up
+@import "cmps/stay-details/stay-reviews/stay-review-list";
+
 
 
 // __checked__ //
@@ -27,11 +38,8 @@
 @import "cmps/modal-wrapper";
 @import "cmps/main-nav-menu";
 
-
 // __unchecked__ //
 @import "cmps/app-header";
-@import "cmps/details-header";
-@import "cmps/details-reviews";
 @import "cmps/order-sidebar";
 @import "cmps/order-confirmation";
 @import "cmps/stay-list";
@@ -51,15 +59,12 @@
 @import "cmps/preview-image-carousel";
 @import "cmps/host-orders";
 
-
-
-
 // ************** Pages **************
 @import "pages/about-us";
-@import "pages/stay_index";
+@import "pages/stay-index";
 @import "pages/review-index";
-@import "pages/user_details";
-@import "pages/stay_details";
+@import "pages/user-details";
+@import "pages/stay-details";
 @import "pages/add-stay";
 @import "pages/wishlist";
 @import "pages/trips";

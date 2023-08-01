@@ -1,4 +1,4 @@
-.details-header {
+.stay-details-alt-header-container {
     position: sticky;
     top: 0;
     height: 80px;
@@ -24,13 +24,12 @@
         height: 4px;
     }
 
-    .details-header-container {
+    .stay-details-alt-header {
         display: flex;
         height: 100%;
     }
 
     .reserve-container {
-
         .reserve-prev {
             flex-direction: column;
 
@@ -59,8 +58,7 @@
                 }
 
                 .period {
-                    margin: 0 .25em;
-
+                    margin: 0 0.25em;
                 }
             }
         }
@@ -84,7 +82,6 @@
     height: 1px;
     background-color: $gray-clr4;
     width: calc(100vw - 200px);
-  
 }
 
 .details-header::before {
