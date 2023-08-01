@@ -1,8 +1,8 @@
-.main-nav-menu-container {
+.main-nav-menu {
     justify-self: end;
     position: relative;
 
-    & .main-nav-menu {
+    & .nav-menu-button {
         display: flex;
         cursor: pointer;
         position: relative;

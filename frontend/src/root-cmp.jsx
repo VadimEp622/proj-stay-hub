@@ -24,9 +24,9 @@ import { UserMsg } from './cmps/user-msg.jsx'
 
 export function RootCmp() {
     const isUnclickableBg = useSelector(storeState => storeState.systemModule.isUnclickableBg)
+    const isModalOpen = useSelector(storeState => storeState.stayModule.isModalOpen)
     const location = useLocation()
     const isStayDetailsPage = location.pathname.includes('/stay/')
-    const isModalOpen = useSelector(storeState => storeState.stayModule.isModalOpen)
     // const user = useSelector(storeState => storeState.userModule.user)
 
 

@@ -144,7 +144,7 @@ export function AppHeader({ isStayDetailsPage }) {
 
 
     return (
-        <header className={`app-header-container full ${!isStayDetailsPage ? 'main-layout' : 'details-layout'} always-clickable-bg`}>
+        <header className={`app-header-container full ${!isStayDetailsPage ? 'main-layout' : 'details-layout'}`}>
             <nav className="app-header">
                 <Logo />
                 <SearchbarToggler

@@ -8,7 +8,7 @@ import { setModal } from "../../../store/stay.actions.js"
 import { logout } from "../../../store/user.actions.js"
 
 
-export function DropDown({ setIsDropDownActive }) {
+export function NavMenuDropdown({ setIsDropdownActive }) {
     const loggedInUser = useSelector(storeState => storeState.userModule.user)
     const [logInClicked, setLogInClicked] = useState(false)
     const dropdownRef = useRef(null)
@@ -16,12 +16,12 @@ export function DropDown({ setIsDropDownActive }) {
     function openModal(ev, modal) {
         ev.preventDefault()
         ev.stopPropagation()
-        setIsDropDownActive(false)
+        setIsDropdownActive(false)
         setModal(modal)
     }
 
     function handleClickInside(ev) {
-        setIsDropDownActive(false)
+        setIsDropdownActive(false)
     }
     useEffect(() => {
 
@@ -34,7 +34,7 @@ export function DropDown({ setIsDropDownActive }) {
                 dropdownRef.current.removeEventListener("click", handleClickInside)
             }
         }
-    }, [setIsDropDownActive])
+    }, [setIsDropdownActive])
 
 
     return (
