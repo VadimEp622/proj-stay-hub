@@ -21,6 +21,13 @@ import { DynamicCmp } from './cmps/_reuseable-cmps/dynamicCmp.jsx'
 import { UserMsg } from './cmps/user-msg.jsx'
 
 
+// TODO-priority-critical: some stays have check-in/out timestamps which are in the past. 
+// this causes an issue, at showing fetched orders from DB in the cmp "trips.jsx"
+// need to fix this, so their starting point will always be ---> from the date of visitor (whether logged in, or not) 
+
+
+// TODO-priority-high: organize cmps | change colors/box-shadows/sizes in scss to vars
+// TODO-medium: handle server interactions with minimum data transfer | sockets
 
 export function RootCmp() {
     const isUnclickableBg = useSelector(storeState => storeState.systemModule.isUnclickableBg)

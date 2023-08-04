@@ -26,8 +26,7 @@ import SvgHandler from "../../svg-handler.jsx"
 import { AirbnbButton } from "../../_reuseable-cmps/airbnb-button.jsx"
 
 
-// TODO: figure out what the hell's going on here
-// TODO-priority-high: make sure if not logged in, cant order!, open login/register modal instead! 
+// TODO: organize this cmp.
 
 
 export function OrderSidebar({ stay, randomDate, hostImgUrl }) {
@@ -88,8 +87,8 @@ export function OrderSidebar({ stay, randomDate, hostImgUrl }) {
                 joined: randomDate
             },
             seller: {
-                fullname: stay.host.fullname,
                 _id: stay.host._id,
+                fullname: stay.host.fullname,
                 img: hostImgUrl,
                 joined: randomDate.split(' ')[1]
             },
@@ -130,8 +129,8 @@ export function OrderSidebar({ stay, randomDate, hostImgUrl }) {
 
     function updateStayObjectBuyer() {
         if (loggedInUser) {
-            const { _id, fullname, img } = loggedInUser
-            const buyer = { _id, fullname, img, randomDate:randomDate }
+            const { _id, fullname, imgUrl } = loggedInUser
+            const buyer = { _id, fullname, img: imgUrl, joined: randomDate }
             setOrderObject((prevOrder) => ({ ...prevOrder, buyer }))
         } else {
             setOrderObject((prevOrder) => ({ ...prevOrder, buyer: {} }))

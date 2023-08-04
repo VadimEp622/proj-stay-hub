@@ -9,6 +9,8 @@ import { useState } from "react";
 import SvgHandler from "../cmps/svg-handler";
 import { EYE } from "../services/svg.service";
 
+// TODO: organize this component.
+
 export function MyTrips() {
     const loggedInUser = userService.getLoggedinUser();
     const user = useSelector(storeState => storeState.userModule.user)
@@ -76,6 +78,7 @@ export function MyTrips() {
     }, []);
 
 
+
     if (!loggedInUser) {
         showErrorMsg('You must be logged in to view your trips');
         return navigate('/');
@@ -87,11 +90,13 @@ export function MyTrips() {
         .filter((trip) => new Date(trip.content.checkOut) > currentDate)
         .reverse();
 
-    console.log('trips', trips);
+    console.log('upcomingTrips', upcomingTrips);
 
     const pastTrips = trips
         .filter((trip) => new Date(trip.content.checkOut) <= currentDate)
         .reverse();
+
+    console.log('pastTrips', pastTrips)
     return (
         <div className="trips">
             <h1>Trips</h1>
