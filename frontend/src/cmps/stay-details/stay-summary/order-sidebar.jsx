@@ -1,7 +1,7 @@
 // Node modules
 import { useSelector } from "react-redux"
 import { useEffect, useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 // Services
 import { reviewService } from "../../../services/review.service.js"
@@ -12,16 +12,18 @@ import { userService } from "../../../services/user.service.js"
 
 // Store
 import { setOrder } from "../../../store/user.actions.js"
+import { setModal } from "../../../store/stay.actions.js"
 
 // Custom Hooks
 import { useClickOutside } from "../../../customHooks/clickOutsideModal.js"
 
 // Components
-import SvgHandler from "../../svg-handler.jsx"
-import { OrderConfirmation } from "../../../pages/order-confirmation.jsx"
-import { AirbnbButton } from "../../_reuseable-cmps/airbnb-button.jsx"
-import { DatePicker } from "../../_reuseable-cmps/date-picker.jsx"
 // import DatePicker from "./date-picker.jsx"
+import { OrderConfirmation } from "../../../pages/order-confirmation.jsx"
+import { LoginSignup } from "../../login-signup.jsx"
+import { DatePicker } from "../../_reuseable-cmps/date-picker.jsx"
+import SvgHandler from "../../svg-handler.jsx"
+import { AirbnbButton } from "../../_reuseable-cmps/airbnb-button.jsx"
 
 
 // TODO: figure out what the hell's going on here
@@ -42,6 +44,8 @@ export function OrderSidebar({ stay, randomDate, hostImgUrl }) {
 
     const dateModalRef = useClickOutside(onDateModalClickOutside)
 
+    const navigate = useNavigate()
+
 
     const checkIn = stayService.getDate(stay.availableDates[0].from)
     const checkOut = stayService.getDate(stay.availableDates[0].to)
@@ -51,13 +55,8 @@ export function OrderSidebar({ stay, randomDate, hostImgUrl }) {
     const serviceFee = utilService.getRandomIntInclusive(100, 500)
     const totalPrice = nightsPrice + cleaningFee + serviceFee
     const guestsString = userService.buildGuestsString(guestsObject)
-    const x = '123'
     let guestCount = 1
 
-    
-    useEffect(() => {
-        console.log('loggedInUser', loggedInUser)
-    }, [loggedInUser])
 
 
     useEffect(() => {
@@ -66,8 +65,9 @@ export function OrderSidebar({ stay, randomDate, hostImgUrl }) {
 
 
     useEffect(() => {
-        if (Object.keys(orderObject).length!==0) setOrder(orderObject)
+        if (Object.keys(orderObject).length !== 0) setOrder(orderObject)
     }, [orderObject])
+
 
     function onDateModalClickOutside() {
         // if (!isDateModalOpen) 
@@ -130,6 +130,21 @@ export function OrderSidebar({ stay, randomDate, hostImgUrl }) {
         setIsDateModalOpen(true)
     }
 
+
+    function onClickButton(ev) {
+        console.log('ev', ev)
+        ev.preventDefault()
+        ev.stopPropagation()
+        if (!loggedInUser) {
+            console.log("NOT logged in click")
+            setModal("logIn")
+        }
+        else {
+            console.log("logged in click")
+            navigate(`/stay/book/${stay._id}`)
+        }
+    }
+
     return (
         <section className="order-sidebar">
             <section className="order-modal-form flex">
@@ -175,9 +190,7 @@ export function OrderSidebar({ stay, randomDate, hostImgUrl }) {
                         </div>
                     </div>
                 </section>
-                <Link to={`/stay/book/${stay._id}`}>
-                    <AirbnbButton text={'Reserve'} />
-                </Link>
+                <AirbnbButton text={'Reserve'} onClickButton={(ev) => onClickButton(ev)} />
                 <section className="price-container">
                     <p>You won't be charged yet</p>
                     <section className="flex space-between">

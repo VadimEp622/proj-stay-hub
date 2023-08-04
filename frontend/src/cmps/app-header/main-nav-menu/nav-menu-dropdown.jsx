@@ -23,6 +23,7 @@ export function NavMenuDropdown({ setIsDropdownActive }) {
     function handleClickInside(ev) {
         setIsDropdownActive(false)
     }
+    
     useEffect(() => {
 
         if (dropdownRef.current) {

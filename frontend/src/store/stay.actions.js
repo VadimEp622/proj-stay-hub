@@ -35,7 +35,6 @@ export async function loadStays(filterBy) {
         // console.log('hi from stay action, loadStays')
         store.dispatch({ type: LOADING_START })
         const stays = await stayService.query(filterBy)
-        console.log('hi after stays in action stay')
         store.dispatch({
             type: SET_STAYS,
             stays
@@ -120,7 +119,6 @@ export async function checkout(total) {
 }
 
 export async function setModal(isModalOpen) {
-    console.log(isModalOpen)
     store.dispatch({ type: SET_MODAL_OPEN, isModalOpen })
 }
 
@@ -131,14 +129,15 @@ export function onRemoveStayOptimistic(stayId) {
         type: REMOVE_STAY,
         stayId
     })
-    showSuccessMsg('Stay removed')
+    // showSuccessMsg('Stay removed')
 
     stayService.remove(stayId)
         .then(() => {
             console.log('Server Reported - Deleted successfully');
         })
         .catch(err => {
-            showErrorMsg('Cannot remove stay')
+            // showErrorMsg('Cannot remove stay')
+            // needs to be throw here, maybe... TODO: check this function and fix if needed
             console.log('Cannot remove stay', err)
             store.dispatch({
                 type: UNDO_REMOVE_STAY,

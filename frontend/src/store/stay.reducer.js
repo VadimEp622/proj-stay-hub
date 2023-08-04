@@ -100,7 +100,6 @@ export function stayReducer(state = initialState, action) {
             newState = { ...state, currHostImgUrl: action.imgUrl }
             break
         case SET_MODAL_OPEN:
-            console.log(action.isModalOpen)
             newState = { ...state, isModalOpen: action.isModalOpen }
             break
         default:
