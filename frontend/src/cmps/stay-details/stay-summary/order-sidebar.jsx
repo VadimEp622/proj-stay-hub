@@ -33,6 +33,16 @@ export function OrderSidebar({ stay, randomDate, hostImgUrl }) {
     // const hostImgUrlPass = hostImgUrl
     // console.log('orderImgPass', hostImgUrlPass)
 
+    const loggedInUser = useSelector(storeState => storeState.userModule.user)
+    const guestsObject = useSelector(storeState => storeState.userModule.guests)
+
+    const [orderObject, setOrderObject] = useState({})
+    const [openModal, setOpenModal] = useState(false)
+    const [isDateModalOpen, setIsDateModalOpen] = useState(false)
+
+    const dateModalRef = useClickOutside(onDateModalClickOutside)
+
+
     const checkIn = stayService.getDate(stay.availableDates[0].from)
     const checkOut = stayService.getDate(stay.availableDates[0].to)
     const nightsCount = stayService.calculateHowManyNights(stay.availableDates[0].from, stay.availableDates[0].to)
@@ -40,28 +50,32 @@ export function OrderSidebar({ stay, randomDate, hostImgUrl }) {
     const cleaningFee = utilService.getRandomIntInclusive(100, 500)
     const serviceFee = utilService.getRandomIntInclusive(100, 500)
     const totalPrice = nightsPrice + cleaningFee + serviceFee
-    const guestsObject = useSelector(storeState => storeState.userModule.guests)
-    const [orderObject, setOrderObject] = useState({})
-    const user = useSelector(storeState => storeState.userModule.user)
     const guestsString = userService.buildGuestsString(guestsObject)
-    const [openModal, setOpenModal] = useState(false)
-    const [isDateModalOpen, setIsDateModalOpen] = useState(false)
-
-    const dateModalRef = useClickOutside(onDateModalClickOutside)
     const x = '123'
+    let guestCount = 1
+
+
+    useEffect(() => {
+        createStayObject()
+    }, [])
+
+
+    useEffect(() => {
+        // console.log('orderObject -> order-container.jsx',orderObject)
+        setOrder(orderObject)
+    }, [orderObject])
+
     function onDateModalClickOutside() {
         // if (!isDateModalOpen) 
         setIsDateModalOpen(false)
     }
 
-
-    let guestCount = 1
-    useEffect(() => {
-        setOrderObject({
+    function createStayObject() {
+        const stayObject = {
             buyer: {
-                _id: user ? user._id : '',
-                fullname: user ? user.fullname : '',
-                img: user?.imgUrl,
+                _id: loggedInUser ? loggedInUser._id : '',
+                fullname: loggedInUser ? loggedInUser.fullname : '',
+                img: loggedInUser?.imgUrl,
                 // joined: randomDate.split(' ')[1]
                 joined: randomDate
             },
@@ -101,14 +115,10 @@ export function OrderSidebar({ stay, randomDate, hostImgUrl }) {
             nightsPrice: nightsPrice,
             status: "Pending",
             _id: utilService.makeId()
-        });
-    }, [])
+        }
 
-
-    useEffect(() => {
-        // console.log('orderObject -> order-container.jsx',orderObject)
-        setOrder(orderObject)
-    }, [orderObject])
+        setOrderObject(stayObject)
+    }
 
     function openDateModal(ev) {
         ev.preventDefault()
