@@ -22,7 +22,7 @@ export function StayIndex() {
 
 
     useEffect(() => {
-        console.log('hi from Index')
+        // console.log('hi from Index')
         loadStays(filterBy)
     }, [filterBy])
 

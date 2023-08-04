@@ -35,12 +35,12 @@ async function query(filterBy = {
         capacity,
         label,
     }
-    console.log('hi from stayService frontend')
+    // console.log('hi from stayService frontend')
     return httpService.get(STORAGE_KEY, filter)
 }
 
 async function getById(stayId) {
-    console.log('service:', stayId);
+    console.log('stay.service.js --> getById:', stayId);
     return httpService.get(`stay/${stayId}`)
 }
 

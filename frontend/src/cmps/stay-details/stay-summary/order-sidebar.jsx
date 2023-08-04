@@ -54,6 +54,11 @@ export function OrderSidebar({ stay, randomDate, hostImgUrl }) {
     const x = '123'
     let guestCount = 1
 
+    
+    useEffect(() => {
+        console.log('loggedInUser', loggedInUser)
+    }, [loggedInUser])
+
 
     useEffect(() => {
         createStayObject()
@@ -61,8 +66,7 @@ export function OrderSidebar({ stay, randomDate, hostImgUrl }) {
 
 
     useEffect(() => {
-        // console.log('orderObject -> order-container.jsx',orderObject)
-        setOrder(orderObject)
+        if (Object.keys(orderObject).length!==0) setOrder(orderObject)
     }, [orderObject])
 
     function onDateModalClickOutside() {

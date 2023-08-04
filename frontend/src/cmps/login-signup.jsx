@@ -1,20 +1,34 @@
-
-import { useState, useEffect } from 'react'
-import { userService } from '../services/user.service'
-import { ImgUploader } from './_reuseable-cmps/img-uploader'
-import { login, signup } from '../store/user.actions'
-import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
+// Node modules
+import { useState, useEffect, useRef } from 'react'
 import { useSelector } from 'react-redux'
-import { AirbnbButton } from './_reuseable-cmps/airbnb-button'
-import { setModal } from '../store/stay.actions'
-import { useClickOutside } from '../customHooks/clickOutsideModal'
-import SvgHandler from './svg-handler'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
-import { utilService } from '../services/util.service'
-import { SET_IS_SIGNING_UP } from '../store/system.reducer'
-import { store } from '../store/store'
-import { useRef } from 'react'
+
+// Services
+import { userService } from '../services/user.service.js'
+import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service.js'
+import { utilService } from '../services/util.service.js'
+
+// Store
+import { store } from '../store/store.js'
+import { SET_IS_SIGNING_UP } from '../store/system.reducer.js'
+import { login, signup } from '../store/user.actions.js'
+import { setModal } from '../store/stay.actions.js'
+
+// Custom Hooks
+import { useClickOutside } from '../customHooks/clickOutsideModal.js'
+
+// Components
+import { ImgUploader } from './_reuseable-cmps/img-uploader.jsx'
+import { AirbnbButton } from './_reuseable-cmps/airbnb-button.jsx'
+import SvgHandler from './svg-handler.jsx'
+
+
+
+
+// TODO-medium: when trying to log in to non-existent user, prevent refresh and properly notify user
+// TODO-medium: when trying to register with an already existing user, handle this situation.
+
 
 const validationSchema = Yup.object().shape({
     username: Yup.string()
@@ -59,7 +73,7 @@ export function LoginSignup({ isSignUp }) {
         // if(!isSigningUp) return
         if (!isSigningUpLoggingInRef.current) return
         // console.log(values)
-        console.log('hi from submit')
+        // console.log('hi from submit')
         if (text === 'Sign up') onSignup(values)
         else onLogin(values)
     }
