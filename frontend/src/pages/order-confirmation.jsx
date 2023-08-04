@@ -1,19 +1,35 @@
-import { useClickOutside } from "../customHooks/clickOutsideModal";
-import { ARROW_LEFT, STAR } from "../services/svg.service";
-import SvgHandler from "../cmps/svg-handler";
-import { AirbnbButton } from "../cmps/_reuseable-cmps/airbnb-button";
-import { utilService } from "../services/util.service";
-import { useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
-import { addConfirmedTrip } from "../store/user.actions";
-import { SOCKET_EMIT_SET_STAYID, SOCKET_EMIT_STAY_RESERVED, SOCKET_EVENT_STAY_RESERVED, socketService } from "../services/socket.service";
-import { useEffect } from "react";
+// Node modules
+import { useEffect } from "react"
+import { useSelector } from "react-redux"
+import { Link, useNavigate } from "react-router-dom"
 
-export function OrderConfirmation({ x }) {
+// Services
+import { ARROW_LEFT, STAR } from "../services/svg.service.js"
+import { utilService } from "../services/util.service.js"
+import { SOCKET_EMIT_SET_STAYID, SOCKET_EMIT_STAY_RESERVED, SOCKET_EVENT_STAY_RESERVED, socketService } from "../services/socket.service.js"
+
+// Store
+import { addConfirmedTrip } from "../store/user.actions.js"
+
+// Custom hooks
+import { useClickOutside } from "../customHooks/clickOutsideModal.js"
+
+// Components
+import SvgHandler from "../cmps/svg-handler.jsx"
+import { AirbnbButton } from "../cmps/_reuseable-cmps/airbnb-button.jsx"
+
+
+
+// TODO: figure out what's going on here
+// TODO-priority-high: why can I can sometimes make an order, and sometimes not? figure out the issue
+// **** if signed up on the stay details page, you can't order. -> find out why!
+
+
+export function OrderConfirmation() {
 
     const navigate = useNavigate()
     const orderObject = useSelector(storeState => storeState.userModule.order)
-    console.log('orderObject', orderObject)
+
 
     // useEffect(() => {
     //     socketService.on(SOCKET_EMIT_SET_STAYID, doSomething)
@@ -22,10 +38,13 @@ export function OrderConfirmation({ x }) {
     //         socketService.off(SOCKET_EMIT_SET_STAYID, doSomething)
     //     }
     // }, [])
-    function doSomething(something) {
+    // function doSomething(something) {
+    //     console.log('something', something)
+    // }
 
-        console.log('something', something)
-    }
+    useEffect(() => {
+        console.log('orderObject', orderObject)
+    }, [orderObject])
 
 
 
@@ -33,15 +52,18 @@ export function OrderConfirmation({ x }) {
 
     // const hostImgUrl = useSelector(storeState => storeState.stayModule.currHostImgUrl)
     if (!orderObject || !orderObject.stayDetails || !orderObject.orderPrice) return <div>Loading..</div>
+
+
     const { stayDetails, guestsNumber, checkIn, checkOut, orderPrice, nightsCount, nightsPrice, seller } = orderObject
     const { reviewsCount, type, summary, rate, image, id } = stayDetails
     const { total, serviceFee, cleaningFee, price } = orderPrice
+
     const formattedTimeRange = utilService.getFormattedTimeRange(checkIn, checkOut)
     // const sellerFirstName = seller.fullname.substring(0, seller.fullname.indexOf(' '))
     const formattedDate = new Date(utilService.getFutureTime(2, 'day')).toLocaleDateString(undefined, {
         month: 'short',
         day: 'numeric',
-    });
+    })
 
 
     async function handleOrderConfirm(ev) {
@@ -56,7 +78,7 @@ export function OrderConfirmation({ x }) {
         }
         // removeUndefinedProperties(orderObject)
         try {
-            // console.log('orderObject', orderObject)
+            console.log('orderObject', orderObject)
             await addConfirmedTrip(orderObject)
             socketService.emit(SOCKET_EVENT_STAY_RESERVED, orderObject.seller._id)
         } catch (error) {

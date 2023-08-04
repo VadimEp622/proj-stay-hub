@@ -63,6 +63,10 @@ export function OrderSidebar({ stay, randomDate, hostImgUrl }) {
         createStayObject()
     }, [])
 
+    useEffect(() => {
+        updateStayObjectBuyer()
+    }, [loggedInUser])
+
 
     useEffect(() => {
         if (Object.keys(orderObject).length !== 0) setOrder(orderObject)
@@ -122,6 +126,16 @@ export function OrderSidebar({ stay, randomDate, hostImgUrl }) {
         }
 
         setOrderObject(stayObject)
+    }
+
+    function updateStayObjectBuyer() {
+        if (loggedInUser) {
+            const { _id, fullname, img } = loggedInUser
+            const buyer = { _id, fullname, img, randomDate:randomDate }
+            setOrderObject((prevOrder) => ({ ...prevOrder, buyer }))
+        } else {
+            setOrderObject((prevOrder) => ({ ...prevOrder, buyer: {} }))
+        }
     }
 
     function openDateModal(ev) {
