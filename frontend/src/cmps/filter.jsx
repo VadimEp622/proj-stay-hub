@@ -137,7 +137,6 @@ export function FilterModal({ stays, setIsFilterModalOpen }) {
                     ))}
                 </div>
             </form>
-
         </section >
     )
 }

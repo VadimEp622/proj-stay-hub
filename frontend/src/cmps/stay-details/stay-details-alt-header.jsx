@@ -13,6 +13,11 @@ import { AirbnbButton } from '../_reuseable-cmps/airbnb-button.jsx'
 import { setModal } from '../../store/stay.actions.js'
 
 
+
+
+// TODO: check if these observers here need to be unobserved when component unmounts 
+
+
 export function StayDetailsAltHeader({ stay, loggedInUser }) {
     const navigate = useNavigate()
     const reviews = stay.reviews.length > 1 ? 'reviews' : 'review'
@@ -85,18 +90,6 @@ export function StayDetailsAltHeader({ stay, loggedInUser }) {
                             </section>
                         </section>
                         <AirbnbButton text={"Reserve"} onClickButton={(ev) => onClickButton(ev)} />
-                        {/* <Link to={`/stay/book/${stay._id}`}>
-                            <section className='reserve-btn'>
-                                <div className="btn-container">
-                                    {utilService.createDivsForButtonContainer()}
-                                    <div className="content">
-                                        <button className="action-btn">
-                                            <span>Reserve</span>
-                                        </button>
-                                    </div>
-                                </div>
-                            </section>
-                        </Link> */}
                     </section>
                 </section>
             </section>

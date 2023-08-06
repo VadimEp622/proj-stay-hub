@@ -6,7 +6,7 @@ import { Link, useNavigate } from "react-router-dom"
 // Services
 import { ARROW_LEFT, STAR } from "../services/svg.service.js"
 import { utilService } from "../services/util.service.js"
-import { SOCKET_EMIT_SET_STAYID, SOCKET_EMIT_STAY_RESERVED, SOCKET_EVENT_STAY_RESERVED, socketService } from "../services/socket.service.js"
+import { socketService, SOCKET_EMIT_SET_STAYID, SOCKET_EMIT_STAY_RESERVED, SOCKET_EVENT_STAY_RESERVED } from "../services/socket.service.js"
 
 // Store
 import { addConfirmedTrip } from "../store/user.actions.js"
@@ -21,8 +21,7 @@ import { AirbnbButton } from "../cmps/_reuseable-cmps/airbnb-button.jsx"
 
 
 // TODO: figure out what's going on here
-// TODO-priority-high: why can I can sometimes make an order, and sometimes not? figure out the issue
-// **** if signed up on the stay details page, you can't order. -> find out why!
+// TODO: may have to redo this from scratch, this is a mess...
 
 
 export function OrderConfirmation() {

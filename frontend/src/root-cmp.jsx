@@ -24,7 +24,7 @@ import { UserMsg } from './cmps/user-msg.jsx'
 // attempting order when unregistered
 
 // TODO-priority-critical: some stays have check-in/out timestamps which are in the past. 
-// this causes an issue, at showing fetched orders from DB in the cmp "trips.jsx"
+// this causes an issue, at showing fetched orders from DB in the cmp "user-trips.jsx"
 // need to fix this, so their starting point will always be ---> from the date of visitor (whether logged in, or not) 
 
 

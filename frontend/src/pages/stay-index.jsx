@@ -10,7 +10,7 @@ import { CLOSE_EXPANDED_HEADER, CLOSE_EXPANDED_HEADER_MODAL, REMOVE_UNCLICKABLE_
 // Components
 import { CategoryFilter } from '../cmps/stay-index/category-filter.jsx'
 import { StayList } from '../cmps/stay-index/stay-list.jsx'
-import { FilterModal } from '../cmps/filter.jsx'
+// import { FilterModal } from '../cmps/filter.jsx'
 
 
 // TODO: remove category filter when screen width is less than 700px (build a custom hook with an event listener!)
@@ -18,7 +18,9 @@ import { FilterModal } from '../cmps/filter.jsx'
 export function StayIndex() {
     const stays = useSelector(storeState => storeState.stayModule.stays)
     const filterBy = useSelector(storeState => storeState.stayModule.filterBy)
-    const [isFilterModalOpen, setIsFilterModalOpen] = useState(false)
+   
+    // filter modal temp. removed, TODO: implement it casually after other urgent stuff are taken care of
+    // const [isFilterModalOpen, setIsFilterModalOpen] = useState(false)
 
 
     useEffect(() => {
@@ -43,12 +45,12 @@ export function StayIndex() {
 
     return (
         <section className="stay-index">
-            {isFilterModalOpen && (
+            {/* {isFilterModalOpen && (
                 <FilterModal
                     stays={stays}
                     setIsFilterModalOpen={setIsFilterModalOpen}
                 />
-            )}
+            )} */}
             <CategoryFilter />
             <StayList stays={stays} />
         </section >

@@ -5,7 +5,7 @@ import { UserDetails } from './pages/user-details.jsx'
 import { WishList } from './pages/wishlist.jsx'
 import { MyDashboard } from './pages/my-dashboard.jsx'
 import { AddStay } from './pages/add-stay.jsx'
-import { MyTrips } from './pages/trips.jsx'
+import { UserTrips } from './pages/user-trips.jsx'
 import { JSONStringify } from './cmps/stringify.jsx'
 
 const routes = [
@@ -46,7 +46,7 @@ const routes = [
     },
     {
         path: 'trips',
-        component: < MyTrips/>,
+        component: < UserTrips/>,
         label: 'MyTrips'
     },
     {
