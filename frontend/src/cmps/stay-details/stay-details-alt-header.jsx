@@ -1,6 +1,6 @@
 // Node modules
 import { useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 // Services
 import { reviewService } from "../../services/review.service.js"
@@ -9,35 +9,35 @@ import { utilService } from '../../services/util.service.js'
 
 // Components
 import SvgHandler from "../svg-handler.jsx"
+import { AirbnbButton } from '../_reuseable-cmps/airbnb-button.jsx'
+import { setModal } from '../../store/stay.actions.js'
 
 
-export function StayDetailsAltHeader({ stay }) {
+export function StayDetailsAltHeader({ stay, loggedInUser }) {
+    const navigate = useNavigate()
     const reviews = stay.reviews.length > 1 ? 'reviews' : 'review'
 
     useEffect(() => {
         const header = document.querySelector('.stay-photos-container')
         const nav = document.querySelector('.stay-details-alt-header-container')
+        const orderModal = document.querySelector('.order-sidebar')
+        const reserveLink = document.querySelector('.reserve-container')
 
         const headerObserver = new IntersectionObserver(onHeaderObserved, {
             rootMargin: "-5px 0px 0px",
         })
-
         headerObserver.observe(header)
 
         function onHeaderObserved(entries) {
             entries.forEach((entry) => {
-
                 nav.style.display = entry.isIntersecting ? 'none' : 'block'
             })
         }
 
-        const orderModal = document.querySelector('.order-sidebar')
-        const reserveLink = document.querySelector('.reserve-container')
 
         const orderModalObserver = new IntersectionObserver(onOrderModalObserved, {
             rootMargin: "-500px 0px 0px",
         })
-
         orderModalObserver.observe(orderModal)
 
         function onOrderModalObserved(entries) {
@@ -46,6 +46,21 @@ export function StayDetailsAltHeader({ stay }) {
             })
         }
     }, [])
+
+    function onClickButton(ev) {
+        console.log('ev', ev)
+        ev.preventDefault()
+        ev.stopPropagation()
+        if (!loggedInUser) {
+            console.log("NOT logged in click")
+            setModal("logIn")
+        }
+        else {
+            console.log("logged in click")
+            navigate(`/stay/book/${stay._id}`)
+        }
+    }
+
 
     return (
         <section className='stay-details-alt-header-container'>
@@ -69,7 +84,8 @@ export function StayDetailsAltHeader({ stay }) {
                                 <span className="review-count">{stay.reviews.length} {reviews}</span>
                             </section>
                         </section>
-                        <Link to={`/stay/book/${stay._id}`}>
+                        <AirbnbButton text={"Reserve"} onClickButton={(ev) => onClickButton(ev)} />
+                        {/* <Link to={`/stay/book/${stay._id}`}>
                             <section className='reserve-btn'>
                                 <div className="btn-container">
                                     {utilService.createDivsForButtonContainer()}
@@ -80,7 +96,7 @@ export function StayDetailsAltHeader({ stay }) {
                                     </div>
                                 </div>
                             </section>
-                        </Link>
+                        </Link> */}
                     </section>
                 </section>
             </section>

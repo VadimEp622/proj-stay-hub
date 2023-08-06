@@ -112,7 +112,7 @@ export function StayDetails() {
 
     return <>
         <section className="stay-details" id='photos'>
-            <StayDetailsAltHeader stay={stay} />
+            <StayDetailsAltHeader stay={stay} loggedInUser={loggedInUser} />
             <StayTitle
                 stay={stay}
                 averageReviewScore={averageReviewScore}
