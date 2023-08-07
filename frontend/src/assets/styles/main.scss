@@ -31,6 +31,9 @@
 // *** stay-details/stay-reviews ***   ---->TODO: needs cleaning up
 @import "cmps/stay-details/stay-reviews/stay-review-list";
 
+// *** user-trips ***   ---->TODO: needs cleaning up
+@import "cmps/user-trips/future-reservation-list";
+@import "cmps/user-trips/past-reservation-list";
 
 
 // __checked__ //
@@ -67,5 +70,4 @@
 @import "pages/stay-details";
 @import "pages/add-stay";
 @import "pages/wishlist";
-@import "pages/user-trips";
 @import "pages/my-dashboard";

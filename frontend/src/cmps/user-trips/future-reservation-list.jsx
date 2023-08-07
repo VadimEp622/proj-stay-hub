@@ -44,7 +44,7 @@ export function FutureReservationList({ getUpcomingTrips, handleSearchClick }) {
     }
     const upcomingTrips = getUpcomingTrips()
     return (
-        <>
+        <section className="future-reservation-list">
             <h1>Trips</h1>
             {upcomingTrips && upcomingTrips.length > 0 ? (
                 <section className="trips-container">
@@ -62,6 +62,6 @@ export function FutureReservationList({ getUpcomingTrips, handleSearchClick }) {
                     <button onClick={handleSearchClick}>Start searching</button>
                 </section>
             )}
-        </>
+        </section>
     )
 }

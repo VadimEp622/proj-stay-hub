@@ -1,0 +1,37 @@
+.past-reservation-list {
+
+    & .past-trip {
+        display: flex;
+        margin-top: 24px;
+        padding-bottom: 48px;
+        margin-right: 5%;
+
+        .past-trip-img {
+
+            img {
+                border-radius: 8px;
+                overflow: hidden;
+                height: 72px;
+                width: 72px;
+            }
+        }
+
+        .past-trip-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            margin-left: 16px;
+            padding: 4px 0;
+
+            h4 {
+                font-family: Circular-semibold;
+                line-height: 1.6;
+            }
+
+            span {
+                font-size: rem(14px);
+                color: $gray-clr2;
+            }
+        }
+    }
+}

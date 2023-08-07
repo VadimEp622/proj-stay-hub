@@ -9,7 +9,7 @@ import { orderService } from "../services/order.service.js"
 
 // Components
 import { FutureReservationList } from "../cmps/user-trips/future-reservation-list.jsx"
-import { PastReservations } from "../cmps/user-trips/past-reservations.jsx"
+import { PastReservationList } from "../cmps/user-trips/past-reservation-list.jsx"
 
 
 // TODO: organize this component.
@@ -63,12 +63,12 @@ export function UserTrips() {
     }
 
     return (
-        <div className="trips">
+        <section className="user-trips">
             <FutureReservationList
                 getUpcomingTrips={getUpcomingTrips}
                 handleSearchClick={handleSearchClick}
             />
-            <PastReservations getPastTrips={getPastTrips} />
-        </div>
+            <PastReservationList getPastTrips={getPastTrips} />
+        </section>
     )
 }

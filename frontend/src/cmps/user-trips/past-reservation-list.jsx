@@ -1,9 +1,9 @@
-export function PastReservations({ getPastTrips }) {
+export function PastReservationList({ getPastTrips }) {
 
     // const pastTrips = getPastTrips()
 
     return (
-        <section className="where-you-been">
+        <section className="past-reservation-list">
             <h3>Where you've been</h3>
             <section className="past-trips flex">
                 <section className="past-trip">

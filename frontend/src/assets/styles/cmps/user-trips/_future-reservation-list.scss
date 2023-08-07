@@ -1,6 +1,6 @@
-.trips {
+.future-reservation-list {
 
-    h1 {
+    & h1 {
         padding-top: 30px;
         padding-bottom: 30px;
         font-size: 28px;
@@ -9,7 +9,49 @@
         padding-left: 2px;
     }
 
-    .trips-container {
+    & .trips-container {
+
+        & .no-trips {
+            padding-top: 32px;
+            padding-bottom: 48px;
+            border-bottom: 1px solid $gray-clr3;
+
+            h1 {
+                padding-top: 36px;
+                padding-bottom: 24px;
+                font-size: 32px;
+
+                font-weight: 800;
+                line-height: 36px;
+                border-bottom: 1px solid $gray-clr3;
+            }
+
+            .no-trips-header {
+                font-weight: 400px;
+                font-family: Circular-semibold;
+                font-size: 22px;
+                line-height: 26px;
+                letter-spacing: .0008rem;
+            }
+
+            p {
+                letter-spacing: 0;
+                font-size: 16px;
+                line-height: 24px;
+                margin-top: 8px;
+            }
+
+            button {
+                height: rem(48px);
+                width: rem(162px);
+                border-radius: rem(8px);
+                font-size: 16px;
+                background-color: inherit;
+                letter-spacing: .48px;
+                cursor: pointer;
+                border-width: 1px;
+            }
+        }
 
         .reservations-header {
             padding-top: 20px;
@@ -186,83 +228,6 @@
                 font-size: 12px;
                 color: $gray-clr2;
             }
-        }
-    }
-
-    .past-trip {
-        display: flex;
-        margin-top: 24px;
-        padding-bottom: 48px;
-        margin-right: 5%;
-
-        .past-trip-img {
-
-            img {
-                border-radius: 8px;
-                overflow: hidden;
-                height: 72px;
-                width: 72px;
-            }
-        }
-
-        .past-trip-info {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-evenly;
-            margin-left: 16px;
-            padding: 4px 0;
-
-            h4 {
-                font-family: Circular-semibold;
-                line-height: 1.6;
-            }
-
-            span {
-                font-size: rem(14px);
-                color: $gray-clr2;
-            }
-        }
-    }
-
-    .no-trips {
-        padding-top: 32px;
-        padding-bottom: 48px;
-        border-bottom: 1px solid $gray-clr3;
-
-        h1 {
-            padding-top: 36px;
-            padding-bottom: 24px;
-            font-size: 32px;
-
-            font-weight: 800;
-            line-height: 36px;
-            border-bottom: 1px solid $gray-clr3;
-        }
-
-        .no-trips-header {
-            font-weight: 400px;
-            font-family: Circular-semibold;
-            font-size: 22px;
-            line-height: 26px;
-            letter-spacing: .0008rem;
-        }
-
-        p {
-            letter-spacing: 0;
-            font-size: 16px;
-            line-height: 24px;
-            margin-top: 8px;
-        }
-
-        button {
-            height: rem(48px);
-            width: rem(162px);
-            border-radius: rem(8px);
-            font-size: 16px;
-            background-color: inherit;
-            letter-spacing: .48px;
-            cursor: pointer;
-            border-width: 1px;
         }
     }
 }
