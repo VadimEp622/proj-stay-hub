@@ -16,8 +16,14 @@
 @import "cmps/_reuseable-cmps/date-picker";
 @import "cmps/_reuseable-cmps/loader";
 
-// *** header ***
-@import "cmps/header/date-filter";
+// *** app-header ***
+@import "cmps/app-header/date-filter";
+@import "cmps/app-header/logo";
+@import "cmps/app-header/searchbar-toggler";
+@import "cmps/app-header/main-nav-menu";
+@import "cmps/app-header/filter-expanded";
+// *** app-header/main-nav-menu ***   ---->TODO: needs cleaning up
+@import "cmps/app-header/main-nav-menu/nav-menu-dropdown";
 
 // *** stay-details ***   ---->TODO: needs cleaning up
 @import "cmps/stay-details/stay-title";
@@ -30,34 +36,33 @@
 @import "cmps/stay-details/stay-details-alt-header";
 // *** stay-details/stay-reviews ***   ---->TODO: needs cleaning up
 @import "cmps/stay-details/stay-reviews/stay-review-list";
+// *** stay-details/stay-summary ***
+@import "cmps/stay-details/stay-summary/order-sidebar";
 
 // *** user-trips ***   ---->TODO: needs cleaning up
 @import "cmps/user-trips/future-reservation-list";
 @import "cmps/user-trips/past-reservation-list";
 
+// *** stay-index ***   ---->TODO: needs cleaning up
+@import "cmps/stay-index/category-filter";
+@import "cmps/stay-index/stay-list";
+// *** stay-index/stay-list ***
+@import "cmps/stay-index/stay-list/stay-preview";
+
+
 
 // __checked__ //
 @import "cmps/gray-viewport";
 @import "cmps/modal-wrapper";
-@import "cmps/main-nav-menu";
 
 // __unchecked__ //
 @import "cmps/app-header";
-@import "cmps/order-sidebar";
-@import "cmps/order-confirmation";
-@import "cmps/stay-list";
-@import "cmps/stay-preview";
 @import "cmps/shopping-cart";
 @import "cmps/carousel";
 @import "cmps/filter";
-@import "cmps/category-filter";
 @import "cmps/user-msg";
 @import "cmps/app-footer";
-@import "cmps/dropdown";
 @import "cmps/login";
-@import "cmps/logo";
-@import "cmps/searchbar-toggler";
-@import "cmps/filter-expanded";
 @import "cmps/location-filter";
 @import "cmps/preview-image-carousel";
 @import "cmps/host-orders";
@@ -71,3 +76,4 @@
 @import "pages/add-stay";
 @import "pages/wishlist";
 @import "pages/my-dashboard";
+@import "pages/order-confirmation"; // needs organizing
