@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { setGuests } from "../store/user.actions"
+import { setGuests } from "../../../store/user.actions"
 
 export function GuestCountFilter({ filterBy, handleGuestCountChange }) {
 

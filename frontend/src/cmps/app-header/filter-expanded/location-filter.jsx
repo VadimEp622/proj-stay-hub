@@ -1,9 +1,9 @@
-import flexible from "../assets/img/locations/flexible.jpeg"
-import middleEast from "../assets/img/locations/middle-east.webp"
-import italy from "../assets/img/locations/italy.webp"
-import southAmerica from "../assets/img/locations/south-america.webp"
-import france from "../assets/img/locations/france.webp"
-import unitedStates from "../assets/img/locations/united-states.webp"
+import flexible from "../../../assets/img/locations/flexible.jpeg"
+import middleEast from "../../../assets/img/locations/middle-east.webp"
+import italy from "../../../assets/img/locations/italy.webp"
+import southAmerica from "../../../assets/img/locations/south-america.webp"
+import france from "../../../assets/img/locations/france.webp"
+import unitedStates from "../../../assets/img/locations/united-states.webp"
 
 export function LocationFilter({ filterBy, handleChange }) {
 

@@ -5,9 +5,9 @@ import { Link } from "react-router-dom"
 import "react-multi-carousel/lib/styles.css"
 
 
-import { ARROW_LEFT, ARROW_RIGHT } from "../services/svg.service.js"
+import { ARROW_LEFT, ARROW_RIGHT } from "../../../../services/svg.service.js"
 
-import SvgHandler from "./svg-handler.jsx"
+import SvgHandler from "../../../svg-handler.jsx"
 
 
 export function PreviewImageCarousel({ imgs, stay }) {
