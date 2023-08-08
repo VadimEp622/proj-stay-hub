@@ -6,8 +6,8 @@
     grid-template-columns: repeat(3, 1fr);
     transition: all 0.2s;
     position: absolute;
-    background-color: white;
-    box-shadow: rgb(0 0 0 / 8%) 0 1px 0;
+    background-color: $gray-clr-1;
+    box-shadow: $box-shadow2;
     margin-block-start: 80px;
 
     & .filter-expanded {
@@ -26,45 +26,41 @@
         position: relative;
 
         &.all {
-            background-color: white;
+            background-color: $gray-clr-1;
         }
 
-        &>* {
-
+        & > * {
             &.active {
                 background-color: $gray-clr-1;
                 border-radius: 32px;
 
-                &>* {
-                    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+                & > * {
+                    box-shadow: $box-shadow3;
                     border-radius: 32px;
                 }
             }
 
             &.where-container.active {
-                box-shadow: -1px 0px 0px 1px rgb(255, 255, 255);
+                box-shadow: $box-shadow4;
             }
 
             &:is(.check-in-container, .check-out-container).active {
-                box-shadow: 0px 0px 0px 1px rgb(255, 255, 255);
+                box-shadow: $box-shadow5;
             }
 
             &.who-container.active {
-                box-shadow: 1px 0px 0px 1px rgb(255, 255, 255);
+                box-shadow: $box-shadow6;
             }
 
-
-
-            &:not(.who-container,.size-less)>*,
+            &:not(.who-container, .size-less) > *,
             &.who-container .who-search .who {
-
                 padding-block: 12.8124px;
 
                 &:not(.where) {
                     padding-block: 15px;
                 }
 
-                &>* {
+                & > * {
                     &:first-child {
                         font-family: Circular-Bold;
                         font-size: rem(12px);
@@ -89,7 +85,7 @@
                             border: 0;
                             padding: 0;
 
-                            &:focus-visible{
+                            &:focus-visible {
                                 outline: none;
                             }
                         }
@@ -100,7 +96,7 @@
             & .where {
                 padding-inline: 32.52px;
 
-                &>* {
+                & > * {
                     width: 261.391px;
                 }
             }
@@ -109,7 +105,7 @@
             .check-out {
                 padding-inline: 24px;
 
-                &>* {
+                & > * {
                     width: 81.656px;
                 }
             }
@@ -131,7 +127,7 @@
                     border: 0;
                     align-items: center;
                     border-radius: 32px;
-                    width: 111.750px;
+                    width: 111.75px;
                     height: 48px;
                     background-color: $main-clr0;
                     gap: 8px;
@@ -140,7 +136,7 @@
                     margin-block: auto;
                     margin-inline-end: 8px;
 
-                    &>* {
+                    & > * {
                         color: $gray-clr-1;
                         width: fit-content;
 
@@ -156,7 +152,6 @@
                         }
                     }
 
-
                     &:hover {
                         cursor: pointer;
                     }
@@ -164,15 +159,14 @@
 
                 & .who,
                 .search {
-                    &>* {
+                    & > * {
                         width: 81.656px;
                     }
                 }
-
             }
 
             &:not(.active):hover {
-                background-color: rgb(221, 221, 221);
+                background-color: $gray-clr3;
                 border-radius: 32px;
             }
         }
@@ -183,7 +177,7 @@
             position: relative;
 
             &::before {
-                content: '';
+                content: "";
                 position: absolute;
                 background-color: $gray-clr3;
                 height: 32px;
@@ -193,33 +187,28 @@
             }
         }
 
-
-
         &:hover {
             cursor: pointer;
         }
 
-
         // hover on either element 1 or adjacent element 2, change pseudo element in element 2
-        & .where-container:hover+.check-in-container::before,
+        & .where-container:hover + .check-in-container::before,
         & .check-in-container:hover::before,
         & .check-in-container.active::before {
             width: 0;
         }
 
-        & .check-in-container:hover+.check-out-container::before,
+        & .check-in-container:hover + .check-out-container::before,
         & .check-out-container:hover::before,
         & .check-out-container.active::before {
             width: 0;
         }
 
-        & .check-out-container:hover+.who-container::before,
+        & .check-out-container:hover + .who-container::before,
         & .who-container:hover::before,
         & .who-container.active::before {
             width: 0;
         }
-
-
 
         & .size-less {
             height: 0;
@@ -230,17 +219,18 @@
                 background-color: $gray-clr-1;
                 border-radius: 32px;
                 margin-block-start: 44px;
-                box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.04), 0 8px 16px rgba(0, 0, 0, 0.15);
+                box-shadow:
+                    0 0 0 1px rgba(0, 0, 0, 0.04),
+                    0 8px 16px rgba(0, 0, 0, 0.15);
                 padding-inline: 32px;
                 padding-block: 16px;
                 cursor: default;
-
 
                 &.where-modal {
                     left: 0;
                     padding-inline: 16px;
                     padding-block-start: 16px;
-                    padding-block-end:32px;
+                    padding-block-end: 32px;
                     width: 478px;
                 }
 
@@ -252,95 +242,6 @@
                 &.who-modal {
                     right: 0;
                 }
-
-                // & .filter-date-picker {
-                //     margin-inline: auto;
-                //     color: inherit;
-
-                //     & .rdp-head {
-                //         & th {
-                //             font-size: rem(12px);
-                //             font-family: Circular-Bold;
-                //             color: $gray-clr0;
-                //             line-height: 16px;
-                //             text-transform: capitalize;
-                //         }
-                //     }
-
-                //     & .rdp-months {
-                //         & .rdp-caption_label {
-                //             font-size: rem(16px);
-                //             line-height: 20px;
-                //             font-family: Circular-SemiBold;
-                //             font-weight: 400;
-                //         }
-                //     }
-
-                //     // & .rdp-cell {
-                //     //     & .rdp-day {
-                //     //         font-family: Circular-SemiBold;
-                //     //         font-weight: 400;
-                //     //         // &:hover{
-                //     //             border: 1.5px solid rgb(34, 34, 34);
-                //     //             // background-color: inherit;
-                //     //         // }
-                //     //     }
-                //     // }
-
-                //     & .rdp-nav {
-                //         svg {
-                //             width: 12px;
-                //             height: 16px;
-                //         }
-                //     }
-
-                //     // & .rdp-button{
-                //     //     width: 32px;
-                //     //     height: 32px;
-                //     //     align-items: center;
-                //     //     &:hover{
-                //     //         background-color: $gray-clr5;
-                //     //     }
-                //     // }
-
-                //     & td {
-                //         position: relative;
-
-                //         & :is(.day-range-start, .day-range-end) {
-                //             background-color: rgb(34, 34, 34);
-                //             border-radius: 100%;
-                //         }
-
-                //         &:has(.day-range-end, .day-range-start) {
-                //             &::before {
-                //                 content: "";
-                //                 position: absolute;
-                //                 top: 0;
-                //                 width: 50%;
-                //                 height: 100%;
-                //                 background-color: #f7f7f7;
-                //             }
-                //         }
-
-                //         &:has(.day-range-start) {
-                //             &::before {
-                //                 right: 0;
-                //             }
-                //         }
-
-                //         &:has(.day-range-end) {
-                //             &::before {
-                //                 left: 0;
-                //             }
-                //         }
-
-                //         & .day-range-middle {
-                //             background-color: #f7f7f7;
-                //             color: #222222;
-                //             border-radius: 0;
-                //         }
-                //     }
-                // }
 
                 & .guest-count-filter {
                     padding-inline: 6px;
@@ -375,10 +276,9 @@
                             }
                         }
 
-
                         &:not(:last-child) {
-                            content: '';
-                            border-bottom: 1px solid rgb(235, 235, 235);
+                            content: "";
+                            border-bottom: 1px solid $gray-clr4;
                         }
 
                         & .stepper {
@@ -388,11 +288,10 @@
                             width: 104px;
                             justify-content: space-between;
 
-
                             & .custom-btn-guest-count {
-                                background-color: rgb(255, 255, 255);
+                                background-color: $gray-clr-1;
                                 color: rgb(113, 113, 113);
-                                border: 1px solid rgb(176, 176, 176);
+                                border: 1px solid $gray-clr2;
                                 border-radius: 50%;
                                 width: 30px;
                                 height: 30px;
@@ -407,7 +306,6 @@
                             }
                         }
 
-
                         // .pet-service {
                         //     font-weight: 600;
                         //     color: rgb(113, 113, 113);
@@ -415,13 +313,13 @@
                         // }
 
                         .custom-btn-guest-count:hover {
-                            border-color: rgb(34, 34, 34);
+                            border-color: $black-clr1;
                         }
 
                         .custom-btn-guest-count:disabled {
                             cursor: not-allowed;
-                            border-color: #EBEBEB;
-                            color: #EBEBEB;
+                            border-color: $gray-clr4;
+                            color: $gray-clr4;
                         }
                     }
                 }
@@ -429,7 +327,6 @@
         }
     }
 }
-
 
 .filter-expanded-container.folded {
     translate: 0px -73px;

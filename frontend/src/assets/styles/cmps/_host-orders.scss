@@ -3,8 +3,7 @@
   padding-left: 8px;
   padding-right: 8px;
   overflow-x: auto;
-  box-shadow: #0000001f 0 1px 12px;
-
+  box-shadow: $box-shadow16;
 
   .table-container {
     max-width: 100%;
@@ -21,8 +20,8 @@
   td {
     // padding: 10px;
     text-align: left;
-    border-top: 1px solid #ddd;
-    border-bottom: 1px solid #ddd;
+    border-top: 1px solid $gray-clr3;
+    border-bottom: 1px solid $gray-clr3;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -45,8 +44,6 @@
         }
       }
     }
-
-
   }
 
   th:first-child,
@@ -69,7 +66,7 @@
     width: 100%;
   }
 
-  .actions>* {
+  .actions > * {
     width: 90%;
     border-radius: 8px;
     border: none;
@@ -82,37 +79,33 @@
   }
 
   .action-button.approve:hover {
-    background-color: hsl(120, 98%, 35%);
+    background-color: $positive-clr2;
   }
 
   .action-button.reject:hover {
-    color: red;
+    background-color: $gray-clr3;
   }
 
   .selection {
-    // font-weight: bold;
     width: 90%;
     color: $gray-clr2;
     font-size: rem(14px);
-
   }
-  
+
   .approved {
-    color: rgb(141, 239, 141);
+    color: $positive-clr3;
   }
 
   .rejected {
-    color: rgb(228, 135, 135);
+    color: $negative-clr3;
   }
 
   .action-button.approve {
-    background-color: #00C853;
-    color: white;
+    background-color: $positive-clr4;
+    color: $gray-clr-1;
   }
 
   .action-button.reject {
     background-color: $gray-clr5;
-    color: 233, 171, 171;
   }
-
 }

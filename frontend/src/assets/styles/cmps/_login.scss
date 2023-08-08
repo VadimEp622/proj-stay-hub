@@ -2,7 +2,7 @@
     width: 568px;
     background-color: $gray-clr-1;
     border-radius: 12px;
-    box-shadow: rgba(0, 0, 0, 0.28) 0px 8px 28px 0px;
+    box-shadow: $box-shadow15;
 
     & .login-header {
         color: $black-clr1;
@@ -11,7 +11,6 @@
         height: 64px;
         border-bottom: 1px solid $gray-clr4;
         padding-inline: 24px;
-
 
         & h4 {
             font-family: Circular-Bold;
@@ -33,7 +32,7 @@
         padding: 24px;
 
         .welcome {
-            color: rgb(34, 34, 34);
+            color: $black-clr1;
             font-weight: 600;
             line-height: 26px;
             font-size: 22px;
@@ -62,7 +61,9 @@
             margin-block-start: 12px;
             border-radius: 8px;
             cursor: pointer;
-            transition: box-shadow 0.2s ease, transform 0.1s ease;
+            transition:
+                box-shadow 0.2s ease,
+                transform 0.1s ease;
             padding: 13px 23px;
             background: $gray-clr-1;
             border-color: $black-clr1;
@@ -81,7 +82,7 @@
         }
 
         & .button-second-option:hover {
-            border-color: #000000;
+            border-color: $black-clr0;
             background: $gray-clr5;
         }
 
@@ -102,11 +103,10 @@
                         width: 48px;
                         flex-shrink: 0;
                         margin-inline-end: 10px;
-                        background-color: rgb(252, 100, 45);
-                        border-color: rgb(252, 100, 45);
+                        background-color: $negative-clr2;
+                        border-color: $negative-clr2;
                     }
                 }
-
             }
 
             & .login-input {
@@ -118,9 +118,7 @@
                 color: $gray-clr0;
             }
 
-
-            &>* {
-
+            & > * {
                 &:first-child {
                     border-bottom: 0;
                     border-top-left-radius: 12px;
@@ -131,7 +129,6 @@
                     border-bottom-left-radius: 12px;
                     border-bottom-right-radius: 12px;
                 }
-
             }
 
             & .text-in-login {
@@ -155,5 +152,4 @@
             }
         }
     }
-
 }

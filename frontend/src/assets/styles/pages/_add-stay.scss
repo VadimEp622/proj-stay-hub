@@ -1,5 +1,4 @@
 .add-stay {
-
     .img-upload-container {
         height: 42vh;
         margin-top: 24px;
@@ -17,17 +16,14 @@
             grid-column: 1 / span 2;
             grid-row: 1 / span 2;
         }
-
     }
 
-    .img-upload-container>* {
+    .img-upload-container > * {
         background-color: $gray-clr3;
-
-
     }
 
     .add-stay-form {
-        background-color: antiquewhite;
+        background-color: $gray-clr8;
         flex-wrap: wrap;
         justify-content: flex-start;
         align-items: flex-end;
@@ -38,6 +34,4 @@
         height: 70px;
         width: 160px;
     }
-
-
 }

@@ -9,7 +9,7 @@
         flex-direction: row;
         height: 42px;
         width: 77px;
-        border: 1px solid rgb(221, 221, 221);
+        border: 1px solid $gray-clr3;
         border-radius: 21px;
 
         padding: 5px 5px 5px 12px;
@@ -17,11 +17,11 @@
         transition: box-shadow 0.2s ease;
 
         & .bars {
-            color: #222222;
+            color: $black-clr1;
         }
 
         & .profile {
-            color: #717171;
+            color: $gray-clr0;
             height: 30px;
             width: 30px;
             margin-left: auto;
@@ -32,8 +32,7 @@
         }
 
         &:hover {
-            box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px 0px;
+            box-shadow: $box-shadow1;
         }
     }
-
 }

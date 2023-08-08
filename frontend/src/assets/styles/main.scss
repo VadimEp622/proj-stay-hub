@@ -8,26 +8,24 @@
 @import "basics/base";
 @import "basics/helpers";
 @import "basics/layout";
-@import "basics/links";
-@import "basics/forms";
+@import "basics/links"; // what is this for?
+@import "basics/forms"; // what is this for too? is it usable/needed?
 
 // ************** Components **************
 // Reuseable
 @import "cmps/_reuseable-cmps/date-picker";
 @import "cmps/_reuseable-cmps/loader";
 
-
 // *** app-header ***
 @import "cmps/app-header/date-filter";
 @import "cmps/app-header/logo";
 @import "cmps/app-header/searchbar-toggler";
 @import "cmps/app-header/main-nav-menu";
-@import "cmps/app-header/filter-expanded";//   ---->TODO: extract guest-count-filter into separate scss file
+@import "cmps/app-header/filter-expanded"; //   ---->TODO: extract guest-count-filter into separate scss file
 // *** app-header/main-nav-menu ***   ---->TODO: needs cleaning up
 @import "cmps/app-header/main-nav-menu/nav-menu-dropdown";
 // *** app-header/filter-expanded ***
 @import "cmps/app-header/filter-expanded/location-filter";
-
 
 // *** stay-details ***   ---->TODO: needs cleaning up
 @import "cmps/stay-details/stay-title";
@@ -43,11 +41,9 @@
 // *** stay-details/stay-summary ***   ---->TODO: needs cleaning up
 @import "cmps/stay-details/stay-summary/order-sidebar";
 
-
 // *** user-trips ***   ---->TODO: needs cleaning up
 @import "cmps/user-trips/future-reservation-list";
 @import "cmps/user-trips/past-reservation-list";
-
 
 // *** stay-index ***   ---->TODO: needs cleaning up
 @import "cmps/stay-index/category-filter";
@@ -57,8 +53,6 @@
 // *** stay-index/stay-list/stay-preview ***
 @import "cmps/stay-index/stay-list/stay-preview/preview-image-carousel";
 
-
-
 // __checked__ //
 @import "cmps/gray-viewport";
 @import "cmps/modal-wrapper";
@@ -66,7 +60,7 @@
 // __unchecked__ //
 @import "cmps/app-header";
 @import "cmps/shopping-cart";
-@import "cmps/carousel";
+@import "cmps/carousel"; //find out what is this for, is it necessary, or is even interfering with the other carousels
 @import "cmps/filter";
 @import "cmps/user-msg";
 @import "cmps/app-footer";

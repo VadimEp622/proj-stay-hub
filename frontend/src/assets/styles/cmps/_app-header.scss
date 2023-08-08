@@ -1,6 +1,6 @@
 .app-header-container {
     height: 100%;
-    box-shadow: rgb(0 0 0 / 8%) 0 1px 0;
+    box-shadow: $box-shadow2;
     position: relative;
     z-index: 11;
     background-color: $gray-clr-1;
@@ -14,11 +14,9 @@
     }
 }
 
-
 @media (max-width: 600px) {
     .dashboard-page {
         padding-top: 70px;
-
     }
     .filter-expanded-container {
         width: 0;
@@ -42,30 +40,3 @@
         grid-column: -1;
     }
 }
-
-
-
-//FAILED ATTEMPTS AT GRAYING OUT SCREEN, LAY BELOW :(
-// .app-header-container::after {
-//     content: '';
-//     height: 100%;
-//     opacity: 1;
-//     position: absolute;
-//     top: 0;
-//     width: 100%;
-//     z-index: 100;
-// }
-
-// .app-header-container::before {
-//     content: '';
-//     // height: 100%;
-//     opacity: 1;
-//     position: absolute;
-//     top: -10px;
-//     right: -10px;
-//     bottom: -10px;
-//     left: -10px;
-//     // width: 100%;
-//     pointer-events: none;
-//     height: 250px;
-// }

@@ -45,7 +45,7 @@
                 &:has(.day-range-start,
                     .day-range-end,
                     .day-range-middle) {
-                    background-color: #f7f7f7;
+                    background-color: $gray-clr5;
                 }
 
                 &:has(.day-range-start) {
@@ -66,12 +66,12 @@
                     &:is(.day-range-start, .day-range-end) {
                         background-color: rgb(34, 34, 34);
                         border-radius: 32px;
-                        color: white;
+                        color: $gray-clr-1;
                     }
 
                     &.day-range-middle {
-                        background-color: #f7f7f7;
-                        color: #222222;
+                        background-color: $gray-clr5;
+                        color: $black-clr1;
                     }
                 }
 
@@ -92,7 +92,7 @@
             }
 
             &:not(.rdp-day_disabled, .rdp-nav_button_previous, .rdp-nav_button_next):hover {
-                border: 1px solid black;
+                border: 1px solid $black-clr0;
                 border-radius: 32px;
             }
 

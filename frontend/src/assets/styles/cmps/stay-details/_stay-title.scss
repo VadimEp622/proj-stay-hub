@@ -46,7 +46,7 @@
                 .share-btn-overlay {
                     position: absolute;
                     inset: -10%;
-                    background-color: lightgray;
+                    background-color: $gray-clr6;
                     opacity: 0;
                     transition: opacity 0.3s ease;
                     border-radius: 6px;
@@ -71,7 +71,7 @@
                 .save-btn-overlay {
                     position: absolute;
                     inset: -10%;
-                    background-color: lightgray;
+                    background-color: $gray-clr6;
                     opacity: 0;
                     transition: opacity 0.3s ease;
                     border-radius: 6px;

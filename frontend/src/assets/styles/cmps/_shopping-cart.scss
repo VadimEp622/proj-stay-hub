@@ -1,5 +1,5 @@
 .cart {
-    color: black;
+    color: $black-clr0;
     background-color: $gray-clr2;
     padding: 20px;
     position: absolute;
@@ -10,5 +10,3 @@
 .cart li button {
     margin: 5px;
 }
-
-

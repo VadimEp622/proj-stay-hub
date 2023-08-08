@@ -45,7 +45,7 @@
                 justify-content: flex-end;
 
                 .progress-bar-container {
-                    background-color: rgb(221, 221, 221);
+                    background-color: $gray-clr3;
                     position: relative;
                     border-radius: 0.2em;
                     height: rem(4px);
@@ -59,13 +59,13 @@
                         position: absolute;
                         max-height: rem(4px);
                         border-radius: 2em;
-                        background-color: rgb(34, 34, 34);
+                        background-color: $black-clr1;
                     }
                 }
 
                 span {
                     font-family: cereal-bold;
-                    color: rgb(34, 34, 34);
+                    color: $black-clr1;
                     margin-left: 8px;
                 }
             }

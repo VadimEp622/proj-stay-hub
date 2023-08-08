@@ -1,10 +1,9 @@
-// ======================== COLORS ========================:
-// ******* Main Colors ******* 
+// =========================== COLORS ===========================:
+// ******* Main Colors *******
 $main-clr0: rgb(255, 56, 92);
 $main-clr1: rgb(224, 11, 65);
 
-
-// ******* Gray Colors ******* 
+// ******* Gray Colors *******
 $gray-clr-1: rgb(255, 255, 255); //pure white
 $gray-clr0: rgb(113, 113, 113);
 $gray-clr1: rgb(138, 138, 138);
@@ -12,19 +11,79 @@ $gray-clr2: rgb(176, 176, 176);
 $gray-clr3: rgb(221, 221, 221);
 $gray-clr4: rgb(235, 235, 235);
 $gray-clr5: rgb(247, 247, 247);
-
+$gray-clr6: rgb(211, 211, 211);
+$gray-clr7: rgb(128, 128, 128);
+$gray-clr8: rgb(250, 235, 215);
 
 // ******* Black Colors *******
 $black-clr0: rgb(0, 0, 0); //pure black
 $black-clr1: rgb(34, 34, 34);
 
+// ******* Miscellaneous *******
+// positive (approved/success)
+$positive-clr0: rgb(0, 128, 0);
+$positive-clr1: rgba(36, 191, 70, 0.913);
+$positive-clr2: rgb(2, 177, 2);
+$positive-clr3: rgb(141, 239, 141);
+$positive-clr4: rgb(0, 200, 83);
+
+// pending
+$pending-clr0: rgb(255, 165, 0);
+
+// negative (denied/failure)
+$negative-clr0: rgb(255, 0, 0);
+$negative-clr1: rgb(216, 59, 59);
+$negative-clr2: rgb(252, 100, 45);
+$negative-clr3: rgb(228, 135, 135);
+
+// miscellaneous (temp.)
+$miscellaneous-clr0: rgb(255, 215, 0);
+$miscellaneous-clr1: rgb(0, 128, 128);
 
 // ******* Colors With Transparency *******
-$transparent-clr0: rgba(128, 128, 128, .3);
+$transparent-clr0: rgba(128, 128, 128, 0.3);
 $transparent-clr1: rgba(255, 255, 255, 0.9);
+$transparent-clr2: rgba(128, 128, 128, 0.2588235294);
+$transparent-clr3: rgba(0, 0, 0, 0.188);
+$transparent-clr4: rgba(0, 0, 0, 0.3);
+$transparent-clr5: rgba(0, 0, 0, 0.5);
 
-
+// =============================================================
 // ======================== Box Shadows ========================:
+
+$box-shadow0:
+    0 1px 2px rgba(0, 0, 0, 0.08),
+    0 4px 12px rgba(0, 0, 0, 0.05);
+$box-shadow1: rgba(0, 0, 0, 0.18) 0px 2px 4px 0px;
+$box-shadow2: rgba(0, 0, 0, 0.08) 0 1px 0;
+$box-shadow3: 0 6px 20px rgba(0, 0, 0, 0.2);
+$box-shadow4: -1px 0px 0px 1px rgb(255, 255, 255);
+$box-shadow5: 0px 0px 0px 1px rgb(255, 255, 255);
+$box-shadow6: 1px 0px 0px 1px rgb(255, 255, 255);
+$box-shadow7:
+    0 0 0 1px rgba(0, 0, 0, 0.04),
+    0 8px 16px rgba(0, 0, 0, 0.15);
+$box-shadow8: 0 2px 16px rgba(0, 0, 0, 0.122);
+$box-shadow9: rgba(0, 0, 0, 0.12) 0px 6px 16px;
+$box-shadow10: rgba(0, 0, 0, 0.12) -6px 10px 16px;
+$box-shadow11: 0 6px 16px rgba(0, 0, 0, 0.12);
+$box-shadow12:
+    0 0 0 1px transparent,
+    0 0 0 4px transparent,
+    0 2px 18px rgba(0, 0, 0, 0.18);
+$box-shadow13: 0 6px 16px rgba(0, 0, 0, 0.2);
+$box-shadow14: rgba(0, 0, 0, 0.2) 6px 6px 16px;
+$box-shadow15: rgba(0, 0, 0, 0.28) 0px 8px 28px 0px;
+$box-shadow16: rgba(0, 0, 0, 0.122) 0 1px 12px;
+
+// =============================================================
+// ====================== linear-gradient ======================:
+$linear-gradient0: linear-gradient(135deg, rgba(0, 0, 0, 0) 50%, rgb(255, 56, 92) 50%);
+$linear-gradient1: linear-gradient(to right, rgb(255 255 255/0), white 40px);
+$linear-gradient2: linear-gradient(to left, rgb(255 255 255/0), white 40px);
+$linear-gradient3: linear-gradient(to bottom, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0));
+
+// =============================================================
 
 // Breakpoints
 $mobile-breakpoint: 750px;

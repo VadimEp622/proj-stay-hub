@@ -4,105 +4,101 @@
 
     .order-modal-form {
         flex-direction: column;
-        border: 1px solid #00000030;
+        border: 1px solid $transparent-clr3;
         border-radius: rem(13px);
         height: max-content;
         padding: rem(28px);
-        box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
+        box-shadow: $box-shadow9;
         width: 83%;
         min-width: 285px;
         margin-left: auto;
-        
+
         .order-container-header {
             display: flex;
             @include between();
             margin-bottom: rem(22px);
-    
+
             .order-rate {
-                
                 justify-content: center;
-    
+
                 .review-rate {
                     padding-left: 4px;
                 }
-    
+
                 .period {
                     padding-left: 4px;
                     padding-right: 4px;
-    
                 }
             }
-    
+
             h2 {
                 font-family: cereal-std;
                 font-size: rem(16px);
                 font-weight: 400;
                 letter-spacing: 0;
-    
+
                 span {
                     color: $black-clr1;
                     font-family: cereal-bold;
                     font-size: rem(22px);
                 }
             }
-    
+
             .review-count {
                 color: $gray-clr0;
             }
         }
-    
+
         .order-data {
             border: 1px solid $gray-clr2;
             border-radius: 8px;
             margin-bottom: 16px;
-    
-            .order-date-container{
+
+            .order-date-container {
                 justify-content: space-between;
                 border-bottom: 1px solid $gray-clr2;
-    
+
                 .check-in {
                     border-right: 1px solid $gray-clr2;
                 }
-    
+
                 .check-in,
                 .check-out {
                     flex-direction: column;
                     background-color: transparent;
                     padding: 9px 12px;
-                    width: 50%
+                    width: 50%;
                 }
-
             }
             .uppertext {
                 font-size: rem(10px);
                 font-family: cereal-medium;
             }
-    
         }
-    
+
         .guests {
             flex-direction: column;
             background-color: transparent;
             padding: 7px 12px;
             width: 100%;
         }
-    
+
         .price-container {
             margin-top: 8px;
-    
+
             p {
                 text-align: center;
             }
-    
+
             .total-price-container {
                 font-size: rem(16px);
                 margin-top: 22px;
                 border-top: 1px solid $gray-clr2;
-                
+
                 h5 {
-                   font-size: rem(16px);
-                   margin-top: 24px;
-               }
+                    font-size: rem(16px);
+                    margin-top: 24px;
+                }
             }
         }
     }
@@ -143,11 +139,11 @@
     grid-template: repeat(10, 1fr) / repeat(10, 1fr);
 
     @for $i from 0 to 10 {
-        .cell:nth-child(10n + #{$i + 1}):hover~.content {
+        .cell:nth-child(10n + #{$i + 1}):hover ~ .content {
             --positionX: #{$i};
         }
 
-        .cell:nth-child(n + #{10 * $i + 1}):nth-child(-n + #{10 * ($i + 1)}):hover~.content {
+        .cell:nth-child(n + #{10 * $i + 1}):nth-child(-n + #{10 * ($i + 1)}):hover ~ .content {
             --positionY: #{$i};
         }
     }
@@ -155,13 +151,12 @@
     span {
         padding: 0 0;
         margin: 0 0;
-        color: white;
+        color: $gray-clr-1;
         font-size: 16px;
         line-height: 20px;
         font-weight: 600;
         font-family: sans-serif;
     }
-
 
     .order-spacial-info {
         font-size: rem(16px);
@@ -193,6 +188,7 @@
     // border: 1px solid rgba(128, 128, 128, 0.753);
 }
 
+// figure out how to make a variable out of the radial-gradient below, or make a mixin, or do the css in the cmp itself
 .content {
     --positionX: 0;
     --positionY: 5;
@@ -208,13 +204,15 @@
     height: 100%;
     border-radius: 8px;
 
-    background-image: radial-gradient(circle at calc((0 + var(--positionX, 0)) * 10%) calc((0 + var(--positionY, 0)) * 5%),
-            rgb(241, 37, 75) 0%,
-            rgb(230, 30, 77) 27.5%,
-            rgb(227, 28, 95) 40%,
-            rgb(215, 4, 102) 57.5%,
-            rgb(189, 30, 89) 75%,
-            rgb(189, 30, 89) 100%);
+    background-image: radial-gradient(
+        circle at calc((0 + var(--positionX, 0)) * 10%) calc((0 + var(--positionY, 0)) * 5%),
+        rgb(241, 37, 75) 0%,
+        rgb(230, 30, 77) 27.5%,
+        rgb(227, 28, 95) 40%,
+        rgb(215, 4, 102) 57.5%,
+        rgb(189, 30, 89) 75%,
+        rgb(189, 30, 89) 100%
+    );
 }
 
 .action-btn {

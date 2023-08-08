@@ -3,16 +3,15 @@
     width: 100%;
     height: 2px;
     position: relative;
-
 }
 
 .rc-slider-rail {
-    background-color: #DDDDDD;
+    background-color: $gray-clr3;
     height: 4px;
 }
 
 .rc-slider-track {
-    background-color: #222222;
+    background-color: $black-clr1;
     position: absolute;
     height: 4px;
 }
@@ -20,22 +19,22 @@
 .rc-slider-handle {
     width: 32px;
     height: 32px;
-    background-color: white;
+    background-color: $gray-clr-1;
     top: -15%;
-    border: 1px solid #DDDDDD;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+    border: 1px solid $gray-clr3;
+    box-shadow: $box-shadow13;
     cursor: pointer;
-    fill: #222222;
+    fill: $black-clr1;
     transition: scale 0.1s ease;
 }
 
 .rc-slider-handle:hover {
-    border: 1px solid #DDDDDD;
+    border: 1px solid $gray-clr3;
 }
 
 .rc-slider-handle-dragging.rc-slider-handle-dragging.rc-slider-handle-dragging {
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
-    border: 1px solid #DDDDDD;
+    box-shadow: $box-shadow13;
+    border: 1px solid $gray-clr3;
 }
 
 .rc-slider-handle:active {
@@ -57,24 +56,24 @@
     grid-auto-flow: column;
 
     button {
-        background-color: white;
+        background-color: $gray-clr-1;
         color: inherit;
-        border-color: #222222;
-        background-image: linear-gradient(to bottom, rgba(255 255 255/0.16), rgba(255 255 255/0));
+        border-color: $black-clr1;
+        background-image: $linear-gradient3;
     }
 
     button:active {
-        background-color: #222222;
+        background-color: $black-clr1;
     }
 }
 
 .type {
-    color: #ffffff;
+    color: $gray-clr-1;
     font-weight: 600;
     display: flex;
     flex-wrap: wrap;
 
     span {
-        color: #DDDDDD;
+        color: $gray-clr3;
     }
 }

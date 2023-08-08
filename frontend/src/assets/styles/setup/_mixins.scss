@@ -1,21 +1,22 @@
 /* Breakpoint mixins */
 
-@mixin for-mobile-layout-header {      //less than 750px
-    @media (max-width: calc($mobile-breakpoint + 40px)) { 
-        @content;
-
-        
-    }
-}
-
-@mixin for-narrow-mobile-layout {      //less than 750px
-    @media (max-width: calc($mobile-breakpoint - 150px)) { 
+@mixin for-mobile-layout-header {
+    //less than 750px
+    @media (max-width: calc($mobile-breakpoint + 40px)) {
         @content;
     }
 }
 
-@mixin for-mobile-layout {      //less than 750px
-    @media (min-width: calc($mobile-breakpoint + 40px)) { 
+@mixin for-narrow-mobile-layout {
+    //less than 750px
+    @media (max-width: calc($mobile-breakpoint - 150px)) {
+        @content;
+    }
+}
+
+@mixin for-mobile-layout {
+    //less than 750px
+    @media (min-width: calc($mobile-breakpoint + 40px)) {
         @content;
     }
 }
@@ -32,8 +33,6 @@
     }
 }
 
-
-
 /* Media  Mixins */
 @mixin aspect-ratio($width, $height) {
     position: relative;
@@ -46,7 +45,7 @@
         padding-top: calc(($height / $width) * 100%);
     }
 
-    >* {
+    > * {
         position: absolute;
         top: 0;
         left: 0;
@@ -54,7 +53,7 @@
         bottom: 0;
     }
 
-    >img {
+    > img {
         height: 100%;
         object-fit: cover;
     }

@@ -75,14 +75,14 @@
         button {
             width: rem(150px);
             height: rem(48px);
-            background-color: rgb(255, 255, 255);
+            background-color: $gray-clr-1;
             cursor: pointer;
-            border: 1px solid rgb(34, 34, 34);
+            border: 1px solid $black-clr1;
             border-radius: rem(12px);
             margin: 24px 0;
 
             &:hover {
-                background-color: #f7f7f7;
+                background-color: $gray-clr5;
             }
         }
 

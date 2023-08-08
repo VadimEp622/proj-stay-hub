@@ -5,7 +5,6 @@
         transform: translate(-18px, 0);
 
         & .return-btn {
-
             transform: translate(-18px, 11px);
         }
 
@@ -20,7 +19,6 @@
     display: grid;
     grid-template-columns: 1.202fr 1fr;
     column-gap: 95px;
-
 
     .confirmation-details {
         padding-bottom: 16px;
@@ -60,12 +58,12 @@
                 margin-right: 12px;
             }
 
-            .detail> :first-child {
+            .detail > :first-child {
                 color: $gray-clr0;
                 margin-bottom: 0;
             }
 
-            .detail> :last-child {
+            .detail > :last-child {
                 margin-top: 44px;
                 font-size: rem(12px);
             }
@@ -79,15 +77,13 @@
                 -webkit-box-orient: vertical;
             }
 
-            .confirmation-reviews>* {
+            .confirmation-reviews > * {
                 padding-left: 5px;
             }
-
         }
 
         .price-details {
             margin-top: 26px;
-
         }
 
         .price {
@@ -145,7 +141,7 @@
                 flex-direction: column;
             }
 
-            .host-mini-info :first-child{
+            .host-mini-info :first-child {
                 font-family: Circular-semibold;
                 font-size: rem(16px);
             }

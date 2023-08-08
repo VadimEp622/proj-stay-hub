@@ -1,12 +1,12 @@
 .user-msg {
-    color: white;
+    color: $gray-clr-1;
     padding: 16px;
     font-size: 1.4em;
     position: fixed;
     top: 8.5%; /* Position the container 10 pixels from the top */
     left: 50%; /* Horizontally center the modal */
     transform: translateX(-50%); /* Adjust for the half-width of the modal */
-    background-color: grey;
+    background-color: $gray-clr7;
     z-index: 11;
     border-radius: 12px;
     width: 90%;
@@ -17,17 +17,17 @@
         border: 0;
         border-radius: 50%;
         margin: 5px;
-        background-color: #222;
-        color: white;
+        background-color: $black-clr1;
+        color: $gray-clr-1;
     }
 
     &.success {
-        background-color: rgba(36, 191, 70, 0.913);
-        box-shadow: rgba(0, 0, 0, 0.2) 6px 6px 16px;
+        background-color: $positive-clr1;
+        box-shadow: $box-shadow14;
     }
 
     &.error {
-        background-color: rgb(216, 59, 59);
-        box-shadow: rgba(0, 0, 0, 0.2) 6px 6px 16px;
+        background-color: $negative-clr1;
+        box-shadow: $box-shadow14;
     }
 }

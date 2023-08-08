@@ -1,5 +1,4 @@
 .future-reservation-list {
-
     & h1 {
         padding-top: 30px;
         padding-bottom: 30px;
@@ -10,7 +9,6 @@
     }
 
     & .trips-container {
-
         & .no-trips {
             padding-top: 32px;
             padding-bottom: 48px;
@@ -31,7 +29,7 @@
                 font-family: Circular-semibold;
                 font-size: 22px;
                 line-height: 26px;
-                letter-spacing: .0008rem;
+                letter-spacing: 0.0008rem;
             }
 
             p {
@@ -47,7 +45,7 @@
                 border-radius: rem(8px);
                 font-size: 16px;
                 background-color: inherit;
-                letter-spacing: .48px;
+                letter-spacing: 0.48px;
                 cursor: pointer;
                 border-width: 1px;
             }
@@ -74,7 +72,7 @@
                 grid-template-columns: 1fr 1fr;
                 border-radius: 12px;
                 overflow: hidden;
-                box-shadow: rgba(0, 0, 0, 0.12) -6px 10px 16px;
+                box-shadow: $box-shadow10;
                 position: relative;
 
                 .reservation-img {
@@ -110,10 +108,9 @@
                 height: 100%;
                 align-items: flex-start;
                 margin-top: 16px;
-
             }
 
-            .reservation-dates>* {
+            .reservation-dates > * {
                 align-items: flex-start;
                 height: 100%;
                 flex: 1;
@@ -135,7 +132,6 @@
 
             .reservation-destination :last-child {
                 font-size: rem(10px);
-
             }
 
             .reservation-confirmation {
@@ -156,15 +152,15 @@
                 }
 
                 .approved {
-                    color: green;
+                    color: $positive-clr0;
                 }
 
                 .pending {
-                    color: orange;
+                    color: $pending-clr0;
                 }
 
                 .rejected {
-                    color: red;
+                    color: $negative-clr0;
                 }
             }
         }
@@ -177,7 +173,7 @@
             }
         }
 
-        .explore-things-to-do> :first-child {
+        .explore-things-to-do > :first-child {
             height: 10%;
         }
 
@@ -211,7 +207,6 @@
                 border-radius: 8px;
                 margin-right: 16px;
                 background-color: $gray-clr4;
-
             }
         }
 

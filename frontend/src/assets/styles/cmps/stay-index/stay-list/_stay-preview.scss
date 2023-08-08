@@ -75,8 +75,8 @@
     .react-multiple-carousel__arrow {
         opacity: 0;
         font-weight: 700;
-        background-color: white;
-        color: black;
+        background-color: $gray-clr-1;
+        color: $black-clr0;
         margin: auto;
         min-width: 30px;
         min-height: 30px;
@@ -96,8 +96,8 @@
     .react-multi-carousel-dot button {
         height: rem(7px);
         width: rem(7px);
-        border-color: white;
-        background-color: white;
+        border-color: $gray-clr-1;
+        background-color: $gray-clr-1;
         opacity: 0.35;
     }
 
@@ -119,9 +119,7 @@
     }
 }
 
-
 .stay-info {
-
     p:first-child {
         margin-block-start: 2px;
         color: $gray-clr0;
@@ -130,6 +128,5 @@
     p:nth-child(2) {
         margin-block-start: 3px;
         color: $gray-clr0;
-
     }
 }

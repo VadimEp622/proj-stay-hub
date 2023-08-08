@@ -2,7 +2,7 @@
     margin: 24px 0;
 
     .overview {
-        box-shadow: #0000001f 0 1px 12px;
+        box-shadow: $box-shadow16;
         font-family: Circular-semibold;
         font-size: rem(22px);
         padding: 12px;
@@ -40,9 +40,8 @@
     }
 
     .sales-dashboard {
-
         .chart-container {
-            box-shadow: #0000001f 0 1px 12px;
+            box-shadow: $box-shadow16;
             padding: 24px;
             border-radius: 12px;
             max-height: 250px;

@@ -2,7 +2,7 @@
     padding-top: 48px;
     display: grid;
     grid-template-columns: 1.4fr 1fr;
-    border-bottom: 1px solid #dddddd;
+    border-bottom: 1px solid $gray-clr3;
 
     & .summary {
         & .overview-container {

@@ -11,7 +11,6 @@
         position: relative;
         // gap: 100px;
 
-
         & .category-bar {
             position: unset !important;
             margin-inline-end: 30px;
@@ -27,10 +26,10 @@
 
                 &.right {
                     right: 0;
-                    background-image: linear-gradient(to right, rgb(255 255 255/0), white 40px);
+                    background-image: $linear-gradient1;
 
                     &::before {
-                        content: '';
+                        content: "";
                         height: 100%;
                         width: 40px;
                     }
@@ -42,10 +41,10 @@
 
                 &.left {
                     left: 0;
-                    background-image: linear-gradient(to left, rgb(255 255 255/0), white 40px);
+                    background-image: $linear-gradient2;
 
                     &::after {
-                        content: '';
+                        content: "";
                         height: 100%;
                         width: 40px;
                     }
@@ -54,7 +53,6 @@
                         grid-column: 1;
                     }
                 }
-
 
                 & .custom-arrow {
                     display: flex;
@@ -66,59 +64,27 @@
                     padding: 0;
                     margin: 0;
                     background-color: inherit;
-                    border: 0.5px solid rgb(0 0 0/0.3);
-                    transition: box-shadow 0.2s ease, ;
+                    border: 0.5px solid $transparent-clr4;
+                    transition: box-shadow 0.2s ease;
                     margin-block-start: 20px;
 
                     &:hover {
                         cursor: pointer;
                         transform: scale(1.04);
-                        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
-
+                        box-shadow: $box-shadow11;
                     }
                 }
             }
 
             & ul {
                 padding-block-start: 20px;
-                // gap: 32px;
-                // max-width: 5801.550px;
-                // max-width: 80vw;
-
-
-                // width: 80vw;
-                // max-width: 100%;
-                // width: 90%;
-                // overflow: hidden !important;
-
-                // &>* {
-                //     &:not(:first-child) {
-                //         left: -15px;
-                //     }
-                // }
 
                 & .category-item {
-                    // POSSIBLY TEMPORARY IMPORTANT TO OVERRIDE AUTOMATIC WIDTH ALLOCATION IN react-multi-carousel,
-                    // CALCULATED ACCORDING TO CONTAINER WIDTH AND ITEMS
-                    // width: 100% !important;
-                    // max-width: min-content;
-                    // width: 100%;
-                    // padding-inline-end: 70px;
-                    // display: flex;
                     margin-block-start: 12px;
                     margin-block-end: 8px;
-                    // margin-inline: -135px;
-                    // padding-inline-end: 60px;
-
-                    &:first-child {
-                        // padding-inline-end: 30px;
-                    }
-
 
                     &:not(:first-child) {
                         left: -34px;
-                        // left: -200px;
-                        // padding-inline: 50px;
                     }
 
                     &:first-child .img-container {
@@ -147,7 +113,9 @@
                             display: block;
                             margin-inline: auto;
                             opacity: 0.6425339366515838;
-                            transition: opacity 200ms ease, transform 200ms ease;
+                            transition:
+                                opacity 200ms ease,
+                                transform 200ms ease;
                         }
 
                         & label {
@@ -162,15 +130,17 @@
 
                             & span {
                                 display: block;
-                                transition: opacity 200ms ease, transform 200ms ease;
+                                transition:
+                                    opacity 200ms ease,
+                                    transform 200ms ease;
                                 white-space: nowrap;
                             }
 
                             &::after {
-                                content: '';
+                                content: "";
                                 position: relative;
                                 display: block;
-                                background-color: black;
+                                background-color: $black-clr0;
                                 width: 100%;
                                 height: 2px;
                                 opacity: 0;
@@ -212,8 +182,7 @@
                             }
                         }
 
-                        &:active :is(img,
-                            label span) {
+                        &:active :is(img, label span) {
                             transform: scale(0.96);
                         }
                     }

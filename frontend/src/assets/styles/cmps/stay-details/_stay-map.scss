@@ -24,7 +24,7 @@
         position: relative;
 
         .popper-wedge {
-            background: linear-gradient(135deg, rgba(0, 0, 0, 0) 50%, rgb(255, 56, 92) 50%);
+            background: $linear-gradient0;
             border-radius: 2px;
             bottom: -4px;
             height: 12px;
@@ -39,7 +39,7 @@
             height: 22px;
             width: 22px;
             display: block;
-            color: white;
+            color: $gray-clr-1;
         }
     }
 }

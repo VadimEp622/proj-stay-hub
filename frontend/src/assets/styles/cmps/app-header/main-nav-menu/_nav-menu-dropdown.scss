@@ -9,7 +9,7 @@
     padding-bottom: 10px;
     border-radius: 12px;
     background-color: $gray-clr-1;
-    box-shadow: 0 2px 16px #0000001f;
+    box-shadow: $box-shadow8;
 }
 
 .dropdown-option {
@@ -24,7 +24,7 @@
 .dropdown-line {
     height: 0;
     margin: 0;
-    border-top: solid 1px rgba(128, 128, 128, 0.2588235294);
+    border-top: solid 1px $transparent-clr2;
 }
 
 .bold {
