@@ -11,11 +11,17 @@ import { OPEN_EXPANDED_HEADER_MODAL } from '../store/system.reducer.js'
 // Services
 import { utilService } from '../services/util.service.js'
 
+// Custom hooks
+import useIsMobile from '../customHooks/useIsMobile.js'
+
 // Components
 import { Logo } from './app-header/logo.jsx'
 import { SearchbarToggler } from './app-header/searchbar-toggler.jsx'
 import { MainNavMenu } from './app-header/main-nav-menu.jsx'
 import { FilterExpanded } from './app-header/filter-expanded.jsx'
+import { HeaderMobile } from './app-header/header-mobile.jsx'
+
+
 
 
 
@@ -42,6 +48,8 @@ export function AppHeader({ isStayDetailsPage }) {
     const isFilterExpanded = useSelector(storeState => storeState.systemModule.isFilterExpanded)
     const [selectedExperienceTab, setSelectedExperienceTab] = useState('stays')
     const [selectedFilterBox, setSelectedFilterBox] = useState('where')
+    // const [isMobile, setIsMobile] = useState(true)
+    const isMobile = useIsMobile()
 
 
     function onSubmit(ev) {
@@ -142,32 +150,42 @@ export function AppHeader({ isStayDetailsPage }) {
         if (selectedFilterBox !== field) setSelectedFilterBox(field)
     }
 
-
+    const layoutType = !isStayDetailsPage ? 'main-layout' : 'details-layout'
+    const screenType = isMobile ? 'mobile' : ''
     return (
-        <header className={`app-header-container full ${!isStayDetailsPage ? 'main-layout' : 'details-layout'}`}>
-            <nav className="app-header">
-                <Logo />
-                <SearchbarToggler
-                    isFilterExpanded={isFilterExpanded}
-                    selectedExperienceTab={selectedExperienceTab}
-                    setSelectedExperienceTab={setSelectedExperienceTab}
-                />
-                <MainNavMenu />
-            </nav>
+        <header className={`app-header-container full ${layoutType} ${screenType}`}>
+            {
+                !isMobile &&
+                <>
+                    <nav className="app-header">
+                        <Logo />
+                        <SearchbarToggler
+                            isFilterExpanded={isFilterExpanded}
+                            selectedExperienceTab={selectedExperienceTab}
+                            setSelectedExperienceTab={setSelectedExperienceTab}
+                        />
+                        <MainNavMenu />
+                    </nav>
 
-            <FilterExpanded
-                filterBy={filterBy}
-                setFilterBy={setFilterBy}
-                handleChange={handleChange}
-                handleGuestCountChange={handleGuestCountChange}
-                onSubmit={onSubmit}
-                onSetFilterDates={onSetFilterDates}
-                isFilterExpanded={isFilterExpanded}
-                selectedExperienceTab={selectedExperienceTab}
-                selectedFilterBox={selectedFilterBox}
-                onSetSelectedFilterBox={onSetSelectedFilterBox}
-                setSelectedFilterBox={setSelectedFilterBox}
-            />
+                    <FilterExpanded
+                        filterBy={filterBy}
+                        setFilterBy={setFilterBy}
+                        handleChange={handleChange}
+                        handleGuestCountChange={handleGuestCountChange}
+                        onSubmit={onSubmit}
+                        onSetFilterDates={onSetFilterDates}
+                        isFilterExpanded={isFilterExpanded}
+                        selectedExperienceTab={selectedExperienceTab}
+                        selectedFilterBox={selectedFilterBox}
+                        onSetSelectedFilterBox={onSetSelectedFilterBox}
+                        setSelectedFilterBox={setSelectedFilterBox}
+                    />
+                </>
+            }
+            {
+                isMobile &&
+                <HeaderMobile />
+            }
         </header>
     )
 }
