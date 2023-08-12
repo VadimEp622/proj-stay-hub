@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react"
-
+import { useEffect, useState, useTransition } from "react"
+// TODO: refactor to useTransition if possible
 const getIsMobile = () => window.innerWidth < 790
 
 export default function useIsMobile() {
