@@ -16,31 +16,3 @@
         z-index: 11;
     }
 }
-
-@media (max-width: 600px) {
-    .dashboard-page {
-        padding-top: 70px;
-    }
-
-    .filter-expanded-container {
-        width: 0;
-        display: none;
-    }
-
-    .searchbar-toggler-container {
-        display: none;
-    }
-
-    .app-header {
-        padding: 0 10px;
-        position: fixed;
-        width: 100%;
-        top: 0;
-        background-color: inherit;
-        border-bottom: $border-bottom;
-    }
-
-    .main-nav-menu-container {
-        grid-column: -1;
-    }
-}

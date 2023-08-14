@@ -1,0 +1,24 @@
+// less than 600px
+@include for-mobile-layout {
+    .main-layout {
+        grid-template-columns: minmax(24px, 1fr) minmax(300px, 550px) minmax(24px, 1fr);
+
+        .stays-list {
+            grid-template-columns: repeat(1, minmax(300px, 550px));
+        }
+    }
+}
+
+// more than 600px
+@include for-narrow-layout {
+    .main-layout {
+        grid-template-columns: 40px 1fr 40px;
+    }
+}
+
+// more than 1450px
+@include for-wide-layout {
+    .main-layout {
+        grid-template-columns: 80px 1fr 80px;
+    }
+}

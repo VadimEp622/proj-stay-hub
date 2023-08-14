@@ -1,10 +1,10 @@
 import { CONFIG, SEARCH_2 } from "../../services/svg.service.js"
 import SvgHandler from "../svg-handler.jsx"
 
-export function HeaderMobile() {
+export function HeaderMobile({ layoutType }) {
 
     return (
-        <section className='header-mobile'>
+        <section className={`header-mobile full ${layoutType}`}>
             <section className="searchbar-mobile flex">
                 <button className="btn-search-mobile flex align-center">
                     <section className="search-img">

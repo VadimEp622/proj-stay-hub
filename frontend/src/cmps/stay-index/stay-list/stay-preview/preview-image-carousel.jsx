@@ -33,6 +33,13 @@ export function PreviewImageCarousel({ imgs, stay }) {
             },
             items: 1,
         },
+        tablet: {
+            breakpoint: {
+                max: 1024,
+                min: 464
+            },
+            items: 1,
+        },
         mobile: {
             breakpoint: {
                 max: 464,
@@ -40,13 +47,6 @@ export function PreviewImageCarousel({ imgs, stay }) {
             },
             items: 1,
         },
-        tablet: {
-            breakpoint: {
-                max: 1024,
-                min: 464
-            },
-            items: 1,
-        }
     }
 
     return (

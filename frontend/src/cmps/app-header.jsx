@@ -183,7 +183,7 @@ export function AppHeader({ isStayDetailsPage }) {
             }
             {
                 isMobile &&
-                <HeaderMobile />
+                <HeaderMobile layoutType={layoutType} />
             }
         </header>
     )

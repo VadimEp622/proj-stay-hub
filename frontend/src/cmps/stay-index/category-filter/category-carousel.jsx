@@ -72,14 +72,14 @@ export function CategoryCarousel({ images, selectedCategory, handleClick }) {
         mobileLarge: {
             breakpoint: {
                 max: 800,
-                min: 600
+                min: 599
             },
             items: 6,
             slidesToSlide: 3
         },
         mobileMedium: {
             breakpoint: {
-                max: 600,
+                max: 599,
                 min: 500
             },
             items: 4,
