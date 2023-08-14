@@ -11,8 +11,8 @@ export function HeaderMobile() {
                         <SvgHandler svgName={SEARCH_2} />
                     </section>
                     <section className="search-description">
-                        <h3>Anywhere</h3>
-                        <article className="flex">
+                        <h3 className="upper-description fs14">Anywhere</h3>
+                        <article className="lower-description fs12 flex">
                             <p>Any week</p>
                             <p>•</p>
                             <p>Add guests</p>
@@ -20,11 +20,9 @@ export function HeaderMobile() {
                     </section>
                 </button>
                 <button className="btn-main-filter-mobile">
-                    <section className="main-filter-img-container">
-                        <article className="main-filter-img flex align-center justify-center">
-                            <SvgHandler svgName={CONFIG} />
-                        </article>
-                    </section>
+                    <article className="main-filter-img flex align-center justify-center">
+                        <SvgHandler svgName={CONFIG} />
+                    </article>
                 </button>
             </section>
         </section>

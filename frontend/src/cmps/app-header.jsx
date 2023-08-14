@@ -48,7 +48,6 @@ export function AppHeader({ isStayDetailsPage }) {
     const isFilterExpanded = useSelector(storeState => storeState.systemModule.isFilterExpanded)
     const [selectedExperienceTab, setSelectedExperienceTab] = useState('stays')
     const [selectedFilterBox, setSelectedFilterBox] = useState('where')
-    // const [isMobile, setIsMobile] = useState(true)
     const isMobile = useIsMobile()
 
 

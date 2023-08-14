@@ -1,4 +1,5 @@
 // =========================== COLORS ===========================:
+
 // ******* Main Colors *******
 $main-clr0: rgb(255, 56, 92);
 $main-clr1: rgb(224, 11, 65);
@@ -47,6 +48,7 @@ $transparent-clr2: rgba(128, 128, 128, 0.2588235294);
 $transparent-clr3: rgba(0, 0, 0, 0.188);
 $transparent-clr4: rgba(0, 0, 0, 0.3);
 $transparent-clr5: rgba(0, 0, 0, 0.5);
+$transparent-clr6: rgba(0, 0, 0, 0.08);
 
 // =============================================================
 // ======================== Box Shadows ========================:
@@ -75,9 +77,11 @@ $box-shadow13: 0 6px 16px rgba(0, 0, 0, 0.2);
 $box-shadow14: rgba(0, 0, 0, 0.2) 6px 6px 16px;
 $box-shadow15: rgba(0, 0, 0, 0.28) 0px 8px 28px 0px;
 $box-shadow16: rgba(0, 0, 0, 0.122) 0 1px 12px;
+$box-shadow17: 0 3px 10px rgba(0, 0, 0, 0.1);
 
 // =============================================================
 // ====================== linear-gradient ======================:
+
 $linear-gradient0: linear-gradient(135deg, rgba(0, 0, 0, 0) 50%, rgb(255, 56, 92) 50%);
 $linear-gradient1: linear-gradient(to right, rgb(255 255 255/0), white 40px);
 $linear-gradient2: linear-gradient(to left, rgb(255 255 255/0), white 40px);
