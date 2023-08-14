@@ -6,7 +6,7 @@ export function HeaderMobile() {
     return (
         <section className='header-mobile'>
             <section className="searchbar-mobile flex">
-                <button className="btn-search-mobile flex">
+                <button className="btn-search-mobile flex align-center">
                     <section className="search-img">
                         <SvgHandler svgName={SEARCH_2} />
                     </section>

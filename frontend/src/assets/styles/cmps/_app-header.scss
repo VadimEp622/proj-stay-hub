@@ -1,9 +1,12 @@
 .app-header-container {
     height: 100%;
-    box-shadow: $box-shadow2;
     position: relative;
     z-index: 11;
     background-color: $gray-clr-1;
+
+    &:not(.mobile) {
+        box-shadow: $box-shadow2;
+    }
 
     & .app-header {
         height: 80px;
@@ -18,6 +21,7 @@
     .dashboard-page {
         padding-top: 70px;
     }
+
     .filter-expanded-container {
         width: 0;
         display: none;

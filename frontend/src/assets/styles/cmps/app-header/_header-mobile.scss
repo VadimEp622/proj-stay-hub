@@ -17,14 +17,16 @@
 
 
     & .searchbar-mobile {
-        border: 1px solid black;
+        min-height: 56px;
+        // border: 1px solid black;
         border-radius: 1000px;
+        border: 0.5px solid rgba(0, 0, 0, 0.08);
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
 
         & .btn-search-mobile {
             width: 100%;
 
             & .search-img {
-                margin-block: auto;
                 padding-inline-start: 16px;
                 padding-inline-end: 20px;
             }
@@ -40,9 +42,9 @@
                 & .main-filter-img {
                     height: 36px;
                     width: 36px;
-                    border: 1px solid black;
+                    border: 1px solid #DDDDDD;
                     border-radius: 32px;
-                    margin-inline:10px;
+                    margin-inline: 10px;
                 }
             }
         }
