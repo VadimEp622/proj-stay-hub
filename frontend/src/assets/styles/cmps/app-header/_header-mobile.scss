@@ -1,3 +1,50 @@
-.header-mobile{
-    text-align: center;
+.header-mobile {
+    padding-block-start: 14px;
+
+    p,
+    button {
+        margin: 0;
+        padding: 0;
+        border-width: 0px;
+        background-color: inherit;
+    }
+
+    svg {
+        display: block;
+        max-width: 16px;
+        max-height: 16px;
+    }
+
+
+    & .searchbar-mobile {
+        border: 1px solid black;
+        border-radius: 1000px;
+
+        & .btn-search-mobile {
+            width: 100%;
+
+            & .search-img {
+                margin-block: auto;
+                padding-inline-start: 16px;
+                padding-inline-end: 20px;
+            }
+
+            & .search-description {
+                text-align: left;
+                flex: 1 1 auto;
+            }
+        }
+
+        & .btn-main-filter-mobile {
+            & .main-filter-img-container {
+                & .main-filter-img {
+                    height: 36px;
+                    width: 36px;
+                    border: 1px solid black;
+                    border-radius: 32px;
+                    margin-inline:10px;
+                }
+            }
+        }
+    }
 }

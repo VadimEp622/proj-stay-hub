@@ -5,6 +5,13 @@ export const ARROW_RIGHT_FAT = 'ARROW_RIGHT_FAT'
 export const ARROW_RIGHT = 'ARROW_RIGHT'
 export const ARROW_UP = 'ARROW_UP'
 
+// ************************************** SEARCH (Magnifying Glass) **************************************
+export const SEARCH = 'SEARCH'
+export const SEARCH_2 = 'SEARCH_2'
+
+// ************************************** CONFIG **************************************
+export const CONFIG = 'CONFIG'
+
 // ************************************** ... **************************************
 export const LOGO = 'logo'
 export const USER_NAV_BARS = 'user_nav-bars'
@@ -15,8 +22,6 @@ export const STAR = 'star'
 export const STAR_12 = 'star-12'
 export const STAR_16 = 'star-16'
 export const SHARE = 'share'
-export const SEARCH = 'search'
-export const SEARCH_2 = 'search-2'
 export const WHITE_HEART = 'heart-white'
 export const RED_HEART = 'heart-red'
 export const LOCATION = 'location'
