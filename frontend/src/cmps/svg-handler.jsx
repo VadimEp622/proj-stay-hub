@@ -95,6 +95,9 @@ import {
 } from '../services/svg.service.js'
 
 
+// TODO: organize this atrocity
+
+
 const SvgHandler = ({ svgName }) => {
 
     function svgIdentifier(name) {
@@ -232,8 +235,8 @@ const SvgHandler = ({ svgName }) => {
                 return <Safe />
             case 'Hangers':
                 return <Hangers />
-            case 'Crib':
-                return <Dishwasher />
+            // case 'Crib':
+            //     return <Dishwasher />
             case 'Room-darkening shades':
                 return <RoomDarkening />
             case 'Hot water':
@@ -247,7 +250,7 @@ const SvgHandler = ({ svgName }) => {
             case 'Coffee maker':
                 return <CoffeeMaker />
             case 'Dishwasher':
-                return < Dishwasher />
+                return <Dishwasher />
             case 'Ethernet connection':
                 return <Ethernet />
             case 'Window guards':
@@ -256,12 +259,12 @@ const SvgHandler = ({ svgName }) => {
                 return <BabysitterRecommendations />
             case 'Beach essentials':
                 return <BeachEssentials />
-            case 'Children’s books and toys':
+            case 'Children\'s books and toys':
                 return <BooksReading />
             case 'Breakfast':
                 return <Breakfast />
-            case 'Laptop friendly workspace':
-                return <DedicatedWorkspace />
+            // case 'Laptop friendly workspace':
+            //     return <DedicatedWorkspace />
             case 'Garden or backyard':
                 return <GardenView />
             case 'Keypad':
@@ -280,7 +283,7 @@ const SvgHandler = ({ svgName }) => {
             default:
                 return <HDTV />
         }
-        return null
+        // return null
     }
 
     return (svgIdentifier(svgName))

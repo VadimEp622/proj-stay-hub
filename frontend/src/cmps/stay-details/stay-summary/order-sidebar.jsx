@@ -1,7 +1,8 @@
 // Node modules
 import { useSelector } from "react-redux"
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
+import { startOfDay } from 'date-fns'
 
 // Services
 import { reviewService } from "../../../services/review.service.js"
@@ -16,12 +17,9 @@ import { setModal } from "../../../store/stay.actions.js"
 
 // Custom Hooks
 import { useClickOutside } from "../../../customHooks/clickOutsideModal.js"
+import useStayDates from "../../../customHooks/useStayDates.js"
 
 // Components
-// import DatePicker from "./date-picker.jsx"
-import { OrderConfirmation } from "../../../pages/order-confirmation.jsx"
-import { LoginSignup } from "../../login-signup.jsx"
-import { DatePicker } from "../../_reuseable-cmps/date-picker.jsx"
 import SvgHandler from "../../svg-handler.jsx"
 import { AirbnbButton } from "../../_reuseable-cmps/airbnb-button.jsx"
 
@@ -30,24 +28,36 @@ import { AirbnbButton } from "../../_reuseable-cmps/airbnb-button.jsx"
 
 
 export function OrderSidebar({ stay, randomDate, hostImgUrl }) {
-    // console.log('orderImg', hostImgUrl)
-    // const hostImgUrlPass = hostImgUrl
-    // console.log('orderImgPass', hostImgUrlPass)
+    // =============== NEW DATE HOOK for stay-details dynamic dates for booking a stay ===============
+    const [checkIn, checkOut, handleDateChange] = useStayDates()
+    console.log('checkIn, checkOut', checkIn, checkOut)
+    function handleUserDateClick() {
+        // Perform some user action that should change the check-in and check-out dates
+        const today = Date.parse(startOfDay(Date.now()))
+        const newCheckIn = today// calculate new check-in date
+        const newCheckOut = today// calculate new check-out date
+        handleDateChange(newCheckIn, newCheckOut)
+    }
+    // =============================================================================================
+
 
     const loggedInUser = useSelector(storeState => storeState.userModule.user)
     const guestsObject = useSelector(storeState => storeState.userModule.guests)
+
 
     const [orderObject, setOrderObject] = useState({})
     const [openModal, setOpenModal] = useState(false)
     const [isDateModalOpen, setIsDateModalOpen] = useState(false)
 
     const dateModalRef = useClickOutside(onDateModalClickOutside)
-
     const navigate = useNavigate()
 
 
-    const checkIn = stayService.getDate(stay.availableDates[0].from)
-    const checkOut = stayService.getDate(stay.availableDates[0].to)
+
+    // const checkIn = stayService.getDate(stay.availableDates[0].from)
+    // const checkOut = stayService.getDate(stay.availableDates[0].to)
+
+
     const nightsCount = stayService.calculateHowManyNights(stay.availableDates[0].from, stay.availableDates[0].to)
     const nightsPrice = nightsCount * (stay.price)
     const cleaningFee = utilService.getRandomIntInclusive(100, 500)

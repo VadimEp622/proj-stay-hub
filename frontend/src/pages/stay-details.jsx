@@ -31,12 +31,12 @@ import { StayPhotos } from '../cmps/stay-details/stay-photos.jsx'
 
 
 export function StayDetails() {
-    const [stay, setStay] = useState(null)
-    const { stayId } = useParams()
-    const navigate = useNavigate()
-    const [isLikeClicked, setIsLikeClicked] = useState(false)
     const loggedInUser = useSelector(storeState => storeState.userModule.user)
-    const wishedListItems = useSelector(storeState => storeState.userModule.user?.wishlist)
+    const wishedListItems = useSelector(storeState => storeState.userModule.user?.wishlist) // TODO: check if this is necessary
+    const navigate = useNavigate()
+    const { stayId } = useParams()
+    const [stay, setStay] = useState(null)
+    const [isLikeClicked, setIsLikeClicked] = useState(false)
     const likeSvg = isLikeClicked ? RED_HEART_16 : HEART_16
 
 
