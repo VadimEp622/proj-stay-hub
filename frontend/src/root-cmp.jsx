@@ -20,15 +20,23 @@ import { AppFooter } from './cmps/app-footer.jsx'
 import { DynamicCmp } from './cmps/_reuseable-cmps/dynamicCmp.jsx'
 import { UserMsg } from './cmps/user-msg.jsx'
 
-// TODO: make dates that were used in filter, to be displayed in stay-details order section, and reserve page, etc...
 
 // TODO-priority-critical: some stays have check-in/out timestamps which are in the past. 
-// this causes an issue, at showing fetched orders from DB in the cmp "user-trips.jsx"
-// need to fix this, so their starting point will always be ---> from the date of visitor (whether logged in, or not) 
+//      this causes an issue, at showing fetched orders from DB in the cmp "user-trips.jsx"
+//      need to fix this, so their starting point will always be ---> from the date of visitor (whether logged in, or not) 
+//          |
+//          |
+//          V
+// TODO-priority-high: make dates that were used in filter, to be displayed in stay-details order section, and reserve page, etc...
+// TODO-priority-high: fix timestamps render from OLD "availableDates" to NEW "availableDatesImproved" (temp. name)
+
+// TODO-priority-high: make stay-details work for mobile (either attempt at convert existing, or build new one)
+// TODO-priority-high: organize cmps
 
 
-// TODO-priority-high: organize cmps | change colors/box-shadows/sizes in scss to vars
+// TODO-medium: research and decide which sizes in scss to convert to vars, and whether they needs to be rem/em dependant
 // TODO-medium: handle server interactions with minimum data transfer | sockets
+
 
 export function RootCmp() {
     const isUnclickableBg = useSelector(storeState => storeState.systemModule.isUnclickableBg)
