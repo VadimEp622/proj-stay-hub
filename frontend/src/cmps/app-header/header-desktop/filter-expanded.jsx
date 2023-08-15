@@ -4,21 +4,21 @@ import { useSelector } from "react-redux"
 import { format } from 'date-fns'
 
 // Store
-import { store } from "../../store/store.js"
-import { CLOSE_EXPANDED_HEADER_MODAL, OPEN_EXPANDED_HEADER_MODAL } from "../../store/system.reducer.js"
+import { store } from "../../../store/store.js"
+import { CLOSE_EXPANDED_HEADER_MODAL, OPEN_EXPANDED_HEADER_MODAL } from "../../../store/system.reducer.js"
 
 // Services
-import { SEARCH_2 } from "../../services/svg.service.js"
+import { SEARCH_2 } from "../../../services/svg.service.js"
 
 // Custom Hooks
-import { useClickOutside } from "../../customHooks/clickOutsideModal.js"
+import { useClickOutside } from "../../../customHooks/clickOutsideModal.js"
 
 // Components
 import { LocationFilter } from "./filter-expanded/location-filter.jsx"
 import { DateFilter } from "./filter-expanded/date-filter.jsx"
 import { GuestCountFilter } from "./filter-expanded/guest-count-filter.jsx"
-import { LongTxt } from "../long-txt.jsx"
-import SvgHandler from "../svg-handler.jsx"
+import { LongTxt } from "../../long-txt.jsx"
+import SvgHandler from "../../svg-handler.jsx"
 
 
 

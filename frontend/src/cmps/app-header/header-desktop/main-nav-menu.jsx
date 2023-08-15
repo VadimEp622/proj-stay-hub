@@ -3,7 +3,7 @@ import { useState } from "react"
 import { useSelector } from "react-redux"
 
 // Custom hooks
-import { useClickOutside } from "../../customHooks/clickOutsideModal.js"
+import { useClickOutside } from "../../../customHooks/clickOutsideModal.js"
 
 // Components
 import { NavMenuDropdown } from "./main-nav-menu/nav-menu-dropdown.jsx"

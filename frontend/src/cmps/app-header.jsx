@@ -15,13 +15,8 @@ import { utilService } from '../services/util.service.js'
 import useIsMobile from '../customHooks/useIsMobile.js'
 
 // Components
-import { Logo } from './app-header/logo.jsx'
-import { SearchbarToggler } from './app-header/searchbar-toggler.jsx'
-import { MainNavMenu } from './app-header/main-nav-menu.jsx'
-import { FilterExpanded } from './app-header/filter-expanded.jsx'
 import { HeaderMobile } from './app-header/header-mobile.jsx'
-
-
+import { HeaderDesktop } from './app-header/header-desktop.jsx'
 
 
 
@@ -151,39 +146,27 @@ export function AppHeader({ isStayDetailsPage }) {
 
     const layoutType = !isStayDetailsPage ? 'main-layout' : 'details-layout'
     const screenType = isMobile ? 'mobile' : ''
+
     return (
         <header className={`app-header-container full ${layoutType} ${screenType}`}>
             {
-                !isMobile &&
-                <>
-                    <nav className="app-header">
-                        <Logo />
-                        <SearchbarToggler
-                            isFilterExpanded={isFilterExpanded}
-                            selectedExperienceTab={selectedExperienceTab}
-                            setSelectedExperienceTab={setSelectedExperienceTab}
-                        />
-                        <MainNavMenu />
-                    </nav>
-
-                    <FilterExpanded
+                !isMobile ?
+                    <HeaderDesktop
+                        isFilterExpanded={isFilterExpanded}
+                        selectedExperienceTab={selectedExperienceTab}
+                        setSelectedExperienceTab={setSelectedExperienceTab}
                         filterBy={filterBy}
                         setFilterBy={setFilterBy}
                         handleChange={handleChange}
                         handleGuestCountChange={handleGuestCountChange}
                         onSubmit={onSubmit}
                         onSetFilterDates={onSetFilterDates}
-                        isFilterExpanded={isFilterExpanded}
-                        selectedExperienceTab={selectedExperienceTab}
                         selectedFilterBox={selectedFilterBox}
                         onSetSelectedFilterBox={onSetSelectedFilterBox}
                         setSelectedFilterBox={setSelectedFilterBox}
                     />
-                </>
-            }
-            {
-                isMobile &&
-                <HeaderMobile layoutType={layoutType} />
+                    :
+                    <HeaderMobile layoutType={layoutType} />
             }
         </header>
     )

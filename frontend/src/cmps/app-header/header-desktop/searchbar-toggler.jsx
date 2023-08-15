@@ -1,8 +1,8 @@
-import { store } from "../../store/store.js"
-import { OPEN_EXPANDED_HEADER, SET_UNCLICKABLE_BG } from "../../store/system.reducer.js"
-import { SEARCH } from "../../services/svg.service.js"
+import { store } from "../../../store/store.js"
+import { OPEN_EXPANDED_HEADER, SET_UNCLICKABLE_BG } from "../../../store/system.reducer.js"
+import { SEARCH } from "../../../services/svg.service.js"
 
-import SvgHandler from "../svg-handler.jsx"
+import SvgHandler from "../../svg-handler.jsx"
 
 
 export function SearchbarToggler({ isFilterExpanded, selectedExperienceTab, setSelectedExperienceTab }) {

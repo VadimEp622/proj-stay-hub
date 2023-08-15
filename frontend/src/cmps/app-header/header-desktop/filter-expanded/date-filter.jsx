@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 // import { DateRange, SelectRangeEventHandler, DayPicker } from 'react-day-picker'
 // import { compareAsc, format, startOfDay, parseISO, parse } from 'date-fns'
-import { DatePicker } from '../../_reuseable-cmps/date-picker.jsx'
+import { DatePicker } from '../../../_reuseable-cmps/date-picker.jsx'
 
 
 

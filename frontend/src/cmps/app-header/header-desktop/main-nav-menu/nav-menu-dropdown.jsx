@@ -4,8 +4,8 @@ import { useSelector } from "react-redux"
 import { Link } from "react-router-dom"
 
 // Store
-import { setModal } from "../../../store/stay.actions.js"
-import { logout } from "../../../store/user.actions.js"
+import { setModal } from "../../../../store/stay.actions.js"
+import { logout } from "../../../../store/user.actions.js"
 
 
 export function NavMenuDropdown({ setIsDropdownActive }) {

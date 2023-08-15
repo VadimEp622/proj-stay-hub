@@ -1,8 +1,8 @@
 // Services
-import { USER_NAV_BARS, USER_NAV_PROFILE } from "../../../services/svg.service.js";
+import { USER_NAV_BARS, USER_NAV_PROFILE } from "../../../../services/svg.service.js"
 
 // Components
-import SvgHandler from "../../svg-handler.jsx";
+import SvgHandler from "../../../svg-handler.jsx"
 
 
 export function NavMenuButton({user}) {
