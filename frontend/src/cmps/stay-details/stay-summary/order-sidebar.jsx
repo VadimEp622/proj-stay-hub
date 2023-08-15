@@ -25,6 +25,8 @@ import { AirbnbButton } from "../../_reuseable-cmps/airbnb-button.jsx"
 
 
 // TODO: organize this cmp.
+// TODO: seriously consider if rewriting the return() part of the cmp + scss from scratch is needed or not
+// TODO: check the date modal cmp, if it's working as intended after making it reusable, or if more work is needed on it
 
 
 export function OrderSidebar({ stay, randomDate, hostImgUrl }) {
@@ -44,7 +46,6 @@ export function OrderSidebar({ stay, randomDate, hostImgUrl }) {
     const loggedInUser = useSelector(storeState => storeState.userModule.user)
     const guestsObject = useSelector(storeState => storeState.userModule.guests)
 
-
     const [orderObject, setOrderObject] = useState({})
     const [openModal, setOpenModal] = useState(false)
     const [isDateModalOpen, setIsDateModalOpen] = useState(false)
@@ -52,10 +53,6 @@ export function OrderSidebar({ stay, randomDate, hostImgUrl }) {
     const dateModalRef = useClickOutside(onDateModalClickOutside)
     const navigate = useNavigate()
 
-
-
-    // const checkIn = stayService.getDate(stay.availableDates[0].from)
-    // const checkOut = stayService.getDate(stay.availableDates[0].to)
 
 
     const nightsCount = stayService.calculateHowManyNights(stay.availableDates[0].from, stay.availableDates[0].to)
@@ -75,7 +72,6 @@ export function OrderSidebar({ stay, randomDate, hostImgUrl }) {
     useEffect(() => {
         updateStayObjectBuyer()
     }, [loggedInUser])
-
 
     useEffect(() => {
         if (Object.keys(orderObject).length !== 0) setOrder(orderObject)
@@ -153,7 +149,6 @@ export function OrderSidebar({ stay, randomDate, hostImgUrl }) {
         setIsDateModalOpen(true)
     }
 
-
     function onClickButton(ev) {
         console.log('ev', ev)
         ev.preventDefault()
@@ -167,6 +162,7 @@ export function OrderSidebar({ stay, randomDate, hostImgUrl }) {
             navigate(`/stay/book/${stay._id}`)
         }
     }
+
 
     return (
         <section className="order-sidebar">
