@@ -1,6 +1,6 @@
 // Node Modules
-import { useEffect, useState} from 'react'
-import { useParams, useNavigate} from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { useParams, useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
 // Services
@@ -9,7 +9,7 @@ import { stayService } from "../services/stay.service.js"
 import { showErrorMsg } from "../services/event-bus.service.js"
 import { reviewService } from '../services/review.service.js'
 import { utilService } from '../services/util.service.js'
-import { HEART_16, RED_HEART_16} from '../services/svg.service.js'
+import { HEART_16, RED_HEART_16 } from '../services/svg.service.js'
 // import { socketService } from '../services/socket.service.js'
 
 // Store
@@ -25,6 +25,9 @@ import { StayReviews } from '../cmps/stay-details/stay-reviews.jsx'
 import { StayTitle } from '../cmps/stay-details/stay-title.jsx'
 import { StaySummary } from '../cmps/stay-details/stay-summary.jsx'
 import { StayPhotos } from '../cmps/stay-details/stay-photos.jsx'
+
+
+// TODO-priority-low: improve hearts/wishlist system (may need to work on backend for this)
 
 
 export function StayDetails() {
@@ -74,12 +77,12 @@ export function StayDetails() {
 
     async function loadStay() {
         try {
-            const stay = await stayService.getById(stayId);
-            setStay(stay);
+            const stay = await stayService.getById(stayId)
+            setStay(stay)
         } catch (err) {
-            console.log('Had issues in stay details', err);
-            showErrorMsg('Cannot load stay');
-            navigate('/stay');
+            console.log('Had issues in stay details', err)
+            showErrorMsg('Cannot load stay')
+            navigate('/')
         }
     }
 
@@ -104,7 +107,7 @@ export function StayDetails() {
 
 
     if (!stay) return <section className="loading"><Loader /></section>
-    
+
     const reviewsInputs = displayReviewsCriteria()
     const randomDateJoined = utilService.getRandomMonthAndYear()
     const hostImgUrl = stay.host.isInDB ? stay.host.pictureUrl : userService.randomHostImg()
