@@ -80,6 +80,17 @@ export async function updateStay(req, res) {
   }
 }
 
+// for adding key fields into all documents
+export async function updateStaysAvailableDatesImproved(req, res) {
+  try {
+    // await stayService.updateStays()
+    // res.json('stays updated!')
+  } catch (err) {
+    logger.error('Failed to update stays', err)
+    res.status(400).send({ err: 'Failed to update stays' })
+  }
+}
+
 export async function removeStay(req, res) {
   try {
     const stayId = req.params.id
