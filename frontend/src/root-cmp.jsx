@@ -20,8 +20,7 @@ import { AppFooter } from './cmps/app-footer.jsx'
 import { DynamicCmp } from './cmps/_reuseable-cmps/dynamicCmp.jsx'
 import { UserMsg } from './cmps/user-msg.jsx'
 
-// TODO-priority-critical: fix order button, in alt-header in stay-details, not prompting login/signup modal if
-// attempting order when unregistered
+// TODO: make dates that were used in filter, to be displayed in stay-details order section, and reserve page, etc...
 
 // TODO-priority-critical: some stays have check-in/out timestamps which are in the past. 
 // this causes an issue, at showing fetched orders from DB in the cmp "user-trips.jsx"
