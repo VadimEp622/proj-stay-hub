@@ -60,24 +60,37 @@ export function OrderSidebarImproved({ stay, randomDate, hostImgUrl }) {
                     </section>
 
                     <section className="dates-and-guests">
-                        <section className="dates-container flex">
+                        <section className="dates-container">
 
-                            <article className="check-in">
-                                <span className="fs10 lh12 ff-circular-bold">check-in</span>
-                                <span className="fs14 lh18">{checkIn}</span>
-                            </article>
+                            <div className="dates-container-border"></div>
+                            <section className="dates flex">
 
-                            <article className="check-out">
-                                <span className="fs10 lh12 ff-circular-bold">checkout</span>
-                                <span className="fs14 lh18">{checkOut}</span>
-                            </article>
+                                <article className="check-in">
+                                    <span className="fs10 lh12 ff-circular-bold">check-in</span>
+                                    <div className="check-in-border"></div>
+                                    <span className="fs14 lh18">{checkIn}</span>
+                                </article>
+
+                                <article className="check-out">
+                                    <span className="fs10 lh12 ff-circular-bold">checkout</span>
+                                    <div className="check-out-border"></div>
+                                    <span className="fs14 lh18">{checkOut}</span>
+                                </article>
+                            </section>
+
                         </section>
                         <section className="guests-container">
 
-                            <article className="guests">
-                                <span className="fs10 lh12 ff-circular-bold">guests</span>
-                                <span className="fs14 lh18">{guestsString}</span>
-                            </article>
+                            <div className="guests-container-border"></div>
+                            <section className="guests">
+
+                                <article className="guest-block">
+                                    <span className="fs10 lh12 ff-circular-bold">guests</span>
+                                    <div className="guests-border"></div>
+                                    <span className="fs14 lh18">{guestsString}</span>
+                                </article>
+
+                            </section>
 
                         </section>
                     </section>

@@ -48,40 +48,98 @@
             }
 
             & .dates-and-guests {
-                border: 1px solid $gray-clr2;
-                border-radius: 8px;
                 margin-bottom: 16px;
 
                 & :is(.dates-container, .guests-container) {
-                    & :is(.check-in, .check-out, .guests) {
-                        position: relative;
-                        flex: 1 1 0%;
+                    & :is(.dates, .guests) {
+                        & :is(.check-in, .check-out, .guest-block) {
+                            position: relative;
+                            flex: 1 1 0%;
 
-                        & :first-child {
-                            top: 12px;
-                            left: 12px;
-                            right: 12px;
-                            position: absolute;
-                            text-transform: uppercase;
-                        }
-                        & :last-child {
-                            padding-block: 26px 10px;
-                            padding-inline: 12px;
-                            min-height: 56px;
-                            display: block;
+                            & :first-child {
+                                top: 12px;
+                                left: 12px;
+                                right: 12px;
+                                position: absolute;
+                                text-transform: uppercase;
+                            }
+                            & :last-child {
+                                padding-block: 26px 10px;
+                                padding-inline: 12px;
+                                min-height: 56px;
+                                display: block;
+                            }
                         }
                     }
                 }
 
                 & .dates-container {
-                    border-bottom: 1px solid $gray-clr2;
+                    position: relative;
+
+                    & .dates-container-border {
+                        border: 2px solid rgba(0, 0, 0, 0%);
+                        border-radius: 8px;
+                        width: 100%;
+                        height: 100%;
+                        position: absolute;
+                    }
+
+                    & .dates {
+                        border-top: 1px solid $gray-clr2;
+                        border-left: 1px solid $gray-clr2;
+                        border-right: 1px solid $gray-clr2;
+                        border-top-left-radius: 8px;
+                        border-top-right-radius: 8px;
+
+                        & :is(.check-in, .check-out) {
+                            border-bottom: 1px solid $gray-clr2;
+                            overflow: hidden;
+                        }
+                    }
+
+                    &:hover {
+                        & .dates-container-border {
+                            border-color: rgba(0, 0, 0, 100%);
+                            z-index: 1;
+                        }
+                    }
+
                     & .check-out {
                         border-left: 1px solid $gray-clr2;
                     }
                 }
 
-                // & .guests-container {
-                // }
+                & .guests-container {
+                    position: relative;
+
+                    & .guests-container-border {
+                        border: 2px solid rgba(0, 0, 0, 0%);
+                        border-radius: 8px;
+                        width: 100%;
+                        height: 102%;
+                        position: absolute;
+                        top: -2%;
+                    }
+
+                    & .guests {
+                        border-left: 1px solid $gray-clr2;
+                        border-right: 1px solid $gray-clr2;
+                        border-bottom: 1px solid $gray-clr2;
+                        border-bottom-left-radius: 8px;
+                        border-bottom-right-radius: 8px;
+                    }
+
+                    &:hover {
+                        & .guests-container-border {
+                            border-color: rgba(0, 0, 0, 100%);
+                            z-index: 1;
+                        }
+                    }
+                }
+
+                &:hover .dates-container .dates :is(.check-in, .check-out) {
+                    border-bottom-color: rgba(0, 0, 0, 0%);
+                }
             }
         }
 
@@ -96,6 +154,7 @@
 
     & .order-special-info {
         margin-block-start: 24px;
+
         & .info-container > * {
             margin-inline-end: 8px;
         }
