@@ -1,4 +1,4 @@
-// Font Sizes
+// ************* Font Sizes *************
 .fs12 {
     font-size: rem(12px);
 }
@@ -35,21 +35,21 @@
     font-size: rem(30px);
 }
 
-// flex helpers
-
-.min-width-56px {
-    min-width: 56px;
+// **************************************
+// ************* Line Heights *************
+.lh18 {
+    line-height: rem(18px);
+}
+.lh20 {
+    line-height: rem(20px);
 }
 
-.width-100-percent {
-    width: 100%;
-}
-
+// ****************************************
+// ************* Flex Helpers *************
 .flex {
-
     display: flex;
 
-    >*.full {
+    > *.full {
         flex: 1;
     }
 
@@ -76,6 +76,16 @@
     &.align-baseline {
         align-items: baseline;
     }
+}
+
+// ****************************************
+// ****************************************
+.min-width-56px {
+    min-width: 56px;
+}
+
+.width-100-percent {
+    width: 100%;
 }
 
 // Media helpers

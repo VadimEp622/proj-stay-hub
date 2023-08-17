@@ -4,6 +4,7 @@ import { Overview } from "./stay-summary/overview.jsx"
 import { Amenities } from "./stay-summary/amenities.jsx"
 import { StayDates } from "./stay-summary/stay-dates.jsx"
 import { OrderSidebar } from "./stay-summary/order-sidebar.jsx"
+import { OrderSidebarImproved } from "./stay-summary/order-sidebar-improved.jsx"
 
 export function StaySummary({ stay, hostImgUrl, randomDateJoined }) {
 
@@ -16,7 +17,8 @@ export function StaySummary({ stay, hostImgUrl, randomDateJoined }) {
                 <StayDates />
             </section>
             <section className='order-sidebar-container'>
-                <OrderSidebar stay={stay} randomDate={randomDateJoined} hostImgUrl={hostImgUrl} />
+                {/* <OrderSidebar stay={stay} randomDate={randomDateJoined} hostImgUrl={hostImgUrl} /> */}
+                <OrderSidebarImproved stay={stay} randomDate={randomDateJoined} hostImgUrl={hostImgUrl} />
             </section>
         </section>
     )

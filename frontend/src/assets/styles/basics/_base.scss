@@ -10,7 +10,7 @@
 html {
     font-family: Circular-Regular;
     line-height: 1.6;
-    letter-spacing: 0.0225rem;
+    // letter-spacing: 0.0225rem;
     color: $black-clr1;
     scroll-behavior: smooth;
 }
@@ -61,6 +61,8 @@ img {
 p {
     color: $black-clr1;
     margin: 0 0 1em;
+    // margin-block: 0;
+    // margin-inline: 0;
 }
 
 a {
