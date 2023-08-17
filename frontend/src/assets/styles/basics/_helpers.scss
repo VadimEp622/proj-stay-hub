@@ -1,4 +1,7 @@
 // ************* Font Sizes *************
+.fs10 {
+    font-size: rem(10px);
+}
 .fs12 {
     font-size: rem(12px);
 }
@@ -29,6 +32,15 @@
 
 // **************************************
 // ************* Line Heights *************
+.lh12 {
+    line-height: rem(12px);
+}
+.lh14 {
+    line-height: rem(14px);
+}
+.lh16 {
+    line-height: rem(16px);
+}
 .lh18 {
     line-height: rem(18px);
 }

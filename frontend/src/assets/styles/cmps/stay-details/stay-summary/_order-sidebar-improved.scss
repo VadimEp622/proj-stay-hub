@@ -46,6 +46,43 @@
                     }
                 }
             }
+
+            & .dates-and-guests {
+                border: 1px solid $gray-clr2;
+                border-radius: 8px;
+                margin-bottom: 16px;
+
+                & :is(.dates-container, .guests-container) {
+                    & :is(.check-in, .check-out, .guests) {
+                        position: relative;
+                        flex: 1 1 0%;
+
+                        & :first-child {
+                            top: 12px;
+                            left: 12px;
+                            right: 12px;
+                            position: absolute;
+                            text-transform: uppercase;
+                        }
+                        & :last-child {
+                            padding-block: 26px 10px;
+                            padding-inline: 12px;
+                            min-height: 56px;
+                            display: block;
+                        }
+                    }
+                }
+
+                & .dates-container {
+                    border-bottom: 1px solid $gray-clr2;
+                    & .check-out {
+                        border-left: 1px solid $gray-clr2;
+                    }
+                }
+
+                // & .guests-container {
+                // }
+            }
         }
 
         & .assurance,

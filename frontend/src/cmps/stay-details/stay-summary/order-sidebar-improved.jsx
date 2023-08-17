@@ -34,7 +34,12 @@ export function OrderSidebarImproved({ stay, randomDate, hostImgUrl }) {
     const [checkIn, checkOut, handleDateChange] = useStayDates()
     // =============================================================================================
 
-
+    const guestsString = userService.buildGuestsString({
+        adults: 1,
+        children: 0,
+        infants: 0,
+        pets: 0
+    })
     return (
         <section className="order-sidebar-improved">
 
@@ -54,7 +59,29 @@ export function OrderSidebarImproved({ stay, randomDate, hostImgUrl }) {
                         </article>
                     </section>
 
-                    <section className="dates-and-guests">dates-and-guests</section>
+                    <section className="dates-and-guests">
+                        <section className="dates-container flex">
+
+                            <article className="check-in">
+                                <span className="fs10 lh12 ff-circular-bold">check-in</span>
+                                <span className="fs14 lh18">{checkIn}</span>
+                            </article>
+
+                            <article className="check-out">
+                                <span className="fs10 lh12 ff-circular-bold">checkout</span>
+                                <span className="fs14 lh18">{checkOut}</span>
+                            </article>
+                        </section>
+                        <section className="guests-container">
+
+                            <article className="guests">
+                                <span className="fs10 lh12 ff-circular-bold">guests</span>
+                                <span className="fs14 lh18">{guestsString}</span>
+                            </article>
+
+                        </section>
+                    </section>
+
                     <section className="main-btn">main-btn</section>
                 </section>
 
