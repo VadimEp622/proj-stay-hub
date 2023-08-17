@@ -41,9 +41,21 @@ export function OrderSidebarImproved({ stay, randomDate, hostImgUrl }) {
             <section className="order-block">
 
                 <section className="order">
-                    <article className="price-score-reviews">price-score-reviews</article>
-                    <article className="dates-and-guests">dates-and-guests</article>
-                    <article className="main-btn">main-btn</article>
+
+                    <section className="price-and-review-score flex space-between align-center">
+                        <article className="price flex align-end">
+                            <span className="fs22 lh26 ff-circular-semibold">${utilService.addCommas(stay.price)}</span>
+                            <span className="fs16 lh20">night</span>
+                        </article>
+                        <article className="review-score flex align-center">
+                            <SvgHandler svgName={STAR} />
+                            <span className="score fs14 lh18">{reviewService.getAverageReview(stay)}</span>
+                            <span className="amount fs14 lh18">{stay.reviews.length} reviews</span>
+                        </article>
+                    </section>
+
+                    <section className="dates-and-guests">dates-and-guests</section>
+                    <section className="main-btn">main-btn</section>
                 </section>
 
                 <article className="assurance flex column align-center">

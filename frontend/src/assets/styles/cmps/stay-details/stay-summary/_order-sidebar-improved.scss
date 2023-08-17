@@ -12,10 +12,49 @@
     & .order-block {
         box-shadow: $box-shadow9;
 
+        & .order {
+            & .price-and-review-score {
+                margin-block-end: 24px;
+                flex-wrap: wrap;
+                column-gap: 8px;
+
+                & .price :last-child::before {
+                    content: " ";
+                    white-space: pre;
+                }
+
+                & .review-score {
+                    margin-block-start: 8px;
+
+                    & :not(:first-child) {
+                        padding-inline-start: 4px;
+                    }
+
+                    & svg {
+                        max-height: 12px;
+                        max-width: 12px;
+                    }
+
+                    & .score::after {
+                        content: " ·";
+                        white-space: pre;
+                    }
+
+                    & .amount {
+                        color: $gray-clr0;
+                        white-space: nowrap;
+                    }
+                }
+            }
+        }
+
         & .assurance,
         & .assurance span {
             margin-block-start: 8px;
         }
+
+        // & .pricing {
+        // }
     }
 
     & .order-special-info {

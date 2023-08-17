@@ -2,35 +2,27 @@
 .fs12 {
     font-size: rem(12px);
 }
-
 .fs14 {
     font-size: rem(14px);
 }
-
 .fs16 {
     font-size: rem(16px);
 }
-
 .fs18 {
     font-size: rem(18px);
 }
-
 .fs20 {
     font-size: rem(20px);
 }
-
 .fs22 {
     font-size: rem(22px);
 }
-
 .fs24 {
     font-size: rem(24px);
 }
-
 .fs28 {
     font-size: rem(28px);
 }
-
 .fs30 {
     font-size: rem(30px);
 }
@@ -43,8 +35,28 @@
 .lh20 {
     line-height: rem(20px);
 }
+.lh22 {
+    line-height: rem(22px);
+}
+.lh24 {
+    line-height: rem(24px);
+}
+.lh26 {
+    line-height: rem(26px);
+}
 
 // ****************************************
+// ************* Font Family *************
+.ff-circular-regular {
+    font-family: Circular-Regular;
+}
+.ff-circular-semibold {
+    font-family: Circular-Semibold;
+}
+.ff-circular-bold {
+    font-family: Circular-Bold;
+}
+
 // ************* Flex Helpers *************
 .flex {
     display: flex;
@@ -71,6 +83,10 @@
 
     &.align-center {
         align-items: center;
+    }
+
+    &.align-end {
+        align-items: end;
     }
 
     &.align-baseline {
