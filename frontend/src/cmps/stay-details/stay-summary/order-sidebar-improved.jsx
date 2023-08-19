@@ -33,6 +33,10 @@ import { SpecialInfo } from "./order-sidebar/special-info.jsx"
 // TODO: check the date modal cmp, if it's working as intended after making it reusable, or if more work is needed on it
 
 
+// TODO: after finishing building and organizing this cmp,
+//   start removing redundant stuff from the Order Object (need to follow path to back-end, and the get from the front-end)
+
+
 export function OrderSidebarImproved({ stay, randomDate, hostImgUrl }) {
     // =============== NEW DATE HOOK for stay-details dynamic dates for booking a stay ===============
     const [checkIn, checkOut, handleDateChange] = useStayDates()
@@ -41,6 +45,7 @@ export function OrderSidebarImproved({ stay, randomDate, hostImgUrl }) {
     const orderDetailsRef = useRef({
         price: stay.price,
         nightsCount: stayService.calculateHowManyNights(Date.parse(checkIn), Date.parse(checkOut)),
+        guestCount: 1,
         serviceFee: utilService.getRandomIntInclusive(100, 500),
         cleaningFee: utilService.getRandomIntInclusive(100, 500)
     })
@@ -67,6 +72,8 @@ export function OrderSidebarImproved({ stay, randomDate, hostImgUrl }) {
     function handleReservation() {
         const order = createOrder(orderDetailsRef.current)
         console.log('order', order)
+        // **** BUILDING HERE NEXT ***
+        // ***************************
     }
 
     function createOrder({ price, nightsCount, serviceFee, cleaningFee }) {
@@ -86,18 +93,36 @@ export function OrderSidebarImproved({ stay, randomDate, hostImgUrl }) {
             checkIn,
             checkOut,
             nightsCount,
+            nightsPrice: nightsCount * stay.price,
             orderPrice: {
                 price,
                 serviceFee,
                 cleaningFee,
                 total: (price * nightsCount) + serviceFee + cleaningFee
             },
-
+            stayDetails: {
+                id: stay._id,
+                image: stay.imgUrls[0],
+                loc: stay.loc,
+                summary: stay.summary,
+                type: stay.type,
+                rate: stay.reviews.rate,
+                reviewsCount: stay.reviews.length
+            },
+            thingsToDo: {
+                "Just-for-you": utilService.getRandomIntInclusive(10, 20),
+                "Top-rated": utilService.getRandomIntInclusive(30, 50),
+                "Sports": utilService.getRandomIntInclusive(30, 60),
+                "Tours": utilService.getRandomIntInclusive(50, 120),
+                "Sightseeing": utilService.getRandomIntInclusive(50, 120),
+                "more": utilService.getRandomIntInclusive(300, 500),
+            },
+            status: "Pending",
+            _id: utilService.makeId()
         }
     }
 
 
-    const nightsCount = stayService.calculateHowManyNights(Date.parse(checkIn), Date.parse(checkOut))
     const guestsString = userService.buildGuestsString({
         adults: 1,
         children: 0,
