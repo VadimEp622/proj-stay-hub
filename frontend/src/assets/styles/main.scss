@@ -44,6 +44,10 @@
 // *** stay-details/stay-summary ***   ---->TODO: needs cleaning up
 @import "cmps/stay-details/stay-summary/order-sidebar";
 @import "cmps/stay-details/stay-summary/order-sidebar-improved";
+// *** stay-details/stay-summary/order-sidebar-improved ***
+@import "cmps/stay-details/stay-summary/order-sidebar/cost-and-review-score";
+@import "cmps/stay-details/stay-summary/order-sidebar/dates-and-guests";
+@import "cmps/stay-details/stay-summary/order-sidebar/pricing";
 
 // *** user-trips ***   ---->TODO: needs cleaning up
 @import "cmps/user-trips/future-reservation-list";

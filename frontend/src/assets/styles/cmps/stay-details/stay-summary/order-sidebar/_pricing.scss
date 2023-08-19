@@ -1,0 +1,15 @@
+.order-sidebar-improved .pricing {
+    & .individual-fees {
+        margin-block-start: 24px;
+
+        & > *:not(:first-child) {
+            padding-block-start: 16px;
+        }
+    }
+
+    & .total {
+        margin-block-start: 24px;
+        padding-block-start: 24px;
+        border-top: 1px solid $gray-clr3;
+    }
+}
