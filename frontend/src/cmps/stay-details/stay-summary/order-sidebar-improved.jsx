@@ -37,6 +37,49 @@ export function OrderSidebarImproved({ stay, randomDate, hostImgUrl }) {
     // =============== NEW DATE HOOK for stay-details dynamic dates for booking a stay ===============
     const [checkIn, checkOut, handleDateChange] = useStayDates()
     // =============================================================================================
+    const loggedInUser = useSelector(storeState => storeState.userModule.user)
+
+    console.log('stay', stay)
+    console.log('loggedInUser', loggedInUser)
+
+
+    function onReserveClick(ev) {
+        console.log('ev', ev)
+        ev.preventDefault()
+        ev.stopPropagation()
+        if (!loggedInUser) {
+            console.log("NOT logged in click")
+            setModal("logIn")
+        }
+        else {
+            console.log("logged in click")
+            handleReservation()
+            // navigate(`/stay/book/${stay._id}`)
+        }
+    }
+
+    function handleReservation() {
+        const order = createOrder()
+        console.log('order', order)
+    }
+
+    function createOrder() {
+        return {
+            buyer: {
+                _id: loggedInUser._id,
+                fullname: loggedInUser.fullname,
+                img: loggedInUser.imgUrl,
+                joined: loggedInUser.joined ? loggedInUser.joined : utilService.getRandomMonthAndYear()
+            },
+            seller: {
+                _id: stay.host._id,
+                fullname: stay.host.fullname,
+                img: hostImgUrl,
+                joined: utilService.getRandomMonthAndYear()
+            },
+
+        }
+    }
 
 
     const nightsCount = stayService.calculateHowManyNights(Date.parse(checkIn), Date.parse(checkOut))
@@ -53,7 +96,7 @@ export function OrderSidebarImproved({ stay, randomDate, hostImgUrl }) {
                 <section className="order">
                     <CostAndReviewScore stay={stay} />
                     <DatesAndGuests checkIn={checkIn} checkOut={checkOut} guestsString={guestsString} />
-                    <ButtonMain text={'Reserve'} />
+                    <ButtonMain text={'Reserve'} onClickButton={(ev) => onReserveClick(ev)} />
                 </section>
                 <article className="assurance flex column align-center">
                     <span className="fs14 lh18">You won't be charged yet</span>

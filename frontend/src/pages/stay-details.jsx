@@ -1,5 +1,5 @@
 // Node Modules
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
@@ -37,7 +37,12 @@ export function StayDetails() {
     const { stayId } = useParams()
     const [stay, setStay] = useState(null)
     const [isLikeClicked, setIsLikeClicked] = useState(false)
+    const stayHostImgUrlRef = useRef()
     const likeSvg = isLikeClicked ? RED_HEART_16 : HEART_16
+
+    useEffect(() => {
+
+    }, [])
 
 
     useEffect(() => {
@@ -79,6 +84,7 @@ export function StayDetails() {
         try {
             const stay = await stayService.getById(stayId)
             setStay(stay)
+            stayHostImgUrlRef.current = stay.host.isInDB ? stay.host.pictureUrl : userService.randomHostImg()
         } catch (err) {
             console.log('Had issues in stay details', err)
             showErrorMsg('Cannot load stay')
@@ -110,7 +116,7 @@ export function StayDetails() {
 
     const reviewsInputs = displayReviewsCriteria()
     const randomDateJoined = utilService.getRandomMonthAndYear()
-    const hostImgUrl = stay.host.isInDB ? stay.host.pictureUrl : userService.randomHostImg()
+    const hostImgUrl = stayHostImgUrlRef.current
     const averageReviewScore = reviewService.getAverageReview(stay)
 
     return <>
