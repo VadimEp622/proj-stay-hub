@@ -1,8 +1,7 @@
 .order-sidebar-improved {
     margin-inline-start: 8.333333333333332%;
 
-    & .order-block,
-    & .order-special-info {
+    & :is(.order-block, .special-info) {
         padding-block: 24px;
         padding-inline: 24px;
         border: 1px solid $gray-clr3;
@@ -15,21 +14,6 @@
         & .assurance,
         & .assurance span {
             margin-block-start: 8px;
-        }
-    }
-
-    & .order-special-info {
-        margin-block-start: 24px;
-
-        & .info-container {
-            padding-inline-end: 16px;
-            & > * {
-                margin-inline-end: 8px;
-            }
-        }
-
-        & svg {
-            overflow: visible;
         }
     }
 }

@@ -1,0 +1,14 @@
+.order-sidebar-improved .special-info {
+    margin-block-start: 24px;
+
+    & .info-container {
+        padding-inline-end: 16px;
+        & > * {
+            margin-inline-end: 8px;
+        }
+    }
+
+    & svg {
+        overflow: visible;
+    }
+}
