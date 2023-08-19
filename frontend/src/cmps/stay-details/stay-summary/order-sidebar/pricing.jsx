@@ -1,18 +1,16 @@
 import { utilService } from "../../../../services/util.service.js"
 
-export function Pricing({ stay, nightsCount }) {
+export function Pricing({ orderDetailsRef }) {
 
-    const nightsPrice = nightsCount * (stay.price)
-    const cleaningFee = utilService.getRandomIntInclusive(100, 500)
-    const serviceFee = utilService.getRandomIntInclusive(100, 500)
-    const totalPrice = nightsPrice + cleaningFee + serviceFee
+    const { price, nightsCount, serviceFee, cleaningFee } = orderDetailsRef
+    const totalPrice = (price * nightsCount) + serviceFee + cleaningFee
     return (
         <section className="pricing">
 
             <section className="individual-fees">
                 <article className="flex space-between">
-                    <span className="fs16 lh20 underline">${stay.price.toLocaleString()} x {nightsCount} nights</span>
-                    <span className="fs16 lh20">${utilService.addCommas(nightsPrice)}</span>
+                    <span className="fs16 lh20 underline">${price.toLocaleString()} x {nightsCount} nights</span>
+                    <span className="fs16 lh20">${price * nightsCount}</span>
                 </article>
                 <article className="flex space-between">
                     <span className="fs16 lh20 underline">Cleaning fee</span>

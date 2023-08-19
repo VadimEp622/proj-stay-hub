@@ -38,6 +38,12 @@ export function OrderSidebarImproved({ stay, randomDate, hostImgUrl }) {
     const [checkIn, checkOut, handleDateChange] = useStayDates()
     // =============================================================================================
     const loggedInUser = useSelector(storeState => storeState.userModule.user)
+    const orderDetailsRef = useRef({
+        price: stay.price,
+        nightsCount: stayService.calculateHowManyNights(Date.parse(checkIn), Date.parse(checkOut)),
+        serviceFee: utilService.getRandomIntInclusive(100, 500),
+        cleaningFee: utilService.getRandomIntInclusive(100, 500)
+    })
 
     console.log('stay', stay)
     console.log('loggedInUser', loggedInUser)
@@ -59,11 +65,11 @@ export function OrderSidebarImproved({ stay, randomDate, hostImgUrl }) {
     }
 
     function handleReservation() {
-        const order = createOrder()
+        const order = createOrder(orderDetailsRef.current)
         console.log('order', order)
     }
 
-    function createOrder() {
+    function createOrder({ price, nightsCount, serviceFee, cleaningFee }) {
         return {
             buyer: {
                 _id: loggedInUser._id,
@@ -76,6 +82,15 @@ export function OrderSidebarImproved({ stay, randomDate, hostImgUrl }) {
                 fullname: stay.host.fullname,
                 img: hostImgUrl,
                 joined: utilService.getRandomMonthAndYear()
+            },
+            checkIn,
+            checkOut,
+            nightsCount,
+            orderPrice: {
+                price,
+                serviceFee,
+                cleaningFee,
+                total: (price * nightsCount) + serviceFee + cleaningFee
             },
 
         }
@@ -101,7 +116,7 @@ export function OrderSidebarImproved({ stay, randomDate, hostImgUrl }) {
                 <article className="assurance flex column align-center">
                     <span className="fs14 lh18">You won't be charged yet</span>
                 </article>
-                <Pricing stay={stay} nightsCount={nightsCount} />
+                <Pricing orderDetailsRef={orderDetailsRef.current} />
             </section>
 
             <SpecialInfo stay={stay} />
