@@ -21,7 +21,7 @@ import useStayDates from "../../../customHooks/useStayDates.js"
 
 // Components
 import SvgHandler from "../../svg-handler.jsx"
-import { AirbnbButton } from "../../_reuseable-cmps/airbnb-button.jsx"
+import { ButtonMain } from "../../_reuseable-cmps/button-main.jsx"
 
 
 // TODO: organize this cmp.
@@ -209,7 +209,7 @@ export function OrderSidebar({ stay, randomDate, hostImgUrl }) {
                         </div>
                     </div>
                 </section>
-                <AirbnbButton text={'Reserve'} onClickButton={(ev) => onClickButton(ev)} />
+                <ButtonMain text={'Reserve'} onClickButton={(ev) => onClickButton(ev)} />
                 <section className="price-container">
                     <p>You won't be charged yet</p>
                     <section className="flex space-between">

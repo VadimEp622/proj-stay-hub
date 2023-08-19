@@ -16,7 +16,7 @@ import { useClickOutside } from "../customHooks/clickOutsideModal.js"
 
 // Components
 import SvgHandler from "../cmps/svg-handler.jsx"
-import { AirbnbButton } from "../cmps/_reuseable-cmps/airbnb-button.jsx"
+import { ButtonMain } from "../cmps/_reuseable-cmps/button-main.jsx"
 
 
 
@@ -107,7 +107,7 @@ export function OrderConfirmation() {
                             <h4 className="fs16">Guests</h4>
                             <p>{guestsNumber} guest{guestsNumber !== 1 && 's'}</p>
                         </div>
-                        {/* <AirbnbButton onClickButton={onOpenModal} text={'Approve'} /> */}
+                        {/* <ButtonMain onClickButton={onOpenModal} text={'Approve'} /> */}
                     </div>
                 </div>
                 <div className="message-host">
@@ -173,7 +173,7 @@ export function OrderConfirmation() {
                 <p className="declaration">By selecting the button below, I agree to the <span>Host's House Rules, Ground rules for guests, Airbnb's Rebooking and Refund Policy</span>, and that Airbnb can <span>charge my payment method</span>  if I'm responsible for damage.</p>
             </section>
             <section className="confirm-btn" onClick={handleOrderConfirm}>
-                <AirbnbButton text={'Confirm and pay'} />
+                <ButtonMain text={'Confirm and pay'} />
             </section>
         </section>
     )

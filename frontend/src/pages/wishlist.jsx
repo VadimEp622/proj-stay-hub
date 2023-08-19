@@ -8,7 +8,7 @@ import { setModal } from "../store/stay.actions.js"
 
 // Components
 import { StayList } from "../cmps/stay-index/stay-list.jsx"
-import { AirbnbButton } from "../cmps/_reuseable-cmps/airbnb-button.jsx"
+import { ButtonMain } from "../cmps/_reuseable-cmps/button-main.jsx"
 
 
 
@@ -36,7 +36,7 @@ export function WishList() {
             <h3>Log in to view your wishlists</h3>
             <p className="wishlist-msg">You can create, view, or edit wishlists once you've logged in</p>
             <div className="button-log-in-wrapper" onClick={handleLoginClick}>
-                <AirbnbButton text={'Log in'} />
+                <ButtonMain text={'Log in'} />
             </div>
         </div>
     )

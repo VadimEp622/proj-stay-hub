@@ -5,12 +5,12 @@ import { Link, useNavigate } from 'react-router-dom'
 // Services
 import { reviewService } from "../../services/review.service.js"
 import { STAR } from "../../services/svg.service.js"
-import { utilService } from '../../services/util.service.js'
+import { utilService } from "../../services/util.service.js"
 
 // Components
 import SvgHandler from "../svg-handler.jsx"
-import { AirbnbButton } from '../_reuseable-cmps/airbnb-button.jsx'
-import { setModal } from '../../store/stay.actions.js'
+import { ButtonMain } from "../_reuseable-cmps/button-main.jsx"
+import { setModal } from "../../store/stay.actions.js"
 
 
 
@@ -90,7 +90,7 @@ export function StayDetailsAltHeader({ stay, loggedInUser }) {
                                 <span className="review-count">{stay.reviews.length} {reviews}</span>
                             </section>
                         </section>
-                        <AirbnbButton text={"Reserve"} onClickButton={(ev) => onClickButton(ev)} />
+                        <ButtonMain text={"Reserve"} onClickButton={(ev) => onClickButton(ev)} />
                     </section>
                 </section>
             </section>

@@ -20,7 +20,7 @@ import { useClickOutside } from '../customHooks/clickOutsideModal.js'
 
 // Components
 import { ImgUploader } from './_reuseable-cmps/img-uploader.jsx'
-import { AirbnbButton } from './_reuseable-cmps/airbnb-button.jsx'
+import { ButtonMain } from './_reuseable-cmps/button-main.jsx'
 import SvgHandler from './svg-handler.jsx'
 
 

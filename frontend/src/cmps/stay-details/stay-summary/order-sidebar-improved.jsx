@@ -21,7 +21,7 @@ import useStayDates from "../../../customHooks/useStayDates.js"
 
 // Components
 import SvgHandler from "../../svg-handler.jsx"
-import { AirbnbButton } from "../../_reuseable-cmps/airbnb-button.jsx"
+import { ButtonMain } from "../../_reuseable-cmps/button-main.jsx"
 
 
 // TODO: organize this cmp.
@@ -95,7 +95,7 @@ export function OrderSidebarImproved({ stay, randomDate, hostImgUrl }) {
                         </section>
                     </section>
 
-                    <section className="main-btn">main-btn</section>
+                    <section className="main-btn"><ButtonMain text={'Reserve'} /></section>
                 </section>
 
                 <article className="assurance flex column align-center">

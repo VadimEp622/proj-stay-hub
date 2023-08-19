@@ -127,99 +127,99 @@
     }
 }
 
-.btn-container {
-    position: relative;
-    width: 100%;
-    height: 48px;
-    padding: 0 0;
-    margin: 0 0;
-    cursor: pointer;
-    border: none;
-    display: grid;
-    grid-template: repeat(10, 1fr) / repeat(10, 1fr);
+// .btn-container {
+//     position: relative;
+//     width: 100%;
+//     height: 48px;
+//     padding: 0 0;
+//     margin: 0 0;
+//     cursor: pointer;
+//     border: none;
+//     display: grid;
+//     grid-template: repeat(10, 1fr) / repeat(10, 1fr);
 
-    @for $i from 0 to 10 {
-        .cell:nth-child(10n + #{$i + 1}):hover ~ .content {
-            --positionX: #{$i};
-        }
+//     @for $i from 0 to 10 {
+//         .cell:nth-child(10n + #{$i + 1}):hover ~ .content {
+//             --positionX: #{$i};
+//         }
 
-        .cell:nth-child(n + #{10 * $i + 1}):nth-child(-n + #{10 * ($i + 1)}):hover ~ .content {
-            --positionY: #{$i};
-        }
-    }
+//         .cell:nth-child(n + #{10 * $i + 1}):nth-child(-n + #{10 * ($i + 1)}):hover ~ .content {
+//             --positionY: #{$i};
+//         }
+//     }
 
-    span {
-        padding: 0 0;
-        margin: 0 0;
-        color: $gray-clr-1;
-        font-size: 16px;
-        line-height: 20px;
-        font-weight: 600;
-        font-family: sans-serif;
-    }
+//     span {
+//         padding: 0 0;
+//         margin: 0 0;
+//         color: $gray-clr-1;
+//         font-size: 16px;
+//         line-height: 20px;
+//         font-weight: 600;
+//         font-family: sans-serif;
+//     }
 
-    .order-spacial-info {
-        font-size: rem(16px);
-        grid-column: 2;
-        margin-bottom: 48px;
-        width: 83%;
-        min-width: 285px;
-        margin-left: auto;
-        border: 1px solid $gray-clr3;
-        border-radius: 0.8125rem;
-        padding: 24px;
+//     .order-spacial-info {
+//         font-size: rem(16px);
+//         grid-column: 2;
+//         margin-bottom: 48px;
+//         width: 83%;
+//         min-width: 285px;
+//         margin-left: auto;
+//         border: 1px solid $gray-clr3;
+//         border-radius: 0.8125rem;
+//         padding: 24px;
 
-        span {
-            font-family: Circular-semibold;
-        }
+//         span {
+//             font-family: Circular-semibold;
+//         }
 
-        p {
-            padding-right: 16px;
-            margin-right: 8px;
-            margin-bottom: 0;
-        }
-    }
-}
+//         p {
+//             padding-right: 16px;
+//             margin-right: 8px;
+//             margin-bottom: 0;
+//         }
+//     }
+// }
 
-.cell {
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    // border: 1px solid rgba(128, 128, 128, 0.753);
-}
+// .cell {
+//     width: 100%;
+//     height: 100%;
+//     z-index: 1;
+//     // border: 1px solid rgba(128, 128, 128, 0.753);
+// }
 
-// figure out how to make a variable out of the radial-gradient below, or make a mixin, or do the css in the cmp itself
-.content {
-    --positionX: 0;
-    --positionY: 5;
+// // figure out how to make a variable out of the radial-gradient below, or make a mixin, or do the css in the cmp itself
+// .content {
+//     --positionX: 0;
+//     --positionY: 5;
 
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    border-radius: 8px;
+//     position: absolute;
+//     top: 0;
+//     right: 0;
+//     bottom: 0;
+//     left: 0;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     height: 100%;
+//     border-radius: 8px;
 
-    background-image: radial-gradient(
-        circle at calc((0 + var(--positionX, 0)) * 10%) calc((0 + var(--positionY, 0)) * 5%),
-        rgb(241, 37, 75) 0%,
-        rgb(230, 30, 77) 27.5%,
-        rgb(227, 28, 95) 40%,
-        rgb(215, 4, 102) 57.5%,
-        rgb(189, 30, 89) 75%,
-        rgb(189, 30, 89) 100%
-    );
-}
+//     background-image: radial-gradient(
+//         circle at calc((0 + var(--positionX, 0)) * 10%) calc((0 + var(--positionY, 0)) * 5%),
+//         rgb(241, 37, 75) 0%,
+//         rgb(230, 30, 77) 27.5%,
+//         rgb(227, 28, 95) 40%,
+//         rgb(215, 4, 102) 57.5%,
+//         rgb(189, 30, 89) 75%,
+//         rgb(189, 30, 89) 100%
+//     );
+// }
 
-.action-btn {
-    padding: 0 0;
-    margin: 0 0;
-    width: 100%;
-    height: 100%;
-    background-color: transparent;
-    border: none;
-}
+// .action-btn {
+//     padding: 0 0;
+//     margin: 0 0;
+//     width: 100%;
+//     height: 100%;
+//     background-color: transparent;
+//     border: none;
+// }
