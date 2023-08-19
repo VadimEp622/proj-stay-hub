@@ -95,7 +95,7 @@ export function OrderSidebarImproved({ stay, randomDate, hostImgUrl }) {
                         </section>
                     </section>
 
-                    <section className="main-btn"><ButtonMain text={'Reserve'} /></section>
+                    <ButtonMain text={'Reserve'} />
                 </section>
 
                 <article className="assurance flex column align-center">

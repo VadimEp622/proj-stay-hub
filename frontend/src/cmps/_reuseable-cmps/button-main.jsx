@@ -2,7 +2,7 @@ import React from 'react'
 import { utilService } from '../../services/util.service.js'
 import { useButtonBackgroundStyle } from '../../customHooks/useButtonMainStyle.js'
 
-
+// TODO: background-image cannot be transitioned (in css) - think of a way to smoothen out background transition when hovering 
 export function ButtonMain({ text, onClickButton = (ev) => { } }) {
     const { handleCellHover, backgroundStyle } = useButtonBackgroundStyle()
 
