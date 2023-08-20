@@ -1,8 +1,8 @@
 import { utilService } from "../../../../services/util.service.js"
 
-export function Pricing({ orderDetailsRef }) {
+export function Pricing({ orderDetails }) {
 
-    const { price, nightsCount, serviceFee, cleaningFee } = orderDetailsRef
+    const { price, nightsCount, serviceFee, cleaningFee } = orderDetails
     const totalPrice = (price * nightsCount) + serviceFee + cleaningFee
     return (
         <section className="pricing">

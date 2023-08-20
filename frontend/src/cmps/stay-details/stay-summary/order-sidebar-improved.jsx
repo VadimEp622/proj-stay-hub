@@ -1,15 +1,9 @@
 // Node modules
 import { useSelector } from "react-redux"
-import { useEffect, useRef, useState } from "react"
-import { Link, useNavigate } from "react-router-dom"
-import { startOfDay } from 'date-fns'
+import { useNavigate } from "react-router-dom"
 
 // Services
-import { reviewService } from "../../../services/review.service.js"
-import { stayService } from "../../../services/stay.service.js"
-import { STAR, RED_TAG } from "../../../services/svg.service.js"
 import { utilService } from "../../../services/util.service.js"
-import { userService } from "../../../services/user.service.js"
 
 // Store
 import { setOrder } from "../../../store/user.actions.js"
@@ -19,9 +13,9 @@ import { setModal } from "../../../store/stay.actions.js"
 import { useClickOutside } from "../../../customHooks/clickOutsideModal.js"
 import useStayDates from "../../../customHooks/useStayDates.js"
 import useStayGuests from "../../../customHooks/useStayGuests.js"
+import useStayDetails from "../../../customHooks/useStayDetails.js"
 
 // Components
-import SvgHandler from "../../svg-handler.jsx"
 import { ButtonMain } from "../../_reuseable-cmps/button-main.jsx"
 import { CostAndReviewScore } from "./order-sidebar/cost-and-review-score.jsx"
 import { DatesAndGuests } from "./order-sidebar/dates-and-guests.jsx"
@@ -42,21 +36,11 @@ export function OrderSidebarImproved({ stay, randomDate, hostImgUrl }) {
     // =============== NEW DATE HOOK for stay-details dynamic dates for booking a stay ===============
     const [checkIn, checkOut, handleDateChange] = useStayDates()
     const [guests, setGuests] = useStayGuests()
+    const [orderDetails] = useStayDetails(stay, checkIn, checkOut, guests)
     // =============================================================================================
     const loggedInUser = useSelector(storeState => storeState.userModule.user)
     const navigate = useNavigate()
-    const orderDetailsRef = useRef({
-        price: Math.floor(stay.price + ((stay.price / 8) * (guests.adults + guests.children - 1))),
-        guestCount: guests.adults + guests.children,
-        nightsCount: stayService.calculateHowManyNights(Date.parse(checkIn), Date.parse(checkOut)),
-        serviceFee: utilService.getRandomIntInclusive(100, 500),
-        cleaningFee: utilService.getRandomIntInclusive(100, 500)
-    })
 
-    console.log('stay', stay)
-    console.log('loggedInUser', loggedInUser)
-    console.log('guests', guests)
-    console.log('orderDetailsRef', orderDetailsRef)
 
 
     function onReserveClick(ev) {
@@ -69,16 +53,14 @@ export function OrderSidebarImproved({ stay, randomDate, hostImgUrl }) {
         }
         else {
             console.log("logged in click")
-            const order = createOrder(orderDetailsRef.current)
+            const order = createOrder(orderDetails)
             console.log('order', order)
             setOrder(order)
             navigate(`/stay/book/${stay._id}`)
         }
     }
 
-
-
-    function createOrder({ price, nightsCount, serviceFee, cleaningFee, guestCount }) {
+    function createOrder({ price, nightsCount, serviceFee, cleaningFee }) {
         return {
             buyer: {
                 _id: loggedInUser._id,
@@ -130,14 +112,14 @@ export function OrderSidebarImproved({ stay, randomDate, hostImgUrl }) {
 
             <section className="order-block">
                 <section className="order">
-                    <CostAndReviewScore stay={stay} orderDetailsRef={orderDetailsRef.current} />
-                    <DatesAndGuests checkIn={checkIn} checkOut={checkOut} guests={guests} />
+                    <CostAndReviewScore stay={stay} orderDetails={orderDetails} />
+                    <DatesAndGuests checkIn={checkIn} checkOut={checkOut} guests={guests} setGuests={setGuests} handleDateChange={handleDateChange} />
                     <ButtonMain text={'Reserve'} onClickButton={(ev) => onReserveClick(ev)} />
                 </section>
                 <article className="assurance flex column align-center">
                     <span className="fs14 lh18">You won't be charged yet</span>
                 </article>
-                <Pricing orderDetailsRef={orderDetailsRef.current} />
+                <Pricing orderDetails={orderDetails} />
             </section>
 
             <SpecialInfo stay={stay} />

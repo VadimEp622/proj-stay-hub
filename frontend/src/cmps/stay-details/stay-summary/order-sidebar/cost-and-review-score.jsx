@@ -7,11 +7,11 @@ import { utilService } from "../../../../services/util.service.js"
 import SvgHandler from "../../../svg-handler.jsx"
 
 
-export function CostAndReviewScore({ stay, orderDetailsRef }) {
+export function CostAndReviewScore({ stay, orderDetails }) {
     return (
         <section className="cost-and-review-score flex space-between align-center">
             <article className="cost flex align-end">
-                <span className="fs22 lh26 ff-circular-semibold">${utilService.addCommas(orderDetailsRef.price)}</span>
+                <span className="fs22 lh26 ff-circular-semibold">${utilService.addCommas(orderDetails.price)}</span>
                 <span className="fs16 lh20">night</span>
             </article>
             <article className="review-score flex align-center">
