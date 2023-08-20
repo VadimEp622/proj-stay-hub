@@ -4,7 +4,6 @@ import { useSelector } from 'react-redux'
 
 export default function useStayGuests() {
     const filterBy = useSelector(storeState => storeState.stayModule.filterBy)
-    console.log('filterBy', filterBy)
     const initialState = filterBy?.guests?.adults > 0 ?
         filterBy.guests :
         {

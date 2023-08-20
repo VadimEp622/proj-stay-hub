@@ -25,8 +25,7 @@ export function StayDetailsAltHeader({ stay, loggedInUser }) {
     useEffect(() => {
         const header = document.querySelector('.stay-photos-container')
         const nav = document.querySelector('.stay-details-alt-header-container')
-        // const orderModal = document.querySelector('.order-sidebar')
-        const orderModal = document.querySelector('.order-sidebar-improved')
+        const orderModal = document.querySelector('.order-sidebar')
         const reserveLink = document.querySelector('.reserve-container')
 
         const headerObserver = new IntersectionObserver(onHeaderObserved, {
