@@ -12,6 +12,9 @@ export const SEARCH_2 = 'SEARCH_2'
 // ************************************** CONFIG **************************************
 export const CONFIG = 'CONFIG'
 
+// ************************************** EXIT **************************************
+export const EXIT = 'EXIT'
+
 // ************************************** ... **************************************
 export const LOGO = 'logo'
 export const USER_NAV_BARS = 'user_nav-bars'

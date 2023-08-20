@@ -14,6 +14,9 @@ import { ReactComponent as Search2 } from '../assets/img/search/search-2.svg'
 // ************************************** CONFIG **************************************
 import { ReactComponent as Config } from "../assets/img/config/config.svg"
 
+// ************************************** EXIT **************************************
+import { ReactComponent as Exit } from '../assets/img/exit/exit.svg'
+
 // ************************************** ... **************************************
 import { ReactComponent as Logo } from '../assets/img/logo/logo-airbnb.svg'
 import { ReactComponent as UserNavBar } from '../assets/img/user-nav/user-nav-bars.svg'
@@ -42,7 +45,6 @@ import { ReactComponent as Wifi } from '../assets/img/airbnb-assets/wifi.svg'
 import { ReactComponent as AirCond } from '../assets/img/airbnb-assets/air-cond.svg'
 import { ReactComponent as Verified } from '../assets/img/airbnb-assets/verified.svg'
 import { ReactComponent as TickDecline } from '../assets/img/tick-decline/tick-decline.svg'
-import { ReactComponent as Exit } from '../assets/img/airbnb-assets/exit.svg'
 import { ReactComponent as Exclamation } from '../assets/img/airbnb-assets/exclamationmark.svg'
 import { ReactComponent as Superhost } from '../assets/img/superhost/super-host.svg'
 import { ReactComponent as BlackSuperhost16 } from '../assets/img/superhost/superhost-black-16.svg'
@@ -91,7 +93,7 @@ import { ReactComponent as Pool } from '../assets/img/airbnb-assets/pool.svg'
 import {
     HEART_16, RED_HEART_16, LOGO, RED_HEART, SEARCH, SHARE, STAR, STAR_12, STAR_16, USER_NAV_BARS, RED_TAG, SUPERHOST, BLACK_SUPERHOST_16, EYE,
     USER_NAV_PROFILE, WHITE_HEART, LOCATION, KEY, CHECKIN, SEARCH_2, TICK_DECLINE, VERIFIED,
-    ARROW_LEFT_FAT, ARROW_LEFT, ARROW_RIGHT, ARROW_RIGHT_FAT, ARROW_UP, CONFIG
+    ARROW_LEFT_FAT, ARROW_LEFT, ARROW_RIGHT, ARROW_RIGHT_FAT, ARROW_UP, CONFIG, EXIT
 } from '../services/svg.service.js'
 
 
@@ -124,6 +126,9 @@ const SvgHandler = ({ svgName }) => {
             case CONFIG:
                 return <Config />
 
+            // ************************************** EXIT **************************************
+            case EXIT:
+                return <Exit />
             // ************************************** ... **************************************
             case USER_NAV_BARS:
                 return <UserNavBar />
@@ -183,8 +188,6 @@ const SvgHandler = ({ svgName }) => {
                 return <Verified />
             case TICK_DECLINE:
                 return <TickDecline />
-            case 'exit':
-                return <Exit />
             case 'exclamation':
                 return <Exclamation />
             case 'Cable TV':
