@@ -73,7 +73,10 @@ export function AppHeader({ isStayDetailsPage }) {
         }
         if (filterBy.country) filter.country = filterBy.country
         if (filterBy.capacity) filter.capacity = filterBy.capacity
-        if (filterBy.guests) setGuests(filterBy.guests)
+        if (filterBy.guests) {
+            setGuests(filterBy.guests)
+            filter.guests = filterBy.guests
+        }
         if (filterBy.label) filter.label = filterBy.label
         updateFilterBy(filter)
     }

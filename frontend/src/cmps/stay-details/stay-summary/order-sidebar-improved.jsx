@@ -18,6 +18,7 @@ import { setModal } from "../../../store/stay.actions.js"
 // Custom Hooks
 import { useClickOutside } from "../../../customHooks/clickOutsideModal.js"
 import useStayDates from "../../../customHooks/useStayDates.js"
+import useStayGuests from "../../../customHooks/useStayGuests.js"
 
 // Components
 import SvgHandler from "../../svg-handler.jsx"
@@ -40,18 +41,22 @@ import { SpecialInfo } from "./order-sidebar/special-info.jsx"
 export function OrderSidebarImproved({ stay, randomDate, hostImgUrl }) {
     // =============== NEW DATE HOOK for stay-details dynamic dates for booking a stay ===============
     const [checkIn, checkOut, handleDateChange] = useStayDates()
+    const [guests, setGuests] = useStayGuests()
     // =============================================================================================
     const loggedInUser = useSelector(storeState => storeState.userModule.user)
+    const navigate = useNavigate()
     const orderDetailsRef = useRef({
-        price: stay.price,
+        price: Math.floor(stay.price + ((stay.price / 8) * (guests.adults + guests.children - 1))),
+        guestCount: guests.adults + guests.children,
         nightsCount: stayService.calculateHowManyNights(Date.parse(checkIn), Date.parse(checkOut)),
-        guestCount: 1,
         serviceFee: utilService.getRandomIntInclusive(100, 500),
         cleaningFee: utilService.getRandomIntInclusive(100, 500)
     })
 
     console.log('stay', stay)
     console.log('loggedInUser', loggedInUser)
+    console.log('guests', guests)
+    console.log('orderDetailsRef', orderDetailsRef)
 
 
     function onReserveClick(ev) {
@@ -64,19 +69,16 @@ export function OrderSidebarImproved({ stay, randomDate, hostImgUrl }) {
         }
         else {
             console.log("logged in click")
-            handleReservation()
-            // navigate(`/stay/book/${stay._id}`)
+            const order = createOrder(orderDetailsRef.current)
+            console.log('order', order)
+            setOrder(order)
+            navigate(`/stay/book/${stay._id}`)
         }
     }
 
-    function handleReservation() {
-        const order = createOrder(orderDetailsRef.current)
-        console.log('order', order)
-        // **** BUILDING HERE NEXT ***
-        // ***************************
-    }
 
-    function createOrder({ price, nightsCount, serviceFee, cleaningFee }) {
+
+    function createOrder({ price, nightsCount, serviceFee, cleaningFee, guestCount }) {
         return {
             buyer: {
                 _id: loggedInUser._id,
@@ -123,19 +125,13 @@ export function OrderSidebarImproved({ stay, randomDate, hostImgUrl }) {
     }
 
 
-    const guestsString = userService.buildGuestsString({
-        adults: 1,
-        children: 0,
-        infants: 0,
-        pets: 0
-    })
     return (
         <section className="order-sidebar-improved">
 
             <section className="order-block">
                 <section className="order">
-                    <CostAndReviewScore stay={stay} />
-                    <DatesAndGuests checkIn={checkIn} checkOut={checkOut} guestsString={guestsString} />
+                    <CostAndReviewScore stay={stay} orderDetailsRef={orderDetailsRef.current} />
+                    <DatesAndGuests checkIn={checkIn} checkOut={checkOut} guests={guests} />
                     <ButtonMain text={'Reserve'} onClickButton={(ev) => onReserveClick(ev)} />
                 </section>
                 <article className="assurance flex column align-center">

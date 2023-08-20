@@ -1,4 +1,8 @@
-export function DatesAndGuests({ checkIn, checkOut, guestsString }) {
+import { userService } from "../../../../services/user.service.js"
+
+export function DatesAndGuests({ checkIn, checkOut, guests }) {
+
+    const guestsString = userService.buildGuestsString(guests)
     return (
         <section className="dates-and-guests">
             <section className="dates-container">
