@@ -6,7 +6,7 @@
 
 This project was made as a final exam for the ***Full-stack developer*** bootcamp **Coding Academy** (Israel).
 
-- Link:  [**StayHub**](https://sprint-4-stayhub.onrender.com/)
+- Link:  [**StayHub**](https://stayhub-8w08.onrender.com)
 - Tools:  **React.js** | **Scss** | **Node.js** | **MongoDB**
   
 # Summary:
