@@ -1,0 +1,101 @@
+.form-login-signup {
+    & .inputs {
+        & :is(.fullname, .username, .password) {
+            display: block;
+
+            &:focus-within {
+                outline: 2px solid black;
+                outline-offset: -2px;
+
+                & .input-container {
+                    & span {
+                        transform: translateY(-8px) scale(0.75);
+                    }
+                }
+            }
+
+            & .input-container {
+                display: flex;
+                position: relative;
+                align-items: center;
+
+                & :is(span, input) {
+                    font-size: 16px;
+                    line-height: 20px;
+                }
+
+                & span {
+                    position: absolute;
+                    left: 12px;
+                    right: 12px;
+                    color: $gray-clr0;
+                    transform-origin: 0% 0%;
+                    transition: transform 0.15s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+                    text-transform: capitalize;
+
+                    &.has-value {
+                        transform: translateY(-8px) scale(0.75);
+                    }
+                }
+
+                & input {
+                    display: block;
+                    border: none;
+                    width: 100%;
+                    margin-inline: 12px;
+                    margin-block-start: 26px;
+                    margin-block-end: 6px;
+                    outline: none;
+                }
+            }
+
+            :hover {
+                cursor: text;
+            }
+        }
+
+        & .fullname {
+            border: 1px solid $gray-clr2;
+            border-radius: 8px;
+            margin-block-end: 16px;
+        }
+
+        & :is(.username, .password) {
+            border-left: 1px solid $gray-clr2;
+            border-right: 1px solid $gray-clr2;
+        }
+
+        & .username {
+            border-top: 1px solid $gray-clr2;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+
+        & .password {
+            border-bottom: 1px solid $gray-clr2;
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
+        }
+    }
+
+    & .errors {
+        & .aside-required {
+            margin-block-start: 8px;
+
+            & svg {
+                fill: $negative-clr4 !important;
+                max-width: 12px;
+                max-height: 12px;
+                margin-inline-end: 8px;
+            }
+
+            & span {
+                color: $negative-clr4;
+            }
+        }
+    }
+
+    & .btn-login-signup {
+        margin-block-start: 16px;
+    }
+}

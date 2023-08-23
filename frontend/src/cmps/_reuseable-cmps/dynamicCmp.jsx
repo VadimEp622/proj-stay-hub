@@ -1,20 +1,19 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
-import { FilterModal } from '../filter';
-import { LoginSignup } from '../login-signup';
+// Node modules
+import React from 'react'
+
+// Components
+import { FilterModal } from '../filter.jsx'
+import { AppLoginSignup } from '../app-login-signup.jsx'
 
 export function DynamicCmp({ modalType }) {
     switch (modalType) {
         case 'logIn':
-            return <LoginSignup isSignUp={false} />
-            break
+            return <AppLoginSignup isSignUp={false} />
         case 'signUp':
-            return <LoginSignup isSignUp={true} />
-            break
+            return <AppLoginSignup isSignUp={true} />
         case 'filter':
             return <FilterModal />
-            break
         default:
-            return 
+            return
     }
 }

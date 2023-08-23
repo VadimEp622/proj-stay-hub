@@ -18,6 +18,9 @@
 @import "cmps/_reuseable-cmps/loader";
 @import "cmps/_reuseable-cmps/button-main";
 
+// *** app-login-signup ***
+@import "cmps/app-login-signup/form-login-signup";
+
 // *** app-header ***
 @import "cmps/app-header/header-mobile";
 @import "cmps/app-header/date-filter";
@@ -64,6 +67,7 @@
 // __checked__ //
 @import "cmps/gray-viewport";
 @import "cmps/modal-wrapper";
+@import "cmps/app-login-signup";
 
 // __unchecked__ //
 @import "cmps/app-header";
@@ -72,8 +76,6 @@
 @import "cmps/filter";
 @import "cmps/user-msg";
 @import "cmps/app-footer";
-@import "cmps/login";
-@import "cmps/login-signup";
 @import "cmps/host-orders";
 
 // ************** Pages **************
