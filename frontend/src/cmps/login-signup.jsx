@@ -40,14 +40,12 @@ const validationSchema = Yup.object().shape({
 })
 
 
-// TODO: when focus-within is active, make sure the transformed span text stays transformed,
-//    as long as field input has a value.
+// TODO: Clean up code into child components if possible + same to styling
 
 export function LoginSignup({ isSignUp }) {
     const isModalOpen = useSelector(storeState => storeState.stayModule.isModalOpen)
     const dropdownRef = useClickOutside(onDropdownClickOutside)
 
-    console.log('isSignUp', isSignUp)
 
     function onDropdownClickOutside() {
         if (isModalOpen) {
@@ -69,11 +67,35 @@ export function LoginSignup({ isSignUp }) {
         setModal(isSignUp ? 'logIn' : 'signUp')
     }
 
+    async function onLogin(values) {
+        if (!values.username) return
+        try {
+            const user = await login(values)
+            showSuccessMsg(`Welcome: ${user.fullname}`)
+            if (isModalOpen) {
+                console.log('closing modal 2')
+                setModal(false)
+            }
+            // isSigningUpLoggingInRef.current = false
+        } catch (err) {
+            showErrorMsg('Cannot login')
+        }
+    }
+
+    async function onSignup(values) {
+        if (!values.username || !values.password || !values.fullname) return
+        if (isModalOpen) {
+            console.log('closing modal 3')
+            setModal(false)
+        }
+        signup(values)
+        // isSigningUpLoggingInRef.current = false
+    }
+
     function onSubmit(values) {
         console.log('values', values)
-        // if (!isSigningUpLoggingInRef.current) return
-        // if (text === 'Sign up') onSignup(values)
-        // else onLogin(values)
+        if (isSignUp) onSignup(values)
+        else onLogin(values)
     }
 
     const credentials = { username: '', password: '', fullname: '' }
