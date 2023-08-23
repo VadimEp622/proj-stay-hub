@@ -24,6 +24,7 @@ import { ImgUploader } from './_reuseable-cmps/img-uploader.jsx'
 import { ButtonMain } from './_reuseable-cmps/button-main.jsx'
 import SvgHandler from './svg-handler.jsx'
 import { ValidationError } from './login-signup/validation-error.jsx'
+import { RegistrationInput } from './login-signup/registration-input.jsx'
 
 
 
@@ -40,7 +41,9 @@ const validationSchema = Yup.object().shape({
 })
 
 
-// TODO: Clean up code into child components if possible + same to styling
+// TODO: Clean up code into child components if possible + same to styling.
+// TODO: Add success user-msg for signing-up.
+// TODO: Add option to check for existing username, and denying signup attempt.
 
 export function LoginSignup({ isSignUp }) {
     const isModalOpen = useSelector(storeState => storeState.stayModule.isModalOpen)
@@ -120,38 +123,26 @@ export function LoginSignup({ isSignUp }) {
                 >
                     {({ errors, touched, values }) => (
                         <Form className='form-login-signup'>
-                            {
-                                isSignUp &&
-                                <label tabIndex={1} htmlFor='fullname' className='fullname' a>
-                                    <article className='input-container'>
-                                        <span className={`${values.fullname ? 'has-value' : ''}`}>Fullname</span>
-                                        <Field type='text' id='fullname' name='fullname' />
-                                    </article>
-                                </label>
-                            }
 
-                            <label tabIndex={1} htmlFor='username' className='username'>
-                                <article className='input-container'>
-                                    <span className={`${values.username ? 'has-value' : ''}`}>Username</span>
-                                    <Field id='username' name='username' />
-                                </article>
-                            </label>
-
-                            <label tabIndex={1} htmlFor='password' className='password'>
-                                <article className='input-container'>
-                                    <span className={`${values.password ? 'has-value' : ''}`}>Password</span>
-                                    <Field type='password' id='password' name='password' />
-                                </article>
-                            </label>
-
+                            <section className="inputs">
+                                {
+                                    isSignUp &&
+                                    <RegistrationInput inputType={'text'} inputName={'fullname'} inputValue={values.fullname}/>
+                                }
+                                <RegistrationInput inputType={'text'} inputName={'username'} inputValue={values.username} />
+                                <RegistrationInput inputType={'password'} inputName={'password'} inputValue={values.password} />
+                            </section>
+                            
+                            <section className="errors">
                             {
                                 errors.username && touched.username
                                     ? <ValidationError content={errors.username} /> : null
                             }
                             {
                                 errors.password && touched.password
-                                    ? <ValidationError content={errors.password} /> : null
+                                ? <ValidationError content={errors.password} /> : null
                             }
+                            </section>
 
                             <section className='btn-login-signup'>
                                 <ButtonMain text={`${isSignUp ? 'Register' : 'Continue'}`} isForm={true} />
