@@ -82,7 +82,7 @@ export function LoginSignup({ isSignUp }) {
 
             <section className='header flex justify-center align-center'>
                 <article className='btn-exit' onClick={(ev) => onExitClick(ev)}><SvgHandler svgName={EXIT} /></article>
-                <span className='fs16 lh20 ff-circular-bold'>{`${isSignUp ? 'Log in or sign up' : 'Welcome back!'}`}</span>
+                <span className='fs16 lh20 ff-circular-bold'>Log in or sign up</span>
             </section>
 
             <section className='main'>
@@ -100,7 +100,7 @@ export function LoginSignup({ isSignUp }) {
                         <Form className='form-login-signup'>
                             {
                                 isSignUp &&
-                                <label tabIndex={1} htmlFor='fullname' className={`fullname`}>
+                                <label tabIndex={1} htmlFor='fullname' className='fullname' a>
                                     <article className='input-container'>
                                         <span className={`${values.fullname ? 'has-value' : ''}`}>Fullname</span>
                                         <Field type='text' id='fullname' name='fullname' />
@@ -123,16 +123,12 @@ export function LoginSignup({ isSignUp }) {
                             </label>
 
                             {
-                                errors.password && touched.password
-                                    ? <ValidationError content={errors.password} /> : null
-                            }
-                            {
-                                errors.fullname && touched.fullname
-                                    ? <ValidationError content={errors.fullname} /> : null
-                            }
-                            {
                                 errors.username && touched.username
                                     ? <ValidationError content={errors.username} /> : null
+                            }
+                            {
+                                errors.password && touched.password
+                                    ? <ValidationError content={errors.password} /> : null
                             }
 
                             <section className='btn-login-signup'>
@@ -142,11 +138,17 @@ export function LoginSignup({ isSignUp }) {
                         </Form>
                     )}
                 </Formik>
-                <section className='btn-toggler-login-signup'>
-                    <button
-                        onClick={(ev) => onChangeModal(ev)}
-                    >{isSignUp ? 'Log in' : 'Sign up'}</button>
-                </section>
+
+                <article className="or-divider flex align-center">
+                    <span className='fs12 lh16'>or</span>
+                </article>
+
+                <article className='btn-toggler-login-signup'>
+                    <button className='fs14 lh20 ff-circular-semibold' onClick={(ev) => onChangeModal(ev)}>
+                        {isSignUp ? 'Log in' : 'Sign up'}
+                    </button>
+                </article>
+
             </section>
         </section>
     )

@@ -77,6 +77,10 @@
                         outline: none;
                     }
                 }
+
+                :hover {
+                    cursor: text;
+                }
             }
 
             & .fullname {
@@ -120,6 +124,42 @@
 
             & .btn-login-signup {
                 margin-block-start: 16px;
+            }
+        }
+
+        & .or-divider {
+            margin-block: 16px;
+
+            &::before,
+            &::after {
+                content: "";
+                background-color: $gray-clr3;
+                width: 100%;
+                height: 1px;
+                display: block;
+            }
+
+            &::before {
+                margin-inline-end: 16px;
+            }
+            &::after {
+                margin-inline-start: 16px;
+            }
+        }
+
+        & .btn-toggler-login-signup {
+            & button {
+                background-color: inherit;
+                width: 100%;
+                border: 1px solid $black-clr1;
+                border-radius: 8px;
+                padding-inline: 23px;
+                padding-block: 13px;
+
+                &:hover {
+                    cursor: pointer;
+                    background-color: $gray-clr5;
+                }
             }
         }
     }
