@@ -27,23 +27,14 @@
         height: 100%;
         border-radius: 8px;
 
-        & .action-btn {
+        & .btn-txt {
             padding: 0 0;
             margin: 0 0;
-            width: 100%;
-            height: 100%;
-            background-color: transparent;
-            border: none;
-
-            & .btn-txt {
-                padding: 0 0;
-                margin: 0 0;
-                color: $gray-clr-1;
-                font-size: 16px;
-                line-height: 20px;
-                font-weight: 600;
-                font-family: sans-serif;
-            }
+            color: $gray-clr-1;
+            font-size: 16px;
+            line-height: 20px;
+            font-weight: 600;
+            font-family: sans-serif;
         }
     }
 }

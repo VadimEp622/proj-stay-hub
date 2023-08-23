@@ -23,6 +23,7 @@ import { useClickOutside } from '../customHooks/clickOutsideModal.js'
 import { ImgUploader } from './_reuseable-cmps/img-uploader.jsx'
 import { ButtonMain } from './_reuseable-cmps/button-main.jsx'
 import SvgHandler from './svg-handler.jsx'
+import { ValidationError } from './login-signup/validation-error.jsx'
 
 
 
@@ -42,17 +43,30 @@ const validationSchema = Yup.object().shape({
 // TODO: when focus-within is active, make sure the transformed span text stays transformed,
 //    as long as field input has a value.
 
-export function LoginSignup() {
+export function LoginSignup({ isSignUp }) {
     const isModalOpen = useSelector(storeState => storeState.stayModule.isModalOpen)
     const dropdownRef = useClickOutside(onDropdownClickOutside)
 
-    const [credentials, setCredentials] = useState({ username: '', password: '', fullname: '' })
+    console.log('isSignUp', isSignUp)
 
     function onDropdownClickOutside() {
         if (isModalOpen) {
             console.log('closing modal 1')
             setModal(false)
         }
+    }
+
+    function onExitClick(ev) {
+        ev.preventDefault()
+        ev.stopPropagation()
+        setModal(false)
+    }
+
+    function onChangeModal(ev) {
+        ev.preventDefault()
+        ev.stopPropagation()
+        setModal(false)
+        setModal(isSignUp ? 'logIn' : 'signUp')
     }
 
     function onSubmit(values) {
@@ -62,12 +76,13 @@ export function LoginSignup() {
         // else onLogin(values)
     }
 
+    const credentials = { username: '', password: '', fullname: '' }
     return (
         <section className='login-signup-modal' ref={dropdownRef}>
 
             <section className='header flex justify-center align-center'>
-                <article className='btn-exit'><SvgHandler svgName={EXIT} /></article>
-                <span className='fs16 lh20 ff-circular-bold'>Log in or sign up</span>
+                <article className='btn-exit' onClick={(ev) => onExitClick(ev)}><SvgHandler svgName={EXIT} /></article>
+                <span className='fs16 lh20 ff-circular-bold'>{`${isSignUp ? 'Log in or sign up' : 'Welcome back!'}`}</span>
             </section>
 
             <section className='main'>
@@ -81,31 +96,57 @@ export function LoginSignup() {
                     validationSchema={validationSchema}
                     onSubmit={onSubmit}
                 >
-                    {({ errors, touched }) => (
+                    {({ errors, touched, values }) => (
                         <Form className='form-login-signup'>
-                            <label tabIndex={1} htmlFor='fullname' className='fullname'>
-                                <article className='input-container'>
-                                    <span>Fullname</span>
-                                    <Field type='text' id='fullname' name='fullname' />
-                                </article>
-                            </label>
+                            {
+                                isSignUp &&
+                                <label tabIndex={1} htmlFor='fullname' className={`fullname`}>
+                                    <article className='input-container'>
+                                        <span className={`${values.fullname ? 'has-value' : ''}`}>Fullname</span>
+                                        <Field type='text' id='fullname' name='fullname' />
+                                    </article>
+                                </label>
+                            }
+
                             <label tabIndex={1} htmlFor='username' className='username'>
                                 <article className='input-container'>
-                                    <span>Username</span>
+                                    <span className={`${values.username ? 'has-value' : ''}`}>Username</span>
                                     <Field id='username' name='username' />
                                 </article>
                             </label>
 
                             <label tabIndex={1} htmlFor='password' className='password'>
                                 <article className='input-container'>
-                                    <span>Password</span>
+                                    <span className={`${values.password ? 'has-value' : ''}`}>Password</span>
                                     <Field type='password' id='password' name='password' />
                                 </article>
                             </label>
+
+                            {
+                                errors.password && touched.password
+                                    ? <ValidationError content={errors.password} /> : null
+                            }
+                            {
+                                errors.fullname && touched.fullname
+                                    ? <ValidationError content={errors.fullname} /> : null
+                            }
+                            {
+                                errors.username && touched.username
+                                    ? <ValidationError content={errors.username} /> : null
+                            }
+
+                            <section className='btn-login-signup'>
+                                <ButtonMain text={`${isSignUp ? 'Register' : 'Continue'}`} isForm={true} />
+                            </section>
+
                         </Form>
                     )}
                 </Formik>
-                <section className='login-container'></section>
+                <section className='btn-toggler-login-signup'>
+                    <button
+                        onClick={(ev) => onChangeModal(ev)}
+                    >{isSignUp ? 'Log in' : 'Sign up'}</button>
+                </section>
             </section>
         </section>
     )

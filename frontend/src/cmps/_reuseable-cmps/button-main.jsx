@@ -3,11 +3,11 @@ import { utilService } from '../../services/util.service.js'
 import { useButtonBackgroundStyle } from '../../customHooks/useButtonMainStyle.js'
 
 // TODO: background-image cannot be transitioned (in css) - think of a way to smoothen out background transition when hovering 
-export function ButtonMain({ text, onClickButton = (ev) => { } }) {
+export function ButtonMain({ text, onClickButton = (ev) => { }, isForm = false }) {
     const { handleCellHover, backgroundStyle } = useButtonBackgroundStyle()
 
     return (
-        <section className="btn-main-container" onClick={(ev) => onClickButton(ev)}>
+        <button className="btn-main-container" type={isForm ? 'submit' : 'button'} onClick={(ev) => onClickButton(ev)}>
             {utilService.createDivsForButtonContainer().map((cell, index) => (
                 <div
                     key={index}
@@ -16,10 +16,8 @@ export function ButtonMain({ text, onClickButton = (ev) => { } }) {
                 ></div>
             ))}
             <section className="content" style={backgroundStyle}>
-                <button className="action-btn">
-                    <span className="btn-txt">{text}</span>
-                </button>
+                <span className="btn-txt">{text}</span>
             </section>
-        </section>
+        </button>
     )
 }
