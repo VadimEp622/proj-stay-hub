@@ -1,9 +1,12 @@
+// Store
 import { store } from "../../../store/store.js"
 import { OPEN_EXPANDED_HEADER, SET_UNCLICKABLE_BG } from "../../../store/system.reducer.js"
-import { SEARCH } from "../../../services/svg.service.js"
+
+// Services
+import { SEARCH_FAT } from "../../../services/svg.service.js"
+
+// Components
 import SvgHandler from "../../_reuseable-cmps/svg-handler.jsx"
-
-
 
 
 export function SearchbarToggler({ isFilterExpanded, selectedExperienceTab, setSelectedExperienceTab }) {
@@ -35,7 +38,7 @@ export function SearchbarToggler({ isFilterExpanded, selectedExperienceTab, setS
                     <article>Any week</article>
                     <article>Add guests</article>
                     <aside className="search-circle">
-                        <SvgHandler svgName={SEARCH} />
+                        <SvgHandler svgName={SEARCH_FAT} />
                     </aside>
                 </button>
             }

@@ -1,4 +1,4 @@
-import { CONFIG, SEARCH_2 } from "../../services/svg.service.js"
+import { CONFIG, SEARCH } from "../../services/svg.service.js"
 import SvgHandler from "../_reuseable-cmps/svg-handler.jsx"
 
 
@@ -9,7 +9,7 @@ export function HeaderMobile({ layoutType }) {
             <section className="searchbar-mobile flex">
                 <button className="btn-search-mobile flex align-center">
                     <section className="search-img">
-                        <SvgHandler svgName={SEARCH_2} />
+                        <SvgHandler svgName={SEARCH} />
                     </section>
                     <section className="search-description">
                         <h3 className="upper-description fs14">Anywhere</h3>

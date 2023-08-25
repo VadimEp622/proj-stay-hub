@@ -8,14 +8,18 @@ import { ReactComponent as ArrowRight } from '../../assets/img/arrows/arrow-righ
 import { ReactComponent as ArrowUp } from '../../assets/img/arrows/arrow-up.svg'
 
 // ************************************** SEARCH (Magnifying Glass) **************************************
+import { ReactComponent as SearchFat } from '../../assets/img/search/search-fat.svg'
 import { ReactComponent as Search } from '../../assets/img/search/search.svg'
-import { ReactComponent as Search2 } from '../../assets/img/search/search-2.svg'
 
 // ************************************** CONFIG **************************************
 import { ReactComponent as Config } from "../../assets/img/config/config.svg"
 
 // ************************************** EXIT **************************************
 import { ReactComponent as Exit } from '../../assets/img/exit/exit.svg'
+
+// ************************************** MATH OPERATIONS **************************************
+import { ReactComponent as Plus } from '../../assets/img/plus/plus.svg'
+import { ReactComponent as Minus } from '../../assets/img/minus/minus.svg'
 
 // ************************************** ... **************************************
 import { ReactComponent as Logo } from '../../assets/img/logo/logo-airbnb.svg'
@@ -91,9 +95,9 @@ import { ReactComponent as Pool } from '../../assets/img/airbnb-assets/pool.svg'
 
 
 import {
-    HEART_16, RED_HEART_16, LOGO, RED_HEART, SEARCH, SHARE, STAR, STAR_12, STAR_16, USER_NAV_BARS, RED_TAG, SUPERHOST, BLACK_SUPERHOST_16, EYE,
-    USER_NAV_PROFILE, WHITE_HEART, LOCATION, KEY, CHECKIN, SEARCH_2, TICK_DECLINE, VERIFIED,
-    ARROW_LEFT_FAT, ARROW_LEFT, ARROW_RIGHT, ARROW_RIGHT_FAT, ARROW_UP, CONFIG, EXIT
+    HEART_16, RED_HEART_16, LOGO, RED_HEART, SEARCH_FAT, SHARE, STAR, STAR_12, STAR_16, USER_NAV_BARS, RED_TAG, SUPERHOST, BLACK_SUPERHOST_16, EYE,
+    USER_NAV_PROFILE, WHITE_HEART, LOCATION, KEY, CHECKIN, SEARCH, TICK_DECLINE, VERIFIED,
+    ARROW_LEFT_FAT, ARROW_LEFT, ARROW_RIGHT, ARROW_RIGHT_FAT, ARROW_UP, CONFIG, EXIT, PLUS, MINUS
 } from '../../services/svg.service.js'
 
 
@@ -117,10 +121,10 @@ const SvgHandler = ({ svgName }) => {
                 return <ArrowUp />
 
             // ************************************** SEARCH (Magnifying Glass) **************************************
+            case SEARCH_FAT:
+                return <SearchFat />
             case SEARCH:
                 return <Search />
-            case SEARCH_2:
-                return <Search2 />
 
             // ************************************** CONFIG **************************************
             case CONFIG:
@@ -129,6 +133,13 @@ const SvgHandler = ({ svgName }) => {
             // ************************************** EXIT **************************************
             case EXIT:
                 return <Exit />
+
+            // ************************************** MATH OPERATIONS **************************************
+            case PLUS:
+                return <Plus />
+            case MINUS:
+                return <Minus />
+
             // ************************************** ... **************************************
             case USER_NAV_BARS:
                 return <UserNavBar />

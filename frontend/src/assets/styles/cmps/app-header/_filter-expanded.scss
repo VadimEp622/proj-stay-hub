@@ -290,14 +290,15 @@
 
                             & .custom-btn-guest-count {
                                 background-color: $gray-clr-1;
-                                color: rgb(113, 113, 113);
+                                color: $gray-clr0;
                                 border: 1px solid $gray-clr2;
                                 border-radius: 50%;
-                                width: 30px;
-                                height: 30px;
-                                font-weight: 700;
-                                cursor: pointer;
-                                font-size: 13.5px;
+                                padding-block: 9px;
+                                padding-inline: 9px;
+
+                                & svg {
+                                    margin-inline: auto;
+                                }
                             }
 
                             & span {
@@ -314,6 +315,8 @@
 
                         .custom-btn-guest-count:hover {
                             border-color: $black-clr1;
+                            color: $black-clr1;
+                            cursor: pointer;
                         }
 
                         .custom-btn-guest-count:disabled {

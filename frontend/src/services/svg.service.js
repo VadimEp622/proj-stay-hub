@@ -6,14 +6,18 @@ export const ARROW_RIGHT = 'ARROW_RIGHT'
 export const ARROW_UP = 'ARROW_UP'
 
 // ************************************** SEARCH (Magnifying Glass) **************************************
+export const SEARCH_FAT = 'SEARCH_FAT'
 export const SEARCH = 'SEARCH'
-export const SEARCH_2 = 'SEARCH_2'
 
 // ************************************** CONFIG **************************************
 export const CONFIG = 'CONFIG'
 
 // ************************************** EXIT **************************************
 export const EXIT = 'EXIT'
+
+// ************************************** MATH OPERATIONS **************************************
+export const PLUS = 'PLUS'
+export const MINUS = 'MINUS'
 
 // ************************************** ... **************************************
 export const LOGO = 'logo'

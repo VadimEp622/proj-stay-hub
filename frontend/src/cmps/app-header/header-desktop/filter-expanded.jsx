@@ -8,7 +8,7 @@ import { store } from "../../../store/store.js"
 import { CLOSE_EXPANDED_HEADER_MODAL, OPEN_EXPANDED_HEADER_MODAL } from "../../../store/system.reducer.js"
 
 // Services
-import { SEARCH_2 } from "../../../services/svg.service.js"
+import { SEARCH } from "../../../services/svg.service.js"
 
 // Custom Hooks
 import { useClickOutside } from "../../../customHooks/useClickOutsideModal.js"
@@ -117,7 +117,7 @@ export function FilterExpanded(
                         </section>
                         <button className="search" onClick={(ev) => onSubmit(ev)}>
                             <section className="svg-container">
-                                <SvgHandler svgName={SEARCH_2} />
+                                <SvgHandler svgName={SEARCH} />
                             </section>
                             <span>Search</span>
                         </button>
