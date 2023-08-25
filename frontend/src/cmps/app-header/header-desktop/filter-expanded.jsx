@@ -1,5 +1,5 @@
 // Node modules
-import { useEffect, useRef} from "react"
+import { useEffect, useRef } from "react"
 import { useSelector } from "react-redux"
 import { format } from 'date-fns'
 
@@ -83,27 +83,27 @@ export function FilterExpanded(
             <section className={`filter-expanded${selectedFilterBox === 'all' ? ' all' : ''}`} ref={dropdownRef}>
                 <article className={`where-container${selectedFilterBox === 'where' ? ' active' : ''}`} name="where" onClick={onSetSelectedFilterBox} >
                     <section className="where">
-                        <h3>Where</h3>
-                        <input name="filterText" value={filterBy.filterText} onChange={handleChange} placeholder="Search destinations"></input>
+                        <h3 className="fs12 lh16 ff-circular-bold">Where</h3>
+                        <input className="fs14 lh18" name="filterText" value={filterBy.filterText} onChange={handleChange} placeholder="Search destinations"></input>
                     </section>
                 </article>
                 <article className={`check-in-container${selectedFilterBox === 'check-in' ? ' active' : ''}`} name="check-in" onClick={onSetSelectedFilterBox}>
                     <section className="check-in">
-                        <h3>Check in</h3>
-                        <span>{filterBy.from ? format(filterBy.from, 'y-MM-dd') : 'Add dates'}</span>
+                        <h3 className="fs12 lh16 ff-circular-bold">Check in</h3>
+                        <span className="fs14 lh18">{filterBy.from ? format(filterBy.from, 'y-MM-dd') : 'Add dates'}</span>
                     </section>
                 </article>
                 <article className={`check-out-container${selectedFilterBox === 'check-out' ? ' active' : ''}`} name="check-out" onClick={onSetSelectedFilterBox}>
                     <section className="check-out">
-                        <h3>Check out</h3>
-                        <span>{filterBy.to ? format(filterBy.to, 'y-MM-dd') : 'Add dates'}</span>
+                        <h3 className="fs12 lh16 ff-circular-bold">Check out</h3>
+                        <span className="fs14 lh18">{filterBy.to ? format(filterBy.to, 'y-MM-dd') : 'Add dates'}</span>
                     </section>
                 </article>
                 <article className={`who-container${selectedFilterBox === 'who' ? ' active' : ''}`} name="who" onClick={onSetSelectedFilterBox}>
                     <section className="who-search">
                         <section className="who">
-                            <h3>Who</h3>
-                            <span>
+                            <h3 className="fs12 lh16 ff-circular-bold">Who</h3>
+                            <span className="fs14 lh18">
                                 {
                                     filterBy.guests.adults > 0
                                         ? <LongTxt

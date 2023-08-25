@@ -62,19 +62,14 @@
 
                 & > * {
                     &:first-child {
-                        font-family: Circular-Bold;
-                        font-size: rem(12px);
                         letter-spacing: 0.48px;
-                        line-height: 16px;
                         padding-block-end: 0.03px;
                     }
 
                     &:last-child {
                         font-family: Circular-Regular;
-                        font-size: 14px;
                         color: $gray-clr0;
                         letter-spacing: 0;
-                        line-height: 18px;
 
                         &:is(span) {
                             display: block;
@@ -84,6 +79,12 @@
                             background-color: inherit;
                             border: 0;
                             padding: 0;
+                            font-family: Circular-Semibold;
+                            color: $black-clr1;
+
+                            &::placeholder {
+                                font-family: Circular-Regular;
+                            }
 
                             &:focus-visible {
                                 outline: none;
@@ -219,9 +220,7 @@
                 background-color: $gray-clr-1;
                 border-radius: 32px;
                 margin-block-start: 44px;
-                box-shadow:
-                    0 0 0 1px rgba(0, 0, 0, 0.04),
-                    0 8px 16px rgba(0, 0, 0, 0.15);
+                box-shadow: $box-shadow7;
                 padding-inline: 32px;
                 padding-block: 16px;
                 cursor: default;
@@ -245,12 +244,12 @@
             }
         }
     }
-}
 
-.filter-expanded-container.folded {
-    translate: 0px -73px;
-    opacity: 0;
-    scale: 48% 82%;
-    height: 0;
-    pointer-events: none;
+    &.folded {
+        translate: 0px -73px;
+        opacity: 0;
+        scale: 48% 82%;
+        height: 0;
+        pointer-events: none;
+    }
 }
