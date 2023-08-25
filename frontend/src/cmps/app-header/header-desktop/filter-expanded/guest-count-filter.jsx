@@ -1,87 +1,16 @@
-import SvgHandler from "../../../_reuseable-cmps/svg-handler.jsx"
-import { MINUS, PLUS } from "../../../../services/svg.service.js"
+import { GuestAdult } from "./guest-count-filter/guest-adult.jsx"
+import { GuestChild } from "./guest-count-filter/guest-child.jsx"
+import { GuestInfant } from "./guest-count-filter/guest-infant.jsx"
+import { GuestPet } from "./guest-count-filter/guest-pet.jsx"
 
 export function GuestCountFilter({ filterBy, handleGuestCountChange }) {
 
     return (
         <section className="guest-count-filter">
-            <article className="card">
-
-                <section className="txt-content">
-                    <h3>Adults</h3>
-                    <p>Ages 13 or above</p>
-                </section>
-
-                <section className="stepper">
-
-                    <button
-                        className="custom-btn-guest-count"
-                        type="button"
-                        onClick={() => handleGuestCountChange('adults', -1)}
-                        disabled={filterBy.guests.adults === 0 || (filterBy.guests.adults === 1 && filterBy.capacity > 1)}
-                    >
-                        <SvgHandler svgName={MINUS} />
-                    </button>
-
-                    <span>{filterBy.guests.adults === 16 ? '16+' : filterBy.guests.adults}</span>
-
-                    <button
-                        className="custom-btn-guest-count"
-                        type="button"
-                        onClick={() => handleGuestCountChange('adults', 1)}
-                        disabled={filterBy.guests.adults === 16 || (filterBy.guests.adults + filterBy.guests.children === 16)}
-                    >
-                        <SvgHandler svgName={PLUS} />
-                    </button>
-
-                </section>
-
-            </article>
-
-            <article className="card">
-
-                <section className="txt-content">
-                    <h3>Children</h3>
-                    <p>Ages 2-12</p>
-                </section>
-
-                <section className="stepper">
-                    <button className="custom-btn-guest-count" type="button" onClick={() => handleGuestCountChange('children', -1)} disabled={filterBy.guests.children === 0}><SvgHandler svgName={MINUS} /></button>
-                    <span>{filterBy.guests.children}</span>
-                    <button className="custom-btn-guest-count" type="button" onClick={() => handleGuestCountChange('children', 1)} disabled={filterBy.guests.children === 15 || (filterBy.guests.adults + filterBy.guests.children === 16)}><SvgHandler svgName={PLUS} /></button>
-                </section>
-
-            </article>
-
-            <article className="card">
-
-                <section className="txt-content">
-                    <h3>Infants</h3>
-                    <p>Under 2</p>
-                </section>
-
-                <section className="stepper">
-                    <button className="custom-btn-guest-count" type="button" onClick={() => handleGuestCountChange('infants', -1)} disabled={filterBy.guests.infants === 0}><SvgHandler svgName={MINUS} /></button>
-                    <span>{filterBy.guests.infants}</span>
-                    <button className="custom-btn-guest-count" type="button" onClick={() => handleGuestCountChange('infants', 1)} disabled={filterBy.guests.infants === 5}><SvgHandler svgName={PLUS} /></button>
-                </section>
-
-            </article>
-
-            <article className="card">
-
-                <section className="txt-content">
-                    <h3>Pets</h3>
-                    <p className="pet-service underline">Bringing a service animal?</p>
-                </section>
-
-                <section className="stepper">
-                    <button className="custom-btn-guest-count" type="button" onClick={() => handleGuestCountChange('pets', -1)} disabled={filterBy.guests.pets === 0}><SvgHandler svgName={MINUS} /></button>
-                    <span>{filterBy.guests.pets}</span>
-                    <button className="custom-btn-guest-count" type="button" onClick={() => handleGuestCountChange('pets', 1)} disabled={filterBy.guests.pets === 5}><SvgHandler svgName={PLUS} /></button>
-                </section>
-
-            </article>
+            <GuestAdult filterBy={filterBy} handleGuestCountChange={handleGuestCountChange} />
+            <GuestChild filterBy={filterBy} handleGuestCountChange={handleGuestCountChange} />
+            <GuestInfant filterBy={filterBy} handleGuestCountChange={handleGuestCountChange} />
+            <GuestPet filterBy={filterBy} handleGuestCountChange={handleGuestCountChange} />
         </section>
     )
 }
