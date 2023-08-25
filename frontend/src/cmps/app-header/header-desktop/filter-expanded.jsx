@@ -119,7 +119,7 @@ export function FilterExpanded(
                             <section className="svg-container">
                                 <SvgHandler svgName={SEARCH} />
                             </section>
-                            <span>Search</span>
+                            <span className="fs16 lh16">Search</span>
                         </button>
                     </section>
                 </article>

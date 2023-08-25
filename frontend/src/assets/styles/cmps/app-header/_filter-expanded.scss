@@ -1,9 +1,13 @@
 .filter-expanded-container {
+    width: 100%; //new
+    justify-items: center; //new
+    padding-inline: 40px; //new
+
     height: 80px;
     display: grid;
     // grid-template-columns: 1fr 850px 1fr;
     grid-template-rows: none;
-    grid-template-columns: repeat(3, 1fr);
+    // grid-template-columns: repeat(3, 1fr);
     transition: all 0.2s;
     position: absolute;
     background-color: $gray-clr-1;
@@ -11,9 +15,12 @@
     margin-block-start: 80px;
 
     & .filter-expanded {
+        max-width: 850px; //new
+        width: 100%; //new
+
         grid-column: 2;
         display: grid;
-        grid-template-columns: repeat(5, 1fr);
+        grid-template-columns: minmax(auto, 325.391px) repeat(3, auto); //new (was "grid-template-columns: repeat(4, 1fr);" before)
         align-items: center;
 
         // height: 64px;
@@ -37,6 +44,7 @@
                 & > * {
                     box-shadow: $box-shadow3;
                     border-radius: 32px;
+                    outline: 1px solid white;
                 }
             }
 
@@ -54,16 +62,17 @@
 
             &:not(.who-container, .size-less) > *,
             &.who-container .who-search .who {
-                padding-block: 12.8124px;
+                // padding-block: 13.8124px;
+                padding-block: 14px;
 
                 &:not(.where) {
-                    padding-block: 15px;
+                    padding-block: 14px;
                 }
 
                 & > * {
                     &:first-child {
                         letter-spacing: 0.48px;
-                        padding-block-end: 0.03px;
+                        padding-block-end: 2px;
                     }
 
                     &:last-child {
@@ -81,6 +90,8 @@
                             padding: 0;
                             font-family: Circular-Semibold;
                             color: $black-clr1;
+                            width: 100%;
+                            display: block;
 
                             &::placeholder {
                                 font-family: Circular-Regular;
@@ -95,30 +106,43 @@
             }
 
             & .where {
-                padding-inline: 32.52px;
+                // padding-inline: 32.52px;
+                padding-inline: 32px;
 
-                & > * {
-                    width: 261.391px;
-                }
+                // & > * {
+                //     width: 261.391px;
+                // }
             }
 
-            & .check-in,
-            .check-out {
+            & .check-in {
                 padding-inline: 24px;
+                // outline: 1px solid transparent;
 
-                & > * {
-                    width: 81.656px;
-                }
+                // & > * {
+                //     width: 81.656px;
+                // }
+            }
+            & .check-out {
+                padding-inline-start: 24px;
+                padding-inline-end: 24px;
+
+                margin-left: -1.5px;
             }
 
             & .who-search {
-                width: 262.312px;
+                // width: 262.312px;
+                // outline: 1px solid transparent;
+
                 display: flex;
                 justify-content: space-between;
 
                 & .who {
-                    padding-inline: 24px;
-                    width: 97.562px;
+                    padding-inline-start: 24px;
+                    padding-inline-end: 24px;
+
+                    margin-right: 2.5px;
+
+                    // width: 97.562px;
                     flex: 1 1 auto;
                 }
 
@@ -128,10 +152,10 @@
                     border: 0;
                     align-items: center;
                     border-radius: 32px;
-                    width: 111.75px;
+                    // width: 111.75px;
                     height: 48px;
                     background-color: $main-clr0;
-                    gap: 8px;
+                    // gap: 8px;
                     padding-block: 16px;
                     padding-inline: 16px;
                     margin-block: auto;
@@ -148,7 +172,9 @@
 
                         &:last-child {
                             font-family: Circular-Semibold;
-                            font-size: rem(16px);
+                            padding-inline-start: 8px;
+                            padding-inline-end: 4px;
+                            // font-size: rem(16px);
                             // margin-top: -0.5px;
                         }
                     }
@@ -158,12 +184,12 @@
                     }
                 }
 
-                & .who,
-                .search {
-                    & > * {
-                        width: 81.656px;
-                    }
-                }
+                // & .who,
+                // .search {
+                //     & > * {
+                //         width: 81.656px;
+                //     }
+                // }
             }
 
             &:not(.active):hover {
@@ -172,20 +198,42 @@
             }
         }
 
+        & .where-container {
+            max-width: 325.391px;
+        }
+
         & .check-in-container,
-        .check-out-container,
-        .who-container {
+        & .check-out-container {
+            max-width: 131.656px;
+            margin-left: 1px;
+        }
+        & .who-container {
+            max-width: 260.312px;
+        }
+
+        & .check-in-container,
+        & .check-out-container,
+        & .who-container {
             position: relative;
 
             &::before {
                 content: "";
                 position: absolute;
-                background-color: $gray-clr3;
+                // background-color: $gray-clr3;
                 height: 32px;
                 width: 1px;
                 top: 17px;
-                left: 0;
+                left: -3px;
+                border-left: 1px solid transparent;
+                border-right: 1px solid $gray-clr3;
             }
+        }
+        & .check-in-container::before {
+            border-left-width: 1.5px;
+        }
+
+        & .check-out-container::before {
+            border-left: 0;
         }
 
         &:hover {
@@ -193,22 +241,28 @@
         }
 
         // hover on either element 1 or adjacent element 2, change pseudo element in element 2
+        & .where-container.active + .check-in-container::before,
         & .where-container:hover + .check-in-container::before,
         & .check-in-container:hover::before,
         & .check-in-container.active::before {
-            width: 0;
+            // width: 0;
+            border-right-color: transparent;
         }
 
+        & .check-in-container.active + .check-out-container::before,
         & .check-in-container:hover + .check-out-container::before,
         & .check-out-container:hover::before,
         & .check-out-container.active::before {
-            width: 0;
+            // width: 0;
+            border-right-color: transparent;
         }
 
+        & .check-out-container.active + .who-container::before,
         & .check-out-container:hover + .who-container::before,
         & .who-container:hover::before,
         & .who-container.active::before {
-            width: 0;
+            // width: 0;
+            border-right-color: transparent;
         }
 
         & .size-less {
