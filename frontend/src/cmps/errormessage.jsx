@@ -1,5 +1,6 @@
 import React from 'react'
-import SvgHandler from './svg-handler'
+import SvgHandler from './_reuseable-cmps/svg-handler'
+
 
 export function RenderErrorMessage({ fieldName, errors, touched }) {
     if (errors[fieldName] && touched[fieldName]) {

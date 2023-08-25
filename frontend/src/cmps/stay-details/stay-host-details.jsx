@@ -1,5 +1,6 @@
 import { BLACK_SUPERHOST_16, STAR_16, VERIFIED } from "../../services/svg.service.js"
-import SvgHandler from "../svg-handler.jsx"
+import SvgHandler from "../_reuseable-cmps/svg-handler.jsx"
+
 
 export function HostDetails({ stay, hostImgUrl, randomDateJoined }) {
 

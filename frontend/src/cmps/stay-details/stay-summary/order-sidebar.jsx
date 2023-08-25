@@ -10,7 +10,7 @@ import { setOrder } from "../../../store/user.actions.js"
 import { setModal } from "../../../store/stay.actions.js"
 
 // Custom Hooks
-import { useClickOutside } from "../../../customHooks/clickOutsideModal.js"
+import { useClickOutside } from "../../../customHooks/useClickOutsideModal.js"
 import useStayDates from "../../../customHooks/useStayDates.js"
 import useStayGuests from "../../../customHooks/useStayGuests.js"
 import useStayDetails from "../../../customHooks/useStayDetails.js"

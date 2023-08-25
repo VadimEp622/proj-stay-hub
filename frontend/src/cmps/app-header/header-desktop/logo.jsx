@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom"
 
 import { LOGO } from "../../../services/svg.service.js"
+import SvgHandler from "../../_reuseable-cmps/svg-handler.jsx"
 
-import SvgHandler from "../../svg-handler.jsx"
+
 
 export function Logo() {
     return (

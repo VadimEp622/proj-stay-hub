@@ -14,8 +14,8 @@ import { setModal } from "../../../store/stay.actions.js"
 import { AddToWishlist, removeFromWishlist } from "../../../store/user.actions.js"
 
 // Components
-import SvgHandler from "../../svg-handler.jsx"
 import { PreviewImageCarousel } from "./stay-preview/preview-image-carousel.jsx"
+import SvgHandler from "../../_reuseable-cmps/svg-handler.jsx"
 
 // stay-preview.jsx:78
 // Error getting user location: GeolocationPositionErrorcode: 1message: "User denied Geolocation"[[Prototype]]: GeolocationPositionError

@@ -4,8 +4,7 @@ import { useEffect } from 'react'
 import { showErrorMsg } from '../services/event-bus.service'
 import { userService } from '../services/user.service'
 import { utilService } from '../services/util.service'
-import SvgHandler from './svg-handler'
-import { STAR } from '../services/svg.service'
+
 
 const data = [
   { guest: 'John Doe', imgUrl: 'https://a0.muscache.com/im/pictures/user/74afa56b-cc05-4701-a2ce-f4de5e435504.jpg?im_w=240', join: 'Mar 2023', dates: 'Jun 23-27', status: 'Pending' },

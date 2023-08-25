@@ -1,4 +1,5 @@
-import SvgHandler from "../../svg-handler.jsx"
+import SvgHandler from "../../_reuseable-cmps/svg-handler"
+
 
 export function ValidationError({ content }) {
     return (

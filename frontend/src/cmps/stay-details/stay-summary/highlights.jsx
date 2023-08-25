@@ -2,7 +2,8 @@
 import { CHECKIN, KEY, LOCATION } from "../../../services/svg.service.js"
 
 // Components
-import SvgHandler from "../../svg-handler.jsx"
+import SvgHandler from "../../_reuseable-cmps/svg-handler.jsx"
+
 
 
 export function Highlights() {

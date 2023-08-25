@@ -4,7 +4,8 @@ import { STAR } from "../../../../services/svg.service.js"
 import { utilService } from "../../../../services/util.service.js"
 
 // Components
-import SvgHandler from "../../../svg-handler.jsx"
+import SvgHandler from "../../../_reuseable-cmps/svg-handler.jsx"
+
 
 
 export function CostAndReviewScore({ stay, orderDetails }) {

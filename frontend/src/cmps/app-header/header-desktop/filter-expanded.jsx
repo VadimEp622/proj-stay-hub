@@ -11,14 +11,15 @@ import { CLOSE_EXPANDED_HEADER_MODAL, OPEN_EXPANDED_HEADER_MODAL } from "../../.
 import { SEARCH_2 } from "../../../services/svg.service.js"
 
 // Custom Hooks
-import { useClickOutside } from "../../../customHooks/clickOutsideModal.js"
+import { useClickOutside } from "../../../customHooks/useClickOutsideModal.js"
 
 // Components
 import { LocationFilter } from "./filter-expanded/location-filter.jsx"
 import { DateFilter } from "./filter-expanded/date-filter.jsx"
 import { GuestCountFilter } from "./filter-expanded/guest-count-filter.jsx"
 import { LongTxt } from "../../long-txt.jsx"
-import SvgHandler from "../../svg-handler.jsx"
+import SvgHandler from "../../_reuseable-cmps/svg-handler.jsx"
+
 
 
 

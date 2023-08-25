@@ -1,5 +1,6 @@
 import { CONFIG, SEARCH_2 } from "../../services/svg.service.js"
-import SvgHandler from "../svg-handler.jsx"
+import SvgHandler from "../_reuseable-cmps/svg-handler.jsx"
+
 
 export function HeaderMobile({ layoutType }) {
 

@@ -4,7 +4,8 @@ import { STAR_16 } from "../../services/svg.service.js"
 
 // Components
 import { StayReviewList } from "./stay-reviews/stay-review-list.jsx"
-import SvgHandler from "../svg-handler.jsx"
+import SvgHandler from "../_reuseable-cmps/svg-handler.jsx"
+
 
 export function StayReviews({ stay, reviewsInputs }) {
 

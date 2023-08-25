@@ -10,11 +10,11 @@ import { login, signup } from '../store/user.actions.js'
 import { setModal } from '../store/stay.actions.js'
 
 // Custom Hooks
-import { useClickOutside } from '../customHooks/clickOutsideModal.js'
+import { useClickOutside } from '../customHooks/useClickOutsideModal.js'
 
 // Components
-import SvgHandler from './svg-handler.jsx'
 import { FormLoginSignup } from './app-login-signup/form-login-signup.jsx'
+import SvgHandler from './_reuseable-cmps/svg-handler.jsx'
 
 
 // TODO: Add success user-msg for signing-up.

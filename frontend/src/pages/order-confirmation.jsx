@@ -12,11 +12,11 @@ import { socketService, SOCKET_EMIT_SET_STAYID, SOCKET_EMIT_STAY_RESERVED, SOCKE
 import { addConfirmedTrip } from "../store/user.actions.js"
 
 // Custom hooks
-import { useClickOutside } from "../customHooks/clickOutsideModal.js"
+import { useClickOutside } from "../customHooks/useClickOutsideModal.js"
 
 // Components
-import SvgHandler from "../cmps/svg-handler.jsx"
 import { ButtonMain } from "../cmps/_reuseable-cmps/button-main.jsx"
+import SvgHandler from "../cmps/_reuseable-cmps/svg-handler.jsx"
 
 
 

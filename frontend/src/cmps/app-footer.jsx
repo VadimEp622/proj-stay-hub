@@ -2,7 +2,8 @@
 import { TICK_DECLINE } from '../services/svg.service.js'
 
 // Components
-import SvgHandler from './svg-handler.jsx'
+import SvgHandler from './_reuseable-cmps/svg-handler.jsx'
+
 
 
 export function AppFooter({ isStayDetailsPage }) {
