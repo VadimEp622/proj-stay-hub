@@ -1,13 +1,11 @@
 .filter-expanded-container {
-    width: 100%; //new
-    justify-items: center; //new
-    padding-inline: 40px; //new
+    width: 100%;
+    justify-items: center;
+    padding-inline: 40px;
 
     height: 80px;
     display: grid;
-    // grid-template-columns: 1fr 850px 1fr;
     grid-template-rows: none;
-    // grid-template-columns: repeat(3, 1fr);
     transition: all 0.2s;
     position: absolute;
     background-color: $gray-clr-1;
@@ -15,15 +13,14 @@
     margin-block-start: 80px;
 
     & .filter-expanded {
-        max-width: 850px; //new
-        width: 100%; //new
+        max-width: 850px;
+        width: 100%;
 
         grid-column: 2;
         display: grid;
-        grid-template-columns: minmax(auto, 325.391px) repeat(3, auto); //new (was "grid-template-columns: repeat(4, 1fr);" before)
+        grid-template-columns: minmax(auto, 325.391px) repeat(3, auto);
         align-items: center;
 
-        // height: 64px;
         height: fit-content;
         white-space: nowrap;
 
@@ -36,190 +33,14 @@
             background-color: $gray-clr-1;
         }
 
-        & > * {
-            &.active {
-                background-color: $gray-clr-1;
-                border-radius: 32px;
-
-                & > * {
-                    box-shadow: $box-shadow3;
-                    border-radius: 32px;
-                    outline: 1px solid white;
-                }
+        & :is(.where-container, .check-in-container, .check-out-container, .who-container) {
+            &:is(.check-in-container, .check-out-container) {
+                margin-left: 1px;
             }
 
-            &.where-container.active {
-                box-shadow: $box-shadow4;
-            }
-
-            &:is(.check-in-container, .check-out-container).active {
-                box-shadow: $box-shadow5;
-            }
-
-            &.who-container.active {
-                box-shadow: $box-shadow6;
-            }
-
-            &:not(.who-container, .size-less) > *,
-            &.who-container .who-search .who {
-                // padding-block: 13.8124px;
-                padding-block: 14px;
-
-                &:not(.where) {
-                    padding-block: 14px;
-                }
-
-                & > * {
-                    &:first-child {
-                        letter-spacing: 0.48px;
-                        padding-block-end: 2px;
-                    }
-
-                    &:last-child {
-                        font-family: Circular-Regular;
-                        color: $gray-clr0;
-                        letter-spacing: 0;
-
-                        &:is(span) {
-                            display: block;
-                        }
-
-                        &:is(input) {
-                            background-color: inherit;
-                            border: 0;
-                            padding: 0;
-                            font-family: Circular-Semibold;
-                            color: $black-clr1;
-                            width: 100%;
-                            display: block;
-
-                            &::placeholder {
-                                font-family: Circular-Regular;
-                            }
-
-                            &:focus-visible {
-                                outline: none;
-                            }
-                        }
-                    }
-                }
-            }
-
-            & .where {
-                // padding-inline: 32.52px;
-                padding-inline: 32px;
-
-                // & > * {
-                //     width: 261.391px;
-                // }
-            }
-
-            & .check-in {
-                padding-inline: 24px;
-                // outline: 1px solid transparent;
-
-                // & > * {
-                //     width: 81.656px;
-                // }
-            }
-            & .check-out {
-                padding-inline-start: 24px;
-                padding-inline-end: 24px;
-
-                margin-left: -1.5px;
-            }
-
-            & .who-search {
-                // width: 262.312px;
-                // outline: 1px solid transparent;
-
-                display: flex;
-                justify-content: space-between;
-
-                & .who {
-                    padding-inline-start: 24px;
-                    padding-inline-end: 24px;
-
-                    margin-right: 2.5px;
-
-                    // width: 97.562px;
-                    flex: 1 1 auto;
-                }
-
-                & .search {
-                    display: flex;
-                    padding: 0;
-                    border: 0;
-                    align-items: center;
-                    border-radius: 32px;
-                    // width: 111.75px;
-                    height: 48px;
-                    background-color: $main-clr0;
-                    // gap: 8px;
-                    padding-block: 16px;
-                    padding-inline: 16px;
-                    margin-block: auto;
-                    margin-inline-end: 8px;
-
-                    & > * {
-                        color: $gray-clr-1;
-                        width: fit-content;
-
-                        // height: 16px;
-                        &:first-child {
-                            height: 16px;
-                        }
-
-                        &:last-child {
-                            font-family: Circular-Semibold;
-                            padding-inline-start: 8px;
-                            padding-inline-end: 4px;
-                            // font-size: rem(16px);
-                            // margin-top: -0.5px;
-                        }
-                    }
-
-                    &:hover {
-                        cursor: pointer;
-                    }
-                }
-
-                // & .who,
-                // .search {
-                //     & > * {
-                //         width: 81.656px;
-                //     }
-                // }
-            }
-
-            &:not(.active):hover {
-                background-color: $gray-clr3;
-                border-radius: 32px;
-            }
-        }
-
-        & .where-container {
-            max-width: 325.391px;
-        }
-
-        & .check-in-container,
-        & .check-out-container {
-            max-width: 131.656px;
-            margin-left: 1px;
-        }
-        & .who-container {
-            max-width: 260.312px;
-        }
-
-        & .check-in-container,
-        & .check-out-container,
-        & .who-container {
-            position: relative;
-
-            &::before {
+            &:not(.where-container)::before {
                 content: "";
                 position: absolute;
-                // background-color: $gray-clr3;
                 height: 32px;
                 width: 1px;
                 top: 17px;
@@ -227,25 +48,158 @@
                 border-left: 1px solid transparent;
                 border-right: 1px solid $gray-clr3;
             }
-        }
-        & .check-in-container::before {
-            border-left-width: 1.5px;
+
+            &.check-in-container::before {
+                border-left-width: 1.5px;
+            }
+
+            &.check-out-container::before {
+                border-left: 0;
+            }
         }
 
-        & .check-out-container::before {
-            border-left: 0;
+        & :is(.where-container, .check-in-container, .check-out-container, .who-container) {
+            position: relative;
+
+            & :is(.where, .check-in, .check-out, .who-search) {
+                z-index: 1;
+                position: relative;
+
+                &:is(.where, .check-in, .check-out),
+                &.who-search .who {
+                    padding-block: 14px;
+
+                    & > * {
+                        &:first-child {
+                            letter-spacing: 0.48px;
+                            padding-block-end: 2px;
+                        }
+
+                        &:last-child {
+                            font-family: Circular-Regular;
+                            color: $gray-clr0;
+                            letter-spacing: 0;
+
+                            &:is(span) {
+                                display: block;
+                            }
+
+                            &:is(input) {
+                                background-color: inherit;
+                                border: 0;
+                                padding: 0;
+                                font-family: Circular-Semibold;
+                                color: $black-clr1;
+                                width: 100%;
+                                display: block;
+
+                                &::placeholder {
+                                    font-family: Circular-Regular;
+                                }
+
+                                &:focus-visible {
+                                    outline: none;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                &.where {
+                    padding-inline: 32px;
+                }
+
+                &:is(.check-in, .check-out),
+                &.who-search .who {
+                    padding-inline: 24px;
+                }
+
+                &.check-out {
+                    margin-left: -1.5px;
+                }
+
+                &.who-search {
+                    display: flex;
+                    justify-content: space-between;
+
+                    & .who {
+                        margin-right: 2.5px;
+                        flex: 1 1 auto;
+                    }
+
+                    & .search {
+                        display: flex;
+                        padding: 0;
+                        border: 0;
+                        align-items: center;
+                        border-radius: 32px;
+                        height: 48px;
+                        background-color: $main-clr0;
+                        padding-block: 16px;
+                        padding-inline: 16px;
+                        margin-block: auto;
+                        margin-inline-end: 8px;
+
+                        & > * {
+                            color: $gray-clr-1;
+                            width: fit-content;
+
+                            &:first-child {
+                                height: 16px;
+                            }
+
+                            &:last-child {
+                                font-family: Circular-Semibold;
+                                padding-inline-start: 8px;
+                                padding-inline-end: 4px;
+                            }
+                        }
+
+                        &:hover {
+                            cursor: pointer;
+                        }
+                    }
+                }
+            }
+
+            &::after {
+                content: "";
+                position: absolute;
+                inset: -1px;
+                border-radius: 32px;
+            }
+
+            &.active {
+                border-radius: 32px;
+
+                &::after {
+                    background-color: $gray-clr-1;
+                    border: 1px solid $gray-clr-1;
+                    box-shadow: $box-shadow3;
+                }
+
+                &:is(.check-in-container, .check-out-container)::after {
+                    right: 0px;
+                }
+                &.check-out-container::after {
+                    left: -2px;
+                }
+            }
+
+            &:not(.active):hover {
+                background-color: $gray-clr3;
+                border-radius: 32px;
+            }
+
+            &:hover {
+                cursor: pointer;
+            }
         }
 
-        &:hover {
-            cursor: pointer;
-        }
-
-        // hover on either element 1 or adjacent element 2, change pseudo element in element 2
         & .where-container.active + .check-in-container::before,
         & .where-container:hover + .check-in-container::before,
         & .check-in-container:hover::before,
         & .check-in-container.active::before {
-            // width: 0;
             border-right-color: transparent;
         }
 
@@ -253,7 +207,6 @@
         & .check-in-container:hover + .check-out-container::before,
         & .check-out-container:hover::before,
         & .check-out-container.active::before {
-            // width: 0;
             border-right-color: transparent;
         }
 
@@ -261,7 +214,6 @@
         & .check-out-container:hover + .who-container::before,
         & .who-container:hover::before,
         & .who-container.active::before {
-            // width: 0;
             border-right-color: transparent;
         }
 

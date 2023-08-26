@@ -21,6 +21,9 @@ import { LongTxt } from "../../long-txt.jsx"
 import SvgHandler from "../../_reuseable-cmps/svg-handler.jsx"
 
 
+// TODO: find a way to improve styling to be even more organized (without compromising functionality)
+// TODO: implement main site button for search, and implement folded search button (shortened width)
+// TODO: fix distancing for the modals opened by clicking different filter parameters
 
 
 export function FilterExpanded(
