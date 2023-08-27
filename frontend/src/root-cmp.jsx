@@ -19,6 +19,7 @@ import { AppHeader } from './cmps/app-header.jsx'
 import { AppFooter } from './cmps/app-footer.jsx'
 import { DynamicCmp } from './cmps/_reuseable-cmps/dynamicCmp.jsx'
 import { UserMsg } from './cmps/user-msg.jsx'
+import { AppMainModal } from './cmps/app-main-modal.jsx'
 
 
 // TODO-priority-critical: some stays have check-in/out timestamps which are in the past. 
@@ -45,7 +46,7 @@ import { UserMsg } from './cmps/user-msg.jsx'
 
 export function RootCmp() {
     const isUnclickableBg = useSelector(storeState => storeState.systemModule.isUnclickableBg)
-    const isModalOpen = useSelector(storeState => storeState.stayModule.isModalOpen)
+    const appModal = useSelector(storeState => storeState.systemModule.appModal)
     const location = useLocation()
     const isStayDetailsPage = location.pathname.includes('/stay/')
     // const user = useSelector(storeState => storeState.userModule.user)
@@ -76,16 +77,12 @@ export function RootCmp() {
         store.dispatch({ type: CLOSE_EXPANDED_HEADER })
         store.dispatch({ type: REMOVE_UNCLICKABLE_BG })
     }
+
     return (
         <>
             {isUnclickableBg && <div className="gray-viewport" onClick={(ev) => closeBackground(ev)}></div>}
-            {isModalOpen && (
-                <div className="modal-wrapper-container">
-                    <div className="modal-wrapper">
-                        <DynamicCmp modalType={isModalOpen} />
-                    </div>
-                </div>
-            )}
+            
+            {appModal && <AppMainModal modalType={appModal} />}
 
             <section className={`app ${!isStayDetailsPage ? 'main-layout' : 'details-layout'}`}>
                 <AppHeader isStayDetailsPage={isStayDetailsPage} />

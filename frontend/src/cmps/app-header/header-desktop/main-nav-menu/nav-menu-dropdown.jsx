@@ -4,8 +4,9 @@ import { useSelector } from "react-redux"
 import { Link } from "react-router-dom"
 
 // Store
-import { setModal } from "../../../../store/stay.actions.js"
 import { logout } from "../../../../store/user.actions.js"
+import { SET_APP_MODAL_LOGIN, SET_APP_MODAL_SIGNUP } from "../../../../store/system.reducer.js"
+import { setAppModal } from "../../../../store/system.action.js"
 
 
 export function NavMenuDropdown({ setIsDropdownActive }) {
@@ -13,17 +14,17 @@ export function NavMenuDropdown({ setIsDropdownActive }) {
     const [logInClicked, setLogInClicked] = useState(false)
     const dropdownRef = useRef(null)
 
-    function openModal(ev, modal) {
+    function openModal(ev, modalType) {
         ev.preventDefault()
         ev.stopPropagation()
         setIsDropdownActive(false)
-        setModal(modal)
+        setAppModal(modalType)
     }
 
     function handleClickInside(ev) {
         setIsDropdownActive(false)
     }
-    
+
     useEffect(() => {
 
         if (dropdownRef.current) {
@@ -55,10 +56,10 @@ export function NavMenuDropdown({ setIsDropdownActive }) {
                     </>
                 ) : (
                     <>
-                        <div className="dropdown-option" onClick={(ev) => openModal(ev, 'logIn')}>
+                        <div className="dropdown-option" onClick={(ev) => openModal(ev, SET_APP_MODAL_LOGIN)}>
                             <span>Log in</span>
                         </div>
-                        <div className="dropdown-option" onClick={(ev) => openModal(ev, 'signUp')}>Sign up</div>
+                        <div className="dropdown-option" onClick={(ev) => openModal(ev, SET_APP_MODAL_SIGNUP)}>Sign up</div>
                         <div className="dropdown-line"></div>
                         <Link to={`/dashboard/stay/add`}><div className="dropdown-option">Stayhub your home</div></Link>
                     </>

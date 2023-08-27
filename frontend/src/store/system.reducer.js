@@ -10,13 +10,20 @@ export const OPEN_EXPANDED_HEADER_MODAL = 'OPEN_EXPANDED_HEADER_MODAL'
 export const CLOSE_EXPANDED_HEADER_MODAL = 'CLOSE_EXPANDED_HEADER_MODAL'
 export const SET_IS_SIGNING_UP = 'SET_IS_SIGNING_UP'
 
+// *********** Main App Modal (centered with gray screen) ***********
+export const CLOSE_APP_MODAL = 'CLOSE_APP_MODAL'
+export const SET_APP_MODAL_LOGIN = 'SET_APP_MODAL_LOGIN'
+export const SET_APP_MODAL_SIGNUP = 'SET_APP_MODAL_SIGNUP'
+export const SET_APP_MODAL_MAIN_FILTER = 'SET_APP_MODAL_MAIN_FILTER'
+// ******************************************************************
 
 const initialState = {
   isLoading: false,
   isUnclickableBg: false,
   isFilterExpanded: false,
   isExpandedModalOpen: false,
-  isSigningUp: false
+  isSigningUp: false,
+  appModal: null// Main App Modal 
 }
 
 export function systemReducer(state = initialState, action = {}) {
@@ -39,6 +46,18 @@ export function systemReducer(state = initialState, action = {}) {
       return { ...state, isExpandedModalOpen: false }
     case SET_IS_SIGNING_UP:
       return { ...state, isSigningUp: action.isSigningUp }
+
+    // *********** Main App Modal (centered with gray screen) ***********
+    case CLOSE_APP_MODAL:
+      return { ...state, appModal: null }
+    case SET_APP_MODAL_LOGIN:
+      return { ...state, appModal: SET_APP_MODAL_LOGIN }
+    case SET_APP_MODAL_SIGNUP:
+      return { ...state, appModal: SET_APP_MODAL_SIGNUP }
+    case SET_APP_MODAL_MAIN_FILTER:
+      return { ...state, appModal: SET_APP_MODAL_MAIN_FILTER }
+    // ******************************************************************
+
     default: return state
   }
 }

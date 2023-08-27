@@ -53,17 +53,23 @@
             }
         }
 
-        & .btn-toggler-login-signup button {
-            background-color: inherit;
-            width: 100%;
-            border: 1px solid $black-clr1;
-            border-radius: 8px;
-            padding-inline: 23px;
-            padding-block: 13px;
+        & .custom-btn-white-container {
+            & button {
+                background-color: inherit;
+                width: 100%;
+                border: 1px solid $black-clr1;
+                border-radius: 8px;
+                padding-inline: 23px;
+                padding-block: 13px;
 
-            &:hover {
-                cursor: pointer;
-                background-color: $gray-clr5;
+                &:hover {
+                    cursor: pointer;
+                    background-color: $gray-clr5;
+                }
+            }
+
+            &:not(:last-child) {
+                margin-block-end: 16px;
             }
         }
     }
