@@ -69,7 +69,7 @@
                 &.who-search .who {
                     padding-block: 14px;
 
-                    & > * {
+                    &>* {
                         &:first-child {
                             letter-spacing: 0.48px;
                             padding-block-end: 2px;
@@ -127,6 +127,22 @@
                         flex: 1 1 auto;
                     }
 
+                    & .btn-search-container {
+                        margin-block: auto;
+
+                        & .btn-main-container {
+                            width: 111.75px;
+                            height: 48px;
+                            margin-inline-end: 8px;
+                            background-color: inherit;
+
+                            & .content {
+                                width: fit-content;
+                                border-radius: 32px;
+                            }
+                        }
+                    }
+
                     & .search {
                         display: flex;
                         padding: 0;
@@ -134,13 +150,13 @@
                         align-items: center;
                         border-radius: 32px;
                         height: 48px;
-                        background-color: $main-clr0;
+                        // background-color: $main-clr0;
                         padding-block: 16px;
                         padding-inline: 16px;
                         margin-block: auto;
-                        margin-inline-end: 8px;
+                        // margin-inline-end: 8px;
 
-                        & > * {
+                        &>* {
                             color: $gray-clr-1;
                             width: fit-content;
 
@@ -152,6 +168,7 @@
                                 font-family: Circular-Semibold;
                                 padding-inline-start: 8px;
                                 padding-inline-end: 4px;
+                                font-weight: 400;
                             }
                         }
 
@@ -181,6 +198,7 @@
                 &:is(.check-in-container, .check-out-container)::after {
                     right: 0px;
                 }
+
                 &.check-out-container::after {
                     left: -2px;
                 }
@@ -196,22 +214,22 @@
             }
         }
 
-        & .where-container.active + .check-in-container::before,
-        & .where-container:hover + .check-in-container::before,
+        & .where-container.active+.check-in-container::before,
+        & .where-container:hover+.check-in-container::before,
         & .check-in-container:hover::before,
         & .check-in-container.active::before {
             border-right-color: transparent;
         }
 
-        & .check-in-container.active + .check-out-container::before,
-        & .check-in-container:hover + .check-out-container::before,
+        & .check-in-container.active+.check-out-container::before,
+        & .check-in-container:hover+.check-out-container::before,
         & .check-out-container:hover::before,
         & .check-out-container.active::before {
             border-right-color: transparent;
         }
 
-        & .check-out-container.active + .who-container::before,
-        & .check-out-container:hover + .who-container::before,
+        & .check-out-container.active+.who-container::before,
+        & .check-out-container:hover+.who-container::before,
         & .who-container:hover::before,
         & .who-container.active::before {
             border-right-color: transparent;
@@ -225,7 +243,7 @@
                 position: absolute;
                 background-color: $gray-clr-1;
                 border-radius: 32px;
-                margin-block-start: 44px;
+                margin-block-start: 12px;
                 box-shadow: $box-shadow7;
                 padding-inline: 32px;
                 padding-block: 16px;

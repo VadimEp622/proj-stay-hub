@@ -16,7 +16,7 @@ export function LongTxt({ txt, length = 100, askShowMore = true }) {
   }
 
   return (
-    <div>
+    <section>
       {getTxtToShow()}
       {
         txt.length > length &&
@@ -27,6 +27,6 @@ export function LongTxt({ txt, length = 100, askShowMore = true }) {
           </button>
         )
       }
-    </div>
+    </section>
   )
 }

@@ -17,8 +17,9 @@ import { useClickOutside } from "../../../customHooks/useClickOutsideModal.js"
 import { LocationFilter } from "./filter-expanded/location-filter.jsx"
 import { DateFilter } from "./filter-expanded/date-filter.jsx"
 import { GuestCountFilter } from "./filter-expanded/guest-count-filter.jsx"
-import { LongTxt } from "../../long-txt.jsx"
 import SvgHandler from "../../_reuseable-cmps/svg-handler.jsx"
+import { LongTxt } from "../../_reuseable-cmps/long-txt.jsx"
+import { ButtonMain } from "../../_reuseable-cmps/button-main.jsx"
 
 
 // TODO: find a way to improve styling to be even more organized (without compromising functionality)
@@ -118,12 +119,26 @@ export function FilterExpanded(
                                 }
                             </span>
                         </section>
-                        <button className="search" onClick={(ev) => onSubmit(ev)}>
+                        <section className="btn-search-container">
+                            <ButtonMain
+                                onClickButton={(ev) => onSubmit(ev)}
+                                text={(
+                                    <section className="search">
+                                        <section className="svg-container">
+                                            <SvgHandler svgName={SEARCH} />
+                                        </section>
+                                        <span className="fs16 lh16">Search</span>
+                                    </section>
+                                )}
+                            />
+
+                        </section>
+                        {/* <button className="search" onClick={(ev) => onSubmit(ev)}>
                             <section className="svg-container">
                                 <SvgHandler svgName={SEARCH} />
                             </section>
                             <span className="fs16 lh16">Search</span>
-                        </button>
+                        </button> */}
                     </section>
                 </article>
                 <div className="size-less">
