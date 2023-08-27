@@ -7,7 +7,7 @@ export function DatesAndGuests({ checkIn, checkOut, guests, setGuests, handleDat
         ev.stopPropagation()
         console.log('checkIn', checkIn)
         console.log('checkOut', checkOut)
-        handleDateChange(Date.parse('8/23/2023'), Date.parse('8/26/2023'))
+        // handleDateChange(Date.parse('8/23/2023'), Date.parse('8/26/2023'))
     }
 
     function onGuestsClick(ev) {
@@ -15,13 +15,13 @@ export function DatesAndGuests({ checkIn, checkOut, guests, setGuests, handleDat
         ev.stopPropagation()
         setGuests(prevGuests => ({
             ...prevGuests,
-            adults: 4
+            // adults: 4
         }))
     }
 
     const guestsString = userService.buildGuestsString(guests)
     return (
-        <section className="dates-and-guests">
+        <section className="dates-and-guests" title="Change here not implemented yet">
             <section className="dates-container" onClick={(ev) => onDatesClick(ev)}>
 
                 <div className="dates-container-border"></div>

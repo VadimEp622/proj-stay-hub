@@ -87,4 +87,8 @@
     &:hover .dates-container .dates :is(.check-in, .check-out) {
         border-bottom-color: rgba(0, 0, 0, 0%);
     }
+
+    &:hover{
+        cursor: no-drop;
+    }
 }
