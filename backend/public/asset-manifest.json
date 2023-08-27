@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.35538f2a.css",
-    "main.js": "/static/js/main.78d4e3d1.js",
+    "main.css": "/static/css/main.c61b8616.css",
+    "main.js": "/static/js/main.81a45c66.js",
     "static/media/Montserrat-Regular.ttf": "/static/media/Montserrat-Regular.3cd786652b8a2e9d41f2.ttf",
     "static/media/Montserrat-SemiBold.ttf": "/static/media/Montserrat-SemiBold.fa8441f345d83a0bc4ec.ttf",
     "static/media/Roboto-Thin.ttf": "/static/media/Roboto-Thin.4ecf36d10d43e2996afe.ttf",
@@ -92,7 +92,7 @@
     "static/media/Windows-guards.svg": "/static/media/Windows-guards.ae11ef91a638c8930e626a01155a8a80.svg",
     "static/media/dishes.svg": "/static/media/dishes.7c1076741119cf526aebe0418b0d6a27.svg",
     "static/media/HDTV.svg": "/static/media/HDTV.189ba68f9249178eeb5a1a1bb4176cd5.svg",
-    "static/media/search.svg": "/static/media/search.3f71d5da6fee918c9fe32262acb0ea32.svg",
+    "static/media/search-fat.svg": "/static/media/search-fat.3f71d5da6fee918c9fe32262acb0ea32.svg",
     "static/media/tv.svg": "/static/media/tv.89dec698ac859d1be2a1c5ac8ee48cab.svg",
     "static/media/arrow-left-fat.svg": "/static/media/arrow-left-fat.d00754f37eaafe895690c0bb1058d83a.svg",
     "static/media/refrigerator.svg": "/static/media/refrigerator.5dd6fd41f74879e3b6b393ab14a4670f.svg",
@@ -100,7 +100,7 @@
     "static/media/verified.svg": "/static/media/verified.102d693cb2228224b6c77a7afede8906.svg",
     "static/media/arrow-left.svg": "/static/media/arrow-left.7fb070a463ec4f9bbca1780f679ad8d7.svg",
     "static/media/arrow-right-fat.svg": "/static/media/arrow-right-fat.9fa1127c85a7b862bc96d98b7c43f684.svg",
-    "static/media/search-2.svg": "/static/media/search-2.a35b83a18cf2a1138579f157a33aa191.svg",
+    "static/media/search.svg": "/static/media/search.a35b83a18cf2a1138579f157a33aa191.svg",
     "static/media/arrow-up.svg": "/static/media/arrow-up.3b292933fc566304a2cbcffef5c6a989.svg",
     "static/media/self-checkin.svg": "/static/media/self-checkin.86b29b74fb0ee2ed24c1c3141d825713.svg",
     "static/media/arrow-right.svg": "/static/media/arrow-right.cd59c6580f22941b242e4637f119f87e.svg",
@@ -108,11 +108,13 @@
     "static/media/user-nav-bars.svg": "/static/media/user-nav-bars.10c9aea2b362c8707c64c9e8ab026855.svg",
     "static/media/private-entrance.svg": "/static/media/private-entrance.d569b13011ccb2fd69af72ee43b5238d.svg",
     "static/media/exit.svg": "/static/media/exit.1613670bda75ad67062739301b4cf941.svg",
-    "main.35538f2a.css.map": "/static/css/main.35538f2a.css.map",
-    "main.78d4e3d1.js.map": "/static/js/main.78d4e3d1.js.map"
+    "static/media/plus.svg": "/static/media/plus.90c03e0389f8a96d7dd11907f750e78f.svg",
+    "static/media/minus.svg": "/static/media/minus.067d8ac4dbf7ef7843e07cf1138127cc.svg",
+    "main.c61b8616.css.map": "/static/css/main.c61b8616.css.map",
+    "main.81a45c66.js.map": "/static/js/main.81a45c66.js.map"
   },
   "entrypoints": [
-    "static/css/main.35538f2a.css",
-    "static/js/main.78d4e3d1.js"
+    "static/css/main.c61b8616.css",
+    "static/js/main.81a45c66.js"
   ]
 }
