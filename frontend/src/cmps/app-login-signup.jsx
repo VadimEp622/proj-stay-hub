@@ -1,6 +1,3 @@
-// Node modules
-import { useSelector } from 'react-redux'
-
 // Services
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service.js'
 import { EXIT } from '../services/svg.service.js'
@@ -8,7 +5,7 @@ import { EXIT } from '../services/svg.service.js'
 // Store
 import { login, signup } from '../store/user.actions.js'
 import { setAppModal } from '../store/system.action.js'
-import { CLOSE_APP_MODAL, SET_APP_MODAL_LOGIN, SET_APP_MODAL_SIGNUP } from '../store/system.reducer.js'
+import { CLOSE_APP_MODAL, SET_APP_MODAL_LOGIN, SET_APP_MODAL_LOGIN_QUICK, SET_APP_MODAL_SIGNUP, SET_APP_MODAL_SIGNUP_QUICK } from '../store/system.reducer.js'
 
 // Custom Hooks
 import { useClickOutside } from '../customHooks/useClickOutsideModal.js'
@@ -16,14 +13,15 @@ import { useClickOutside } from '../customHooks/useClickOutsideModal.js'
 // Components
 import { FormLoginSignup } from './app-login-signup/form-login-signup.jsx'
 import SvgHandler from './_reuseable-cmps/svg-handler.jsx'
+import useLoginSignupCredentials from '../customHooks/useLoginSignupCredentials.js'
 
 
 // TODO: Add success user-msg for signing-up.
 // TODO: Add option to check for existing username, and denying signup attempt.
 
-export function AppLoginSignup({ isSignUp }) {
-    const isModalOpen = useSelector(storeState => storeState.stayModule.isModalOpen)
+export function AppLoginSignup({ isSignUp, isQuick = false }) {
     const registerModalRef = useClickOutside(onClickOutsideModal)
+    const initialCredentials = useLoginSignupCredentials(isSignUp, isQuick)
 
 
     function onClickOutsideModal() {
@@ -45,13 +43,13 @@ export function AppLoginSignup({ isSignUp }) {
     function onQuickLogin(ev) {
         ev.preventDefault()
         ev.stopPropagation()
-        console.log('Clicked Quick Login')
+        setAppModal(SET_APP_MODAL_LOGIN_QUICK)
     }
 
     function onQuickSignup(ev) {
         ev.preventDefault()
         ev.stopPropagation()
-        console.log('Clicked Quick Signup')
+        // setAppModal(SET_APP_MODAL_SIGNUP_QUICK)
     }
 
     function onSubmit(values) {
@@ -66,10 +64,7 @@ export function AppLoginSignup({ isSignUp }) {
         try {
             const user = await login(values)
             showSuccessMsg(`Welcome: ${user.fullname}`)
-            if (isModalOpen) {
-                console.log('closing modal 2')
-                setAppModal(CLOSE_APP_MODAL)
-            }
+            setAppModal(CLOSE_APP_MODAL)
         } catch (err) {
             showErrorMsg('Cannot login')
         }
@@ -77,10 +72,7 @@ export function AppLoginSignup({ isSignUp }) {
 
     async function handleSignup(values) {
         if (!values.username || !values.password || !values.fullname) return
-        if (isModalOpen) {
-            console.log('closing modal 3')
-            setAppModal(CLOSE_APP_MODAL)
-        }
+        setAppModal(CLOSE_APP_MODAL)
         signup(values)
     }
 
@@ -100,13 +92,13 @@ export function AppLoginSignup({ isSignUp }) {
                     <span className='fs22 lh26 ff-circular-semibold'>Welcome to StayHub</span>
                 </article>
 
-                <FormLoginSignup isSignUp={isSignUp} onSubmit={onSubmit} />
+                <FormLoginSignup isSignUp={isSignUp} onSubmit={onSubmit} initialCredentials={initialCredentials} />
 
                 <article className="or-divider flex align-center">
                     <span className='fs12 lh16'>or</span>
                 </article>
 
-                <article className='custom-btn-white-container btn-toggler-login-signup'>
+                <article className='custom-btn-white-container toggler-login-signup'>
                     <button className='fs14 lh20 ff-circular-semibold' onClick={(ev) => onChangeModal(ev)}>
                         {isSignUp ? 'Log in' : 'Sign up'}
                     </button>
@@ -118,7 +110,7 @@ export function AppLoginSignup({ isSignUp }) {
                     </button>
                 </article>
 
-                <article className='custom-btn-white-container'>
+                <article className='custom-btn-white-container quick-signup' title='not yet implemented'>
                     <button className='fs14 lh20 ff-circular-semibold' onClick={(ev) => onQuickSignup(ev)}>
                         Quick Sign up (as new user)
                     </button>

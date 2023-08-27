@@ -68,6 +68,14 @@
                 }
             }
 
+            &.quick-signup button {
+                background-color: $gray-clr6;
+                &:hover {
+                    background-color: $gray-clr6;
+                    cursor: no-drop;
+                }
+            }
+
             &:not(:last-child) {
                 margin-block-end: 16px;
             }

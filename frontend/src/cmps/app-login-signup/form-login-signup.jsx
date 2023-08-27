@@ -21,12 +21,12 @@ const validationSchema = Yup.object().shape({
 })
 
 
-export function FormLoginSignup({ isSignUp, onSubmit }) {
+export function FormLoginSignup({ isSignUp, onSubmit, initialCredentials }) {
 
-    const credentials = { username: '', password: '', fullname: '' }
     return (
         <Formik
-            initialValues={credentials}
+            enableReinitialize
+            initialValues={initialCredentials}
             validationSchema={validationSchema}
             onSubmit={onSubmit}
         >
