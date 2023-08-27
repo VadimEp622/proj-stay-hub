@@ -10,8 +10,9 @@ import { userService } from "../../../services/user.service.js"
 import { STAR_12 } from "../../../services/svg.service.js"
 
 // Store
-import { setModal } from "../../../store/stay.actions.js"
 import { AddToWishlist, removeFromWishlist } from "../../../store/user.actions.js"
+import { SET_APP_MODAL_LOGIN } from "../../../store/system.reducer.js"
+import { setAppModal } from "../../../store/system.action.js"
 
 // Components
 import { PreviewImageCarousel } from "./stay-preview/preview-image-carousel.jsx"
@@ -46,7 +47,7 @@ export function StayPreview({ stay }) {
             ev.stopPropagation()
         }
         if (!loggedInUser) {
-            setModal('logIn')
+            setAppModal(SET_APP_MODAL_LOGIN)
             return
         }
         if (likeSVG === 'heart-red') {

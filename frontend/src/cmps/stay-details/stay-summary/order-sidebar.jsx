@@ -7,10 +7,8 @@ import { utilService } from "../../../services/util.service.js"
 
 // Store
 import { setOrder } from "../../../store/user.actions.js"
-import { setModal } from "../../../store/stay.actions.js"
 
 // Custom Hooks
-import { useClickOutside } from "../../../customHooks/useClickOutsideModal.js"
 import useStayDates from "../../../customHooks/useStayDates.js"
 import useStayGuests from "../../../customHooks/useStayGuests.js"
 import useStayDetails from "../../../customHooks/useStayDetails.js"
@@ -21,6 +19,8 @@ import { DatesAndGuests } from "./order-sidebar/dates-and-guests.jsx"
 import { Pricing } from "./order-sidebar/pricing.jsx"
 import { SpecialInfo } from "./order-sidebar/special-info.jsx"
 import { ButtonMain } from "../../_reuseable-cmps/button-main.jsx"
+import { SET_APP_MODAL_LOGIN } from "../../../store/system.reducer.js"
+import { setAppModal } from "../../../store/system.action.js"
 
 
 
@@ -50,7 +50,7 @@ export function OrderSidebar({ stay, randomDate, hostImgUrl }) {
         ev.stopPropagation()
         if (!loggedInUser) {
             console.log("NOT logged in click")
-            setModal("logIn")
+            setAppModal(SET_APP_MODAL_LOGIN)
         }
         else {
             console.log("logged in click")
@@ -110,8 +110,8 @@ export function OrderSidebar({ stay, randomDate, hostImgUrl }) {
 
     return (
         <section className="order-sidebar">
-
             <section className="order-block">
+
                 <section className="order">
                     <CostAndReviewScore stay={stay} orderDetails={orderDetails} />
                     <DatesAndGuests
@@ -121,16 +121,18 @@ export function OrderSidebar({ stay, randomDate, hostImgUrl }) {
                         setGuests={setGuests}
                         handleDateChange={handleDateChange}
                     />
-                    {/* <ButtonMain text={'Reserve'} onClickButton={(ev) => onReserveClick(ev)} /> */}
                     <ButtonMain
                         text={'Reserve'}
                         onClickButton={(ev) => onReserveClick(ev)}
                     />
                 </section>
+
                 <article className="assurance flex column align-center">
                     <span className="fs14 lh18">You won't be charged yet</span>
                 </article>
+
                 <Pricing orderDetails={orderDetails} />
+
             </section>
 
             <SpecialInfo stay={stay} />

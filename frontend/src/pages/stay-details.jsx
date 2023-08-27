@@ -14,6 +14,8 @@ import { HEART_16, RED_HEART_16 } from '../services/svg.service.js'
 
 // Store
 import { AddToWishlist, removeFromWishlist } from '../store/user.actions.js'
+import { setAppModal } from '../store/system.action.js'
+import { SET_APP_MODAL_LOGIN } from '../store/system.reducer.js'
 
 // Components
 import { Loader } from '../cmps/_reuseable-cmps/loader.jsx'
@@ -29,7 +31,6 @@ import { StayPhotos } from '../cmps/stay-details/stay-photos.jsx'
 
 // TODO-priority-low: improve hearts/wishlist system (may need to work on backend for this)
 
-
 export function StayDetails() {
     const loggedInUser = useSelector(storeState => storeState.userModule.user)
     const wishedListItems = useSelector(storeState => storeState.userModule.user?.wishlist) // TODO: check if this is necessary
@@ -39,10 +40,6 @@ export function StayDetails() {
     const [isLikeClicked, setIsLikeClicked] = useState(false)
     const stayHostImgUrlRef = useRef()
     const likeSvg = isLikeClicked ? RED_HEART_16 : HEART_16
-
-    useEffect(() => {
-
-    }, [])
 
 
     useEffect(() => {
@@ -63,7 +60,7 @@ export function StayDetails() {
             ev.stopPropagation()
         }
         if (!loggedInUser) {
-            // setModal('logIn')
+            setAppModal(SET_APP_MODAL_LOGIN)
             return
         }
         if (likeSvg === RED_HEART_16) {

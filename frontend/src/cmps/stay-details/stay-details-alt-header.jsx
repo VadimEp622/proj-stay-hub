@@ -5,14 +5,12 @@ import { Link, useNavigate } from 'react-router-dom'
 // Services
 import { reviewService } from "../../services/review.service.js"
 import { STAR } from "../../services/svg.service.js"
-import { utilService } from "../../services/util.service.js"
 
 // Components
 import { ButtonMain } from "../_reuseable-cmps/button-main.jsx"
-import { setModal } from "../../store/stay.actions.js"
 import SvgHandler from '../_reuseable-cmps/svg-handler.jsx'
-
-
+import { setAppModal } from '../../store/system.action.js'
+import { SET_APP_MODAL_LOGIN } from '../../store/system.reducer.js'
 
 
 
@@ -59,7 +57,7 @@ export function StayDetailsAltHeader({ stay, loggedInUser }) {
         ev.stopPropagation()
         if (!loggedInUser) {
             console.log("NOT logged in click")
-            setModal("logIn")
+            setAppModal(SET_APP_MODAL_LOGIN)
         }
         else {
             console.log("logged in click")
