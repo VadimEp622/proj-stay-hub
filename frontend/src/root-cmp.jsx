@@ -33,10 +33,14 @@ import { UserMsg } from './cmps/user-msg.jsx'
 // TODO-priority-high: make stay-details search, redirect to stay-index, with new query
 // TODO-priority-high: make stay-details work for mobile (either attempt at convert existing, or build new one)
 // TODO-priority-high: organize cmps
+// TODO-priority-high: firefox site looks very different from chrome, figure out a solution
 
 
 // TODO-medium: research and decide which sizes in scss to convert to vars, and whether they needs to be rem/em dependant
 // TODO-medium: handle server interactions with minimum data transfer | sockets
+
+
+// TODO-medium: in stay-details, in alt-header, box-shadow from lower cmp encroaches on alt-header area
 
 
 export function RootCmp() {
