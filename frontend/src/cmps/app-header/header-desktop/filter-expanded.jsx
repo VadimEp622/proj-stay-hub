@@ -93,7 +93,7 @@ export function FilterExpanded(
                 <article className={`where-container${selectedFilterBox === 'where' ? ' active' : ''}`} name="where" onClick={onSetSelectedFilterBox} >
                     <section className="where">
                         <h3 className="fs12 lh16 ff-circular-bold">Where</h3>
-                        <input className="fs14 lh18" name="filterText" value={filterBy.filterText} onChange={handleChange} placeholder="Search destinations"></input>
+                        <input autoComplete="off" className="fs14 lh18" name="filterText" value={filterBy.filterText} onChange={handleChange} placeholder="Search destinations"></input>
                     </section>
                 </article>
                 <article className={`check-in-container${selectedFilterBox === 'check-in' ? ' active' : ''}`} name="check-in" onClick={onSetSelectedFilterBox}>
