@@ -22,8 +22,13 @@ import { LongTxt } from "../../_reuseable-cmps/long-txt.jsx"
 import { ButtonMain } from "../../_reuseable-cmps/button-main.jsx"
 
 
+
+// TODO: implement main site button for search, and implement folded search button (simple circle button)
+//    |
+//    V
+// TODO: At 950px (and lower) viewport width, change main-button to simple circle button
+
 // TODO: find a way to improve styling to be even more organized (without compromising functionality)
-// TODO: implement main site button for search, and implement folded search button (shortened width)
 // TODO: fix distancing for the modals opened by clicking different filter parameters
 
 
