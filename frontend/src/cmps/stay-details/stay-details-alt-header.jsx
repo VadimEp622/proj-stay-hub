@@ -15,6 +15,7 @@ import SvgHandler from '../_reuseable-cmps/svg-handler.jsx'
 
 
 
+
 // TODO: check if these observers here need to be unobserved when component unmounts 
 
 
@@ -89,7 +90,11 @@ export function StayDetailsAltHeader({ stay, loggedInUser }) {
                                 <span className="review-count">{stay.reviews.length} {reviews}</span>
                             </section>
                         </section>
-                        <ButtonMain text={"Reserve"} onClickButton={(ev) => onClickButton(ev)} />
+                        {/* <ButtonMain text={"Reserve"} onClickButton={(ev) => onClickButton(ev)} /> */}
+                        <ButtonMain
+                            text={'Reserve'}
+                            onClickButton={(ev) => onClickButton(ev)}
+                        />
                     </section>
                 </section>
             </section>

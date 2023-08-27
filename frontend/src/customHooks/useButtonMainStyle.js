@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-export function useButtonBackgroundStyle() {
+export function useButtonBackgroundStyle(borderRadius = '8px') {
     const [positionX, setPositionX] = useState(0)
     const [positionY, setPositionY] = useState(0)
     const [backgroundStyle, setBackgroundStyle] = useState({})
@@ -24,6 +24,7 @@ export function useButtonBackgroundStyle() {
                 rgb(189, 30, 89) 75%,
                 rgb(189, 30, 89) 100%
             )`,
+            borderRadius
         }
         setBackgroundStyle(newBackgroundStyle)
     }, [positionX, positionY])

@@ -127,7 +127,7 @@ export function FilterExpanded(
                         <section className="btn-search-container">
                             <ButtonMain
                                 onClickButton={(ev) => onSubmit(ev)}
-                                text={(
+                                content={(
                                     <section className="search">
                                         <section className="svg-container">
                                             <SvgHandler svgName={SEARCH} />
@@ -135,15 +135,9 @@ export function FilterExpanded(
                                         <span className="fs16 lh16">Search</span>
                                     </section>
                                 )}
+                                borderRadius={'32px'}
                             />
-
                         </section>
-                        {/* <button className="search" onClick={(ev) => onSubmit(ev)}>
-                            <section className="svg-container">
-                                <SvgHandler svgName={SEARCH} />
-                            </section>
-                            <span className="fs16 lh16">Search</span>
-                        </button> */}
                     </section>
                 </article>
                 <div className="size-less">

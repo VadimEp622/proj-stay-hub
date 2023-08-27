@@ -1,40 +1,50 @@
 .btn-main-container {
-    position: relative;
-    width: 100%;
-    height: 48px;
-    padding: 0 0;
-    margin: 0 0;
-    cursor: pointer;
-    border: none;
-    display: grid;
-    grid-template: repeat(10, 1fr) / repeat(10, 1fr);
-
-    & .cell {
+    & .btn-main {
         width: 100%;
-        height: 100%;
-        z-index: 1;
-    }
+        position: relative;
+        padding: 0 0;
+        padding-block: 0;
+        padding-inline: 0;
+        margin: 0 0;
+        border: none;
+        font-family: sans-serif;
 
-    & .content {
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100%;
-        border-radius: 8px;
-
-        & .btn-txt {
+        & .content {
             padding: 0 0;
             margin: 0 0;
             color: $gray-clr-1;
+
+            & span {
+                display: block;
+                font-weight: 600;
+            }
+        }
+
+        & span.text {
+            display: block;
+            font-weight: 600;
+            color: $gray-clr-1;
             font-size: 16px;
             line-height: 20px;
-            font-weight: 600;
-            font-family: sans-serif;
+            padding-inline: 24px;
+            padding-block: 14px;
+        }
+
+        & .cell-container {
+            position: absolute;
+            inset: 0;
+            display: grid;
+            grid-template: repeat(10, 1fr) / repeat(10, 1fr);
+
+            & .cell {
+                width: 100%;
+                height: 100%;
+                z-index: 1;
+            }
+        }
+
+        &:hover {
+            cursor: pointer;
         }
     }
 }

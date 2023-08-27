@@ -16,11 +16,12 @@ import useStayGuests from "../../../customHooks/useStayGuests.js"
 import useStayDetails from "../../../customHooks/useStayDetails.js"
 
 // Components
-import { ButtonMain } from "../../_reuseable-cmps/button-main.jsx"
 import { CostAndReviewScore } from "./order-sidebar/cost-and-review-score.jsx"
 import { DatesAndGuests } from "./order-sidebar/dates-and-guests.jsx"
 import { Pricing } from "./order-sidebar/pricing.jsx"
 import { SpecialInfo } from "./order-sidebar/special-info.jsx"
+import { ButtonMain } from "../../_reuseable-cmps/button-main.jsx"
+
 
 
 // TODO: organize this cmp.
@@ -120,7 +121,11 @@ export function OrderSidebar({ stay, randomDate, hostImgUrl }) {
                         setGuests={setGuests}
                         handleDateChange={handleDateChange}
                     />
-                    <ButtonMain text={'Reserve'} onClickButton={(ev) => onReserveClick(ev)} />
+                    {/* <ButtonMain text={'Reserve'} onClickButton={(ev) => onReserveClick(ev)} /> */}
+                    <ButtonMain
+                        text={'Reserve'}
+                        onClickButton={(ev) => onReserveClick(ev)}
+                    />
                 </section>
                 <article className="assurance flex column align-center">
                     <span className="fs14 lh18">You won't be charged yet</span>

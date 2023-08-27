@@ -2,9 +2,9 @@ import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
 
 
-import { ButtonMain } from '../_reuseable-cmps/button-main.jsx'
 import { RegistrationInput } from './form-login-signup/registration-input.jsx'
 import { ValidationError } from './form-login-signup/validation-error.jsx'
+import { ButtonMain } from '../_reuseable-cmps/button-main.jsx'
 
 
 
@@ -54,7 +54,11 @@ export function FormLoginSignup({ isSignUp, onSubmit }) {
                     </section>
 
                     <section className='btn-login-signup'>
-                        <ButtonMain text={`${isSignUp ? 'Register' : 'Continue'}`} isForm={true} />
+                        {/* <ButtonMain text={`${isSignUp ? 'Register' : 'Continue'}`} isForm={true} /> */}
+                        <ButtonMain
+                            text={`${isSignUp ? 'Register' : 'Continue'}`}
+                            isForm={true}
+                        />
                     </section>
 
                 </Form>
