@@ -172,8 +172,8 @@ export function OrderConfirmation() {
                 </aside>
                 <p className="declaration">By selecting the button below, I agree to the <span>Host's House Rules, Ground rules for guests, Airbnb's Rebooking and Refund Policy</span>, and that Airbnb can <span>charge my payment method</span>  if I'm responsible for damage.</p>
             </section>
-            <section className="confirm-btn" onClick={handleOrderConfirm}>
-                <ButtonMain text={'Confirm and pay'} />
+            <section className="confirm-btn">
+                <ButtonMain text={'Confirm and pay'} onClickButton={handleOrderConfirm} />
             </section>
         </section>
     )
