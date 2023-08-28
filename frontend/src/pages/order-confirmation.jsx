@@ -96,46 +96,50 @@ export function OrderConfirmation() {
             </section>
 
             <section className="confirmation-container">
-                <div className="confirmation-details">
 
-                    <div className="trip-details">
-                        <h3 className="fs22">Your trip</h3>
-                        <div className="trip-detail">
-                            <h4 className="fs16">Dates</h4>
-                            <p className="fs16">{formattedTimeRange}</p>
+                <section className="confirmation-dates-guests">
 
-                        </div>
-                        <div className="trip-detail">
-                            <h4 className="fs16">Guests</h4>
-                            <p>{guestsNumber} guest{guestsNumber !== 1 && 's'}</p>
-                        </div>
-                        {/* <ButtonMain onClickButton={onOpenModal} text={'Approve'} /> */}
-                    </div>
-                </div>
-                <div className="message-host">
-                    <h3 className="fs22">Required for your trip</h3>
-                    <h5 className="fs16">Message the Host</h5>
-                    <p>Let the Host know why you're traveling and when you'll check in.</p>
-                    <div className="host-details-preview flex align-center">
+                    <h3 className="fs22">Your trip</h3>
+                    <article className="dates">
+                        <h4 className="fs16">Dates</h4>
+                        <p className="fs16">{formattedTimeRange}</p>
+                    </article>
+                    <article className="guests">
+                        <h4 className="fs16">Guests</h4>
+                        <p>{guestsNumber} guest{guestsNumber !== 1 && 's'}</p>
+                    </article>
+
+                </section>
+
+                <section className="message-host">
+                    <article className="intro">
+                        <h3 className="fs22">Required for your trip</h3>
+                        <h5 className="fs16">Message the Host</h5>
+                        <p>Let the Host know why you're traveling and when you'll check in.</p>
+                    </article>
+                    <section className="host-details-preview flex align-center">
                         <img src={seller.img} alt="host" />
-                        <section className="host-mini-info">
-                            <span>{seller.fullname} </span>
+                        <article className="flex column">
+                            <span className="fs16 ff-circular-semibold">{seller.fullname} </span>
                             <span>joined in {seller.joined}</span>
-                        </section>
-                    </div>
+                        </article>
+                    </section>
                     <textarea name="" id="" cols="30" rows="10"></textarea>
-                </div>
+                </section>
+
                 <div className="cancellation-policy">
                     <h3 className="fs22">Cancellation policy</h3>
                     <p className="fs16">Cancel before {formattedDate} for a partial refund. After that, this reservation is non-refundable.</p>
                 </div>
+
                 <aside className="flex">
-                    <div className="confirmation-preview flex">
-                        <img src={image} alt="stay-image" />
-                        <div className="detail">
-                            <p className="fs12">{type}</p>
+
+                    <section className="confirmation-preview flex">
+                        <img src={image} alt="stay" />
+                        <section className="detail">
+                            <p className="stay-type fs12">{type}</p>
                             <span className="short-summary">{summary}</span>
-                            <section className="confirmation-reviews flex align-center">
+                            <article className="confirmation-reviews flex align-center">
                                 {reviewsCount > 0 && (
                                     <>
                                         <span><SvgHandler svgName={STAR} /></span>
@@ -143,41 +147,39 @@ export function OrderConfirmation() {
                                         <span>({reviewsCount} review{reviewsCount !== 1 && 's'})</span>
                                     </>
                                 )}
-                            </section>
-                        </div>
-                    </div>
-                    <div className="price-details">
-                        <h3 className="fs22">Price details</h3>
-                        <div className="price flex space-between fs16">
-                            <div className="inside-price">${utilService.addCommas(price)} x {nightsCount} night{nightsCount !== 1 && 's'}</div>
-                            <div className="price-total">
-                                ${utilService.addCommas(nightsPrice)}
-                            </div>
-                        </div>
-                        <div className="cleaning-fee flex flex space-between fs16">
-                            <div className="inside-price underline">Cleaning fee</div>
-                            <div className="price-total">
-                                ${utilService.addCommas(cleaningFee)}
-                            </div>
-                        </div>
-                        <div className="service-fee flex flex space-between fs16">
-                            <div className="inside-price underline">StayHub service fee</div>
-                            <div className="price-total">
-                                ${utilService.addCommas(serviceFee)}
-                            </div>
-                        </div>
-                        <div className="total-price flex space-between fs16">
+                            </article>
+                        </section>
+                    </section>
+
+                    <section className="price-details">
+                        <h3 className="title fs22">Price details</h3>
+                        <article className="night-price flex space-between fs16">
+                            <span className="underline">${utilService.addCommas(price)} x {nightsCount} night{nightsCount !== 1 && 's'}</span>
+                            <span>${utilService.addCommas(nightsPrice)}</span>
+                        </article>
+                        <article className="cleaning-fee flex space-between fs16">
+                            <span className="underline">Cleaning fee</span>
+                            <span>${utilService.addCommas(cleaningFee)}</span>
+                        </article>
+                        <article className="service-fee flex space-between fs16">
+                            <span className="underline">StayHub service fee</span>
+                            <span>${utilService.addCommas(serviceFee)}</span>
+                        </article>
+                        <article className="total-price flex space-between fs16 ff-circular-semibold">
                             <span>Total (USD)</span>
                             <span>${utilService.addCommas(total)}</span>
-                        </div>
-                    </div>
+                        </article>
+                    </section>
                 </aside>
-                <p className="declaration">By selecting the button below, I agree to the <span>Host's House Rules, Ground rules for guests, Airbnb's Rebooking and Refund Policy</span>, and that Airbnb can <span>charge my payment method</span>  if I'm responsible for damage.</p>
+
+                <p className="declaration fs12 lh18">By selecting the button below, I agree to the irrelevance of the <span>Host's House Rules, Ground rules for guests, StayHub's Rebooking and Refund Policy</span>, and that StayHub can <span>charge my payment method</span>  if I'm responsible for damage.</p>
+
             </section>
-            
+
             <section className="confirm-btn">
                 <ButtonMain text={'Confirm and pay'} onClickButton={handleOrderConfirm} />
             </section>
+            
         </section>
     )
 }
