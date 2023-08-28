@@ -1,5 +1,5 @@
 // Node Modules
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 
 // Store
@@ -17,6 +17,9 @@ import useIsMobile from '../customHooks/useIsMobile.js'
 // Components
 import { HeaderMobile } from './app-header/header-mobile.jsx'
 import { HeaderDesktop } from './app-header/header-desktop.jsx'
+import { stayService } from '../services/stay.service.js'
+import { Loader } from './_reuseable-cmps/loader.jsx'
+import { useHeaderFilterBy } from '../customHooks/useHeaderFilterBy.js'
 
 
 
@@ -27,23 +30,12 @@ import { HeaderDesktop } from './app-header/header-desktop.jsx'
 // TODO-low-priority: change in filterBy, "country" and "city" keys, to "where" key. (must also change in backend, so keep in mind the deployment)
 
 export function AppHeader({ isStayDetailsPage }) {
-    const [filterBy, setFilterBy] = useState({
-        filterText: '',
-        from: '',
-        // country: '',
-        to: '',
-        capacity: 0,
-        guests: {
-            adults: 0,
-            children: 0,
-            infants: 0,
-            pets: 0
-        },
-    })
+    const [filterBy, setFilterBy] = useHeaderFilterBy()
     const isFilterExpanded = useSelector(storeState => storeState.systemModule.isFilterExpanded)
     const [selectedExperienceTab, setSelectedExperienceTab] = useState('stays')
     const [selectedFilterBox, setSelectedFilterBox] = useState('where')
     const isMobile = useIsMobile()
+
 
 
     function onSubmit(ev) {
@@ -149,7 +141,7 @@ export function AppHeader({ isStayDetailsPage }) {
 
     const layoutType = !isStayDetailsPage ? 'main-layout' : 'details-layout'
     const screenType = isMobile ? 'mobile' : ''
-
+    if (!filterBy) return <Loader/>
     return (
         <header className={`app-header-container full ${layoutType} ${screenType}`}>
             {

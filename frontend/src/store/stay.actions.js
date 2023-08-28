@@ -1,14 +1,17 @@
-// import { stayService } from "../services/stay.service.local.js";
-import { stayService } from "../services/stay.service.js";
-import { userService } from "../services/user.service.js";
-import { store } from './store.js'
+import { stayService } from "../services/stay.service.js"
+import { userService } from "../services/user.service.js"
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
-import { ADD_STAY, ADD_TO_CART, CLEAR_CART, REMOVE_STAY, REMOVE_FROM_CART, SET_STAYS, UNDO_REMOVE_STAY, UPDATE_STAY, UPDATE_FILTER_BY, SET_GUESTS, SET_MODAL_OPEN, SET_CURR_HOST_IMG_URL } from "./stay.reducer.js";
-import { SET_SCORE } from "./user.reducer.js";
-import { LOADING_DONE, LOADING_START } from "./system.reducer.js";
 
-// ****************** Action Creators ****************** :
+import { store } from './store.js'
+import {
+    ADD_STAY, ADD_TO_CART, CLEAR_CART, REMOVE_STAY, REMOVE_FROM_CART, SET_STAYS, UNDO_REMOVE_STAY, UPDATE_STAY, UPDATE_FILTER_BY, SET_GUESTS, SET_MODAL_OPEN, SET_CURR_HOST_IMG_URL, RESET_FILTER_BY
+} from "./stay.reducer.js"
+import { SET_SCORE } from "./user.reducer.js"
+import { LOADING_DONE, LOADING_START } from "./system.reducer.js"
 
+// =====================================================
+// ================== Action Creators ================== :
+// =====================================================
 export function getActionRemoveStay(stayId) {
     return {
         type: REMOVE_STAY,
@@ -27,9 +30,11 @@ export function getActionUpdateStay(stay) {
         stay
     }
 }
+// =====================================================
+// ================== Action senders ================== :
+// =====================================================
 
-// ****************** Action senders ****************** :
-
+// ******************************* Stays *******************************
 export async function loadStays(filterBy) {
     try {
         // console.log('hi from stay action, loadStays')
@@ -57,15 +62,6 @@ export async function removeStay(stayId) {
     }
 }
 
-export async function setHostImgUrl(imgUrl) {
-    try {
-        store.dispatch({ type: SET_CURR_HOST_IMG_URL, imgUrl })
-    } catch (err) {
-        console.log('Cannot set imgUrl', err)
-        throw err
-    }
-}
-
 export async function addStay(stay) {
     try {
         const savedStay = await stayService.save(stay)
@@ -87,10 +83,25 @@ export async function updateStay(stay) {
         throw err
     }
 }
-
+// *********************************************************************
+// ***************************** FilterBy ******************************
 export function updateFilterBy(filterBy) {
     store.dispatch({ type: UPDATE_FILTER_BY, filterBy })
 }
+
+export function resetFilterBy() {
+    store.dispatch({ type: RESET_FILTER_BY })
+}
+// *********************************************************************
+export async function setHostImgUrl(imgUrl) {
+    try {
+        store.dispatch({ type: SET_CURR_HOST_IMG_URL, imgUrl })
+    } catch (err) {
+        console.log('Cannot set imgUrl', err)
+        throw err
+    }
+}
+
 
 export function addToCart(stay) {
     store.dispatch({

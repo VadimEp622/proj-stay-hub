@@ -9,7 +9,7 @@ export function Loader() {
             color="rgb(113, 113, 113)"
             ariaLabel="three-dots-loading"
             wrapperStyle={{}}
-            wrapperClassName=""
+            wrapperClass="flex justify-center"
             visible={true}
         />
     )

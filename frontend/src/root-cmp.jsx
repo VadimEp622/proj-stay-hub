@@ -17,7 +17,6 @@ import { socketService, SOCKET_EMIT_STAY_RESERVED, SOCKET_EMIT_USER_WATCH } from
 // Components
 import { AppHeader } from './cmps/app-header.jsx'
 import { AppFooter } from './cmps/app-footer.jsx'
-import { DynamicCmp } from './cmps/_reuseable-cmps/dynamicCmp.jsx'
 import { UserMsg } from './cmps/user-msg.jsx'
 import { AppMainModal } from './cmps/app-main-modal.jsx'
 
@@ -31,8 +30,12 @@ import { AppMainModal } from './cmps/app-main-modal.jsx'
 // TODO-priority-high: make dates that were used in filter, to be displayed in stay-details order section, and reserve page, etc...
 // TODO-priority-high: fix timestamps render from OLD "availableDates" to NEW "availableDatesImproved" (temp. name)
 
+// TODO-priority-high: clicking on site LOGO, should reset filterBy, and initiate new loadStay() with the reset filterBy!!!
 // TODO-priority-high: make stay-details search, redirect to stay-index, with new query
 // TODO-priority-high: make stay-details work for mobile (either attempt at convert existing, or build new one)
+
+
+// **** Abstract ****
 // TODO-priority-high: organize cmps
 // TODO-priority-high: firefox site looks very different from chrome, figure out a solution
 

@@ -8,6 +8,7 @@ const STORAGE_KEY = 'stay'
 export const stayService = {
     query,
     getById,
+    getEmptyFilterBy,
     save,
     remove,
     getEmptyStay,
@@ -42,6 +43,21 @@ async function query(filterBy = {
 async function getById(stayId) {
     console.log('stay.service.js --> getById:', stayId);
     return httpService.get(`stay/${stayId}`)
+}
+
+function getEmptyFilterBy() {
+    return {
+        filterText: '',
+        from: '',
+        to: '',
+        capacity: 0,
+        guests: {
+            adults: 0,
+            children: 0,
+            infants: 0,
+            pets: 0
+        }
+    }
 }
 
 async function save(stay) {
