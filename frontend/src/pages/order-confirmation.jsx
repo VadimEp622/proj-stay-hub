@@ -87,12 +87,14 @@ export function OrderConfirmation() {
 
     return (
         <section className="order-confirmation" >
-            <section className="confirmation-header flex">
+
+            <section className="confirmation-header flex align-center">
                 <Link className="return-btn" to={`/stay/${id}`}>
                     <SvgHandler svgName={ARROW_LEFT} />
                 </Link>
                 <h2>Confirm and pay</h2>
             </section>
+
             <section className="confirmation-container">
                 <div className="confirmation-details">
 
@@ -172,6 +174,7 @@ export function OrderConfirmation() {
                 </aside>
                 <p className="declaration">By selecting the button below, I agree to the <span>Host's House Rules, Ground rules for guests, Airbnb's Rebooking and Refund Policy</span>, and that Airbnb can <span>charge my payment method</span>  if I'm responsible for damage.</p>
             </section>
+            
             <section className="confirm-btn">
                 <ButtonMain text={'Confirm and pay'} onClickButton={handleOrderConfirm} />
             </section>
