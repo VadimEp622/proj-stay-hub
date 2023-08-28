@@ -1,6 +1,7 @@
 // Node Modules
 import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
 // Store
 import { store } from '../store/store.js'
@@ -17,7 +18,6 @@ import useIsMobile from '../customHooks/useIsMobile.js'
 // Components
 import { HeaderMobile } from './app-header/header-mobile.jsx'
 import { HeaderDesktop } from './app-header/header-desktop.jsx'
-import { stayService } from '../services/stay.service.js'
 import { Loader } from './_reuseable-cmps/loader.jsx'
 import { useHeaderFilterBy } from '../customHooks/useHeaderFilterBy.js'
 
@@ -35,11 +35,17 @@ export function AppHeader({ isStayDetailsPage }) {
     const [selectedExperienceTab, setSelectedExperienceTab] = useState('stays')
     const [selectedFilterBox, setSelectedFilterBox] = useState('where')
     const isMobile = useIsMobile()
-
+    const navigate = useNavigate()
 
 
     function onSubmit(ev) {
         ev.preventDefault()
+        const filter = createFilterObject()
+        updateFilterBy(filter)
+        if (isStayDetailsPage) navigate('/')
+    }
+
+    function createFilterObject() {
         const filter = {
             city: '',
             country: '',
@@ -70,7 +76,7 @@ export function AppHeader({ isStayDetailsPage }) {
             filter.guests = filterBy.guests
         }
         if (filterBy.label) filter.label = filterBy.label
-        updateFilterBy(filter)
+        return filter
     }
 
     function handleChange({ target }) {
@@ -141,7 +147,7 @@ export function AppHeader({ isStayDetailsPage }) {
 
     const layoutType = !isStayDetailsPage ? 'main-layout' : 'details-layout'
     const screenType = isMobile ? 'mobile' : ''
-    if (!filterBy) return <Loader/>
+    if (!filterBy) return <Loader />
     return (
         <header className={`app-header-container full ${layoutType} ${screenType}`}>
             {
