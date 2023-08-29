@@ -29,10 +29,6 @@
         border: 1px solid $gray-clr3;
         position: relative;
 
-        &.all {
-            background-color: $gray-clr-1;
-        }
-
         & :is(.where-container, .check-in-container, .check-out-container, .who-container) {
             &:is(.check-in-container, .check-out-container) {
                 margin-left: 1px;
@@ -128,41 +124,51 @@
                     }
 
                     & .btn-search-container {
+                        position: relative;
                         margin-block: auto;
                         margin-inline-end: 8px;
-                    }
+                        margin-inline-start: 0px;
+                        width: 111.75px;
+                        transition:
+                            width 0.2s ease-in,
+                            margin-inline-start 0.2s ease-in;
 
-                    & .search {
-                        display: flex;
-                        padding: 0;
-                        border: 0;
-                        align-items: center;
-                        border-radius: 32px;
-                        // height: 48px;
-                        // background-color: $main-clr0;
-                        padding-block: 16px;
-                        padding-inline: 16px;
-                        margin-block: auto;
-                        // margin-inline-end: 8px;
+                        & .search {
+                            display: flex;
+                            align-items: center;
 
-                        & > * {
-                            color: $gray-clr-1;
-                            width: fit-content;
+                            margin-block: auto;
+                            padding: 0;
+                            padding-block: 16px;
+                            padding-inline: 16px;
 
-                            &:first-child {
-                                height: 16px;
+                            border: 0;
+                            border-radius: 32px;
+
+                            & > * {
+                                color: $gray-clr-1;
+                                width: fit-content;
+
+                                &:first-child {
+                                    height: 16px;
+                                }
+
+                                &:last-child {
+                                    font-family: Circular-Semibold;
+                                    padding-inline-start: 8px;
+                                    padding-inline-end: 4px;
+                                    font-weight: 400;
+                                    max-width: 63.75px;
+                                    opacity: 1;
+                                    transition:
+                                        max-width 0.2s ease-in,
+                                        opacity 0.2s;
+                                }
                             }
 
-                            &:last-child {
-                                font-family: Circular-Semibold;
-                                padding-inline-start: 8px;
-                                padding-inline-end: 4px;
-                                font-weight: 400;
+                            &:hover {
+                                cursor: pointer;
                             }
-                        }
-
-                        &:hover {
-                            cursor: pointer;
                         }
                     }
                 }
@@ -200,6 +206,21 @@
 
             &:hover {
                 cursor: pointer;
+            }
+        }
+
+        &.all {
+            background-color: $gray-clr-1;
+
+            & .who-container .who-search .btn-search-container {
+                width: 48px;
+                margin-inline-start: 64px;
+
+                & .search > :last-child {
+                    // visibility: hidden;
+                    opacity: 0;
+                    max-width: 0px;
+                }
             }
         }
 
