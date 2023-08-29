@@ -1,7 +1,7 @@
 // Node modules
 import { useEffect } from "react"
 import { useSelector } from "react-redux"
-import { Link, useNavigate } from "react-router-dom"
+import { Link, useLocation, useNavigate } from "react-router-dom"
 
 // Services
 import { ARROW_LEFT, STAR } from "../services/svg.service.js"
@@ -13,10 +13,12 @@ import { addConfirmedTrip } from "../store/user.actions.js"
 
 // Custom hooks
 import { useClickOutside } from "../customHooks/useClickOutsideModal.js"
+import useScrollToTop from "../customHooks/useScrollToTop.js"
 
 // Components
 import { ButtonMain } from "../cmps/_reuseable-cmps/button-main.jsx"
 import SvgHandler from "../cmps/_reuseable-cmps/svg-handler.jsx"
+import { Loader } from "../cmps/_reuseable-cmps/loader.jsx"
 
 
 
@@ -25,9 +27,11 @@ import SvgHandler from "../cmps/_reuseable-cmps/svg-handler.jsx"
 
 
 export function OrderConfirmation() {
-
+    useScrollToTop()
     const navigate = useNavigate()
+    const location = useLocation()
     const orderObject = useSelector(storeState => storeState.userModule.order)
+    console.log('orderObject', orderObject)
 
 
     // useEffect(() => {
@@ -42,27 +46,14 @@ export function OrderConfirmation() {
     // }
 
     useEffect(() => {
-        console.log('orderObject', orderObject)
-    }, [orderObject])
+        //  if refreshed, or entered URL path directly with /book/ inside, redirect to stay page (stay-details)
+        if (Object.keys(orderObject).length === 0) {
+            const pathName = location.pathname.split('/')
+            const newPathName = pathName.filter(name => name !== 'book').join('/')
+            navigate(newPathName)
+        }
+    }, [])
 
-
-
-
-
-    // const hostImgUrl = useSelector(storeState => storeState.stayModule.currHostImgUrl)
-    if (!orderObject || !orderObject.stayDetails || !orderObject.orderPrice) return <div>Loading..</div>
-
-
-    const { stayDetails, guestsNumber, checkIn, checkOut, orderPrice, nightsCount, nightsPrice, seller } = orderObject
-    const { reviewsCount, type, summary, rate, image, id } = stayDetails
-    const { total, serviceFee, cleaningFee, price } = orderPrice
-
-    const formattedTimeRange = utilService.getFormattedTimeRange(checkIn, checkOut)
-    // const sellerFirstName = seller.fullname.substring(0, seller.fullname.indexOf(' '))
-    const formattedDate = new Date(utilService.getFutureTime(2, 'day')).toLocaleDateString(undefined, {
-        month: 'short',
-        day: 'numeric',
-    })
 
 
     async function handleOrderConfirm(ev) {
@@ -77,13 +68,29 @@ export function OrderConfirmation() {
         }
         // removeUndefinedProperties(orderObject)
         try {
-            console.log('orderObject', orderObject)
+            console.log('onOrderConfirm -> orderObject', orderObject)
             await addConfirmedTrip(orderObject)
             socketService.emit(SOCKET_EVENT_STAY_RESERVED, orderObject.seller._id)
         } catch (error) {
             console.error('Error adding confirmed trip:', error)
         }
     }
+
+
+
+    if (Object.keys(orderObject).length === 0) return <Loader />
+
+    const { stayDetails, guestCount, checkIn, checkOut, orderPrice, nightsCount, nightsPrice, seller } = orderObject
+    const { reviewsCount, type, summary, rate, image, id } = stayDetails
+    const { total, serviceFee, cleaningFee, price } = orderPrice
+
+    const formattedTimeRange = utilService.getFormattedTimeRange(checkIn, checkOut)
+    // const sellerFirstName = seller.fullname.substring(0, seller.fullname.indexOf(' '))
+    const formattedDate = new Date(utilService.getFutureTime(2, 'day')).toLocaleDateString(undefined, {
+        month: 'short',
+        day: 'numeric',
+    })
+
 
     return (
         <section className="order-confirmation" >
@@ -95,9 +102,9 @@ export function OrderConfirmation() {
                 <h2>Confirm and pay</h2>
             </section>
 
-            <section className="confirmation-container">
+            <section className="confirmation-main">
 
-                <section className="confirmation-dates-guests">
+                <section className="dates-guests">
 
                     <h3 className="fs22">Your trip</h3>
                     <article className="dates">
@@ -106,7 +113,7 @@ export function OrderConfirmation() {
                     </article>
                     <article className="guests">
                         <h4 className="fs16">Guests</h4>
-                        <p>{guestsNumber} guest{guestsNumber !== 1 && 's'}</p>
+                        <p>{guestCount} guest{guestCount !== 1 && 's'}</p>
                     </article>
 
                 </section>
@@ -117,7 +124,7 @@ export function OrderConfirmation() {
                         <h5 className="fs16">Message the Host</h5>
                         <p>Let the Host know why you're traveling and when you'll check in.</p>
                     </article>
-                    <section className="host-details-preview flex align-center">
+                    <section className="host-preview flex align-center">
                         <img src={seller.img} alt="host" />
                         <article className="flex column">
                             <span className="fs16 ff-circular-semibold">{seller.fullname} </span>
@@ -132,11 +139,11 @@ export function OrderConfirmation() {
                     <p className="fs16">Cancel before {formattedDate} for a partial refund. After that, this reservation is non-refundable.</p>
                 </div>
 
-                <aside className="flex">
+                <aside className="order-confirmation-sidebar flex">
 
-                    <section className="confirmation-preview flex">
+                    <section className="stay-information flex">
                         <img src={image} alt="stay" />
-                        <section className="detail">
+                        <section className="information">
                             <p className="stay-type fs12">{type}</p>
                             <span className="short-summary">{summary}</span>
                             <article className="confirmation-reviews flex align-center">
@@ -179,7 +186,7 @@ export function OrderConfirmation() {
             <section className="confirm-btn">
                 <ButtonMain text={'Confirm and pay'} onClickButton={handleOrderConfirm} />
             </section>
-            
+
         </section>
     )
 }
