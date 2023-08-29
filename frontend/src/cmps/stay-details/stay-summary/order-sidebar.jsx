@@ -45,15 +45,12 @@ export function OrderSidebar({ stay, randomDate, hostImgUrl }) {
 
 
     function onReserveClick(ev) {
-        console.log('ev', ev)
         ev.preventDefault()
         ev.stopPropagation()
         if (!loggedInUser) {
-            console.log("NOT logged in click")
             setAppModal(SET_APP_MODAL_LOGIN)
         }
         else {
-            console.log("logged in click")
             const order = createOrder(orderDetails)
             console.log('order', order)
             setOrder(order)
@@ -61,7 +58,7 @@ export function OrderSidebar({ stay, randomDate, hostImgUrl }) {
         }
     }
 
-    function createOrder({ price, nightsCount, serviceFee, cleaningFee }) {
+    function createOrder({ guestCount, price, nightsCount, serviceFee, cleaningFee }) {
         return {
             buyer: {
                 _id: loggedInUser._id,
@@ -78,6 +75,7 @@ export function OrderSidebar({ stay, randomDate, hostImgUrl }) {
             checkIn,
             checkOut,
             nightsCount,
+            guestCount,
             nightsPrice: nightsCount * stay.price,
             orderPrice: {
                 price,
