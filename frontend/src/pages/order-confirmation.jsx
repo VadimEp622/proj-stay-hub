@@ -96,7 +96,7 @@ export function OrderConfirmation() {
         <section className="order-confirmation" >
 
             <section className="confirmation-header flex align-center">
-                <Link className="return-btn" to={`/stay/${id}`}>
+                <Link className="return-btn" to={`/stay/${id}`} title="return">
                     <SvgHandler svgName={ARROW_LEFT} />
                 </Link>
                 <h2>Confirm and pay</h2>

@@ -7,10 +7,13 @@
         & .return-btn {
             padding: 12px;
             border-radius: 32px;
-            transition: background-color 0.2s ease-in;
-
+            transition:
+                background-color 0.2s ease-in,
+                transform 0.2s ease-in;
+            background-color: $gray-clr4;
             &:hover {
-                background-color: $gray-clr4;
+                background-color: $gray-clr2;
+                transform: scale(1.3);
             }
         }
 
