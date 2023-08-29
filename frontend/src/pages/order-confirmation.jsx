@@ -21,9 +21,7 @@ import SvgHandler from "../cmps/_reuseable-cmps/svg-handler.jsx"
 import { Loader } from "../cmps/_reuseable-cmps/loader.jsx"
 
 
-
-// TODO: figure out what's going on here
-// TODO: may have to redo this from scratch, this is a mess...
+// TODO: set redirect when clicking back, using history, instead of new link
 
 
 export function OrderConfirmation() {
