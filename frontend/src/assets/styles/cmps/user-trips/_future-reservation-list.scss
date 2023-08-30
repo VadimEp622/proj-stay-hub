@@ -1,8 +1,9 @@
 .future-reservation-list {
+    border-block-end: 1px solid $gray-clr3;
+
     & .no-trips {
-        padding-block-start:32px;
-        padding-block-end:48px;
-        border-bottom: 1px solid $gray-clr3;
+        padding-block-start: 24px;
+        padding-block-end: 48px;
 
         & .no-trips-header {
             letter-spacing: 0.0008rem;
@@ -26,157 +27,148 @@
         }
     }
 
-    & .trips-container {
-        & .reservations-header {
-            padding-block: 24px;
-            letter-spacing: 0.25px;
-        }
+    & .upcoming-reservation {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 48px;
+        margin-block-end: 48px;
 
-        & .reservations-container {
-            & .upcoming-reservation {
+        & .reservation-container {
+            display: grid;
+            height: 100%;
+            grid-template-columns: 1fr 1fr;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: $box-shadow10;
+            position: relative;
+
+            & .reservation-info {
+                height: auto;
                 display: grid;
-                grid-template-columns: 2fr 1fr;
-                gap: 48px;
-                margin-block-end: 48px;
+                grid-template-rows: 50% 50%;
+                padding: 24px;
 
-                & .reservation-container {
-                    display: grid;
+                & .reservation-header {
+                    border-bottom: 1px solid $gray-clr4;
+
+                    & :first-child {
+                        margin-block-end: rem(8px);
+                    }
+                }
+
+                & .reservation-dates {
                     height: 100%;
-                    grid-template-columns: 1fr 1fr;
-                    border-radius: 12px;
-                    overflow: hidden;
-                    box-shadow: $box-shadow10;
-                    position: relative;
+                    align-items: flex-start;
+                    margin-block-start: 16px;
 
-                    & .reservation-info {
-                        height: auto;
-                        display: grid;
-                        grid-template-rows: 50% 50%;
-                        padding: 24px;
-
-                        & .reservation-header {
-                            border-bottom: 1px solid $gray-clr4;
-
-                            & :first-child {
-                                margin-block-end: rem(8px);
-                            }
-                        }
-
-                        & .reservation-dates {
-                            height: 100%;
-                            align-items: flex-start;
-                            margin-block-start: 16px;
-
-                            & > * {
-                                align-items: flex-start;
-                                height: 100%;
-                                flex: 1;
-                            }
-
-                            & .reservation-date {
-                                width: 20%;
-                                border-right: 1px solid $gray-clr4;
-                                padding-block-end: 24px;
-                            }
-
-                            & .reservation-destination {
-                                height: 100%;
-                                flex-direction: column;
-                                align-items: flex-start;
-                                justify-content: space-around;
-                                padding-inline: 24px;
-                            }
-
-                            & .reservation-confirmation {
-                                height: 100%;
-                                border-left: 1px solid $gray-clr4;
-                                padding-inline-start: 24px;
-                                display: flex;
-                                flex-direction: column;
-                                justify-content: flex-start;
-
-                                & .status {
-                                    padding-block-start: 8px;
-
-                                    &.approved {
-                                        color: $positive-clr0;
-                                    }
-
-                                    &.pending {
-                                        color: $pending-clr0;
-                                    }
-
-                                    &.rejected {
-                                        color: $negative-clr0;
-                                    }
-                                }
-                            }
-                        }
+                    & > * {
+                        align-items: flex-start;
+                        height: 100%;
+                        flex: 1;
                     }
 
-                    & .reservation-img {
-                        width: 100%;
-                        height: 100%;
+                    & .reservation-date {
+                        width: 20%;
+                        border-right: 1px solid $gray-clr4;
+                        padding-block-end: 24px;
+                    }
 
-                        & img {
-                            position: absolute;
-                            width: 50%;
-                            height: 100%;
-                            object-fit: cover;
+                    & .reservation-destination {
+                        height: 100%;
+                        flex-direction: column;
+                        align-items: flex-start;
+                        justify-content: space-around;
+                        padding-inline: 24px;
+                    }
+
+                    & .reservation-confirmation {
+                        height: 100%;
+                        border-left: 1px solid $gray-clr4;
+                        padding-inline-start: 24px;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: flex-start;
+
+                        & .status {
+                            padding-block-start: 8px;
+
+                            &.approved {
+                                color: $positive-clr0;
+                            }
+
+                            &.pending {
+                                color: $pending-clr0;
+                            }
+
+                            &.rejected {
+                                color: $negative-clr0;
+                            }
                         }
                     }
                 }
             }
 
-            & .explore-things-to-do {
-                & .explore-title {
-                    letter-spacing: -0.5px;
+            & .reservation-img {
+                width: 100%;
+                height: 100%;
+
+                & img {
+                    position: absolute;
+                    width: 50%;
+                    height: 100%;
+                    object-fit: cover;
                 }
+            }
+        }
 
-                & .things-to-do {
-                    padding-block-start: 12px;
-                    display: grid;
-                    grid-template-columns: 1fr 1fr;
-                    gap: 8px;
-                    height: 90%;
-                    align-content: space-between;
+        & .explore-things-to-do {
+            & .explore-title {
+                letter-spacing: -0.5px;
+            }
 
-                    & .to-do {
+            & .things-to-do {
+                padding-block-start: 12px;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 8px;
+                height: 90%;
+                align-content: space-between;
+
+                & .to-do {
+                    display: flex;
+
+                    & img {
+                        height: 46px;
+                        width: 46px;
+                        object-fit: cover;
+                        border-radius: 8px;
+                        margin-inline-end: 16px;
+                    }
+
+                    & .show-more {
                         display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        height: 46px;
+                        width: 46px;
+                        object-fit: cover;
+                        border-radius: 8px;
+                        margin-inline-end: 16px;
+                        background-color: $gray-clr4;
+                    }
 
-                        & img {
-                            height: 46px;
-                            width: 46px;
-                            object-fit: cover;
-                            border-radius: 8px;
-                            margin-inline-end: 16px;
+                    & .todo-info {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-around;
+
+                        & h4 {
+                            font-family: Circular-semibold;
                         }
 
-                        & .show-more {
-                            display: flex;
-                            align-items: center;
-                            justify-content: center;
-                            height: 46px;
-                            width: 46px;
-                            object-fit: cover;
-                            border-radius: 8px;
-                            margin-inline-end: 16px;
-                            background-color: $gray-clr4;
-                        }
-
-                        & .todo-info {
-                            display: flex;
-                            flex-direction: column;
-                            justify-content: space-around;
-
-                            & h4 {
-                                font-family: Circular-semibold;
-                            }
-
-                            & span {
-                                font-size: 12px;
-                                color: $gray-clr2;
-                            }
+                        & span {
+                            font-size: 12px;
+                            color: $gray-clr2;
                         }
                     }
                 }

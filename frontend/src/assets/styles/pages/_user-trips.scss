@@ -1,7 +1,12 @@
 .page-user-trips {
-    & .page-title {
-        padding-block:30px;
-        margin-inline-start:24px;
+    & > .page-title {
+        padding-block: 30px;
+        margin-inline-start: 24px;
         letter-spacing: 0.6px;
+    }
+
+    & > :is(.future-reservation-list-container, .past-reservation-list-container) > .reservation-list-header {
+        padding-block: 24px;
+        letter-spacing: 0.25px;
     }
 }

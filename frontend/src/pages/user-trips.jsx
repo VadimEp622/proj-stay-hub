@@ -66,11 +66,16 @@ export function UserTrips() {
     return (
         <section className="page-user-trips">
             <h1 className="page-title fs28">Trips</h1>
-            <FutureReservationList
-                getUpcomingTrips={getUpcomingTrips}
-                handleSearchClick={handleSearchClick}
-            />
-            <PastReservationList getPastTrips={getPastTrips} />
+
+            <section className="future-reservation-list-container">
+                <h3 className="reservation-list-header fs20">Upcoming reservations</h3>
+                <FutureReservationList getUpcomingTrips={getUpcomingTrips} handleSearchClick={handleSearchClick} />
+            </section>
+
+            <section className="past-reservation-list-container">
+                <h3 className="reservation-list-header fs20">Where you've been</h3>
+                <PastReservationList getPastTrips={getPastTrips} />
+            </section>
         </section>
     )
 }

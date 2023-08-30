@@ -47,14 +47,9 @@ export function FutureReservationList({ getUpcomingTrips, handleSearchClick }) {
     return (
         <section className="future-reservation-list">
             {upcomingTrips && upcomingTrips.length > 0 ? (
-                <section className="trips-container">
-                    <h3 className="reservations-header fs20">Upcoming reservations</h3>
-                    <section className="reservations-container">
-                        {upcomingTrips.map(trip =>
-                            <ReservationPreview trip={trip} explore={explore} key={trip._id} />
-                        )}
-                    </section>
-                </section>
+                upcomingTrips.map(trip =>
+                    <ReservationPreview trip={trip} explore={explore} key={trip._id} />
+                )
             ) : (
                 <section className="no-trips">
                     <h3 className="no-trips-header fs22 lh26">No trips booked...yet!</h3>
