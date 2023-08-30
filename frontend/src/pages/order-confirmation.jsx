@@ -22,6 +22,7 @@ import { Loader } from "../cmps/_reuseable-cmps/loader.jsx"
 
 
 // TODO: set redirect when clicking back, using history, instead of new link
+// TODO: when logging out, redirect to stay-details
 
 
 export function OrderConfirmation() {

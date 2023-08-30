@@ -8,6 +8,9 @@ import { showErrorMsg } from '../services/event-bus.service';
 import { useNavigate } from 'react-router-dom'
 import { HostOrders } from '../cmps/host-orders';
 
+
+// TODO: organize this cmp!
+
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 const options = {
