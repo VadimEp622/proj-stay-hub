@@ -3,6 +3,7 @@ import { ReservationPreview } from "./future-reservations/reservation-preview.js
 
 
 export function FutureReservationList({ getUpcomingTrips, handleSearchClick }) {
+    // insert below "explore" into order randomly, into DB, from "order-confirmation" or "stay-details"
     const explore = {
         justForYou: [
             'https://a0.muscache.com/im/pictures/lombard/MtTemplate-1226627-media_library/original/1641efa4-73ba-4037-9f2b-bdb3fd94943b.jpeg?im_w=1440',
@@ -45,10 +46,9 @@ export function FutureReservationList({ getUpcomingTrips, handleSearchClick }) {
     const upcomingTrips = getUpcomingTrips()
     return (
         <section className="future-reservation-list">
-            <h1>Trips</h1>
             {upcomingTrips && upcomingTrips.length > 0 ? (
                 <section className="trips-container">
-                    <h3 className="reservations-header">Upcoming reservations</h3>
+                    <h3 className="reservations-header fs20">Upcoming reservations</h3>
                     <section className="reservations-container">
                         {upcomingTrips.map(trip =>
                             <ReservationPreview trip={trip} explore={explore} key={trip._id} />
@@ -57,9 +57,9 @@ export function FutureReservationList({ getUpcomingTrips, handleSearchClick }) {
                 </section>
             ) : (
                 <section className="no-trips">
-                    <div className="no-trips-header">No trips booked...yet!</div>
-                    <p>Time to dust off your bags and start planning your next adventure</p>
-                    <button onClick={handleSearchClick}>Start searching</button>
+                    <h3 className="no-trips-header fs22 lh26">No trips booked...yet!</h3>
+                    <p className="fs16 lh24">Time to dust off your bags and start planning your next adventure</p>
+                    <button className="fs16" onClick={handleSearchClick}>Start searching</button>
                 </section>
             )}
         </section>

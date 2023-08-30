@@ -1,227 +1,185 @@
 .future-reservation-list {
-    & h1 {
-        padding-top: 30px;
-        padding-bottom: 30px;
-        font-size: 28px;
-        letter-spacing: 0.6px;
-        font-weight: 800;
-        padding-left: 2px;
+    & .no-trips {
+        padding-block-start:32px;
+        padding-block-end:48px;
+        border-bottom: 1px solid $gray-clr3;
+
+        & .no-trips-header {
+            letter-spacing: 0.0008rem;
+        }
+
+        & p {
+            margin-block-start: 8px;
+        }
+
+        & button {
+            background-color: inherit;
+            border: 1px solid $black-clr1;
+            border-radius: 8px;
+            padding-inline: 23px;
+            padding-block: 13px;
+
+            &:hover {
+                cursor: pointer;
+                background-color: $gray-clr4;
+            }
+        }
     }
 
     & .trips-container {
-        & .no-trips {
-            padding-top: 32px;
-            padding-bottom: 48px;
-            border-bottom: 1px solid $gray-clr3;
-
-            h1 {
-                padding-top: 36px;
-                padding-bottom: 24px;
-                font-size: 32px;
-
-                font-weight: 800;
-                line-height: 36px;
-                border-bottom: 1px solid $gray-clr3;
-            }
-
-            .no-trips-header {
-                font-weight: 400px;
-                font-family: Circular-semibold;
-                font-size: 22px;
-                line-height: 26px;
-                letter-spacing: 0.0008rem;
-            }
-
-            p {
-                letter-spacing: 0;
-                font-size: 16px;
-                line-height: 24px;
-                margin-top: 8px;
-            }
-
-            button {
-                height: rem(48px);
-                width: rem(162px);
-                border-radius: rem(8px);
-                font-size: 16px;
-                background-color: inherit;
-                letter-spacing: 0.48px;
-                cursor: pointer;
-                border-width: 1px;
-            }
-        }
-
-        .reservations-header {
-            padding-top: 20px;
-            padding-bottom: 24px;
-            font-size: 20px;
+        & .reservations-header {
+            padding-block: 24px;
             letter-spacing: 0.25px;
-            font-weight: 800;
-            padding-left: 2px;
         }
 
-        .upcoming-reservation {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 48px;
-            margin-bottom: 48px;
-
-            .reservation-container {
+        & .reservations-container {
+            & .upcoming-reservation {
                 display: grid;
-                height: 100%;
-                grid-template-columns: 1fr 1fr;
-                border-radius: 12px;
-                overflow: hidden;
-                box-shadow: $box-shadow10;
-                position: relative;
+                grid-template-columns: 2fr 1fr;
+                gap: 48px;
+                margin-block-end: 48px;
 
-                .reservation-img {
-                    width: 100%;
+                & .reservation-container {
+                    display: grid;
                     height: 100%;
+                    grid-template-columns: 1fr 1fr;
+                    border-radius: 12px;
+                    overflow: hidden;
+                    box-shadow: $box-shadow10;
+                    position: relative;
 
-                    img {
-                        position: absolute;
-                        width: 50%;
+                    & .reservation-info {
+                        height: auto;
+                        display: grid;
+                        grid-template-rows: 50% 50%;
+                        padding: 24px;
+
+                        & .reservation-header {
+                            border-bottom: 1px solid $gray-clr4;
+
+                            & :first-child {
+                                margin-block-end: rem(8px);
+                            }
+                        }
+
+                        & .reservation-dates {
+                            height: 100%;
+                            align-items: flex-start;
+                            margin-block-start: 16px;
+
+                            & > * {
+                                align-items: flex-start;
+                                height: 100%;
+                                flex: 1;
+                            }
+
+                            & .reservation-date {
+                                width: 20%;
+                                border-right: 1px solid $gray-clr4;
+                                padding-block-end: 24px;
+                            }
+
+                            & .reservation-destination {
+                                height: 100%;
+                                flex-direction: column;
+                                align-items: flex-start;
+                                justify-content: space-around;
+                                padding-inline: 24px;
+                            }
+
+                            & .reservation-confirmation {
+                                height: 100%;
+                                border-left: 1px solid $gray-clr4;
+                                padding-inline-start: 24px;
+                                display: flex;
+                                flex-direction: column;
+                                justify-content: flex-start;
+
+                                & .status {
+                                    padding-block-start: 8px;
+
+                                    &.approved {
+                                        color: $positive-clr0;
+                                    }
+
+                                    &.pending {
+                                        color: $pending-clr0;
+                                    }
+
+                                    &.rejected {
+                                        color: $negative-clr0;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    & .reservation-img {
+                        width: 100%;
                         height: 100%;
-                        object-fit: cover;
+
+                        & img {
+                            position: absolute;
+                            width: 50%;
+                            height: 100%;
+                            object-fit: cover;
+                        }
                     }
                 }
             }
 
-            .reservation-header {
-                border-bottom: 1px solid $gray-clr4;
-            }
-
-            .reservation-info {
-                height: auto;
-                display: grid;
-                grid-template-rows: 50% 50%;
-                padding: 24px;
-            }
-
-            .reservation-header :first-child {
-                margin-bottom: rem(8px);
-                font-weight: 800;
-            }
-
-            .reservation-dates {
-                height: 100%;
-                align-items: flex-start;
-                margin-top: 16px;
-            }
-
-            .reservation-dates > * {
-                align-items: flex-start;
-                height: 100%;
-                flex: 1;
-            }
-
-            .reservation-date {
-                width: 20%;
-                border-right: 1px solid $gray-clr4;
-                padding-right: 24px;
-            }
-
-            .reservation-destination {
-                height: 100%;
-                flex-direction: column;
-                align-items: flex-start;
-                justify-content: space-around;
-                padding: 0 24px;
-            }
-
-            .reservation-destination :last-child {
-                font-size: rem(10px);
-            }
-
-            .reservation-confirmation {
-                height: 100%;
-                border-left: 1px solid $gray-clr4;
-                padding-left: 24px;
-                display: flex;
-                flex-direction: column;
-                justify-content: flex-start;
-
-                span {
-                    font-family: Circular-semibold;
+            & .explore-things-to-do {
+                & .explore-title {
+                    letter-spacing: -0.5px;
                 }
 
-                h4 {
-                    font-size: 16px;
-                    padding-top: 8px;
+                & .things-to-do {
+                    padding-block-start: 12px;
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    gap: 8px;
+                    height: 90%;
+                    align-content: space-between;
+
+                    & .to-do {
+                        display: flex;
+
+                        & img {
+                            height: 46px;
+                            width: 46px;
+                            object-fit: cover;
+                            border-radius: 8px;
+                            margin-inline-end: 16px;
+                        }
+
+                        & .show-more {
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            height: 46px;
+                            width: 46px;
+                            object-fit: cover;
+                            border-radius: 8px;
+                            margin-inline-end: 16px;
+                            background-color: $gray-clr4;
+                        }
+
+                        & .todo-info {
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: space-around;
+
+                            & h4 {
+                                font-family: Circular-semibold;
+                            }
+
+                            & span {
+                                font-size: 12px;
+                                color: $gray-clr2;
+                            }
+                        }
+                    }
                 }
-
-                .approved {
-                    color: $positive-clr0;
-                }
-
-                .pending {
-                    color: $pending-clr0;
-                }
-
-                .rejected {
-                    color: $negative-clr0;
-                }
-            }
-        }
-
-        .explore-things-to-do {
-            h5 {
-                font-size: 14px;
-                letter-spacing: -0.5px;
-                font-weight: 600;
-            }
-        }
-
-        .explore-things-to-do > :first-child {
-            height: 10%;
-        }
-
-        .things-to-do {
-            padding-top: 12px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 8px;
-            height: 90%;
-            align-content: space-between;
-        }
-
-        .to-do {
-            display: flex;
-
-            img {
-                height: 46px;
-                width: 46px;
-                object-fit: cover;
-                border-radius: 8px;
-                margin-right: 16px;
-            }
-
-            .show-more {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                height: 46px;
-                width: 46px;
-                object-fit: cover;
-                border-radius: 8px;
-                margin-right: 16px;
-                background-color: $gray-clr4;
-            }
-        }
-
-        .todo-info {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-around;
-
-            h4 {
-                font-family: Circular-semibold;
-            }
-
-            span {
-                font-size: 12px;
-                color: $gray-clr2;
             }
         }
     }

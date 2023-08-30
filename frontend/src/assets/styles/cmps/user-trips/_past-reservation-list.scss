@@ -1,34 +1,40 @@
-.past-reservation-list {
-    & .past-trip {
-        display: flex;
-        margin-top: 24px;
-        padding-bottom: 48px;
-        margin-right: 5%;
+.past-reservation-list-container {
+    & .reservation-list-header {
+        padding-block: 24px;
+        letter-spacing: 0.25px;
+    }
 
-        .past-trip-img {
-            img {
-                border-radius: 8px;
-                overflow: hidden;
-                height: 72px;
-                width: 72px;
-            }
-        }
-
-        .past-trip-info {
+    & .past-reservation-list {
+        & .past-trip {
             display: flex;
-            flex-direction: column;
-            justify-content: space-evenly;
-            margin-left: 16px;
-            padding: 4px 0;
+            padding-block-end: 48px;
+            margin-inline-end: 5%;
 
-            h4 {
-                font-family: Circular-semibold;
-                line-height: 1.6;
+            & .past-trip-img {
+                & img {
+                    border-radius: 8px;
+                    overflow: hidden;
+                    height: 72px;
+                    width: 72px;
+                }
             }
 
-            span {
-                font-size: rem(14px);
-                color: $gray-clr2;
+            & .past-trip-info {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+                margin-inline-start: 16px;
+                padding-block: 4px;
+
+                & h4 {
+                    font-family: Circular-semibold;
+                    line-height: 1.6;
+                }
+
+                & span {
+                    font-size: rem(14px);
+                    color: $gray-clr2;
+                }
             }
         }
     }

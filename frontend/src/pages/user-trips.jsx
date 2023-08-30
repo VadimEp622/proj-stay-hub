@@ -34,6 +34,7 @@ export function UserTrips() {
         try {
             const orders = await orderService.getOrders({ byUserId: loggedInUser._id })
             console.log('orders', orders)
+            // What is the point of the below .filter?
             const filteredTrips = orders.filter(
                 (order) => order.byUser._id === loggedInUser._id
             )
@@ -43,7 +44,7 @@ export function UserTrips() {
         }
     }
 
-    
+
     function getUpcomingTrips() {
         const currentDate = new Date()
         const upcomingTrips = trips
@@ -63,7 +64,8 @@ export function UserTrips() {
     }
 
     return (
-        <section className="user-trips">
+        <section className="page-user-trips">
+            <h1 className="page-title fs28">Trips</h1>
             <FutureReservationList
                 getUpcomingTrips={getUpcomingTrips}
                 handleSearchClick={handleSearchClick}
