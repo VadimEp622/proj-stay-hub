@@ -32,6 +32,11 @@
         & :is(.where-container, .check-in-container, .check-out-container, .who-container) {
             &:is(.check-in-container, .check-out-container) {
                 margin-left: 1px;
+                min-width: 124px;
+            }
+
+            &.who-container .who-search .who span{
+                min-width: 76px;
             }
 
             &:not(.where-container)::before {
@@ -109,6 +114,7 @@
                 &.who-search .who {
                     padding-inline: 24px;
                 }
+
 
                 &.check-out {
                     margin-left: -1.5px;
