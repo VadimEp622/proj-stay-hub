@@ -1,46 +1,31 @@
 .dashboard-page {
-    margin: 24px 0;
+    margin-block: 24px;
 
-    .overview {
+    & .overview {
         box-shadow: $box-shadow16;
         font-family: Circular-semibold;
         font-size: rem(22px);
         padding: 12px;
-        margin-bottom: 24px;
+        margin-block-end: 24px;
 
-        h3 {
-            font-family: Circular-standard;
-            font-weight: 400;
-            font-size: 16px;
-            padding-top: 8px;
-            border-top: 1px solid $gray-clr4;
-            margin-top: 16px;
-            color: $gray-clr2;
-
-            span {
-                font-family: Circular-semibold;
-                font-weight: 800;
-                font-size: 18px;
-                color: $black-clr0;
-            }
-        }
-
-        h4 {
+        & h4 {
             text-align: center;
-            margin: 8px 0;
-            padding-bottom: 16px;
-            border-bottom: $border-bottom;
+            margin-block: 8px;
+            padding-block-end: 16px;
+            border-block-end: $border-bottom;
         }
-        h5 {
-            padding: 8px 0;
+
+        & h5 {
+            padding-block: 8px;
         }
-        span {
+
+        & span {
             font-family: Circular-bold;
         }
     }
 
-    .sales-dashboard {
-        .chart-container {
+    & .sales-dashboard {
+        & .chart-container {
             box-shadow: $box-shadow16;
             padding: 24px;
             border-radius: 12px;

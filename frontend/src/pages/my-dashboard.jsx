@@ -1,17 +1,23 @@
-import React, { useState, useEffect } from 'react';
-import { Bar } from 'react-chartjs-2';
-import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
-import { stayService } from '../services/stay.service';
-import { userService } from '../services/user.service';
-import { LineChart } from '../cmps/line-chart';
-import { showErrorMsg } from '../services/event-bus.service';
+// Node modules
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { HostOrders } from '../cmps/host-orders';
+import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js'
+import { Bar } from 'react-chartjs-2'
+
+// Services
+import { stayService } from '../services/stay.service.js'
+import { userService } from '../services/user.service.js'
+import { showErrorMsg } from '../services/event-bus.service.js'
+
+// Components
+import { LineChart } from '../cmps/line-chart.jsx'
+import { HostOrders } from '../cmps/host-orders.jsx'
+
 
 
 // TODO: organize this cmp!
 
-ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
+ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 
 const options = {
     responsive: true,
@@ -62,28 +68,13 @@ const data = {
             ],
         },
     ],
-};
+}
 
 export function MyDashboard() {
     const loggedInUser = userService.getLoggedinUser()
     // const [listings, setListings] = useState([])
     const navigate = useNavigate()
 
-    // useEffect(() => {
-    //     const fetchOrders = async () => {
-    //         try {
-    //             const listings = await stayService.query()
-    //             console.log('listings', listings)
-    //             const filteredListings = listings.filter((listing) => listing.host._id === loggedInUser._id)
-    //             console.log('filteredListings', filteredListings)
-    //             setListings(filteredListings)
-    //         } catch (error) {
-    //             showErrorMsg('Error fetching orders')
-    //         }
-    //     }
-
-    //     fetchOrders()
-    // }, [loggedInUser])
 
     useEffect(() => {
         if (!loggedInUser) {
@@ -93,35 +84,18 @@ export function MyDashboard() {
     }, [loggedInUser, navigate])
 
     return (
-        <div className='dashboard-page'>
-            <section>
-                <section className='overview'>
-                    <h4>{revenue.length} Months average</h4>
-                    <h5>Revenue: <span>${averageRevenue}</span></h5>
-                    <h5>Occupancy: <span>{61.83}%</span></h5>
-                    {/* <h3><span>{'1'}</span> Pending order </h3> */}
+        <section className='dashboard-page'>
 
-                </section>
+            <section className='overview'>
+                <h4>{revenue.length} Months average</h4>
+                <h5>Revenue: <span>${averageRevenue}</span></h5>
+                <h5>Occupancy: <span>{61.83}%</span></h5>
             </section>
 
             <section className="orders">
-                <HostOrders />
+                <HostOrders loggedInUser={loggedInUser} />
             </section>
-            <section className='reservations'></section>
-            {/* <h3>Welcome back, {loggedInUser?.fullname}</h3> */}
-            {/* <section className="dashboard">
-                <h4>Total Orders</h4>
-                <p>{listings.length}</p>
-                <p>The count of orders has been rising by an average of 20% MoM over the last three months.</p>
-            </section> */}
-            {/* <section>
-                <h4>Rating</h4>
-                <p>4.8</p>
-                <p>The average rating of your lists is 4.8. This is better than 80% of the sellers in your area.</p>
-            </section> */}
-            {/* <section className="occupancy">
-                <p>The average occupancy of your stays is 82% YTD.</p>
-            </section> */}
+
             <section className="sales-dashboard">
                 <section className='chart-container'>
                     <Bar options={options} data={data} />
@@ -129,8 +103,8 @@ export function MyDashboard() {
                 <section className='chart-container'>
                     <LineChart />
                 </section>
-
             </section>
-        </div>
-    );
+
+        </section>
+    )
 }
