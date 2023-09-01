@@ -4,21 +4,29 @@ import { httpService } from "./http.service"
 const STORAGE_KEY = 'orders'
 
 export const orderService = {
+    // ---- Verified Works ---- //
+    getOrders,
     getOrderById,
+    // ------------------------ //
+
     sendOrder,
     removeOrder,
-    getOrders,
-    saveOrder
+    updateOrderStatus
 }
 
 window.cs = orderService
 
+
+// =========== Verified Works =========== //
 async function getOrders(userId) {
-    console.log('getOrders hi')
-    // return storageService.query('orders')
     return httpService.get(STORAGE_KEY, userId)
-    // return httpService.get(`orders/${userId}`)
 }
+
+async function updateOrderStatus(order) {
+    return httpService.put(`orders/${order._id}`, order)
+}
+// ====================================== //
+
 
 // NEED TO FIX AND CONNECTS ROUTES FOR BACKEND -> NEED TO THINK ABOUT WHAT EXACTLY WILL THE ORDER ROUTES BE.
 async function getOrderById(orderID) {
@@ -39,14 +47,4 @@ async function sendOrder(order) {
     // console.log('order', order)
     // await storageService.post('orders', order)
     await httpService.post(STORAGE_KEY, order)
-}
-
-async function saveOrder(order) {
-    console.log('saveOrder hi')
-    let savedStay
-    // if (order._id) {
-    // savedStay = await storageService.put('orders', order)
-    savedStay = await httpService.put(`orders/${order._id}`, order)
-    return savedStay
-    // }
 }

@@ -1,9 +1,11 @@
 // Node modules
 import { useState, useEffect } from 'react'
+import { useSelector } from 'react-redux'
+
+// Store
+import { approveOrder, denyOrder, loadOrders } from '../store/order.actions.js'
 
 // Services
-import { orderService } from '../services/order.service.js'
-import { showErrorMsg } from '../services/event-bus.service.js'
 import { utilService } from '../services/util.service.js'
 
 
@@ -17,57 +19,46 @@ const data = [
 
 export function HostOrders({ loggedInUser }) {
   const [tableData, setTableData] = useState(data)
-  const [orderedListings, setOrderedListings] = useState([])
+  const allOrders = useSelector(storeState => storeState.orderModule.orders)
+
+  useEffect(() => {
+    loadOrders()
+  }, [])
+
+  useEffect(() => {
+    console.log('allOrders', allOrders)
+  }, [allOrders])
 
 
-  const handleApprove = (index) => {
+  // DEMO DATA //
+  function handleApproveDemoData(index) {
     const updatedData = [...tableData]
     updatedData[index].status = 'Approved'
     setTableData(updatedData)
   }
-
-  const handleReject = (index) => {
+  function handleRejectDemoData(index) {
     const updatedData = [...tableData]
     updatedData[index].status = 'Rejected'
     setTableData(updatedData)
   }
-
-  useEffect(() => {
-    const fetchOrders = async () => {
-      try {
-        const orders = await orderService.getOrders()
-        console.log('orders -> host-order.jsx', orders)
-        setOrderedListings(orders)
-      } catch (error) {
-        showErrorMsg('Error fetching orders')
-      }
-    }
-
-    fetchOrders()
-  }, [])
+  ///////////////
 
 
-  function handleApprovedClick(trip) {
-    const updatedListings = orderedListings.map((listing) =>
-      listing.content._id === trip.content._id ? { ...listing, content: { ...listing.content, status: 'Approved' } } : listing
-    )
-    setOrderedListings(updatedListings)
-    orderService.saveOrder({ status: 'Approved', _id: trip._id })
+  function onApprove(ev, orderId) {
+    ev.preventDefault()
+    ev.stopPropagation()
+    approveOrder(orderId)
   }
 
-  function handleRejectedClick(trip) {
-    const updatedListings = orderedListings.map((listing) =>
-      listing.content._id === trip.content._id ? { ...listing, content: { ...listing.content, status: 'Rejected' } } : listing
-    )
-    setOrderedListings(updatedListings)
-    orderService.saveOrder({ status: 'Rejected', _id: trip._id })
+  function onReject(ev, orderId) {
+    ev.preventDefault()
+    ev.stopPropagation()
+    denyOrder(orderId)
   }
-
 
   return (
     <section className="table-wrapper">
       <section className="table-container">
-
         <table>
 
           <thead>
@@ -80,7 +71,7 @@ export function HostOrders({ loggedInUser }) {
 
           <tbody>
 
-            {orderedListings.map((order, index) => (
+            {allOrders.map((order, index) => (
               <tr key={index}>
                 <td>
 
@@ -103,11 +94,11 @@ export function HostOrders({ loggedInUser }) {
                   {order.content.status === 'Pending' ? (
 
                     <section className="actions">
-                      <button className="action-button approve" onClick={() => handleApprovedClick(order)}>
+                      <button className="action-button approve" onClick={(ev) => onApprove(ev, order._id)}>
                         Approve
                       </button>
 
-                      <button className="action-button reject" onClick={() => handleRejectedClick(order)}>
+                      <button className="action-button reject" onClick={(ev) => onReject(ev, order._id)}>
                         Reject
                       </button>
                     </section>
@@ -144,10 +135,10 @@ export function HostOrders({ loggedInUser }) {
                   {item.status === 'Pending' ? (
                     <section className="actions">
 
-                      <button className="action-button approve" onClick={() => handleApprove(index)}>
+                      <button className="action-button approve" onClick={() => handleApproveDemoData(index)}>
                         Approve
                       </button>
-                      <button className="action-button reject" onClick={() => handleReject(index)}>
+                      <button className="action-button reject" onClick={() => handleRejectDemoData(index)}>
                         Reject
                       </button>
 
@@ -165,7 +156,6 @@ export function HostOrders({ loggedInUser }) {
           </tbody>
 
         </table>
-
       </section>
     </section>
   )
