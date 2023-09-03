@@ -3,7 +3,7 @@ import { StayDetails } from './pages/stay-details.jsx'
 import { OrderConfirmation } from './pages/order-confirmation.jsx'
 import { UserDetails } from './pages/user-details.jsx'
 import { WishList } from './pages/wishlist.jsx'
-import { MyDashboard } from './pages/my-dashboard.jsx'
+import { UserDashboard } from './pages/user-dashboard.jsx'
 import { AddStay } from './pages/add-stay.jsx'
 import { UserTrips } from './pages/user-trips.jsx'
 import { JSONStringify } from './cmps/stringify.jsx'
@@ -36,8 +36,8 @@ const routes = [
     },
     {
         path: '/dashboard',
-        component: < MyDashboard/>,
-        label: 'MyDashboard'
+        component: < UserDashboard/>,
+        label: 'UserDashboard'
     },
     {
         path: '/dashboard/stay/add',

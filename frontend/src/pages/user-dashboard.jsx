@@ -1,17 +1,16 @@
 // Node modules
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js'
 import { Bar } from 'react-chartjs-2'
 
 // Services
-import { stayService } from '../services/stay.service.js'
 import { userService } from '../services/user.service.js'
 import { showErrorMsg } from '../services/event-bus.service.js'
 
 // Components
 import { LineChart } from '../cmps/line-chart.jsx'
-import { HostOrders } from '../cmps/host-orders.jsx'
+import { OrderList } from '../cmps/user-dashboard/order-list.jsx'
 
 
 
@@ -70,9 +69,8 @@ const data = {
     ],
 }
 
-export function MyDashboard() {
+export function UserDashboard() {
     const loggedInUser = userService.getLoggedinUser()
-    // const [listings, setListings] = useState([])
     const navigate = useNavigate()
 
 
@@ -93,7 +91,7 @@ export function MyDashboard() {
             </section>
 
             <section className="orders">
-                <HostOrders loggedInUser={loggedInUser} />
+                <OrderList loggedInUser={loggedInUser} />
             </section>
 
             <section className="sales-dashboard">
