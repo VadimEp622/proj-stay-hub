@@ -1,0 +1,126 @@
+.order-list {
+  margin-block: 24px;
+  box-shadow: $box-shadow16;
+
+  & table,
+  & table td,
+  & table th {
+    padding: 0;
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+
+  & table {
+    width: 100%;
+
+    & :is(thead, tbody) tr {
+      gap: 10px;
+      margin-inline: 8px;
+
+      & .guest-column {
+        flex: 1 1 60%;
+        min-width: 160px;
+      }
+      & .date-column {
+        flex: 1 1 25%;
+        min-width: 100px;
+      }
+      & .action-column {
+        flex: 1 1 15%;
+        min-width: 65px;
+      }
+    }
+
+    & thead {
+      box-shadow: $box-shadow18;
+      & tr {
+        height: 100%;
+        padding-block: 11px;
+
+        & > * {
+          text-align: left;
+        }
+      }
+    }
+
+    & tbody {
+      & > :not(:first-child) {
+        box-shadow: $box-shadow19;
+      }
+
+      & tr {
+        min-height: 74px;
+        height: 100%;
+
+        & .order-guest {
+          gap: 10px;
+          height: 100%;
+
+          & img {
+            width: 42px;
+            height: 42px;
+            border-radius: 50px;
+          }
+          & .full-name,
+          & .join-date {
+            word-break: break-all;
+          }
+          & .join-date {
+            color: $gray-clr2;
+          }
+        }
+
+        & .order-dates {
+          height: 100%;
+        }
+
+        & .order-actions {
+          height: 100%;
+          min-width: 66px;
+
+          & .order-status {
+            &.approved {
+              color: $positive-clr3;
+            }
+
+            &.rejected {
+              color: $negative-clr3;
+            }
+          }
+
+          & .actions {
+            width: 100%;
+            height: 100%;
+            gap: 8px;
+
+            & button {
+              border: none;
+              border-radius: 4px;
+              padding-block: 5px;
+
+              &.approve {
+                background-color: $positive-clr4;
+                color: $gray-clr-1;
+
+                &:hover {
+                  background-color: $positive-clr2;
+                }
+              }
+
+              &.reject {
+                background-color: $gray-clr4;
+                &:hover {
+                  background-color: $gray-clr2;
+                }
+              }
+
+              &:hover {
+                cursor: pointer;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

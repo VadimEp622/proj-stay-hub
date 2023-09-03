@@ -30,7 +30,7 @@ export function OrderList({ loggedInUser }) {
   }, [])
 
   useEffect(() => {
-    // console.log('allOrders', allOrders)
+    console.log('allOrders', allOrders)
   }, [allOrders])
 
 
@@ -69,40 +69,40 @@ export function OrderList({ loggedInUser }) {
 
   if (isLoadingOrders) return <Loader />
   return (
-    <section className="table-wrapper">
-      <section className="table-container">
-        <table>
+    <section className="order-list">
+      <table>
 
-          <thead>
-            <tr>
-              <th>Guest</th>
-              <th>Dates</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
+        <thead>
+          <tr className="flex">
+            <th className="guest-column">Guest</th>
+            <th className="date-column">Dates</th>
+            <th className="action-column">Actions</th>
+          </tr>
+        </thead>
 
-          <tbody>
-            {allOrders.map(order => (
-              <OrderPreview
-                key={order._id}
-                order={order}
-                onApprove={onApprove}
-                onReject={onReject}
-              />
-            ))}
-
-            {allOrders.length === 0 && demoOrders.map(order => (
+        <tbody>
+          {allOrders.map(order => (
+            <OrderPreview
+              key={order._id}
+              order={order}
+              onApprove={onApprove}
+              onReject={onReject}
+            />
+          ))}
+          {
+            allOrders.length === 0 &&
+            demoOrders.map(order => (
               <OrderPreview
                 key={order._id}
                 order={order}
                 onApprove={(ev, orderId) => onApprove(ev, orderId, true)}
                 onReject={(ev, orderId) => onReject(ev, orderId, true)}
               />
-            ))}
-          </tbody>
+            ))
+          }
+        </tbody>
 
-        </table>
-      </section>
-    </section>
+      </table>
+    </section >
   )
 }

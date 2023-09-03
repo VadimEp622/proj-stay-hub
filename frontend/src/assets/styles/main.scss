@@ -57,6 +57,9 @@
 @import "cmps/user-trips/future-reservation-list";
 @import "cmps/user-trips/past-reservation-list";
 
+// *** user-dashboard ***
+@import "cmps/user-dashboard/order-list";
+
 // *** stay-index ***   ---->TODO: needs cleaning up
 @import "cmps/stay-index/category-filter";
 @import "cmps/stay-index/stay-list";
@@ -77,16 +80,17 @@
 @import "cmps/filter";
 @import "cmps/user-msg";
 @import "cmps/app-footer";
-@import "cmps/host-orders";
 
 // ************** Pages **************
-@import "pages/about-us";
-@import "pages/user-trips";
 @import "pages/stay-index";
-@import "pages/review-index";
-@import "pages/user-details";
 @import "pages/stay-details";
-@import "pages/add-stay";
+@import "pages/user-trips";
+@import "pages/user-dashboard";
 @import "pages/wishlist";
-@import "pages/my-dashboard";
 @import "pages/order-confirmation";
+
+// below currently redundant (temp)
+@import "pages/user-details"; // what is this?
+@import "pages/add-stay";
+@import "pages/review-index";
+@import "pages/about-us";

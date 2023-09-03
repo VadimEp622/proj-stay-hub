@@ -90,9 +90,7 @@ export function UserDashboard() {
                 <h5>Occupancy: <span>{61.83}%</span></h5>
             </section>
 
-            <section className="orders">
-                <OrderList loggedInUser={loggedInUser} />
-            </section>
+            <OrderList loggedInUser={loggedInUser} />
 
             <section className="sales-dashboard">
                 <section className='chart-container'>
