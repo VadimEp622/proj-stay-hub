@@ -13,12 +13,13 @@ import { ChartBar } from '../cmps/user-dashboard/chart-bar.jsx'
 import { ChartLine } from '../cmps/user-dashboard/chart-line.jsx'
 
 
-// TODO: organize this cmp!
+// TODO: change user-overview to be a grid, with auto template columns (fluid responsiveness)
+// TODO: improve charts to display well even if not on mobile
 
 export function UserDashboard() {
     const loggedInUser = userService.getLoggedinUser()
-    const navigate = useNavigate()
     const dashboardData = userService.getUserDashboardData()
+    const navigate = useNavigate()
 
 
     useEffect(() => {
