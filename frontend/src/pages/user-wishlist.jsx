@@ -1,68 +1,44 @@
 // Node modules
 import { useEffect } from "react"
 import { useSelector } from "react-redux"
-import { Link } from "react-router-dom"
-
-// Store
-import { setModal } from "../store/stay.actions.js"
+import { Link, useNavigate } from "react-router-dom"
 
 // Components
 import { StayList } from "../cmps/stay-index/stay-list.jsx"
-import { ButtonMain } from "../cmps/_reuseable-cmps/button-main.jsx"
+import { Loader } from "../cmps/_reuseable-cmps/loader.jsx"
 
 
-// TODO: organize this component
+
+// TODO: when navigating to a path which requires logging in, consider rerouting to a special login page(?)
 
 
 export function UserWishlist() {
-    const wishList = useSelector(storeState => storeState.userModule.user?.wishlist)
     const loggedInUser = useSelector(storeState => storeState.userModule.user)
+    const wishList = useSelector(storeState => storeState.userModule.user?.wishlist)
+    const navigate = useNavigate()
 
-    const handleLoginClick = (ev) => {
-        ev.stopPropagation()
-        setModal("logIn")
-    }
 
     useEffect(() => {
-        console.log('wishList 1', wishList)
-    }, [])
-
-    useEffect(() => {
-        console.log('wishList 2', wishList)
-    }, [wishList])
+        if (!loggedInUser) navigate('/')
+    }, [loggedInUser, navigate])
 
 
-    if (!loggedInUser) return (
-        <div className="wishlist-container">
-            <h1>Wishlist</h1>
-            <h3>Log in to view your wishlists</h3>
-            <p className="wishlist-msg">You can create, view, or edit wishlists once you've logged in</p>
-            <div className="button-log-in-wrapper" onClick={handleLoginClick}>
-                <ButtonMain text={'Log in'} />
-            </div>
-        </div>
+    if (!loggedInUser) return <Loader />
+    return (
+        <section className="user-wishlist-page">
+            <h1 className="ff-circular-bold">Wishlist</h1>
+            {(!wishList || wishList.length === 0)
+                ? (
+                    <section className="empty-wishlist">
+                        <h3>No places saved yet</h3>
+                        <p className="no-wishlist">As you explore, click the heart icon to save your favorite places and experiences to a wishlist.</p>
+                        <Link to={`/`}>
+                            <button className="explore">Start exploring</button>
+                        </Link>
+                    </section>
+                )
+                : <StayList stays={wishList} />
+            }
+        </section>
     )
-    if (wishList.length === 0 || !wishList) {
-        return (
-            <div className="wishlist-container">
-                <h1>Wishlist</h1>
-                <h3>No saves yet</h3>
-                <p className="no-wishlist">As you search, click the heart icon to save your favorite places and Experiences to a wishlist.</p>
-                <Link to={`/`}>
-                    <button className="explore">Start exploring</button>
-                </Link>
-            </div>
-        )
-    }
-
-    else {
-        return (
-            <div className="wishlist-container">
-                <h1>Wishlist</h1>
-                <section>
-                    <StayList stays={wishList} />
-                </section>
-            </div>
-        )
-    }
 }

@@ -1,44 +1,38 @@
-.wishlist-container {
-    margin-top: 75px;
-    letter-spacing: 0px;
+.user-wishlist-page {
+    margin-block-start: 75px;
 
-    & h1 {
-        font-size: rem(32px);
-        // font-family: Circular-semibold;
-        font-weight: 600;
+    & > h1 {
+        font-size: rem(38px);
         line-height: rem(36px);
         letter-spacing: 0px;
-        margin-bottom: 50px;
+        margin-block-end: 50px;
     }
 
-    & h3 {
-        font-size: rem(22px);
-        letter-spacing: 0px;
-    }
-    .no-wishlist {
-        padding-top: 20px;
-        padding-bottom: 28px;
-    }
+    & > .empty-wishlist {
+        & h3 {
+            font-size: rem(22px);
+            letter-spacing: 0px;
+        }
 
-    & .wishlist-msg {
-        margin-top: 20px;
-        margin-bottom: 26px;
-    }
+        & .no-wishlist {
+            padding-block-start: 20px;
+            padding-block-end: 28px;
+        }
 
-    & .explore {
-        height: rem(48px);
-        width: rem(160px);
-        background-color: $black-clr1;
-        color: $gray-clr-1;
-        font-size: 16px;
-        line-height: rem(20px);
-        border-radius: rem(8px);
-        letter-spacing: 0.8px;
-        cursor: pointer;
-    }
+        & .explore {
+            height: rem(48px);
+            width: rem(160px);
+            background-color: $black-clr1;
+            color: $gray-clr-1;
+            font-size: 16px;
+            line-height: rem(20px);
+            border-radius: rem(8px);
+            letter-spacing: 0.8px;
 
-    & .button-log-in-wrapper {
-        height: rem(48px);
-        width: rem(92px);
+            &:hover {
+                cursor: pointer;
+                background-color: $black-clr2;
+            }
+        }
     }
 }
