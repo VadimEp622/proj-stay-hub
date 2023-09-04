@@ -1,8 +1,9 @@
 import { userService } from '../services/user.service.js'
 
-export const INCREMENT = 'INCREMENT'
-export const DECREMENT = 'DECREMENT'
-export const CHANGE_COUNT = 'CHANGE_COUNT'
+// ************* Wishlist *************
+export const ADD_TO_WISHLIST = 'ADD_TO_WISHLIST'
+export const REMOVE_FROM_WISHLIST = 'REMOVE_FROM_WISHLIST'
+// ************************************
 export const SET_USER = 'SET_USER'
 export const SET_WATCHED_USER = 'SET_WATCHED_USER'
 export const REMOVE_USER = 'REMOVE_USER'
@@ -10,8 +11,6 @@ export const SET_USERS = 'SET_USERS'
 export const SET_SCORE = 'SET_SCORE'
 export const SET_GUESTS = 'SET_GUESTS'
 export const SET_ORDER = 'SET_ORDER'
-export const ADD_TO_WISHLIST = 'ADD_TO_WISHLIST'
-export const REMOVE_FROM_WISHLIST = 'REMOVE_FROM_WISHLIST'
 export const ADD_CONFIRMED_TRIP = 'ADD_CONFIRMED_TRIP'
 
 const initialState = {
@@ -27,15 +26,18 @@ export function userReducer(state = initialState, action) {
     var newState = state
     let user
     switch (action.type) {
-        // case INCREMENT:
-        //     newState = { ...state, count: state.count + 1 }
-        //     break
-        // case DECREMENT:
-        //     newState = { ...state, count: state.count - 1 }
-        //     break
-        // case CHANGE_COUNT:
-        //     newState = { ...state, count: state.count + action.diff }
-        //     break
+
+        // ************* Wishlist *************
+        case ADD_TO_WISHLIST:
+            user = { ...state.user, wishlist: [...state.user.wishlist, action.stay] }
+            newState = { ...state, user }
+            break
+        case REMOVE_FROM_WISHLIST:
+            user = { ...state.user, wishlist: state.user.wishlist.filter((wishedStay) => wishedStay._id !== action.stay._id) }
+            newState = { ...state, user }
+            break
+        // ************************************
+
         case SET_USER:
             newState = { ...state, user: action.user }
             break
@@ -53,15 +55,6 @@ export function userReducer(state = initialState, action) {
             break
         case SET_USERS:
             newState = { ...state, users: action.users }
-            break
-        case ADD_TO_WISHLIST:
-            user = { ...state.user, wishlist: [...state.user.wishlist,  action.stay ] }
-            newState = { ...state, user }
-            break
-        case REMOVE_FROM_WISHLIST:
-            user = { ...state.user, wishlist: state.user.wishlist.filter((wishedStay) => wishedStay._id !== action.stay._id) }
-            newState = { ...state, user }
-            // newState = { ...state, user: { ...state.user, wishlist: state.user.wishlist.filter((wishedStay) => wishedStay._id !== action.wishListID), }, }
             break
         case SET_SCORE:
             newState = { ...state, user: { ...state.user, score: action.score } }
