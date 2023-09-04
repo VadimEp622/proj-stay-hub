@@ -11,8 +11,10 @@ import { StayList } from "../cmps/stay-index/stay-list.jsx"
 import { ButtonMain } from "../cmps/_reuseable-cmps/button-main.jsx"
 
 
+// TODO: organize this component
 
-export function WishList() {
+
+export function UserWishlist() {
     const wishList = useSelector(storeState => storeState.userModule.user?.wishlist)
     const loggedInUser = useSelector(storeState => storeState.userModule.user)
 

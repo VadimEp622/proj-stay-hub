@@ -2,10 +2,10 @@ import { StayIndex } from './pages/stay-index.jsx'
 import { StayDetails } from './pages/stay-details.jsx'
 import { OrderConfirmation } from './pages/order-confirmation.jsx'
 import { UserDetails } from './pages/user-details.jsx'
-import { WishList } from './pages/wishlist.jsx'
+import { UserWishlist } from './pages/user-wishlist.jsx'
 import { UserDashboard } from './pages/user-dashboard.jsx'
-import { AddStay } from './pages/add-stay.jsx'
 import { UserTrips } from './pages/user-trips.jsx'
+import { AddStay } from './pages/add-stay.jsx'
 import { JSONStringify } from './cmps/stringify.jsx'
 
 const routes = [
@@ -31,12 +31,12 @@ const routes = [
     },
     {
         path: 'wishlist',
-        component: < WishList/>,
-        label: 'WishList'
+        component: <UserWishlist />,
+        label: 'UserWishlist'
     },
     {
         path: '/dashboard',
-        component: < UserDashboard/>,
+        component: <UserDashboard />,
         label: 'UserDashboard'
     },
     {
@@ -46,12 +46,12 @@ const routes = [
     },
     {
         path: 'trips',
-        component: < UserTrips/>,
+        component: < UserTrips />,
         label: 'MyTrips'
     },
     {
         path: 'stay/stringify',
-        component: < JSONStringify/>,
+        component: < JSONStringify />,
         label: 'JSONStringify'
     }
 ]
