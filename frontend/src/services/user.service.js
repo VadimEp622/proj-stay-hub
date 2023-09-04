@@ -1,166 +1,8 @@
-import { storageService } from './async-storage.service'
-import { httpService } from './http.service'
-import { utilService } from './util.service'
+import { httpService } from './http.service.js'
+import { utilService } from './util.service.js'
+
 
 const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser'
-
-export const userService = {
-    login,
-    logout,
-    signup,
-    getLoggedinUser,
-    getUsers,
-    getById,
-    getEmptyCredentials,
-    getGuestCredentials,
-    getNewUserCredentials,
-    saveLocalUser,
-    remove,
-    update,
-    buildGuestsString,
-    randomHostImg,
-    getUserDashboardData
-}
-
-window.userService = userService
-
-function getUsers() {
-    // return storageService.query('user')
-    return httpService.get(`user`)
-}
-
-function getEmptyCredentials() {
-    return { username: '', password: '', fullname: '' }
-}
-
-function getGuestCredentials() {
-    return { username: 'guest123!aAsS', password: 'guest123!aAsS', fullname: '' }
-}
-
-function getNewUserCredentials() {
-    return { username: 'newUser', password: 'newUser', fullname: 'New user' }
-}
-
-
-function getUserDashboardData() {
-    return {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June'],
-        revenue: [1710.5, 751.2, 2741.8, 1740, 2476, 857],
-        occupancyRate: [74, 29, 90, 63, 81, 34]
-    }
-}
-
-
-async function getById(userId) {
-    // const user = await storageService.get('user', userId)
-    const user = await httpService.get(`user/${userId}`)
-    return user
-}
-
-function remove(userId) {
-    // return storageService.remove('user', userId)
-    return httpService.delete(`user/${userId}`)
-}
-
-//NO UPDATE USER YET
-async function update(_id, type, data, action = 'update') {
-    // const user = await storageService.get('user', _id);
-    const user = await httpService.get(`user/${_id}`);
-    if (!user[type]) {
-        user[type] = [];
-    }
-    if (action === 'update') {
-        user[type].push(data);
-    } else {
-        const keyIndex = user[type].findIndex((typeItem) => typeItem._id === data._id)
-        user[type].splice(keyIndex, 1)
-    }
-    // await storageService.put('user', user);
-    await httpService.put(`user/${_id}`, user);
-
-    if (getLoggedinUser()._id === user._id) {
-        saveLocalUser(user);
-    }
-
-    return user;
-}
-
-async function login(userCred) {
-    // const users = await storageService.query('user')
-    // const user = users.find(user => user.username === userCred.username)
-    const user = await httpService.post('auth/login', userCred)
-    if (user) {
-        return saveLocalUser(user)
-    }
-}
-async function signup(userCred) {
-    userCred.trip = []
-    userCred.wishlist = []
-    if (!userCred.imgUrl) userCred.imgUrl = 'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png'
-    // const user = await storageService.post('user', userCred)
-    const user = await httpService.post('auth/signup', userCred)
-    return saveLocalUser(user)
-}
-async function logout() {
-    sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER)
-    return await httpService.post('auth/logout')
-}
-
-function saveLocalUser(user) {
-    user = { _id: user._id, fullname: user.fullname, imgUrl: user.imgUrl, wishlist: user.wishlist, trip: user.trip }
-    // console.log('user from session storage', user)
-    sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
-    return user
-}
-
-// function saveLocalUser(user) {
-//     const userData = {
-//         _id: user._id,
-//         fullname: user.fullname,
-//         imgUrl: user.imgUrl,
-//         wishlist: [],
-//         trips: []
-//     }
-
-//     const encodedData = encodeURIComponent(JSON.stringify(userData));
-//     document.cookie = `loggedInUser=${encodedData}; path=/`;
-//     return userData;
-// }
-
-
-function getLoggedinUser() {
-    return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER))
-}
-
-// function getLoggedinUser() {
-//     const cookieValue = document.cookie
-//         .split('; ')
-//         .find(row => row.startsWith(`${STORAGE_KEY_LOGGEDIN_USER}=`))
-//     console.log(cookieValue)
-
-//     if (cookieValue) {
-//         const decodedValue = decodeURIComponent(cookieValue.split('=')[1])
-//         return JSON.parse(decodedValue)
-//     }
-
-//     return null
-// }
-
-
-function buildGuestsString(guestsObject) {
-    const { adults = 0, children = 0, infants = 0, pets = 0 } = guestsObject
-    const guestCount = (adults + children === 0) ? 1 : (adults + children)
-    let guestsString = `${guestCount} guest${guestCount !== 1 ? 's' : ''}`
-    if (infants > 0) guestsString += `, ${infants} infant${infants !== 1 ? 's' : ''}`
-    if (pets > 0) guestsString += `, ${pets} pet${pets !== 1 ? 's' : ''}`
-    return guestsString
-}
-
-
-export function randomHostImg() {
-
-    return stayHostImgUrl[utilService.getRandomIntInclusive(0, stayHostImgUrl.length - 1)]
-}
 
 const stayHostImgUrl = [
     'https://a0.muscache.com/im/pictures/user/e952cec2-7f68-46da-b732-4831bbba5411.jpg?im_w=240',
@@ -204,11 +46,164 @@ const stayHostImgUrl = [
     'https://a0.muscache.com/im/pictures/user/d46e6f5f-c676-4baf-b4ce-4c8ae6ad5239.jpg?im_w=240',
     'https://a0.muscache.com/im/pictures/user/59da4e65-e5a0-4fde-b4d9-e48f20c1ba43.jpg?im_w=240',
 ]
-// ;(async ()=>{
-//     await userService.signup({fullname: 'Puki Norma', username: 'puki', password:'123',score: 10000, isAdmin: false})
-//     await userService.signup({fullname: 'Master Adminov', username: 'admin', password:'123', score: 10000, isAdmin: true})
-//     await userService.signup({fullname: 'Muki G', username: 'muki', password:'123', score: 10000})
-// })()
+
+
+export const userService = {
+    // =============== Checked and in use ===============
+    randomHostImg,
+    getEmptyCredentials,
+    getGuestCredentials,
+    getUserDashboardData,
+    // ================================================== 
+    // ============= Checked and NOT in use =============
+    getNewUserCredentials,
+    // ================================================== 
+    login,
+    logout,
+    signup,
+    getLoggedinUser,
+    getUsers,
+    getById,
+    saveLocalUser,
+    remove,
+    update,
+    buildGuestsString
+}
+window.userService = userService
+
+// =============== Checked and in use ===============
+function randomHostImg() {
+    return stayHostImgUrl[utilService.getRandomIntInclusive(0, stayHostImgUrl.length - 1)]
+}
+function getEmptyCredentials() {
+    return { username: '', password: '', fullname: '' }
+}
+
+function getGuestCredentials() {
+    return { username: 'guest123!aAsS', password: 'guest123!aAsS', fullname: '' }
+}
+
+function getUserDashboardData() {
+    return {
+        labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+        revenue: [1710.5, 751.2, 2741.8, 1740, 2476, 857],
+        occupancyRate: [74, 29, 90, 63, 81, 34]
+    }
+}
+// ================================================== 
+// ============= Checked and NOT in use =============
+function getNewUserCredentials() {
+    return { username: 'newUser', password: 'newUser', fullname: 'New user' }
+}
+// ================================================== 
+
+function getUsers() {
+    return httpService.get(`user`)
+}
+
+
+async function getById(userId) {
+    const user = await httpService.get(`user/${userId}`)
+    return user
+}
+
+function remove(userId) {
+    return httpService.delete(`user/${userId}`)
+}
+
+//NO UPDATE USER YET
+async function update(_id, type, data, action = 'update') {
+    // const user = await storageService.get('user', _id);
+    const user = await httpService.get(`user/${_id}`);
+    if (!user[type]) {
+        user[type] = [];
+    }
+    if (action === 'update') {
+        user[type].push(data);
+    } else {
+        const keyIndex = user[type].findIndex((typeItem) => typeItem._id === data._id)
+        user[type].splice(keyIndex, 1)
+    }
+    // await storageService.put('user', user);
+    await httpService.put(`user/${_id}`, user);
+
+    if (getLoggedinUser()._id === user._id) {
+        saveLocalUser(user);
+    }
+
+    return user;
+}
+
+async function login(userCred) {
+    // const users = await storageService.query('user')
+    // const user = users.find(user => user.username === userCred.username)
+    const user = await httpService.post('auth/login', userCred)
+    if (user) {
+        return saveLocalUser(user)
+    }
+}
+
+async function signup(userCred) {
+    userCred.trip = []
+    userCred.wishlist = []
+    if (!userCred.imgUrl) userCred.imgUrl = 'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png'
+    // const user = await storageService.post('user', userCred)
+    const user = await httpService.post('auth/signup', userCred)
+    return saveLocalUser(user)
+}
+
+async function logout() {
+    sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER)
+    return await httpService.post('auth/logout')
+}
+
+function saveLocalUser(user) {
+    user = { _id: user._id, fullname: user.fullname, imgUrl: user.imgUrl, wishlist: user.wishlist, trip: user.trip }
+    // console.log('user from session storage', user)
+    sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
+    return user
+}
+
+// function saveLocalUser(user) {
+//     const userData = {
+//         _id: user._id,
+//         fullname: user.fullname,
+//         imgUrl: user.imgUrl,
+//         wishlist: [],
+//         trips: []
+//     }
+
+//     const encodedData = encodeURIComponent(JSON.stringify(userData));
+//     document.cookie = `loggedInUser=${encodedData}; path=/`;
+//     return userData;
+// }
+
+function getLoggedinUser() {
+    return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER))
+}
+
+// function getLoggedinUser() {
+//     const cookieValue = document.cookie
+//         .split('; ')
+//         .find(row => row.startsWith(`${STORAGE_KEY_LOGGEDIN_USER}=`))
+//     console.log(cookieValue)
+
+//     if (cookieValue) {
+//         const decodedValue = decodeURIComponent(cookieValue.split('=')[1])
+//         return JSON.parse(decodedValue)
+//     }
+
+//     return null
+// }
+
+function buildGuestsString(guestsObject) {
+    const { adults = 0, children = 0, infants = 0, pets = 0 } = guestsObject
+    const guestCount = (adults + children === 0) ? 1 : (adults + children)
+    let guestsString = `${guestCount} guest${guestCount !== 1 ? 's' : ''}`
+    if (infants > 0) guestsString += `, ${infants} infant${infants !== 1 ? 's' : ''}`
+    if (pets > 0) guestsString += `, ${pets} pet${pets !== 1 ? 's' : ''}`
+    return guestsString
+}
 
 
 

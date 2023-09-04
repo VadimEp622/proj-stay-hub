@@ -1,14 +1,18 @@
+// Services
 import { HEART_16, RED_HEART_16, SHARE, STAR } from "../../services/svg.service.js"
+
+// Components
 import SvgHandler from "../_reuseable-cmps/svg-handler.jsx"
 
 
 
-export function StayTitle({ stay, averageReviewScore,likeSvg, onLikeClicked }) {
+export function StayTitle({ stay, averageReviewScore, likeSvg, onLikeClicked }) {
 
     return (
         <section className='stay-title-container flex' >
             <h1>{stay.name}</h1>
             <section className='info-bar flex space-between align-center'>
+
                 <section className='info flex'>
                     <SvgHandler svgName={STAR} />
                     <span>{averageReviewScore}</span>
@@ -17,14 +21,17 @@ export function StayTitle({ stay, averageReviewScore,likeSvg, onLikeClicked }) {
                     <span>•</span>
                     <span className='info-loc'>{stay.loc.city}, {stay.loc.country}</span>
                 </section>
+
                 <section className='btns flex'>
-                    <div className='share-btn flex'>
+
+                    <article className='share-btn flex'>
                         <SvgHandler svgName={SHARE} />
                         <span>Share</span>
                         <div className="share-btn-overlay"></div>
-                    </div>
-                    <div className='save-btn flex'
-                        // onClick={() => setIsLikeClicked(prevHeart => !prevHeart)}
+                    </article>
+
+                    <article
+                        className='save-btn flex'
                         onClick={(ev) => onLikeClicked(ev)}
                     >
                         <SvgHandler svgName={likeSvg} />
@@ -37,8 +44,10 @@ export function StayTitle({ stay, averageReviewScore,likeSvg, onLikeClicked }) {
                             <span>Save</span>
                         }
                         <div className="save-btn-overlay"></div>
-                    </div>
+                    </article>
+
                 </section>
+
             </section>
         </section>
     )

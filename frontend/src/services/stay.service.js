@@ -1,14 +1,16 @@
-// import { storageService } from './async-storage.service.js'
 import { httpService } from './http.service.js'
 import { utilService } from './util.service.js'
-import { userService } from './user.service.js'
+
 
 const STORAGE_KEY = 'stay'
 
+
 export const stayService = {
+    // =============== Checked and in use =============== 
     query,
     getById,
     getEmptyFilterBy,
+    // ================================================== 
     save,
     remove,
     getEmptyStay,
@@ -19,6 +21,7 @@ export const stayService = {
 window.cs = stayService
 
 
+// =============== Checked and in use =============== 
 async function query(filterBy = {
     country: '',
     city: '',
@@ -36,12 +39,10 @@ async function query(filterBy = {
         capacity,
         label,
     }
-    // console.log('hi from stayService frontend')
     return httpService.get(STORAGE_KEY, filter)
 }
 
 async function getById(stayId) {
-    console.log('stay.service.js --> getById:', stayId);
     return httpService.get(`stay/${stayId}`)
 }
 
@@ -59,6 +60,7 @@ function getEmptyFilterBy() {
         }
     }
 }
+// ================================================== 
 
 async function save(stay) {
     let savedStay

@@ -1,12 +1,10 @@
 // Node Modules
-import { useEffect, useState, useRef } from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
 // Services
 import { userService } from '../services/user.service.js'
-import { stayService } from "../services/stay.service.js"
-import { showErrorMsg } from "../services/event-bus.service.js"
 import { reviewService } from '../services/review.service.js'
 import { utilService } from '../services/util.service.js'
 import { HEART_16, RED_HEART_16 } from '../services/svg.service.js'
@@ -16,6 +14,9 @@ import { HEART_16, RED_HEART_16 } from '../services/svg.service.js'
 import { AddToWishlist, removeFromWishlist } from '../store/user.actions.js'
 import { setAppModal } from '../store/system.action.js'
 import { SET_APP_MODAL_LOGIN } from '../store/system.reducer.js'
+
+// Custom hooks
+import useLoadStay from '../customHooks/useLoadStay.js'
 
 // Components
 import { Loader } from '../cmps/_reuseable-cmps/loader.jsx'
@@ -34,17 +35,10 @@ import { StayPhotos } from '../cmps/stay-details/stay-photos.jsx'
 export function StayDetails() {
     const loggedInUser = useSelector(storeState => storeState.userModule.user)
     const wishedListItems = useSelector(storeState => storeState.userModule.user?.wishlist) // TODO: check if this is necessary
-    const navigate = useNavigate()
     const { stayId } = useParams()
-    const [stay, setStay] = useState(null)
+    const [stay, hostImgUrl] = useLoadStay(stayId)
     const [isLikeClicked, setIsLikeClicked] = useState(false)
-    const stayHostImgUrlRef = useRef()
     const likeSvg = isLikeClicked ? RED_HEART_16 : HEART_16
-
-
-    useEffect(() => {
-        loadStay()
-    }, [stayId])
 
 
     useEffect(() => {
@@ -77,18 +71,6 @@ export function StayDetails() {
         // setIsLikeClicked(prevHeart => !prevHeart)
     }
 
-    async function loadStay() {
-        try {
-            const stay = await stayService.getById(stayId)
-            setStay(stay)
-            stayHostImgUrlRef.current = stay.host.isInDB ? stay.host.pictureUrl : userService.randomHostImg()
-        } catch (err) {
-            console.log('Had issues in stay details', err)
-            showErrorMsg('Cannot load stay')
-            navigate('/')
-        }
-    }
-
     function displayReviewsCriteria() {
         if (!stay || !stay.reviews || stay.reviews.length === 0) return null;
 
@@ -113,7 +95,6 @@ export function StayDetails() {
 
     const reviewsInputs = displayReviewsCriteria()
     const randomDateJoined = utilService.getRandomMonthAndYear()
-    const hostImgUrl = stayHostImgUrlRef.current
     const averageReviewScore = reviewService.getAverageReview(stay)
 
     return <>

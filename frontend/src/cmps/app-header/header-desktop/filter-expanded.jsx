@@ -76,7 +76,6 @@ export function FilterExpanded(
     function onClickModal() {
         if (isFilterExpanded) {
             if (!isFirstTimeExpandedRef.current) {
-                console.log('HELLO')
                 store.dispatch({ type: CLOSE_EXPANDED_HEADER_MODAL })
                 setSelectedFilterBox('all')
             } else {
