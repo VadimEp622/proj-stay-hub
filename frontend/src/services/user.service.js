@@ -60,6 +60,7 @@ export const userService = {
     // ============= Checked and NOT in use =============
     getNewUserCredentials,
     // ================================================== 
+    updateWishlist,
     login,
     logout,
     signup,
@@ -108,6 +109,14 @@ function getNewUserCredentials() {
 }
 // ================================================== 
 
+async function updateWishlist(stayId) {
+    console.log('stayId - hello from updateWishlist in user.service', stayId)
+    const loggedInUserId = getLoggedinUser()?._id
+    console.log('loggedInUserId', loggedInUserId)
+    // need below to connect to backend user ,userId, wishlist route
+    // return httpService.put(`user/${loggedInUserId}`, stayId)
+}
+
 function getUsers() {
     return httpService.get(`user`)
 }
@@ -134,7 +143,6 @@ async function update(_id, type, data, action = 'update') {
         const keyIndex = user[type].findIndex((typeItem) => typeItem._id === data._id)
         user[type].splice(keyIndex, 1)
     }
-    // await storageService.put('user', user);
     await httpService.put(`user/${_id}`, user);
 
     if (getLoggedinUser()._id === user._id) {

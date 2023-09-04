@@ -10,7 +10,7 @@ import { userService } from "../../../services/user.service.js"
 import { STAR_12 } from "../../../services/svg.service.js"
 
 // Store
-import { AddToWishlist, removeFromWishlist } from "../../../store/user.actions.js"
+import { AddToWishlist, removeFromWishlist, toggleWishlist } from "../../../store/user.actions.js"
 import { SET_APP_MODAL_LOGIN } from "../../../store/system.reducer.js"
 import { setAppModal } from "../../../store/system.action.js"
 
@@ -40,6 +40,7 @@ export function StayPreview({ stay }) {
     const [lng, setLng] = useState(null)
 
 
+
     async function onLikeClicked(ev) {
         console.log(likeSVG)
         if (ev) {
@@ -50,6 +51,8 @@ export function StayPreview({ stay }) {
             setAppModal(SET_APP_MODAL_LOGIN)
             return
         }
+
+        // toggleWishlist(stay._id)
         if (likeSVG === 'heart-red') {
             console.log('hi')
             removeFromWishlist(stay)
@@ -62,7 +65,6 @@ export function StayPreview({ stay }) {
             await userService.update(loggedInUser._id, 'wishlist', stay)
             setIsLikeClicked(false)
         }
-        // setIsLikeClicked(prevHeart => !prevHeart)
     }
 
     useEffect(() => {

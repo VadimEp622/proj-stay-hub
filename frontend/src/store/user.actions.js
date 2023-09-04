@@ -31,6 +31,15 @@ export function AddToWishlist(stay) {
 export function removeFromWishlist(stay) {
     store.dispatch({ type: REMOVE_FROM_WISHLIST, stay })
 }
+
+export async function toggleWishlist(stayId) {
+    try {
+        // console.log('stayId - hi from store toggleWishlist', stayId)
+        await userService.updateWishlist(stayId)
+    } catch (err) {
+        console.log('err - could not update wishlist', err)
+    }
+}
 // **********************************
 
 export async function loadUsers() {
