@@ -19,6 +19,7 @@ export function UserTrips() {
     const [trips, setTrips] = useState([])
     const navigate = useNavigate()
 
+    // TODO: fix below with navigate('/'), and preventDefault/stopPropagation
     function handleSearchClick() {
         window.location.href = '/'
     }
@@ -64,7 +65,7 @@ export function UserTrips() {
     }
 
     return (
-        <section className="page-user-trips">
+        <section className="user-trips-page">
             <h1 className="page-title fs28">Trips</h1>
 
             <section className="future-reservation-list-container">
