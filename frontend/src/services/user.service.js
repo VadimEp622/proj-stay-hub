@@ -18,7 +18,8 @@ export const userService = {
     remove,
     update,
     buildGuestsString,
-    randomHostImg
+    randomHostImg,
+    getUserDashboardData
 }
 
 window.userService = userService
@@ -36,10 +37,18 @@ function getGuestCredentials() {
     return { username: 'guest123!aAsS', password: 'guest123!aAsS', fullname: '' }
 }
 
-function getNewUserCredentials(){
+function getNewUserCredentials() {
     return { username: 'newUser', password: 'newUser', fullname: 'New user' }
 }
 
+
+function getUserDashboardData() {
+    return {
+        labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+        revenue: [1710.5, 751.2, 2741.8, 1740, 2476, 857],
+        occupancyRate: [74, 29, 90, 63, 81, 34]
+    }
+}
 
 
 async function getById(userId) {
