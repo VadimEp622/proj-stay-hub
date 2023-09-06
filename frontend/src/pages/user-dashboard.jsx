@@ -15,6 +15,7 @@ import { ChartLine } from '../cmps/user-dashboard/chart-line.jsx'
 
 // TODO: change user-overview to be a grid, with auto template columns (fluid responsiveness)
 // TODO: improve charts to display well even if not on mobile
+// TODO: when logging out, does not redirect from dashboard to homepage
 
 export function UserDashboard() {
     const loggedInUser = userService.getLoggedinUser()

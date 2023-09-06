@@ -13,6 +13,7 @@ import { PastReservationList } from "../cmps/user-trips/past-reservation-list.js
 
 
 // TODO: organize this component.
+// TODO: fix responsiveness for this page
 
 export function UserTrips() {
     const loggedInUser = useSelector(storeState => storeState.userModule.user)

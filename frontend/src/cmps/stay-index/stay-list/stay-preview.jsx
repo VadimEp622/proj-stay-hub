@@ -85,7 +85,8 @@ export function StayPreview({ stay }) {
         return Value * Math.PI / 180
     }
 
-
+    // TODO: make it so that if user filtered by dates, don't display range for dates before those filtered dates,
+    //   in stay-preview
     const dateRange = utilService.getStayPreviewDateRange(
         stay.availableDatesImproved[0].daysFromToday,
         stay.availableDatesImproved[0].until
