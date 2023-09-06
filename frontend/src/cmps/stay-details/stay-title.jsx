@@ -1,5 +1,5 @@
 // Services
-import { HEART_16, RED_HEART_16, SHARE, STAR } from "../../services/svg.service.js"
+import { HEART_16_BLACK_STROKE, HEART_16_RED_FILL, SHARE, STAR } from "../../services/svg.service.js"
 
 // Components
 import SvgHandler from "../_reuseable-cmps/svg-handler.jsx"
@@ -34,7 +34,7 @@ export function StayTitle({ stay, averageReviewScore, onLikeClicked, isStayWishl
                         className="save-btn flex"
                         onClick={(ev) => onLikeClicked(ev)}
                     >
-                        <SvgHandler svgName={isStayWishlist() ? RED_HEART_16 : HEART_16} />
+                        <SvgHandler svgName={isStayWishlist() ? HEART_16_RED_FILL : HEART_16_BLACK_STROKE} />
                         <span>Save</span>
                         <div className="save-btn-overlay"></div>
                     </article>

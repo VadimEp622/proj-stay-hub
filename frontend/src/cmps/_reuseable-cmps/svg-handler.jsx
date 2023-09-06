@@ -22,11 +22,10 @@ import { ReactComponent as Plus } from '../../assets/img/plus/plus.svg'
 import { ReactComponent as Minus } from '../../assets/img/minus/minus.svg'
 
 // ************************************** HEART **************************************
-// TODO: improve heart naming...
-import { ReactComponent as Heart16 } from '../../assets/img/heart/heart-16.svg'
-import { ReactComponent as RedHeart16 } from '../../assets/img/heart/heart-red-16.svg'
-import { ReactComponent as WhiteStrokedHeart } from '../../assets/img/heart/heart-white.svg'
-import { ReactComponent as RedStrokedHeart } from '../../assets/img/heart/heart-red.svg'
+import { ReactComponent as Heart16BlackStroke } from '../../assets/img/heart/heart-16-black-stroke.svg'
+import { ReactComponent as Heart16RedFill } from '../../assets/img/heart/heart-16-red-fill.svg'
+import { ReactComponent as Heart24WhiteStroke } from '../../assets/img/heart/heart-24-white-stroke.svg'
+import { ReactComponent as Heart24WhiteStrokeRedFill } from '../../assets/img/heart/heart-24-white-stroke-red-fill.svg'
 
 // ************************************** ... **************************************
 import { ReactComponent as Logo } from '../../assets/img/logo/logo-airbnb.svg'
@@ -98,9 +97,9 @@ import { ReactComponent as Pool } from '../../assets/img/airbnb-assets/pool.svg'
 
 
 import {
-    HEART_16, RED_HEART_16, LOGO, RED_HEART, SEARCH_FAT, SHARE, STAR, STAR_12, STAR_16, USER_NAV_BARS, RED_TAG, SUPERHOST, BLACK_SUPERHOST_16, EYE,
-    USER_NAV_PROFILE, WHITE_HEART, LOCATION, KEY, CHECKIN, SEARCH, TICK_DECLINE, VERIFIED,
-    ARROW_LEFT_FAT, ARROW_LEFT, ARROW_RIGHT, ARROW_RIGHT_FAT, ARROW_UP, CONFIG, EXIT, PLUS, MINUS
+    LOGO, SEARCH_FAT, SHARE, STAR, STAR_12, STAR_16, USER_NAV_BARS, RED_TAG, SUPERHOST, BLACK_SUPERHOST_16, EYE,
+    USER_NAV_PROFILE, LOCATION, KEY, CHECKIN, SEARCH, TICK_DECLINE, VERIFIED,
+    ARROW_LEFT_FAT, ARROW_LEFT, ARROW_RIGHT, ARROW_RIGHT_FAT, ARROW_UP, CONFIG, EXIT, PLUS, MINUS, HEART_16_BLACK_STROKE, HEART_16_RED_FILL, HEART_24_WHITE_STROKE, HEART_24_WHITE_STROKE_RED_FILL
 } from '../../services/svg.service.js'
 
 
@@ -144,14 +143,14 @@ const SvgHandler = ({ svgName }) => {
                 return <Minus />
 
             // ************************************** HEART **************************************
-            case HEART_16:
-                return <Heart16 />
-            case RED_HEART_16:
-                return <RedHeart16 />
-            case WHITE_HEART:
-                return <WhiteStrokedHeart />
-            case RED_HEART:
-                return <RedStrokedHeart />
+            case HEART_16_BLACK_STROKE:
+                return <Heart16BlackStroke />
+            case HEART_16_RED_FILL:
+                return <Heart16RedFill />
+            case HEART_24_WHITE_STROKE:
+                return <Heart24WhiteStroke />
+            case HEART_24_WHITE_STROKE_RED_FILL:
+                return <Heart24WhiteStrokeRedFill />
 
 
             // ************************************** ... **************************************

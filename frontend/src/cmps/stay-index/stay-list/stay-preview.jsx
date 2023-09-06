@@ -6,7 +6,7 @@ import { useSelector } from "react-redux"
 // Services
 import { utilService } from "../../../services/util.service.js"
 import { reviewService } from "../../../services/review.service.js"
-import { RED_HEART, STAR_12, WHITE_HEART } from "../../../services/svg.service.js"
+import { HEART_24_WHITE_STROKE, HEART_24_WHITE_STROKE_RED_FILL, STAR_12 } from "../../../services/svg.service.js"
 
 // Store
 import { toggleWishlist } from "../../../store/user.actions.js"
@@ -97,7 +97,7 @@ export function StayPreview({ stay }) {
             </section>
 
             <section className="heart-svg" onClick={(ev) => onLikeClicked(ev)}>
-                <SvgHandler svgName={isStayWishlist() ? RED_HEART : WHITE_HEART} />
+                <SvgHandler svgName={isStayWishlist() ? HEART_24_WHITE_STROKE_RED_FILL : HEART_24_WHITE_STROKE} />
             </section>
 
             <Link to={`/stay/${stay._id}`}>
@@ -116,7 +116,6 @@ export function StayPreview({ stay }) {
                         ) : (
                             <p>{stay.type}</p>
                         )}
-                        {/* {isWishlistPage ? <p>{stay.bedrooms} {bedrooms} </p> : ''} */}
                         <p>{phrase}</p>
                         <p className="price-preview"><span>${utilService.addCommas(stay.price)}</span> night</p>
                     </article>

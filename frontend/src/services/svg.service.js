@@ -20,10 +20,10 @@ export const PLUS = 'PLUS'
 export const MINUS = 'MINUS'
 
 // ************************************** HEART **************************************
-export const HEART_16 = 'heart-16'
-export const RED_HEART_16 = 'heart-red-16'
-export const WHITE_HEART = 'heart-white'
-export const RED_HEART = 'heart-red'
+export const HEART_16_BLACK_STROKE = 'HEART_16_BLACK_STROKE'
+export const HEART_16_RED_FILL = 'HEART_16_RED_FILL'
+export const HEART_24_WHITE_STROKE = 'HEART_24_WHITE_STROKE'
+export const HEART_24_WHITE_STROKE_RED_FILL = 'HEART_24_WHITE_STROKE_RED_FILL'
 
 // ************************************** ... **************************************
 export const LOGO = 'logo'
