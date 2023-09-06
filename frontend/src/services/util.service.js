@@ -1,15 +1,18 @@
 import { format, startOfDay } from 'date-fns'
 
 export const utilService = {
+    // ==================== Checked Function Are Used ====================
+    getStayPreviewDateRange,
+    getFutureTime,
+    getFormattedTimeRange,
+    // ===================================================================
     makeId,
-    makeLorem,
     getRandomIntInclusive,
+    makeLorem,
     debounce,
     randomPastTime,
-    getFutureTime,
     saveToStorage,
     loadFromStorage,
-    getFormattedTimeRange,
     getTimeDiffBy,
     checkMinMaxPrices,
     createDivsForButtonContainer,
@@ -18,6 +21,49 @@ export const utilService = {
     getRandomNumberDecimal,
     getRandomMonthAndYear
 }
+
+
+// ==================== Checked Function Are Used ====================
+function getStayPreviewDateRange(numDaysToStart, numDaysToEnd) {
+    const startDate = getFutureTime(numDaysToStart, 'day')
+    const endDate = getFutureTime(numDaysToEnd, 'day')
+    return getFormattedTimeRange(startDate, endDate)
+}
+
+function getFutureTime(amount, item) {
+    const date = Date.now()
+    const TODAY = Date.parse(startOfDay(date))
+
+    const MINUTE = 1000 * 60
+    const HOUR = MINUTE * 60
+    const DAY = HOUR * 24
+    // const WEEK = DAY * 7
+    // const MONTH = WEEK * 4
+    // const YEAR = MONTH * 12
+
+    if (item === 'day') return TODAY + (DAY * amount)
+
+    return TODAY
+}
+
+function getFormattedTimeRange(start, end) {
+    const startDate = new Date(start)
+    const endDate = new Date(end)
+
+    const startMonth = startDate.toLocaleString('default', { month: 'short' })
+    const endMonth = endDate.toLocaleString('default', { month: 'short' })
+
+    let formattedRange = startMonth + ' ' + startDate.getDate()
+
+    if (startMonth !== endMonth || startDate.getFullYear() !== endDate.getFullYear()) {
+        formattedRange += ' - ' + endMonth + ' ' + endDate.getDate()
+    } else {
+        formattedRange += ' - ' + endDate.getDate()
+    }
+
+    return formattedRange
+}
+// ===================================================================
 
 function makeId(length = 6) {
     var txt = ''
@@ -60,24 +106,6 @@ function randomPastTime() {
 }
 
 
-function getFutureTime(amount, item) {
-    const date = Date.now()
-    const TODAY = Date.parse(startOfDay(date))
-
-
-    const MINUTE = 1000 * 60
-    const HOUR = MINUTE * 60
-    const DAY = HOUR * 24
-    const WEEK = DAY * 7
-    const MONTH = WEEK * 4
-    const YEAR = MONTH * 12
-
-    if (item === 'day') return TODAY + (DAY * amount)
-
-    return TODAY
-}
-
-
 function getTimeDiffBy(item) {
     const MINUTE = 1000 * 60
     const HOUR = MINUTE * 60
@@ -109,25 +137,6 @@ function saveToStorage(key, value) {
 function loadFromStorage(key) {
     const data = localStorage.getItem(key)
     return (data) ? JSON.parse(data) : undefined
-}
-
-
-function getFormattedTimeRange(start, end) {
-    const startDate = new Date(start)
-    const endDate = new Date(end)
-
-    const startMonth = startDate.toLocaleString('default', { month: 'short' })
-    const endMonth = endDate.toLocaleString('default', { month: 'short' })
-
-    let formattedRange = startMonth + ' ' + startDate.getDate()
-
-    if (startMonth !== endMonth || startDate.getFullYear() !== endDate.getFullYear()) {
-        formattedRange += ' - ' + endMonth + ' ' + endDate.getDate()
-    } else {
-        formattedRange += ' - ' + endDate.getDate()
-    }
-
-    return formattedRange
 }
 
 function checkMinMaxPrices(stays) {

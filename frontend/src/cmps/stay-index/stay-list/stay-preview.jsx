@@ -51,7 +51,6 @@ export function StayPreview({ stay }) {
     }
 
 
-    const phrase = utilService.getFormattedTimeRange(stay.availableDates[0].from, stay.availableDates[0].to)
 
 
     if ("geolocation" in navigator && !isWishlistPage) {
@@ -87,6 +86,10 @@ export function StayPreview({ stay }) {
     }
 
 
+    const dateRange = utilService.getStayPreviewDateRange(
+        stay.availableDatesImproved[0].daysFromToday,
+        stay.availableDatesImproved[0].until
+    )
     const distanceFromUser = calcCrow(lat, lng, stay.loc.lat, stay.loc.lan)
     const averageReviewScore = reviewService.getAverageReview(stay)
     return (
@@ -116,7 +119,7 @@ export function StayPreview({ stay }) {
                         ) : (
                             <p>{stay.type}</p>
                         )}
-                        <p>{phrase}</p>
+                        <p>{dateRange}</p>
                         <p className="price-preview"><span>${utilService.addCommas(stay.price)}</span> night</p>
                     </article>
 
