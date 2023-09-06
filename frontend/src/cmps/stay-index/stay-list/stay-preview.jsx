@@ -1,13 +1,12 @@
 // Node modules
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { Link, useLocation } from "react-router-dom"
 import { useSelector } from "react-redux"
 
 // Services
 import { utilService } from "../../../services/util.service.js"
 import { reviewService } from "../../../services/review.service.js"
-import { userService } from "../../../services/user.service.js"
-import { STAR_12 } from "../../../services/svg.service.js"
+import { RED_HEART, STAR_12, WHITE_HEART } from "../../../services/svg.service.js"
 
 // Store
 import { toggleWishlist } from "../../../store/user.actions.js"
@@ -29,10 +28,7 @@ import SvgHandler from "../../_reuseable-cmps/svg-handler.jsx"
 
 
 export function StayPreview({ stay }) {
-    const [isLikeClicked, setIsLikeClicked] = useState(false)
-    const likeSVG = isLikeClicked ? 'heart-red' : 'heart-white'
     const loggedInUser = useSelector(storeState => storeState.userModule.user)
-    const wishedListItems = useSelector(storeState => storeState.userModule.user?.wishlist)
     const filterBy = useSelector(storeState => storeState.stayModule.filterBy)
     const location = useLocation()
     const isWishlistPage = location.pathname.includes('/wishlist')
@@ -40,25 +36,19 @@ export function StayPreview({ stay }) {
     const [lng, setLng] = useState(null)
 
 
+    function isStayWishlist() {
+        return loggedInUser?.wishlist?.some(wishlist => wishlist._id === stay._id)
+    }
 
-    async function onLikeClicked(ev) {
-        console.log(likeSVG)
-        if (ev) {
-            ev.preventDefault()
-            ev.stopPropagation()
-        }
+    function onLikeClicked(ev) {
+        ev.preventDefault()
+        ev.stopPropagation()
         if (!loggedInUser) {
             setAppModal(SET_APP_MODAL_LOGIN)
             return
         }
-
         toggleWishlist(loggedInUser, stay)
     }
-
-    useEffect(() => {
-        const likedId = wishedListItems?.some((wishlist) => wishlist._id === stay._id)
-        setIsLikeClicked(likedId)
-    }, [wishedListItems, stay._id, isLikeClicked])
 
 
     const phrase = utilService.getFormattedTimeRange(stay.availableDates[0].from, stay.availableDates[0].to)
@@ -101,19 +91,24 @@ export function StayPreview({ stay }) {
     const averageReviewScore = reviewService.getAverageReview(stay)
     return (
         <section className="stay-preview" key={stay._id}>
-            <div className="img-container">
+
+            <section className="img-container">
                 <PreviewImageCarousel imgs={stay.imgUrls} stay={stay} />
-            </div>
-            <div className="heart-svg" onClick={(ev) => onLikeClicked(ev)}>
-                <SvgHandler svgName={likeSVG} />
-            </div>
+            </section>
+
+            <section className="heart-svg" onClick={(ev) => onLikeClicked(ev)}>
+                <SvgHandler svgName={isStayWishlist() ? RED_HEART : WHITE_HEART} />
+            </section>
+
             <Link to={`/stay/${stay._id}`}>
-                <div className="preview-info">
-                    <div className="preview-header">
+                <section className="preview-info">
+
+                    <article className="preview-header">
                         <p>{stay.loc.city}, {stay.loc.country}</p>
                         <p className="review-rate"><SvgHandler svgName={STAR_12} /><span>{averageReviewScore}</span></p>
-                    </div>
-                    <div className="stay-info">
+                    </article>
+
+                    <article className="stay-info">
                         {!isWishlistPage ? (
                             <p>
                                 {filterBy.labels ? filterBy.labels : `${distanceFromUser} kilometers away`}
@@ -124,8 +119,9 @@ export function StayPreview({ stay }) {
                         {/* {isWishlistPage ? <p>{stay.bedrooms} {bedrooms} </p> : ''} */}
                         <p>{phrase}</p>
                         <p className="price-preview"><span>${utilService.addCommas(stay.price)}</span> night</p>
-                    </div>
-                </div>
+                    </article>
+
+                </section>
             </Link>
         </section>
     )

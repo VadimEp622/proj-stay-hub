@@ -21,6 +21,13 @@ import { ReactComponent as Exit } from '../../assets/img/exit/exit.svg'
 import { ReactComponent as Plus } from '../../assets/img/plus/plus.svg'
 import { ReactComponent as Minus } from '../../assets/img/minus/minus.svg'
 
+// ************************************** HEART **************************************
+// TODO: improve heart naming...
+import { ReactComponent as Heart16 } from '../../assets/img/heart/heart-16.svg'
+import { ReactComponent as RedHeart16 } from '../../assets/img/heart/heart-red-16.svg'
+import { ReactComponent as WhiteStrokedHeart } from '../../assets/img/heart/heart-white.svg'
+import { ReactComponent as RedStrokedHeart } from '../../assets/img/heart/heart-red.svg'
+
 // ************************************** ... **************************************
 import { ReactComponent as Logo } from '../../assets/img/logo/logo-airbnb.svg'
 import { ReactComponent as UserNavBar } from '../../assets/img/user-nav/user-nav-bars.svg'
@@ -29,10 +36,6 @@ import { ReactComponent as Star } from '../../assets/img/star/star.svg'
 import { ReactComponent as Star12 } from '../../assets/img/star/star-12.svg'
 import { ReactComponent as Star16 } from '../../assets/img/star/star-16.svg'
 import { ReactComponent as Share } from '../../assets/img/share/share.svg'
-import { ReactComponent as Heart16 } from '../../assets/img/heart/heart-16.svg'
-import { ReactComponent as RedHeart16 } from '../../assets/img/heart/heart-red-16.svg'
-import { ReactComponent as WhiteStrokedHeart } from '../../assets/img/heart/heart-white.svg'
-import { ReactComponent as RedStrokedHeart } from '../../assets/img/heart/heart-red.svg'
 import { ReactComponent as Location } from '../../assets/img/location/location.svg'
 import { ReactComponent as Key } from '../../assets/img/key/key.svg'
 import { ReactComponent as Eye } from '../../assets/img/eye/eye.svg'
@@ -140,6 +143,17 @@ const SvgHandler = ({ svgName }) => {
             case MINUS:
                 return <Minus />
 
+            // ************************************** HEART **************************************
+            case HEART_16:
+                return <Heart16 />
+            case RED_HEART_16:
+                return <RedHeart16 />
+            case WHITE_HEART:
+                return <WhiteStrokedHeart />
+            case RED_HEART:
+                return <RedStrokedHeart />
+
+
             // ************************************** ... **************************************
             case USER_NAV_BARS:
                 return <UserNavBar />
@@ -157,14 +171,6 @@ const SvgHandler = ({ svgName }) => {
                 return <Star16 />
             case SHARE:
                 return <Share />
-            case HEART_16:
-                return <Heart16 />
-            case RED_HEART_16:
-                return <RedHeart16 />
-            case WHITE_HEART:
-                return <WhiteStrokedHeart />
-            case RED_HEART:
-                return <RedStrokedHeart />
             case LOCATION:
                 return <Location />
             case KEY:

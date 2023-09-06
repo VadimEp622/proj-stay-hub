@@ -1,12 +1,10 @@
 // Node Modules
-import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
 // Services
 import { reviewService } from '../services/review.service.js'
 import { utilService } from '../services/util.service.js'
-import { HEART_16, RED_HEART_16 } from '../services/svg.service.js'
 // import { socketService } from '../services/socket.service.js'
 
 // Store
@@ -29,29 +27,19 @@ import { StaySummary } from '../cmps/stay-details/stay-summary.jsx'
 import { StayPhotos } from '../cmps/stay-details/stay-photos.jsx'
 
 
-// TODO-priority-low: improve hearts/wishlist system (may need to work on backend for this)
-
 export function StayDetails() {
     const loggedInUser = useSelector(storeState => storeState.userModule.user)
-    const wishedListItems = useSelector(storeState => storeState.userModule.user?.wishlist) // TODO: check if this is necessary
     const { stayId } = useParams()
     const [stay, hostImgUrl] = useLoadStay(stayId)
-    const [isLikeClicked, setIsLikeClicked] = useState(false)
-    const likeSvg = isLikeClicked ? RED_HEART_16 : HEART_16
 
 
-    useEffect(() => {
-        const likedId = wishedListItems?.some((wishlist) => wishlist._id === stayId)
-        setIsLikeClicked((likedId))
-    }, [wishedListItems, stayId, isLikeClicked])
+    function isStayWishlist() {
+        return loggedInUser?.wishlist?.some(wishlist => wishlist._id === stayId)
+    }
 
-
-    async function onLikeClicked(ev) {
-        console.log(likeSvg)
-        if (ev) {
-            ev.preventDefault()
-            ev.stopPropagation()
-        }
+    function onLikeClicked(ev) {
+        ev.preventDefault()
+        ev.stopPropagation()
         if (!loggedInUser) {
             setAppModal(SET_APP_MODAL_LOGIN)
             return
@@ -59,6 +47,7 @@ export function StayDetails() {
         toggleWishlist(loggedInUser, stay)
     }
 
+    // TODO: improve below function
     function displayReviewsCriteria() {
         if (!stay || !stay.reviews || stay.reviews.length === 0) return null;
 
@@ -85,14 +74,14 @@ export function StayDetails() {
     const randomDateJoined = utilService.getRandomMonthAndYear()
     const averageReviewScore = reviewService.getAverageReview(stay)
 
-    return <>
+    return (
         <section className="stay-details" id='photos'>
             <StayDetailsAltHeader stay={stay} loggedInUser={loggedInUser} />
             <StayTitle
                 stay={stay}
                 averageReviewScore={averageReviewScore}
-                likeSvg={likeSvg}
                 onLikeClicked={onLikeClicked}
+                isStayWishlist={isStayWishlist}
             />
             <StayPhotos stay={stay} />
             <StaySummary
@@ -115,5 +104,5 @@ export function StayDetails() {
             />
             <ThingsToKnow stay={stay} />
         </section >
-    </>
+    )
 }
