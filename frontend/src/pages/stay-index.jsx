@@ -14,6 +14,7 @@ import { StayList } from '../cmps/stay-index/stay-list.jsx'
 
 
 // TODO: remove category filter when screen width is less than 700px (build a custom hook with an event listener!)
+// TODO: implement wishlist that renders just from {_id:stayId} from Database
 
 export function StayIndex() {
     const stays = useSelector(storeState => storeState.stayModule.stays)

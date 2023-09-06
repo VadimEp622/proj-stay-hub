@@ -113,8 +113,8 @@ async function updateWishlist(stayId) {
     console.log('stayId - hello from updateWishlist in user.service', stayId)
     const loggedInUserId = getLoggedinUser()?._id
     console.log('loggedInUserId', loggedInUserId)
-    // need below to connect to backend user ,userId, wishlist route
-    // return httpService.put(`user/${loggedInUserId}`, stayId)
+    // backend part works well. need to work so frontend can read new wishlist format
+    return httpService.put(`user/${loggedInUserId}/wishlist`, { stayId })
 }
 
 function getUsers() {

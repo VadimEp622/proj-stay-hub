@@ -35,7 +35,10 @@ export function removeFromWishlist(stay) {
 export async function toggleWishlist(stayId) {
     try {
         // console.log('stayId - hi from store toggleWishlist', stayId)
-        await userService.updateWishlist(stayId)
+        const updateReport = await userService.updateWishlist(stayId)
+        console.log('updateReport', updateReport)
+        // TODO: need to update, so that user would know wishlist was updated
+        // TODO: need to make wishlist page, and app in general, read and render properly wishlist from just: {_id:stayId}
     } catch (err) {
         console.log('err - could not update wishlist', err)
     }

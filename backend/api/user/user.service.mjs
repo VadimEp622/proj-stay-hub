@@ -10,6 +10,7 @@ export const userService = {
     getByUsername,
     remove,
     update,
+    updateWishlist,
     add
 }
 
@@ -87,6 +88,43 @@ async function update(user) {
         return userToSave
     } catch (err) {
         logger.error(`cannot update user ${user._id}`, err)
+        throw err
+    }
+}
+
+async function updateWishlist(user, stayId) {
+    try {
+        console.log('user._id', user._id)
+        console.log('stayId', stayId)
+        const isWishlist = user.wishlist.some(wishlist => wishlist._id === stayId)
+        console.log('isWishlist', isWishlist)
+        const collection = await dbService.getCollection('user')
+        if (isWishlist) {
+            // removing from wishlist here
+            await collection.updateOne(
+                { _id: ObjectId(user._id) },
+                { $pull: { wishlist: { _id: stayId } } }
+            )
+            console.log('wishlist removed')
+            return { stayId, wishlistStatus: 'removed' }
+        } else {
+            // adding to wishlist here
+            collection.updateOne(
+                { _id: ObjectId(user._id) },
+                {
+                    $push: {
+                        wishlist: {
+                            $each: [{ _id: stayId }],
+                            $position: 0
+                        }
+                    }
+                }
+            )
+            console.log('wishlist added')
+            return { stayId, wishlistStatus: 'added' }
+        }
+    } catch (err) {
+        logger.error(`cannot update user ${user._id} wishlist for stay ${stayId}`, err)
         throw err
     }
 }

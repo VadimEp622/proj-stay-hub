@@ -53,7 +53,7 @@ export function AppLoginSignup({ isSignUp, isQuick = false }) {
     }
 
     function onSubmit(values) {
-        console.log('values', values)
+        // console.log('values', values)
         if (isSignUp) handleSignup(values)
         else handleLogin(values)
     }

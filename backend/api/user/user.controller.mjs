@@ -1,6 +1,6 @@
-import {userService} from './user.service.mjs'
-import {logger} from '../../services/logger.service.mjs'
-import {socketService} from '../../services/socket.service.mjs'
+import { userService } from './user.service.mjs'
+import { logger } from '../../services/logger.service.mjs'
+import { socketService } from '../../services/socket.service.mjs'
 
 export async function getUser(req, res) {
     try {
@@ -45,5 +45,19 @@ export async function updateUser(req, res) {
     } catch (err) {
         logger.error('Failed to update user', err)
         res.status(400).send({ err: 'Failed to update user' })
+    }
+}
+
+
+export async function updateUserWishlist(req, res) {
+    try {
+        const stayId = req.body.stayId
+        const userId = req.params.id
+        const user = await userService.getById(userId)
+        const updateReport = await userService.updateWishlist(user, stayId)
+        res.send(updateReport)
+    } catch (err) {
+        logger.error('Failed to update user wishlist', err)
+        res.status(400).send({ err: 'Failed to update user wishlist' })
     }
 }
