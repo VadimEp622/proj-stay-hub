@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.6eb259b7.css",
-    "main.js": "/static/js/main.a87a3884.js",
+    "main.js": "/static/js/main.90251160.js",
     "static/media/Montserrat-Regular.ttf": "/static/media/Montserrat-Regular.3cd786652b8a2e9d41f2.ttf",
     "static/media/Montserrat-SemiBold.ttf": "/static/media/Montserrat-SemiBold.fa8441f345d83a0bc4ec.ttf",
     "static/media/Roboto-Thin.ttf": "/static/media/Roboto-Thin.4ecf36d10d43e2996afe.ttf",
@@ -48,16 +48,16 @@
     "static/media/exclamationmark.svg": "/static/media/exclamationmark.35a26ad7a6a8feb6784c0e08016138f0.svg",
     "static/media/induction-stove.svg": "/static/media/induction-stove.8aca572c9516001f213db2284749e0db.svg",
     "static/media/self-check-in.svg": "/static/media/self-check-in.311c30725826be4b3751de5a343938bb.svg",
-    "static/media/heart-white.svg": "/static/media/heart-white.f09d2a246207f359b95c30e46f3e872f.svg",
+    "static/media/heart-24-white-stroke.svg": "/static/media/heart-24-white-stroke.f09d2a246207f359b95c30e46f3e872f.svg",
     "static/media/dryer.svg": "/static/media/dryer.78d98df7da4c53d3d9f067b4747ae54d.svg",
-    "static/media/heart-red-16.svg": "/static/media/heart-red-16.0dfb93047f49d87cd657eee6459a0084.svg",
+    "static/media/heart-16-red-fill.svg": "/static/media/heart-16-red-fill.0dfb93047f49d87cd657eee6459a0084.svg",
     "static/media/share.svg": "/static/media/share.7bb0b1540648f708b2b006e25121e8cd.svg",
-    "static/media/heart-red.svg": "/static/media/heart-red.7891dcb021da4e86ff0fe2f6f8108c4c.svg",
+    "static/media/heart-24-white-stroke-red-fill.svg": "/static/media/heart-24-white-stroke-red-fill.7891dcb021da4e86ff0fe2f6f8108c4c.svg",
     "static/media/keypad.svg": "/static/media/keypad.275db58f754f9f5ee8db82d653424ed2.svg",
     "static/media/carbon-monoxide.svg": "/static/media/carbon-monoxide.1b248e6ebcbc66beee71e0eee1a7937f.svg",
     "static/media/babysitter-recommendation.svg": "/static/media/babysitter-recommendation.95b57d4ba79c9dce28465e8c8c57e885.svg",
     "static/media/kitchen.svg": "/static/media/kitchen.c9326b73878b6fc42e5b8d32a2e00d36.svg",
-    "static/media/heart-16.svg": "/static/media/heart-16.1ce2611c83af5b9ce1edc0ec30b16ef2.svg",
+    "static/media/heart-16-black-stroke.svg": "/static/media/heart-16-black-stroke.1ce2611c83af5b9ce1edc0ec30b16ef2.svg",
     "static/media/air-cond.svg": "/static/media/air-cond.1164dcf3493a44d4a41022b5241c064c.svg",
     "static/media/iron.svg": "/static/media/iron.2d57245eccefefcfd7637cc272233066.svg",
     "static/media/free-parking-premises.svg": "/static/media/free-parking-premises.d982f186a418044fd760679dfe120d06.svg",
@@ -111,10 +111,10 @@
     "static/media/plus.svg": "/static/media/plus.90c03e0389f8a96d7dd11907f750e78f.svg",
     "static/media/minus.svg": "/static/media/minus.067d8ac4dbf7ef7843e07cf1138127cc.svg",
     "main.6eb259b7.css.map": "/static/css/main.6eb259b7.css.map",
-    "main.a87a3884.js.map": "/static/js/main.a87a3884.js.map"
+    "main.90251160.js.map": "/static/js/main.90251160.js.map"
   },
   "entrypoints": [
     "static/css/main.6eb259b7.css",
-    "static/js/main.a87a3884.js"
+    "static/js/main.90251160.js"
   ]
 }
