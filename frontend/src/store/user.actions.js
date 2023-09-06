@@ -2,7 +2,7 @@
 import { store } from "./store.js"
 import { LOADING_DONE, LOADING_START } from "./system.reducer.js"
 import {
-    ADD_TO_WISHLIST, REMOVE_USER, REMOVE_FROM_WISHLIST, SET_GUESTS, SET_ORDER, SET_USER, SET_USERS, SET_WATCHED_USER, ADD_CONFIRMED_TRIP
+    REMOVE_USER, SET_GUESTS, SET_ORDER, SET_USER, SET_USERS, SET_WATCHED_USER, ADD_CONFIRMED_TRIP
 } from "./user.reducer.js"
 
 // Services
@@ -12,57 +12,29 @@ import { showErrorMsg } from "../services/event-bus.service.js"
 import { orderService } from "../services/order.service.js"
 
 
-
-
-// ************ Wishlist ************
-// TODO: 1. change it so that only the stayId gets added to the wishlist
-//       2. also using try...catch (still in this function) update Database through backend
-//       3. when mounting stay details/preview, cross-check stayId with user wishlist, and render red heart if match
-// **but how does the cmp know if the current stayId, upon clicking heart, needs to be added to wishlist, or removed?
-// I have two ideas:
-//    A. first stay details/preview, needs to run a function isStayWishlist(stayId), which returns true/false, and then perform add/remove
-//    B. make just one function toggleWishlist(stayId), and from there, checks in both store & DB, and removes/adds accordingly
-// I believe B is better.
-// ***need to pay attention, so that store and DB wishlist values are identical always, even if user rapidly clicks like 
-export function AddToWishlist(stay) {
-    store.dispatch({ type: ADD_TO_WISHLIST, stay })
-}
-
-export function removeFromWishlist(stay) {
-    store.dispatch({ type: REMOVE_FROM_WISHLIST, stay })
-}
-
-export async function toggleWishlist(stayId) {
+// ======================== Confirmed function In Use =========================
+export async function toggleWishlist(loggedInUser, stay) {
+    // TODO: need to pay attention, so that store and DB wishlist values are identical always, even if user rapidly clicks like 
     try {
-        // console.log('stayId - hi from store toggleWishlist', stayId)
-        const updateReport = await userService.updateWishlist(stayId)
-        console.log('updateReport', updateReport)
-        // TODO: need to update, so that user would know wishlist was updated
-        // TODO: need to make wishlist page, and app in general, read and render properly wishlist from just: {_id:stayId}
+        const { _id, imgUrls, loc, type, bedrooms, price, availableDates, availableDatesImproved, reviews } = stay
+        const wishlistStay = { _id, imgUrls, loc, type, bedrooms, price, availableDates, availableDatesImproved, reviews }
+        const isWishlist = loggedInUser.wishlist.some(wishlist => wishlist._id === stay._id)
+
+        const user = {
+            ...loggedInUser,
+            wishlist: (isWishlist)
+                ? loggedInUser.wishlist.filter((wishedStay) => wishedStay._id !== stay._id)
+                : [...loggedInUser.wishlist, wishlistStay]
+        }
+
+        store.dispatch({ type: SET_USER, user })
+        // TODO: consider whether it's better to simply replace the whole user object in database,
+        //   to prevent checking again in back-end, if user needs to update or not
+        await userService.updateWishlist(wishlistStay)
+        userService.saveLocalUser(user)
     } catch (err) {
         console.log('err - could not update wishlist', err)
-    }
-}
-// **********************************
-
-export async function loadUsers() {
-    try {
-        store.dispatch({ type: LOADING_START })
-        const users = await userService.getUsers()
-        store.dispatch({ type: SET_USERS, users })
-    } catch (err) {
-        console.log('UserActions: err in loadUsers', err)
-    } finally {
-        store.dispatch({ type: LOADING_DONE })
-    }
-}
-
-export async function removeUser(userId) {
-    try {
-        await userService.remove(userId)
-        store.dispatch({ type: REMOVE_USER, userId })
-    } catch (err) {
-        console.log('UserActions: err in removeUser', err)
+        // TODO: add prevUser in store, to have a place to restore change if backend action failed
     }
 }
 
@@ -110,6 +82,28 @@ export async function logout() {
     } catch (err) {
         console.log('Cannot logout', err)
         throw err
+    }
+}
+// ============================================================================
+
+export async function loadUsers() {
+    try {
+        store.dispatch({ type: LOADING_START })
+        const users = await userService.getUsers()
+        store.dispatch({ type: SET_USERS, users })
+    } catch (err) {
+        console.log('UserActions: err in loadUsers', err)
+    } finally {
+        store.dispatch({ type: LOADING_DONE })
+    }
+}
+
+export async function removeUser(userId) {
+    try {
+        await userService.remove(userId)
+        store.dispatch({ type: REMOVE_USER, userId })
+    } catch (err) {
+        console.log('UserActions: err in removeUser', err)
     }
 }
 

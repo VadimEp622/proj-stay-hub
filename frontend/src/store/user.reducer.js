@@ -1,10 +1,8 @@
 import { userService } from '../services/user.service.js'
 
-// ************* Wishlist *************
-export const ADD_TO_WISHLIST = 'ADD_TO_WISHLIST'
-export const REMOVE_FROM_WISHLIST = 'REMOVE_FROM_WISHLIST'
-// ************************************
+// ======================== Confirmed Switch Case In Use =========================
 export const SET_USER = 'SET_USER'
+// ===============================================================================
 export const SET_WATCHED_USER = 'SET_WATCHED_USER'
 export const REMOVE_USER = 'REMOVE_USER'
 export const SET_USERS = 'SET_USERS'
@@ -18,29 +16,19 @@ const initialState = {
     users: [],
     watchedUser: null,
     guests: {},
-    wishlist: [],
     order: {}
 }
 
 export function userReducer(state = initialState, action) {
-    var newState = state
-    let user
+    let newState = state
     switch (action.type) {
 
-        // ************* Wishlist *************
-        case ADD_TO_WISHLIST:
-            user = { ...state.user, wishlist: [...state.user.wishlist, action.stay] }
-            newState = { ...state, user }
-            break
-        case REMOVE_FROM_WISHLIST:
-            user = { ...state.user, wishlist: state.user.wishlist.filter((wishedStay) => wishedStay._id !== action.stay._id) }
-            newState = { ...state, user }
-            break
-        // ************************************
-
+        // ======================== Confirmed Switch Case In Use =========================
         case SET_USER:
             newState = { ...state, user: action.user }
             break
+        // ===============================================================================
+
         case SET_WATCHED_USER:
             newState = { ...state, watchedUser: action.user }
             break

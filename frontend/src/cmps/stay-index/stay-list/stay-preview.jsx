@@ -10,7 +10,7 @@ import { userService } from "../../../services/user.service.js"
 import { STAR_12 } from "../../../services/svg.service.js"
 
 // Store
-import { AddToWishlist, removeFromWishlist, toggleWishlist } from "../../../store/user.actions.js"
+import { toggleWishlist } from "../../../store/user.actions.js"
 import { SET_APP_MODAL_LOGIN } from "../../../store/system.reducer.js"
 import { setAppModal } from "../../../store/system.action.js"
 
@@ -52,19 +52,7 @@ export function StayPreview({ stay }) {
             return
         }
 
-        // toggleWishlist(stay._id)
-        if (likeSVG === 'heart-red') {
-            console.log('hi')
-            removeFromWishlist(stay)
-            userService.update(loggedInUser._id, 'wishlist', stay, 'remove')
-            setIsLikeClicked(true)
-        }
-        else {
-            AddToWishlist(stay)
-            console.log('hi')
-            await userService.update(loggedInUser._id, 'wishlist', stay)
-            setIsLikeClicked(false)
-        }
+        toggleWishlist(loggedInUser, stay)
     }
 
     useEffect(() => {
@@ -72,20 +60,9 @@ export function StayPreview({ stay }) {
         setIsLikeClicked(likedId)
     }, [wishedListItems, stay._id, isLikeClicked])
 
-    const bedrooms = stay.bedrooms > 1 ? 'Bedrooms' : 'Bedroom'
-    const bathrooms = stay.bathrooms > 1 ? 'Bathrooms' : 'Bathroom'
 
-    let phrase
+    const phrase = utilService.getFormattedTimeRange(stay.availableDates[0].from, stay.availableDates[0].to)
 
-    if (filterBy.from && filterBy.to) {
-        if (stay.bedrooms === 0 || isNaN(stay.bedrooms) || typeof stay.bedrooms === 'undefined') {
-            phrase = stay.bathrooms + " " + bathrooms
-        } else if (stay.bedrooms) {
-            phrase = stay.bedrooms + " " + bedrooms
-        }
-    } else {
-        phrase = utilService.getFormattedTimeRange(stay.availableDates[0].from, stay.availableDates[0].to);
-    }
 
     if ("geolocation" in navigator && !isWishlistPage) {
         navigator.geolocation.watchPosition(
@@ -144,7 +121,7 @@ export function StayPreview({ stay }) {
                         ) : (
                             <p>{stay.type}</p>
                         )}
-                        {isWishlistPage ? <p>{stay.bedrooms} {bedrooms} </p> : ''}
+                        {/* {isWishlistPage ? <p>{stay.bedrooms} {bedrooms} </p> : ''} */}
                         <p>{phrase}</p>
                         <p className="price-preview"><span>${utilService.addCommas(stay.price)}</span> night</p>
                     </div>

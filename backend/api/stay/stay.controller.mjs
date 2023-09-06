@@ -53,6 +53,7 @@ export async function getStayById(req, res) {
   }
 }
 
+
 export async function addStay(req, res) {
   const { loggedinUser } = req
 

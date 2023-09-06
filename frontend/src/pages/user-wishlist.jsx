@@ -8,26 +8,34 @@ import { StayList } from "../cmps/stay-index/stay-list.jsx"
 import { Loader } from "../cmps/_reuseable-cmps/loader.jsx"
 
 
+// TODO-priority-HIGH: 1. implement new wishlist for stay-details as well
+//                     2. improve data flow between cmp->store->backend and vise versa, 
+//              to not have redundant data, no code repitition and efficient/fast changes for the user
+//                     3. in the end, before deploying the prod build, remove(!!!!) ALL users from database
 
-// TODO: when navigating to a path which requires logging in, consider rerouting to a special login page(?)
 
+// TODO-priority-LOW: when navigating to a path which requires logging in, consider rerouting to a special login page(?)
 
 export function UserWishlist() {
     const loggedInUser = useSelector(storeState => storeState.userModule.user)
-    const wishList = useSelector(storeState => storeState.userModule.user?.wishlist)
     const navigate = useNavigate()
 
 
     useEffect(() => {
+    }, [])
+
+    useEffect(() => {
+        console.log('loggedInUser', loggedInUser)
         if (!loggedInUser) navigate('/')
     }, [loggedInUser, navigate])
+
 
 
     if (!loggedInUser) return <Loader />
     return (
         <section className="user-wishlist-page">
             <h1 className="ff-circular-bold">Wishlist</h1>
-            {(!wishList || wishList.length === 0)
+            {(!loggedInUser.wishlist || loggedInUser.wishlist.length === 0)
                 ? (
                     <section className="empty-wishlist">
                         <h3>No places saved yet</h3>
@@ -37,7 +45,7 @@ export function UserWishlist() {
                         </Link>
                     </section>
                 )
-                : <StayList stays={wishList} />
+                : <StayList stays={loggedInUser.wishlist} />
             }
         </section>
     )

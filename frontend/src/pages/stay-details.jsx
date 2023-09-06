@@ -4,14 +4,13 @@ import { useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
 // Services
-import { userService } from '../services/user.service.js'
 import { reviewService } from '../services/review.service.js'
 import { utilService } from '../services/util.service.js'
 import { HEART_16, RED_HEART_16 } from '../services/svg.service.js'
 // import { socketService } from '../services/socket.service.js'
 
 // Store
-import { AddToWishlist, removeFromWishlist } from '../store/user.actions.js'
+import { toggleWishlist } from '../store/user.actions.js'
 import { setAppModal } from '../store/system.action.js'
 import { SET_APP_MODAL_LOGIN } from '../store/system.reducer.js'
 
@@ -57,18 +56,7 @@ export function StayDetails() {
             setAppModal(SET_APP_MODAL_LOGIN)
             return
         }
-        if (likeSvg === RED_HEART_16) {
-            console.log('hi from remove wishlist')
-            removeFromWishlist(stay)
-            await userService.update(loggedInUser._id, 'wishlist', stay, 'remove')
-            // setIsLikeClicked(false)
-        } else {
-            console.log('hi from add wishlist')
-            AddToWishlist(stay)
-            await userService.update(loggedInUser._id, 'wishlist', stay)
-            // setIsLikeClicked(true)
-        }
-        // setIsLikeClicked(prevHeart => !prevHeart)
+        toggleWishlist(loggedInUser, stay)
     }
 
     function displayReviewsCriteria() {

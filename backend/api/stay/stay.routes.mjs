@@ -12,6 +12,7 @@ const router = express.Router()
 
 router.get('/', log, getStays)
 router.get('/:id', getStayById)
+
 router.post('/', requireAuth, addStay)
 // router.put('/update-stays-dates', log, updateStaysAvailableDatesImproved) // for adding key fields into all documents
 router.put('/:id', requireAuth, updateStay)

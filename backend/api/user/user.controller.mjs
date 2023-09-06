@@ -51,10 +51,11 @@ export async function updateUser(req, res) {
 
 export async function updateUserWishlist(req, res) {
     try {
-        const stayId = req.body.stayId
+        const { _id, imgUrls, loc, type, bedrooms, price, availableDates, availableDatesImproved, reviews } = req.body
+        const wishlistStay = { _id, imgUrls, loc, type, bedrooms, price, availableDates, availableDatesImproved, reviews }
         const userId = req.params.id
         const user = await userService.getById(userId)
-        const updateReport = await userService.updateWishlist(user, stayId)
+        const updateReport = await userService.updateWishlist(user, wishlistStay)
         res.send(updateReport)
     } catch (err) {
         logger.error('Failed to update user wishlist', err)

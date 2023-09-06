@@ -109,12 +109,11 @@ function getNewUserCredentials() {
 }
 // ================================================== 
 
-async function updateWishlist(stayId) {
-    console.log('stayId - hello from updateWishlist in user.service', stayId)
+async function updateWishlist(stay) {
     const loggedInUserId = getLoggedinUser()?._id
     console.log('loggedInUserId', loggedInUserId)
     // backend part works well. need to work so frontend can read new wishlist format
-    return httpService.put(`user/${loggedInUserId}/wishlist`, { stayId })
+    return httpService.put(`user/${loggedInUserId}/wishlist`, stay)
 }
 
 function getUsers() {
