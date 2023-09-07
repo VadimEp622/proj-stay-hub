@@ -16,8 +16,8 @@ import { orderService } from "../services/order.service.js"
 export async function toggleWishlist(loggedInUser, stay) {
     // TODO: need to pay attention, so that store and DB wishlist values are identical always, even if user rapidly clicks like 
     try {
-        const { _id, imgUrls, loc, type, bedrooms, price, availableDates, availableDatesImproved, reviews } = stay
-        const wishlistStay = { _id, imgUrls, loc, type, bedrooms, price, availableDates, availableDatesImproved, reviews }
+        const { _id, imgUrls, loc, type, bedrooms, price, availableDates, reviews } = stay
+        const wishlistStay = { _id, imgUrls, loc, type, bedrooms, price, availableDates, reviews }
         const isWishlist = loggedInUser.wishlist.some(wishlist => wishlist._id === stay._id)
 
         const user = {

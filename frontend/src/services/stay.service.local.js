@@ -5483,26 +5483,6 @@ function _createDemoStays() {
     utilService.saveToStorage(STAY_STORAGE_KEY, gStays)
 }
 
-// function calculateRate(stay) {
-//     const reviewInputs = stay.reviews.map(review => review.reviewInputs)
-//     const reviewCount = reviewInputs.length
-//     const reviewInputsTotal = reviewInputs.reduce((acc, inputs) => {
-//         for (const key in inputs) {
-//             acc[key] = (acc[key] || 0) + inputs[key]
-//         }
-//         return acc
-//     }, {})
-//     const reviewInputsAverage = {};
-//     for (const key in reviewInputsTotal) {
-//         reviewInputsAverage[key] = reviewInputsTotal[key] / reviewCount
-//     }
-//     const rate = Object.values(reviewInputsAverage).reduce(
-//         (sum, value) => sum + value,
-//         0
-//     ) / Object.keys(reviewInputsAverage).length;
-
-// }
-
 
 function _createDemoStay(name, summary, type, loc, imgUrls) {
     const reviews = [

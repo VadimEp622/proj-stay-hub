@@ -88,8 +88,8 @@ export function StayPreview({ stay }) {
     // TODO: make it so that if user filtered by dates, don't display range for dates before those filtered dates,
     //   in stay-preview
     const dateRange = utilService.getStayPreviewDateRange(
-        stay.availableDatesImproved[0].daysFromToday,
-        stay.availableDatesImproved[0].until
+        stay.availableDates[0].daysFromToday,
+        stay.availableDates[0].until
     )
     const distanceFromUser = calcCrow(lat, lng, stay.loc.lat, stay.loc.lan)
     const averageReviewScore = reviewService.getAverageReview(stay)

@@ -51,8 +51,8 @@ export async function updateUser(req, res) {
 
 export async function updateUserWishlist(req, res) {
     try {
-        const { _id, imgUrls, loc, type, bedrooms, price, availableDates, availableDatesImproved, reviews } = req.body
-        const wishlistStay = { _id, imgUrls, loc, type, bedrooms, price, availableDates, availableDatesImproved, reviews }
+        const { _id, imgUrls, loc, type, bedrooms, price, availableDates, reviews } = req.body
+        const wishlistStay = { _id, imgUrls, loc, type, bedrooms, price, availableDates, reviews }
         const userId = req.params.id
         const user = await userService.getById(userId)
         const updateReport = await userService.updateWishlist(user, wishlistStay)

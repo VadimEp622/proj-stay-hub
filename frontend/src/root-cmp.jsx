@@ -28,7 +28,6 @@ import { AppMainModal } from './cmps/app-main-modal.jsx'
 //          |
 //          V
 // TODO-priority-high: make dates that were used in filter, to be displayed in stay-details order section, and reserve page, etc...
-// TODO-priority-high: fix timestamps render from OLD "availableDates" to NEW "availableDatesImproved" (temp. name)
 
 // TODO-priority-high: make stay-details work for mobile (either attempt at convert existing, or build new one)
 
