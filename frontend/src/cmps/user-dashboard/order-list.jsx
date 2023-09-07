@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 
 // Store
-import { approveOrder, denyOrder, loadOrders } from '../../store/order.actions.js'
+import { approveOrder, rejectOrder, loadOrders } from '../../store/order.actions.js'
 
 // Services
 import { orderService } from '../../services/order.service.js'
@@ -62,7 +62,7 @@ export function OrderList({ loggedInUser }) {
   function onReject(ev, orderId, isDemoData = false) {
     ev.preventDefault()
     ev.stopPropagation()
-    if (!isDemoData) denyOrder(orderId)
+    if (!isDemoData) rejectOrder(orderId)
     else handleRejectDemoData(orderId)
   }
 
