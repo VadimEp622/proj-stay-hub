@@ -24,10 +24,7 @@ import { AppMainModal } from './cmps/app-main-modal.jsx'
 // TODO-priority-critical: some stays have check-in/out timestamps which are in the past. 
 //      this causes an issue, at showing fetched orders from DB in the cmp "user-trips.jsx"
 //      need to fix this, so their starting point will always be ---> from the date of visitor (whether logged in, or not) 
-//          |
-//          |
-//          V
-// TODO-priority-high: make dates that were used in filter, to be displayed in stay-details order section, and reserve page, etc...
+
 
 // TODO-priority-high: make stay-details work for mobile (either attempt at convert existing, or build new one)
 
