@@ -41,7 +41,6 @@ import { AppMainModal } from './cmps/app-main-modal.jsx'
 //     as well as clicking on "photos/amenities/reviews/location" in alt-header 
 
 
-
 export function RootCmp() {
     const isUnclickableBg = useSelector(storeState => storeState.systemModule.isUnclickableBg)
     const appModal = useSelector(storeState => storeState.systemModule.appModal)
@@ -50,7 +49,6 @@ export function RootCmp() {
     // const user = useSelector(storeState => storeState.userModule.user)
 
 
-    
     useEffect(() => {
         socketService.setup()
         return () => {
@@ -59,7 +57,6 @@ export function RootCmp() {
     }, [])
 
     
-
     // useEffect(() => {
     //     if (user) {
     //         socketService.login(user._id)
@@ -71,6 +68,7 @@ export function RootCmp() {
     //     }
     // }, [user])
 
+    
     function closeBackground(ev) {
         ev.preventDefault()
         ev.stopPropagation()
