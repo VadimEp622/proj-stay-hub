@@ -9,6 +9,7 @@ import { AddStay } from './pages/add-stay.jsx'
 import { JSONStringify } from './cmps/stringify.jsx'
 
 
+
 const routes = [
     {
         path: '/',
