@@ -8,10 +8,6 @@ import { UserTrips } from './pages/user-trips.jsx'
 import { AddStay } from './pages/add-stay.jsx'
 import { JSONStringify } from './cmps/stringify.jsx'
 
-
-
-
-
 const routes = [
     {
         path: '/',
