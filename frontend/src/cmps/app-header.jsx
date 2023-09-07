@@ -1,12 +1,11 @@
 // Node Modules
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
 // Store
 import { store } from '../store/store.js'
 import { updateFilterBy } from '../store/stay.actions.js'
-import { setGuests } from '../store/user.actions.js'
 import { OPEN_EXPANDED_HEADER_MODAL } from '../store/system.reducer.js'
 
 // Services
@@ -72,7 +71,6 @@ export function AppHeader({ isStayDetailsPage }) {
         if (filterBy.country) filter.country = filterBy.country
         if (filterBy.capacity) filter.capacity = filterBy.capacity
         if (filterBy.guests) {
-            setGuests(filterBy.guests)
             filter.guests = filterBy.guests
         }
         if (filterBy.label) filter.label = filterBy.label

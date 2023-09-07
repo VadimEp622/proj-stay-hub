@@ -4,7 +4,7 @@ import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 
 import { store } from './store.js'
 import {
-    ADD_STAY, ADD_TO_CART, CLEAR_CART, REMOVE_STAY, REMOVE_FROM_CART, SET_STAYS, UNDO_REMOVE_STAY, UPDATE_STAY, UPDATE_FILTER_BY, SET_GUESTS, SET_MODAL_OPEN, SET_CURR_HOST_IMG_URL, RESET_FILTER_BY
+    ADD_STAY, ADD_TO_CART, CLEAR_CART, REMOVE_STAY, REMOVE_FROM_CART, SET_STAYS, UNDO_REMOVE_STAY, UPDATE_STAY, UPDATE_FILTER_BY, SET_MODAL_OPEN, SET_CURR_HOST_IMG_URL, RESET_FILTER_BY
 } from "./stay.reducer.js"
 import { SET_SCORE } from "./user.reducer.js"
 import { LOADING_DONE, LOADING_START } from "./system.reducer.js"

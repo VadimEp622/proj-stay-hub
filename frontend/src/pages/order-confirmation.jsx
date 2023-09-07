@@ -12,7 +12,6 @@ import { socketService, SOCKET_EMIT_SET_STAYID, SOCKET_EMIT_STAY_RESERVED, SOCKE
 import { addConfirmedTrip } from "../store/user.actions.js"
 
 // Custom hooks
-import { useClickOutside } from "../customHooks/useClickOutsideModal.js"
 import useScrollToTop from "../customHooks/useScrollToTop.js"
 
 // Components
@@ -30,7 +29,7 @@ export function OrderConfirmation() {
     const navigate = useNavigate()
     const location = useLocation()
     const orderObject = useSelector(storeState => storeState.userModule.order)
-    console.log('orderObject', orderObject)
+    // console.log('orderObject', orderObject)
 
 
     // useEffect(() => {

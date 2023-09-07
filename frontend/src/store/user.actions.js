@@ -2,7 +2,7 @@
 import { store } from "./store.js"
 import { LOADING_DONE, LOADING_START } from "./system.reducer.js"
 import {
-    REMOVE_USER, SET_GUESTS, SET_ORDER, SET_USER, SET_USERS, SET_WATCHED_USER, ADD_CONFIRMED_TRIP
+    REMOVE_USER, SET_ORDER, SET_USER, SET_USERS, SET_WATCHED_USER, ADD_CONFIRMED_TRIP
 } from "./user.reducer.js"
 
 // Services
@@ -84,6 +84,22 @@ export async function logout() {
         throw err
     }
 }
+
+export function setOrder(order) {
+    console.log('user.actions.js ---> Set order:', order)
+    store.dispatch({ type: SET_ORDER, order })
+}
+
+export async function addConfirmedTrip(trip) {
+    try {
+        await orderService.sendOrder(trip)
+        await userService.update(trip.buyer._id, 'trip', trip)
+        store.dispatch({ type: ADD_CONFIRMED_TRIP, trip })
+    } catch (err) {
+        showErrorMsg('Cannot add confirmed trip')
+        console.error('Cannot add confirmed trip', err)
+    }
+}
 // ============================================================================
 
 export async function loadUsers() {
@@ -114,25 +130,5 @@ export async function loadUser(userId) {
     } catch (err) {
         showErrorMsg('Cannot load user')
         console.log('Cannot load user', err)
-    }
-}
-
-export function setGuests(guests) {
-    store.dispatch({ type: SET_GUESTS, guests })
-}
-
-export function setOrder(order) {
-    console.log('user.actions.js ---> Set order:', order)
-    store.dispatch({ type: SET_ORDER, order })
-}
-
-export async function addConfirmedTrip(trip) {
-    try {
-        await orderService.sendOrder(trip)
-        await userService.update(trip.buyer._id, 'trip', trip)
-        store.dispatch({ type: ADD_CONFIRMED_TRIP, trip })
-    } catch (err) {
-        showErrorMsg('Cannot add confirmed trip')
-        console.error('Cannot add confirmed trip', err)
     }
 }
