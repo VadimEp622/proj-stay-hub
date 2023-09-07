@@ -1,5 +1,5 @@
 // Node Modules
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 
 // Store
@@ -19,17 +19,16 @@ import { StayList } from '../cmps/stay-index/stay-list.jsx'
 export function StayIndex() {
     const stays = useSelector(storeState => storeState.stayModule.stays)
     const filterBy = useSelector(storeState => storeState.stayModule.filterBy)
-   
+
     // filter modal temp. removed, TODO: implement it casually after other urgent stuff are taken care of
     // const [isFilterModalOpen, setIsFilterModalOpen] = useState(false)
 
 
     useEffect(() => {
-        // console.log('hi from Index')
         loadStays(filterBy)
     }, [filterBy])
 
-    
+
     useEffect(() => {
         function handleScroll() {
             store.dispatch({ type: CLOSE_EXPANDED_HEADER })

@@ -1,13 +1,14 @@
-import { stayService } from "../services/stay.service.js"
-import { userService } from "../services/user.service.js"
-import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
-
+// Store
 import { store } from './store.js'
 import {
-    ADD_STAY, ADD_TO_CART, CLEAR_CART, REMOVE_STAY, REMOVE_FROM_CART, SET_STAYS, UNDO_REMOVE_STAY, UPDATE_STAY, UPDATE_FILTER_BY, SET_MODAL_OPEN, SET_CURR_HOST_IMG_URL, RESET_FILTER_BY
+    ADD_STAY, REMOVE_STAY, SET_STAYS, UNDO_REMOVE_STAY, UPDATE_STAY, UPDATE_FILTER_BY, SET_MODAL_OPEN, RESET_FILTER_BY
 } from "./stay.reducer.js"
-import { SET_SCORE } from "./user.reducer.js"
 import { LOADING_DONE, LOADING_START } from "./system.reducer.js"
+
+// Services
+import { stayService } from "../services/stay.service.js"
+// import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
+
 
 // =====================================================
 // ================== Action Creators ================== :
@@ -34,16 +35,21 @@ export function getActionUpdateStay(stay) {
 // ================== Action senders ================== :
 // =====================================================
 
-// ******************************* Stays *******************************
+
+// ************************ Checked Is Being Used ************************
+export function updateFilterBy(filterBy) {
+    store.dispatch({ type: UPDATE_FILTER_BY, filterBy })
+}
+
+export function resetFilterBy() {
+    store.dispatch({ type: RESET_FILTER_BY })
+}
+
 export async function loadStays(filterBy) {
     try {
-        // console.log('hi from stay action, loadStays')
         store.dispatch({ type: LOADING_START })
         const stays = await stayService.query(filterBy)
-        store.dispatch({
-            type: SET_STAYS,
-            stays
-        })
+        store.dispatch({ type: SET_STAYS, stays })
     } catch (err) {
         console.log('Cannot load stays', err)
         throw err
@@ -52,23 +58,14 @@ export async function loadStays(filterBy) {
     }
 }
 
+// ***********************************************************************
+// ********************* Checked It's NOT Being Used *********************
 export async function removeStay(stayId) {
     try {
         await stayService.remove(stayId)
         store.dispatch(getActionRemoveStay(stayId))
     } catch (err) {
         console.log('Cannot remove stay', err)
-        throw err
-    }
-}
-
-export async function addStay(stay) {
-    try {
-        const savedStay = await stayService.save(stay)
-        store.dispatch(getActionAddStay(savedStay))
-        return savedStay
-    } catch (err) {
-        console.log('Cannot add stay', err)
         throw err
     }
 }
@@ -82,55 +79,6 @@ export async function updateStay(stay) {
         console.log('Cannot save stay', err)
         throw err
     }
-}
-// *********************************************************************
-// ***************************** FilterBy ******************************
-export function updateFilterBy(filterBy) {
-    store.dispatch({ type: UPDATE_FILTER_BY, filterBy })
-}
-
-export function resetFilterBy() {
-    store.dispatch({ type: RESET_FILTER_BY })
-}
-// *********************************************************************
-export async function setHostImgUrl(imgUrl) {
-    try {
-        store.dispatch({ type: SET_CURR_HOST_IMG_URL, imgUrl })
-    } catch (err) {
-        console.log('Cannot set imgUrl', err)
-        throw err
-    }
-}
-
-
-export function addToCart(stay) {
-    store.dispatch({
-        type: ADD_TO_CART,
-        stay
-    })
-}
-
-export function removeFromCart(stayId) {
-    store.dispatch({
-        type: REMOVE_FROM_CART,
-        stayId
-    })
-}
-
-export async function checkout(total) {
-    try {
-        const score = await userService.changeScore(-total)
-        store.dispatch({ type: SET_SCORE, score })
-        store.dispatch({ type: CLEAR_CART })
-        return score
-    } catch (err) {
-        console.log('StayActions: err in checkout', err)
-        throw err
-    }
-}
-
-export async function setModal(isModalOpen) {
-    store.dispatch({ type: SET_MODAL_OPEN, isModalOpen })
 }
 
 // Demo for Optimistic Mutation 
@@ -155,3 +103,22 @@ export function onRemoveStayOptimistic(stayId) {
             })
         })
 }
+
+// ***********************************************************************
+// ************** Checked Being Used In Place I Do Not Know **************
+export async function addStay(stay) {
+    try {
+        const savedStay = await stayService.save(stay)
+        store.dispatch(getActionAddStay(savedStay))
+        return savedStay
+    } catch (err) {
+        console.log('Cannot add stay', err)
+        throw err
+    }
+}
+
+export async function setModal(isModalOpen) {
+    store.dispatch({ type: SET_MODAL_OPEN, isModalOpen })
+}
+
+// ***********************************************************************
