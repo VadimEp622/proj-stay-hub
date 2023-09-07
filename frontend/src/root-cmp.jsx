@@ -41,6 +41,7 @@ import { AppMainModal } from './cmps/app-main-modal.jsx'
 //     as well as clicking on "photos/amenities/reviews/location" in alt-header 
 
 
+
 export function RootCmp() {
     const isUnclickableBg = useSelector(storeState => storeState.systemModule.isUnclickableBg)
     const appModal = useSelector(storeState => storeState.systemModule.appModal)
