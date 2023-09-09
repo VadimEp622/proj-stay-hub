@@ -2,6 +2,9 @@ import {config} from '../config/index.mjs'
 import {logger} from '../services/logger.service.mjs'
 import {asyncLocalStorage} from '../services/als.service.mjs'
 
+
+// consider adding requireSameUser
+
 export function requireAuth(req, res, next) {
   const { loggedinUser } = asyncLocalStorage.getStore()
   req.loggedinUser = loggedinUser

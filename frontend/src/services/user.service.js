@@ -60,6 +60,7 @@ export const userService = {
     // ============= Checked and NOT in use =============
     getNewUserCredentials,
     // ================================================== 
+    addUserTrip,
     updateWishlist,
     login,
     logout,
@@ -121,12 +122,15 @@ function getUsers() {
 }
 
 async function getById(userId) {
-    const user = await httpService.get(`user/${userId}`)
-    return user
+    return httpService.get(`user/${userId}`)
 }
 
 function remove(userId) {
     return httpService.delete(`user/${userId}`)
+}
+
+function addUserTrip(userId, orderId) {
+    return httpService.post(`user/${userId}/trip`, orderId)
 }
 
 

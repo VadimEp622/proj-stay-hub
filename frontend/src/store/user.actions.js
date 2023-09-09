@@ -90,13 +90,13 @@ export function setOrder(order) {
     store.dispatch({ type: SET_ORDER, order })
 }
 
-export async function addConfirmedTrip(trip) {
+export async function addConfirmedTrip(order) {
     try {
-        const orderId = await orderService.sendOrder(trip)
-        console.log('user.actions --> orderId', orderId)
-        await userService.update(trip.buyer._id, 'trip', { _id: orderId })
-        // await userService.update(trip.buyer._id, 'trip', trip)
-        store.dispatch({ type: ADD_CONFIRMED_TRIP, trip })
+        const user = await userService.getById(order.buyer._id)// check if buyer user exists
+        const orderId = await orderService.sendOrder(order)// creates order object at DB
+        const updatedUser = await userService.addUserTrip(user._id, { orderId })// add orderId to user's trip array in DB 
+        userService.saveLocalUser(updatedUser)
+        store.dispatch({ type: SET_USER, user: updatedUser })
     } catch (err) {
         showErrorMsg('Cannot add confirmed trip')
         console.error('Cannot add confirmed trip', err)

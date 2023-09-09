@@ -11,6 +11,7 @@ export const userService = {
     remove,
     update,
     updateWishlist,
+    addTrip,
     add
 }
 
@@ -29,6 +30,19 @@ async function query(filterBy = {}) {
         return users
     } catch (err) {
         logger.error('cannot find users', err)
+        throw err
+    }
+}
+
+async function addTrip(userId, orderId) {
+    try {
+        const collection = await dbService.getCollection('user')
+        const userPrms = await collection.findOneAndUpdate({ _id: ObjectId(userId) }, { $push: { trip: { orderId } } }, { returnOriginal: false })
+        const updatedUser = ({ ...userPrms.value })
+        delete updatedUser.password
+        return updatedUser
+    } catch (err) {
+        logger.error(`failed to add order ${orderId} to user ${userId}`, err)
         throw err
     }
 }
