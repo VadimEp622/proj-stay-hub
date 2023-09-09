@@ -5,15 +5,32 @@ import mongodb from 'mongodb'
 const { ObjectId } = mongodb
 
 export const userService = {
+    // ************* Confirmed Being Used *************
+    addTrip,
+    // ************************************************
     query,
     getById,
     getByUsername,
     remove,
     update,
     updateWishlist,
-    addTrip,
     add
 }
+
+// ************* Confirmed Being Used *************
+async function addTrip(userId, orderId) {
+    try {
+        const collection = await dbService.getCollection('user')
+        const userPrms = await collection.findOneAndUpdate({ _id: ObjectId(userId) }, { $push: { trip: { orderId } } }, { returnOriginal: false })
+        const updatedUser = ({ ...userPrms.value })
+        delete updatedUser.password
+        return updatedUser
+    } catch (err) {
+        logger.error(`failed to add order ${orderId} to user ${userId}`, err)
+        throw err
+    }
+}
+// ************************************************
 
 async function query(filterBy = {}) {
     const criteria = _buildCriteria(filterBy)
@@ -33,20 +50,6 @@ async function query(filterBy = {}) {
         throw err
     }
 }
-
-async function addTrip(userId, orderId) {
-    try {
-        const collection = await dbService.getCollection('user')
-        const userPrms = await collection.findOneAndUpdate({ _id: ObjectId(userId) }, { $push: { trip: { orderId } } }, { returnOriginal: false })
-        const updatedUser = ({ ...userPrms.value })
-        delete updatedUser.password
-        return updatedUser
-    } catch (err) {
-        logger.error(`failed to add order ${orderId} to user ${userId}`, err)
-        throw err
-    }
-}
-
 
 async function getById(userId) {
     try {

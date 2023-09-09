@@ -4,11 +4,14 @@ import { getUser, getUsers, deleteUser, updateUser, updateUserWishlist, addUserT
 
 const router = express.Router()
 
+// ************* Confirmed Being Used *************
+router.post('/:id/trip', requireAuth, addUserTrip)
+// ************************************************
+
 router.get('/', getUsers)
 router.get('/:id', getUser)
 router.put('/:id', requireAuth, updateUser)
 router.put('/:id/wishlist', requireAuth, updateUserWishlist)//consider adding middleware checking for undefined values
-router.post('/:id/trip', requireAuth, addUserTrip)
 router.delete('/:id', requireAuth, requireAdmin, deleteUser)
 
 export const userRoutes = router

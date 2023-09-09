@@ -2,6 +2,7 @@ import { userService } from './user.service.mjs'
 import { logger } from '../../services/logger.service.mjs'
 import { socketService } from '../../services/socket.service.mjs'
 
+// ************* Confirmed Being Used *************
 export async function addUserTrip(req, res) {
     try {
         const userId = req.params.id
@@ -13,6 +14,7 @@ export async function addUserTrip(req, res) {
         res.status(400).send({ err: 'Failed adding trip to user' })
     }
 }
+// ************************************************
 
 export async function getUser(req, res) {
     try {

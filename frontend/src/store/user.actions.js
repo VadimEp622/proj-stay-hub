@@ -2,7 +2,7 @@
 import { store } from "./store.js"
 import { LOADING_DONE, LOADING_START } from "./system.reducer.js"
 import {
-    REMOVE_USER, SET_ORDER, SET_USER, SET_USERS, SET_WATCHED_USER, ADD_CONFIRMED_TRIP
+    REMOVE_USER, SET_ORDER, SET_USER, SET_USERS, SET_WATCHED_USER
 } from "./user.reducer.js"
 
 // Services
@@ -56,7 +56,6 @@ export async function login(credentials) {
 export async function signup(credentials) {
     try {
         const user = await userService.signup(credentials)
-        console.log('user from signUp', user)
         store.dispatch({
             type: SET_USER,
             user
@@ -86,7 +85,6 @@ export async function logout() {
 }
 
 export function setOrder(order) {
-    console.log('user.actions.js ---> Set order:', order)
     store.dispatch({ type: SET_ORDER, order })
 }
 
