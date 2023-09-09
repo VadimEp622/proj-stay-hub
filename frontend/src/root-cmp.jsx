@@ -21,12 +21,11 @@ import { UserMsg } from './cmps/user-msg.jsx'
 import { AppMainModal } from './cmps/app-main-modal.jsx'
 
 
-// TODO-priority-critical: some stays have check-in/out timestamps which are in the past. 
-//      this causes an issue, at showing fetched orders from DB in the cmp "user-trips.jsx"
-//      need to fix this, so their starting point will always be ---> from the date of visitor (whether logged in, or not) 
+// TODO-priority-high: in "user-trips.jsx", make sure dates already passed don't display anymore/display in "previous trips"
+// TODO-priority-high: in "stay-details.jsx", implement the date-picker
+// TODO-priority-high: in "user-dashboard.jsx", fix charts responsiveness/fluidity with desktop/mobile
 
-
-// TODO-priority-high: make stay-details work for mobile (either attempt at convert existing, or build new one)
+// TODO-priority-high: make "stay-details.jsx" work for mobile (either attempt at convert existing, or build new one)
 
 
 // **** Abstract ****
@@ -36,8 +35,8 @@ import { AppMainModal } from './cmps/app-main-modal.jsx'
 // TODO-medium: handle server interactions with minimum data transfer | sockets
 
 
-// TODO-medium: in stay-details, in alt-header, box-shadow from lower cmp encroaches on alt-header area
-// TODO-medium: in stay-details, in reviews, clicking "show more" changes profile pictures,
+// TODO-medium: in "stay-details.jsx", in alt-header, box-shadow from lower cmp encroaches on alt-header area
+// TODO-medium: in "stay-details.jsx", in reviews, clicking "show more" changes profile pictures,
 //     as well as clicking on "photos/amenities/reviews/location" in alt-header 
 
 
