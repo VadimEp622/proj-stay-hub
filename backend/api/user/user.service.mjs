@@ -24,6 +24,7 @@ async function addTrip(userId, orderId) {
         const userPrms = await collection.findOneAndUpdate({ _id: ObjectId(userId) }, { $push: { trip: { orderId } } }, { returnOriginal: false })
         const updatedUser = ({ ...userPrms.value })
         delete updatedUser.password
+        delete updatedUser.username
         return updatedUser
     } catch (err) {
         logger.error(`failed to add order ${orderId} to user ${userId}`, err)
