@@ -1,7 +1,7 @@
 import { httpService } from './http.service.js'
 import { utilService } from './util.service.js'
 
-
+// TODO: check if possible to change below to 'user', to match API route
 const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser'
 
 const stayHostImgUrl = [
@@ -50,6 +50,7 @@ const stayHostImgUrl = [
 
 export const userService = {
     // =============== Checked and in use ===============
+    addUserTrip,
     randomHostImg,
     getEmptyCredentials,
     getGuestCredentials,
@@ -60,7 +61,9 @@ export const userService = {
     // ============= Checked and NOT in use =============
     getNewUserCredentials,
     // ================================================== 
-    addUserTrip,
+    // ============= Checked and being used in cmp I don't know =============
+    update,
+    // ======================================================================
     updateWishlist,
     login,
     logout,
@@ -68,12 +71,22 @@ export const userService = {
     getUsers,
     getById,
     remove,
-    update,
     buildGuestsString
 }
 window.userService = userService
 
 // =============== Checked and in use ===============
+function addUserTrip(userId, orderId) {
+    return httpService.post(`user/${userId}/trip`, orderId)
+}
+
+async function updateWishlist(stay) {
+    const loggedInUserId = getLoggedinUser()?._id
+    console.log('loggedInUserId', loggedInUserId)
+    // backend part works well. need to work so frontend can read new wishlist format
+    return httpService.put(`user/${loggedInUserId}/wishlist`, stay)
+}
+
 function randomHostImg() {
     return stayHostImgUrl[utilService.getRandomIntInclusive(0, stayHostImgUrl.length - 1)]
 }
@@ -109,32 +122,7 @@ function getNewUserCredentials() {
     return { username: 'newUser', password: 'newUser', fullname: 'New user' }
 }
 // ================================================== 
-
-async function updateWishlist(stay) {
-    const loggedInUserId = getLoggedinUser()?._id
-    console.log('loggedInUserId', loggedInUserId)
-    // backend part works well. need to work so frontend can read new wishlist format
-    return httpService.put(`user/${loggedInUserId}/wishlist`, stay)
-}
-
-function getUsers() {
-    return httpService.get(`user`)
-}
-
-async function getById(userId) {
-    return httpService.get(`user/${userId}`)
-}
-
-function remove(userId) {
-    return httpService.delete(`user/${userId}`)
-}
-
-function addUserTrip(userId, orderId) {
-    return httpService.post(`user/${userId}/trip`, orderId)
-}
-
-
-//NO UPDATE USER YET
+// ============= Checked and being used in cmp I don't know =============
 async function update(_id, type, data, action = 'update') {
     // const user = await storageService.get('user', _id);
     const user = await httpService.get(`user/${_id}`)
@@ -154,6 +142,19 @@ async function update(_id, type, data, action = 'update') {
     }
 
     return user
+}
+// ======================================================================
+
+function getUsers() {
+    return httpService.get(`user`)
+}
+
+async function getById(userId) {
+    return httpService.get(`user/${userId}`)
+}
+
+function remove(userId) {
+    return httpService.delete(`user/${userId}`)
 }
 
 async function login(userCred) {
@@ -184,6 +185,3 @@ function buildGuestsString(guestsObject) {
     if (pets > 0) guestsString += `, ${pets} pet${pets !== 1 ? 's' : ''}`
     return guestsString
 }
-
-
-
