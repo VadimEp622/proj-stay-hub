@@ -51,6 +51,7 @@ const stayHostImgUrl = [
 export const userService = {
     // =============== Checked and in use ===============
     addUserTrip,
+    updateWishlist,
     randomHostImg,
     getEmptyCredentials,
     getGuestCredentials,
@@ -64,7 +65,6 @@ export const userService = {
     // ============= Checked and being used in cmp I don't know =============
     update,
     // ======================================================================
-    updateWishlist,
     login,
     logout,
     signup,
@@ -80,10 +80,8 @@ function addUserTrip(userId, orderId) {
     return httpService.post(`user/${userId}/trip`, orderId)
 }
 
-async function updateWishlist(stay) {
+function updateWishlist(stay) {
     const loggedInUserId = getLoggedinUser()?._id
-    console.log('loggedInUserId', loggedInUserId)
-    // backend part works well. need to work so frontend can read new wishlist format
     return httpService.put(`user/${loggedInUserId}/wishlist`, stay)
 }
 
@@ -123,6 +121,7 @@ function getNewUserCredentials() {
 }
 // ================================================== 
 // ============= Checked and being used in cmp I don't know =============
+// need to remove the function below, flawed and unnecessary 
 async function update(_id, type, data, action = 'update') {
     // const user = await storageService.get('user', _id);
     const user = await httpService.get(`user/${_id}`)
@@ -149,7 +148,7 @@ function getUsers() {
     return httpService.get(`user`)
 }
 
-async function getById(userId) {
+function getById(userId) {
     return httpService.get(`user/${userId}`)
 }
 
@@ -172,9 +171,9 @@ async function signup(userCred) {
     return saveLocalUser(user)
 }
 
-async function logout() {
+function logout() {
     sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER)
-    return await httpService.post('auth/logout')
+    return httpService.post('auth/logout')
 }
 
 function buildGuestsString(guestsObject) {
