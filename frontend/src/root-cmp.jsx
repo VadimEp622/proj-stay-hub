@@ -26,6 +26,7 @@ import { AppMainModal } from './cmps/app-main-modal.jsx'
 // TODO-priority-high: in "user-dashboard.jsx", fix charts responsiveness/fluidity with desktop/mobile
 
 // TODO-priority-high: make "stay-details.jsx" work for mobile (either attempt at convert existing, or build new one)
+// TODO-priority-high: make all pages start from top! (some pages start scrolling from middle on route change)
 
 
 // **** Abstract ****

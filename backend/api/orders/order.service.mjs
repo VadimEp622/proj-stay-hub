@@ -88,7 +88,6 @@ async function remove(orderId) {
 
 async function add(order) {
     try {
-        // console.log('order in order.service.mjs', order)
         const orderToAdd = {
             byUserId: new ObjectId(order.buyer._id),
             aboutUserId: new ObjectId(order.seller._id),
@@ -96,6 +95,7 @@ async function add(order) {
         }
         const collection = await dbService.getCollection('order')
         await collection.insertOne(orderToAdd)
+        // mongoDB adds _id key to orderToAdd!
         return orderToAdd
     } catch (err) {
         logger.error('cannot add order', err)

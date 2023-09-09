@@ -28,6 +28,10 @@ async function updateOrderStatus(order) {
     return httpService.put(`orders/${order._id}`, order)
 }
 
+async function sendOrder(order) {
+    return httpService.post(STORAGE_KEY, order)
+}
+
 function getDemoOrders() {
     return [
         {
@@ -95,9 +99,3 @@ async function removeOrder(orderId) {
     // return httpService.delete(`order/${orderId}`)
 }
 
-async function sendOrder(order) {
-    console.log('sendOrder hi')
-    // console.log('order', order)
-    // await storageService.post('orders', order)
-    await httpService.post(STORAGE_KEY, order)
-}

@@ -53,27 +53,22 @@ export function OrderConfirmation() {
     }, [])
 
 
-
-    async function handleOrderConfirm(ev) {
-        await onOrderConfirm(ev)
-        navigate('/trips')
+    function onOrderConfirm(ev) {
+        ev.stopPropagation()
+        ev.preventDefault()
+        handleOrderConfirm()
     }
 
-    async function onOrderConfirm(ev) {
-        if (ev) {
-            ev.stopPropagation()
-            ev.preventDefault()
-        }
-        // removeUndefinedProperties(orderObject)
+    async function handleOrderConfirm() {
         try {
             console.log('onOrderConfirm -> orderObject', orderObject)
             await addConfirmedTrip(orderObject)
             socketService.emit(SOCKET_EVENT_STAY_RESERVED, orderObject.seller._id)
+            navigate('/trips')
         } catch (error) {
             console.error('Error adding confirmed trip:', error)
         }
     }
-
 
 
     if (Object.keys(orderObject).length === 0) return <Loader />
@@ -182,7 +177,7 @@ export function OrderConfirmation() {
             </section>
 
             <section className="confirm-btn">
-                <ButtonMain text={'Confirm and pay'} onClickButton={handleOrderConfirm} />
+                <ButtonMain text={'Confirm and pay'} onClickButton={onOrderConfirm} />
             </section>
 
         </section>

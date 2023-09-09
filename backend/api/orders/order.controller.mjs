@@ -46,9 +46,7 @@ export async function deleteOrder(req, res) {
 
 export async function addOrder(req, res) {
     const loggedinUser = req.loggedinUser
-    console.log('loggedinUser', loggedinUser)
     try {
-        // console.log('req.query', req.body)
         const { buyer, seller, checkIn, checkOut, orderPrice, guestCount, stayDetails, thingsToDo, nightsCount, nightsPrice, status } = req.body
         const order = {
             buyer,
@@ -63,10 +61,11 @@ export async function addOrder(req, res) {
             nightsPrice,
             status,
         }
-        // const order = req.query
-        // order.byUserId = loggedinUser._id
+
         const orderRes = await orderService.add(order)
-        console.log(`type: 'stay-reserved-send',
+
+        console.log(`
+        type: 'stay-reserved-send',
         data: 'a stay you own has just been reserved',
         userId: orderRes.content.seller._id
         ------>`, orderRes.content.seller._id)
@@ -78,9 +77,7 @@ export async function addOrder(req, res) {
         })
 
 
-
-        res.send(order)
-
+        res.send(orderRes._id)
     } catch (err) {
         logger.error('Failed to add order', err)
         res.status(400).send({ err: 'Failed to add order' })
