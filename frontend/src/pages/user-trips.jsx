@@ -12,6 +12,7 @@ import { FutureReservationList } from "../cmps/user-trips/future-reservation-lis
 import { PastReservationList } from "../cmps/user-trips/past-reservation-list.jsx"
 
 
+// TODO: when fetching trips, perform loading animation, and only when finished fetching, render cmps
 // TODO: organize this component.
 // TODO: fix responsiveness for this page
 
