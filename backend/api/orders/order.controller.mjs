@@ -49,19 +49,19 @@ export async function addOrder(req, res) {
     console.log('loggedinUser', loggedinUser)
     try {
         // console.log('req.query', req.body)
-        const { buyer, seller, checkIn, checkOut, orderPrice, guestsNumber, stayDetails, thingsToDo, nightsCount, nightsPrice, status } = req.body
+        const { buyer, seller, checkIn, checkOut, orderPrice, guestCount, stayDetails, thingsToDo, nightsCount, nightsPrice, status } = req.body
         const order = {
-            buyer: buyer,
-            seller: seller,
-            checkIn: checkIn,
-            checkOut: checkOut,
-            orderPrice: orderPrice,
-            guestsNumber: guestsNumber,
-            stayDetails: stayDetails,
-            thingsToDo: thingsToDo,
-            nightsCount: nightsCount,
-            nightsPrice: nightsPrice,
-            status: status,
+            buyer,
+            seller,
+            checkIn,
+            checkOut,
+            orderPrice,
+            guestCount,
+            stayDetails,
+            thingsToDo,
+            nightsCount,
+            nightsPrice,
+            status,
         }
         // const order = req.query
         // order.byUserId = loggedinUser._id
@@ -107,7 +107,7 @@ export async function updateOrder(req, res) {
             data: orderToUpdate.content.status,
             userId: orderToUpdate.content.buyer._id
         })
-        
+
         res.send(orderRes)
     } catch (err) {
         logger.error('Failed to update order', err)

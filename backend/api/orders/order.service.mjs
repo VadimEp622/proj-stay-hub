@@ -93,7 +93,6 @@ async function add(order) {
             byUserId: new ObjectId(order.buyer._id),
             aboutUserId: new ObjectId(order.seller._id),
             content: order
-            //     txt: order.txt
         }
         const collection = await dbService.getCollection('order')
         await collection.insertOne(orderToAdd)
