@@ -6,6 +6,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom"
 // Services
 import { ARROW_LEFT } from "../services/svg.service.js"
 import { socketService, SOCKET_EVENT_STAY_RESERVED } from "../services/socket.service.js"
+import { showErrorMsg } from "../services/event-bus.service.js"
 
 // Store
 import { addConfirmedTrip } from "../store/user.actions.js"
@@ -56,6 +57,7 @@ export function OrderConfirmation() {
             navigate('/trips')
         } catch (error) {
             console.error('Error adding confirmed trip:', error)
+            showErrorMsg('Cannot add confirmed trip')
         }
     }
 

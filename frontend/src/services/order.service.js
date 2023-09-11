@@ -7,10 +7,9 @@ export const orderService = {
     // ---- Verified Works ---- //
     getOrders,
     getOrderById,
+    addOrder,
     getDemoOrders,
     // ------------------------ //
-
-    sendOrder,
     removeOrder,
     updateOrderStatus
 }
@@ -27,7 +26,7 @@ async function updateOrderStatus(order) {
     return httpService.put(`orders/${order._id}`, order)
 }
 
-async function sendOrder(order) {
+async function addOrder(order) {
     return httpService.post(STORAGE_KEY, order)
 }
 
@@ -86,14 +85,14 @@ function getDemoOrders() {
 
 // NEED TO FIX AND CONNECTS ROUTES FOR BACKEND -> NEED TO THINK ABOUT WHAT EXACTLY WILL THE ORDER ROUTES BE.
 async function getOrderById(orderID) {
-    console.log('getOrderById hi')
+    // console.log('getOrderById hi')
     const order = await storageService.get('orders', orderID)
     // return httpService.get(`order/${orderID}`)
     return order
 }
 
 async function removeOrder(orderId) {
-    console.log('removeOrder hi')
+    // console.log('removeOrder hi')
     return storageService.remove('orders', orderId)
     // return httpService.delete(`order/${orderId}`)
 }
