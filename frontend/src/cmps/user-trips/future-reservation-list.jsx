@@ -54,7 +54,7 @@ export function FutureReservationList({ getUpcomingTrips, handleSearchClick }) {
                 <section className="no-trips">
                     <h3 className="no-trips-header fs22 lh26">No trips booked...yet!</h3>
                     <p className="fs16 lh24">Time to dust off your bags and start planning your next adventure</p>
-                    <button className="fs16" onClick={handleSearchClick}>Start searching</button>
+                    <button className="fs16" onClick={(ev) => handleSearchClick(ev)}>Start searching</button>
                 </section>
             )}
         </section>

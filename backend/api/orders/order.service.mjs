@@ -4,59 +4,26 @@ import { asyncLocalStorage } from '../../services/als.service.mjs'
 import mongodb from 'mongodb'
 const { ObjectId } = mongodb
 
+// ============== Verified being used ==============
 async function query(filterBy = {}) {
     try {
         const criteria = _buildCriteria(filterBy)
-        // console.log('criteria', criteria)
         const collection = await dbService.getCollection('order')
-        // console.log('collection ->order.service.mjs', collection)
-        // const reviews = await collection.find(criteria).toArray()
-        var orders = await collection.aggregate([
-            {
-                $match: criteria
-            },
-            // {
-            //     $lookup:
-            //     {
-            //         from: 'user',
-            //         localField: 'byUserId',
-            //         foreignField: '_id',
-            //         as: 'byUser'
-            //     }
-            // },
-            // {
-            //     $unwind: '$byUser'
-            // },
-            // {
-            //     $lookup:
-            //     {
-            //         from: 'stay',
-            //         localField: 'content.seller._id',
-            //         foreignField: 'host._id',
-            //         as: 'aboutUser'
-            //     }
-            // },
-            // {
-            //     $unwind: '$aboutUser'
-            // }
-        ]).toArray()
-        // console.log('orders -> order.service.mjs (query)', orders)
-        // console.log('orders -> order.service.mjs (query),orders[0].content.buyer', orders[0].content.buyer)
-        orders = orders.map(order => {
+        const orders = await collection.find(criteria).toArray()
+        const updatedOrders = orders.map(order => {
             order.byUser = { _id: order.content.buyer._id, fullname: order.content.buyer.fullname }
             order.aboutUser = { _id: order.content.seller._id, fullname: order.content.seller.fullname }
             delete order.byUserId
             delete order.aboutUserId
             return order
         })
-        // console.log('orders', orders)
-
-        return orders
+        return updatedOrders
     } catch (err) {
-        logger.error('cannot find reviews', err)
+        logger.error('cannot retrieve orders from Database', err)
         throw err
     }
 }
+// =================================================
 
 async function getById(orderId) {
     try {

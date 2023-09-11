@@ -21,17 +21,21 @@ export function UserTrips() {
     const [trips, setTrips] = useState([])
     const navigate = useNavigate()
 
-    // TODO: fix below with navigate('/'), and preventDefault/stopPropagation
-    function handleSearchClick() {
-        window.location.href = '/'
-    }
+
 
 
     useEffect(() => {
         if (!loggedInUser) navigate('/')
         else fetchOrders()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [loggedInUser])
 
+
+    function handleSearchClick(ev) {
+        ev.preventDefault()
+        ev.stopPropagation()
+        navigate('/')
+    }
 
     async function fetchOrders() {
         try {

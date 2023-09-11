@@ -4,18 +4,17 @@ import { userService } from '../user/user.service.mjs'
 import { authService } from '../auth/auth.service.mjs'
 import { orderService } from './order.service.mjs'
 
+// ============== Verified being used ==============
 export async function getOrders(req, res) {
     try {
-        // console.log('req.query', req.query)
-        // console.log('req.body', req.body)
         const orders = await orderService.query(req.query)
-        // console.log('orders -> order.controller.mjsx', orders)
         res.send(orders)
     } catch (err) {
         logger.error('Cannot get orders', err)
         res.status(400).send({ err: 'Failed to get orders' })
     }
 }
+// =================================================
 
 export async function getOrderById(req, res) {
     try {

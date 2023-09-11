@@ -19,8 +19,7 @@ window.cs = orderService
 
 
 // =========== Verified Works =========== //
-async function getOrders(userId) {
-    // console.log('order-service.js -> userId', userId)
+function getOrders(userId) {
     return httpService.get(STORAGE_KEY, userId)
 }
 
