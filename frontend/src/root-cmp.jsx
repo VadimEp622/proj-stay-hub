@@ -1,5 +1,5 @@
 // Node Modules
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import { Routes, Route } from 'react-router'
 import { useLocation } from 'react-router-dom'
 import { useSelector } from 'react-redux'
@@ -48,8 +48,7 @@ export function RootCmp() {
     const isUnclickableBg = useSelector(storeState => storeState.systemModule.isUnclickableBg)
     const appModal = useSelector(storeState => storeState.systemModule.appModal)
     const location = useLocation()
-    const isStayDetailsPage = location.pathname.includes('/stay/')
-    // const user = useSelector(storeState => storeState.userModule.user)
+    const isStayDetailsPage = location.pathname.startsWith('/stay/')
 
 
     useEffect(() => {
@@ -59,19 +58,7 @@ export function RootCmp() {
         }
     }, [])
 
-    
-    // useEffect(() => {
-    //     if (user) {
-    //         socketService.login(user._id)
-    //         socketService.on('set-user-socket', user._id)
-    //         return () => {
-    //             socketService.logout()
-    //             socketService.off('set-user-socket')
-    //         }
-    //     }
-    // }, [user])
 
-    
     function closeBackground(ev) {
         ev.preventDefault()
         ev.stopPropagation()

@@ -1,23 +1,34 @@
-// less than 600px
-@include for-mobile-layout {
+@include for-extra-small-layout {
     .main-layout {
-        grid-template-columns: minmax(24px, 1fr) minmax(300px, 550px) minmax(24px, 1fr);
-
-        .stays-list {
-            grid-template-columns: repeat(1, minmax(300px, 550px));
-        }
+        grid-template-columns: 24px minmax(300px, 1fr) 24px;
+    }
+    .details-layout {
+        grid-template-columns: 0 1fr 0;
     }
 }
 
-// more than 600px
-@include for-narrow-layout {
+@include for-small-layout {
     .main-layout {
         grid-template-columns: 40px 1fr 40px;
     }
+    .details-layout {
+        grid-template-columns: 40px minmax(auto, 1120px) 40px;
+    }
 }
 
-// more than 1450px
-@include for-wide-layout {
+@include for-medium-layout {
+    .details-layout {
+        grid-template-columns: 80px minmax(auto, 1120px) 80px;
+    }
+}
+
+@include for-large-layout {
+    .details-layout {
+        grid-template-columns: minmax(80px, 1fr) 1120px minmax(80px, 1fr);
+    }
+}
+
+@include for-extra-large-layout {
     .main-layout {
         grid-template-columns: 80px 1fr 80px;
     }

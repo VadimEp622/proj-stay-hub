@@ -19,7 +19,7 @@
 
 .details-layout {
     display: grid;
-    grid-template-columns: 1fr minmax(600px, 1120px) 1fr;
+    grid-template-rows: auto 1fr auto;
 
     > * {
         grid-column: 2;

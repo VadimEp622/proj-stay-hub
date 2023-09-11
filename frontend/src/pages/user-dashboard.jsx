@@ -1,6 +1,7 @@
 // Node modules
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 // Services
 import { userService } from '../services/user.service.js'
@@ -15,12 +16,18 @@ import { ChartLine } from '../cmps/user-dashboard/chart-line.jsx'
 
 // TODO: change user-overview to be a grid, with auto template columns (fluid responsiveness)
 // TODO: improve charts to display well even if not on mobile
-// TODO: when logging out, does not redirect from dashboard to homepage
+
+
+// TODO: reorganize components so:
+//     1. app header stays above
+//     2. user-dashboard has header "My Dashboard"
+//     3. box-shadowed blocks of revenue data, and graphs, fluid
+//     4. reservations/order-list table
 
 export function UserDashboard() {
-    const loggedInUser = userService.getLoggedinUser()
-    const dashboardData = userService.getUserDashboardData()
+    const loggedInUser = useSelector(storeState => storeState.userModule.user)
     const navigate = useNavigate()
+    const dashboardData = userService.getUserDashboardData()
 
 
     useEffect(() => {
@@ -28,7 +35,8 @@ export function UserDashboard() {
             showErrorMsg('You must be logged in to view your listings')
             navigate('/')
         }
-    }, [loggedInUser, navigate])
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [loggedInUser])
 
 
     return (

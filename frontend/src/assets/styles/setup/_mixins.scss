@@ -1,21 +1,30 @@
 /******************** Breakpoint Mixins ********************/
-// Less than 600px
-@mixin for-mobile-layout {
-    @media (max-width: calc($mobile-breakpoint)) {
+@mixin for-extra-small-layout {
+    @media (max-width: $small-breakpoint) {
         @content;
     }
 }
 
-// More than 600px
-@mixin for-narrow-layout {
-    @media (min-width: calc($mobile-breakpoint)) {
+@mixin for-small-layout {
+    @media (min-width: $small-breakpoint) {
         @content;
     }
 }
 
-// More than 1450px (+40px)
-@mixin for-wide-layout {
-    @media (min-width: calc($wide-breakpoint + 40px)) {
+@mixin for-medium-layout {
+    @media (min-width: $medium-breakpoint) {
+        @content;
+    }
+}
+
+@mixin for-large-layout {
+    @media (min-width: $large-breakpoint) {
+        @content;
+    }
+}
+
+@mixin for-extra-large-layout {
+    @media (min-width: $extra-large-breakpoint) {
         @content;
     }
 }
