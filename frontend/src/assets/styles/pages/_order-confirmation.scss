@@ -1,4 +1,4 @@
-.order-confirmation {
+.order-confirmation-page {
     margin-top: 50px;
 
     & .confirmation-header {
@@ -24,85 +24,95 @@
         margin-block-end: 52px;
     }
 
-    & .confirmation-main {
+    & .confirmation-main-container {
         display: grid;
         grid-template-columns: 1.202fr 1fr;
         column-gap: 95px;
 
-        & .dates-guests {
-            padding-bottom: 16px;
-            border-bottom: 1px solid $gray-clr3;
+        & .confirmation-main {
+            & .dates-guests {
+                padding-bottom: 16px;
+                border-bottom: 1px solid $gray-clr3;
 
-            & :is(.dates, .guests) {
-                margin-top: 26px;
+                & :is(.dates, .guests) {
+                    margin-top: 26px;
 
-                & p {
-                    margin-top: 16px;
-                    letter-spacing: 0;
-                    margin-top: 6px;
-                    font-weight: 100;
-                    font-size: rem(16px);
+                    & p {
+                        margin-top: 16px;
+                        letter-spacing: 0;
+                        margin-top: 6px;
+                        font-weight: 100;
+                        font-size: rem(16px);
+                    }
                 }
             }
-        }
 
-        & .message-host {
-            margin-top: 32px;
-            border-bottom: 1px solid $gray-clr3;
+            & .message-host {
+                margin-top: 32px;
+                border-bottom: 1px solid $gray-clr3;
 
-            & .intro {
+                & .intro {
+                    & h3 {
+                        margin-bottom: 20px;
+                    }
+
+                    & h5 {
+                        margin-bottom: 4px;
+                    }
+
+                    & p {
+                        letter-spacing: 0;
+                    }
+                }
+
+                & .host-preview {
+                    padding-block-start: 16px;
+                    padding-block-end: 32px;
+
+                    & img {
+                        width: 42px;
+                        height: 42px;
+                        border-radius: 50px;
+                        object-fit: cover;
+                        margin-right: 16px;
+                    }
+                }
+
+                & textarea {
+                    border-radius: 8px;
+                    border-color: $gray-clr3;
+                    width: 100%;
+                    height: 125px;
+                    margin-bottom: 24px;
+                    resize: none;
+                }
+            }
+
+            & .cancellation-policy {
+                margin-top: 34px;
+                border-bottom: 1px solid $gray-clr3;
+                padding-bottom: 16px;
+
                 & h3 {
-                    margin-bottom: 20px;
-                }
-
-                & h5 {
-                    margin-bottom: 4px;
+                    margin-bottom: 26px;
                 }
 
                 & p {
                     letter-spacing: 0;
+                    line-height: 1.28;
                 }
             }
 
-            & .host-preview {
-                padding-block-start: 16px;
-                padding-block-end: 32px;
+            & .declaration {
+                margin-block-start: 40px;
 
-                & img {
-                    width: 42px;
-                    height: 42px;
-                    border-radius: 50px;
-                    object-fit: cover;
-                    margin-right: 16px;
+                & span {
+                    text-decoration: underline;
                 }
             }
-
-            & textarea {
-                border-radius: 8px;
-                border-color: $gray-clr3;
-                width: 100%;
-                height: 125px;
-                margin-bottom: 24px;
-                resize: none;
-            }
         }
 
-        & .cancellation-policy {
-            margin-top: 34px;
-            border-bottom: 1px solid $gray-clr3;
-            padding-bottom: 16px;
-
-            & h3 {
-                margin-bottom: 26px;
-            }
-
-            & p {
-                letter-spacing: 0;
-                line-height: 1.28;
-            }
-        }
-
-        & .order-confirmation-sidebar {
+        & .confirmation-sidebar {
             grid-area: 1 / 2 / span 3;
             border: 1px solid $gray-clr2;
             border-radius: 12px;
@@ -169,14 +179,6 @@
                 & .total-price {
                     margin-block-start: 22px;
                 }
-            }
-        }
-
-        & .declaration {
-            margin-block-start: 40px;
-
-            & span {
-                text-decoration: underline;
             }
         }
     }
