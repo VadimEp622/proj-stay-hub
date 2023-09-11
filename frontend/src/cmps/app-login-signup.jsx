@@ -53,11 +53,9 @@ export function AppLoginSignup({ isSignUp, isQuick = false }) {
     }
 
     function onSubmit(values) {
-        // console.log('values', values)
         if (isSignUp) handleSignup(values)
         else handleLogin(values)
     }
-
 
     async function handleLogin(values) {
         if (!values.username) return
@@ -66,16 +64,22 @@ export function AppLoginSignup({ isSignUp, isQuick = false }) {
             showSuccessMsg(`Welcome: ${user.fullname}`)
             setAppModal(CLOSE_APP_MODAL)
         } catch (err) {
-            showErrorMsg('Cannot login')
+            console.log('Failed Login', err)
+            showErrorMsg('Failed Login')
         }
     }
 
     async function handleSignup(values) {
         if (!values.username || !values.password || !values.fullname) return
-        setAppModal(CLOSE_APP_MODAL)
-        signup(values)
+        try {
+            const user = await signup(values)
+            showSuccessMsg(`Welcome: ${user.fullname}`)
+            setAppModal(CLOSE_APP_MODAL)
+        } catch (err) {
+            console.log('Failed Signup', err)
+            showErrorMsg('Failed Signup')
+        }
     }
-
 
 
     return (

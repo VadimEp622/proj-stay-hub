@@ -58,6 +58,10 @@ export const userService = {
     getUserDashboardData,
     getLoggedinUser,
     saveLocalUser,
+    clearLocalUser,
+    login,
+    logout,
+    signup,
     // ================================================== 
     // ============= Checked and NOT in use =============
     getNewUserCredentials,
@@ -65,9 +69,6 @@ export const userService = {
     // ============= Checked and being used in cmp I don't know =============
     update,
     // ======================================================================
-    login,
-    logout,
-    signup,
     getUsers,
     getById,
     remove,
@@ -109,10 +110,49 @@ function getLoggedinUser() {
     return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER))
 }
 
+function clearLocalUser() {
+    sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER)
+}
+
 function saveLocalUser(user) {
     user = { _id: user._id, fullname: user.fullname, imgUrl: user.imgUrl, wishlist: user.wishlist, trip: user.trip }
     sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
     return user
+}
+
+async function login(userCred) {
+    try {
+        const user = await httpService.post('auth/login', userCred)
+        if (user) {
+            return saveLocalUser(user)
+        }
+    } catch (err) {
+        console.log('Could not log in', err)
+        throw err
+    }
+}
+
+async function signup(userCred) {
+    try {
+        userCred.trip = []
+        userCred.wishlist = []
+        if (!userCred.imgUrl) userCred.imgUrl = 'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png'
+        const user = await httpService.post('auth/signup', userCred)
+        return saveLocalUser(user)
+    } catch (err) {
+        console.log('Could not sign up', err)
+        throw err
+    }
+}
+
+async function logout() {
+    try {
+        await httpService.post('auth/logout')
+        clearLocalUser()
+    } catch (err) {
+        console.log('Could not logout', err)
+        throw err
+    }
 }
 // ================================================== 
 // ============= Checked and NOT in use =============
@@ -123,24 +163,29 @@ function getNewUserCredentials() {
 // ============= Checked and being used in cmp I don't know =============
 // need to remove the function below, flawed and unnecessary 
 async function update(_id, type, data, action = 'update') {
-    // const user = await storageService.get('user', _id);
-    const user = await httpService.get(`user/${_id}`)
-    if (!user[type]) {
-        user[type] = []
-    }
-    if (action === 'update') {
-        user[type].push(data)
-    } else {
-        const keyIndex = user[type].findIndex((typeItem) => typeItem._id === data._id)
-        user[type].splice(keyIndex, 1)
-    }
-    await httpService.put(`user/${_id}`, user)
+    try {
 
-    if (getLoggedinUser()._id === user._id) {
-        saveLocalUser(user)
-    }
+        // const user = await storageService.get('user', _id);
+        const user = await httpService.get(`user/${_id}`)
+        if (!user[type]) {
+            user[type] = []
+        }
+        if (action === 'update') {
+            user[type].push(data)
+        } else {
+            const keyIndex = user[type].findIndex((typeItem) => typeItem._id === data._id)
+            user[type].splice(keyIndex, 1)
+        }
+        await httpService.put(`user/${_id}`, user)
 
-    return user
+        if (getLoggedinUser()._id === user._id) {
+            saveLocalUser(user)
+        }
+
+        return user
+    } catch (err) {
+        console.log('err', err)
+    }
 }
 // ======================================================================
 
@@ -156,25 +201,7 @@ function remove(userId) {
     return httpService.delete(`user/${userId}`)
 }
 
-async function login(userCred) {
-    const user = await httpService.post('auth/login', userCred)
-    if (user) {
-        return saveLocalUser(user)
-    }
-}
 
-async function signup(userCred) {
-    userCred.trip = []
-    userCred.wishlist = []
-    if (!userCred.imgUrl) userCred.imgUrl = 'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png'
-    const user = await httpService.post('auth/signup', userCred)
-    return saveLocalUser(user)
-}
-
-function logout() {
-    sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER)
-    return httpService.post('auth/logout')
-}
 
 function buildGuestsString(guestsObject) {
     const { adults = 0, children = 0, infants = 0, pets = 0 } = guestsObject

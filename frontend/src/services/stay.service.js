@@ -73,14 +73,13 @@ async function save(stay) {
     return savedStay
 }
 
-async function remove(stayId) {
+function remove(stayId) {
     return httpService.delete(`stay/${stayId}`)
 }
 
 // Not Yet In Use
-async function addStayMsg(stayId, txt) {
-    const savedMsg = await httpService.post(`stay/${stayId}/msg`, { txt })
-    return savedMsg
+function addStayMsg(stayId, txt) {
+    return httpService.post(`stay/${stayId}/msg`, { txt })
 }
 
 

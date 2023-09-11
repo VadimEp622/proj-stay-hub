@@ -41,10 +41,7 @@ export async function toggleWishlist(loggedInUser, stay) {
 export async function login(credentials) {
     try {
         const user = await userService.login(credentials)
-        store.dispatch({
-            type: SET_USER,
-            user
-        })
+        store.dispatch({ type: SET_USER, user })
         socketService.login(user)
         return user
     } catch (err) {
@@ -56,12 +53,9 @@ export async function login(credentials) {
 export async function signup(credentials) {
     try {
         const user = await userService.signup(credentials)
-        store.dispatch({
-            type: SET_USER,
-            user
-        })
+        store.dispatch({ type: SET_USER, user })
         socketService.login(user)
-        // return user
+        return user
     } catch (err) {
         console.log('Cannot signup', err)
         throw err
@@ -71,13 +65,8 @@ export async function signup(credentials) {
 export async function logout() {
     try {
         await userService.logout()
-        store.dispatch({
-            type: SET_USER,
-            user: null
-        })
-        // window.location.href = "/"
+        store.dispatch({ type: SET_USER, user: null })
         socketService.logout()
-        sessionStorage.removeItem('loggedinUser');
     } catch (err) {
         console.log('Cannot logout', err)
         throw err
