@@ -13,15 +13,12 @@ import { PastReservationList } from "../cmps/user-trips/past-reservation-list.js
 
 
 // TODO: when fetching trips, perform loading animation, and only when finished fetching, render cmps
-// TODO: organize this component.
 // TODO: fix responsiveness for this page
 
 export function UserTrips() {
     const loggedInUser = useSelector(storeState => storeState.userModule.user)
     const [trips, setTrips] = useState([])
     const navigate = useNavigate()
-
-
 
 
     useEffect(() => {
@@ -41,16 +38,11 @@ export function UserTrips() {
         try {
             const orders = await orderService.getOrders({ byUserId: loggedInUser._id })
             console.log('orders', orders)
-            // What is the point of the below .filter?
-            const filteredTrips = orders.filter(
-                (order) => order.byUser._id === loggedInUser._id
-            )
-            setTrips(filteredTrips)
+            setTrips(orders)
         } catch (error) {
             showErrorMsg('Error fetching orders')
         }
     }
-
 
     function getUpcomingTrips() {
         const currentDate = new Date()

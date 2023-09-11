@@ -47,6 +47,7 @@ function getFutureTime(amount, item) {
 }
 
 function getFormattedTimeRange(start, end) {
+    // TODO: add isYear, and format appropriately
     const startDate = new Date(start)
     const endDate = new Date(end)
 

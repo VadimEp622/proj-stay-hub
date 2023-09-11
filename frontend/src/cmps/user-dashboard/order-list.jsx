@@ -18,6 +18,7 @@ import { Loader } from '../_reuseable-cmps/loader.jsx'
 //   1. ALL ORDERS of ALL users
 //   2. Only orders made by CURRENT LOGGED IN USER
 //   3. Example of orders, or demo data
+// TODO: consider whether it's really needed to put the orders into the store, and not use useState
 
 
 export function OrderList({ loggedInUser }) {
