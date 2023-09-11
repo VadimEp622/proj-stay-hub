@@ -49,9 +49,15 @@ const stayHostImgUrl = [
 
 
 export const userService = {
-    // =============== Checked and in use ===============
+    // ========================= Checked and in use =========================
+    // ******* C.R.U.D.L *******
     addUserTrip,
     updateWishlist,
+    getById,
+    login,
+    signup,
+    logout,
+    // *************************
     randomHostImg,
     getEmptyCredentials,
     getGuestCredentials,
@@ -59,24 +65,20 @@ export const userService = {
     getLoggedinUser,
     saveLocalUser,
     clearLocalUser,
-    login,
-    logout,
-    signup,
-    // ================================================== 
-    // ============= Checked and NOT in use =============
+    buildGuestsString,
+    // ======================= Checked and NOT in use =======================
     getNewUserCredentials,
-    // ================================================== 
     // ============= Checked and being used in cmp I don't know =============
     update,
-    // ======================================================================
     getUsers,
-    getById,
-    remove,
-    buildGuestsString
+    remove
+    // ======================================================================
 }
 window.userService = userService
 
-// =============== Checked and in use ===============
+
+// ========================= Checked and in use =========================
+// ******* C.R.U.D.L *******
 function addUserTrip(userId, orderId) {
     return httpService.post(`user/${userId}/trip`, orderId)
 }
@@ -86,38 +88,8 @@ function updateWishlist(stay) {
     return httpService.put(`user/${loggedInUserId}/wishlist`, stay)
 }
 
-function randomHostImg() {
-    return stayHostImgUrl[utilService.getRandomIntInclusive(0, stayHostImgUrl.length - 1)]
-}
-
-function getEmptyCredentials() {
-    return { username: '', password: '', fullname: '' }
-}
-
-function getGuestCredentials() {
-    return { username: 'guest123!aAsS', password: 'guest123!aAsS', fullname: '' }
-}
-
-function getUserDashboardData() {
-    return {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June'],
-        revenue: [1710.5, 751.2, 2741.8, 1740, 2476, 857],
-        occupancyRate: [74, 29, 90, 63, 81, 34]
-    }
-}
-
-function getLoggedinUser() {
-    return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER))
-}
-
-function clearLocalUser() {
-    sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER)
-}
-
-function saveLocalUser(user) {
-    user = { _id: user._id, fullname: user.fullname, imgUrl: user.imgUrl, wishlist: user.wishlist, trip: user.trip }
-    sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
-    return user
+function getById(userId) {
+    return httpService.get(`user/${userId}`)
 }
 
 async function login(userCred) {
@@ -154,12 +126,55 @@ async function logout() {
         throw err
     }
 }
-// ================================================== 
-// ============= Checked and NOT in use =============
+// *************************
+
+function randomHostImg() {
+    return stayHostImgUrl[utilService.getRandomIntInclusive(0, stayHostImgUrl.length - 1)]
+}
+
+function getEmptyCredentials() {
+    return { username: '', password: '', fullname: '' }
+}
+
+function getGuestCredentials() {
+    return { username: 'guest123!aAsS', password: 'guest123!aAsS', fullname: '' }
+}
+
+function getUserDashboardData() {
+    return {
+        labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+        revenue: [1710.5, 751.2, 2741.8, 1740, 2476, 857],
+        occupancyRate: [74, 29, 90, 63, 81, 34]
+    }
+}
+
+function getLoggedinUser() {
+    return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER))
+}
+
+function clearLocalUser() {
+    sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER)
+}
+
+function saveLocalUser(user) {
+    user = { _id: user._id, fullname: user.fullname, imgUrl: user.imgUrl, wishlist: user.wishlist, trip: user.trip }
+    sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
+    return user
+}
+
+function buildGuestsString(guestsObject) {
+    const { adults = 0, children = 0, infants = 0, pets = 0 } = guestsObject
+    const guestCount = (adults + children === 0) ? 1 : (adults + children)
+    let guestsString = `${guestCount} guest${guestCount !== 1 ? 's' : ''}`
+    if (infants > 0) guestsString += `, ${infants} infant${infants !== 1 ? 's' : ''}`
+    if (pets > 0) guestsString += `, ${pets} pet${pets !== 1 ? 's' : ''}`
+    return guestsString
+}
+// ======================= Checked and NOT in use =======================
 function getNewUserCredentials() {
     return { username: 'newUser', password: 'newUser', fullname: 'New user' }
 }
-// ================================================== 
+
 // ============= Checked and being used in cmp I don't know =============
 // need to remove the function below, flawed and unnecessary 
 async function update(_id, type, data, action = 'update') {
@@ -187,27 +202,12 @@ async function update(_id, type, data, action = 'update') {
         console.log('err', err)
     }
 }
-// ======================================================================
 
 function getUsers() {
     return httpService.get(`user`)
 }
 
-function getById(userId) {
-    return httpService.get(`user/${userId}`)
-}
-
 function remove(userId) {
     return httpService.delete(`user/${userId}`)
 }
-
-
-
-function buildGuestsString(guestsObject) {
-    const { adults = 0, children = 0, infants = 0, pets = 0 } = guestsObject
-    const guestCount = (adults + children === 0) ? 1 : (adults + children)
-    let guestsString = `${guestCount} guest${guestCount !== 1 ? 's' : ''}`
-    if (infants > 0) guestsString += `, ${infants} infant${infants !== 1 ? 's' : ''}`
-    if (pets > 0) guestsString += `, ${pets} pet${pets !== 1 ? 's' : ''}`
-    return guestsString
-}
+// ======================================================================
