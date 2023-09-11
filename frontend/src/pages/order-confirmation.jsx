@@ -4,9 +4,8 @@ import { useSelector } from "react-redux"
 import { Link, useLocation, useNavigate } from "react-router-dom"
 
 // Services
-import { ARROW_LEFT, STAR } from "../services/svg.service.js"
-import { utilService } from "../services/util.service.js"
-import { socketService, SOCKET_EMIT_SET_STAYID, SOCKET_EMIT_STAY_RESERVED, SOCKET_EVENT_STAY_RESERVED } from "../services/socket.service.js"
+import { ARROW_LEFT } from "../services/svg.service.js"
+import { socketService, SOCKET_EVENT_STAY_RESERVED } from "../services/socket.service.js"
 
 // Store
 import { addConfirmedTrip } from "../store/user.actions.js"
@@ -33,24 +32,13 @@ export function OrderConfirmation() {
     const orderObject = useSelector(storeState => storeState.userModule.order)
 
 
-    // useEffect(() => {
-    //     socketService.on(SOCKET_EMIT_SET_STAYID, doSomething)
-    //     socketService.emit(SOCKET_EMIT_SET_TOYID, toy._id)
-    //     return () => {
-    //         socketService.off(SOCKET_EMIT_SET_STAYID, doSomething)
-    //     }
-    // }, [])
-    // function doSomething(something) {
-    //     console.log('something', something)
-    // }
-
     useEffect(() => {
-        //  if refreshed, or entered URL path directly with /book/ inside, redirect to stay page (stay-details)
         if (Object.keys(orderObject).length === 0) {
             const pathName = location.pathname.split('/')
             const newPathName = pathName.filter(name => name !== 'book').join('/')
             navigate(newPathName)
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
 
