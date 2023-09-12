@@ -9,14 +9,11 @@ import { showErrorMsg } from '../services/event-bus.service.js'
 
 // Components
 import { OrderList } from '../cmps/user-dashboard/order-list.jsx'
-import { UserOverview } from '../cmps/user-dashboard/user-overview.jsx'
-import { ChartBar } from '../cmps/user-dashboard/chart-bar.jsx'
-import { ChartLine } from '../cmps/user-dashboard/chart-line.jsx'
+import { DashboardStatistics } from '../cmps/user-dashboard/dashboard-statistics.jsx'
 
 
-// TODO: change user-overview to be a grid, with auto template columns (fluid responsiveness)
-// TODO: improve charts to display well even if not on mobile
 
+// TODO: when 1050px width, remove upper charts, and show only lower charts
 
 // TODO: reorganize components so:
 //     1. app header stays above
@@ -40,13 +37,10 @@ export function UserDashboard() {
 
 
     return (
-        <section className='dashboard-page'>
-            <UserOverview dashboardData={dashboardData} />
+        <section className="dashboard-page">
+            <h1 className="dashboard-page-title fs30">My Dashboard</h1>
+            <DashboardStatistics dashboardData={dashboardData} />
             <OrderList loggedInUser={loggedInUser} />
-            <section className="sales-dashboard">
-                <ChartBar dashboardData={dashboardData} />
-                <ChartLine dashboardData={dashboardData} />
-            </section>
         </section>
     )
 }

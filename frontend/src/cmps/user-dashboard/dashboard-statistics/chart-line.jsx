@@ -52,7 +52,7 @@ export function ChartLine({ dashboardData }) {
     }
 
     return (
-        <section className='chart-container'>
+        <section className='chart-container flex justify-center'>
             <Line options={options} data={data} />
         </section>
     )

@@ -54,7 +54,7 @@ export function ChartBar({ dashboardData }) {
         ],
     }
     return (
-        <section className='chart-container'>
+        <section className='chart-container flex justify-center'>
             <Bar options={options} data={data} />
         </section>
     )

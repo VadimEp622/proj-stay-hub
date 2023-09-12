@@ -1,0 +1,25 @@
+.dashboard-statistics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+
+    & > * {
+        box-shadow: $box-shadow16;
+        border-radius: 12px;
+        padding: 20px;
+
+        & .statistics-header {
+            padding-block-end: 20px;
+            white-space: nowrap;
+            text-align: center;
+        }
+    }
+
+    & .statistics-revenue {
+        & .statistics-body {
+            & > *:not(:first-child) {
+                padding-block-start: 20px;
+            }
+        }
+    }
+}
