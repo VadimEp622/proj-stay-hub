@@ -3,6 +3,8 @@ import { ChartLine } from "./dashboard-statistics/chart-line.jsx"
 
 export function DashboardStatistics({dashboardData}) {
 
+    // TODO: make averageRevenue call util function which calculates instead
+
     const averageRevenue = (dashboardData.revenue.reduce((sum, value) => sum + value, 0) / dashboardData.revenue.length).toLocaleString(undefined,
         { maximumFractionDigits: 2, })
     return (
