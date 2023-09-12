@@ -11,6 +11,8 @@ import { orderService } from '../../services/order.service.js'
 // Components
 import { OrderPreview } from './order-list/order-preview.jsx'
 import { Loader } from '../_reuseable-cmps/loader.jsx'
+import { store } from '../../store/store.js'
+import { LOADING_ORDERS_END } from '../../store/order.reducer.js'
 
 
 // TODO: Organize/improve styling 
@@ -26,8 +28,12 @@ export function OrderList({ loggedInUser }) {
   const allOrders = useSelector(storeState => storeState.orderModule.orders)
   const [demoOrders, setDemoOrders] = useState(orderService.getDemoOrders())
 
+
   useEffect(() => {
     loadOrders()
+    return () => {
+      store.dispatch({ type: LOADING_ORDERS_END })
+    }
   }, [])
 
   useEffect(() => {

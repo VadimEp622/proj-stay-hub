@@ -10,6 +10,9 @@ import { orderService } from "../services/order.service.js"
 // Components
 import { FutureReservationList } from "../cmps/user-trips/future-reservation-list.jsx"
 import { PastReservationList } from "../cmps/user-trips/past-reservation-list.jsx"
+import { store } from "../store/store.js"
+import { LOADING_ORDERS_END, LOADING_ORDERS_START } from "../store/order.reducer.js"
+import { Loader } from "../cmps/_reuseable-cmps/loader.jsx"
 
 
 // TODO: when fetching trips, perform loading animation, and only when finished fetching, render cmps
@@ -17,8 +20,15 @@ import { PastReservationList } from "../cmps/user-trips/past-reservation-list.js
 
 export function UserTrips() {
     const loggedInUser = useSelector(storeState => storeState.userModule.user)
+    const isLoadingOrders = useSelector(storeState => storeState.orderModule.isLoadingOrders)
     const [trips, setTrips] = useState([])
     const navigate = useNavigate()
+
+    useEffect(() => {
+        return () => {
+            store.dispatch({ type: LOADING_ORDERS_END })
+        }
+    }, [])
 
 
     useEffect(() => {
@@ -28,7 +38,7 @@ export function UserTrips() {
     }, [loggedInUser])
 
 
-    function handleSearchClick(ev) {
+    function onSearchClick(ev) {
         ev.preventDefault()
         ev.stopPropagation()
         navigate('/')
@@ -36,11 +46,15 @@ export function UserTrips() {
 
     async function fetchOrders() {
         try {
+            store.dispatch({ type: LOADING_ORDERS_START })
             const orders = await orderService.getOrders({ byUserId: loggedInUser._id })
             console.log('orders', orders)
             setTrips(orders)
         } catch (error) {
+            console.log('Error fetching orders', error)
             showErrorMsg('Error fetching orders')
+        } finally {
+            store.dispatch({ type: LOADING_ORDERS_END })
         }
     }
 
@@ -62,13 +76,14 @@ export function UserTrips() {
         return pastTrips
     }
 
+    if (isLoadingOrders) return <Loader />
     return (
         <section className="user-trips-page">
             <h1 className="page-title fs28">Trips</h1>
 
             <section className="future-reservation-list-container">
                 <h3 className="reservation-list-header fs20">Upcoming reservations</h3>
-                <FutureReservationList getUpcomingTrips={getUpcomingTrips} handleSearchClick={handleSearchClick} />
+                < FutureReservationList getUpcomingTrips={getUpcomingTrips} onSearchClick={onSearchClick} />
             </section>
 
             <section className="past-reservation-list-container">

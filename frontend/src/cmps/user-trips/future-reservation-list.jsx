@@ -2,7 +2,7 @@
 import { ReservationPreview } from "./future-reservations/reservation-preview.jsx"
 
 
-export function FutureReservationList({ getUpcomingTrips, handleSearchClick }) {
+export function FutureReservationList({ getUpcomingTrips, onSearchClick }) {
     // insert below "explore" into order randomly, into DB, from "order-confirmation" or "stay-details"
     const explore = {
         justForYou: [
@@ -54,7 +54,7 @@ export function FutureReservationList({ getUpcomingTrips, handleSearchClick }) {
                 <section className="no-trips">
                     <h3 className="no-trips-header fs22 lh26">No trips booked...yet!</h3>
                     <p className="fs16 lh24">Time to dust off your bags and start planning your next adventure</p>
-                    <button className="fs16" onClick={(ev) => handleSearchClick(ev)}>Start searching</button>
+                    <button className="fs16" onClick={(ev) => onSearchClick(ev)}>Start searching</button>
                 </section>
             )}
         </section>
