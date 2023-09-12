@@ -3,7 +3,9 @@ import { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 
 // Store
+import { store } from '../../store/store.js'
 import { approveOrder, rejectOrder, loadOrders } from '../../store/order.actions.js'
+import { LOADING_ORDERS_END } from '../../store/order.reducer.js'
 
 // Services
 import { orderService } from '../../services/order.service.js'
@@ -11,11 +13,8 @@ import { orderService } from '../../services/order.service.js'
 // Components
 import { OrderPreview } from './order-list/order-preview.jsx'
 import { Loader } from '../_reuseable-cmps/loader.jsx'
-import { store } from '../../store/store.js'
-import { LOADING_ORDERS_END } from '../../store/order.reducer.js'
 
 
-// TODO: Organize/improve styling 
 // TODO: make tabs, for displaying:
 //   1. ALL ORDERS of ALL users
 //   2. Only orders made by CURRENT LOGGED IN USER
