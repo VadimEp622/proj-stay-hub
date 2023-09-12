@@ -17,8 +17,11 @@
 
     & .statistics-revenue {
         & .statistics-body {
-            & > *:not(:first-child) {
-                padding-block-start: 20px;
+            // & > *:not(:first-child) {
+            //     padding-block-start: 20px;
+            // }
+            & > *{
+                padding-block: 20px;
             }
         }
     }
