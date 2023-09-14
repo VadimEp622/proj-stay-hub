@@ -33,19 +33,30 @@
         gap: 48px;
         margin-block-end: 48px;
 
+        &.mobile {
+            grid-template-columns: 1fr;
+            & .reservation-container {
+                & .reservation-info {
+                    grid-row: 2;
+                }
+                & .reservation-img {
+                    grid-row: 1;
+                }
+            }
+        }
+
         & .reservation-container {
             display: grid;
-            height: 100%;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-auto-rows: minmax(150px, 200px) 200px;
+
             border-radius: 12px;
-            overflow: hidden;
             box-shadow: $box-shadow10;
-            position: relative;
+            overflow: hidden;
 
             & .reservation-info {
-                height: auto;
                 display: grid;
-                grid-template-rows: 50% 50%;
+                grid-template-rows: 1fr 1fr;
                 padding: 24px;
 
                 & .reservation-header {
@@ -56,39 +67,24 @@
                     }
                 }
 
-                & .reservation-dates {
-                    height: 100%;
-                    align-items: flex-start;
-                    margin-block-start: 16px;
-
+                & .reservation-date-destination-status {
+                    padding-block-start: 16px;
+                    gap: 10px;
                     & > * {
-                        align-items: flex-start;
-                        height: 100%;
-                        flex: 1;
+                        flex: 1 1 100%;
                     }
 
                     & .reservation-date {
-                        width: 20%;
-                        border-right: 1px solid $gray-clr4;
-                        padding-block-end: 24px;
+                        white-space: nowrap;
                     }
 
                     & .reservation-destination {
-                        height: 100%;
-                        flex-direction: column;
-                        align-items: flex-start;
-                        justify-content: space-around;
-                        padding-inline: 24px;
+                        border-right: 1px solid $gray-clr4;
+                        border-left: 1px solid $gray-clr4;
+                        padding-inline: 10px;
                     }
 
                     & .reservation-confirmation {
-                        height: 100%;
-                        border-left: 1px solid $gray-clr4;
-                        padding-inline-start: 24px;
-                        display: flex;
-                        flex-direction: column;
-                        justify-content: flex-start;
-
                         & .status {
                             padding-block-start: 8px;
 
@@ -107,21 +103,99 @@
                     }
                 }
             }
-
-            & .reservation-img {
-                width: 100%;
-                height: 100%;
-
-                & img {
-                    position: absolute;
-                    width: 50%;
-                    height: 100%;
-                    object-fit: cover;
-                }
-            }
         }
 
+        // & .reservation-container {
+        //     display: grid;
+        //     height: 100%;
+        //     grid-template-columns: 1fr 1fr;
+        //     border-radius: 12px;
+        //     overflow: hidden;
+        //     box-shadow: $box-shadow10;
+        //     position: relative;
+
+        //     & .reservation-info {
+        //         height: auto;
+        //         display: grid;
+        //         grid-template-rows: 50% 50%;
+        //         padding: 24px;
+
+        //         & .reservation-header {
+        //             border-bottom: 1px solid $gray-clr4;
+
+        //             & :first-child {
+        //                 margin-block-end: rem(8px);
+        //             }
+        //         }
+
+        //         & .reservation-dates {
+        //             height: 100%;
+        //             align-items: flex-start;
+        //             margin-block-start: 16px;
+
+        //             & > * {
+        //                 align-items: flex-start;
+        //                 height: 100%;
+        //                 flex: 1;
+        //             }
+
+        //             & .reservation-date {
+        //                 width: 20%;
+        //                 border-right: 1px solid $gray-clr4;
+        //                 padding-block-end: 24px;
+        //             }
+
+        //             & .reservation-destination {
+        //                 height: 100%;
+        //                 flex-direction: column;
+        //                 align-items: flex-start;
+        //                 justify-content: space-around;
+        //                 padding-inline: 24px;
+        //             }
+
+        //             & .reservation-confirmation {
+        //                 height: 100%;
+        //                 border-left: 1px solid $gray-clr4;
+        //                 padding-inline-start: 24px;
+        //                 display: flex;
+        //                 flex-direction: column;
+        //                 justify-content: flex-start;
+
+        //                 & .status {
+        //                     padding-block-start: 8px;
+
+        //                     &.approved {
+        //                         color: $positive-clr0;
+        //                     }
+
+        //                     &.pending {
+        //                         color: $pending-clr0;
+        //                     }
+
+        //                     &.rejected {
+        //                         color: $negative-clr0;
+        //                     }
+        //                 }
+        //             }
+        //         }
+        //     }
+
+        //     & .reservation-img {
+        //         width: 100%;
+        //         height: 100%;
+
+        //         & img {
+        //             position: absolute;
+        //             width: 50%;
+        //             height: 100%;
+        //             object-fit: cover;
+        //         }
+        //     }
+        // }
+
         & .explore-things-to-do {
+            margin-block: auto;
+
             & .explore-title {
                 letter-spacing: -0.5px;
             }
@@ -162,7 +236,7 @@
                         flex-direction: column;
                         justify-content: space-around;
 
-                        &>*{
+                        & > * {
                             white-space: nowrap;
                         }
 

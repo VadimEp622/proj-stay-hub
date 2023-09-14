@@ -13,29 +13,31 @@ export function ReservationTicket({ trip }) {
     return (
         <section className="reservation-container">
 
-            <section className="reservation-info">
+            <article className="reservation-info">
 
                 <section className="reservation-header">
                     <h2>{city}</h2>
                     <h5>Entire rental unit hosted by {fullname}</h5>
                 </section>
 
-                <section className="reservation-dates flex">
-                    <section className="reservation-date">{timeRange}</section>
-                    <section className="reservation-destination flex">
+                <section className="reservation-date-destination-status flex space-between">
+                    <article className="reservation-date flex column align-center">
+                        <span>{timeRange}</span>
+                    </article>
+                    <article className="reservation-destination flex column align-center">
                         <h4>{location}</h4>
                         <span>{city}</span>
                         <span className="fs10">{country}</span>
-                    </section>
-                    <section className="reservation-confirmation">
+                    </article>
+                    <article className="reservation-confirmation flex column align-center">
                         <span className="ff-circular-semibold">Status:</span>
                         <h4 className={`status ${status.toLowerCase()} fs16`}>{status}</h4>
-                    </section>
+                    </article>
                 </section>
 
-            </section>
+            </article>
 
-            <article className="reservation-img">
+            <article className="reservation-img flex">
                 <img src={stayImage} alt="stay" />
             </article>
 
