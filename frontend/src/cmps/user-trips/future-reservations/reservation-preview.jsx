@@ -1,13 +1,11 @@
 // Services
-import { EYE } from "../../../services/svg.service.js"
 import { utilService } from "../../../services/util.service.js"
 
 // Components
-import SvgHandler from "../../_reuseable-cmps/svg-handler.jsx"
 import { ExploreList } from "./reservation-preview/explore-list.jsx"
 
 
-export function ReservationPreview({ trip, explore }) {
+export function ReservationPreview({ trip }) {
 
     const locationSubstring = trip.content.stayDetails.loc.address.substring(0, trip.content.stayDetails.loc.address.indexOf(','))
     return (
@@ -50,7 +48,7 @@ export function ReservationPreview({ trip, explore }) {
 
             </section>
 
-            <ExploreList explore={explore} trip={trip}/>
+            <ExploreList trip={trip}/>
         </section>
     )
 }

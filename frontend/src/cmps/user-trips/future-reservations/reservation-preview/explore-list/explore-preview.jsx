@@ -1,12 +1,21 @@
-export function ExplorePreview() {
+// Services
+import { EYE } from "../../../../../services/svg.service.js"
 
+// Components
+import SvgHandler from "../../../../_reuseable-cmps/svg-handler.jsx"
+
+
+export function ExplorePreview({ exploreItem }) {
     return (
         <section className="to-do">
-            {/* <img src={explore.justForYou[Math.floor(Math.random() * explore.sightseeing.length)]} alt="to-do" />
+            {exploreItem.img
+                ? <img src={exploreItem.img} alt="to-do" />
+                : <article className="show-more"><SvgHandler svgName={EYE} /></article>
+            }
             <article className="todo-info">
-              <h4>Just for you</h4>
-              <span>{trip.content.thingsToDo['Just-for-you']} experiences</span>
-            </article> */}
+                <h4>{exploreItem.title}</h4>
+                <span>{exploreItem.amount} experiences</span>
+            </article>
         </section>
     )
 }

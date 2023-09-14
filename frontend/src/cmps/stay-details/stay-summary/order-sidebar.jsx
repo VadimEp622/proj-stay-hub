@@ -4,9 +4,12 @@ import { useNavigate } from "react-router-dom"
 
 // Services
 import { utilService } from "../../../services/util.service.js"
+import { orderService } from "../../../services/order.service.js"
 
 // Store
 import { setOrder } from "../../../store/user.actions.js"
+import { SET_APP_MODAL_LOGIN } from "../../../store/system.reducer.js"
+import { setAppModal } from "../../../store/system.action.js"
 
 // Custom Hooks
 import useStayDates from "../../../customHooks/useStayDates.js"
@@ -19,8 +22,6 @@ import { DatesAndGuests } from "./order-sidebar/dates-and-guests.jsx"
 import { Pricing } from "./order-sidebar/pricing.jsx"
 import { SpecialInfo } from "./order-sidebar/special-info.jsx"
 import { ButtonMain } from "../../_reuseable-cmps/button-main.jsx"
-import { SET_APP_MODAL_LOGIN } from "../../../store/system.reducer.js"
-import { setAppModal } from "../../../store/system.action.js"
 
 
 
@@ -92,14 +93,7 @@ export function OrderSidebar({ stay, randomDate, hostImgUrl }) {
                 rate: stay.reviews.rate,
                 reviewsCount: stay.reviews.length
             },
-            thingsToDo: {
-                "Just-for-you": utilService.getRandomIntInclusive(10, 20),
-                "Top-rated": utilService.getRandomIntInclusive(30, 50),
-                "Sports": utilService.getRandomIntInclusive(30, 60),
-                "Tours": utilService.getRandomIntInclusive(50, 120),
-                "Sightseeing": utilService.getRandomIntInclusive(50, 120),
-                "more": utilService.getRandomIntInclusive(300, 500),
-            },
+            explore: orderService.getOrderExploreList(),
             status: "Pending",
             _id: utilService.makeId()
         }
