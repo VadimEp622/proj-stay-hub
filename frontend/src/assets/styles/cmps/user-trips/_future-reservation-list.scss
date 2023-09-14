@@ -48,17 +48,18 @@
 
         & .reservation-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             grid-auto-rows: minmax(150px, 200px) 300px;
 
             border-radius: 12px;
             box-shadow: $box-shadow10;
             overflow: hidden;
-
+            
             & .reservation-info {
                 display: grid;
                 grid-template-rows: 1fr 1fr;
                 padding: 24px;
+                overflow: auto;
 
                 & .reservation-header {
                     border-bottom: 1px solid $gray-clr4;
@@ -71,12 +72,15 @@
                 & .reservation-date-destination-status {
                     padding-block-start: 16px;
                     gap: 10px;
+                    white-space: nowrap;
+
                     & > * {
                         flex: 1 1 100%;
+                        justify-content: center;
                     }
 
                     & .reservation-date {
-                        white-space: nowrap;
+                        font-size: rem(18px);
                     }
 
                     & .reservation-destination {

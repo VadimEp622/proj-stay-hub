@@ -34,7 +34,6 @@ const explore = {
         'https://a0.muscache.com/im/pictures/lombard/MtTemplate-3941689-media_library/original/f3ff57d0-0afe-4448-a733-710db8502e2e.jpeg?im_w=1440',
         'https://a0.muscache.com/im/pictures/lombard/MtTemplate-2861715-media_library/original/c3105295-5e19-4528-9e82-7e22c0f3f41b.jpeg?im_w=1440',
         'https://a0.muscache.com/im/pictures/lombard/MtTemplate-2861715-media_library/original/79ed513c-a191-4115-8c32-97c3dd451b18.jpeg?im_w=1440',
-        'https://a0.muscache.com/im/pictures/lombard/MtTemplate-2861715-media_library/original/bd2c1351-1bc7-49e8-acb9-bbf32dd48aaf.jpeg?im_w=1440',
     ],
     'sightseeing': [
         'https://a0.muscache.com/im/pictures/5edde511-ec43-4a36-ab2b-995c073747bf.jpg?im_w=1440',
@@ -51,8 +50,8 @@ export const orderService = {
     getOrderById,
     addOrder,
     getDemoOrders,
-    // ------------------------ //
     getOrderExploreList,
+    // ------------------------ //
     removeOrder,
     updateOrderStatus
 }
@@ -123,12 +122,31 @@ function getDemoOrders() {
     //     { guest: 'Michael Johnson', imgUrl: 'https://a0.muscache.com/im/pictures/user/cee1b931-2952-4fc0-9b78-3fb70324c397.jpg?im_w=240', join: 'Nov 2020', dates: 'Feb 15-18', status: 'Rejected' }
     // ]
 }
-// ====================================== //
 
 function getOrderExploreList() {
-    const exploreList = _createOrderExploreItems()
-    return exploreList
+    return _createOrderExploreItems()
 }
+// ====================================== //
+
+
+// NEED TO FIX AND CONNECTS ROUTES FOR BACKEND -> NEED TO THINK ABOUT WHAT EXACTLY WILL THE ORDER ROUTES BE.
+async function getOrderById(orderID) {
+    // console.log('getOrderById hi')
+    const order = await storageService.get('orders', orderID)
+    // return httpService.get(`order/${orderID}`)
+    return order
+}
+
+async function removeOrder(orderId) {
+    // console.log('removeOrder hi')
+    return storageService.remove('orders', orderId)
+    // return httpService.delete(`order/${orderId}`)
+}
+
+
+
+
+// ********************** PRIVATE FUNCTIONS **********************
 
 function _createOrderExploreItems() {
     return [
@@ -154,19 +172,4 @@ function _getRandomExploreImg(label) {
     const arrayLength = explore[label].length
     return explore[label][utilService.getRandomIntInclusive(0, arrayLength - 1)]
 }
-
-
-// NEED TO FIX AND CONNECTS ROUTES FOR BACKEND -> NEED TO THINK ABOUT WHAT EXACTLY WILL THE ORDER ROUTES BE.
-async function getOrderById(orderID) {
-    // console.log('getOrderById hi')
-    const order = await storageService.get('orders', orderID)
-    // return httpService.get(`order/${orderID}`)
-    return order
-}
-
-async function removeOrder(orderId) {
-    // console.log('removeOrder hi')
-    return storageService.remove('orders', orderId)
-    // return httpService.delete(`order/${orderId}`)
-}
-
+// ***************************************************************

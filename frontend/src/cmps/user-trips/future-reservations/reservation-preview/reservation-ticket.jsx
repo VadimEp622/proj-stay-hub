@@ -1,5 +1,9 @@
 import { utilService } from "../../../../services/util.service.js"
 
+
+
+// TODO: improve font-size for different screen widths
+
 export function ReservationTicket({ trip }) {
 
     const { city, country, address } = trip.content.stayDetails.loc
@@ -25,13 +29,13 @@ export function ReservationTicket({ trip }) {
                         <span>{timeRange}</span>
                     </article>
                     <article className="reservation-destination flex column align-center">
-                        <h4>{location}</h4>
-                        <span>{city}</span>
-                        <span className="fs10">{country}</span>
+                        <h4 className="fs16">{location}</h4>
+                        <span className="fs16">{city}</span>
+                        <span className="fs12">{country}</span>
                     </article>
                     <article className="reservation-confirmation flex column align-center">
                         <span className="ff-circular-semibold">Status:</span>
-                        <h4 className={`status ${status.toLowerCase()} fs16`}>{status}</h4>
+                        <h4 className={`status ${status.toLowerCase()} fs20`}>{status}</h4>
                     </article>
                 </section>
 
