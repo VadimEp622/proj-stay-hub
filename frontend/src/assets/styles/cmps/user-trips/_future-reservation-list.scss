@@ -130,8 +130,8 @@
                 padding-block-start: 12px;
                 display: grid;
                 grid-template-columns: 1fr 1fr;
-                gap: 8px;
-                height: 90%;
+                gap: 10px;
+                // height: 90%;
                 align-content: space-between;
 
                 & .to-do {
@@ -161,6 +161,10 @@
                         display: flex;
                         flex-direction: column;
                         justify-content: space-around;
+
+                        &>*{
+                            white-space: nowrap;
+                        }
 
                         & h4 {
                             font-family: Circular-semibold;
