@@ -60,6 +60,7 @@ async function add(order) {
             aboutUserId: new ObjectId(order.seller._id),
             content: order
         }
+        console.log('hi there')
         const collection = await dbService.getCollection('order')
         await collection.insertOne(orderToAdd)
         // mongoDB adds _id key to orderToAdd!

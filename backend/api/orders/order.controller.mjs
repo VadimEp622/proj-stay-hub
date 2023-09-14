@@ -60,7 +60,6 @@ export async function addOrder(req, res) {
             nightsPrice,
             status,
         }
-
         const orderRes = await orderService.add(order)
 
         console.log(`
