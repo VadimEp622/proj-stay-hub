@@ -24,11 +24,9 @@ import { AppMainModal } from './cmps/app-main-modal.jsx'
 // TODO: add more variety to userMsg, and make styling better!
 
 
-// TODO-priority-high: in "user-trips.jsx", make sure dates already passed don't display anymore/display in "previous trips"
 // TODO-priority-high: in "stay-details.jsx", implement the date-picker
-// TODO-priority-high: in "user-dashboard.jsx", fix charts responsiveness/fluidity with desktop/mobile
-
 // TODO-priority-high: make "stay-details.jsx" work for mobile (either attempt at convert existing, or build new one)
+// TODO-priority-high: make "user-trips.jsx" work for mobile (either attempt at convert existing, or build new one)
 // TODO-priority-high: make all pages start from top! (some pages start scrolling from middle on route change)
 
 

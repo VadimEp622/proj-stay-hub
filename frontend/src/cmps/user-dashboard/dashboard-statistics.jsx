@@ -1,12 +1,16 @@
 import { ChartBar } from "./dashboard-statistics/chart-bar.jsx"
 import { ChartLine } from "./dashboard-statistics/chart-line.jsx"
 
-export function DashboardStatistics({dashboardData}) {
+export function DashboardStatistics({ dashboardData }) {
 
-    // TODO: make averageRevenue call util function which calculates instead
 
-    const averageRevenue = (dashboardData.revenue.reduce((sum, value) => sum + value, 0) / dashboardData.revenue.length).toLocaleString(undefined,
-        { maximumFractionDigits: 2, })
+    function getAverageRevenue() {
+        const sum = dashboardData.revenue.reduce((sum, value) => sum + value, 0)
+        const average = sum / dashboardData.revenue.length
+        return average.toLocaleString(undefined, { maximumFractionDigits: 2 })
+    }
+
+    const averageRevenue = getAverageRevenue()
     return (
         <section className="dashboard-statistics">
 
@@ -28,7 +32,7 @@ export function DashboardStatistics({dashboardData}) {
                 <ChartBar dashboardData={dashboardData} />
             </article>
             <article className="statistics-chart-line">
-                <h2 className="statistics-header">Occupancy Rate</h2>
+                <h2 className="statistics-header">Occupancy rate</h2>
                 <ChartLine dashboardData={dashboardData} />
             </article>
 

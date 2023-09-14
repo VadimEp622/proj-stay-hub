@@ -7,6 +7,7 @@ import { LOADING_DONE, LOADING_START } from "./system.reducer.js"
 
 // Services
 import { stayService } from "../services/stay.service.js"
+import { showErrorMsg } from '../services/event-bus.service.js'
 // import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 
 
@@ -51,8 +52,8 @@ export async function loadStays(filterBy) {
         const stays = await stayService.query(filterBy)
         store.dispatch({ type: SET_STAYS, stays })
     } catch (err) {
-        console.log('Cannot load stays', err)
-        throw err
+        console.log('Failed Loading Stays', err)
+        showErrorMsg('Failed Loading Stays')
     } finally {
         store.dispatch({ type: LOADING_DONE })
     }
