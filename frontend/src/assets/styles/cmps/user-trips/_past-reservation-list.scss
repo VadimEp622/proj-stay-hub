@@ -1,33 +1,23 @@
 .past-reservation-list {
-    & .past-trip {
-        display: flex;
-        padding-block-end: 48px;
-        margin-inline-end: 5%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 24px;
+    padding-block-end: 24px;
 
+    & .past-trip {
+        gap: 10px;
         & .past-trip-img {
-            & img {
-                border-radius: 8px;
-                overflow: hidden;
-                height: 72px;
-                width: 72px;
-            }
+            border-radius: 8px;
+            height: 72px;
+            width: 72px;
+            overflow: hidden;
         }
 
         & .past-trip-info {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-evenly;
-            margin-inline-start: 16px;
-            padding-block: 4px;
-
-            & h4 {
-                font-family: Circular-semibold;
-                line-height: 1.6;
-            }
-
             & span {
                 font-size: rem(14px);
                 color: $gray-clr2;
+                line-height: normal;
             }
         }
     }

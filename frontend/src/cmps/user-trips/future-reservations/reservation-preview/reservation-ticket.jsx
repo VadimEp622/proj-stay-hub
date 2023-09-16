@@ -31,10 +31,10 @@ export function ReservationTicket({ trip }) {
                     <article className="reservation-destination flex column align-center">
                         <h4 className="fs16">{location}</h4>
                         <span className="fs16">{city}</span>
-                        <span className="fs12">{country}</span>
+                        <span className="fs14">{country}</span>
                     </article>
                     <article className="reservation-confirmation flex column align-center">
-                        <span className="ff-circular-semibold">Status:</span>
+                        <span className="ff-circular-semibold fs16">Status:</span>
                         <h4 className={`status ${status.toLowerCase()} fs20`}>{status}</h4>
                     </article>
                 </section>

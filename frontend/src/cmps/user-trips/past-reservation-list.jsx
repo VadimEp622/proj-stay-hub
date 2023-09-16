@@ -54,7 +54,7 @@ export function PastReservationList({ getPastTrips }) {
     ]
 
     return (
-        <section className="past-reservation-list flex">
+        <section className="past-reservation-list">
             {pastTrips.length > 0
                 ? pastTrips.map(trip =>
                     <PastReservationPreview key={trip._id} trip={trip} />

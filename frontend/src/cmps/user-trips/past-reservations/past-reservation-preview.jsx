@@ -7,13 +7,13 @@ export function PastReservationPreview({ trip }) {
     const host = trip.content.seller.fullname
     const timeRange = utilService.getFormattedTimeRange(trip.content.checkIn, trip.content.checkOut)
     return (
-        <section className="past-trip">
+        <section className="past-trip flex">
             <article className="past-trip-img">
                 <img src={stayImage} alt="stay" />
             </article>
-            <article className="past-trip-info">
-                <h4>{address}</h4>
-                <span>hosted by {host}</span>
+            <article className="past-trip-info flex column space-evenly">
+                <h4 className="fs14 lh20">{address}</h4>
+                <span>Hosted by {host}</span>
                 <span>{timeRange}</span>
             </article>
         </section>

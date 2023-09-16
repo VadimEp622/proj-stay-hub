@@ -54,7 +54,7 @@
             border-radius: 12px;
             box-shadow: $box-shadow10;
             overflow: hidden;
-            
+
             & .reservation-info {
                 display: grid;
                 grid-template-rows: 1fr 1fr;
@@ -109,94 +109,6 @@
                 }
             }
         }
-
-        // & .reservation-container {
-        //     display: grid;
-        //     height: 100%;
-        //     grid-template-columns: 1fr 1fr;
-        //     border-radius: 12px;
-        //     overflow: hidden;
-        //     box-shadow: $box-shadow10;
-        //     position: relative;
-
-        //     & .reservation-info {
-        //         height: auto;
-        //         display: grid;
-        //         grid-template-rows: 50% 50%;
-        //         padding: 24px;
-
-        //         & .reservation-header {
-        //             border-bottom: 1px solid $gray-clr4;
-
-        //             & :first-child {
-        //                 margin-block-end: rem(8px);
-        //             }
-        //         }
-
-        //         & .reservation-dates {
-        //             height: 100%;
-        //             align-items: flex-start;
-        //             margin-block-start: 16px;
-
-        //             & > * {
-        //                 align-items: flex-start;
-        //                 height: 100%;
-        //                 flex: 1;
-        //             }
-
-        //             & .reservation-date {
-        //                 width: 20%;
-        //                 border-right: 1px solid $gray-clr4;
-        //                 padding-block-end: 24px;
-        //             }
-
-        //             & .reservation-destination {
-        //                 height: 100%;
-        //                 flex-direction: column;
-        //                 align-items: flex-start;
-        //                 justify-content: space-around;
-        //                 padding-inline: 24px;
-        //             }
-
-        //             & .reservation-confirmation {
-        //                 height: 100%;
-        //                 border-left: 1px solid $gray-clr4;
-        //                 padding-inline-start: 24px;
-        //                 display: flex;
-        //                 flex-direction: column;
-        //                 justify-content: flex-start;
-
-        //                 & .status {
-        //                     padding-block-start: 8px;
-
-        //                     &.approved {
-        //                         color: $positive-clr0;
-        //                     }
-
-        //                     &.pending {
-        //                         color: $pending-clr0;
-        //                     }
-
-        //                     &.rejected {
-        //                         color: $negative-clr0;
-        //                     }
-        //                 }
-        //             }
-        //         }
-        //     }
-
-        //     & .reservation-img {
-        //         width: 100%;
-        //         height: 100%;
-
-        //         & img {
-        //             position: absolute;
-        //             width: 50%;
-        //             height: 100%;
-        //             object-fit: cover;
-        //         }
-        //     }
-        // }
 
         & .explore-things-to-do {
             margin-block: auto;
