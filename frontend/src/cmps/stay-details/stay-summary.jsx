@@ -13,7 +13,7 @@ export function StaySummary({ stay, hostImgUrl, randomDateJoined }) {
                 <Overview stay={stay} hostImgUrl={hostImgUrl} />
                 <Highlights />
                 <Amenities stay={stay} />
-                <StayDates />
+                <StayDates stay={stay}/>
             </section>
             <section className='order-sidebar-container'>
                 <OrderSidebar stay={stay} randomDate={randomDateJoined} hostImgUrl={hostImgUrl} />

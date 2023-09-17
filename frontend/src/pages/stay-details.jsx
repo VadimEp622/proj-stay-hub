@@ -14,6 +14,7 @@ import { SET_APP_MODAL_LOGIN } from '../store/system.reducer.js'
 
 // Custom hooks
 import useLoadStay from '../customHooks/useLoadStay.js'
+import useStayDates from '../customHooks/useStayDates.js'
 
 // Components
 import { Loader } from '../cmps/_reuseable-cmps/loader.jsx'

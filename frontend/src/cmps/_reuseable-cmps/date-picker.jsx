@@ -1,15 +1,34 @@
 import { DayPicker } from "react-day-picker"
-import { startOfDay, isSameDay } from 'date-fns'
-// import styles from 'react-day-picker/dist/style.module.css'
-// import customStyles from "./customDatePickerStyles.module.css"
+import { startOfDay } from 'date-fns'
 
-export function DatePicker({ selectedRange, handleRangeSelect }) {
+
+export function DatePicker({ selectedRange, handleRangeSelect, availableDates = [] }) {
     const date = new Date()
     const today = startOfDay(date)
 
 
+    // console.log('availableDates', availableDates)
+    const availableTimestampDateRanges = availableDates.map(availableRange => {
+        const DAY = 1000 * 60 * 60 * 24
+        const timestampRange = {
+            from: startOfDay(Date.parse(today) + (DAY * availableRange.daysFromToday)),
+            to: startOfDay(Date.parse(today) + (DAY * availableRange.until))
+        }
+        return timestampRange
+    })
+    // console.log('availableTimestampDateRanges', availableTimestampDateRanges)
+
+
+
     function isDayDisabled(day) {
-        return day < today
+        const isBeforeToday = day < today // Disable days before today
+        const isOutsideRange = availableDates.length > 0 ?
+            !availableTimestampDateRanges.some(range => // Disable days not in available ranges
+                (day >= range.from && day <= range.to)
+            )
+            : false
+
+        return isBeforeToday || isOutsideRange
     }
 
     const dayModifiers = {
@@ -23,27 +42,6 @@ export function DatePicker({ selectedRange, handleRangeSelect }) {
     }
 
 
-
-
-    // POSSIBLE TO FIX FIREFOX NO :HAS SELECTORS WITH TOOLS FROM BELOW
-    // function isDayInRange(day) {
-    //     console.log('selectedRange', selectedRange)
-    //     const [from, to] = selectedRange
-    //     if (from && to) {
-    //         return isSameDay(day, from) || isSameDay(day, to) || (day > from && day < to)
-    //     }
-    //     return false
-    // }
-
-    // const dayModifiers = {
-    //     disabled: (day) => isDayDisabled(day),
-    //     'day-range-start': (day) => isSameDay(day, selectedRange[0]),
-    //     'day-range-end': (day) => isSameDay(day, selectedRange[1]),
-    //     'day-range-middle': (day) => isDayInRange(day),
-    // }
-
-
-
     return (
         <section className="date-picker">
             <DayPicker
@@ -55,6 +53,7 @@ export function DatePicker({ selectedRange, handleRangeSelect }) {
                 classNames={classNames}//add classnames for styling
                 modifiers={dayModifiers}//add styling(?)
                 disabled={isDayDisabled}//disables given days
+
             />
         </section>
     )
