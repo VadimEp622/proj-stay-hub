@@ -5,17 +5,17 @@ import { Amenities } from "./stay-summary/amenities.jsx"
 import { StayDates } from "./stay-summary/stay-dates.jsx"
 import { OrderSidebar } from "./stay-summary/order-sidebar.jsx"
 
-export function StaySummary({ stay, hostImgUrl, randomDateJoined, selectedRange, checkIn, checkOut, handleDateChange }) {
+export function StaySummary({ stay, hostImgUrl, randomDateJoined, selectedRange, checkIn, checkOut, handleDateChange, handleRangeSelect }) {
 
     return (
-        <section className='summary-container'>
-            <section className='summary'>
+        <section className="summary-container">
+            <section className="summary">
                 <Overview stay={stay} hostImgUrl={hostImgUrl} />
                 <Highlights />
                 <Amenities stay={stay} />
-                <StayDates stay={stay} selectedRange={selectedRange} />
+                <StayDates stay={stay} selectedRange={selectedRange} handleRangeSelect={handleRangeSelect} />
             </section>
-            <section className='order-sidebar-container'>
+            <section className="order-sidebar-container">
                 <OrderSidebar stay={stay} randomDate={randomDateJoined} hostImgUrl={hostImgUrl} checkIn={checkIn} checkOut={checkOut} handleDateChange={handleDateChange} />
             </section>
         </section>

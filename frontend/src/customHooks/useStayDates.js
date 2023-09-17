@@ -35,13 +35,13 @@ export default function useStayDates(stay) {
     }
 
     const handleDateChange = (newCheckIn, newCheckOut) => {
-        setCheckIn(stayService.getDate(newCheckIn))
-        setCheckOut(stayService.getDate(newCheckOut))
+        setCheckIn(newCheckIn ? stayService.getDate(newCheckIn) : '')
+        setCheckOut(newCheckOut ? stayService.getDate(newCheckOut) : '')
     }
 
     const selectedRange = {
-        from: startOfDay(Date.parse(checkIn)),
-        to: startOfDay(Date.parse(checkOut))
+        from: checkIn ? startOfDay(Date.parse(checkIn)) : '',
+        to: checkOut ? startOfDay(Date.parse(checkOut)) : ''
     }
 
     return [checkIn, checkOut, selectedRange, handleDateChange]

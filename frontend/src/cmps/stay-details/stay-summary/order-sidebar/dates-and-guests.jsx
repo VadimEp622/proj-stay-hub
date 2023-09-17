@@ -29,12 +29,12 @@ export function DatesAndGuests({ checkIn, checkOut, guests, setGuests, handleDat
 
                     <article className="check-in">
                         <span className="fs10 lh12 ff-circular-bold">check-in</span>
-                        <span className="fs14 lh18">{checkIn}</span>
+                        <span className={`fs14 lh18${checkIn ? '' : ' empty'}`}>{checkIn ? checkIn : 'Add date'}</span>
                     </article>
 
                     <article className="check-out">
                         <span className="fs10 lh12 ff-circular-bold">checkout</span>
-                        <span className="fs14 lh18">{checkOut}</span>
+                        <span className={`fs14 lh18${checkOut ? '' : ' empty'}`}>{checkOut ? checkOut : 'Add date'}</span>
                     </article>
                 </section>
 

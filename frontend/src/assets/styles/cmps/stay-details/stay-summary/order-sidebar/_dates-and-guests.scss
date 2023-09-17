@@ -41,6 +41,9 @@
             & :is(.check-in, .check-out) {
                 border-bottom: 1px solid $gray-clr2;
                 overflow: hidden;
+                & .empty {
+                    color: $gray-clr0;
+                }
             }
         }
 
@@ -88,7 +91,7 @@
         border-bottom-color: rgba(0, 0, 0, 0%);
     }
 
-    &:hover{
+    &:hover {
         cursor: no-drop;
     }
 }

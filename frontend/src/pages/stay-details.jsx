@@ -37,6 +37,8 @@ export function StayDetails() {
     const loggedInUser = useSelector(storeState => storeState.userModule.user)
     const { stayId } = useParams()
     const [stay, hostImgUrl] = useLoadStay(stayId)
+
+    // TODO: remake useStayDates, to [selectedRange, setSelectedRange] = useStayDates(stay) (setSelectedRange will be changed in handleRangeSelect)
     const [checkIn, checkOut, selectedRange, handleDateChange] = useStayDates(stay)
 
 
@@ -52,6 +54,16 @@ export function StayDetails() {
             return
         }
         toggleWishlist(loggedInUser, stay)
+    }
+
+    function handleRangeSelect(range) {
+        console.log('range', range)
+        if (!range) handleDateChange('', '')
+        else {
+            if (Date.parse(range.from) === Date.parse(range.to)) handleDateChange(range.from, '')
+            else handleDateChange(range.from, range.to)
+        }
+
     }
 
     // TODO: improve below function
@@ -96,10 +108,12 @@ export function StayDetails() {
                 hostImgUrl={hostImgUrl}
                 randomDateJoined={randomDateJoined}
                 selectedRange={selectedRange}
-
                 checkIn={checkIn}
                 checkOut={checkOut}
+
                 handleDateChange={handleDateChange}
+
+                handleRangeSelect={handleRangeSelect}
             />
             {
                 stay.reviews?.length > 0 &&

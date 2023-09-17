@@ -1,4 +1,4 @@
-import { useMemo } from "react"
+import { useEffect, useMemo } from "react"
 import { DayPicker } from "react-day-picker"
 import { startOfDay } from "date-fns"
 
@@ -15,11 +15,16 @@ export function DatePicker({ selectedRange, handleRangeSelect, availableDates = 
         return timestampRange
     })
 
+
+    useEffect(() => {
+        console.log('selectedRange', selectedRange)
+    }, [selectedRange])
+
     function isDayDisabled(day) {
         const isBeforeToday = day < today // Disable days before today
         const isOutsideRange = availableDates.length > 0 ?
             !availableTimestampDateRanges.some(range => // Disable days not in available ranges
-                (day >= range.from && day <= range.to)
+                (day >= range?.from && day <= range?.to)
             )
             : false
 
