@@ -34,12 +34,9 @@ import { ButtonMain } from "../../_reuseable-cmps/button-main.jsx"
 //   start removing redundant stuff from the Order Object (need to follow path to back-end, and the get from the front-end)
 
 
-export function OrderSidebar({ stay, randomDate, hostImgUrl }) {
-    // ============================== Custom Hooks ==============================
-    const [checkIn, checkOut, handleDateChange] = useStayDates()
+export function OrderSidebar({ stay, randomDate, hostImgUrl, checkIn, checkOut, handleDateChange }) {
     const [guests, setGuests] = useStayGuests()
     const [orderDetails] = useStayDetails(stay, checkIn, checkOut, guests)
-    // ==========================================================================
     const loggedInUser = useSelector(storeState => storeState.userModule.user)
     const navigate = useNavigate()
 

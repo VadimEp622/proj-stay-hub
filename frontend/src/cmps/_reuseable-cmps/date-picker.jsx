@@ -1,24 +1,19 @@
+import { useMemo } from "react"
 import { DayPicker } from "react-day-picker"
-import { startOfDay } from 'date-fns'
+import { startOfDay } from "date-fns"
 
 
 export function DatePicker({ selectedRange, handleRangeSelect, availableDates = [] }) {
-    const date = new Date()
-    const today = startOfDay(date)
+    const DAY = useMemo(() => 1000 * 60 * 60 * 24, [])
+    const today = startOfDay(new Date())
 
-
-    // console.log('availableDates', availableDates)
     const availableTimestampDateRanges = availableDates.map(availableRange => {
-        const DAY = 1000 * 60 * 60 * 24
         const timestampRange = {
             from: startOfDay(Date.parse(today) + (DAY * availableRange.daysFromToday)),
             to: startOfDay(Date.parse(today) + (DAY * availableRange.until))
         }
         return timestampRange
     })
-    // console.log('availableTimestampDateRanges', availableTimestampDateRanges)
-
-
 
     function isDayDisabled(day) {
         const isBeforeToday = day < today // Disable days before today

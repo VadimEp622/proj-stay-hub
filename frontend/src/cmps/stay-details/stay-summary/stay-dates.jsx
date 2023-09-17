@@ -6,7 +6,7 @@ export function StayDates({ stay, selectedRange, handleRangeSelect }) {
         <section className="date-container">
             <h3>Select check-in date</h3>
             <p>Add your travel dates for exact pricing</p>
-            <DatePicker availableDates={stay.availableDates} selectedRange={selectedRange} handleRangeSelect={handleRangeSelect} />
+            <DatePicker selectedRange={selectedRange} handleRangeSelect={handleRangeSelect} availableDates={stay.availableDates} />
         </section>
     )
 }

@@ -37,6 +37,7 @@ export function StayDetails() {
     const loggedInUser = useSelector(storeState => storeState.userModule.user)
     const { stayId } = useParams()
     const [stay, hostImgUrl] = useLoadStay(stayId)
+    const [checkIn, checkOut, selectedRange, handleDateChange] = useStayDates(stay)
 
 
     function isStayWishlist() {
@@ -94,6 +95,11 @@ export function StayDetails() {
                 stay={stay}
                 hostImgUrl={hostImgUrl}
                 randomDateJoined={randomDateJoined}
+                selectedRange={selectedRange}
+
+                checkIn={checkIn}
+                checkOut={checkOut}
+                handleDateChange={handleDateChange}
             />
             {
                 stay.reviews?.length > 0 &&
