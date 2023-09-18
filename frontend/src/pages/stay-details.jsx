@@ -45,7 +45,6 @@ import { StayPhotos } from '../cmps/stay-details/stay-photos.jsx'
 //   1. hide pricing in orderContainer (in altHeader, display only price for SINGLE NIGHT, for ALL the guests) 
 //   2. change "order" button in orderSidebar and altHeader to "Check Availability" button, which will later open a datePicker floating modal
 
-// TODO: when clicking on a certain date in datePicker, don't allow picking dates not in current availability range (disable them)
 
 
 export function StayDetails() {
