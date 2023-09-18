@@ -130,7 +130,7 @@ export function StayDetails() {
             },
             explore: orderService.getOrderExploreList(),
             status: "Pending",
-            _id: utilService.makeId()
+            _id: utilService.makeId()// TODO: remove this, seems redundant
         }
     }
 

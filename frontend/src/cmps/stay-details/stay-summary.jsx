@@ -1,12 +1,9 @@
-// Services
-import { stayService } from "../../services/stay.service.js"
-
 // Components
-import { Highlights } from "./stay-summary/highlights.jsx"
-import { Overview } from "./stay-summary/overview.jsx"
-import { Amenities } from "./stay-summary/amenities.jsx"
-import { StayDates } from "./stay-summary/stay-dates.jsx"
-import { OrderSidebar } from "./stay-summary/order-sidebar.jsx"
+import { Highlights } from './stay-summary/highlights.jsx'
+import { Overview } from './stay-summary/overview.jsx'
+import { Amenities } from './stay-summary/amenities.jsx'
+import { StayDates } from './stay-summary/stay-dates.jsx'
+import { OrderSidebar } from './stay-summary/order-sidebar.jsx'
 
 
 export function StaySummary({

@@ -1,6 +1,16 @@
-import { useMemo } from "react"
-import { DayPicker } from "react-day-picker"
-import { startOfDay } from "date-fns"
+import { useMemo } from 'react'
+import { DayPicker } from 'react-day-picker'
+import { startOfDay } from 'date-fns'
+
+
+// TODO: in stay-details's date-picker, consider how to make it so, that:
+//   1. All current stay's available dates are enabled, only when: both selectedRange's "from" and "to" are NOT an empty string
+//   2. When both selectedRanges's "from" and "to" are NOT an empty string, prevent from selecting another range over "unavailable" ranges
+
+
+// TODO: in date-picker, add reset button:
+//    1. stay-detail's is button is a square "clear dates"
+//    2. app's shared header, when expanded and clicked check-in/check-out, display circled "X"
 
 
 export function DatePicker({ selectedRange, handleRangeSelect, availableDates = [] }) {
@@ -15,14 +25,21 @@ export function DatePicker({ selectedRange, handleRangeSelect, availableDates = 
         return timestampRange
     })
 
-
-
     function isDayDisabled(day) {
         const isBeforeToday = day < today // Disable days before today
-        const isOutsideRange = availableDates.length > 0 ?
-            !availableTimestampDateRanges.some(range => // Disable days not in available ranges
-                (day >= range?.from && day <= range?.to)
-            )
+        const isOutsideRange = availableDates.length > 0 // if checking current stay's available days
+            ? (!availableTimestampDateRanges.some(range => {
+
+                if (day >= range?.from && day <= range?.to) {
+                    if (selectedRange?.from) {
+                        if ((selectedRange?.from >= range.from && selectedRange?.from <= range.to)) return true
+                        return false // Disable days, outside current stay's range of available days, which contains current selected range 
+                    }
+                    return true // Enable days, inside current stay's available days
+                }
+                return false // Disable days, outside current stay's available days
+            }
+            ))
             : false
 
         return isBeforeToday || isOutsideRange
