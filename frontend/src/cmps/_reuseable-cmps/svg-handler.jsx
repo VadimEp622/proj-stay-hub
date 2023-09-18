@@ -82,7 +82,7 @@ import { ReactComponent as LongTermStays } from '../../assets/img/airbnb-assets/
 import { ReactComponent as Microwave } from '../../assets/img/airbnb-assets/microwave.svg'
 import { ReactComponent as MiniFridge } from '../../assets/img/airbnb-assets/mini-fridge.svg'
 import { ReactComponent as MountainView } from '../../assets/img/airbnb-assets/Mountain-view.svg'
-import { ReactComponent as OceanView } from '../../assets/img/airbnb-assets/Ocean-view.svg'
+import { ReactComponent as Doorman } from '../../assets/img/airbnb-assets/doorman.svg'
 import { ReactComponent as PrivateEntrance } from '../../assets/img/airbnb-assets/private-entrance.svg'
 import { ReactComponent as RoomDarkening } from '../../assets/img/airbnb-assets/room-darkening.svg'
 import { ReactComponent as Safe } from '../../assets/img/airbnb-assets/safe.svg'
@@ -209,23 +209,23 @@ const SvgHandler = ({ svgName }) => {
             case 'Cable TV':
                 return <TV />
             case 'Internet':
-                return < Ethernet />
+                return <Ethernet />
             case 'Wheelchair accessible':
                 return <StainlessSteel />
             case 'Pool':
-                return < Pool />
+                return <Pool />
             case 'Free parking on premises':
-                return < FreeParking />
+                return <FreeParking />
             case 'Doorman':
-                return < OceanView />
+                return <Doorman />
             case 'Elevator':
                 return <MiniFridge />
             case 'Buzzer/wireless intercom':
-                return < Wifi />
+                return <Wifi />
             case 'Heating':
-                return < Heating />
+                return <Heating />
             case 'Family/kid friendly':
-                return < BeachEssentials />
+                return <BeachEssentials />
             case 'Washer':
                 return <Dishwasher />
             case 'Dryer':
@@ -261,7 +261,7 @@ const SvgHandler = ({ svgName }) => {
             case 'Hot water':
                 return <HotWaterKettle />
             case 'Bed linens':
-                return < Bedlinens />
+                return <Bedlinens />
             case 'Extra pillows and blankets':
                 return <ExtraPillows />
             case 'Microwave':
