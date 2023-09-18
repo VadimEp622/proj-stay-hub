@@ -3,6 +3,9 @@ import { useEffect, useMemo, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { startOfDay } from 'date-fns'
 
+// Services
+import { stayService } from '../services/stay.service.js'
+
 
 export default function useStayDates(stay) {
     const filterBy = useSelector(storeState => storeState.stayModule.filterBy)
@@ -28,5 +31,8 @@ export default function useStayDates(stay) {
         }
     }
 
-    return [selectedRange, setSelectedRange]
+    const checkIn = stayService.getDate(selectedRange?.from)
+    const checkOut = stayService.getDate(selectedRange?.to)
+
+    return [checkIn, checkOut, selectedRange, setSelectedRange]
 }

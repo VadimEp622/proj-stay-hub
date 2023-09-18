@@ -1,6 +1,5 @@
 // Node modules
-import { useEffect } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { useEffect } from "react"
 
 // Services
 import { reviewService } from "../../services/review.service.js"
@@ -8,18 +7,14 @@ import { STAR } from "../../services/svg.service.js"
 
 // Components
 import { ButtonMain } from "../_reuseable-cmps/button-main.jsx"
-import SvgHandler from '../_reuseable-cmps/svg-handler.jsx'
-import { setAppModal } from '../../store/system.action.js'
-import { SET_APP_MODAL_LOGIN } from '../../store/system.reducer.js'
-
+import SvgHandler from "../_reuseable-cmps/svg-handler.jsx"
 
 
 // TODO: check if these observers here need to be unobserved when component unmounts 
 
-
-export function StayDetailsAltHeader({ stay, loggedInUser }) {
-    const navigate = useNavigate()
+export function StayDetailsAltHeader({ stay, selectedRange, onCheckAvailabilityClick, onReserveClick }) {
     const reviews = stay.reviews.length > 1 ? 'reviews' : 'review'
+
 
     useEffect(() => {
         const header = document.querySelector('.stay-photos-container')
@@ -51,20 +46,6 @@ export function StayDetailsAltHeader({ stay, loggedInUser }) {
         }
     }, [])
 
-    function onClickButton(ev) {
-        console.log('ev', ev)
-        ev.preventDefault()
-        ev.stopPropagation()
-        if (!loggedInUser) {
-            console.log("NOT logged in click")
-            setAppModal(SET_APP_MODAL_LOGIN)
-        }
-        else {
-            console.log("logged in click")
-            navigate(`/stay/book/${stay._id}`)
-        }
-    }
-
 
     return (
         <section className='stay-details-alt-header-container'>
@@ -88,11 +69,16 @@ export function StayDetailsAltHeader({ stay, loggedInUser }) {
                                 <span className="review-count">{stay.reviews.length} {reviews}</span>
                             </section>
                         </section>
-                        {/* <ButtonMain text={"Reserve"} onClickButton={(ev) => onClickButton(ev)} /> */}
-                        <ButtonMain
-                            text={'Reserve'}
-                            onClickButton={(ev) => onClickButton(ev)}
-                        />
+                        {(selectedRange.from && selectedRange.to)
+                            ? <ButtonMain
+                                text={'Reserve'}
+                                onClickButton={(ev) => onReserveClick(ev)}
+                            />
+                            : <ButtonMain
+                                text={'Check availability'}
+                                onClickButton={(ev) => onCheckAvailabilityClick(ev)}
+                            />
+                        }
                     </section>
                 </section>
             </section>

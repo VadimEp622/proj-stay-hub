@@ -9,10 +9,14 @@ import { StayDates } from "./stay-summary/stay-dates.jsx"
 import { OrderSidebar } from "./stay-summary/order-sidebar.jsx"
 
 
-export function StaySummary({ stay, hostImgUrl, randomDateJoined, selectedRange, handleDateChange, handleRangeSelect }) {
+export function StaySummary({
+    stay, hostImgUrl,
+    checkIn, checkOut, selectedRange, handleRangeSelect,
+    guests, setGuests,
+    orderDetails,
+    onCheckAvailabilityClick, onReserveClick
+}) {
 
-    const checkIn = stayService.getDate(selectedRange.from)
-    const checkOut = stayService.getDate(selectedRange.to)
     return (
         <section className="summary-container">
             <section className="summary">
@@ -22,7 +26,13 @@ export function StaySummary({ stay, hostImgUrl, randomDateJoined, selectedRange,
                 <StayDates stay={stay} selectedRange={selectedRange} handleRangeSelect={handleRangeSelect} />
             </section>
             <section className="order-sidebar-container">
-                <OrderSidebar stay={stay} randomDate={randomDateJoined} hostImgUrl={hostImgUrl} checkIn={checkIn} checkOut={checkOut} handleDateChange={handleDateChange} />
+                <OrderSidebar
+                    stay={stay}
+                    checkIn={checkIn} checkOut={checkOut}
+                    guests={guests} setGuests={setGuests}
+                    orderDetails={orderDetails}
+                    onCheckAvailabilityClick={onCheckAvailabilityClick} onReserveClick={onReserveClick}
+                />
             </section>
         </section>
     )

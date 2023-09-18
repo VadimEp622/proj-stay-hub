@@ -7,13 +7,15 @@ import { utilService } from "../services/util.service.js"
 
 
 export default function useStayDetails(stay, checkIn, checkOut, guests) {
+
     const initialValues = {
-        price: Math.floor(stay.price + ((stay.price / 8) * (guests.adults + guests.children - 1))),
+        price: Math.floor(stay?.price + ((stay?.price / 8) * (guests.adults + guests.children - 1))),
         guestCount: guests.adults + guests.children,
         nightsCount: stayService.calculateHowManyNights(Date.parse(checkIn), Date.parse(checkOut)),
         serviceFee: utilService.getRandomIntInclusive(100, 500),
         cleaningFee: utilService.getRandomIntInclusive(100, 500)
     }
+
     const [orderDetails, setOrderDetails] = useState(initialValues)
 
 
@@ -21,11 +23,11 @@ export default function useStayDetails(stay, checkIn, checkOut, guests) {
     useEffect(() => {
         setOrderDetails(prevOrder => ({
             ...prevOrder,
-            price: Math.floor(stay.price + ((stay.price / 8) * (guests.adults + guests.children - 1))),
+            price: Math.floor(stay?.price + ((stay?.price / 8) * (guests.adults + guests.children - 1))),
             guestCount: guests.adults + guests.children,
             nightsCount: stayService.calculateHowManyNights(Date.parse(checkIn), Date.parse(checkOut))
         }))
-    }, [checkIn, checkOut, guests, stay.price])
+    }, [checkIn, checkOut, guests, stay?.price])
 
     return [orderDetails]
 }

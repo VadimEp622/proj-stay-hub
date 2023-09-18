@@ -1,6 +1,6 @@
 import { userService } from "../../../../services/user.service.js"
 
-export function DatesAndGuests({ checkIn, checkOut, guests, setGuests, handleDateChange }) {
+export function DatesAndGuests({ checkIn, checkOut, guests, setGuests }) {
 
     function onDatesClick(ev) {
         ev.preventDefault()
@@ -13,10 +13,10 @@ export function DatesAndGuests({ checkIn, checkOut, guests, setGuests, handleDat
     function onGuestsClick(ev) {
         ev.preventDefault()
         ev.stopPropagation()
-        setGuests(prevGuests => ({
-            ...prevGuests,
-            // adults: 4
-        }))
+        // setGuests(prevGuests => ({
+        //     ...prevGuests,
+        //     // adults: 4
+        // }))
     }
 
     const guestsString = userService.buildGuestsString(guests)
