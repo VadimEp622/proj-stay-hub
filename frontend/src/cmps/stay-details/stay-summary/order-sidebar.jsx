@@ -12,7 +12,6 @@ import { SET_APP_MODAL_LOGIN } from "../../../store/system.reducer.js"
 import { setAppModal } from "../../../store/system.action.js"
 
 // Custom Hooks
-import useStayDates from "../../../customHooks/useStayDates.js"
 import useStayGuests from "../../../customHooks/useStayGuests.js"
 import useStayDetails from "../../../customHooks/useStayDetails.js"
 

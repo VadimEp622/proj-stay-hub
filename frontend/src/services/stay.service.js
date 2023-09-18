@@ -97,6 +97,7 @@ function getEmptyStay() {
 }
 
 export function getDate(timeStamp) {
+    if (!timeStamp) return ''
     const formatter = new Intl.DateTimeFormat('en-US', {
         year: 'numeric',
         month: '2-digit',

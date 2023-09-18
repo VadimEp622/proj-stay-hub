@@ -33,13 +33,19 @@ import { StayPhotos } from '../cmps/stay-details/stay-photos.jsx'
 //     2. rest of stay-details is at distance of 24px from left/right screen edge
 
 
+// TODO: when "selectedRange" has either "from" or "to", equal to an empty string,
+//   1. hide pricing in orderContainer (in altHeader, display only price for SINGLE NIGHT, for ALL the guests) 
+//   2. change "order" button in orderSidebar and altHeader to "Check Availability" button, which will later open a datePicker floating modal
+
+
+// TODO: when clicking on a certain date in datePicker, don't allow picking dates not in current availability range (disable them)
+
+
 export function StayDetails() {
     const loggedInUser = useSelector(storeState => storeState.userModule.user)
     const { stayId } = useParams()
     const [stay, hostImgUrl] = useLoadStay(stayId)
-
-    // TODO: remake useStayDates, to [selectedRange, setSelectedRange] = useStayDates(stay) (setSelectedRange will be changed in handleRangeSelect)
-    const [checkIn, checkOut, selectedRange, handleDateChange] = useStayDates(stay)
+    const [selectedRange, setSelectedRange] = useStayDates(stay)
 
 
     function isStayWishlist() {
@@ -57,13 +63,21 @@ export function StayDetails() {
     }
 
     function handleRangeSelect(range) {
-        console.log('range', range)
-        if (!range) handleDateChange('', '')
-        else {
-            if (Date.parse(range.from) === Date.parse(range.to)) handleDateChange(range.from, '')
-            else handleDateChange(range.from, range.to)
+        const newRange = { from: '', to: '' }
+        if (range) {
+            newRange.from = range.from
+            newRange.to = range.to
+            if (!range.from) newRange.from = ''
+            if (!range.to) newRange.to = ''
+            if (range.from && (Date.parse(range.from) === Date.parse(range.to))) {
+                if ((Date.parse(selectedRange.from) === Date.parse(range.from)) && selectedRange.to === '') newRange.from = ''
+                newRange.to = ''
+            }
+        } else {
+            if (selectedRange.from && selectedRange.to) newRange.from = selectedRange.from
         }
 
+        setSelectedRange(prev => ({ ...prev, ...newRange }))
     }
 
     // TODO: improve below function
@@ -108,11 +122,6 @@ export function StayDetails() {
                 hostImgUrl={hostImgUrl}
                 randomDateJoined={randomDateJoined}
                 selectedRange={selectedRange}
-                checkIn={checkIn}
-                checkOut={checkOut}
-
-                handleDateChange={handleDateChange}
-
                 handleRangeSelect={handleRangeSelect}
             />
             {
