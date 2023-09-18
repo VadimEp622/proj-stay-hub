@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.206d5f41.css",
-    "main.js": "/static/js/main.5b774f67.js",
+    "main.css": "/static/css/main.7d529929.css",
+    "main.js": "/static/js/main.c3581a1a.js",
     "static/media/Montserrat-Regular.ttf": "/static/media/Montserrat-Regular.3cd786652b8a2e9d41f2.ttf",
     "static/media/Montserrat-SemiBold.ttf": "/static/media/Montserrat-SemiBold.fa8441f345d83a0bc4ec.ttf",
     "static/media/Roboto-Thin.ttf": "/static/media/Roboto-Thin.4ecf36d10d43e2996afe.ttf",
@@ -31,8 +31,8 @@
     "static/media/pool.svg": "/static/media/pool.ab7d3cbe4ab74650156f689da057d3ae.svg",
     "static/media/italy.webp": "/static/media/italy.b00d91b4b8afceaa4985.webp",
     "static/media/key.svg": "/static/media/key.9d292c8ee79525268a466e3755e1ad52.svg",
+    "static/media/doorman.svg": "/static/media/doorman.36887f504dbf6a7b87e517f7548b24be.svg",
     "static/media/south-america.webp": "/static/media/south-america.3f32b3945318eb0dbede.webp",
-    "static/media/Ocean-view.svg": "/static/media/Ocean-view.0a397f22e605e196aee2540279b09817.svg",
     "static/media/hot-water-kettle.svg": "/static/media/hot-water-kettle.cfe9fb1a707ab53a73ab587d0aef398b.svg",
     "static/media/garden-view.svg": "/static/media/garden-view.d9682d588f3cd095c71755715fccfdda.svg",
     "static/media/red tag.svg": "/static/media/red tag.9c6711151b88ea63dc1039fb2fa48178.svg",
@@ -110,11 +110,11 @@
     "static/media/exit.svg": "/static/media/exit.1613670bda75ad67062739301b4cf941.svg",
     "static/media/plus.svg": "/static/media/plus.90c03e0389f8a96d7dd11907f750e78f.svg",
     "static/media/minus.svg": "/static/media/minus.067d8ac4dbf7ef7843e07cf1138127cc.svg",
-    "main.206d5f41.css.map": "/static/css/main.206d5f41.css.map",
-    "main.5b774f67.js.map": "/static/js/main.5b774f67.js.map"
+    "main.7d529929.css.map": "/static/css/main.7d529929.css.map",
+    "main.c3581a1a.js.map": "/static/js/main.c3581a1a.js.map"
   },
   "entrypoints": [
-    "static/css/main.206d5f41.css",
-    "static/js/main.5b774f67.js"
+    "static/css/main.7d529929.css",
+    "static/js/main.c3581a1a.js"
   ]
 }
