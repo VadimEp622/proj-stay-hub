@@ -22,12 +22,13 @@
 
         & span.text {
             display: block;
-            font-weight: 600;
+            font-weight: 400;
             color: $gray-clr-1;
             font-size: 16px;
             line-height: 20px;
             padding-inline: 24px;
             padding-block: 14px;
+            font-family: Circular-Semibold;
         }
 
         & .cell-container {

@@ -1,96 +1,69 @@
 .stay-details-alt-header-container {
-    position: sticky;
+    position: fixed;
+    left: 0;
     top: 0;
+    width: 100%;
     height: 80px;
     background-color: $gray-clr-1;
     z-index: 10;
+    box-shadow: $box-shadow20;
 
-    .detail-link {
-        margin-right: 23px;
-        text-decoration: none;
-        position: relative;
-    }
-
-    .detail-link::after {
-        content: "";
-        position: absolute;
-        bottom: -28px;
-        left: 0;
-        width: 100%;
-        background-color: $black-clr1;
-    }
-
-    .detail-link:hover::after {
-        height: 4px;
-    }
-
-    .stay-details-alt-header {
+    & .stay-details-alt-header {
         display: flex;
         height: 100%;
-    }
 
-    .reserve-container {
-        .reserve-prev {
-            flex-direction: column;
+        & .links-container {
+            & .detail-link {
+                position: relative;
+                margin-inline-start: 24px;
+                padding-block: 30px;
+                text-decoration: none;
 
-            p {
-                color: $black-clr1;
-                margin-bottom: 0;
+                &::after {
+                    content: "";
+                    position: absolute;
+                    width: 100%;
+                    height: 4px;
+                    bottom: 0;
+                    left: 0;
+                    opacity: 0;
+                    background-color: $black-clr1;
+                    transition: opacity 0.15s ease 0s;
+                }
 
-                span {
-                    font-family: cereal-bold;
-                    font-size: rem(16px);
+                &:hover::after {
+                    opacity: 1;
                 }
             }
+        }
 
-            .reserve-review {
-                font-size: rem(12px);
-                margin-right: 16px;
+        & .reserve-container {
+            & .reserve-info {
+                height: 100%;
+                & .reserve-preview {
+                    flex-direction: column;
+                    margin-inline-end: 16px;
 
-                p {
-                    font-size: inherit;
-                    margin-bottom: 0;
+                    & .score {
+                        margin-block-start: 4px;
 
-                    & span {
-                        margin-left: 0.5em;
-                        font-size: inherit;
+                        & .star svg {
+                            max-width: 10px;
+                            max-height: 10px;
+                        }
+
+                        & .review-rate {
+                            padding-inline-start: 4px;
+                        }
+
+                        & .review-count {
+                            margin-inline-start: 4px;
+                            color: $gray-clr0;
+                            text-decoration: underline;
+                        }
                     }
                 }
-
-                .period {
-                    margin: 0 0.25em;
-                }
             }
         }
-
-        .reserve-btn,
-        .btn-main-container {
-            width: 105px;
-            margin-left: auto;
-        }
-
-        .reserve-info {
-            height: 100%;
-        }
     }
-}
-
-.details-header::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    right: 100px;
-    height: 1px;
-    background-color: $gray-clr4;
-    width: calc(100vw - 200px);
-}
-
-.details-header::before {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    height: 1px;
-    background-color: $gray-clr4;
-    width: calc(100vw - 170px);
 }

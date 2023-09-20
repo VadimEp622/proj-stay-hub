@@ -82,6 +82,7 @@ $box-shadow16: rgba(0, 0, 0, 0.122) 0 1px 12px;
 $box-shadow17: 0 3px 10px rgba(0, 0, 0, 0.1);
 $box-shadow18: 0 1px 0 0 rgba(0, 0, 0, 0.15);
 $box-shadow19: 0 -1px 0 0 rgba(0, 0, 0, 0.15);
+$box-shadow20: rgba(0, 0, 0, 0.1) 0px 1px 0px;
 
 // =============================================================
 // ====================== linear-gradient ======================:
@@ -97,7 +98,7 @@ $linear-gradient3: linear-gradient(to bottom, rgba(255, 255, 255, 0.16), rgba(25
 $small-breakpoint: 790px;
 $medium-breakpoint: 1130px;
 $large-breakpoint: 1300px;
-$extra-large-breakpoint:1440px;
+$extra-large-breakpoint: 1440px;
 
 // Paddings
 $padding-large: 20px;
