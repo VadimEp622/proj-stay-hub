@@ -10,10 +10,6 @@ import { ButtonMain } from '../_reuseable-cmps/button-main.jsx'
 import SvgHandler from '../_reuseable-cmps/svg-handler.jsx'
 
 
-// TODO: research observers from scratch, and attempt to implement it in a better way
-
-// TODO: check if these observers here need to be unobserved when component unmounts 
-
 export function StayDetailsAltHeader({ stay, selectedRange, onCheckAvailabilityClick, onReserveClick }) {
 
 
