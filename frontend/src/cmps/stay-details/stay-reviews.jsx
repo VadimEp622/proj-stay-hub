@@ -25,27 +25,27 @@ export function StayReviews({ stay, reviewsInputs }) {
     return (
         <section className='reviews-container' id='reviews'>
 
-            <div className='review-title fs22 flex align-center'>
+            <section className='review-title fs22 flex align-center'>
                 <SvgHandler svgName={STAR_16} />
                 <span>{reviewService.getAverageReview(stay)} • {stay.reviews.length} {stay.reviews.length > 1 ? 'reviews' : 'review'} </span>
-            </div>
+            </section>
 
-            <div className='reviews-inputs'>
+            <section className='reviews-inputs'>
                 {Object.entries(reviewsInputs).map(([key, value]) => (
-                    <div className='review-input' key={key}>
+                    <article className='review-input' key={key}>
 
                         <div className='review-input-key'>{key}</div>
 
                         <section className='review-rate flex align-center'>
-                            <div className='progress-bar-container flex align-center'>
+                            <article className='progress-bar-container flex align-center'>
                                 <div className='review-input-bar' style={{ width: `${calculatePercentage(value)}%` }}></div>
-                            </div>
+                            </article>
                             <span className='fs12'>{value.toFixed(1)}</span>
                         </section>
 
-                    </div>
+                    </article>
                 ))}
-            </div>
+            </section>
 
             <section className='reviews-sum'>
                 <StayReviewList
