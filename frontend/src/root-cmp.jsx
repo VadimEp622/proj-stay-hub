@@ -24,15 +24,15 @@ import { AppMainModal } from './cmps/app-main-modal.jsx'
 // TODO: add more variety to userMsg, and make styling better!
 
 
-// TODO-priority-high: in "stay-details.jsx", implement the date-picker
 // TODO-priority-high: make "stay-details.jsx" work for mobile (either attempt at convert existing, or build new one)
-// TODO-priority-high: make "user-trips.jsx" work for mobile (either attempt at convert existing, or build new one)
 // TODO-priority-high: make all pages start from top! (some pages start scrolling from middle on route change)
 
 
 // **** Abstract ****
 // TODO-priority-high: organize cmps
-// TODO-priority-high: firefox site looks very different from chrome, figure out a solution
+// TODO-priority-high: firefox site looks very different from chrome, figure out a solution -> figured it out, 
+//            having "font-weight:400;", or not having it, makes firefox and chrome behave differently (maybe their defaults are different).
+
 // TODO-medium: research and decide which sizes in scss to convert to vars, and whether they needs to be rem/em dependant
 // TODO-medium: handle server interactions with minimum data transfer | sockets
 

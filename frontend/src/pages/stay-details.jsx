@@ -154,7 +154,7 @@ export function StayDetails() {
 
     // TODO: improve below function
     function displayReviewsCriteria() {
-        if (!stay || !stay.reviews || stay.reviews.length === 0) return null;
+        if (!stay || !stay.reviews || stay.reviews.length === 0) return null
 
         const criteria = stay.reviews.reduce((acc, review) => {
             if (!review.reviewInputs) return
@@ -166,10 +166,12 @@ export function StayDetails() {
         }, {})
 
         if (!criteria) return []
+
         Object.entries(criteria).forEach(([input, value]) => {
-            criteria[input] = value / stay.reviews.length;
-        });
-        return criteria;
+            criteria[input] = value / stay.reviews.length
+        })
+
+        return criteria
     }
 
 

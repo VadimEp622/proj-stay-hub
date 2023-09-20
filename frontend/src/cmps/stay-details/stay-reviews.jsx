@@ -1,10 +1,16 @@
 // Services
-import { reviewService } from "../../services/review.service.js"
-import { STAR_16 } from "../../services/svg.service.js"
+import { reviewService } from '../../services/review.service.js'
+import { STAR_16 } from '../../services/svg.service.js'
 
 // Components
-import { StayReviewList } from "./stay-reviews/stay-review-list.jsx"
-import SvgHandler from "../_reuseable-cmps/svg-handler.jsx"
+import { StayReviewList } from './stay-reviews/stay-review-list.jsx'
+import SvgHandler from '../_reuseable-cmps/svg-handler.jsx'
+
+
+// TODO: organize this cmp:
+//         1. restructure styling
+//         2. restructure cmp
+//         3. make review list, and review preview cmps
 
 
 export function StayReviews({ stay, reviewsInputs }) {
@@ -17,23 +23,30 @@ export function StayReviews({ stay, reviewsInputs }) {
     }
 
     return (
-        <section className="reviews-container " id='reviews'>
-            <div className="review-title fs22 flex align-center"><SvgHandler svgName={STAR_16} />
+        <section className='reviews-container' id='reviews'>
+
+            <div className='review-title fs22 flex align-center'>
+                <SvgHandler svgName={STAR_16} />
                 <span>{reviewService.getAverageReview(stay)} • {stay.reviews.length} {stay.reviews.length > 1 ? 'reviews' : 'review'} </span>
             </div>
-            <div className="reviews-inputs">
+
+            <div className='reviews-inputs'>
                 {Object.entries(reviewsInputs).map(([key, value]) => (
-                    <div className="review-input" key={key}>
-                        <div className="review-input-key">{key}</div>
+                    <div className='review-input' key={key}>
+
+                        <div className='review-input-key'>{key}</div>
+
                         <section className='review-rate flex align-center'>
-                            <div className="progress-bar-container flex align-center">
-                                <div className="review-input-bar" style={{ width: `${calculatePercentage(value)}%` }}></div>
+                            <div className='progress-bar-container flex align-center'>
+                                <div className='review-input-bar' style={{ width: `${calculatePercentage(value)}%` }}></div>
                             </div>
                             <span className='fs12'>{value.toFixed(1)}</span>
                         </section>
+
                     </div>
                 ))}
             </div>
+
             <section className='reviews-sum'>
                 <StayReviewList
                     reviewsToDisplay={reviewsToDisplay}
