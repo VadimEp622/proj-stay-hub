@@ -9,6 +9,11 @@ import { userService } from '../../../services/user.service.js'
 import { Loader } from '../../_reuseable-cmps/loader.jsx'
 
 
+// TODO: put show more as inline to user review text
+// TODO: consider making a user review preview modal with grayed out background
+// TODO: consider adding user score avg to review preview
+
+
 export function StayReviewList({ reviewsToDisplay, MAX_LENGTH = 120 }) {
   const [expanded, setExpanded] = useState(reviewsToDisplay.map(() => false))
   const [usedPhotos, setUsedPhotos] = useState([])

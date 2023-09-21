@@ -1,13 +1,11 @@
 .stay-review-list {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    row-gap: 40px;
+    grid-template-columns: repeat(2, minmax(500px, 1fr));
+    gap: 40px;
     padding-block: 40px;
     border-block-end: $border-bottom;
 
     & .review-container {
-        margin-block-end: 40px;
-
         & .mini-user {
             gap: rem(10px);
             align-items: flex-end;
