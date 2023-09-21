@@ -9,25 +9,26 @@ import { userService } from "../services/user.service.js"
 
 
 export default function useLoadStay(stayId) {
-    const [stay, setStay] = useState(null)
     const navigate = useNavigate()
     const stayHostImgUrlRef = useRef()
+    const [stay, setStay] = useState(null)
 
     useEffect(() => {
-        const loadStay = async () => {
-            try {
-                const fetchedStay = await stayService.getById(stayId)
-                stayHostImgUrlRef.current = fetchedStay.host.isInDB ? fetchedStay.host.pictureUrl : userService.randomHostImg()
-                setStay(fetchedStay)
-            } catch (err) {
-                console.log('could not load stay from id', err)
-                showErrorMsg('Cannot load stay')
-                navigate('/')
-            }
-        }
-
         loadStay()
-    }, [navigate, stayId])
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
+    async function loadStay() {
+        try {
+            const fetchedStay = await stayService.getById(stayId)
+            stayHostImgUrlRef.current = fetchedStay.host.isInDB ? fetchedStay.host.pictureUrl : userService.randomHostImg()
+            setStay(fetchedStay)
+        } catch (err) {
+            console.log('could not load stay from id', err)
+            showErrorMsg('Cannot load stay')
+            navigate('/')
+        }
+    }
 
     const hostImgUrl = stayHostImgUrlRef.current
     return [stay, hostImgUrl]

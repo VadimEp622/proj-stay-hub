@@ -8,18 +8,21 @@ import { stayService } from '../services/stay.service.js'
 
 
 export default function useStayDates(stay) {
-    const filterBy = useSelector(storeState => storeState.stayModule.filterBy)
-    const [selectedRange, setSelectedRange] = useState({})
     const DAY = useMemo(() => 1000 * 60 * 60 * 24, [])
+    const filterBy = useSelector(storeState => storeState.stayModule.filterBy)
+    const [selectedRange, setSelectedRange] = useState(null)
 
 
     useEffect(() => {
-        const initialState = getInitialState(filterBy)
-        setSelectedRange(initialState)
+        if (stay) {
+            const initialState = getInitialState(filterBy)
+            setSelectedRange(initialState)
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [stay])
 
 
-    const getInitialState = (filterBy) => {
+    function getInitialState(filterBy) {
         const today = Date.parse(startOfDay(Date.now()))
         const earliestCheckIn = stay
             ? today + (DAY * stay.availableDates[0].daysFromToday)
@@ -31,8 +34,8 @@ export default function useStayDates(stay) {
         }
     }
 
-    const checkIn = stayService.getDate(selectedRange?.from)
-    const checkOut = stayService.getDate(selectedRange?.to)
+    const checkIn = selectedRange ? stayService.getDate(selectedRange?.from) : ''
+    const checkOut = selectedRange ? stayService.getDate(selectedRange?.to) : ''
 
     return [checkIn, checkOut, selectedRange, setSelectedRange]
 }

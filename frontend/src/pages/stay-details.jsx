@@ -47,6 +47,9 @@ import { StayPhotos } from '../cmps/stay-details/stay-photos.jsx'
 
 
 
+// TODO: consider optimizing state mutations even further, by using hooks different from "useEffect" or "useState"
+
+
 export function StayDetails() {
     const navigate = useNavigate()
     const loggedInUser = useSelector(storeState => storeState.userModule.user)
@@ -56,7 +59,6 @@ export function StayDetails() {
     const [guests, setGuests] = useStayGuests()
     const [checkIn, checkOut, selectedRange, setSelectedRange] = useStayDates(stay)
     const [orderDetails] = useStayDetails(stay, checkIn, checkOut, guests)
-
 
 
     function isStayWishlist() {
@@ -175,14 +177,14 @@ export function StayDetails() {
     }
 
 
-    if (!stay) return <section className="loading"><Loader /></section>
+    if (!stay || !selectedRange || Object.keys(orderDetails).length === 0) return <section className='loading'><Loader /></section>
 
     const reviewsInputs = displayReviewsCriteria()
     const randomDateJoined = utilService.getRandomMonthAndYear()
     const averageReviewScore = reviewService.getAverageReview(stay)
 
     return (
-        <section className="stay-details" id='photos'>
+        <section className='stay-details' id='photos'>
             <StayDetailsAltHeader
                 stay={stay}
                 selectedRange={selectedRange}
