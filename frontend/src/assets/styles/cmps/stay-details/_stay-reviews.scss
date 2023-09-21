@@ -1,72 +1,51 @@
-.reviews-container {
-    flex-basis: 50%;
-    padding-top: 48px;
+.stay-reviews-container {
+    padding-block-start: 48px;
 
-    img {
-        width: 40px;
-        height: 40px;
-        border-radius: 50px;
-        object-fit: cover;
-    }
-
-    .review-title {
+    & .review-title {
+        margin-block-end: 25px;
         font-family: cereal-std;
         font-weight: 600;
-        margin-bottom: 25px;
 
-        span {
-            margin-left: 10px;
+        & span {
+            margin-inline-start: 10px;
         }
     }
 
-    .mini-user {
-        gap: rem(10px);
-        margin-bottom: 12px;
-        align-items: flex-end;
-
-        span {
-            color: $gray-clr0;
-        }
-    }
-
-    .reviews-inputs {
+    & .review-average-score-list {
         display: grid;
-        gap: 10px;
         grid-template: repeat(4, 1fr) / repeat(2, 1fr);
-        font-size: rem(16px);
+        gap: 10px;
 
-        .review-input {
-            padding-right: 17.5%;
+        & .review-average-score-item {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
+            padding-inline-end: 17.5%;
             letter-spacing: 0;
 
-            .review-rate {
-                justify-content: flex-end;
-
-                .progress-bar-container {
-                    background-color: $gray-clr3;
+            & .review-item-score {
+                & .score-bar-container {
                     position: relative;
-                    border-radius: 0.2em;
                     height: rem(4px);
                     width: 50%;
+                    margin-block-end: 6px;
+                    background-color: $gray-clr3;
+                    border-radius: 0.2em;
                     border-radius: rem(2px);
-                    margin-right: 6px;
 
-                    .review-input-bar {
+                    & .score-bar {
                         display: inline;
-                        min-height: 0.2em;
                         position: absolute;
+                        min-height: 0.2em;
                         max-height: rem(4px);
                         border-radius: 2em;
                         background-color: $black-clr1;
                     }
                 }
 
-                span {
+                & .score-average {
+                    margin-inline-start: 8px;
                     font-family: cereal-bold;
                     color: $black-clr1;
-                    margin-left: 8px;
                 }
             }
         }

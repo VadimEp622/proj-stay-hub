@@ -23,36 +23,34 @@ export function StayReviews({ stay, reviewsInputs }) {
     }
 
     return (
-        <section className='reviews-container' id='reviews'>
+        <section className='stay-reviews-container' id='reviews'>
 
             <section className='review-title fs22 flex align-center'>
                 <SvgHandler svgName={STAR_16} />
                 <span>{reviewService.getAverageReview(stay)} • {stay.reviews.length} {stay.reviews.length > 1 ? 'reviews' : 'review'} </span>
             </section>
 
-            <section className='reviews-inputs'>
+            <section className='review-average-score-list'>
                 {Object.entries(reviewsInputs).map(([key, value]) => (
-                    <article className='review-input' key={key}>
+                    <section className='review-average-score-item' key={key}>
 
-                        <div className='review-input-key'>{key}</div>
+                        <div className='review-input-key fs16'>{key}</div>
 
-                        <section className='review-rate flex align-center'>
-                            <article className='progress-bar-container flex align-center'>
-                                <div className='review-input-bar' style={{ width: `${calculatePercentage(value)}%` }}></div>
-                            </article>
-                            <span className='fs12'>{value.toFixed(1)}</span>
+                        <section className='review-item-score flex align-center justify-end'>
+                            <section className='score-bar-container flex align-center'>
+                                <div className='score-bar' style={{ width: `${calculatePercentage(value)}%` }}></div>
+                            </section>
+                            <span className='score-average fs12'>{value.toFixed(1)}</span>
                         </section>
 
-                    </article>
+                    </section>
                 ))}
             </section>
 
-            <section className='reviews-sum'>
-                <StayReviewList
-                    reviewsToDisplay={reviewsToDisplay}
-                    key={reviewsToDisplay.id}
-                />
-            </section>
+            <StayReviewList
+                reviewsToDisplay={reviewsToDisplay}
+                key={reviewsToDisplay.id}
+            />
         </section>
     )
 }

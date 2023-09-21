@@ -54,12 +54,12 @@ export function StayDetailsAltHeader({ stay, selectedRange, onCheckAvailabilityC
 
             <section className='stay-details-alt-header flex space-between'>
 
-                <section className='links-container ff-circular-semibold fs14 lh20 flex align-center'>
+                <nav className='links-container ff-circular-semibold fs14 lh20 flex align-center'>
                     <a className='detail-link' href='#photos'>Photos</a>
                     <a className='detail-link' href='#amenities'>Amenities</a>
                     <a className='detail-link' href='#reviews'>Reviews</a>
                     <a className='detail-link' href='#location'>Location</a>
-                </section>
+                </nav>
 
                 <section className='reserve-container'>
                     <section className='reserve-info flex align-center justify-center'>
