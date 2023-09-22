@@ -156,11 +156,11 @@ export function StayDetails() {
     }
 
 
-    if (!stay || !selectedRange || Object.keys(orderDetails).length === 0) return <section className='loading'><Loader /></section>
+    if (!stay || !selectedRange || Object.keys(orderDetails).length === 0) return <Loader />
 
-    const reviewScores = stayService.getStayReviewScores(stay.reviews)
+    const stayCategoryScores = stayService.getStayCategoryScores(stay.reviews)
     const randomDateJoined = utilService.getRandomMonthAndYear()
-    const averageReviewScore = reviewService.getAverageReview(stay)
+    const averageReviewScore = stayService.getStayScore(stay.reviews)
 
     return (
         <section className='stay-details' id='photos'>
@@ -188,7 +188,7 @@ export function StayDetails() {
                 stay.reviews?.length > 0 &&
                 <StayReviews
                     stay={stay}
-                    reviewsInputs={reviewScores}
+                    stayCategoryScores={stayCategoryScores}
                     averageReviewScore={averageReviewScore}
                 />
             }

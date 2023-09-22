@@ -1,0 +1,33 @@
+.category-score-preview {
+    margin-inline-end: 18.333%;
+    margin-block-end: 16px;
+
+    & .category-name {
+        white-space: nowrap;
+        width: 100%;
+        text-transform: capitalize;
+    }
+
+    & .category-score {
+        width: 50%;
+        margin-inline-start: 12px;
+
+        & .score-bar-container {
+            height: rem(4px);
+            width: 100%;
+            background-color: $gray-clr3;
+            border-radius: rem(2px);
+            overflow: hidden;
+            margin-inline-end: 4px;
+
+            & .score-bar {
+                height: 100%;
+                background-color: $black-clr1;
+            }
+        }
+
+        & .score-average {
+            margin-inline-start: 6px;
+        }
+    }
+}

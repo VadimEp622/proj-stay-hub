@@ -7,6 +7,7 @@ export const utilService = {
     getFormattedTimeRange,
     floatify,
     calculatePercentage,
+    getFormattedDate,
     // ===================================================================
     makeId,
     getRandomIntInclusive,
@@ -73,6 +74,11 @@ function floatify(number) {
 
 function calculatePercentage(value, outOfValue = 5) {
     return utilService.floatify((value / outOfValue) * 100).toFixed(1)
+}
+
+function getFormattedDate(dateToFormat, options) {
+    const date = new Date(dateToFormat)
+    return date.toLocaleDateString('en-US', options)
 }
 // ===================================================================
 

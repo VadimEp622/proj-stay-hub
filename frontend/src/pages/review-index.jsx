@@ -7,6 +7,16 @@ import { socketService, SOCKET_EVENT_REVIEW_ADDED } from '../services/socket.ser
 import { loadReviews, addReview, removeReview, getActionAddReview } from '../store/review.actions'
 import { loadUsers } from '../store/user.actions'
 
+
+// This seems to be a demo review index, which allows adding/removing reviews, with socket integration.
+// need to consider whether option to add/remove reviews is needed, who can add/remove reviews
+// and at what point is it even possible to review (Not-LoggedIn / LoggedIn + Unordered / LoggedIn + Ordered / 
+// Ordered and checkedOut, etc...)
+//  |
+//  v
+// Alternatively, consider integrating a messenger page.
+
+
 export function ReviewIndex() {
 
   const users = useSelector(storeState => storeState.userModule.users)

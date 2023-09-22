@@ -1,0 +1,26 @@
+.stay-review-preview {
+    margin-block-end: 40px;
+    margin-inline-end: 18.333%;
+
+    & .mini-user {
+        gap: rem(10px);
+        margin-block-end: 16px;
+
+        & span {
+            color: $gray-clr0;
+        }
+
+        & img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50px;
+            object-fit: cover;
+        }
+    }
+
+    & .review-content {
+        & p {
+            margin: 0;
+        }
+    }
+}

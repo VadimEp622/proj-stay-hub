@@ -10,7 +10,8 @@ export const stayService = {
     query,
     getById,
     getEmptyFilterBy,
-    getStayReviewScores,
+    getStayCategoryScores,
+    getStayScore,
     // ================================================== 
     save,
     remove,
@@ -62,7 +63,7 @@ function getEmptyFilterBy() {
     }
 }
 
-function getStayReviewScores(stayReviews) {
+function getStayCategoryScores(stayReviews) {
     const scores = stayReviews.reduce((acc, review) => {
         Object.entries(review.reviewInputs).forEach(([input, value]) => {
             acc[input] = utilService.floatify(acc[input] ? (acc[input] + value) : value)
@@ -74,6 +75,14 @@ function getStayReviewScores(stayReviews) {
         scores[input] = parseFloat(inputAverage.toFixed(1))
     })
     return scores
+}
+
+function getStayScore(stayReviews) {
+    const scores = getStayCategoryScores(stayReviews)
+    const stayScoresSum = Object.values(scores)
+        .reduce((acc, value) => utilService.floatify(acc += value))
+    const stayScore = utilService.floatify(stayScoresSum / Object.values(scores).length)
+    return parseFloat(stayScore.toFixed(2))
 }
 // ================================================== 
 

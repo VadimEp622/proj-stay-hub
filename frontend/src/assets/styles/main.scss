@@ -15,7 +15,6 @@
 // ************** Components **************
 // Reuseable
 @import "cmps/_reuseable-cmps/date-picker";
-@import "cmps/_reuseable-cmps/loader";
 @import "cmps/_reuseable-cmps/button-main";
 
 // *** app-login-signup ***
@@ -43,9 +42,13 @@
 @import "cmps/stay-details/stay-host-details";
 @import "cmps/stay-details/stay-things-to-know";
 @import "cmps/stay-details/stay-details-alt-header";
-// *** stay-details/stay-reviews ***   ---->TODO: needs cleaning up
+// *** stay-details/stay-reviews ***
 @import "cmps/stay-details/stay-reviews/stay-review-list";
-// *** stay-details/stay-summary ***   ---->TODO: needs cleaning up
+@import "cmps/stay-details/stay-reviews/stay-review-preview";
+@import "cmps/stay-details/stay-reviews/stay-reviews-header";
+@import "cmps/stay-details/stay-reviews/category-score-list";
+@import "cmps/stay-details/stay-reviews/category-score-preview";
+// *** stay-details/stay-summary ***
 @import "cmps/stay-details/stay-summary/order-sidebar";
 // *** stay-details/stay-summary/order-sidebar ***
 @import "cmps/stay-details/stay-summary/order-sidebar/cost-and-review-score";
@@ -53,7 +56,7 @@
 @import "cmps/stay-details/stay-summary/order-sidebar/pricing";
 @import "cmps/stay-details/stay-summary/order-sidebar/special-info";
 
-// *** user-trips ***   ---->TODO: needs cleaning up
+// *** user-trips ***
 @import "cmps/user-trips/future-reservation-list";
 @import "cmps/user-trips/past-reservation-list";
 
