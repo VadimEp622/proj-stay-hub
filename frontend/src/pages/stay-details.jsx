@@ -29,6 +29,7 @@ import { StayReviews } from '../cmps/stay-details/stay-reviews.jsx'
 import { StayTitle } from '../cmps/stay-details/stay-title.jsx'
 import { StaySummary } from '../cmps/stay-details/stay-summary.jsx'
 import { StayPhotos } from '../cmps/stay-details/stay-photos.jsx'
+import { stayService } from '../services/stay.service.js'
 
 
 
@@ -47,7 +48,8 @@ import { StayPhotos } from '../cmps/stay-details/stay-photos.jsx'
 
 
 
-// TODO: consider optimizing state mutations even further, by using hooks different from "useEffect" or "useState"
+// TODO: consider combining all those hooks into one hook, since they use data from loading a stay,
+//    maybe something like:  [stay, reservation, setReservation] = useStayDetails(stayId)
 
 
 export function StayDetails() {
@@ -154,32 +156,9 @@ export function StayDetails() {
     }
 
 
-    // TODO: improve below function
-    function displayReviewsCriteria() {
-        if (!stay || !stay.reviews || stay.reviews.length === 0) return null
-
-        const criteria = stay.reviews.reduce((acc, review) => {
-            if (!review.reviewInputs) return
-            Object.entries(review.reviewInputs).forEach(([input, value]) => {
-                const capitalizedInput = input.charAt(0).toUpperCase() + input.slice(1)
-                acc[capitalizedInput] = acc[capitalizedInput] ? (acc[capitalizedInput] + value) : value
-            })
-            return acc
-        }, {})
-
-        if (!criteria) return []
-
-        Object.entries(criteria).forEach(([input, value]) => {
-            criteria[input] = value / stay.reviews.length
-        })
-
-        return criteria
-    }
-
-
     if (!stay || !selectedRange || Object.keys(orderDetails).length === 0) return <section className='loading'><Loader /></section>
 
-    const reviewsInputs = displayReviewsCriteria()
+    const reviewScores = stayService.getStayReviewScores(stay.reviews)
     const randomDateJoined = utilService.getRandomMonthAndYear()
     const averageReviewScore = reviewService.getAverageReview(stay)
 
@@ -209,7 +188,8 @@ export function StayDetails() {
                 stay.reviews?.length > 0 &&
                 <StayReviews
                     stay={stay}
-                    reviewsInputs={reviewsInputs}
+                    reviewsInputs={reviewScores}
+                    averageReviewScore={averageReviewScore}
                 />
             }
             <StayMap stay={stay} />

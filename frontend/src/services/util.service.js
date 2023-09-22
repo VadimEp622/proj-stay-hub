@@ -5,6 +5,8 @@ export const utilService = {
     getStayPreviewDateRange,
     getFutureTime,
     getFormattedTimeRange,
+    floatify,
+    calculatePercentage,
     // ===================================================================
     makeId,
     getRandomIntInclusive,
@@ -63,6 +65,14 @@ function getFormattedTimeRange(start, end) {
     }
 
     return formattedRange
+}
+
+function floatify(number) {
+    return parseFloat((number).toFixed(10))
+}
+
+function calculatePercentage(value, outOfValue = 5) {
+    return utilService.floatify((value / outOfValue) * 100).toFixed(1)
 }
 // ===================================================================
 

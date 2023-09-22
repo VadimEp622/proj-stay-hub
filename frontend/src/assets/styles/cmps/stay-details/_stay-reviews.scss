@@ -1,51 +1,52 @@
 .stay-reviews-container {
-    padding-block-start: 48px;
+    padding-block: 48px;
+    border-block-end: $border-bottom;
 
     & .review-title {
-        margin-block-end: 25px;
-        font-family: cereal-std;
-        font-weight: 600;
+        margin-block-end: 32px;
 
-        & span {
-            margin-inline-start: 10px;
+        & .review-average-amount {
+            margin-inline-start: 8px;
         }
     }
 
     & .review-average-score-list {
         display: grid;
-        grid-template: repeat(4, 1fr) / repeat(2, 1fr);
-        gap: 10px;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 8px;
+        margin-inline-end: -8px;
+        margin-block-end: 24px;
 
         & .review-average-score-item {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            padding-inline-end: 17.5%;
-            letter-spacing: 0;
+            margin-inline-end: 18.333%;
+            margin-block-end: 16px;
+
+            & .review-input-key {
+                white-space: nowrap;
+                width: 100%;
+                text-transform: capitalize;
+            }
 
             & .review-item-score {
+                width: 50%;
+                margin-inline-start: 12px;
+
                 & .score-bar-container {
-                    position: relative;
                     height: rem(4px);
-                    width: 50%;
-                    margin-block-end: 6px;
+                    width: 100%;
                     background-color: $gray-clr3;
-                    border-radius: 0.2em;
                     border-radius: rem(2px);
+                    overflow: hidden;
+                    margin-inline-end: 4px;
 
                     & .score-bar {
-                        display: inline;
-                        position: absolute;
-                        min-height: 0.2em;
-                        max-height: rem(4px);
-                        border-radius: 2em;
+                        height: 100%;
                         background-color: $black-clr1;
                     }
                 }
 
                 & .score-average {
-                    margin-inline-start: 8px;
-                    font-family: cereal-bold;
-                    color: $black-clr1;
+                    margin-inline-start: 6px;
                 }
             }
         }

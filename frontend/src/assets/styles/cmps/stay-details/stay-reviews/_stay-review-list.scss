@@ -1,15 +1,17 @@
 .stay-review-list {
     display: grid;
     grid-template-columns: repeat(2, minmax(500px, 1fr));
-    gap: 40px;
-    padding-block: 40px;
-    border-block-end: $border-bottom;
+    column-gap: 8px;
+    margin-block-end: -40px;
+    margin-inline-end: -8px;
 
     & .review-container {
+        margin-block-end: 40px;
+        margin-inline-end: 18.333%;
+
         & .mini-user {
             gap: rem(10px);
-            align-items: flex-end;
-            margin-block-end: 12px;
+            margin-block-end: 16px;
 
             & span {
                 color: $gray-clr0;
@@ -24,19 +26,8 @@
         }
 
         & .review-content-container {
-            margin-inline-end: 8.333%;
-
-            & button {
-                display: inline-block;
-                padding: 10px 20px 10px 0px;
-                border: none;
-                text-align: center;
-                text-decoration: none;
-                background-color: inherit;
-
-                &:hover {
-                    cursor: pointer;
-                }
+            & p {
+                margin: 0;
             }
         }
     }
