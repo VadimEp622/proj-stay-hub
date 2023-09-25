@@ -5,33 +5,6 @@
     border-bottom: 1px solid $gray-clr3;
 
     & .summary {
-        // & .overview-container {
-        //     border-bottom: $border-bottom;
-        //     padding-bottom: 24px;
-
-        //     & img {
-        //         width: 53px;
-        //         height: 53px;
-        //         border-radius: 50px;
-        //         object-fit: cover;
-        //     }
-
-        //     .overview {
-        //         h2 {
-        //             font-size: rem(22px);
-        //             margin-bottom: 0.3em;
-        //         }
-
-        //         & span {
-        //             font-size: rem(16px);
-        //         }
-        //     }
-
-        //     .dot {
-        //         margin: 0 0.15rem;
-        //     }
-        // }
-
         & .highlights-container {
             grid-column: 1;
             padding-top: 32px;
