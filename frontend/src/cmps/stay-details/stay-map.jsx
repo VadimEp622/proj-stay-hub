@@ -4,14 +4,10 @@ export function StayMap({ stay }) {
 
     const { lat, lan, city, country } = stay.loc
     return (
-        <section className="map-container" id='location'>
-            <h3 className='fs22'>Where you'll be</h3>
-            <div className="map">
-                <GoogleMap loc={{ lat, lan }} />
-            </div>
-            <section className='location-about'>
-                <h3 className='fs16'>{city}, {country}</h3>
-            </section>
+        <section className='stay-map-container' id='location'>
+            <h3 className='title fs22 lh26'>Where you'll be</h3>
+            <p className='location fs16 lh20'>{city}, {country}</p>
+            <GoogleMap loc={{ lat, lan }} />
         </section>
     )
 }
