@@ -1,0 +1,21 @@
+.amenity-list-container {
+    padding-block-start: 50px;
+    padding-block-end: 50px;
+    border-bottom: $border-bottom;
+    scroll-margin-top: 80px;
+
+    & > .title {
+        padding-block-end: 24px;
+        letter-spacing: 0.0125rem;
+    }
+
+    & .amenity-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+
+        & .amenity-preview {
+            gap: 16px;
+            padding-block-end: 16px;
+        }
+    }
+}

@@ -48,10 +48,11 @@
 @import "cmps/stay-details/stay-summary";
 @import "cmps/stay-details/stay-reviews";
 @import "cmps/stay-details/stay-map";
-@import "cmps/stay-details/stay-host-details";
-@import "cmps/stay-details/stay-things-to-know";// ✔
+@import "cmps/stay-details/stay-host-details"; // ✔
+@import "cmps/stay-details/stay-things-to-know"; // ✔
 // *** stay-details/stay-summary ***
 @import "cmps/stay-details/stay-summary/order-sidebar";
+@import "cmps/stay-details/stay-summary/amenity-list"; // ✔
 // *** stay-details/stay-summary/order-sidebar ***
 @import "cmps/stay-details/stay-summary/order-sidebar/cost-and-review-score";
 @import "cmps/stay-details/stay-summary/order-sidebar/dates-and-guests";
