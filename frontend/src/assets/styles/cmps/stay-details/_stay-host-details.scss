@@ -2,37 +2,44 @@
     padding: 48px 0;
     border-bottom: $border-bottom;
 
-    & .mini-owner {
+    p {
+        margin: 0;
+    }
+
+    & .host-details-header {
         gap: 16px;
         margin-block-end: 24px;
 
-        & img {
-            width: 56px;
-            height: 56px;
+        & .host-picture {
+            height: 64px;
+            width: 64px;
             border-radius: 50px;
         }
 
-        & .mini-owner-info {
-            & h3 {
+        & .host-intro-info {
+            & .host-name {
                 padding-block-end: 8px;
             }
 
-            & span {
+            & .host-join-date {
                 color: $gray-clr0;
             }
         }
     }
 
-    & .sub-details {
-        & .sub-details-highlights {
-            width: 45%;
+    & .host-details-main {
+        flex-wrap: wrap;
+        & .host-main-info-container {
+            width: 41.6%;
 
             & .host-tags {
+                margin-block-end: 12px;
                 margin-inline-start: -12px;
 
                 & > * {
                     margin-block-end: 12px;
                     padding-inline: 12px;
+
                     & > :first-child {
                         margin-inline-end: 4px;
                     }
@@ -42,50 +49,50 @@
                 }
             }
 
-            & .about-host {
-                // margin-block-start: 18px;
-
+            & .host-main-info {
+                & > *:not(:last-child) {
+                    margin-block-end: 24px;
+                }
                 & h4 {
                     margin-block-end: 8px;
-                    // padding-inline-start: 0px;
                     letter-spacing: 0;
                 }
             }
         }
-    }
 
-    .owner-communication {
-        // width: 80%;
-        margin-left: 8.333%;
-        padding: 0 24px;
-        flex-direction: column;
+        & .contact-host {
+            width: 41.6%;
+            margin-left: 8.333%;
+            padding-inline: 8px;
 
-        h3 {
-            margin-bottom: 16px;
-            font-family: cereal-std;
-        }
-
-        button {
-            width: rem(150px);
-            height: rem(48px);
-            background-color: $gray-clr-1;
-            cursor: pointer;
-            border: 1px solid $black-clr1;
-            border-radius: rem(12px);
-            margin: 24px 0;
-
-            &:hover {
-                background-color: $gray-clr5;
+            & .host-response-info {
+                & > * {
+                    margin-block-end: 16px;
+                }
             }
-        }
 
-        .protection-info {
-            width: 60%;
+            & button {
+                width: fit-content;
+                margin: 24px 0;
+                padding: 13px 23px;
+                border: 1px solid $black-clr1;
+                border-radius: 8px;
+                background-color: $gray-clr-1;
 
-            & img {
-                height: 24px;
-                width: 24px;
-                margin-right: 16px;
+                &:hover {
+                    cursor: pointer;
+                    background-color: $gray-clr5;
+                }
+            }
+
+            & .protection-info {
+                max-width: 300px;
+
+                & img {
+                    height: 24px;
+                    width: 24px;
+                    margin-inline-end: 16px;
+                }
             }
         }
     }

@@ -44,8 +44,8 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: Circular-Regular;
-    font-weight: 600;
+    font-family: Circular-Semibold;
+    font-weight: 400;
     letter-spacing: 0.0225rem;
     color: $black-clr1;
     margin: 0;
@@ -60,7 +60,7 @@ img {
 
 p {
     color: $black-clr1;
-    margin: 0 0 1em;
+    // margin: 0 0 1em;
     // margin-block: 0;
     // margin-inline: 0;
 }
