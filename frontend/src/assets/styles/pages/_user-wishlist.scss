@@ -1,32 +1,22 @@
 .user-wishlist-page {
-    margin-block-start: 75px;
-
     & > h1 {
-        font-size: rem(38px);
-        line-height: rem(36px);
-        letter-spacing: 0px;
-        margin-block-end: 50px;
+        padding-block: 30px;
+        margin-inline-start: 24px;
+        margin-block-end: 40px;
     }
 
     & > .empty-wishlist {
-        & h3 {
-            font-size: rem(22px);
-            letter-spacing: 0px;
-        }
-
         & .no-wishlist {
-            padding-block-start: 20px;
-            padding-block-end: 28px;
+            margin-block-start: 8px;
+            margin-block-end: 32px;
         }
 
         & .explore {
             height: rem(48px);
             width: rem(160px);
+            border-radius: rem(8px);
             background-color: $black-clr1;
             color: $gray-clr-1;
-            font-size: 16px;
-            line-height: rem(20px);
-            border-radius: rem(8px);
             letter-spacing: 0.8px;
 
             &:hover {

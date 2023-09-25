@@ -34,14 +34,14 @@ export function UserWishlist() {
     if (!loggedInUser) return <Loader />
     return (
         <section className="user-wishlist-page">
-            <h1 className="ff-circular-bold">Wishlist</h1>
+            <h1 className="ff-circular-semibold fs28 lh28">Wishlist</h1>
             {(!loggedInUser.wishlist || loggedInUser.wishlist.length === 0)
                 ? (
                     <section className="empty-wishlist">
-                        <h3>No places saved yet</h3>
+                        <h3 className="fs22">No places saved yet</h3>
                         <p className="no-wishlist">As you explore, click the heart icon to save your favorite places and experiences to a wishlist.</p>
                         <Link to={`/`}>
-                            <button className="explore">Start exploring</button>
+                            <button className="explore fs16 lh20">Start exploring</button>
                         </Link>
                     </section>
                 )
