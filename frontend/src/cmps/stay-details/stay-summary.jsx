@@ -1,5 +1,5 @@
 // Components
-import { Highlights } from './stay-summary/highlights.jsx'
+import { HighlightList } from './stay-summary/highlight-list.jsx'
 import { Overview } from './stay-summary/overview.jsx'
 import { AmenityList } from './stay-summary/amenity-list.jsx'
 import { StayDates } from './stay-summary/stay-dates.jsx'
@@ -18,7 +18,7 @@ export function StaySummary({
         <section className="summary-container">
             <section className="summary">
                 <Overview stay={stay} hostImgUrl={hostImgUrl} />
-                <Highlights />
+                <HighlightList />
                 <AmenityList amenities={stay.amenities} />
                 <StayDates stay={stay} selectedRange={selectedRange} handleRangeSelect={handleRangeSelect} />
             </section>

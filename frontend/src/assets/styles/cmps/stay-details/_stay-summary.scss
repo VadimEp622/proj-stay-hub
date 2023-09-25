@@ -5,26 +5,6 @@
     border-bottom: 1px solid $gray-clr3;
 
     & .summary {
-        & .highlights-container {
-            grid-column: 1;
-            padding-top: 32px;
-            padding-bottom: 8px;
-            border-bottom: $border-bottom;
-
-            .highlight {
-                margin-bottom: 8px;
-
-                .highlight-txt {
-                    margin-left: 16px;
-
-                    h3 {
-                        font-size: rem(16px);
-                        margin-bottom: 0.475rem;
-                    }
-                }
-            }
-        }
-
         & .date-container {
             padding-top: 48px;
             padding-bottom: 48px;
