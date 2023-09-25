@@ -2,15 +2,11 @@
     padding: 48px 0;
     border-bottom: $border-bottom;
 
-    p {
-        margin: 0;
-    }
-
     & .host-details-header {
         gap: 16px;
         margin-block-end: 24px;
 
-        & .host-picture {
+        & img {
             height: 64px;
             width: 64px;
             border-radius: 50px;
@@ -29,6 +25,7 @@
 
     & .host-details-main {
         flex-wrap: wrap;
+
         & .host-main-info-container {
             width: 41.6%;
 
@@ -43,8 +40,14 @@
                     & > :first-child {
                         margin-inline-end: 4px;
                     }
+
                     & > :last-child {
                         margin-inline-start: 8px;
+                    }
+
+                    &.reviews-count > :last-child,
+                    &:not(.reviews-count) > :last-child::first-letter {
+                        text-transform: capitalize;
                     }
                 }
             }
@@ -53,9 +56,14 @@
                 & > *:not(:last-child) {
                     margin-block-end: 24px;
                 }
+
                 & h4 {
                     margin-block-end: 8px;
                     letter-spacing: 0;
+                }
+
+                & p {
+                    margin: 0;
                 }
             }
         }
@@ -65,10 +73,8 @@
             margin-left: 8.333%;
             padding-inline: 8px;
 
-            & .host-response-info {
-                & > * {
-                    margin-block-end: 16px;
-                }
+            & .host-response-info > * {
+                margin-block-end: 16px;
             }
 
             & button {

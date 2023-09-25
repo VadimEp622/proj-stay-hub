@@ -7,13 +7,12 @@ import SvgHandler from '../_reuseable-cmps/svg-handler.jsx'
 export function HostDetails({ stay, hostImgUrl, randomDateJoined }) {
 
     const reviews = stay.reviews.length > 1 ? 'reviews' : 'review'
-    const capitalizedReviewsString = reviews.charAt(0).toUpperCase() + reviews.slice(1)
     const responseTime = stay.host?.responseTime ? stay.host.responseTime : 'within a few hours'
     return (
         <section className='host-details-container'>
 
             <section className='host-details-header flex align-center'>
-                <img className='host-picture' src={hostImgUrl} alt='host' />
+                <img src={hostImgUrl} alt='host' />
                 <section className='host-intro-info'>
                     <h3 className='host-name fs22'>Hosted by {stay.host.fullname}</h3>
                     <span className='host-join-date'>Joined in {randomDateJoined}</span>
@@ -26,18 +25,18 @@ export function HostDetails({ stay, hostImgUrl, randomDateJoined }) {
                     <section className='host-tags fs16 lh20 flex align-center'>
                         <section className='reviews-count flex align-center'>
                             <SvgHandler svgName={STAR_16} />
-                            <span>{`${stay.reviews.length} ${capitalizedReviewsString}`}</span>
+                            <span>{`${stay.reviews.length} ${reviews}`}</span>
                         </section>
                         <section className='identity-verified flex align-center'>
                             <SvgHandler svgName={VERIFIED} />
-                            <span>Identity verified</span>
+                            <span>identity verified</span>
                         </section>
-                        {stay.host.isSuperhost && (
+                        {stay.host.isSuperhost &&
                             <section className='super-host flex align-center'>
                                 <SvgHandler svgName={BLACK_SUPERHOST_16} />
-                                <span>Superhost</span>
+                                <span>superhost</span>
                             </section>
-                        )}
+                        }
                     </section>
 
                     <section className='host-main-info fs16'>
