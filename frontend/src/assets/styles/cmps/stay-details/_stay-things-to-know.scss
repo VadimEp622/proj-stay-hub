@@ -1,25 +1,27 @@
 .things-to-know {
-    margin-top: 50px;
+    padding-block: 48px;
 
-    h2 {
-        font-size: rem(22px);
-        margin-bottom: 28px;
+    & > .title {
+        padding-block-end: 24px;
     }
 
-    .rules-container {
+    & .rules-container {
         justify-content: flex-start;
         line-break: strict;
+
+        & > * {
+            & h4 {
+                font-family: Circular-Semibold;
+                font-weight: 400;
+            }
+
+            & > * {
+                margin-block-end: 16px;
+            }
+        }
     }
 
     .rules-container > * {
         width: 33.3333%;
-    }
-
-    h4 {
-        margin-bottom: 12px;
-    }
-
-    p {
-        margin-bottom: 10px;
     }
 }
