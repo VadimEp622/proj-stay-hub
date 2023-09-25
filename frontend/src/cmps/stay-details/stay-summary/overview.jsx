@@ -1,18 +1,21 @@
 export function Overview({ stay, hostImgUrl }) {
 
+    const guests = '4 guests'
+    const bedrooms = '2 bedrooms'
+    const beds = '2 beds'
+    const baths = '1 bath'
     return (
-        <section className='overview-container flex space-between'>
-            <section className='overview'>
-                <h2>Entire villa hosted by {stay.host.fullname}</h2>
-                <span>4 guests</span>
-                <span className='dot'>•</span>
-                <span>2 bedrooms</span>
-                <span className='dot'>•</span>
-                <span>2 beds</span>
-                <span className='dot'>•</span>
-                <span>1 bath</span>
+        <section className='stay-overview-container flex space-between'>
+            <section className='stay-overview'>
+                <h2 className='title fs22 lh26'>Entire villa hosted by {stay.host.fullname}</h2>
+                <ul className='content-list flex fs16 lh20'>
+                    <li>{guests}</li>
+                    <li>{bedrooms}</li>
+                    <li>{beds}</li>
+                    <li>{baths}</li>
+                </ul>
             </section>
-            <img src={hostImgUrl} alt="host" />
+            <img src={hostImgUrl} alt='host' />
         </section>
     )
 }

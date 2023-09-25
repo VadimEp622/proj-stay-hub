@@ -1,0 +1,21 @@
+.stay-overview-container {
+    border-bottom: $border-bottom;
+    padding-block-end: 24px;
+
+    & .stay-overview {
+        & .title {
+            margin-block-end: 8px;
+        }
+
+        & .content-list > *:not(:first-child)::before {
+            content: " · ";
+            white-space: break-spaces;
+        }
+    }
+
+    & img {
+        width: 56px;
+        height: 56px;
+        border-radius: 50px;
+    }
+}
