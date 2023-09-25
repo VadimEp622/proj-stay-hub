@@ -10,12 +10,12 @@ import { ButtonMain } from '../_reuseable-cmps/button-main.jsx'
 import SvgHandler from '../_reuseable-cmps/svg-handler.jsx'
 
 
-export function StayDetailsAltHeader({ stay, selectedRange, onCheckAvailabilityClick, onReserveClick }) {
+export function StayDetailsNavReserveHeader({ stay, selectedRange, onCheckAvailabilityClick, onReserveClick }) {
 
 
     useEffect(() => {
         const photos = document.querySelector('.stay-photos-container')
-        const altHeader = document.querySelector('.stay-details-alt-header-container')
+        const altHeader = document.querySelector('.stay-details-nav-reserve-header-container')
         const orderSidebarBtn = document.querySelector('.order-sidebar .btn-main-container')
         const reserveLink = document.querySelector('.reserve-container')
 
@@ -50,9 +50,9 @@ export function StayDetailsAltHeader({ stay, selectedRange, onCheckAvailabilityC
 
     const reviews = stay.reviews.length > 1 ? 'reviews' : 'review'
     return (
-        <section className='stay-details-alt-header-container details-layout'>
+        <section className='stay-details-nav-reserve-header-container details-layout'>
 
-            <section className='stay-details-alt-header flex space-between'>
+            <section className='stay-details-nav-reserve-header flex space-between'>
 
                 <nav className='links-container ff-circular-semibold fs14 lh20 flex align-center'>
                     <a className='detail-link' href='#photos'>Photos</a>

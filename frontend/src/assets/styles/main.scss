@@ -33,7 +33,16 @@
 @import "cmps/app-header/filter-expanded/location-filter";
 @import "cmps/app-header/filter-expanded/guest-count-filter";
 
+// *** stay-index ***   ---->TODO: needs cleaning up
+@import "cmps/stay-index/category-filter";
+@import "cmps/stay-index/stay-list";
+// *** stay-index/stay-list ***
+@import "cmps/stay-index/stay-list/stay-preview"; //---->TODO: needs cleaning up
+// *** stay-index/stay-list/stay-preview ***
+@import "cmps/stay-index/stay-list/stay-preview/preview-image-carousel";
+
 // *** stay-details ***   ---->TODO: needs cleaning up
+@import "cmps/stay-details/stay-details-nav-reserve-header";
 @import "cmps/stay-details/stay-title"; //---->TODO: needs cleaning up
 @import "cmps/stay-details/stay-photos";
 @import "cmps/stay-details/stay-summary";
@@ -41,13 +50,6 @@
 @import "cmps/stay-details/stay-map";
 @import "cmps/stay-details/stay-host-details";
 @import "cmps/stay-details/stay-things-to-know";
-@import "cmps/stay-details/stay-details-alt-header";
-// *** stay-details/stay-reviews ***
-@import "cmps/stay-details/stay-reviews/stay-review-list";
-@import "cmps/stay-details/stay-reviews/stay-review-preview";
-@import "cmps/stay-details/stay-reviews/stay-reviews-header";
-@import "cmps/stay-details/stay-reviews/category-score-list";
-@import "cmps/stay-details/stay-reviews/category-score-preview";
 // *** stay-details/stay-summary ***
 @import "cmps/stay-details/stay-summary/order-sidebar";
 // *** stay-details/stay-summary/order-sidebar ***
@@ -55,6 +57,12 @@
 @import "cmps/stay-details/stay-summary/order-sidebar/dates-and-guests";
 @import "cmps/stay-details/stay-summary/order-sidebar/pricing";
 @import "cmps/stay-details/stay-summary/order-sidebar/special-info";
+// *** stay-details/stay-reviews ***
+@import "cmps/stay-details/stay-reviews/stay-review-list";
+@import "cmps/stay-details/stay-reviews/stay-review-preview";
+@import "cmps/stay-details/stay-reviews/stay-reviews-header";
+@import "cmps/stay-details/stay-reviews/category-score-list";
+@import "cmps/stay-details/stay-reviews/category-score-preview";
 
 // *** user-trips ***
 @import "cmps/user-trips/future-reservation-list";
@@ -63,14 +71,6 @@
 // *** user-dashboard ***
 @import "cmps/user-dashboard/order-list";
 @import "cmps/user-dashboard/dashboard-statistics";
-
-// *** stay-index ***   ---->TODO: needs cleaning up
-@import "cmps/stay-index/category-filter";
-@import "cmps/stay-index/stay-list";
-// *** stay-index/stay-list ***
-@import "cmps/stay-index/stay-list/stay-preview"; //---->TODO: needs cleaning up
-// *** stay-index/stay-list/stay-preview ***
-@import "cmps/stay-index/stay-list/stay-preview/preview-image-carousel";
 
 // __checked__ //
 @import "cmps/gray-viewport";

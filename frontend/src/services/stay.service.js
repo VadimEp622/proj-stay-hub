@@ -120,15 +120,16 @@ function getEmptyStay() {
     }
 }
 
-export function getDate(timeStamp) {
-    if (!timeStamp) return ''
+export function getDate(dateToFormat) {
+    if (!dateToFormat) return ''
+    const date = new Date(dateToFormat)
     const formatter = new Intl.DateTimeFormat('en-US', {
         year: 'numeric',
         month: '2-digit',
         day: '2-digit'
     })
 
-    const formattedDate = formatter.format(timeStamp)
+    const formattedDate = formatter.format(date)
     return formattedDate.replace(/^0(\d)/, '$1')
 }
 

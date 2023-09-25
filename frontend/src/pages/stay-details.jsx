@@ -3,7 +3,6 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
 // Services
-import { reviewService } from '../services/review.service.js'
 import { utilService } from '../services/util.service.js'
 import { orderService } from '../services/order.service.js'
 // import { socketService } from '../services/socket.service.js'
@@ -21,7 +20,7 @@ import useStayDetails from '../customHooks/useStayDetails.js'
 
 // Components
 import { Loader } from '../cmps/_reuseable-cmps/loader.jsx'
-import { StayDetailsAltHeader } from '../cmps/stay-details/stay-details-alt-header.jsx'
+import { StayDetailsNavReserveHeader } from '../cmps/stay-details/stay-details-nav-reserve-header.jsx'
 import { ThingsToKnow } from '../cmps/stay-details/stay-things-to-know.jsx'
 import { HostDetails } from '../cmps/stay-details/stay-host-details.jsx'
 import { StayMap } from '../cmps/stay-details/stay-map.jsx'
@@ -32,24 +31,29 @@ import { StayPhotos } from '../cmps/stay-details/stay-photos.jsx'
 import { stayService } from '../services/stay.service.js'
 
 
-
+// ---------------------------------------------
+// --------------- High Priority ---------------
+// ---------------------------------------------
 // TODO: at 790px screen width, turn stay-details into mobile
 //     1. stay pictures only has 1 picture full screen width
 //     2. rest of stay-details is at distance of 24px from left/right screen edge
 
+// TODO: make amenities list + preview 
+// ---------------------------------------------
+// ---------------------------------------------
+
+
+// --------------------------------------------
+// --------------- Low Priority ---------------
+// --------------------------------------------
 // TODO: I made pricing change depending on guest amount because I spotted similar behavior in airbnb,
 //    need to check again, if it's there, if it's only in some stays, or if it's in none at all,
 //    and then decide if I want to keep such feature.
 
-
-// TODO: when "selectedRange" has either "from" or "to", equal to an empty string,
-//   1. hide pricing in orderContainer (in altHeader, display only price for SINGLE NIGHT, for ALL the guests) 
-//   2. change "order" button in orderSidebar and altHeader to "Check Availability" button, which will later open a datePicker floating modal
-
-
-
 // TODO: consider combining all those hooks into one hook, since they use data from loading a stay,
 //    maybe something like:  [stay, reservation, setReservation] = useStayDetails(stayId)
+// --------------------------------------------
+// --------------------------------------------
 
 
 export function StayDetails() {
@@ -164,7 +168,7 @@ export function StayDetails() {
 
     return (
         <section className='stay-details' id='photos'>
-            <StayDetailsAltHeader
+            <StayDetailsNavReserveHeader
                 stay={stay}
                 selectedRange={selectedRange}
                 onReserveClick={onReserveClick}
@@ -198,7 +202,7 @@ export function StayDetails() {
                 hostImgUrl={hostImgUrl}
                 randomDateJoined={randomDateJoined}
             />
-            <ThingsToKnow stay={stay} />
+            <ThingsToKnow checkIn={checkIn} />
         </section >
     )
 }

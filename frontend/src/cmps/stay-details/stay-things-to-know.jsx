@@ -1,6 +1,4 @@
-import { getDate } from "../../services/stay.service.js";
-
-export function ThingsToKnow({stay}) {
+export function ThingsToKnow({ checkIn }) {
 
     return (
 
@@ -19,10 +17,16 @@ export function ThingsToKnow({stay}) {
                     <p>Pool/hot tub without a gate or lock</p>
                     <p>Carbon monoxide detector not required</p>
                 </div>
+
                 <div className="cancelation">
                     <h4>Cancellation policy</h4>
-                    <p>Free cancellation before {getDate(stay.checkIn)}</p>
-                    <p>Review the Host's full cancellation policy which applies even if you cancel for illness for disruptions caused by COVID-19</p>
+                    {checkIn ?
+                        <>
+                            <p>Free cancellation before {checkIn}</p>
+                            <p>Review the Host's full cancellation policy which applies even if you cancel for illness for disruptions caused by COVID-19</p>
+                        </>
+                        : <p>Add your trip dates to get the cancellation details for this stay. </p>
+                    }
                 </div>
             </section>
         </section>

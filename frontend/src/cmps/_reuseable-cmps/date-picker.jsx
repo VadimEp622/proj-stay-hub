@@ -13,6 +13,10 @@ import { startOfDay } from 'date-fns'
 //    2. app's shared header, when expanded and clicked check-in/check-out, display circled "X"
 
 
+// TODO: consider inserting function isDayDisabled as parameter, to make parent cmp responsible for calculation,
+//    and thus making date-picker abstracted, with better reusability logic 
+
+
 export function DatePicker({ selectedRange, handleRangeSelect, availableDates = [] }) {
     const DAY = useMemo(() => 1000 * 60 * 60 * 24, [])
     const today = startOfDay(new Date())
