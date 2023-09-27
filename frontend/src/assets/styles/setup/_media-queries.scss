@@ -13,6 +13,26 @@
     }
     .details-layout {
         grid-template-columns: 40px minmax(auto, 1120px) 40px;
+
+        & .category-score-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            column-gap: 8px;
+
+            & .category-name{
+                width: 100%;
+            }
+
+            & .category-score{
+                width: 50%;
+            }
+        }
+
+        & .stay-review-list {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(300px, 1fr));
+            column-gap: 8px;
+        }
     }
 }
 

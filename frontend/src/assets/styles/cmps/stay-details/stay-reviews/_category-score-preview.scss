@@ -3,13 +3,13 @@
     margin-block-end: 16px;
 
     & .category-name {
+        width: 70%;
         white-space: nowrap;
-        width: 100%;
         text-transform: capitalize;
     }
 
     & .category-score {
-        width: 50%;
+        width: 70%;
         margin-inline-start: 12px;
 
         & .score-bar-container {

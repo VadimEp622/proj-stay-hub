@@ -39,7 +39,7 @@ import { StayPhotos } from '../cmps/stay-details/stay-photos.jsx'
 //     1. stay pictures only has 1 picture full screen width
 //     2. rest of stay-details is at distance of 24px from left/right screen edge
 
-// TODO: stay-reviews, and stay-summary, are blocking page responsiveness
+// TODO: and stay-summary is blocking page responsiveness
 // ---------------------------------------------
 // ---------------------------------------------
 
