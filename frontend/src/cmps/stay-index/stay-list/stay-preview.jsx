@@ -21,8 +21,6 @@ import SvgHandler from '../../_reuseable-cmps/svg-handler.jsx'
 
 export function StayPreview({ stay, geoLocation }) {
     const loggedInUser = useSelector(storeState => storeState.userModule.user)
-    const location = useLocation()
-    const isWishlistPage = location.pathname.includes('/wishlist')
 
 
     function isStayWishlist() {
@@ -95,17 +93,13 @@ export function StayPreview({ stay, geoLocation }) {
                     </article>
 
                     <article className='stay-info'>
-                        {!isWishlistPage ? (
-                            <p>
-                                {
-                                    geoLocation.loaded && geoLocation?.coordinates
-                                        ? getDistance()
-                                        : stay.type || 'Other'
-                                }
-                            </p>
-                        ) : (
-                            <p>{stay.type}</p>
-                        )}
+                        <p>
+                            {
+                                geoLocation.loaded && geoLocation?.coordinates
+                                    ? getDistance()
+                                    : stay.type || 'Other'
+                            }
+                        </p>
                         <p>{dateRange}</p>
                         <p className='price-preview'><span>${utilService.addCommas(stay.price)}</span> night</p>
                     </article>
