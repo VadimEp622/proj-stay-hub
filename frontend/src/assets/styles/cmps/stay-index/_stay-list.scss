@@ -1,19 +1,10 @@
-.stays-list {
-    @include grid();
-    // @include aspect-ratio(250px, 250px);
+.stay-list {
+    display: grid;
     grid-template-columns: repeat(auto-fill, minmax(272px, 1fr));
-    grid-auto-rows: minmax(358px, auto);
+    // grid-auto-rows: minmax(358px, auto);
     // grid-gap: 20px;
     column-gap: 24px;
     row-gap: 45px;
-    border-radius: 12px;
     margin-block-start: 24px;
-
-    a {
-        text-decoration: none;
-
-        &:hover {
-            text-decoration: none;
-        }
-    }
+    border-radius: 12px;
 }

@@ -1,5 +1,5 @@
 // Node modules
-import { Link, useLocation } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
 // Services
@@ -72,37 +72,37 @@ export function StayPreview({ stay, geoLocation }) {
     const averageReviewScore = reviewService.getAverageReview(stay)
     return (
         <section className='stay-preview' key={stay._id}>
-
-            <section className='img-container'>
-                <PreviewImageCarousel imgs={stay.imgUrls} stay={stay} />
-            </section>
+            <PreviewImageCarousel imgs={stay.imgUrls} stay={stay} />
 
             <section className='heart-svg' onClick={(ev) => onLikeClicked(ev)}>
                 <SvgHandler svgName={isStayWishlist() ? HEART_24_WHITE_STROKE_RED_FILL : HEART_24_WHITE_STROKE} />
             </section>
 
             <Link to={`/stay/${stay._id}`}>
-                <section className='preview-info'>
+                <section className='preview-info fs15'>
 
-                    <article className='preview-header'>
-                        <p>{stay.loc.city}, {stay.loc.country}</p>
-                        <p className='review-rate'>
+                    <section className='preview-header flex space-between align-center'>
+                        <p className='ff-circular-semibold lh19'>{stay.loc.city}, {stay.loc.country}</p>
+                        <p className='review-score flex align-baseline lh19'>
                             <SvgHandler svgName={STAR_12} />
-                            <span>{averageReviewScore}</span>
+                            <span className='lh19'>{averageReviewScore}</span>
                         </p>
-                    </article>
+                    </section>
 
-                    <article className='stay-info'>
-                        <p>
-                            {
-                                geoLocation.loaded && geoLocation?.coordinates
-                                    ? getDistance()
-                                    : stay.type || 'Other'
-                            }
-                        </p>
-                        <p>{dateRange}</p>
-                        <p className='price-preview'><span>${utilService.addCommas(stay.price)}</span> night</p>
-                    </article>
+                    <p className='type-or-distance lh19'>
+                        {
+                            geoLocation.loaded && geoLocation?.coordinates
+                                ? getDistance()
+                                : stay.type || 'Other'
+                        }
+                    </p>
+
+                    <p className='date-range lh19'>{dateRange}</p>
+
+                    <p className='price-preview lh19'>
+                        <span className='ff-circular-semibold'>{`$${utilService.addCommas(stay.price)} `}</span>
+                        night
+                    </p>
 
                 </section>
             </Link>

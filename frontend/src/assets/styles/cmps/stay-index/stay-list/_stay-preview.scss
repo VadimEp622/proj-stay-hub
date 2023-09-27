@@ -1,132 +1,31 @@
 .stay-preview {
-    max-width: 600px;
-    margin-inline: auto;
-
-    p {
-        margin: 0;
-    }
-
     position: relative;
-    cursor: pointer;
 
-    .price-preview span {
-        font-family: Circular-semibold;
-        letter-spacing: 0.5px;
-        font-weight: 600;
-    }
-
-    .heart-svg {
+    & .heart-svg {
         position: absolute;
         top: 15px;
         right: 15px;
     }
 
-    .img-container {
-        height: 100%;
-        border-radius: 12px;
-        overflow: hidden;
-        max-height: 600px;
-        max-width: 600px;
+    & .preview-info {
+        & .review-score span {
+            margin-inline-start: 4px;
+        }
 
-        img {
-            // aspect-ratio: 1.08 / 0.99;
-            aspect-ratio: 1;
-            object-fit: cover;
+        & :is(.type-or-distance, .date-range) {
+            color: $gray-clr0;
+        }
+
+        & .price-preview {
+            margin-block-start: 6px;
         }
     }
 
-    .review-rate {
-        width: auto;
-        display: flex;
-        @include between();
-        gap: rem(3px);
-        align-items: baseline;
-
-        img {
-            height: rem(14px);
-            width: rem(14px);
-        }
-    }
-
-    .preview-info {
-        margin-top: rem(13px);
-        line-height: 1.13rem;
-        font-family: cereal-std;
-        font-size: 15px;
-        padding: 0;
-    }
-
-    .preview-header {
-        display: flex;
-        @include between();
-
-        p:first-child {
-            font-size: 15px;
-            font-family: Circular-semibold;
-        }
-    }
-
-    .react-multiple-carousel__arrow::before {
-        color: black;
-        font-size: 12px;
-        font-weight: 900;
-    }
-
-    .react-multiple-carousel__arrow {
-        opacity: 0;
-        font-weight: 700;
-        background-color: $gray-clr-1;
-        color: $black-clr0;
-        margin: auto;
-        min-width: 30px;
-        min-height: 30px;
-        border-radius: 50%;
-        z-index: 9;
-    }
-
-    &:hover .react-multiple-carousel__arrow {
-        opacity: 0.85;
-    }
-
-    & .react-multiple-carousel__arrow:hover {
-        opacity: 1;
-        scale: 1.05;
-    }
-
-    .react-multi-carousel-dot button {
-        height: rem(7px);
-        width: rem(7px);
-        border-color: $gray-clr-1;
-        background-color: $gray-clr-1;
-        opacity: 0.35;
-    }
-
-    .react-multi-carousel-dot--active button {
-        opacity: 1;
-    }
-
-    .react-multi-carousel-dot-list {
-        margin-block-end: rem(5px);
-    }
-
-    .price-preview {
-        margin-block-start: rem(10px);
-    }
-
-    &:hover button.custom-arrow {
+    &:hover {
         cursor: pointer;
-        opacity: 1;
-    }
-}
 
-.stay-info {
-    p:first-child {
-        margin-block-start: 2px;
-        color: $gray-clr0;
-    }
-
-    p:nth-child(2) {
-        margin-block-start: 3px;
-        color: $gray-clr0;
+        & .custom-arrow {
+            opacity: 1;
+        }
     }
 }

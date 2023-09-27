@@ -71,6 +71,10 @@ a {
     // font-weight: 600;
     text-decoration: none;
     color: inherit;
+
+    &:hover {
+        text-decoration: none;
+    }
 }
 
 a:hover {

@@ -10,13 +10,11 @@ export function StayList({ stays, geoLocation }) {
 
     if (isLoading) return <Loader />
     return (
-        <ul className='stays-list'>
+        <section className='stay-list'>
             {stays.length < 1 && <span>No Stays Available</span>}
-            {stays.map(stay => (
-                <li key={stay._id}>
-                    <StayPreview stay={stay} geoLocation={geoLocation} />
-                </li>
-            ))}
-        </ul>
+            {stays.map(stay =>
+                <StayPreview key={stay._id} stay={stay} geoLocation={geoLocation} />
+            )}
+        </section>
     )
 }

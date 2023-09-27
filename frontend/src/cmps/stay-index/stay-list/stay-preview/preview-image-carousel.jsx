@@ -1,27 +1,20 @@
-import React, { useRef, useState } from "react"
-import Carousel from "react-multi-carousel"
-import { Link } from "react-router-dom"
-
-import "react-multi-carousel/lib/styles.css"
-
-
-import { ARROW_LEFT, ARROW_RIGHT } from "../../../../services/svg.service.js"
-import SvgHandler from "../../../_reuseable-cmps/svg-handler.jsx"
-
-
+import { Link } from 'react-router-dom'
+import Carousel from 'react-multi-carousel'
+import 'react-multi-carousel/lib/styles.css'
+import { ARROW_LEFT, ARROW_RIGHT } from '../../../../services/svg.service.js'
+import SvgHandler from '../../../_reuseable-cmps/svg-handler.jsx'
 
 
 export function PreviewImageCarousel({ imgs, stay }) {
 
-
     const CustomLeftArrow = ({ onClick }) => (
-        <button className="custom-arrow left" onClick={onClick} >
+        <button className='custom-arrow left' onClick={onClick} >
             <SvgHandler svgName={ARROW_LEFT} />
         </button >
     )
 
     const CustomRightArrow = ({ onClick }) => (
-        <button className="custom-arrow right" onClick={onClick}  >
+        <button className='custom-arrow right' onClick={onClick}  >
             <SvgHandler svgName={ARROW_RIGHT} />
         </button >
     )
@@ -55,13 +48,13 @@ export function PreviewImageCarousel({ imgs, stay }) {
             additionalTransfrom={0}
             arrows
             centerMode={false}
-            className="preview-image-carousel"
-            customTransition="transform 300ms ease-in-out"
-            dotListClass="dot-container"
+            className='preview-image-carousel'
+            customTransition='transform 300ms ease-in-out'
+            dotListClass='dot-container'
             draggable={false}
             focusOnSelect={false}
             infinite={false}
-            itemClass=""
+            itemClass=''
             minimumTouchDrag={80}
             renderArrowsWhenDisabled={false}
             renderButtonGroupOutside={false}
@@ -69,26 +62,21 @@ export function PreviewImageCarousel({ imgs, stay }) {
             responsive={responsive}
             rtl={false}
             showDots={true}
-            sliderClass=""
+            sliderClass=''
             slidesToSlide={1}
             swipeable
             customLeftArrow={<CustomLeftArrow />}
             customRightArrow={<CustomRightArrow />}
         >
             {
-                imgs.map((img, index) => (
+                imgs.map((img, index) =>
                     <Link key={index} to={`/stay/${stay._id}`}>
                         <img
                             src={img}
-                        // style={{
-                        //     // display: "block",
-                        //     // height: "100%",
-                        //     // width: "100%",
-                        //     // margin: "auto",
-                        // }}
+                            alt={`stay-pic-${index}`}
                         />
                     </Link>
-                ))
+                )
             }
         </Carousel>
     )

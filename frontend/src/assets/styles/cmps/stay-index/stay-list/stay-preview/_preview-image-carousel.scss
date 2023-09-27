@@ -1,12 +1,20 @@
 .preview-image-carousel {
+    margin-block-end: 12px;
+    border-radius: 12px;
+    overflow: hidden;
+
+    & img {
+        aspect-ratio: 1;
+    }
+
     & .custom-arrow {
+        position: absolute;
+        height: 32px;
+        width: 32px;
         border: 0;
         color: $black-clr1;
         background-color: $transparent-clr1;
         font-size: 80px;
-        position: absolute;
-        height: 32px;
-        width: 32px;
         border-radius: 32px;
         opacity: 0;
         box-shadow: $box-shadow12;
@@ -28,12 +36,29 @@
         }
 
         &:hover {
+            cursor: pointer;
             background-color: $gray-clr-1;
             transform: scale(1.04);
 
             &:active {
                 box-shadow: none;
             }
+        }
+    }
+
+    & .dot-container {
+        margin-block-end: 5px;
+
+        & .react-multi-carousel-dot button {
+            height: 7px;
+            width: 7px;
+            border-color: $gray-clr-1;
+            background-color: $gray-clr-1;
+            opacity: 0.35;
+        }
+
+        & .react-multi-carousel-dot--active button {
+            opacity: 1;
         }
     }
 }

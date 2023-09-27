@@ -33,13 +33,13 @@
 @import "cmps/app-header/filter-expanded/location-filter";
 @import "cmps/app-header/filter-expanded/guest-count-filter";
 
-// *** stay-index ***   ---->TODO: needs cleaning up
-@import "cmps/stay-index/category-filter";
-@import "cmps/stay-index/stay-list";
+// *** stay-index ***
+@import "cmps/stay-index/category-filter"; //---->TODO: needs cleaning up
+@import "cmps/stay-index/stay-list"; // ✔
 // *** stay-index/stay-list ***
-@import "cmps/stay-index/stay-list/stay-preview"; //---->TODO: needs cleaning up
+@import "cmps/stay-index/stay-list/stay-preview"; // ✔
 // *** stay-index/stay-list/stay-preview ***
-@import "cmps/stay-index/stay-list/stay-preview/preview-image-carousel";
+@import "cmps/stay-index/stay-list/stay-preview/preview-image-carousel"; // ✔
 
 // *** stay-details ***   ---->TODO: needs cleaning up
 @import "cmps/stay-details/stay-details-nav-reserve-header";
