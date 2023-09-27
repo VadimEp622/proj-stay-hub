@@ -1,12 +1,10 @@
 import { useState, useEffect } from 'react'
-// import { DateRange, SelectRangeEventHandler, DayPicker } from 'react-day-picker'
-// import { compareAsc, format, startOfDay, parseISO, parse } from 'date-fns'
 import { DatePicker } from '../../../_reuseable-cmps/date-picker.jsx'
+import useIsMobile from '../../../../customHooks/useIsMobile.js'
 
 
-
-// WHY IS DATE FILTER RENDER DATES RESTARTS?
 export function DateFilter({ filterBy, onSetFilterDates }) {
+    const isScreenWidthLessThan = useIsMobile(900)
     const [selectedRange, setSelectedRange] = useState({
         from: filterBy.from ? new Date(filterBy.from) : '',
         to: filterBy.to ? new Date(filterBy.to) : ''
@@ -22,10 +20,14 @@ export function DateFilter({ filterBy, onSetFilterDates }) {
         setSelectedRange(range)
     }
 
-    
+    const numberOfMonths = isScreenWidthLessThan ? 1 : 2
     return (
-        <section className="filter-date-picker">
-            <DatePicker selectedRange={selectedRange} handleRangeSelect={handleRangeSelect} />
+        <section className='filter-date-picker'>
+            <DatePicker
+                selectedRange={selectedRange}
+                handleRangeSelect={handleRangeSelect}
+                numberOfMonths={numberOfMonths}
+            />
         </section>
     )
 }
