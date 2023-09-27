@@ -7,6 +7,9 @@ import { store } from '../store/store.js'
 import { loadStays } from '../store/stay.actions.js'
 import { CLOSE_EXPANDED_HEADER, CLOSE_EXPANDED_HEADER_MODAL, REMOVE_UNCLICKABLE_BG } from '../store/system.reducer.js'
 
+// Custom hook
+import useGeoLocation from '../customHooks/useGeoLocation.js'
+
 // Components
 import { CategoryFilter } from '../cmps/stay-index/category-filter.jsx'
 import { StayList } from '../cmps/stay-index/stay-list.jsx'
@@ -19,6 +22,7 @@ import { StayList } from '../cmps/stay-index/stay-list.jsx'
 export function StayIndex() {
     const stays = useSelector(storeState => storeState.stayModule.stays)
     const filterBy = useSelector(storeState => storeState.stayModule.filterBy)
+    const geoLocation = useGeoLocation()
 
     // filter modal temp. removed, TODO: implement it casually after other urgent stuff are taken care of
     // const [isFilterModalOpen, setIsFilterModalOpen] = useState(false)
@@ -52,7 +56,7 @@ export function StayIndex() {
                 />
             )} */}
             <CategoryFilter />
-            <StayList stays={stays} />
+            <StayList stays={stays} geoLocation={geoLocation} />
         </section >
     )
 }

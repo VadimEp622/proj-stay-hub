@@ -3,29 +3,23 @@ import { useEffect } from "react"
 import { useSelector } from "react-redux"
 import { Link, useNavigate } from "react-router-dom"
 
+// Custom hooks
+import useGeoLocation from "../customHooks/useGeoLocation.js"
+
 // Components
 import { StayList } from "../cmps/stay-index/stay-list.jsx"
 import { Loader } from "../cmps/_reuseable-cmps/loader.jsx"
-
-
-// TODO-priority-HIGH: 1. implement new wishlist for stay-details as well
-//                     2. improve data flow between cmp->store->backend and vise versa, 
-//              to not have redundant data, no code repitition and efficient/fast changes for the user
-//                     3. in the end, before deploying the prod build, remove(!!!!) ALL users from database
 
 
 // TODO-priority-LOW: when navigating to a path which requires logging in, consider rerouting to a special login page(?)
 
 export function UserWishlist() {
     const loggedInUser = useSelector(storeState => storeState.userModule.user)
+    const geoLocation = useGeoLocation()
     const navigate = useNavigate()
 
 
     useEffect(() => {
-    }, [])
-
-    useEffect(() => {
-        console.log('loggedInUser', loggedInUser)
         if (!loggedInUser) navigate('/')
     }, [loggedInUser, navigate])
 
@@ -45,7 +39,7 @@ export function UserWishlist() {
                         </Link>
                     </section>
                 )
-                : <StayList stays={loggedInUser.wishlist} />
+                : <StayList stays={loggedInUser.wishlist} geoLocation={geoLocation} />
             }
         </section>
     )

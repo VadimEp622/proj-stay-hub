@@ -1,17 +1,20 @@
-import { useSelector } from "react-redux"
-import { StayPreview } from "./stay-list/stay-preview.jsx"
-import { Loader } from "../_reuseable-cmps/loader.jsx"
+import { useSelector } from 'react-redux'
+import { StayPreview } from './stay-list/stay-preview.jsx'
+import { Loader } from '../_reuseable-cmps/loader.jsx'
 
-export function StayList({ stays }) {
+
+// TODO: improve stay-list cmp structure + styling
+
+export function StayList({ stays, geoLocation }) {
     const isLoading = useSelector(storeState => storeState.systemModule.isLoading)
 
-    if (isLoading) return <section className="loading"><Loader /></section>
+    if (isLoading) return <Loader />
     return (
-        <ul className="stays-list">
+        <ul className='stays-list'>
             {stays.length < 1 && <span>No Stays Available</span>}
             {stays.map(stay => (
                 <li key={stay._id}>
-                    <StayPreview stay={stay} />
+                    <StayPreview stay={stay} geoLocation={geoLocation} />
                 </li>
             ))}
         </ul>
