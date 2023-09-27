@@ -1,4 +1,4 @@
-import { AmenityPreview } from "./amenity-preview.jsx"
+import { AmenityPreview } from './amenity-preview.jsx'
 
 
 export function AmenityList({ amenities }) {

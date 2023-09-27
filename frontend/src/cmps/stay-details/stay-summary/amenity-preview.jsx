@@ -1,4 +1,4 @@
-import SvgHandler from "../../_reuseable-cmps/svg-handler"
+import SvgHandler from '../../_reuseable-cmps/svg-handler'
 
 export function AmenityPreview({ amenity }) {
 

@@ -1,6 +1,6 @@
-import { storageService } from "./async-storage.service"
-import { httpService } from "./http.service"
-import { utilService } from "./util.service"
+import { storageService } from './async-storage.service'
+import { httpService } from './http.service'
+import { utilService } from './util.service'
 
 const STORAGE_KEY = 'orders'
 
@@ -82,8 +82,8 @@ function getDemoOrders() {
                     fullname: 'John Doe',
                     joined: 'Mar 2023'
                 },
-                checkIn: 'Jun 23',
-                checkOut: 'Jun 27',
+                checkIn: 'Jun 23 2023',
+                checkOut: 'Jun 27 2023',
                 status: 'Pending'
             }
         },
@@ -95,8 +95,8 @@ function getDemoOrders() {
                     fullname: 'Jane Smith',
                     joined: 'Jun 2015'
                 },
-                checkIn: 'Mar 11',
-                checkOut: 'Mar 17',
+                checkIn: 'Mar 11 2023',
+                checkOut: 'Mar 17 2023',
                 status: 'Approved'
             }
         },
@@ -108,19 +108,12 @@ function getDemoOrders() {
                     fullname: 'Michael Johnson',
                     joined: 'Nov 2020'
                 },
-                checkIn: 'Feb 15',
-                checkOut: 'Feb 18',
+                checkIn: 'Feb 15 2023',
+                checkOut: 'Feb 18 2023',
                 status: 'Rejected'
             }
         }
     ]
-
-
-    // return [
-    //     { guest: 'John Doe', imgUrl: 'https://a0.muscache.com/im/pictures/user/74afa56b-cc05-4701-a2ce-f4de5e435504.jpg?im_w=240', join: 'Mar 2023', dates: 'Jun 23-27', status: 'Pending' },
-    //     { guest: 'Jane Smith', imgUrl: 'https://a0.muscache.com/im/pictures/user/596bca9e-ef37-4f41-b41c-a0904c47ca93.jpg?im_w=240', join: 'Jun 2015', dates: 'Mar 11-17', status: 'Approved' },
-    //     { guest: 'Michael Johnson', imgUrl: 'https://a0.muscache.com/im/pictures/user/cee1b931-2952-4fc0-9b78-3fb70324c397.jpg?im_w=240', join: 'Nov 2020', dates: 'Feb 15-18', status: 'Rejected' }
-    // ]
 }
 
 function getOrderExploreList() {

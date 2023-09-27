@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux'
 // Services
 import { utilService } from '../services/util.service.js'
 import { orderService } from '../services/order.service.js'
+import { stayService } from '../services/stay.service.js'
 // import { socketService } from '../services/socket.service.js'
 
 // Store
@@ -28,7 +29,7 @@ import { StayReviews } from '../cmps/stay-details/stay-reviews.jsx'
 import { StayTitle } from '../cmps/stay-details/stay-title.jsx'
 import { StaySummary } from '../cmps/stay-details/stay-summary.jsx'
 import { StayPhotos } from '../cmps/stay-details/stay-photos.jsx'
-import { stayService } from '../services/stay.service.js'
+
 
 
 // ---------------------------------------------
@@ -38,7 +39,7 @@ import { stayService } from '../services/stay.service.js'
 //     1. stay pictures only has 1 picture full screen width
 //     2. rest of stay-details is at distance of 24px from left/right screen edge
 
-// TODO: make amenities list + preview 
+// TODO: stay-reviews, and stay-summary, are blocking page responsiveness
 // ---------------------------------------------
 // ---------------------------------------------
 

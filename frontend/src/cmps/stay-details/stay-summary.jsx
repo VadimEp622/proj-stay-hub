@@ -15,14 +15,14 @@ export function StaySummary({
 }) {
 
     return (
-        <section className="summary-container">
-            <section className="summary">
+        <section className='summary-container'>
+            <section className='summary'>
                 <Overview stay={stay} hostImgUrl={hostImgUrl} />
                 <HighlightList />
                 <AmenityList amenities={stay.amenities} />
                 <StayDates stay={stay} selectedRange={selectedRange} handleRangeSelect={handleRangeSelect} />
             </section>
-            <section className="order-sidebar-container">
+            <section className='order-sidebar-container'>
                 <OrderSidebar
                     stay={stay}
                     checkIn={checkIn} checkOut={checkOut}
