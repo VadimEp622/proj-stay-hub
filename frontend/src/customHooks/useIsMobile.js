@@ -1,19 +1,21 @@
-import { useEffect, useState, useTransition } from "react"
-// TODO: refactor to useTransition if possible
-const getIsMobile = () => window.innerWidth < 790
+import { useEffect, useState } from 'react'
 
-export default function useIsMobile() {
+
+export default function useIsMobile(width = 790) {
     const [isMobile, setIsMobile] = useState(getIsMobile())
+
+    function getIsMobile() {
+        return window.innerWidth < width
+    }
+
     useEffect(() => {
-        const onResize = () => {
-            setIsMobile(getIsMobile())
-        }
+        const onResize = () => setIsMobile(getIsMobile())
 
         window.addEventListener("resize", onResize)
-
         return () => {
             window.removeEventListener("resize", onResize)
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return isMobile

@@ -17,7 +17,7 @@ import { startOfDay } from 'date-fns'
 //    and thus making date-picker abstracted, with better reusability logic 
 
 
-export function DatePicker({ selectedRange, handleRangeSelect, availableDates = [] }) {
+export function DatePicker({ selectedRange, handleRangeSelect, availableDates = [], numberOfMonths = 2 }) {
     const DAY = useMemo(() => 1000 * 60 * 60 * 24, [])
     const today = startOfDay(new Date())
 
@@ -64,7 +64,7 @@ export function DatePicker({ selectedRange, handleRangeSelect, availableDates = 
         <section className="date-picker">
             <DayPicker
                 mode="range"
-                numberOfMonths={2}
+                numberOfMonths={numberOfMonths}
                 selected={selectedRange}
                 onSelect={handleRangeSelect}
 

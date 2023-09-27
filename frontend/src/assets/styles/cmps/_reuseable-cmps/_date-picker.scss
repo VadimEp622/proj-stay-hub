@@ -26,6 +26,7 @@
         }
 
         & .rdp-table {
+            margin-inline: auto;
             border-collapse: collapse;
 
             & .rdp-head {
@@ -42,9 +43,7 @@
                 position: relative;
                 padding: 0;
 
-                &:has(.day-range-start,
-                    .day-range-end,
-                    .day-range-middle) {
+                &:has(.day-range-start, .day-range-end, .day-range-middle) {
                     background-color: $gray-clr5;
                 }
 
@@ -62,7 +61,6 @@
                     font-family: Circular-SemiBold;
                     font-weight: 400;
 
-
                     &:is(.day-range-start, .day-range-end) {
                         background-color: rgb(34, 34, 34);
                         border-radius: 32px;
@@ -74,9 +72,7 @@
                         color: $black-clr1;
                     }
                 }
-
             }
-
         }
 
         & .rdp-button {
@@ -104,6 +100,5 @@
                 }
             }
         }
-
     }
 }
