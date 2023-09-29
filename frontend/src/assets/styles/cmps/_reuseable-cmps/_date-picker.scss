@@ -63,6 +63,7 @@
                     color: $gray-clr0;
                     line-height: 16px;
                     text-transform: capitalize;
+                    font-weight: 400;
                 }
             }
 
@@ -107,9 +108,14 @@
             align-items: center;
             width: 46px;
             height: 46px;
+            padding: 0;
             border: none;
             background-color: inherit;
-            padding: 0;
+
+            &.rdp-day_disabled {
+                color: $gray-clr9;
+                opacity: 0.25;
+            }
 
             &:not(.rdp-day_disabled, .rdp-nav_button_previous, .rdp-nav_button_next):hover {
                 border: 1px solid $black-clr0;

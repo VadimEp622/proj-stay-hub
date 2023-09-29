@@ -6,6 +6,10 @@
         & > p {
             padding-block: 8px;
         }
+
+        & .rdp-day_disabled {
+            text-decoration: line-through;
+        }
     }
 
     & .order-sidebar-container {
