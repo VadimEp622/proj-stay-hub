@@ -42,6 +42,8 @@ import { StayPhotos } from '../cmps/stay-details/stay-photos.jsx'
 //     2. order-sidebar cmp gets unmounted, and what stays is the nav-reserver-header, which will switch it's fixed position 
 //    to the lower part of the screen, and will only display: price, score, and reserve button.
 //     3. header will be a new cmp, which will have: return to stay-index, like button, and share button.
+
+// TODO: stay-dates, host-details, and ThingsToKnow cmps are blocking responsiveness
 // ---------------------------------------------
 // ---------------------------------------------
 

@@ -5,15 +5,21 @@
         margin-block-start: 10px;
 
         & .info {
-            & .score-container .score::after {
-                content: "·";
-                margin-inline-end: 4px;
-            }
+            flex-wrap: wrap;
 
-            & > *:not(:first-child)::before {
-                content: "·";
-                margin-inline: 8px;
-                color: $gray-clr0;
+            & > * {
+                white-space: nowrap;
+
+                &.score-container .score::after {
+                    content: "·";
+                    margin-inline-end: 4px;
+                }
+
+                &:not(:first-child)::before {
+                    content: "·";
+                    margin-inline: 8px;
+                    color: $gray-clr0;
+                }
             }
         }
 
