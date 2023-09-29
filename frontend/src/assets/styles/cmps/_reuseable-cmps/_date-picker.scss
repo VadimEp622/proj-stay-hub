@@ -45,7 +45,7 @@
             }
 
             & .rdp-nav {
-                svg {
+                & svg {
                     width: 12px;
                     height: 16px;
                 }
@@ -90,7 +90,7 @@
                     font-weight: 400;
 
                     &:is(.day-range-start, .day-range-end) {
-                        background-color: rgb(34, 34, 34);
+                        background-color: $black-clr1;
                         border-radius: 32px;
                         color: $gray-clr-1;
                     }
