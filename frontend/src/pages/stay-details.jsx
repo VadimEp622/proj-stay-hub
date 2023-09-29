@@ -29,6 +29,7 @@ import { StayReviews } from '../cmps/stay-details/stay-reviews.jsx'
 import { StayTitle } from '../cmps/stay-details/stay-title.jsx'
 import { StaySummary } from '../cmps/stay-details/stay-summary.jsx'
 import { StayPhotos } from '../cmps/stay-details/stay-photos.jsx'
+import useIsMobile from '../customHooks/useIsMobile.js'
 
 
 
@@ -58,6 +59,7 @@ import { StayPhotos } from '../cmps/stay-details/stay-photos.jsx'
 export function StayDetails() {
     const navigate = useNavigate()
     const loggedInUser = useSelector(storeState => storeState.userModule.user)
+    const isMobile = useIsMobile()
     const { stayId } = useParams()
 
     const [stay, hostImgUrl] = useLoadStay(stayId)
@@ -179,7 +181,7 @@ export function StayDetails() {
                 onLikeClicked={onLikeClicked}
                 isStayWishlist={isStayWishlist}
             />
-            <StayPhotos photoList={stay.imgUrls} />
+            <StayPhotos photos={stay.imgUrls} isMobile={isMobile} />
             <StaySummary
                 stay={stay} hostImgUrl={hostImgUrl}
                 checkIn={checkIn} checkOut={checkOut} selectedRange={selectedRange} handleRangeSelect={handleRangeSelect}
