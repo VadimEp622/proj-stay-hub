@@ -26,6 +26,9 @@
 .fs24 {
     font-size: rem(24px);
 }
+.fs26 {
+    font-size: rem(26px);
+}
 .fs28 {
     font-size: rem(28px);
 }
@@ -34,7 +37,7 @@
 }
 
 // **************************************
-// ************* Line Heights *************
+// ************ Line Heights ************
 .lh12 {
     line-height: rem(12px);
 }
@@ -63,8 +66,8 @@
     line-height: rem(26px);
 }
 
-// ****************************************
-// ************* Font Family *************
+// **************************************
+// ************* FontFamily *************
 .ff-circular-regular {
     font-family: Circular-Regular;
     font-weight: 400;
@@ -78,49 +81,69 @@
     font-weight: 400;
 }
 
-// ************* Flex Helpers *************
+// **************************************
+// ************ Flex Helpers ************
 .flex {
     display: flex;
-
     > *.full {
         flex: 1;
     }
-
     &.column {
         flex-direction: column;
     }
-
     &.justify-center {
         justify-content: center;
     }
-
     &.justify-end {
         justify-content: end;
     }
-
     &.space-between {
         justify-content: space-between;
     }
-
     &.space-evenly {
         justify-content: space-evenly;
     }
-
     &.align-center {
         align-items: center;
     }
-
     &.align-end {
         align-items: end;
     }
-
     &.align-baseline {
         align-items: baseline;
     }
 }
 
-// ****************************************
-// ****************************************
+.flex,
+.grid {
+    &.gap4 {
+        gap: 4px;
+    }
+    &.gap8 {
+        gap: 8px;
+    }
+    &.gap20 {
+        gap: 20px;
+    }
+}
+
+// **************************************
+// ***** Text Transform/Decorations *****
+.underline {
+    text-decoration: underline;
+}
+
+.uppertext {
+    text-transform: uppercase;
+}
+
+.capitalize::first-letter {
+    text-transform: capitalize;
+}
+
+// **************************************
+// **************************************
+
 .min-width-56px {
     min-width: 56px;
 }
@@ -141,12 +164,4 @@
 
 .portrait-ratio {
     @include aspect-ratio(9, 16);
-}
-
-.underline {
-    text-decoration: underline;
-}
-
-.uppertext {
-    text-transform: uppercase;
 }

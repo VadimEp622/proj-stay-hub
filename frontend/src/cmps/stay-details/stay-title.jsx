@@ -1,44 +1,50 @@
 // Services
-import { HEART_16_BLACK_STROKE, HEART_16_RED_FILL, SHARE, STAR } from "../../services/svg.service.js"
+import { HEART_16_BLACK_STROKE, HEART_16_RED_FILL, SHARE, STAR } from '../../services/svg.service.js'
 
 // Components
-import SvgHandler from "../_reuseable-cmps/svg-handler.jsx"
-
+import SvgHandler from '../_reuseable-cmps/svg-handler.jsx'
 
 
 export function StayTitle({ stay, averageReviewScore, onLikeClicked, isStayWishlist }) {
 
+    const stayName = stay.name
+    const reviewCount = stay.reviews.length
+    const { city, country } = stay.loc
+    const reviewCountStr = `${reviewCount} ${reviewCount > 1 ? 'reviews' : 'review'}`
     return (
-        <section className="stay-title-container flex" >
-            <h1>{stay.name}</h1>
-            <section className="info-bar flex space-between align-center">
+        <section className='stay-title-container flex column' >
+            <h1 className='ff-circular-regular fs26 lh30'>{stayName}</h1>
+            <section className='info-container fs14 flex space-between align-center'>
 
-                <section className="info flex">
-                    <SvgHandler svgName={STAR} />
-                    <span>{averageReviewScore}</span>
-                    <span>•</span>
-                    <span className="info-review">{stay.reviews.length} {stay.reviews.length > 1 ? 'reviews' : 'review'}</span>
-                    <span>•</span>
-                    <span className="info-loc">{stay.loc.city}, {stay.loc.country}</span>
-                </section>
+                <ul className='info ff-circular-semibold lh20 flex justify-center align-center'>
 
-                <section className="btns flex">
+                    <li className='score-container flex'>
+                        <section className='score flex align-center gap4'>
+                            <SvgHandler svgName={STAR} />
+                            <span>{averageReviewScore}</span>
+                        </section>
+                        <span className='info-review underline'>{reviewCountStr}</span>
+                    </li>
 
-                    <article className="share-btn flex">
+                    <li><span className='info-loc underline'>{city}, {country}</span></li>
+                </ul>
+
+                <section className='action-buttons lh18 flex align-baseline gap20'>
+
+                    <section className='flex align-center gap8'>
                         <SvgHandler svgName={SHARE} />
-                        <span>Share</span>
-                        <div className="share-btn-overlay"></div>
-                    </article>
+                        <span className='ff-circular-semibold underline capitalize'>share</span>
+                        <div className='overlay'></div>
+                    </section>
 
-                    <article
-                        className="save-btn flex"
+                    <section
+                        className='flex align-center gap8'
                         onClick={(ev) => onLikeClicked(ev)}
                     >
                         <SvgHandler svgName={isStayWishlist() ? HEART_16_RED_FILL : HEART_16_BLACK_STROKE} />
-                        <span>Save</span>
-                        <div className="save-btn-overlay"></div>
-                    </article>
-
+                        <span className='ff-circular-semibold underline capitalize'>save</span>
+                        <div className='overlay'></div>
+                    </section>
                 </section>
 
             </section>

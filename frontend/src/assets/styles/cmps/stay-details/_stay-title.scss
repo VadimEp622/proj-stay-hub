@@ -1,89 +1,36 @@
-.stay-title-container {
-    flex-direction: column;
+.stay-title-container .info-container {
+    margin-block-start: 10px;
 
-    h1 {
-        font-size: 26px;
-    }
-
-    .info-bar {
-        font-family: cereal-std;
-        font-weight: 600;
-        margin-top: 10px;
-        padding: 0;
-
-        .info {
-            padding: 0;
-            align-items: center;
-            justify-content: center;
-            gap: 0.42em;
-
-            .review-star {
-                width: 12px;
-            }
-
-            .info-review,
-            .info-loc {
-                text-decoration: underline;
-            }
+    & .info {
+        & .score-container .score::after {
+            content: "·";
+            margin-inline-end: 4px;
         }
 
-        .btns {
-            align-items: baseline;
-            gap: 1.225em;
+        & > *:not(:first-child)::before {
+            content: "·";
+            margin-inline: 8px;
+            color: $gray-clr0;
+        }
+    }
 
-            span {
-                text-decoration: underline;
-            }
+    & .action-buttons > * {
+        position: relative;
 
-            .share-btn {
-                gap: 0.7em;
-                position: relative;
-                align-items: center;
-                justify-content: center;
-                cursor: pointer;
-                display: flex;
+        & .overlay {
+            position: absolute;
+            inset: -10%;
+            background-color: $gray-clr6;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            border-radius: 6px;
+        }
 
-                .share-btn-overlay {
-                    position: absolute;
-                    inset: -10%;
-                    background-color: $gray-clr6;
-                    opacity: 0;
-                    transition: opacity 0.3s ease;
-                    border-radius: 6px;
-                }
+        &:hover {
+            cursor: pointer;
 
-                &:hover .share-btn-overlay {
-                    opacity: 0.3;
-                }
-
-                .share-svg {
-                    width: 16px;
-                }
-            }
-
-            .save-btn {
-                gap: 0.7em;
-                align-items: center;
-                justify-content: center;
-                cursor: pointer;
-                position: relative;
-
-                .save-btn-overlay {
-                    position: absolute;
-                    inset: -10%;
-                    background-color: $gray-clr6;
-                    opacity: 0;
-                    transition: opacity 0.3s ease;
-                    border-radius: 6px;
-                }
-
-                &:hover .save-btn-overlay {
-                    opacity: 0.3;
-                }
-
-                .heart-svg {
-                    width: 16px;
-                }
+            & .overlay {
+                opacity: 0.3;
             }
         }
     }
