@@ -179,7 +179,7 @@ export function StayDetails() {
                 onLikeClicked={onLikeClicked}
                 isStayWishlist={isStayWishlist}
             />
-            <StayPhotos stay={stay} />
+            <StayPhotos photoList={stay.imgUrls} />
             <StaySummary
                 stay={stay} hostImgUrl={hostImgUrl}
                 checkIn={checkIn} checkOut={checkOut} selectedRange={selectedRange} handleRangeSelect={handleRangeSelect}
