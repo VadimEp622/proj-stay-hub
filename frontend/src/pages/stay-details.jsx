@@ -37,10 +37,10 @@ import useIsMobile from '../customHooks/useIsMobile.js'
 // --------------- High Priority ---------------
 // ---------------------------------------------
 // TODO: at 790px screen width, turn stay-details into mobile
-//     1. stay pictures only has 1 picture full screen width
-//     2. rest of stay-details is at distance of 24px from left/right screen edge
-
-// TODO: AmenityList block responsiveness
+//     1. rest of stay-details is at distance of 24px from left/right screen edge
+//     2. order-sidebar cmp gets unmounted, and what stays is the nav-reserver-header, which will switch it's fixed position 
+//    to the lower part of the screen, and will only display: price, score, and reserve button.
+//     3. header will be a new cmp, which will have: return to stay-index, like button, and share button.
 // ---------------------------------------------
 // ---------------------------------------------
 

@@ -1,7 +1,7 @@
 .stay-map-container {
-    scroll-margin-top: 80px;
     padding-block: 48px;
     border-bottom: $border-bottom;
+    scroll-margin-top: 80px;
 
     & .title {
         padding-block-end: 24px;
@@ -15,31 +15,31 @@
         margin-block-end: 32px;
 
         & .map-popper {
-            height: 48px;
-            width: 48px;
+            position: relative;
             display: flex;
             justify-content: center;
             align-items: center;
+            height: 48px;
+            width: 48px;
             background-color: $main-clr0;
             border-radius: 50%;
-            position: relative;
 
             & .popper-wedge {
-                background: $linear-gradient0;
-                border-radius: 2px;
-                bottom: -4px;
-                height: 12px;
-                left: 50%;
                 position: absolute;
-                transform: translate(-50%, 0px) rotate(45deg);
+                bottom: -4px;
+                left: 50%;
+                height: 12px;
                 width: 12px;
+                border-radius: 2px;
+                transform: translate(-50%, 0px) rotate(45deg);
                 z-index: auto;
+                background: $linear-gradient0;
             }
 
             & svg {
+                display: block;
                 height: 22px;
                 width: 22px;
-                display: block;
                 color: $gray-clr-1;
             }
         }

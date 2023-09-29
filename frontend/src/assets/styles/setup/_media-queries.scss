@@ -2,6 +2,7 @@
     .main-layout {
         grid-template-columns: 24px minmax(300px, 1fr) 24px;
     }
+
     .details-layout {
         grid-template-columns: 0 1fr 0;
     }
@@ -11,10 +12,11 @@
     .main-layout {
         grid-template-columns: 40px 1fr 40px;
     }
+
     .details-layout {
         grid-template-columns: 40px minmax(auto, 1120px) 40px;
 
-        & .amenity-list{
+        & .amenity-list {
             display: grid;
             grid-template-columns: 1fr 1fr;
         }

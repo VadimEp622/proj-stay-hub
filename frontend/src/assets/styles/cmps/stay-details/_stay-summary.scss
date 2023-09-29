@@ -1,14 +1,11 @@
 .summary-container {
-    padding-top: 48px;
     display: grid;
     grid-template-columns: 1.4fr 1fr;
+    padding-block-start: 48px;
     border-bottom: 1px solid $gray-clr3;
 
-    & .summary {
-        & .date-container {
-            padding-top: 48px;
-            padding-bottom: 48px;
-        }
+    & .summary .date-container {
+        padding-block: 48px;
     }
 
     & .order-sidebar-container {
