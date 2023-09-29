@@ -7,14 +7,14 @@
             border-block-end: $border-bottom;
         }
 
-        & .stay-overview-container {
-            padding-block-start: 24px;
-        }
-
         & .stay-photos-container {
             position: sticky;
             width: 100%;
             left: 0;
+        }
+
+        & .stay-overview-container {
+            padding-block-start: 24px;
         }
     }
 
@@ -22,6 +22,14 @@
         & .stay-photos-title-container {
             display: flex;
             flex-direction: column-reverse;
+        }
+
+        & .stay-photos-container {
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(2, minmax(1fr, 180px));
+            border-radius: 12px;
+            overflow: hidden;
+            gap: 8px;
         }
 
         & .summary-container {

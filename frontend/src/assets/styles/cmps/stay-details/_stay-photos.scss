@@ -1,18 +1,5 @@
 .stay-photos-container {
     display: grid;
-    // margin-block-start: 24px;
-
-    &.mobile .photo-preview {
-        max-height: 360px;
-    }
-
-    &:not(.mobile) {
-        grid-template-columns: repeat(4, 1fr);
-        grid-template-rows: repeat(2, minmax(1fr, 180px));
-        border-radius: 12px;
-        overflow: hidden;
-        gap: 8px;
-    }
 
     & .photo-preview {
         position: relative;
