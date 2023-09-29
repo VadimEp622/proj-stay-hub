@@ -14,6 +14,11 @@
     .details-layout {
         grid-template-columns: 40px minmax(auto, 1120px) 40px;
 
+        & .amenity-list{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
         & .category-score-list {
             display: grid;
             grid-template-columns: 1fr 1fr;

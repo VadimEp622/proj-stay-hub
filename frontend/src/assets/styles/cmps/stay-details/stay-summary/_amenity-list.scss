@@ -6,16 +6,9 @@
 
     & > .title {
         padding-block-end: 24px;
-        letter-spacing: 0.0125rem;
     }
 
-    & .amenity-list {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-
-        & .amenity-preview {
-            gap: 16px;
-            padding-block-end: 16px;
-        }
+    & .amenity-list .amenity-preview {
+        padding-block-end: 16px;
     }
 }
