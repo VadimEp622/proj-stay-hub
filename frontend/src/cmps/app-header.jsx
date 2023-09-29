@@ -13,20 +13,18 @@ import { utilService } from '../services/util.service.js'
 
 // Custom hooks
 import useIsMobile from '../customHooks/useIsMobile.js'
+import { useHeaderFilterBy } from '../customHooks/useHeaderFilterBy.js'
 
 // Components
 import { HeaderMobile } from './app-header/header-mobile.jsx'
 import { HeaderDesktop } from './app-header/header-desktop.jsx'
 import { Loader } from './_reuseable-cmps/loader.jsx'
-import { useHeaderFilterBy } from '../customHooks/useHeaderFilterBy.js'
 
 
+// TODO: in date-picker, when check-in has a date and check-out does not, when clicking same check-in date, check-out date must NOT be same as check-in date!
 
-// TODO: fix filter to make it work flawlessly 
-// TODO: add new/different header for when screen size is less than 700px!!!!!
-
-// TODO-high-priority: there are no "Italy" & "France" stays in database!!! need to manually add, or change some existing ones 
 // TODO-low-priority: change in filterBy, "country" and "city" keys, to "where" key. (must also change in backend, so keep in mind the deployment)
+
 
 export function AppHeader({ isStayDetailsPage }) {
     const [filterBy, setFilterBy] = useHeaderFilterBy()
