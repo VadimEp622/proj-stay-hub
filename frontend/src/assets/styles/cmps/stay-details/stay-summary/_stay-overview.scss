@@ -7,9 +7,18 @@
             margin-block-end: 8px;
         }
 
-        & .content-list > *:not(:first-child)::before {
-            content: " · ";
-            white-space: break-spaces;
+        & .content-list {
+            flex-wrap: wrap;
+            & > * {
+                display: flex;
+                flex-wrap: nowrap;
+                white-space: nowrap;
+
+                &:not(:first-child)::before {
+                    content: " · ";
+                    white-space: break-spaces;
+                }
+            }
         }
     }
 

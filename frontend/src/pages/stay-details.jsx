@@ -39,6 +39,8 @@ import useIsMobile from '../customHooks/useIsMobile.js'
 // TODO: at 790px screen width, turn stay-details into mobile
 //     1. stay pictures only has 1 picture full screen width
 //     2. rest of stay-details is at distance of 24px from left/right screen edge
+
+// TODO: AmenityList block responsiveness
 // ---------------------------------------------
 // ---------------------------------------------
 
