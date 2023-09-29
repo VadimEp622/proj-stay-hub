@@ -21,6 +21,10 @@ import { UserMsg } from './cmps/user-msg.jsx'
 import { AppMainModal } from './cmps/app-main-modal.jsx'
 
 
+// TODO: organize the footer: 1. to work as intended for all routes
+//                            2. on stay-details mobile, margin-block-start:80px;
+
+
 // TODO: add more variety to userMsg, and make styling better!
 
 
@@ -72,7 +76,7 @@ export function RootCmp() {
 
             <section className={`app ${!isStayDetailsPage ? 'main-layout' : 'details-layout'}`}>
                 <AppHeader isStayDetailsPage={isStayDetailsPage} />
-                <main className="app-main">
+                <main className={`app-main${isStayDetailsPage ? ' full details-layout' : ''}`}>
                     <Routes>
                         {routes.map(route => <Route key={route.path} exact={true} element={route.component} path={route.path} />)}
                     </Routes>

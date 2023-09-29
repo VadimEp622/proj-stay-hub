@@ -4,7 +4,12 @@
     }
 
     .details-layout {
-        grid-template-columns: 0 1fr 0;
+        grid-template-columns: 24px 1fr 24px;
+
+        & .stay-details-nav-reserve-header-container {
+            bottom: 0;
+            box-shadow: $box-shadow21;
+        }
     }
 }
 
@@ -15,6 +20,12 @@
 
     .details-layout {
         grid-template-columns: 40px minmax(auto, 1120px) 40px;
+        grid-template-rows: auto 1fr auto;
+
+        & .stay-details-nav-reserve-header-container {
+            top: 0;
+            box-shadow: $box-shadow20;
+        }
 
         & .amenity-list {
             display: grid;

@@ -1,36 +1,40 @@
-.stay-title-container .info-container {
-    margin-block-start: 10px;
+.stay-title-container {
+    padding-block: 24px;
 
-    & .info {
-        & .score-container .score::after {
-            content: "·";
-            margin-inline-end: 4px;
+    & .info-container {
+        margin-block-start: 10px;
+
+        & .info {
+            & .score-container .score::after {
+                content: "·";
+                margin-inline-end: 4px;
+            }
+
+            & > *:not(:first-child)::before {
+                content: "·";
+                margin-inline: 8px;
+                color: $gray-clr0;
+            }
         }
 
-        & > *:not(:first-child)::before {
-            content: "·";
-            margin-inline: 8px;
-            color: $gray-clr0;
-        }
-    }
-
-    & .action-buttons > * {
-        position: relative;
-
-        & .overlay {
-            position: absolute;
-            inset: -10%;
-            background-color: $gray-clr6;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            border-radius: 6px;
-        }
-
-        &:hover {
-            cursor: pointer;
+        & .action-buttons > * {
+            position: relative;
 
             & .overlay {
-                opacity: 0.3;
+                position: absolute;
+                inset: -10%;
+                background-color: $gray-clr6;
+                opacity: 0;
+                transition: opacity 0.3s ease;
+                border-radius: 6px;
+            }
+
+            &:hover {
+                cursor: pointer;
+
+                & .overlay {
+                    opacity: 0.3;
+                }
             }
         }
     }

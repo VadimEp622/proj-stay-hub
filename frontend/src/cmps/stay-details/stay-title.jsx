@@ -12,41 +12,43 @@ export function StayTitle({ stay, averageReviewScore, onLikeClicked, isStayWishl
     const { city, country } = stay.loc
     const reviewCountStr = `${reviewCount} ${reviewCount > 1 ? 'reviews' : 'review'}`
     return (
-        <section className='stay-title-container flex column' >
-            <h1 className='ff-circular-regular fs26 lh30'>{stayName}</h1>
-            <section className='info-container fs14 flex space-between align-center'>
+        <section className='full details-layout'>
 
-                <ul className='info ff-circular-semibold lh20 flex justify-center align-center'>
+            <section className='stay-title-container flex column' >
+                <h1 className='ff-circular-regular fs26 lh30'>{stayName}</h1>
+                <section className='info-container fs14 flex space-between align-center'>
 
-                    <li className='score-container flex'>
-                        <section className='score flex align-center gap4'>
-                            <SvgHandler svgName={STAR} />
-                            <span>{averageReviewScore}</span>
+                    <ul className='info ff-circular-semibold lh20 flex justify-center align-center'>
+
+                        <li className='score-container flex'>
+                            <section className='score flex align-center gap4'>
+                                <SvgHandler svgName={STAR} />
+                                <span>{averageReviewScore}</span>
+                            </section>
+                            <span className='info-review underline'>{reviewCountStr}</span>
+                        </li>
+
+                        <li><span className='info-loc underline'>{city}, {country}</span></li>
+                    </ul>
+
+                    <section className='action-buttons lh18 flex align-baseline gap20'>
+
+                        <section className='flex align-center gap8'>
+                            <SvgHandler svgName={SHARE} />
+                            <span className='ff-circular-semibold underline capitalize'>share</span>
+                            <div className='overlay'></div>
                         </section>
-                        <span className='info-review underline'>{reviewCountStr}</span>
-                    </li>
 
-                    <li><span className='info-loc underline'>{city}, {country}</span></li>
-                </ul>
-
-                <section className='action-buttons lh18 flex align-baseline gap20'>
-
-                    <section className='flex align-center gap8'>
-                        <SvgHandler svgName={SHARE} />
-                        <span className='ff-circular-semibold underline capitalize'>share</span>
-                        <div className='overlay'></div>
-                    </section>
-
-                    <section
-                        className='flex align-center gap8'
-                        onClick={(ev) => onLikeClicked(ev)}
-                    >
-                        <SvgHandler svgName={isStayWishlist() ? HEART_16_RED_FILL : HEART_16_BLACK_STROKE} />
-                        <span className='ff-circular-semibold underline capitalize'>save</span>
-                        <div className='overlay'></div>
+                        <section
+                            className='flex align-center gap8'
+                            onClick={(ev) => onLikeClicked(ev)}
+                        >
+                            <SvgHandler svgName={isStayWishlist() ? HEART_16_RED_FILL : HEART_16_BLACK_STROKE} />
+                            <span className='ff-circular-semibold underline capitalize'>save</span>
+                            <div className='overlay'></div>
+                        </section>
                     </section>
                 </section>
-
             </section>
         </section>
     )

@@ -11,25 +11,29 @@ export function StaySummary({
     checkIn, checkOut, selectedRange, handleRangeSelect,
     guests, setGuests,
     orderDetails,
-    onCheckAvailabilityClick, onReserveClick
+    onCheckAvailabilityClick, onReserveClick,
+    isMobile
 }) {
 
     return (
-        <section className='summary-container'>
+        <section className={`summary-container${isMobile ? ' mobile' : ''}`}>
             <section className='summary'>
                 <Overview stay={stay} hostImgUrl={hostImgUrl} />
                 <HighlightList />
                 <AmenityList amenities={stay.amenities} />
                 <StayDates stay={stay} selectedRange={selectedRange} handleRangeSelect={handleRangeSelect} />
             </section>
+
             <section className='order-sidebar-container'>
-                <OrderSidebar
-                    stay={stay}
-                    checkIn={checkIn} checkOut={checkOut}
-                    guests={guests} setGuests={setGuests}
-                    orderDetails={orderDetails}
-                    onCheckAvailabilityClick={onCheckAvailabilityClick} onReserveClick={onReserveClick}
-                />
+                {!isMobile &&
+                    <OrderSidebar
+                        stay={stay}
+                        checkIn={checkIn} checkOut={checkOut}
+                        guests={guests} setGuests={setGuests}
+                        orderDetails={orderDetails}
+                        onCheckAvailabilityClick={onCheckAvailabilityClick} onReserveClick={onReserveClick}
+                    />
+                }
             </section>
         </section>
     )

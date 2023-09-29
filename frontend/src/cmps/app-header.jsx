@@ -144,13 +144,13 @@ export function AppHeader({ isStayDetailsPage }) {
     }
 
     const layoutType = !isStayDetailsPage ? 'main-layout' : 'details-layout'
-    const screenType = isMobile ? 'mobile' : ''
+    const screenType = isMobile ? ' mobile' : ''
     if (!filterBy) return <Loader />
     return (
-        <header className={`app-header-container full ${layoutType} ${screenType}`}>
+        <header className={`app-header-container full ${layoutType}${screenType}`}>
             {
-                !isMobile ?
-                    <HeaderDesktop
+                !isMobile
+                    ? <HeaderDesktop
                         isFilterExpanded={isFilterExpanded}
                         selectedExperienceTab={selectedExperienceTab}
                         setSelectedExperienceTab={setSelectedExperienceTab}
@@ -164,8 +164,7 @@ export function AppHeader({ isStayDetailsPage }) {
                         onSetSelectedFilterBox={onSetSelectedFilterBox}
                         setSelectedFilterBox={setSelectedFilterBox}
                     />
-                    :
-                    <HeaderMobile layoutType={layoutType} />
+                    : layoutType === 'main-layout' && <HeaderMobile layoutType={layoutType} />
             }
         </header>
     )

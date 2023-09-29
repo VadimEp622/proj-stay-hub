@@ -18,6 +18,8 @@ import useLoadStay from '../customHooks/useLoadStay.js'
 import useStayDates from '../customHooks/useStayDates.js'
 import useStayGuests from '../customHooks/useStayGuests.js'
 import useStayDetails from '../customHooks/useStayDetails.js'
+import useIsMobile from '../customHooks/useIsMobile.js'
+import useStayDetailsIntersectionObserver from '../customHooks/useStayDetailsIntersectionObserver.js'
 
 // Components
 import { Loader } from '../cmps/_reuseable-cmps/loader.jsx'
@@ -29,7 +31,6 @@ import { StayReviews } from '../cmps/stay-details/stay-reviews.jsx'
 import { StayTitle } from '../cmps/stay-details/stay-title.jsx'
 import { StaySummary } from '../cmps/stay-details/stay-summary.jsx'
 import { StayPhotos } from '../cmps/stay-details/stay-photos.jsx'
-import useIsMobile from '../customHooks/useIsMobile.js'
 
 
 
@@ -60,14 +61,15 @@ import useIsMobile from '../customHooks/useIsMobile.js'
 
 export function StayDetails() {
     const navigate = useNavigate()
+    const { stayId } = useParams()
     const loggedInUser = useSelector(storeState => storeState.userModule.user)
     const isMobile = useIsMobile()
-    const { stayId } = useParams()
 
     const [stay, hostImgUrl] = useLoadStay(stayId)
     const [guests, setGuests] = useStayGuests()
     const [checkIn, checkOut, selectedRange, setSelectedRange] = useStayDates(stay)
     const [orderDetails] = useStayDetails(stay, checkIn, checkOut, guests)
+    useStayDetailsIntersectionObserver(isStayDetailsLoading() || isMobile)
 
 
     function isStayWishlist() {
@@ -162,34 +164,41 @@ export function StayDetails() {
         setSelectedRange(prev => ({ ...prev, ...newRange }))
     }
 
+    function isStayDetailsLoading() {
+        return (!stay || !selectedRange || Object.keys(orderDetails).length === 0)
+    }
 
-    if (!stay || !selectedRange || Object.keys(orderDetails).length === 0) return <Loader />
+    if (isStayDetailsLoading()) return <Loader />
 
     const stayCategoryScores = stayService.getStayCategoryScores(stay.reviews)
     const randomDateJoined = utilService.getRandomMonthAndYear()
     const averageReviewScore = stayService.getStayScore(stay.reviews)
 
     return (
-        <section className='stay-details' id='photos'>
+        <section className={`stay-details full details-layout${isMobile ? ' mobile' : ''}`} id='photos'>
             <StayDetailsNavReserveHeader
                 stay={stay}
                 selectedRange={selectedRange}
                 onReserveClick={onReserveClick}
                 onCheckAvailabilityClick={onCheckAvailabilityClick}
+                isMobile={isMobile}
             />
-            <StayTitle
-                stay={stay}
-                averageReviewScore={averageReviewScore}
-                onLikeClicked={onLikeClicked}
-                isStayWishlist={isStayWishlist}
-            />
-            <StayPhotos photos={stay.imgUrls} isMobile={isMobile} />
+            <section className='stay-photos-title-container full details-layout'>
+                <StayPhotos photos={stay.imgUrls} isMobile={isMobile} />
+                <StayTitle
+                    stay={stay}
+                    averageReviewScore={averageReviewScore}
+                    onLikeClicked={onLikeClicked}
+                    isStayWishlist={isStayWishlist}
+                />
+            </section>
             <StaySummary
                 stay={stay} hostImgUrl={hostImgUrl}
                 checkIn={checkIn} checkOut={checkOut} selectedRange={selectedRange} handleRangeSelect={handleRangeSelect}
                 guests={guests} setGuests={setGuests}
                 orderDetails={orderDetails}
                 onCheckAvailabilityClick={onCheckAvailabilityClick} onReserveClick={onReserveClick}
+                isMobile={isMobile}
             />
             {
                 stay.reviews?.length > 0 &&

@@ -1,8 +1,11 @@
 .summary-container {
-    display: grid;
-    grid-template-columns: 1.4fr 1fr;
-    padding-block-start: 48px;
     border-bottom: 1px solid $gray-clr3;
+
+    // &.mobile {
+    //     & .stay-overview-container {
+    //         padding-block-start: 24px;
+    //     }
+    // }
 
     & .summary .date-container {
         padding-block: 48px;

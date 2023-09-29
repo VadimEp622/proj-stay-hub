@@ -19,7 +19,7 @@
 
 .details-layout {
     display: grid;
-    grid-template-rows: auto 1fr auto;
+    // grid-template-rows: auto 1fr auto;
 
     > * {
         grid-column: 2;

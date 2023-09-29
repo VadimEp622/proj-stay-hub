@@ -1,5 +1,33 @@
 .stay-details {
-    padding-top: 24px;
     margin: auto;
     scroll-margin-top: 25px;
+
+    &.mobile {
+        & .stay-title-container {
+            border-block-end: $border-bottom;
+        }
+
+        & .stay-overview-container {
+            padding-block-start: 24px;
+        }
+
+        & .stay-photos-container {
+            position: sticky;
+            width: 100%;
+            left: 0;
+        }
+    }
+
+    &:not(.mobile) {
+        & .stay-photos-title-container {
+            display: flex;
+            flex-direction: column-reverse;
+        }
+
+        & .summary-container {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr;
+            padding-block-start: 48px;
+        }
+    }
 }
