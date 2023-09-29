@@ -3,7 +3,7 @@
     margin-inline-end: 18.333%;
 
     & .mini-user {
-        gap: rem(10px);
+        gap: 10px;
         margin-block-end: 16px;
 
         & span {
@@ -18,9 +18,7 @@
         }
     }
 
-    & .review-content {
-        & p {
-            margin: 0;
-        }
+    & .review-content p {
+        margin: 0;
     }
 }

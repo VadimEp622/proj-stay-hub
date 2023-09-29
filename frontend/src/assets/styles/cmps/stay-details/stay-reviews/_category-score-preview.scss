@@ -13,12 +13,12 @@
         margin-inline-start: 12px;
 
         & .score-bar-container {
-            height: rem(4px);
+            height: 4px;
             width: 100%;
-            background-color: $gray-clr3;
-            border-radius: rem(2px);
-            overflow: hidden;
             margin-inline-end: 4px;
+            border-radius: 2px;
+            overflow: hidden;
+            background-color: $gray-clr3;
 
             & .score-bar {
                 height: 100%;

@@ -42,11 +42,11 @@
 @import "cmps/stay-index/stay-list/stay-preview/preview-image-carousel"; // ✔
 
 // *** stay-details ***   ---->TODO: needs cleaning up
-@import "cmps/stay-details/stay-details-nav-reserve-header";
+@import "cmps/stay-details/stay-details-nav-reserve-header"; // ✔
 @import "cmps/stay-details/stay-title"; //---->TODO: needs cleaning up
 @import "cmps/stay-details/stay-photos";
 @import "cmps/stay-details/stay-summary";
-@import "cmps/stay-details/stay-reviews";
+@import "cmps/stay-details/stay-reviews"; // ✔
 @import "cmps/stay-details/stay-map"; // ✔ - TODO: try to improve styling structure
 @import "cmps/stay-details/stay-host-details"; // ✔
 @import "cmps/stay-details/stay-things-to-know"; // ✔
@@ -61,11 +61,11 @@
 @import "cmps/stay-details/stay-summary/order-sidebar/pricing";
 @import "cmps/stay-details/stay-summary/order-sidebar/special-info";
 // *** stay-details/stay-reviews ***
-@import "cmps/stay-details/stay-reviews/stay-review-list";
-@import "cmps/stay-details/stay-reviews/stay-review-preview";
-@import "cmps/stay-details/stay-reviews/stay-reviews-header";
-@import "cmps/stay-details/stay-reviews/category-score-list";
-@import "cmps/stay-details/stay-reviews/category-score-preview";
+@import "cmps/stay-details/stay-reviews/stay-reviews-header"; // ✔
+@import "cmps/stay-details/stay-reviews/category-score-list"; // ✔
+@import "cmps/stay-details/stay-reviews/category-score-preview"; // ✔
+@import "cmps/stay-details/stay-reviews/stay-review-list"; // ✔
+@import "cmps/stay-details/stay-reviews/stay-review-preview"; // ✔
 
 // *** user-trips ***
 @import "cmps/user-trips/future-reservation-list";
