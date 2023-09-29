@@ -3,6 +3,9 @@
 
     & .summary .date-container {
         padding-block: 48px;
+        & > p {
+            padding-block: 8px;
+        }
     }
 
     & .order-sidebar-container {

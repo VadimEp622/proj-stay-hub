@@ -1,4 +1,8 @@
 .date-picker {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
     margin-inline: auto;
     color: inherit;
 
@@ -6,15 +10,38 @@
         display: flex;
         justify-content: center;
         gap: 54px;
-        padding-block-start: 84px;
 
         & .rdp-caption {
+            position: relative;
+            display: flex;
+            align-items: center;
+            height: 46px;
+            margin-block-end: 12px;
+
+            & .rdp-nav_button {
+                position: absolute;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                top: 0;
+                bottom: 0;
+                padding: 0;
+
+                &.rdp-nav_button_previous {
+                    left: 0;
+                }
+                &.rdp-nav_button_next {
+                    right: 0;
+                }
+            }
+
             & .rdp-caption_label {
                 font-size: rem(16px);
-                line-height: 20px;
+                line-height: rem(20px);
                 font-family: Circular-SemiBold;
                 font-weight: 400;
                 text-align: center;
+                flex: 1 1 auto;
             }
 
             & .rdp-nav {
@@ -76,16 +103,13 @@
         }
 
         & .rdp-button {
+            position: relative;
+            align-items: center;
             width: 46px;
             height: 46px;
-            align-items: center;
             border: none;
             background-color: inherit;
-            position: relative;
-
-            &.rdp-nav_button_next {
-                float: right;
-            }
+            padding: 0;
 
             &:not(.rdp-day_disabled, .rdp-nav_button_previous, .rdp-nav_button_next):hover {
                 border: 1px solid $black-clr0;
