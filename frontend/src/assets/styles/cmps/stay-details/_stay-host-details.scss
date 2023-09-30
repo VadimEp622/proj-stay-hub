@@ -3,7 +3,6 @@
     border-bottom: $border-bottom;
 
     & .host-details-header {
-        gap: 16px;
         margin-block-end: 24px;
 
         & img {
@@ -24,11 +23,7 @@
     }
 
     & .host-details-main {
-        flex-wrap: wrap;
-
         & .host-main-info-container {
-            width: 41.6%;
-
             & .host-tags {
                 margin-block-end: 12px;
                 margin-inline-start: -12px;
@@ -69,16 +64,13 @@
         }
 
         & .contact-host {
-            width: 41.6%;
-            margin-left: 8.333%;
-            padding-inline: 8px;
+            margin-block-start: 24px;
 
             & .host-response-info > * {
                 margin-block-end: 16px;
             }
 
             & button {
-                width: fit-content;
                 margin: 24px 0;
                 padding: 13px 23px;
                 border: 1px solid $black-clr1;
@@ -91,14 +83,9 @@
                 }
             }
 
-            & .protection-info {
-                max-width: 300px;
-
-                & img {
-                    height: 24px;
-                    width: 24px;
-                    margin-inline-end: 16px;
-                }
+            & .protection-info img {
+                height: 24px;
+                width: 24px;
             }
         }
     }

@@ -16,6 +16,10 @@
         & .stay-overview-container {
             padding-block-start: 24px;
         }
+
+        & .host-details-container .protection-info {
+            flex-direction: row-reverse;
+        }
     }
 
     &:not(.mobile) {
@@ -36,6 +40,29 @@
             display: grid;
             grid-template-columns: 1.4fr 1fr;
             padding-block-start: 48px;
+        }
+
+        & .host-details-container .host-details-main {
+            display: flex;
+
+            & .host-main-info-container {
+                width: 41.6%;
+            }
+
+            & .contact-host {
+                margin-block-start: 0;
+                margin-inline-start: 8.333%;
+                padding-inline: 8px;
+                width: 41.6%;
+
+                & button {
+                    width: fit-content;
+                }
+
+                & .protection-info {
+                    max-width: 300px;
+                }
+            }
         }
     }
 }
