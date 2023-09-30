@@ -216,7 +216,7 @@ export function StayDetails() {
                 hostImgUrl={hostImgUrl}
                 randomDateJoined={randomDateJoined}
             />
-            <ThingsToKnow checkIn={checkIn} />
+            <ThingsToKnow isMobile={isMobile} checkIn={checkIn} />
         </section >
     )
 }

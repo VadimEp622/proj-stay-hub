@@ -1,27 +1,8 @@
 .things-to-know {
-    padding-block: 48px;
+    padding-block-start: 24px;
+    margin-block-end: 80px; // temporary until footer sorted out
 
-    & > .title {
-        padding-block-end: 24px;
-    }
-
-    & .rules-container {
-        justify-content: flex-start;
-        line-break: strict;
-
-        & > * {
-            & h4 {
-                font-family: Circular-Semibold;
-                font-weight: 400;
-            }
-
-            & > * {
-                margin-block-end: 16px;
-            }
-        }
-    }
-
-    .rules-container > * {
-        width: 33.3333%;
+    & .rules-container > * > *:not(:last-child) {
+        margin-block-end: 8px;
     }
 }

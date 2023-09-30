@@ -20,6 +20,31 @@
         & .host-details-container .protection-info {
             flex-direction: row-reverse;
         }
+
+        & .things-to-know .rules-container > * {
+            padding-block-end: 24px;
+
+            & > * {
+                &.inner-title {
+                    font-size: rem(22px);
+                    line-height: rem(26px);
+                }
+
+                &:not(.inner-title) {
+                    font-size: rem(14px);
+                    line-height: rem(20px);
+                    color: $gray-clr0;
+                }
+            }
+
+            &:not(:first-child) {
+                padding-block-start: 24px;
+            }
+
+            &:not(:last-child) {
+                border-block-end: $border-bottom;
+            }
+        }
     }
 
     &:not(.mobile) {
@@ -61,6 +86,29 @@
 
                 & .protection-info {
                     max-width: 300px;
+                }
+            }
+        }
+
+        & .things-to-know {
+            padding-block: 48px;
+
+            & > .title {
+                padding-block-end: 24px;
+            }
+
+            & .rules-container {
+                display: flex;
+                gap: 20px;
+
+                & > * {
+                    flex: 1;
+
+                    & > * {
+                        &:not(:last-child) {
+                            margin-block-end: 16px;
+                        }
+                    }
                 }
             }
         }
