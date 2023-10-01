@@ -6,6 +6,7 @@
         margin-block-end: 24px;
 
         & img {
+            display: block;
             height: 64px;
             width: 64px;
             border-radius: 50px;
@@ -78,7 +79,7 @@
                 background-color: $gray-clr-1;
 
                 &:hover {
-                    cursor: pointer;
+                    cursor: not-allowed;
                     background-color: $gray-clr5;
                 }
             }

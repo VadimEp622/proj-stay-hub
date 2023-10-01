@@ -42,6 +42,10 @@
                     opacity: 0.3;
                 }
             }
+
+            &.share:hover {
+                cursor: not-allowed;
+            }
         }
     }
 }

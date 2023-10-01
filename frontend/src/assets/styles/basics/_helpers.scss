@@ -122,11 +122,17 @@
 
 .flex,
 .grid {
+    &.gap2 {
+        gap: 2px;
+    }
     &.gap4 {
         gap: 4px;
     }
     &.gap8 {
         gap: 8px;
+    }
+    &.gap10 {
+        gap: 10px;
     }
     &.gap16 {
         gap: 16px;

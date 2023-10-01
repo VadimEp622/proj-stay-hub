@@ -64,6 +64,25 @@
         }
     }
 }
+/*************************************************/
+/*************************************************/
+
+// =============== Is being used ===============
+@mixin clean-button {
+    & button {
+        display: block;
+        position: relative;
+        border: none;
+        padding: 0;
+        margin: 0;
+        background: transparent;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
+// =============================================
 
 @mixin flex {
     display: flex;

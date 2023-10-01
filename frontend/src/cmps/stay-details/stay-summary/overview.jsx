@@ -15,7 +15,9 @@ export function Overview({ stay, hostImgUrl }) {
                     <li>{baths}</li>
                 </ul>
             </section>
-            <img src={hostImgUrl} alt='host' />
+            <section>
+                <img src={hostImgUrl} alt='host' />
+            </section>
         </section>
     )
 }

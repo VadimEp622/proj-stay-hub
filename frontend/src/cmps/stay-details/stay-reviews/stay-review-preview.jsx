@@ -9,9 +9,11 @@ export function StayReviewPreview({ review }) {
 
     return (
         <section className='stay-review-preview'>
-            <section className='mini-user flex align-end'>
-                <img src={reviewerPicUrl} alt='host' />
+            <section className='mini-user flex align-center gap10'>
                 <section>
+                    <img src={reviewerPicUrl} alt='host' />
+                </section>
+                <section className='flex column gap2'>
                     <h4 className='fs16 lh20'>{reviewerName}</h4>
                     <span className='fs14 lh20'>{reviewDate}</span>
                 </section>

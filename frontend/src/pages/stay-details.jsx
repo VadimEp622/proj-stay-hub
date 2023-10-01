@@ -23,7 +23,7 @@ import useStayDetailsIntersectionObserver from '../customHooks/useStayDetailsInt
 
 // Components
 import { Loader } from '../cmps/_reuseable-cmps/loader.jsx'
-import { StayDetailsNavReserveHeader } from '../cmps/stay-details/stay-details-nav-reserve-header.jsx'
+import { StayDetailsNavReserveSticky } from '../cmps/stay-details/stay-details-nav-reserve-sticky.jsx'
 import { ThingsToKnow } from '../cmps/stay-details/stay-things-to-know.jsx'
 import { HostDetails } from '../cmps/stay-details/stay-host-details.jsx'
 import { StayMap } from '../cmps/stay-details/stay-map.jsx'
@@ -31,19 +31,15 @@ import { StayReviews } from '../cmps/stay-details/stay-reviews.jsx'
 import { StayTitle } from '../cmps/stay-details/stay-title.jsx'
 import { StaySummary } from '../cmps/stay-details/stay-summary.jsx'
 import { StayPhotos } from '../cmps/stay-details/stay-photos.jsx'
+import { StayDetailsMobileReturnHeader } from '../cmps/stay-details/stay-details-mobile-return-header.jsx'
 
 
 
 // ---------------------------------------------
 // --------------- High Priority ---------------
 // ---------------------------------------------
-// TODO: at 790px screen width, turn stay-details into mobile
-//     1. rest of stay-details is at distance of 24px from left/right screen edge
-//     2. order-sidebar cmp gets unmounted, and what stays is the nav-reserver-header, which will switch it's fixed position 
-//    to the lower part of the screen, and will only display: price, score, and reserve button.
-//     3. header will be a new cmp, which will have: return to stay-index, like button, and share button.
-
-// TODO: stay-dates, host-details, and ThingsToKnow cmps are blocking responsiveness
+// TODO: take .mobile/:not(.mobile) styling from stay-details, and join it into media-queries sass file,
+//    so that app will perform as mobile-first
 // ---------------------------------------------
 // ---------------------------------------------
 
@@ -106,6 +102,12 @@ export function StayDetails() {
             setOrder(order)
             navigate(`/stay/book/${stay._id}`)
         }
+    }
+
+    function onReturnClicked(ev) {
+        ev.preventDefault()
+        ev.stopPropagation()
+        navigate('/')
     }
 
     function createOrder({ guestCount, price, nightsCount, serviceFee, cleaningFee }) {
@@ -178,7 +180,14 @@ export function StayDetails() {
 
     return (
         <section className={`stay-details full details-layout${isMobile ? ' mobile' : ''}`} id='photos'>
-            <StayDetailsNavReserveHeader
+            {isMobile &&
+                <StayDetailsMobileReturnHeader
+                    onLikeClicked={onLikeClicked}
+                    isStayWishlist={isStayWishlist}
+                    onReturnClicked={onReturnClicked}
+                />
+            }
+            <StayDetailsNavReserveSticky
                 stay={stay}
                 selectedRange={selectedRange}
                 onReserveClick={onReserveClick}
@@ -192,6 +201,7 @@ export function StayDetails() {
                     averageReviewScore={averageReviewScore}
                     onLikeClicked={onLikeClicked}
                     isStayWishlist={isStayWishlist}
+                    isMobile={isMobile}
                 />
             </section>
             <StaySummary

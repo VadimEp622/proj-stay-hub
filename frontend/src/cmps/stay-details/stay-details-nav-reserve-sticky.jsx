@@ -7,7 +7,7 @@ import { ButtonMain } from '../_reuseable-cmps/button-main.jsx'
 import SvgHandler from '../_reuseable-cmps/svg-handler.jsx'
 
 
-export function StayDetailsNavReserveHeader({ stay, selectedRange, onCheckAvailabilityClick, onReserveClick, isMobile }) {
+export function StayDetailsNavReserveSticky({ stay, selectedRange, onCheckAvailabilityClick, onReserveClick, isMobile }) {
 
     const reviewCount = stay.reviews.length
     const stayScore = reviewService.getAverageReview(stay)
@@ -15,8 +15,8 @@ export function StayDetailsNavReserveHeader({ stay, selectedRange, onCheckAvaila
 
     const reviewCountStr = `${reviewCount} ${reviewCount > 1 ? 'reviews' : 'review'}`
     return (
-        <section className='stay-details-nav-reserve-header-container details-layout'>
-            <section className='stay-details-nav-reserve-header flex space-between justify-center'>
+        <section className='stay-details-nav-reserve-sticky-container details-layout'>
+            <section className='stay-details-nav-reserve-sticky flex space-between justify-center'>
 
                 {!isMobile &&
                     <nav nav className='links-container ff-circular-semibold fs14 lh20 flex align-center'>

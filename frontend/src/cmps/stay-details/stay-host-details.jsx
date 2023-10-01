@@ -18,7 +18,9 @@ export function HostDetails({ stay, hostImgUrl, randomDateJoined }) {
         <section className='host-details-container'>
 
             <section className='host-details-header flex align-center gap16'>
-                <img src={hostImgUrl} alt='host' />
+                <section>
+                    <img src={hostImgUrl} alt='host' />
+                </section>
                 <section className='host-intro-info'>
                     <h3 className='host-name fs22'>Hosted by {hostName}</h3>
                     <span className='host-join-date'>Joined in {randomDateJoined}</span>
