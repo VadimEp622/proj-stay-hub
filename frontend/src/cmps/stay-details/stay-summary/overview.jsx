@@ -8,7 +8,7 @@ export function Overview({ stay, hostImgUrl }) {
         <section className='stay-overview-container flex space-between'>
             <section className='stay-overview'>
                 <h2 className='title fs22 lh26'>Entire villa hosted by {stay.host.fullname}</h2>
-                <ul className='content-list flex fs16 lh20'>
+                <ul className='content-list flex fs16 lh20 flex-wrap'>
                     <li>{guests}</li>
                     <li>{bedrooms}</li>
                     <li>{beds}</li>

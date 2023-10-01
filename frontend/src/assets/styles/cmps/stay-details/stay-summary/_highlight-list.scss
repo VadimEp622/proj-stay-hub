@@ -1,19 +1,14 @@
 .highlight-list {
     padding-block: 32px;
     border-bottom: $border-bottom;
-    gap: 24px;
 
-    & .highlight-preview {
-        gap: 24px;
+    & .highlight-preview .highlight-description {
+        & .title {
+            margin-block-end: 4px;
+        }
 
-        & .highlight-description {
-            & .title {
-                margin-block-end: 4px;
-            }
-
-            & .content {
-                color: $gray-clr0;
-            }
+        & .content {
+            color: $gray-clr0;
         }
     }
 }

@@ -3,10 +3,6 @@
     scroll-margin-top: 25px;
 
     &.mobile {
-        & .stay-overview-container {
-            padding-block-start: 24px;
-        }
-
         & .host-details-container .protection-info {
             flex-direction: row-reverse;
         }

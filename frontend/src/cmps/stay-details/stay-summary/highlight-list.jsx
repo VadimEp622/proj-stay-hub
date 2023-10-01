@@ -1,8 +1,8 @@
 // Services
-import { CHECKIN, KEY, LOCATION } from "../../../services/svg.service.js"
+import { CHECKIN, KEY, LOCATION } from '../../../services/svg.service.js'
 
 // Components
-import { HighlightPreview } from "./highlight-preview.jsx"
+import { HighlightPreview } from './highlight-preview.jsx'
 
 
 export function HighlightList() {
@@ -27,7 +27,7 @@ export function HighlightList() {
     ]
 
     return (
-        <section className='highlight-list flex column'>
+        <section className='highlight-list flex column gap24'>
             {highlightList.map(highlight =>
                 <HighlightPreview key={highlight.title} highlight={highlight} />
             )}

@@ -70,6 +70,10 @@
         & .stay-title-container {
             border-block-end: $border-bottom;
         }
+
+        & .stay-overview-container {
+            padding-block-start: 24px;
+        }
     }
 }
 
