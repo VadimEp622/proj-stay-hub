@@ -6,67 +6,35 @@
     z-index: 10;
     background-color: $gray-clr-1;
 
-    & .stay-details-nav-reserve-sticky {
-        height: 100%;
+    & .stay-info {
+        margin-inline-end: 16px;
 
-        & .links-container > * {
-            position: relative;
-            margin-inline-start: 24px;
-            padding-block: 30px;
-            text-decoration: none;
-
-            &::after {
-                content: "";
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                width: 100%;
-                height: 4px;
-                opacity: 0;
-                background-color: $black-clr1;
-                transition: opacity 0.15s ease 0s;
-            }
-
-            &:hover::after {
-                opacity: 1;
-            }
+        & .price :first-child::after {
+            content: " ";
+            white-space: break-spaces;
         }
 
-        & .reserve-container {
-            height: 100%;
-            width: 100%;
+        & .score {
+            margin-block-start: 4px;
 
-            & .stay-info {
-                margin-inline-end: 16px;
+            & .star svg {
+                max-width: 10px;
+                max-height: 10px;
+            }
 
-                & .price :first-child::after {
-                    content: " ";
-                    white-space: break-spaces;
+            & .review-rate {
+                padding-inline-start: 4px;
+
+                &::after {
+                    content: " ·";
+                    white-space: nowrap;
                 }
+            }
 
-                & .score {
-                    margin-block-start: 4px;
-
-                    & .star svg {
-                        max-width: 10px;
-                        max-height: 10px;
-                    }
-
-                    & .review-rate {
-                        padding-inline-start: 4px;
-
-                        &::after {
-                            content: " ·";
-                            white-space: nowrap;
-                        }
-                    }
-
-                    & .review-count {
-                        margin-inline-start: 4px;
-                        color: $gray-clr0;
-                        white-space: nowrap;
-                    }
-                }
+            & .review-count {
+                margin-inline-start: 4px;
+                color: $gray-clr0;
+                white-space: nowrap;
             }
         }
     }

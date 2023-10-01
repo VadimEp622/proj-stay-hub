@@ -4,47 +4,18 @@
     & .info-container {
         margin-block-start: 10px;
 
-        & .info {
-            flex-wrap: wrap;
+        & .info > * {
+            white-space: nowrap;
 
-            & > * {
-                white-space: nowrap;
-
-                &.score-container .score::after {
-                    content: "·";
-                    margin-inline-end: 4px;
-                }
-
-                &:not(:first-child)::before {
-                    content: "·";
-                    margin-inline: 8px;
-                    color: $gray-clr0;
-                }
-            }
-        }
-
-        & .action-buttons > * {
-            position: relative;
-
-            & .overlay {
-                position: absolute;
-                inset: -10%;
-                background-color: $gray-clr6;
-                opacity: 0;
-                transition: opacity 0.3s ease;
-                border-radius: 6px;
+            &.score-container .score::after {
+                content: "·";
+                margin-inline-end: 4px;
             }
 
-            &:hover {
-                cursor: pointer;
-
-                & .overlay {
-                    opacity: 0.3;
-                }
-            }
-
-            &.share:hover {
-                cursor: not-allowed;
+            &:not(:first-child)::before {
+                content: "·";
+                margin-inline: 8px;
+                color: $gray-clr0;
             }
         }
     }

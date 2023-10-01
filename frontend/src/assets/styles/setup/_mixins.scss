@@ -1,6 +1,6 @@
 /******************** Breakpoint Mixins ********************/
 @mixin for-extra-small-layout {
-    @media (max-width: $small-breakpoint) {
+    @media (max-width: ($small-breakpoint - 1px)) {
         @content;
     }
 }

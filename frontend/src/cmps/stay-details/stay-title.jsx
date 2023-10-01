@@ -18,7 +18,7 @@ export function StayTitle({ stay, averageReviewScore, onLikeClicked, isStayWishl
                 <h1 className='ff-circular-regular fs26 lh30'>{stayName}</h1>
                 <section className='info-container fs14 flex space-between align-center'>
 
-                    <ul className='info ff-circular-semibold lh20 flex justify-start align-center'>
+                    <ul className='info ff-circular-semibold lh20 flex justify-start align-center flex-wrap'>
 
                         <li className='score-container flex'>
                             <section className='score flex align-center gap4'>

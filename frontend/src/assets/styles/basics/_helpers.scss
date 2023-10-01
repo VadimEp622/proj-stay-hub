@@ -109,11 +109,11 @@
     &.align-center {
         align-items: center;
     }
-    &.align-end {
-        align-items: end;
-    }
     &.align-baseline {
         align-items: baseline;
+    }
+    &.align-end {
+        align-items: end;
     }
     &.flex-wrap {
         flex-wrap: wrap;
@@ -147,8 +147,11 @@
 .underline {
     text-decoration: underline;
 }
-.uppertext {
+.uppercase {
     text-transform: uppercase;
+}
+.lowercase {
+    text-transform: lowercase;
 }
 .capitalize::first-letter {
     text-transform: capitalize;

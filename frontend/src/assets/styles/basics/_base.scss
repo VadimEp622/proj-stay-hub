@@ -10,7 +10,6 @@
 html {
     font-family: Circular-Regular;
     line-height: 1.6;
-    // letter-spacing: 0.0225rem;
     color: $black-clr1;
     scroll-behavior: smooth;
 }
@@ -19,8 +18,6 @@ body {
     font-size: rem(14px);
     color: $black-clr1;
     margin: 0;
-
-    // margin-right: 17px;// FOR MAIN SCROLL BAR
 }
 
 .app {
@@ -46,7 +43,6 @@ h5,
 h6 {
     font-family: Circular-Semibold;
     font-weight: 400;
-    // letter-spacing: 0.0225rem;
     color: $black-clr1;
     margin: 0;
     line-height: 1;
@@ -61,26 +57,13 @@ img {
 p {
     color: $black-clr1;
     margin: 0;
-    // margin: 0 0 1em;
-    // margin-block: 0;
-    // margin-inline: 0;
 }
 
 a {
-    // font-family: cereal-std;
-    // font-weight: 600;
     text-decoration: none;
     color: inherit;
 
     &:hover {
         text-decoration: none;
     }
-}
-
-a:hover {
-    text-decoration: none;
-}
-
-.uppertext {
-    text-transform: uppercase;
 }
