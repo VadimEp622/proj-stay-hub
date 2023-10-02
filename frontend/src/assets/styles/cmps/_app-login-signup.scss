@@ -1,7 +1,11 @@
 .login-signup-modal {
     width: 568px;
     border-radius: 12px;
-    background-color: $gray-clr-1;
+    max-width: 90vw;
+    overflow-x: hidden;
+    overflow-y: auto;
+    max-height: 90vh;
+    scrollbar-gutter: auto;
 
     & .header {
         padding-inline: 24px;

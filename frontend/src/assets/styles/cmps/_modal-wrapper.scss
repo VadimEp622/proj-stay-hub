@@ -1,7 +1,4 @@
 .modal-wrapper-container {
-    // position: absolute;
-    // height: 100vh;
-    // width: 100vw;
     z-index: 12;
     background-color: $transparent-clr5;
     position: fixed;
@@ -16,5 +13,8 @@
         position: relative;
         height: fit-content;
         z-index: 100000;
+        background-color: $gray-clr-1;
+        overflow: hidden;
+        border-radius: 12px;
     }
 }
