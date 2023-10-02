@@ -1,11 +1,11 @@
-import { utilService } from "../../../services/util.service"
+import { utilService } from '../../../services/util.service'
 
 export function CategoryScorePreview({ category, avgScore }) {
 
     return (
         <section className='category-score-preview flex align-center'>
 
-            <div className='category-name fs16 lh20'>{category}</div>
+            <div className='category-name fs16 lh20 capitalize'>{category}</div>
 
             <section className='category-score flex align-center justify-end'>
                 <section className='score-bar-container'>

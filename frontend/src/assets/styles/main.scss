@@ -9,8 +9,6 @@
 @import "basics/base";
 @import "basics/helpers";
 @import "basics/layout";
-@import "basics/links"; // what is this for?
-@import "basics/forms"; // what is this for too? is it usable/needed?
 
 // ************** Components **************
 // Reuseable
@@ -41,11 +39,11 @@
 // *** stay-index/stay-list/stay-preview ***
 @import "cmps/stay-index/stay-list/stay-preview/preview-image-carousel"; // ✔
 
-// *** stay-details ***   ---->TODO: needs cleaning up
+// *** stay-details *** // ✔
 @import "cmps/stay-details/stay-details-nav-reserve-sticky"; // ✔
 @import "cmps/stay-details/stay-title"; // ✔
 @import "cmps/stay-details/stay-photos"; // ✔
-@import "cmps/stay-details/stay-summary";
+@import "cmps/stay-details/stay-summary"; // ✔
 @import "cmps/stay-details/stay-reviews"; // ✔
 @import "cmps/stay-details/stay-map"; // ✔ - TODO: try to improve styling structure
 @import "cmps/stay-details/stay-host-details"; // ✔

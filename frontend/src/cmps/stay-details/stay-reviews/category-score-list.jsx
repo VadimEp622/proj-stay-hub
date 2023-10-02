@@ -1,4 +1,4 @@
-import { CategoryScorePreview } from "./category-score-preview"
+import { CategoryScorePreview } from './category-score-preview'
 
 export function CategoryScoreList({ stayCategoryScores }) {
 

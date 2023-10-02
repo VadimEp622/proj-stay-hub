@@ -2,11 +2,6 @@
     box-sizing: border-box;
 }
 
-::selection {
-    // background-color: $gray-clr-1;
-    // color: $transparent-clr0;
-}
-
 html {
     font-family: Circular-Regular;
     line-height: 1.6;
@@ -44,7 +39,9 @@ h6 {
     font-family: Circular-Semibold;
     font-weight: 400;
     color: $black-clr1;
-    margin: 0;
+    margin: 0 0;
+    padding: 0 0;
+    letter-spacing: 0;
 }
 
 img {
@@ -55,7 +52,9 @@ img {
 
 p {
     color: $black-clr1;
-    margin: 0;
+    margin: 0 0;
+    padding: 0 0;
+    letter-spacing: 0;
 }
 
 a {

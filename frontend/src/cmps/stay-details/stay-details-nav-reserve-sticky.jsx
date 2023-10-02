@@ -19,7 +19,7 @@ export function StayDetailsNavReserveSticky({ stay, selectedRange, onCheckAvaila
             <section className='stay-details-nav-reserve-sticky flex space-between justify-center'>
 
                 {!isMobile &&
-                    <nav nav className='links-container ff-circular-semibold fs14 lh20 flex align-center'>
+                    <nav className='links-container ff-circular-semibold fs14 lh20 flex align-center'>
                         <a href='#photos'>Photos</a>
                         <a href='#amenities'>Amenities</a>
                         <a href='#reviews'>Reviews</a>

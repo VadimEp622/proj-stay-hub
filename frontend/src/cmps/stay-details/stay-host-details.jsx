@@ -81,8 +81,8 @@ export function HostDetails({ stay, hostImgUrl, randomDateJoined }) {
                     </ul>
                     <button className='ff-circular-semibold fs16 lh20'>Contact Host</button>
                     <section className='protection-info flex space-between align-center gap16 fs12'>
-                        <img src='https://res.cloudinary.com/dnhn4zsy0/image/upload/v1685913828/airbnb-orotect_ohgcnp.svg' alt='airbnb protect' />
                         <span>To protect your payment, never transfer money or communicate outside of the Airbnb website or app.</span>
+                        <img src='https://res.cloudinary.com/dnhn4zsy0/image/upload/v1685913828/airbnb-orotect_ohgcnp.svg' alt='airbnb protect' />
                     </section>
                 </section>
             </section>
