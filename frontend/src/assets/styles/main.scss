@@ -53,13 +53,7 @@
 // *** stay-details/stay-summary ***
 @import "cmps/stay-details/stay-summary/stay-overview"; // ✔
 @import "cmps/stay-details/stay-summary/highlight-list"; // ✔
-@import "cmps/stay-details/stay-summary/order-sidebar";
 @import "cmps/stay-details/stay-summary/amenity-list"; // ✔
-// *** stay-details/stay-summary/order-sidebar ***
-@import "cmps/stay-details/stay-summary/order-sidebar/cost-and-review-score";
-@import "cmps/stay-details/stay-summary/order-sidebar/dates-and-guests";
-@import "cmps/stay-details/stay-summary/order-sidebar/pricing";
-@import "cmps/stay-details/stay-summary/order-sidebar/special-info";
 // *** stay-details/stay-reviews ***
 @import "cmps/stay-details/stay-reviews/stay-reviews-header"; // ✔
 @import "cmps/stay-details/stay-reviews/category-score-list"; // ✔

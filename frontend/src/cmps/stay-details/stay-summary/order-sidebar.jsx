@@ -1,9 +1,9 @@
 // Components
-import { CostAndReviewScore } from "./order-sidebar/cost-and-review-score.jsx"
-import { DatesAndGuests } from "./order-sidebar/dates-and-guests.jsx"
-import { Pricing } from "./order-sidebar/pricing.jsx"
-import { SpecialInfo } from "./order-sidebar/special-info.jsx"
-import { ButtonMain } from "../../_reuseable-cmps/button-main.jsx"
+import { CostAndReviewScore } from './order-sidebar/cost-and-review-score.jsx'
+import { DatesAndGuests } from './order-sidebar/dates-and-guests.jsx'
+import { Pricing } from './order-sidebar/pricing.jsx'
+import { SpecialInfo } from './order-sidebar/special-info.jsx'
+import { ButtonMain } from '../../_reuseable-cmps/button-main.jsx'
 
 
 
@@ -21,10 +21,10 @@ export function OrderSidebar({
 
 
     return (
-        <section className="order-sidebar">
-            <section className="order-block">
+        <section className='order-sidebar'>
+            <section className='order-block'>
 
-                <section className="order">
+                <section className='order'>
                     <CostAndReviewScore stay={stay} orderDetails={orderDetails} />
                     <DatesAndGuests
                         checkIn={checkIn}
@@ -46,8 +46,8 @@ export function OrderSidebar({
 
                 {checkIn && checkOut &&
                     <>
-                        <article className="assurance flex column align-center">
-                            <span className="fs14 lh18">You won't be charged yet</span>
+                        <article className='assurance flex column align-center'>
+                            <span className='fs14 lh18'>You won't be charged yet</span>
                         </article>
                         <Pricing orderDetails={orderDetails} />
                     </>
@@ -56,7 +56,6 @@ export function OrderSidebar({
             </section>
 
             <SpecialInfo stay={stay} />
-
         </section>
     )
 }

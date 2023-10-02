@@ -1,4 +1,4 @@
-import { userService } from "../../../../services/user.service.js"
+import { userService } from '../../../../services/user.service.js'
 
 export function DatesAndGuests({ checkIn, checkOut, guests, setGuests }) {
 
@@ -21,32 +21,32 @@ export function DatesAndGuests({ checkIn, checkOut, guests, setGuests }) {
 
     const guestsString = userService.buildGuestsString(guests)
     return (
-        <section className="dates-and-guests" title="Change here not implemented yet">
-            <section className="dates-container" onClick={(ev) => onDatesClick(ev)}>
+        <section className='dates-and-guests' title='Change here not implemented yet'>
+            <section className='dates-container' onClick={(ev) => onDatesClick(ev)}>
 
-                <div className="dates-container-border"></div>
-                <section className="dates flex">
+                <div className='dates-container-border'></div>
+                <section className='dates flex'>
 
-                    <article className="check-in">
-                        <span className="fs10 lh12 ff-circular-bold">check-in</span>
+                    <article className='check-in full'>
+                        <span className='fs10 lh12 ff-circular-bold uppercase'>check-in</span>
                         <span className={`fs14 lh18${checkIn ? '' : ' empty'}`}>{checkIn ? checkIn : 'Add date'}</span>
                     </article>
 
-                    <article className="check-out">
-                        <span className="fs10 lh12 ff-circular-bold">checkout</span>
+                    <article className='check-out full'>
+                        <span className='fs10 lh12 ff-circular-bold uppercase'>checkout</span>
                         <span className={`fs14 lh18${checkOut ? '' : ' empty'}`}>{checkOut ? checkOut : 'Add date'}</span>
                     </article>
                 </section>
 
             </section>
-            <section className="guests-container" onClick={(ev) => onGuestsClick(ev)}>
+            <section className='guests-container' onClick={(ev) => onGuestsClick(ev)}>
 
-                <div className="guests-container-border"></div>
-                <section className="guests">
+                <div className='guests-container-border'></div>
+                <section className='guests'>
 
-                    <article className="guest-block">
-                        <span className="fs10 lh12 ff-circular-bold">guests</span>
-                        <span className="fs14 lh18">{guestsString}</span>
+                    <article className='guest-block full'>
+                        <span className='fs10 lh12 ff-circular-bold uppercase'>guests</span>
+                        <span className='fs14 lh18'>{guestsString}</span>
                     </article>
 
                 </section>

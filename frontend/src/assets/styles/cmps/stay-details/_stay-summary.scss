@@ -3,6 +3,7 @@
 
     & .summary .date-container {
         padding-block: 48px;
+
         & > p {
             padding-block: 8px;
         }
@@ -10,12 +11,5 @@
         & .rdp-day_disabled {
             text-decoration: line-through;
         }
-    }
-
-    & .order-sidebar-container {
-        grid-column: 2;
-        position: relative;
-        margin-inline-start: 3rem;
-        margin-block-end: 2rem;
     }
 }

@@ -158,6 +158,198 @@
             }
         }
 
+        & .summary-container {
+            display: flex;
+            padding-block-start: 48px;
+
+            & .summary {
+                width: 58.3333%;
+            }
+        }
+
+        & .order-sidebar-container {
+            position: relative;
+            width: 33.3333%;
+            margin-inline-start: 8.333333333333332%;
+
+            & .order-sidebar {
+                position: sticky;
+                top: 130px;
+                padding-block-end: 48px;
+
+                & :is(.order-block, .special-info) {
+                    padding: 24px;
+                    border: 1px solid $gray-clr3;
+                    border-radius: 12px;
+                }
+
+                & .order-block {
+                    box-shadow: $box-shadow9;
+
+                    & .order {
+                        & .cost-and-review-score {
+                            margin-block-end: 24px;
+
+                            & .cost :last-child::before {
+                                content: " ";
+                                white-space: pre;
+                            }
+
+                            & .review-score {
+                                margin-block-start: 8px;
+
+                                & :not(:first-child) {
+                                    padding-inline-start: 4px;
+                                }
+
+                                & svg {
+                                    max-height: 12px;
+                                    max-width: 12px;
+                                }
+
+                                & .score::after {
+                                    content: " ·";
+                                    white-space: pre;
+                                }
+
+                                & .amount {
+                                    color: $gray-clr0;
+                                    white-space: nowrap;
+                                }
+                            }
+                        }
+
+                        & .dates-and-guests {
+                            margin-block-end: 16px;
+
+                            & :is(.dates-container, .guests-container) {
+                                position: relative;
+
+                                & :is(.dates-container-border, .guests-container-border) {
+                                    position: absolute;
+                                    width: 100%;
+                                    border: 2px solid transparent;
+                                    border-radius: 8px;
+                                }
+
+                                & :is(.dates, .guests) {
+                                    border-left: 1px solid $gray-clr2;
+                                    border-right: 1px solid $gray-clr2;
+
+                                    & :is(.check-in, .check-out, .guest-block) {
+                                        position: relative;
+
+                                        & :first-child {
+                                            position: absolute;
+                                            top: 12px;
+                                            left: 12px;
+                                            right: 12px;
+                                        }
+
+                                        & :last-child {
+                                            display: block;
+                                            min-height: 56px;
+                                            padding-block: 26px 10px;
+                                            padding-inline: 12px;
+                                        }
+                                    }
+                                }
+                            }
+
+                            & .dates-container {
+                                & .dates-container-border {
+                                    height: 100%;
+                                }
+
+                                & .dates {
+                                    border-top: 1px solid $gray-clr2;
+                                    border-top-left-radius: 8px;
+                                    border-top-right-radius: 8px;
+
+                                    & :is(.check-in, .check-out) {
+                                        border-bottom: 1px solid $gray-clr2;
+                                        overflow: hidden;
+
+                                        & .empty {
+                                            color: $gray-clr0;
+                                        }
+                                    }
+                                }
+
+                                & .check-out {
+                                    border-left: 1px solid $gray-clr2;
+                                }
+                            }
+
+                            & .guests-container {
+                                & .guests-container-border {
+                                    top: -2%;
+                                    height: 102%;
+                                }
+
+                                & .guests {
+                                    border-bottom: 1px solid $gray-clr2;
+                                    border-bottom-left-radius: 8px;
+                                    border-bottom-right-radius: 8px;
+                                }
+                            }
+
+                            &
+                                :is(.dates-container, .guests-container):hover
+                                :is(.guests-container-border, .dates-container-border) {
+                                border-color: $black-clr0;
+                                z-index: 1;
+                            }
+
+                            &:hover {
+                                cursor: no-drop;
+
+                                & .dates-container :is(.check-in, .check-out) {
+                                    border-bottom-color: transparent;
+                                }
+                            }
+                        }
+                    }
+
+                    & .assurance,
+                    & .assurance span {
+                        margin-block-start: 8px;
+                    }
+
+                    & .pricing {
+                        & .individual-fees {
+                            margin-block-start: 24px;
+
+                            & > *:not(:first-child) {
+                                padding-block-start: 16px;
+                            }
+                        }
+
+                        & .total {
+                            margin-block-start: 24px;
+                            padding-block-start: 24px;
+                            border-top: 1px solid $gray-clr3;
+                        }
+                    }
+                }
+
+                & .special-info {
+                    margin-block-start: 24px;
+
+                    & .info-container {
+                        padding-inline-end: 16px;
+                        & > * {
+                            margin-inline-end: 8px;
+                        }
+                    }
+
+                    & svg {
+                        overflow: visible;
+                    }
+                }
+            }
+        }
+
         & .amenity-list {
             display: grid;
             grid-template-columns: 1fr 1fr;
