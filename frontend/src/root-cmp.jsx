@@ -24,6 +24,14 @@ import { UserMsg } from './cmps/user-msg.jsx'
 import { AppMainModal } from './cmps/app-main-modal.jsx'
 
 
+// TODO: research where the following custom-hooks can be used:
+//          1. useEffectUpdate.js
+//          2. useForm.js
+
+// TODO: attempt to abstract some custom-hooks, with the final goal to immediately understand what each hook does,
+//    and to prevent too many hooks for one page cmp.
+
+
 
 // TODO: add more variety to userMsg, and make styling better!
 
