@@ -12,8 +12,6 @@ import { OrderList } from '../cmps/user-dashboard/order-list.jsx'
 import { DashboardStatistics } from '../cmps/user-dashboard/dashboard-statistics.jsx'
 
 
-// TODO: at 790px width remove footer
-
 export function UserDashboard() {
     const loggedInUser = useSelector(storeState => storeState.userModule.user)
     const navigate = useNavigate()
@@ -30,8 +28,8 @@ export function UserDashboard() {
 
 
     return (
-        <section className="dashboard-page">
-            <h1 className="dashboard-page-title fs30">My Dashboard</h1>
+        <section className='dashboard-page'>
+            <h1 className='dashboard-page-title fs30'>My Dashboard</h1>
             <DashboardStatistics dashboardData={dashboardData} />
             <OrderList loggedInUser={loggedInUser} />
         </section>

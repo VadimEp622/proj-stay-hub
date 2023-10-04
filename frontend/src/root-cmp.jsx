@@ -14,12 +14,14 @@ import { CLOSE_EXPANDED_HEADER, REMOVE_UNCLICKABLE_BG } from './store/system.red
 // Services
 import { socketService } from './services/socket.service.js'
 
+// Custom Hooks
+import useIsMobile from './customHooks/useIsMobile.js'
+
 // Components
 import { AppHeader } from './cmps/app-header.jsx'
 import { AppFooter } from './cmps/app-footer.jsx'
 import { UserMsg } from './cmps/user-msg.jsx'
 import { AppMainModal } from './cmps/app-main-modal.jsx'
-import useIsMobile from './customHooks/useIsMobile.js'
 
 
 // TODO: organize the footer: 1. to work as intended for all routes

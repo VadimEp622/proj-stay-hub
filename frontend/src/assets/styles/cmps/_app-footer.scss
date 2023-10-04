@@ -1,29 +1,20 @@
 .app-footer {
-    color: $transparent-clr0;
-    background-color: $gray-clr-1;
-    height: 50px;
     position: sticky;
     bottom: 0;
-    text-align: center;
+    height: 50px;
     border-top: 1px solid $gray-clr3;
-
-    & p {
-        letter-spacing: 0;
-        margin: 0;
-        padding-block-start: calc($padding-large - 7px);
-        padding-block-end: calc($padding-large - 6px);
-
-        span {
-            margin: 0 rem(8px);
-        }
-
-        svg {
-            margin: 0 rem(7px);
-        }
-    }
+    background-color: $gray-clr-1;
 
     &.details-layout {
+        position: static;
         background-color: $gray-clr5;
-        position: relative;
+        height: 70px;
+    }
+
+    & ul.left-list > *:not(:last-child)::after {
+        content: "·";
+        text-align: center;
+        display: inline-block;
+        width: 19px;
     }
 }
