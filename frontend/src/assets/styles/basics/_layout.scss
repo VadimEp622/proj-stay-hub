@@ -1,25 +1,4 @@
-.main-layout {
-    display: grid;
-
-    &.app {
-        grid-template-rows: auto 1fr auto;
-    }
-
-    > * {
-        grid-column: 2;
-
-        &.full {
-            grid-column: 1 /-1;
-        }
-    }
-
-    .line-header {
-        opacity: 0.3;
-        margin: 0;
-        padding: 0;
-    }
-}
-
+.main-layout,
 .details-layout {
     display: grid;
 

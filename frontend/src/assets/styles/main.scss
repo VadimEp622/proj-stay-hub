@@ -68,15 +68,14 @@
 @import "cmps/user-dashboard/dashboard-statistics";
 
 // __checked__ //
+@import "cmps/app-footer"; // ✔
 @import "cmps/gray-viewport";
 @import "cmps/modal-wrapper";
 @import "cmps/app-login-signup";
+@import "cmps/user-msg";
 
 // __unchecked__ //
 @import "cmps/app-header";
-@import "cmps/filter";
-@import "cmps/user-msg";
-@import "cmps/app-footer";
 
 // ************** Pages **************
 @import "pages/stay-index";
@@ -85,9 +84,3 @@
 @import "pages/user-dashboard"; // ✔ - TODO: overview/charts perfect responsiveness
 @import "pages/user-wishlist"; // ✔
 @import "pages/order-confirmation";
-
-// below currently redundant (temp)
-@import "pages/user-details"; // what is this?
-@import "pages/add-stay";
-@import "pages/review-index";
-@import "pages/about-us";

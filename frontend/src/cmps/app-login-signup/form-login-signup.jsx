@@ -1,11 +1,9 @@
 import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
 
-
 import { RegistrationInput } from './form-login-signup/registration-input.jsx'
 import { ValidationError } from './form-login-signup/validation-error.jsx'
 import { ButtonMain } from '../_reuseable-cmps/button-main.jsx'
-
 
 
 const validationSchema = Yup.object().shape({

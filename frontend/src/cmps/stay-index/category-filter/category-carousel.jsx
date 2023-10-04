@@ -1,12 +1,12 @@
 // Node modules
-import Carousel from "react-multi-carousel"
-import "react-multi-carousel/lib/styles.css"
+import Carousel from 'react-multi-carousel'
+import 'react-multi-carousel/lib/styles.css'
 
 // Services
-import { ARROW_LEFT_FAT, ARROW_RIGHT_FAT } from "../../../services/svg.service.js"
+import { ARROW_LEFT_FAT, ARROW_RIGHT_FAT } from '../../../services/svg.service.js'
 
 // Components
-import SvgHandler from "../../_reuseable-cmps/svg-handler.jsx"
+import SvgHandler from '../../_reuseable-cmps/svg-handler.jsx'
 
 
 
@@ -14,16 +14,16 @@ export function CategoryCarousel({ images, selectedCategory, handleClick }) {
     const isMobileDevice = window.innerWidth <= 464
 
     const CustomLeftArrow = ({ onClick }) => (
-        <section className="custom-arrow-container left">
-            <button className="custom-arrow left" onClick={onClick} >
+        <section className='custom-arrow-container left'>
+            <button className='custom-arrow left' onClick={onClick} >
                 <SvgHandler svgName={ARROW_LEFT_FAT} />
             </button >
         </section>
     )
 
     const CustomRightArrow = ({ onClick }) => (
-        <section className="custom-arrow-container right">
-            <button className="custom-arrow right" onClick={onClick}  >
+        <section className='custom-arrow-container right'>
+            <button className='custom-arrow right' onClick={onClick}  >
                 <SvgHandler svgName={ARROW_RIGHT_FAT} />
             </button >
         </section>
@@ -106,8 +106,8 @@ export function CategoryCarousel({ images, selectedCategory, handleClick }) {
             minimumTouchDrag={80}
             renderArrowsWhenDisabled={false}
             arrows
-            className="category-bar"
-            itemClass="category-item width-100-percent"
+            className='category-bar'
+            itemClass='category-item width-100-percent'
             renderButtonGroupOutside={false}
             responsive={responsive}
             rewind={true}
