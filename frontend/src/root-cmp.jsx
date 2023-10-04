@@ -24,13 +24,8 @@ import { AppMainModal } from './cmps/app-main-modal.jsx'
 // TODO: organize the footer: 1. to work as intended for all routes
 //                            2. on stay-details mobile, margin-block-start:80px;
 
-
 // TODO: add more variety to userMsg, and make styling better!
 
-
-
-// TODO-priority-high: make login-signup modal work for mobile
-// TODO-priority-high: make "stay-details.jsx" work for mobile (either attempt at convert existing, or build new one)
 // TODO-priority-high: make all pages start from top! (some pages start scrolling from middle on route change)
 
 
@@ -43,8 +38,8 @@ import { AppMainModal } from './cmps/app-main-modal.jsx'
 // TODO-medium: handle server interactions with minimum data transfer | sockets
 
 
-// TODO-medium: in "stay-details.jsx", in reviews, clicking "show more" changes profile pictures,
-//     as well as clicking on "photos/amenities/reviews/location" in alt-header 
+// TODO-medium: in "stay-details.jsx", In navbar, clicking on: "photos/amenities/reviews/location"
+//       makes it so ,in reviews, profile pictures keep changing.
 
 
 export function RootCmp() {
