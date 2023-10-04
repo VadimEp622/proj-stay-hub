@@ -1,25 +1,16 @@
 .user-msg {
-    color: $gray-clr-1;
-    padding: 16px;
-    font-size: 1.4em;
     position: fixed;
     top: 8.5%; /* Position the container 10 pixels from the top */
     left: 50%; /* Horizontally center the modal */
     transform: translateX(-50%); /* Adjust for the half-width of the modal */
-    background-color: $gray-clr7;
+    max-width: 400px;
+    padding: 16px;
     z-index: 11;
     border-radius: 12px;
-    width: 90%;
-    max-width: 400px;
-
-    button {
-        float: right;
-        border: 0;
-        border-radius: 50%;
-        margin: 5px;
-        background-color: $black-clr1;
-        color: $gray-clr-1;
-    }
+    background-color: $gray-clr7;
+    color: $gray-clr-1;
+    opacity: 0.8;
+    overflow: hidden;
 
     &.success {
         background-color: $positive-clr1;

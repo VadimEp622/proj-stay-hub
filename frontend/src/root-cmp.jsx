@@ -12,7 +12,7 @@ import { store } from './store/store.js'
 import { CLOSE_EXPANDED_HEADER, REMOVE_UNCLICKABLE_BG } from './store/system.reducer.js'
 
 // Services
-import { socketService, SOCKET_EMIT_STAY_RESERVED, SOCKET_EMIT_USER_WATCH } from './services/socket.service.js'
+import { socketService } from './services/socket.service.js'
 
 // Components
 import { AppHeader } from './cmps/app-header.jsx'
@@ -33,13 +33,13 @@ import useIsMobile from './customHooks/useIsMobile.js'
 // **** Abstract ****
 // TODO-priority-high: organize cmps
 // TODO-priority-high: firefox site looks very different from chrome, figure out a solution -> figured it out, 
-//            having "font-weight:400;", or not having it, makes firefox and chrome behave differently (maybe their defaults are different).
+//            having 'font-weight:400;', or not having it, makes firefox and chrome behave differently (maybe their defaults are different).
 
 // TODO-medium: research and decide which sizes in scss to convert to vars, and whether they needs to be rem/em dependant
 // TODO-medium: handle server interactions with minimum data transfer | sockets
 
 
-// TODO-medium: in "stay-details.jsx", In navbar, clicking on: "photos/amenities/reviews/location"
+// TODO-medium: in 'stay-details.jsx', In navbar, clicking on: 'photos/amenities/reviews/location'
 //       makes it so ,in reviews, profile pictures keep changing.
 
 
@@ -68,7 +68,7 @@ export function RootCmp() {
 
     return (
         <>
-            {isUnclickableBg && <div className="gray-viewport" onClick={(ev) => closeBackground(ev)}></div>}
+            {isUnclickableBg && <div className='gray-viewport' onClick={(ev) => closeBackground(ev)}></div>}
 
             {appModal && <AppMainModal modalType={appModal} />}
 
