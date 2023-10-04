@@ -12,7 +12,6 @@ import { OPEN_EXPANDED_HEADER_MODAL } from '../store/system.reducer.js'
 import { utilService } from '../services/util.service.js'
 
 // Custom hooks
-import useIsMobile from '../customHooks/useIsMobile.js'
 import { useHeaderFilterBy } from '../customHooks/useHeaderFilterBy.js'
 
 // Components
@@ -26,12 +25,11 @@ import { Loader } from './_reuseable-cmps/loader.jsx'
 // TODO-low-priority: change in filterBy, "country" and "city" keys, to "where" key. (must also change in backend, so keep in mind the deployment)
 
 
-export function AppHeader({ isStayDetailsPage }) {
+export function AppHeader({ isStayDetailsPage, isMobile }) {
     const [filterBy, setFilterBy] = useHeaderFilterBy()
     const isFilterExpanded = useSelector(storeState => storeState.systemModule.isFilterExpanded)
     const [selectedExperienceTab, setSelectedExperienceTab] = useState('stays')
     const [selectedFilterBox, setSelectedFilterBox] = useState('where')
-    const isMobile = useIsMobile()
     const navigate = useNavigate()
 
 

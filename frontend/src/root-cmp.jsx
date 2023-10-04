@@ -19,6 +19,7 @@ import { AppHeader } from './cmps/app-header.jsx'
 import { AppFooter } from './cmps/app-footer.jsx'
 import { UserMsg } from './cmps/user-msg.jsx'
 import { AppMainModal } from './cmps/app-main-modal.jsx'
+import useIsMobile from './customHooks/useIsMobile.js'
 
 
 // TODO: organize the footer: 1. to work as intended for all routes
@@ -47,6 +48,7 @@ export function RootCmp() {
     const appModal = useSelector(storeState => storeState.systemModule.appModal)
     const location = useLocation()
     const isStayDetailsPage = location.pathname.startsWith('/stay/')
+    const isMobile = useIsMobile()
 
 
     useEffect(() => {
@@ -71,13 +73,13 @@ export function RootCmp() {
             {appModal && <AppMainModal modalType={appModal} />}
 
             <section className={`app ${!isStayDetailsPage ? 'main-layout' : 'details-layout'}`}>
-                <AppHeader isStayDetailsPage={isStayDetailsPage} />
+                <AppHeader isStayDetailsPage={isStayDetailsPage} isMobile={isMobile} />
                 <main className={`app-main${isStayDetailsPage ? ' full details-layout' : ''}`}>
                     <Routes>
                         {routes.map(route => <Route key={route.path} exact={true} element={route.component} path={route.path} />)}
                     </Routes>
                 </main>
-                {window.innerWidth > 750 && <AppFooter isStayDetailsPage={isStayDetailsPage} />}
+                {!isMobile && <AppFooter isStayDetailsPage={isStayDetailsPage} />}
                 <UserMsg />
             </section>
         </>
