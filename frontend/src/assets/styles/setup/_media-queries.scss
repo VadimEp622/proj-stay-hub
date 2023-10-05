@@ -176,6 +176,8 @@
 
         & .stay-photos-container {
             grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: minmax(auto, 50%) minmax(auto, 50%);
+            max-height: 350px;
             border-radius: 12px;
             overflow: hidden;
             gap: 8px;
