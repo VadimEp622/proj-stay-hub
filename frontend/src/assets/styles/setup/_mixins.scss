@@ -1,3 +1,5 @@
+@use "sass:math";
+
 /******************** Breakpoint Mixins ********************/
 @mixin for-extra-small-layout {
     @media (max-width: ($small-breakpoint - 1px)) {
@@ -31,30 +33,49 @@
 
 /*************************************************/
 /***************** Media  Mixins *****************/
-@mixin aspect-ratio($width, $height) {
-    position: relative;
-    overflow: hidden;
 
-    &::before {
-        display: block;
-        content: "";
-        width: 100%;
-        padding-top: calc(($height / $width) * 100%);
-    }
+@mixin aspect($width: 16, $height: 9) {
+    aspect-ratio: math.div($width, $height);
 
-    > * {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-    }
+    @supports not (aspect-ratio: math.div($width, $height)) {
+        &::before {
+            content: "";
+            float: left;
+            padding-top: calc((#{$height} / #{$width}) * 100%);
+        }
 
-    > img {
-        height: 100%;
-        object-fit: cover;
+        &::after {
+            content: "";
+            display: block;
+            clear: both;
+        }
     }
 }
+
+// @mixin aspect-ratio($width, $height) {
+//     position: relative;
+//     overflow: hidden;
+
+//     &::before {
+//         display: block;
+//         content: "";
+//         width: 100%;
+//         padding-top: calc(($height / $width) * 100%);
+//     }
+
+//     > * {
+//         position: absolute;
+//         top: 0;
+//         left: 0;
+//         right: 0;
+//         bottom: 0;
+//     }
+
+//     > img {
+//         height: 100%;
+//         object-fit: cover;
+//     }
+// }
 
 // Mixin for removing hover effects on iphone screen
 @mixin hover-supported {

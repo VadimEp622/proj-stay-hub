@@ -182,14 +182,14 @@
 
 // Media helpers
 
-.square-ratio {
-    @include aspect-ratio(1, 1);
-}
+// .square-ratio {
+//     @include aspect-ratio(1, 1);
+// }
 
-.video-ratio {
-    @include aspect-ratio(16, 9);
-}
+// .video-ratio {
+//     @include aspect-ratio(16, 9);
+// }
 
-.portrait-ratio {
-    @include aspect-ratio(9, 16);
-}
+// .portrait-ratio {
+//     @include aspect-ratio(9, 16);
+// }

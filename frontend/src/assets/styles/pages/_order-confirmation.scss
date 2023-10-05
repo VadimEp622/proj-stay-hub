@@ -128,7 +128,9 @@
                 padding-bottom: 24px;
 
                 & img {
-                    aspect-ratio: 1.18/1;
+                    // aspect-ratio: 1.18/1;
+                    @include aspect(1.18, 1);
+
                     width: 124px;
                     object-fit: cover;
                     border-radius: 8px;
