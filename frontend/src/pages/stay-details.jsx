@@ -6,7 +6,6 @@ import { useSelector } from 'react-redux'
 import { utilService } from '../services/util.service.js'
 import { orderService } from '../services/order.service.js'
 import { stayService } from '../services/stay.service.js'
-// import { socketService } from '../services/socket.service.js'
 
 // Store
 import { setOrder, toggleWishlist } from '../store/user.actions.js'
@@ -14,11 +13,8 @@ import { setAppModal } from '../store/system.action.js'
 import { SET_APP_MODAL_LOGIN } from '../store/system.reducer.js'
 
 // Custom hooks
-import useLoadStay from '../customHooks/useLoadStay.js'
-import useStayDates from '../customHooks/useStayDates.js'
-import useStayGuests from '../customHooks/useStayGuests.js'
-import useStayDetails from '../customHooks/useStayDetails.js'
 import useIsMobile from '../customHooks/useIsMobile.js'
+import useStayDetails from '../customHooks/useStayDetails.js'
 import useStayDetailsIntersectionObserver from '../customHooks/useStayDetailsIntersectionObserver.js'
 
 // Components
@@ -34,25 +30,12 @@ import { StayPhotos } from '../cmps/stay-details/stay-photos.jsx'
 import { StayDetailsMobileReturnHeader } from '../cmps/stay-details/stay-details-mobile-return-header.jsx'
 
 
-
-// ---------------------------------------------
-// --------------- High Priority ---------------
-// ---------------------------------------------
-// TODO: take .mobile/:not(.mobile) styling from stay-details, and join it into media-queries sass file,
-//    so that app will perform as mobile-first
-// ---------------------------------------------
-// ---------------------------------------------
-
-
 // --------------------------------------------
 // --------------- Low Priority ---------------
 // --------------------------------------------
 // TODO: I made pricing change depending on guest amount because I spotted similar behavior in airbnb,
 //    need to check again, if it's there, if it's only in some stays, or if it's in none at all,
 //    and then decide if I want to keep such feature.
-
-// TODO: consider combining all those hooks into one hook, since they use data from loading a stay,
-//    maybe something like:  [stay, reservation, setReservation] = useStayDetails(stayId)
 // --------------------------------------------
 // --------------------------------------------
 
@@ -63,11 +46,15 @@ export function StayDetails() {
     const loggedInUser = useSelector(storeState => storeState.userModule.user)
     const isMobile = useIsMobile()
 
-    const [stay, hostImgUrl] = useLoadStay(stayId)
-    const [guests, setGuests] = useStayGuests()
-    const [checkIn, checkOut, selectedRange, setSelectedRange] = useStayDates(stay)
-    const [orderDetails] = useStayDetails(stay, checkIn, checkOut, guests)
-    useStayDetailsIntersectionObserver(isStayDetailsLoading() || isMobile)
+    const [
+        isLoading,
+        stay, hostImgUrl,
+        checkIn, checkOut, selectedRange, setSelectedRange,
+        guests, setGuests,
+        orderDetails,
+    ] = useStayDetails(stayId)
+    useStayDetailsIntersectionObserver(isLoading || isMobile)
+
 
 
     function isStayWishlist() {
@@ -98,7 +85,6 @@ export function StayDetails() {
         }
         else {
             const order = createOrder(orderDetails)
-            console.log('order', order)
             setOrder(order)
             navigate(`/stay/book/${stay._id}`)
         }
@@ -168,11 +154,8 @@ export function StayDetails() {
         setSelectedRange(prev => ({ ...prev, ...newRange }))
     }
 
-    function isStayDetailsLoading() {
-        return (!stay || !selectedRange || Object.keys(orderDetails).length === 0)
-    }
 
-    if (isStayDetailsLoading()) return <Loader />
+    if (isLoading) return <Loader />
 
     const stayCategoryScores = stayService.getStayCategoryScores(stay.reviews)
     const randomDateJoined = utilService.getRandomMonthAndYear()

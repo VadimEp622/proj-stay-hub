@@ -1,5 +1,5 @@
 // Node modules
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { startOfDay } from 'date-fns'
 
@@ -7,19 +7,21 @@ import { startOfDay } from 'date-fns'
 import { stayService } from '../services/stay.service.js'
 
 
-export default function useStayDates(stay) {
+export default function useStayDetailsDates(stay, isLoadingStay) {
+    const isLoadingDatesRef = useRef(true)
     const DAY = useMemo(() => 1000 * 60 * 60 * 24, [])
     const filterBy = useSelector(storeState => storeState.stayModule.filterBy)
     const [selectedRange, setSelectedRange] = useState(null)
 
 
     useEffect(() => {
-        if (stay) {
+        if (!isLoadingStay && Object.keys(stay).length > 0) {
             const initialState = getInitialState(filterBy)
             setSelectedRange(initialState)
+            isLoadingDatesRef.current = false
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [stay])
+    }, [isLoadingStay, stay])
 
 
     function getInitialState(filterBy) {
@@ -37,5 +39,5 @@ export default function useStayDates(stay) {
     const checkIn = selectedRange ? stayService.getDate(selectedRange?.from) : ''
     const checkOut = selectedRange ? stayService.getDate(selectedRange?.to) : ''
 
-    return [checkIn, checkOut, selectedRange, setSelectedRange]
+    return [isLoadingDatesRef.current, checkIn, checkOut, selectedRange, setSelectedRange]
 }

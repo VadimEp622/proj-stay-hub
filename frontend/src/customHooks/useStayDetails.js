@@ -1,48 +1,38 @@
-// Node modules
-import { useEffect, useMemo, useState } from 'react'
-
-// Services
-import { stayService } from '../services/stay.service.js'
-import { utilService } from '../services/util.service.js'
-
-
-export default function useStayDetails(stay, checkIn, checkOut, guests) {
-
-    const immutableFees = useMemo(() => ({
-        serviceFee: utilService.getRandomIntInclusive(100, 500),
-        cleaningFee: utilService.getRandomIntInclusive(100, 500)
-    }), [])
-
-    const [orderDetails, setOrderDetails] = useState({})
+import { useEffect, useRef, useState } from 'react'
+import { useSelector } from 'react-redux'
+import { userService } from '../services/user.service'
+import useLoadStay from './useLoadStay'
+import useStayDetailsDates from './useStayDetailsDates'
+import useStayDetailsGuests from './useStayDetailsGuests'
+import useStayDetailsOrderDetails from './useStayDetailsOrderDetails'
 
 
-    useEffect(() => {
-        if (stay && checkIn && checkOut) handleOrderDetailsUpdate()
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [stay, checkIn, checkOut, guests])
+export default function useStayDetails(stayId) {
+    const [isLoading, setIsLoading] = useState(true)
+    const stay = useSelector(storeState => storeState.stayModule.stay)
+    const isLoadingStay = useSelector(storeState => storeState.stayModule.isLoadingStay)
+    const stayHostImgUrlRef = useRef()
+
+    useLoadStay(stayId)
+    const [isLoadingDates, checkIn, checkOut, selectedRange, setSelectedRange] = useStayDetailsDates(stay, isLoadingStay)
+    const [guests, setGuests] = useStayDetailsGuests()// TODO: isLoadedGuests
+    const [isLoadingOrderDetails, orderDetails] = useStayDetailsOrderDetails(isLoadingDates, stay, checkIn, checkOut, guests)// TODO: !isLoadedDates && !isLoadedGuests
 
 
     useEffect(() => {
-        if (Object.keys(orderDetails).length > 0 && (!checkIn || !checkOut)) handleOrderDetailsDatesReset()
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [checkIn, checkOut])
+        if (!isLoadingStay && Object.keys(stay).length > 0) stayHostImgUrlRef.current = userService.randomHostImg()
+    }, [isLoadingStay, stay])
 
-    function handleOrderDetailsUpdate() {
-        setOrderDetails(prevOrder => ({ ...prevOrder, ...getUpdatedValues() }))
-    }
+    useEffect(() => {
+        if (!isLoadingOrderDetails) setIsLoading(false)
+    }, [isLoadingOrderDetails])
 
-    function handleOrderDetailsDatesReset() {
-        setOrderDetails(prevOrder => ({ ...prevOrder, nightsCount: null }))
-    }
 
-    function getUpdatedValues() {
-        return {
-            price: Math.floor(stay.price + ((stay.price / 8) * (guests.adults + guests.children - 1))),
-            guestCount: guests.adults + guests.children,
-            nightsCount: stayService.calculateHowManyNights(Date.parse(checkIn), Date.parse(checkOut)),
-            ...immutableFees
-        }
-    }
-
-    return [orderDetails]
+    return [
+        isLoading,
+        stay, stayHostImgUrlRef.current,
+        checkIn, checkOut, selectedRange, setSelectedRange,
+        guests, setGuests,
+        orderDetails,
+    ]
 }

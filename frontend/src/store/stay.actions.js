@@ -1,7 +1,7 @@
 // Store
 import { store } from './store.js'
 import {
-    ADD_STAY, REMOVE_STAY, SET_STAYS, UNDO_REMOVE_STAY, UPDATE_STAY, UPDATE_FILTER_BY, SET_MODAL_OPEN, RESET_FILTER_BY
+    ADD_STAY, REMOVE_STAY, SET_STAYS, UNDO_REMOVE_STAY, UPDATE_STAY, UPDATE_FILTER_BY, SET_MODAL_OPEN, RESET_FILTER_BY, SET_STAY, LOADING_STAY_START, LOADING_STAY_END, SET_NEW_ORDER
 } from "./stay.reducer.js"
 import { LOADING_DONE, LOADING_START } from "./system.reducer.js"
 
@@ -56,6 +56,19 @@ export async function loadStays(filterBy) {
         showErrorMsg('Failed Loading Stays')
     } finally {
         store.dispatch({ type: LOADING_DONE })
+    }
+}
+
+export async function loadStay(stayId) {
+    try {
+        store.dispatch({ type: LOADING_STAY_START })
+        const stay = await stayService.getById(stayId)
+        store.dispatch({ type: SET_STAY, stay })
+    } catch (err) {
+        showErrorMsg('Failed Loading Stay')
+        throw new Error('Failed Loading Stay', err)
+    } finally {
+        store.dispatch({ type: LOADING_STAY_END })
     }
 }
 
