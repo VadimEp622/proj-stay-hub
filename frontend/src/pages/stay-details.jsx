@@ -96,7 +96,7 @@ export function StayDetails() {
         navigate('/')
     }
 
-    function createOrder({ guestCount, price, nightsCount, serviceFee, cleaningFee }) {
+    function createOrder({ guestCount, singleNightPrice, nightsCount, serviceFee, cleaningFee }) {
         return {
             buyer: {
                 _id: loggedInUser._id,
@@ -110,16 +110,18 @@ export function StayDetails() {
                 img: hostImgUrl,
                 joined: utilService.getRandomMonthAndYear()
             },
-            checkIn,
-            checkOut,
-            nightsCount,
-            guestCount,
-            nightsPrice: nightsCount * stay.price,
+            orderDetails: {
+                checkIn,
+                checkOut,
+                nightsCount,
+                guestCount,
+                singleNightPrice
+            },
             orderPrice: {
-                price,
+                price: (singleNightPrice * nightsCount),
                 serviceFee,
                 cleaningFee,
-                total: (price * nightsCount) + serviceFee + cleaningFee
+                total: (singleNightPrice * nightsCount) + serviceFee + cleaningFee
             },
             stayDetails: {
                 id: stay._id,
@@ -132,7 +134,6 @@ export function StayDetails() {
             },
             explore: orderService.getOrderExploreList(),
             status: "Pending",
-            _id: utilService.makeId()// TODO: remove this, seems redundant
         }
     }
 

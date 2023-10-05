@@ -1,25 +1,25 @@
 // Node modules
-import { useEffect } from "react"
-import { useSelector } from "react-redux"
-import { Link, useLocation, useNavigate } from "react-router-dom"
+import { useEffect } from 'react'
+import { useSelector } from 'react-redux'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 
 // Services
-import { ARROW_LEFT } from "../services/svg.service.js"
-import { socketService, SOCKET_EVENT_STAY_RESERVED } from "../services/socket.service.js"
-import { showErrorMsg } from "../services/event-bus.service.js"
+import { ARROW_LEFT } from '../services/svg.service.js'
+import { socketService, SOCKET_EVENT_STAY_RESERVED } from '../services/socket.service.js'
+import { showErrorMsg } from '../services/event-bus.service.js'
 
 // Store
-import { addConfirmedTrip } from "../store/user.actions.js"
+import { addConfirmedTrip } from '../store/user.actions.js'
 
 // Custom hooks
-import useScrollToTop from "../customHooks/useScrollToTop.js"
+import useScrollToTop from '../customHooks/useScrollToTop.js'
 
 // Components
-import { ButtonMain } from "../cmps/_reuseable-cmps/button-main.jsx"
-import SvgHandler from "../cmps/_reuseable-cmps/svg-handler.jsx"
-import { Loader } from "../cmps/_reuseable-cmps/loader.jsx"
-import { ConfirmationMain } from "../cmps/order-confirmation/confirmation-main.jsx"
-import { ConfirmationSidebar } from "../cmps/order-confirmation/confirmation-sidebar.jsx"
+import { ButtonMain } from '../cmps/_reuseable-cmps/button-main.jsx'
+import SvgHandler from '../cmps/_reuseable-cmps/svg-handler.jsx'
+import { Loader } from '../cmps/_reuseable-cmps/loader.jsx'
+import { ConfirmationMain } from '../cmps/order-confirmation/confirmation-main.jsx'
+import { ConfirmationSidebar } from '../cmps/order-confirmation/confirmation-sidebar.jsx'
 
 
 // TODO: set redirect when clicking back, using history, instead of new link
@@ -51,7 +51,6 @@ export function OrderConfirmation() {
 
     async function handleOrderConfirm() {
         try {
-            console.log('onOrderConfirm -> orderObject', orderObject)
             await addConfirmedTrip(orderObject)
             socketService.emit(SOCKET_EVENT_STAY_RESERVED, orderObject.seller._id)
             navigate('/trips')
@@ -65,21 +64,21 @@ export function OrderConfirmation() {
     if (Object.keys(orderObject).length === 0) return <Loader />
     const stayId = orderObject.stayDetails.id
     return (
-        <section className="order-confirmation-page" >
+        <section className='order-confirmation-page' >
 
-            <section className="confirmation-header flex align-center">
-                <Link className="return-btn" to={`/stay/${stayId}`} title="return">
+            <section className='confirmation-header flex align-center'>
+                <Link className='return-btn' to={`/stay/${stayId}`} title='return'>
                     <SvgHandler svgName={ARROW_LEFT} />
                 </Link>
                 <h2>Confirm and pay</h2>
             </section>
 
-            <section className="confirmation-main-container">
+            <section className='confirmation-main-container'>
                 <ConfirmationMain orderObject={orderObject} />
                 <ConfirmationSidebar orderObject={orderObject} />
             </section>
 
-            <section className="confirm-btn">
+            <section className='confirm-btn'>
                 <ButtonMain text={'Confirm and pay'} onClickButton={onOrderConfirm} />
             </section>
 

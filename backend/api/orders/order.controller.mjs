@@ -46,18 +46,14 @@ export async function deleteOrder(req, res) {
 export async function addOrder(req, res) {
     const loggedinUser = req.loggedinUser
     try {
-        const { buyer, seller, checkIn, checkOut, orderPrice, guestCount, stayDetails, explore, nightsCount, nightsPrice, status } = req.body
+        const { buyer, seller, orderDetails, orderPrice, stayDetails, explore, status } = req.body
         const order = {
             buyer,
             seller,
-            checkIn,
-            checkOut,
+            orderDetails,
             orderPrice,
-            guestCount,
             stayDetails,
             explore,
-            nightsCount,
-            nightsPrice,
             status,
         }
         const orderRes = await orderService.add(order)

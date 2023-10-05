@@ -43,7 +43,7 @@ export default function useStayDetailsOrderDetails(isLoadingDates, stay, checkIn
 
     function getUpdatedValues() {
         return {
-            price: Math.floor(stay.price + ((stay.price / 8) * (guests.adults + guests.children - 1))),
+            singleNightPrice: Math.floor(stay.price + ((stay.price / 8) * (guests.adults + guests.children - 1))),
             guestCount: guests.adults + guests.children,
             nightsCount: stayService.calculateHowManyNights(Date.parse(checkIn), Date.parse(checkOut)),
             ...immutableFees

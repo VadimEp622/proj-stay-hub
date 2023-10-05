@@ -4,11 +4,12 @@ import { utilService } from '../../../services/util.service.js'
 
 export function OrderPreview({ order, onApprove, onReject }) {
 
-    const timeRange = utilService.getFormattedTimeRange(order.content.checkIn, order.content.checkOut)
     const orderStatus = order.content.status
     const buyerPic = order.content.buyer.img
     const buyerName = order.content.buyer.fullname
     const buyerJoinDate = order.content.buyer.joined
+    const { checkIn, checkOut } = order.content.orderDetails
+    const timeRange = utilService.getFormattedTimeRange(checkIn, checkOut)
     return (
         <tr className='flex'>
             <td className='guest-column'>

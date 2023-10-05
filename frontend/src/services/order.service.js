@@ -82,8 +82,10 @@ function getDemoOrders() {
                     fullname: 'John Doe',
                     joined: 'Mar 2023'
                 },
-                checkIn: 'Jun 23 2023',
-                checkOut: 'Jun 27 2023',
+                orderDetails: {
+                    checkIn: 'Jun 23 2023',
+                    checkOut: 'Jun 27 2023',
+                },
                 status: 'Pending'
             }
         },
@@ -95,8 +97,10 @@ function getDemoOrders() {
                     fullname: 'Jane Smith',
                     joined: 'Jun 2015'
                 },
-                checkIn: 'Mar 11 2023',
-                checkOut: 'Mar 17 2023',
+                orderDetails: {
+                    checkIn: 'Mar 11 2023',
+                    checkOut: 'Mar 17 2023',
+                },
                 status: 'Approved'
             }
         },
@@ -108,8 +112,10 @@ function getDemoOrders() {
                     fullname: 'Michael Johnson',
                     joined: 'Nov 2020'
                 },
-                checkIn: 'Feb 15 2023',
-                checkOut: 'Feb 18 2023',
+                orderDetails: {
+                    checkIn: 'Feb 15 2023',
+                    checkOut: 'Feb 18 2023',
+                },
                 status: 'Rejected'
             }
         }

@@ -12,7 +12,7 @@ export function CostAndReviewScore({ stay, orderDetails }) {
     return (
         <section className='cost-and-review-score flex space-between align-center flex-wrap col-gap8'>
             <article className='cost flex align-end'>
-                <span className='fs22 lh26 ff-circular-semibold'>${utilService.addCommas(orderDetails.price)}</span>
+                <span className='fs22 lh26 ff-circular-semibold'>${utilService.addCommas(orderDetails.singleNightPrice)}</span>
                 <span className='fs16 lh20'>night</span>
             </article>
             <article className='review-score flex align-center'>

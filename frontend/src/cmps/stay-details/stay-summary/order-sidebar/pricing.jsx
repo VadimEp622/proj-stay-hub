@@ -2,15 +2,15 @@ import { utilService } from "../../../../services/util.service.js"
 
 export function Pricing({ orderDetails }) {
 
-    const { price, nightsCount, serviceFee, cleaningFee } = orderDetails
-    const totalPrice = (price * nightsCount) + serviceFee + cleaningFee
+    const { singleNightPrice, nightsCount, serviceFee, cleaningFee } = orderDetails
+    const totalPrice = (singleNightPrice * nightsCount) + serviceFee + cleaningFee
     return (
         <section className="pricing">
 
             <section className="individual-fees">
                 <article className="flex space-between">
-                    <span className="fs16 lh20 underline">${price.toLocaleString()} x {nightsCount} nights</span>
-                    <span className="fs16 lh20">${price * nightsCount}</span>
+                    <span className="fs16 lh20 underline">${singleNightPrice.toLocaleString()} x {nightsCount} nights</span>
+                    <span className="fs16 lh20">${singleNightPrice * nightsCount}</span>
                 </article>
                 <article className="flex space-between">
                     <span className="fs16 lh20 underline">Cleaning fee</span>
