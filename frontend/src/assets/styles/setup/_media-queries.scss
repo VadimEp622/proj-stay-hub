@@ -65,6 +65,10 @@
             position: sticky;
             width: 100%;
             left: 0;
+
+            & .photo-preview {
+                max-height: 350px;
+            }
         }
 
         & .stay-title-container {
