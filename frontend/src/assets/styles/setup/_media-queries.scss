@@ -118,22 +118,21 @@
             }
 
             & .stay-information .img-container {
+                position: relative;
                 margin-block-end: 20px;
                 margin-inline: -22px;
 
-                position: relative;
+                & img {
+                    @include aspect(16, 9);
+                }
 
                 &::after {
                     content: "";
                     position: absolute;
                     inset: -1px;
-                    border: 1px solid white;
+                    border: 1px solid $gray-clr-1;
                     border-bottom-color: transparent;
                     border-radius: 8px;
-                }
-
-                & img {
-                    @include aspect(16, 9);
                 }
             }
         }
