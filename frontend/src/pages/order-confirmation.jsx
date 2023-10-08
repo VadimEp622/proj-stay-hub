@@ -66,11 +66,11 @@ export function OrderConfirmation() {
     return (
         <section className='order-confirmation-page' >
 
-            <section className='confirmation-header flex align-center'>
+            <section className='confirmation-header flex align-center gap20'>
                 <Link className='return-btn' to={`/stay/${stayId}`} title='return'>
                     <SvgHandler svgName={ARROW_LEFT} />
                 </Link>
-                <h2>Confirm and pay</h2>
+                <h2 className='fs32'>Confirm and pay</h2>
             </section>
 
             <section className='confirmation-main-container'>

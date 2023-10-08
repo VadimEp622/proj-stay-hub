@@ -35,6 +35,9 @@
 .fs30 {
     font-size: rem(30px);
 }
+.fs32 {
+    font-size: rem(32px);
+}
 
 // **************************************
 // ************ Line Heights ************
@@ -143,6 +146,9 @@
     &.gap10 {
         gap: 10px;
     }
+    &.gap12 {
+        gap: 12px;
+    }
     &.gap16 {
         gap: 16px;
     }
@@ -167,6 +173,9 @@
 }
 .capitalize::first-letter {
     text-transform: capitalize;
+}
+.white-space-nowrap {
+    white-space: nowrap;
 }
 
 // **************************************

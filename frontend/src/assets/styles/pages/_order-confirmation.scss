@@ -1,8 +1,6 @@
 .order-confirmation-page {
-    margin-top: 50px;
-
     & .confirmation-header {
-        gap: 20px;
+        margin-block: 50px;
 
         & .return-btn {
             padding: 12px;
@@ -11,57 +9,43 @@
                 background-color 0.2s ease-in,
                 transform 0.2s ease-in;
             background-color: $gray-clr4;
+
             &:hover {
                 background-color: $gray-clr2;
                 transform: scale(1.3);
             }
         }
-
-        & h2 {
-            font-size: rem(32px);
-        }
-
-        margin-block-end: 52px;
     }
 
     & .confirmation-main-container {
         display: grid;
-        grid-template-columns: 1.202fr 1fr;
-        column-gap: 95px;
+        grid-template-columns: 1.2fr 1fr;
 
         & .confirmation-main {
             & .dates-guests {
-                padding-bottom: 16px;
+                padding-block-end: 32px;
                 border-bottom: 1px solid $gray-clr3;
 
                 & :is(.dates, .guests) {
-                    margin-top: 26px;
+                    margin-block-start: 26px;
 
                     & p {
-                        margin-top: 16px;
-                        letter-spacing: 0;
-                        margin-top: 6px;
-                        font-weight: 100;
-                        font-size: rem(16px);
+                        margin-block-start: 6px;
                     }
                 }
             }
 
             & .message-host {
-                margin-top: 32px;
+                padding-block: 32px;
                 border-bottom: 1px solid $gray-clr3;
 
                 & .intro {
                     & h3 {
-                        margin-bottom: 20px;
+                        margin-block-end: 20px;
                     }
 
                     & h5 {
-                        margin-bottom: 4px;
-                    }
-
-                    & p {
-                        letter-spacing: 0;
+                        margin-block-end: 4px;
                     }
                 }
 
@@ -69,12 +53,10 @@
                     padding-block-start: 16px;
                     padding-block-end: 32px;
 
-                    & img {
+                    & .img-container img {
                         width: 42px;
                         height: 42px;
                         border-radius: 50px;
-                        object-fit: cover;
-                        margin-right: 16px;
                     }
                 }
 
@@ -83,68 +65,50 @@
                     border-color: $gray-clr3;
                     width: 100%;
                     height: 125px;
-                    margin-bottom: 24px;
                     resize: none;
                 }
             }
 
             & .cancellation-policy {
-                margin-top: 34px;
+                padding-block: 32px;
                 border-bottom: 1px solid $gray-clr3;
-                padding-bottom: 16px;
 
                 & h3 {
-                    margin-bottom: 26px;
-                }
-
-                & p {
-                    letter-spacing: 0;
-                    line-height: 1.28;
+                    margin-block-end: 10px;
                 }
             }
 
             & .declaration {
-                margin-block-start: 40px;
-
-                & span {
-                    text-decoration: underline;
-                }
+                padding-block-start: 32px;
             }
         }
 
         & .confirmation-sidebar {
             grid-area: 1 / 2 / span 3;
+            position: sticky;
+            top: 218px;
+            height: fit-content;
             border: 1px solid $gray-clr2;
             border-radius: 12px;
-            padding: 22px;
-            flex-direction: column;
-            height: fit-content;
-            position: sticky;
-
-            top: 218px;
 
             & .stay-information {
                 border-bottom: 1px solid $gray-clr3;
-                padding-bottom: 24px;
+                padding-block-end: 24px;
 
-                & img {
-                    // aspect-ratio: 1.18/1;
-                    @include aspect(1.18, 1);
+                & .img-container {
+                    min-width: 100px;
 
-                    width: 124px;
-                    object-fit: cover;
-                    border-radius: 8px;
-                    margin-right: 12px;
+                    & img {
+                        border-radius: 8px;
+                    }
                 }
 
                 & .information {
                     & .stay-type {
                         color: $gray-clr0;
-                        margin-bottom: 0;
                     }
 
                     & .short-summary {
-                        line-height: 24px;
                         overflow: hidden;
                         text-overflow: ellipsis;
                         display: -webkit-box;
@@ -153,8 +117,8 @@
                     }
 
                     & .confirmation-reviews {
-                        margin-top: 44px;
-                        font-size: rem(12px);
+                        margin-block-start: 40px;
+
                         & > * {
                             padding-inline-start: 5px;
                         }
@@ -163,23 +127,19 @@
             }
 
             & .price-details {
-                margin-top: 26px;
+                padding-block-start: 24px;
 
-                & .title {
-                    margin-block-end: 24px;
-                }
-
-                & > :is(.cleaning-fee, .service-fee) {
+                & > :is(.night-price, .cleaning-fee, .service-fee) {
                     margin-block-start: 10px;
                 }
 
                 & .service-fee {
-                    padding-block-end: 22px;
+                    padding-block-end: 24px;
                     border-bottom: 1px solid $gray-clr3;
                 }
 
                 & .total-price {
-                    margin-block-start: 22px;
+                    padding-block-start: 24px;
                 }
             }
         }

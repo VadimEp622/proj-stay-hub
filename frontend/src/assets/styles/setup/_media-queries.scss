@@ -104,6 +104,40 @@
             }
         }
     }
+
+    .order-confirmation-page {
+        & .confirmation-main-container {
+            gap: 24px;
+        }
+
+        & .confirmation-sidebar {
+            padding-block-end: 22px;
+
+            & :is(.stay-information, .price-details) {
+                margin-inline: 22px;
+            }
+
+            & .stay-information .img-container {
+                margin-block-end: 20px;
+                margin-inline: -22px;
+
+                position: relative;
+
+                &::after {
+                    content: "";
+                    position: absolute;
+                    inset: -1px;
+                    border: 1px solid white;
+                    border-bottom-color: transparent;
+                    border-radius: 8px;
+                }
+
+                & img {
+                    @include aspect(16, 9);
+                }
+            }
+        }
+    }
 }
 
 @include for-small-layout {
@@ -445,6 +479,26 @@
                     & > *:not(:last-child) {
                         margin-block-end: 16px;
                     }
+                }
+            }
+        }
+    }
+
+    .order-confirmation-page {
+        & .confirmation-main-container {
+            gap: 10%;
+        }
+
+        & .confirmation-sidebar {
+            padding: 22px;
+
+            & .stay-information {
+                display: flex;
+                align-items: start;
+                gap: 12px;
+
+                & .img-container img {
+                    @include aspect(1.25, 1);
                 }
             }
         }
