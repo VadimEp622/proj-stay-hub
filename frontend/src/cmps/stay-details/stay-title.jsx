@@ -12,7 +12,7 @@ export function StayTitle({ stay, averageReviewScore, onLikeClicked, isStayWishl
     const { city, country } = stay.loc
     const reviewCountStr = `${reviewCount} ${reviewCount > 1 ? 'reviews' : 'review'}`
     return (
-        <section className='full details-layout'>
+        <section className='details-layout'>
 
             <section className='stay-title-container flex column' >
                 <h1 className='ff-circular-regular fs26 lh30'>{stayName}</h1>

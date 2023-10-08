@@ -178,7 +178,7 @@ export function StayDetails() {
                 onCheckAvailabilityClick={onCheckAvailabilityClick}
                 isMobile={isMobile}
             />
-            <section className='stay-photos-title-container full details-layout'>
+            <section className='stay-photos-title-container full'>
                 <StayPhotos photos={stay.imgUrls} isMobile={isMobile} />
                 <StayTitle
                     stay={stay}
