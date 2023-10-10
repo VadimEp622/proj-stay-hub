@@ -68,8 +68,6 @@ export const userService = {
     saveLocalUser,
     clearLocalUser,
     buildGuestsString,
-    // ============= Checked and being used in cmp I don't know =============
-    update,
     // ======================================================================
 }
 window.userService = userService
@@ -171,32 +169,5 @@ function buildGuestsString(guestsObject) {
     if (infants > 0) guestsString += `, ${infants} infant${infants !== 1 ? 's' : ''}`
     if (pets > 0) guestsString += `, ${pets} pet${pets !== 1 ? 's' : ''}`
     return guestsString
-}
-// ============= Checked and being used in cmp I don't know =============
-// need to remove the function below, flawed and unnecessary 
-async function update(_id, type, data, action = 'update') {
-    try {
-
-        // const user = await storageService.get('user', _id);
-        const user = await httpService.get(`${BASE_URL}/${_id}`)
-        if (!user[type]) {
-            user[type] = []
-        }
-        if (action === 'update') {
-            user[type].push(data)
-        } else {
-            const keyIndex = user[type].findIndex((typeItem) => typeItem._id === data._id)
-            user[type].splice(keyIndex, 1)
-        }
-        await httpService.put(`${BASE_URL}/${_id}`, user)
-
-        if (getLoggedinUser()._id === user._id) {
-            saveLocalUser(user)
-        }
-
-        return user
-    } catch (err) {
-        console.log('err', err)
-    }
 }
 // ======================================================================
