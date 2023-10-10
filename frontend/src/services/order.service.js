@@ -1,8 +1,8 @@
-import { storageService } from './async-storage.service'
 import { httpService } from './http.service'
 import { utilService } from './util.service'
 
-const STORAGE_KEY = 'orders'
+
+const BASE_URL = 'orders'
 
 
 const explore = {
@@ -44,16 +44,15 @@ const explore = {
     ]
 }
 
+
 export const orderService = {
     // ---- Verified Works ---- //
     getOrders,
-    getOrderById,
     addOrder,
+    updateOrderStatus,
     getDemoOrders,
-    getOrderExploreList,
+    getOrderExploreList
     // ------------------------ //
-    removeOrder,
-    updateOrderStatus
 }
 
 window.cs = orderService
@@ -61,15 +60,15 @@ window.cs = orderService
 
 // =========== Verified Works =========== //
 function getOrders(userId) {
-    return httpService.get(STORAGE_KEY, userId)
+    return httpService.get(BASE_URL, userId)
 }
 
-async function updateOrderStatus(order) {
-    return httpService.put(`orders/${order._id}`, order)
+function addOrder(order) {
+    return httpService.post(BASE_URL, order)
 }
 
-async function addOrder(order) {
-    return httpService.post(STORAGE_KEY, order)
+function updateOrderStatus(order) {
+    return httpService.put(`${BASE_URL}/${order._id}`, order)
 }
 
 function getDemoOrders() {
@@ -126,25 +125,6 @@ function getOrderExploreList() {
     return _createOrderExploreItems()
 }
 // ====================================== //
-
-
-// NEED TO FIX AND CONNECTS ROUTES FOR BACKEND -> NEED TO THINK ABOUT WHAT EXACTLY WILL THE ORDER ROUTES BE.
-async function getOrderById(orderID) {
-    // console.log('getOrderById hi')
-    const order = await storageService.get('orders', orderID)
-    // return httpService.get(`order/${orderID}`)
-    return order
-}
-
-async function removeOrder(orderId) {
-    // console.log('removeOrder hi')
-    return storageService.remove('orders', orderId)
-    // return httpService.delete(`order/${orderId}`)
-}
-
-
-
-
 // ********************** PRIVATE FUNCTIONS **********************
 
 function _createOrderExploreItems() {
