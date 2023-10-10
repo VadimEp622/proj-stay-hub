@@ -18,9 +18,6 @@ export const stayService = {
 }
 
 
-window.cs = stayService
-
-
 // =============== Checked and in use =============== 
 function query(filterBy = {
     country: '',
