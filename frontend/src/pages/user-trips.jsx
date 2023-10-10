@@ -18,7 +18,6 @@ import { Loader } from '../cmps/_reuseable-cmps/loader.jsx'
 
 
 // TODO: when fetching trips, perform loading animation, and only when finished fetching, render cmps
-// TODO: fix responsiveness for this page
 
 
 export function UserTrips() {

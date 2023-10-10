@@ -1,8 +1,9 @@
 import { httpService } from './http.service.js'
 import { utilService } from './util.service.js'
 
-// TODO: check if possible to change below to 'user', to match API route
-const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser'
+
+const BASE_URL = 'user'
+
 
 const stayHostImgUrl = [
     'https://a0.muscache.com/im/pictures/user/e952cec2-7f68-46da-b732-4831bbba5411.jpg?im_w=240',
@@ -61,17 +62,14 @@ export const userService = {
     randomHostImg,
     getEmptyCredentials,
     getGuestCredentials,
+    getNewUserCredentials,
     getUserDashboardData,
     getLoggedinUser,
     saveLocalUser,
     clearLocalUser,
     buildGuestsString,
-    // ======================= Checked and NOT in use =======================
-    getNewUserCredentials,
     // ============= Checked and being used in cmp I don't know =============
     update,
-    getUsers,
-    remove
     // ======================================================================
 }
 window.userService = userService
@@ -80,16 +78,16 @@ window.userService = userService
 // ========================= Checked and in use =========================
 // ******* C.R.U.D.L *******
 function addUserTrip(userId, orderId) {
-    return httpService.post(`user/${userId}/trip`, orderId)
+    return httpService.post(`${BASE_URL}/${userId}/trip`, orderId)
 }
 
 function updateWishlist(stay) {
     const loggedInUserId = getLoggedinUser()?._id
-    return httpService.put(`user/${loggedInUserId}/wishlist`, stay)
+    return httpService.put(`${BASE_URL}/${loggedInUserId}/wishlist`, stay)
 }
 
 function getById(userId) {
-    return httpService.get(`user/${userId}`)
+    return httpService.get(`${BASE_URL}/${userId}`)
 }
 
 async function login(userCred) {
@@ -140,6 +138,10 @@ function getGuestCredentials() {
     return { username: 'guest123!aAsS', password: 'guest123!aAsS', fullname: '' }
 }
 
+function getNewUserCredentials() {
+    return { username: 'newUser', password: 'newUser', fullname: 'New user' }
+}
+
 function getUserDashboardData() {
     return {
         labels: ['January', 'February', 'March', 'April', 'May', 'June'],
@@ -149,16 +151,16 @@ function getUserDashboardData() {
 }
 
 function getLoggedinUser() {
-    return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER))
+    return JSON.parse(sessionStorage.getItem(BASE_URL))
 }
 
 function clearLocalUser() {
-    sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER)
+    sessionStorage.removeItem(BASE_URL)
 }
 
 function saveLocalUser(user) {
     user = { _id: user._id, fullname: user.fullname, imgUrl: user.imgUrl, wishlist: user.wishlist, trip: user.trip }
-    sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
+    sessionStorage.setItem(BASE_URL, JSON.stringify(user))
     return user
 }
 
@@ -170,18 +172,13 @@ function buildGuestsString(guestsObject) {
     if (pets > 0) guestsString += `, ${pets} pet${pets !== 1 ? 's' : ''}`
     return guestsString
 }
-// ======================= Checked and NOT in use =======================
-function getNewUserCredentials() {
-    return { username: 'newUser', password: 'newUser', fullname: 'New user' }
-}
-
 // ============= Checked and being used in cmp I don't know =============
 // need to remove the function below, flawed and unnecessary 
 async function update(_id, type, data, action = 'update') {
     try {
 
         // const user = await storageService.get('user', _id);
-        const user = await httpService.get(`user/${_id}`)
+        const user = await httpService.get(`${BASE_URL}/${_id}`)
         if (!user[type]) {
             user[type] = []
         }
@@ -191,7 +188,7 @@ async function update(_id, type, data, action = 'update') {
             const keyIndex = user[type].findIndex((typeItem) => typeItem._id === data._id)
             user[type].splice(keyIndex, 1)
         }
-        await httpService.put(`user/${_id}`, user)
+        await httpService.put(`${BASE_URL}/${_id}`, user)
 
         if (getLoggedinUser()._id === user._id) {
             saveLocalUser(user)
@@ -201,13 +198,5 @@ async function update(_id, type, data, action = 'update') {
     } catch (err) {
         console.log('err', err)
     }
-}
-
-function getUsers() {
-    return httpService.get(`user`)
-}
-
-function remove(userId) {
-    return httpService.delete(`user/${userId}`)
 }
 // ======================================================================
