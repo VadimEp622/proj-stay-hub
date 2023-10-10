@@ -10,6 +10,12 @@ import { socketService } from "../services/socket.service.js"
 import { orderService } from "../services/order.service.js"
 
 
+
+export function getActionSetUser(user) {
+    return { type: SET_USER, user }
+}
+
+
 // ======================== Confirmed function In Use =========================
 export async function toggleWishlist(loggedInUser, stay) {
     // TODO: need to pay attention, so that store and DB wishlist values are identical always, even if user rapidly clicks like 
@@ -25,7 +31,7 @@ export async function toggleWishlist(loggedInUser, stay) {
                 : [...loggedInUser.wishlist, wishlistStay]
         }
 
-        store.dispatch({ type: SET_USER, user })
+        store.dispatch(getActionSetUser(user))
         // TODO: consider whether it's better to simply replace the whole user object in database,
         //   to prevent checking again in back-end, if user needs to update or not
         await userService.updateWishlist(wishlistStay)
@@ -39,7 +45,7 @@ export async function toggleWishlist(loggedInUser, stay) {
 export async function login(credentials) {
     try {
         const user = await userService.login(credentials)
-        store.dispatch({ type: SET_USER, user })
+        store.dispatch(getActionSetUser(user))
         socketService.login(user)
         return user
     } catch (err) {
@@ -51,7 +57,7 @@ export async function login(credentials) {
 export async function signup(credentials) {
     try {
         const user = await userService.signup(credentials)
-        store.dispatch({ type: SET_USER, user })
+        store.dispatch(getActionSetUser(user))
         socketService.login(user)
         return user
     } catch (err) {
@@ -63,7 +69,7 @@ export async function signup(credentials) {
 export async function logout() {
     try {
         await userService.logout()
-        store.dispatch({ type: SET_USER, user: null })
+        store.dispatch(getActionSetUser(null))
         socketService.logout()
     } catch (err) {
         console.log('Cannot logout', err)
@@ -81,7 +87,7 @@ export async function addConfirmedTrip(order) {
         const orderId = await orderService.addOrder(order)// creates order object at DB
         const updatedUser = await userService.addUserTrip(user._id, { orderId })// add orderId to user's trip array in DB 
         userService.saveLocalUser(updatedUser)
-        store.dispatch({ type: SET_USER, user: updatedUser })
+        store.dispatch(getActionSetUser(user))
     } catch (err) {
         console.error('Cannot add confirmed trip', err)
         throw err
