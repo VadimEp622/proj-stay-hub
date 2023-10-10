@@ -4,12 +4,12 @@ export const utilService = {
     // ==================== Checked Function Are Used ====================
     getStayPreviewDateRange,
     getFutureTime,
+    getTimeDiffBy,
     getFormattedTimeRange,
+    getFormattedDate,
     floatify,
     calculatePercentage,
-    getFormattedDate,
     getRandomIntInclusive,
-    getTimeDiffBy,
     createDivsForButtonContainer,
     addCommas,
     getRandomMonthAndYear,
@@ -53,6 +53,22 @@ function getFutureTime(amount, item) {
     return TODAY
 }
 
+function getTimeDiffBy(item) {
+    const MINUTE = 1000 * 60
+    const HOUR = MINUTE * 60
+    const DAY = HOUR * 24
+    const WEEK = DAY * 7
+    const MONTH = WEEK * 4
+    const YEAR = MONTH * 12
+
+    if (item === 'minute') return MINUTE
+    if (item === 'hour') return HOUR
+    if (item === 'day') return DAY
+    if (item === 'week') return WEEK
+    if (item === 'month') return MONTH
+    if (item === 'year') return YEAR
+}
+
 function getFormattedTimeRange(start, end) {
     const startDate = new Date(start)
     const endDate = new Date(end)
@@ -71,6 +87,11 @@ function getFormattedTimeRange(start, end) {
     return formattedRange
 }
 
+function getFormattedDate(dateToFormat, options) {
+    const date = new Date(dateToFormat)
+    return date.toLocaleDateString('en-US', options)
+}
+
 function floatify(number) {
     return parseFloat((number).toFixed(10))
 }
@@ -79,31 +100,10 @@ function calculatePercentage(value, outOfValue = 5) {
     return utilService.floatify((value / outOfValue) * 100).toFixed(1)
 }
 
-function getFormattedDate(dateToFormat, options) {
-    const date = new Date(dateToFormat)
-    return date.toLocaleDateString('en-US', options)
-}
-
 function getRandomIntInclusive(min, max) {
     min = Math.ceil(min)
     max = Math.floor(max)
     return Math.floor(Math.random() * (max - min + 1)) + min //The maximum is inclusive and the minimum is inclusive 
-}
-
-function getTimeDiffBy(item) {
-    const MINUTE = 1000 * 60
-    const HOUR = MINUTE * 60
-    const DAY = HOUR * 24
-    const WEEK = DAY * 7
-    const MONTH = WEEK * 4
-    const YEAR = MONTH * 12
-
-    if (item === 'minute') return MINUTE
-    if (item === 'hour') return HOUR
-    if (item === 'day') return DAY
-    if (item === 'week') return WEEK
-    if (item === 'month') return MONTH
-    if (item === 'year') return YEAR
 }
 
 function createDivsForButtonContainer() {
