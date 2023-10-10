@@ -2,7 +2,7 @@ import { httpService } from './http.service.js'
 import { utilService } from './util.service.js'
 
 
-const STORAGE_KEY = 'stay'
+const BASE_URL = 'stay'
 
 
 export const stayService = {
@@ -12,19 +12,17 @@ export const stayService = {
     getEmptyFilterBy,
     getStayCategoryScores,
     getStayScore,
-    // ================================================== 
-    save,
-    remove,
-    getEmptyStay,
-    addStayMsg,
+    calculateHowManyNights,
     getDate,
-    calculateHowManyNights
+    // ==================================================
 }
+
+
 window.cs = stayService
 
 
 // =============== Checked and in use =============== 
-async function query(filterBy = {
+function query(filterBy = {
     country: '',
     city: '',
     from: '',
@@ -41,11 +39,11 @@ async function query(filterBy = {
         capacity,
         label,
     }
-    return httpService.get(STORAGE_KEY, filter)
+    return httpService.get(BASE_URL, filter)
 }
 
-async function getById(stayId) {
-    return httpService.get(`stay/${stayId}`)
+function getById(stayId) {
+    return httpService.get(`${BASE_URL}/${stayId}`)
 }
 
 function getEmptyFilterBy() {
@@ -84,43 +82,16 @@ function getStayScore(stayReviews) {
     const stayScore = utilService.floatify(stayScoresSum / Object.values(scores).length)
     return parseFloat(stayScore.toFixed(2))
 }
-// ================================================== 
 
-
-async function save(stay) {
-    let savedStay
-    if (stay._id) {
-        savedStay = await httpService.put(`stay/${stay._id}`, stay)
-    } else {
-        savedStay = await httpService.post('stay', stay)
-    }
-    return savedStay
+function calculateHowManyNights(checkInDate, checkOutDate) {
+    const firstDate = new Date(checkInDate)
+    const secondDate = new Date(checkOutDate)
+    const timeDiff = secondDate.getTime() - firstDate.getTime()
+    const nightsCount = Math.ceil(timeDiff / (1000 * 3600 * 24))
+    return nightsCount
 }
 
-function remove(stayId) {
-    return httpService.delete(`stay/${stayId}`)
-}
-
-// Not Yet In Use
-function addStayMsg(stayId, txt) {
-    return httpService.post(`stay/${stayId}/msg`, { txt })
-}
-
-
-function getEmptyStay() {
-    return {
-        name: '',
-        description: '',
-        price: utilService.getRandomIntInclusive(100, 9000),
-        type: "House",
-        imgUrls: [],
-        summary: "Fantastic duplex apartment...",
-        capacity: utilService.getRandomIntInclusive(1, 10),
-        reviews: [],
-    }
-}
-
-export function getDate(dateToFormat) {
+function getDate(dateToFormat) {
     if (!dateToFormat) return ''
     const date = new Date(dateToFormat)
     const formatter = new Intl.DateTimeFormat('en-US', {
@@ -132,15 +103,4 @@ export function getDate(dateToFormat) {
     const formattedDate = formatter.format(date)
     return formattedDate.replace(/^0(\d)/, '$1')
 }
-
-
-function calculateHowManyNights(checkInDate, checkOutDate) {
-    const firstDate = new Date(checkInDate)
-    const secondDate = new Date(checkOutDate)
-    const timeDiff = secondDate.getTime() - firstDate.getTime()
-    const nightsCount = Math.ceil(timeDiff / (1000 * 3600 * 24))
-    return nightsCount
-}
-
-
-// *********************** PRIVATE FUNCTIONS ***********************
+// ==================================================
