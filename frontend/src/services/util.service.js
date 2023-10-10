@@ -1,4 +1,4 @@
-import { format, startOfDay } from 'date-fns'
+import { startOfDay } from 'date-fns'
 
 export const utilService = {
     // ==================== Checked Function Are Used ====================
@@ -8,21 +8,25 @@ export const utilService = {
     floatify,
     calculatePercentage,
     getFormattedDate,
-    // ===================================================================
-    makeId,
     getRandomIntInclusive,
+    getTimeDiffBy,
+    createDivsForButtonContainer,
+    addCommas,
+    getRandomMonthAndYear,
+    // ===================================================================
+    // ===================== Unused, But Very Useful =====================
+    makeId,
     makeLorem,
     debounce,
     randomPastTime,
     saveToStorage,
     loadFromStorage,
-    getTimeDiffBy,
+    // ===================================================================
+    // ======================== Unused Functions =========================
     checkMinMaxPrices,
-    createDivsForButtonContainer,
     convertTimestampToDate,
-    addCommas,
-    getRandomNumberDecimal,
-    getRandomMonthAndYear
+    getRandomNumberDecimal
+    // ===================================================================
 }
 
 
@@ -79,8 +83,58 @@ function getFormattedDate(dateToFormat, options) {
     const date = new Date(dateToFormat)
     return date.toLocaleDateString('en-US', options)
 }
-// ===================================================================
 
+function getRandomIntInclusive(min, max) {
+    min = Math.ceil(min)
+    max = Math.floor(max)
+    return Math.floor(Math.random() * (max - min + 1)) + min //The maximum is inclusive and the minimum is inclusive 
+}
+
+function getTimeDiffBy(item) {
+    const MINUTE = 1000 * 60
+    const HOUR = MINUTE * 60
+    const DAY = HOUR * 24
+    const WEEK = DAY * 7
+    const MONTH = WEEK * 4
+    const YEAR = MONTH * 12
+
+    if (item === 'minute') return MINUTE
+    if (item === 'hour') return HOUR
+    if (item === 'day') return DAY
+    if (item === 'week') return WEEK
+    if (item === 'month') return MONTH
+    if (item === 'year') return YEAR
+}
+
+function createDivsForButtonContainer() {
+    const divElements = []
+    for (let i = 0; i < 100; i++) {
+        divElements.push(<div className="cell" key={i}></div>)
+    }
+    return divElements
+}
+
+function addCommas(num) {
+    return num.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+function getRandomMonthAndYear() {
+    const startYear = 2014
+    const endYear = 2022
+
+    const months = [
+        "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+        "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+    ]
+
+    const randomYear = Math.floor(Math.random() * (endYear - startYear + 1)) + startYear
+    const randomMonthIndex = Math.floor(Math.random() * 12)
+    const randomMonth = months[randomMonthIndex]
+
+    return `${randomMonth} ${randomYear}`
+}
+// ===================================================================
+// ===================== Unused, But Very Useful =====================
 function makeId(length = 6) {
     var txt = ''
     var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
@@ -102,13 +156,6 @@ function makeLorem(size = 100) {
     return txt
 }
 
-function getRandomIntInclusive(min, max) {
-    min = Math.ceil(min)
-    max = Math.floor(max)
-    return Math.floor(Math.random() * (max - min + 1)) + min //The maximum is inclusive and the minimum is inclusive 
-}
-
-
 function randomPastTime() {
     const MINUTE = 1000 * 60
     const HOUR = MINUTE * 60
@@ -119,23 +166,6 @@ function randomPastTime() {
 
     const pastTime = getRandomIntInclusive(HOUR, WEEK)
     return Date.now() - pastTime
-}
-
-
-function getTimeDiffBy(item) {
-    const MINUTE = 1000 * 60
-    const HOUR = MINUTE * 60
-    const DAY = HOUR * 24
-    const WEEK = DAY * 7
-    const MONTH = WEEK * 4
-    const YEAR = MONTH * 12
-
-    if (item === 'minute') return MINUTE
-    if (item === 'hour') return HOUR
-    if (item === 'day') return DAY
-    if (item === 'week') return WEEK
-    if (item === 'month') return MONTH
-    if (item === 'year') return YEAR
 }
 
 function debounce(func, timeout = 300) {
@@ -154,7 +184,8 @@ function loadFromStorage(key) {
     const data = localStorage.getItem(key)
     return (data) ? JSON.parse(data) : undefined
 }
-
+// ===================================================================
+// ======================== Unused Functions =========================
 function checkMinMaxPrices(stays) {
     if (stays.length === 0) return null
     let minPrice = stays[0].price
@@ -167,14 +198,6 @@ function checkMinMaxPrices(stays) {
     return { minPrice, maxPrice }
 }
 
-function createDivsForButtonContainer() {
-    const divElements = []
-    for (let i = 0; i < 100; i++) {
-        divElements.push(<div className="cell" key={i}></div>)
-    }
-    return divElements
-}
-
 function convertTimestampToDate(timestamp) {
     var targetDate = new Date(timestamp);
 
@@ -184,32 +207,9 @@ function convertTimestampToDate(timestamp) {
     return formattedDate;
 }
 
-function addCommas(num) {
-    return num.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-}
-
 function getRandomNumberDecimal(min, max) {
     const randomNum = Math.random() * (max - min) + min;
     const roundedNum = Math.floor(randomNum * 10) / 10;
     return roundedNum;
 }
-
-function getRandomMonthAndYear() {
-    const startYear = 2014;
-    const endYear = 2022;
-
-    // const months = [
-    //     "January", "February", "March", "April", "May", "June",
-    //     "July", "August", "September", "October", "November", "December"
-    // ];
-    const months = [
-        "Jan", "Feb", "Mar", "Apr", "May", "Jun",
-        "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
-    ];
-
-    const randomYear = Math.floor(Math.random() * (endYear - startYear + 1)) + startYear;
-    const randomMonthIndex = Math.floor(Math.random() * 12);
-    const randomMonth = months[randomMonthIndex];
-
-    return `${randomMonth} ${randomYear}`;
-}
+// ===================================================================
