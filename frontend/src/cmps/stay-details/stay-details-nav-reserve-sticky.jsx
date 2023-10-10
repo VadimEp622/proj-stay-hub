@@ -1,5 +1,5 @@
 // Services
-import { reviewService } from '../../services/review.service.js'
+import { stayService } from '../../services/stay.service.js'
 import { STAR } from '../../services/svg.service.js'
 
 // Components
@@ -10,7 +10,7 @@ import SvgHandler from '../_reuseable-cmps/svg-handler.jsx'
 export function StayDetailsNavReserveSticky({ stay, selectedRange, onCheckAvailabilityClick, onReserveClick, isMobile }) {
 
     const reviewCount = stay.reviews.length
-    const stayScore = reviewService.getAverageReview(stay)
+    const stayScore = stayService.getStayScore(stay.reviews)
     const stayPrice = stay.price.toLocaleString()
 
     const reviewCountStr = `${reviewCount} ${reviewCount > 1 ? 'reviews' : 'review'}`

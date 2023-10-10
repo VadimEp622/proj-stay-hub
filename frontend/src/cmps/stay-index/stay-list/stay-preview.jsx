@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
 // Services
+import { stayService } from '../../../services/stay.service.js'
 import { utilService } from '../../../services/util.service.js'
-import { reviewService } from '../../../services/review.service.js'
 import { HEART_24_WHITE_STROKE, HEART_24_WHITE_STROKE_RED_FILL, STAR_12 } from '../../../services/svg.service.js'
 
 // Store
@@ -69,7 +69,7 @@ export function StayPreview({ stay, geoLocation }) {
         stay.availableDates[0].daysFromToday,
         stay.availableDates[0].until
     )
-    const averageReviewScore = reviewService.getAverageReview(stay)
+    const stayScore = stayService.getStayScore(stay.reviews)
     return (
         <section className='stay-preview' key={stay._id}>
             <PreviewImageCarousel imgs={stay.imgUrls} stay={stay} />
@@ -85,7 +85,7 @@ export function StayPreview({ stay, geoLocation }) {
                         <p className='ff-circular-semibold lh19'>{stay.loc.city}, {stay.loc.country}</p>
                         <p className='review-score flex align-baseline lh19'>
                             <SvgHandler svgName={STAR_12} />
-                            <span className='lh19'>{averageReviewScore}</span>
+                            <span className='lh19'>{stayScore}</span>
                         </p>
                     </section>
 
