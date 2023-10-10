@@ -4,14 +4,12 @@ import { stayReducer } from './stay.reducer.js'
 import { userReducer } from './user.reducer.js'
 import { orderReducer } from './order.reducer.js'
 import { systemReducer } from './system.reducer.js'
-import { reviewReducer } from './review.reducer.js'
 
 const rootReducer = combineReducers({
     stayModule: stayReducer,
     userModule: userReducer,
     orderModule: orderReducer,
     systemModule: systemReducer,
-    reviewModule: reviewReducer,
 })
 
 
@@ -24,6 +22,3 @@ store.subscribe(() => {
     // console.log('storeState:\n', store.getState())
     // console.log('*******************************')
 })
-
-
-
