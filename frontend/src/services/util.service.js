@@ -20,12 +20,7 @@ export const utilService = {
     debounce,
     randomPastTime,
     saveToStorage,
-    loadFromStorage,
-    // ===================================================================
-    // ======================== Unused Functions =========================
-    checkMinMaxPrices,
-    convertTimestampToDate,
-    getRandomNumberDecimal
+    loadFromStorage
     // ===================================================================
 }
 
@@ -183,33 +178,5 @@ function saveToStorage(key, value) {
 function loadFromStorage(key) {
     const data = localStorage.getItem(key)
     return (data) ? JSON.parse(data) : undefined
-}
-// ===================================================================
-// ======================== Unused Functions =========================
-function checkMinMaxPrices(stays) {
-    if (stays.length === 0) return null
-    let minPrice = stays[0].price
-    let maxPrice = stays[0].price
-    stays.forEach(stay => {
-        const price = stay.price
-        if (price < minPrice) minPrice = price
-        if (price > maxPrice) maxPrice = price
-    })
-    return { minPrice, maxPrice }
-}
-
-function convertTimestampToDate(timestamp) {
-    var targetDate = new Date(timestamp);
-
-    var options = { year: 'numeric', month: 'long', day: 'numeric' };
-    var formattedDate = targetDate.toLocaleDateString(undefined, options);
-
-    return formattedDate;
-}
-
-function getRandomNumberDecimal(min, max) {
-    const randomNum = Math.random() * (max - min) + min;
-    const roundedNum = Math.floor(randomNum * 10) / 10;
-    return roundedNum;
 }
 // ===================================================================
