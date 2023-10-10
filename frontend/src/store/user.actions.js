@@ -8,6 +8,7 @@ import {
 import { userService } from "../services/user.service.js"
 import { socketService } from "../services/socket.service.js"
 import { orderService } from "../services/order.service.js"
+import { authService } from "../services/auth.service.js"
 
 
 
@@ -44,7 +45,7 @@ export async function toggleWishlist(loggedInUser, stay) {
 
 export async function login(credentials) {
     try {
-        const user = await userService.login(credentials)
+        const user = await authService.login(credentials)
         store.dispatch(getActionSetUser(user))
         socketService.login(user)
         return user
@@ -56,7 +57,7 @@ export async function login(credentials) {
 
 export async function signup(credentials) {
     try {
-        const user = await userService.signup(credentials)
+        const user = await authService.signup(credentials)
         store.dispatch(getActionSetUser(user))
         socketService.login(user)
         return user
@@ -68,7 +69,7 @@ export async function signup(credentials) {
 
 export async function logout() {
     try {
-        await userService.logout()
+        await authService.logout()
         store.dispatch(getActionSetUser(null))
         socketService.logout()
     } catch (err) {

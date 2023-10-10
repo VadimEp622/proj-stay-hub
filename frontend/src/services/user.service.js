@@ -55,9 +55,6 @@ export const userService = {
     addUserTrip,
     updateWishlist,
     getById,
-    login,
-    signup,
-    logout,
     // *************************
     randomHostImg,
     getEmptyCredentials,
@@ -70,6 +67,8 @@ export const userService = {
     buildGuestsString,
     // ======================================================================
 }
+
+
 window.userService = userService
 
 
@@ -86,41 +85,6 @@ function updateWishlist(stay) {
 
 function getById(userId) {
     return httpService.get(`${BASE_URL}/${userId}`)
-}
-
-async function login(userCred) {
-    try {
-        const user = await httpService.post('auth/login', userCred)
-        if (user) {
-            return saveLocalUser(user)
-        }
-    } catch (err) {
-        console.log('Could not log in', err)
-        throw err
-    }
-}
-
-async function signup(userCred) {
-    try {
-        userCred.trip = []
-        userCred.wishlist = []
-        if (!userCred.imgUrl) userCred.imgUrl = 'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png'
-        const user = await httpService.post('auth/signup', userCred)
-        return saveLocalUser(user)
-    } catch (err) {
-        console.log('Could not sign up', err)
-        throw err
-    }
-}
-
-async function logout() {
-    try {
-        await httpService.post('auth/logout')
-        clearLocalUser()
-    } catch (err) {
-        console.log('Could not logout', err)
-        throw err
-    }
 }
 // *************************
 
