@@ -13,19 +13,13 @@ import useGeoLocation from '../customHooks/useGeoLocation.js'
 // Components
 import { CategoryFilter } from '../cmps/stay-index/category-filter.jsx'
 import { StayList } from '../cmps/stay-index/stay-list.jsx'
-// import { FilterModal } from '../cmps/filter.jsx'
 
-
-// TODO: remove category filter when screen width is less than 700px (build a custom hook with an event listener!)
 
 
 export function StayIndex() {
     const stays = useSelector(storeState => storeState.stayModule.stays)
     const filterBy = useSelector(storeState => storeState.stayModule.filterBy)
     const geoLocation = useGeoLocation()
-
-    // filter modal temp. removed, TODO: implement it casually after other urgent stuff are taken care of
-    // const [isFilterModalOpen, setIsFilterModalOpen] = useState(false)
 
 
     useEffect(() => {
@@ -48,13 +42,7 @@ export function StayIndex() {
 
 
     return (
-        <section className="stay-index">
-            {/* {isFilterModalOpen && (
-                <FilterModal
-                    stays={stays}
-                    setIsFilterModalOpen={setIsFilterModalOpen}
-                />
-            )} */}
+        <section className='stay-index'>
             <CategoryFilter />
             <StayList stays={stays} geoLocation={geoLocation} />
         </section >
