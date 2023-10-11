@@ -1,10 +1,8 @@
 import { logger } from '../../services/logger.service.mjs'
 import { socketService } from '../../services/socket.service.mjs'
-import { userService } from '../user/user.service.mjs'
-import { authService } from '../auth/auth.service.mjs'
 import { orderService } from './order.service.mjs'
 
-// ============== Verified being used ==============
+// ======================= Verified being used =======================
 export async function getOrders(req, res) {
     try {
         const orders = await orderService.query(req.query)
@@ -14,39 +12,11 @@ export async function getOrders(req, res) {
         res.status(400).send({ err: 'Failed to get orders' })
     }
 }
-// =================================================
-
-export async function getOrderById(req, res) {
-    try {
-        const orderId = req.params.id
-        console.log('orderId', orderId)
-        // const orders = await orderService.query(orderId)
-        const order = await orderService.getById(orderId)
-        res.send(order)
-    } catch (err) {
-        logger.error('Cannot get orders', err)
-        res.status(400).send({ err: 'Failed to get orders' })
-    }
-}
-
-export async function deleteOrder(req, res) {
-    try {
-        const deletedCount = await orderService.remove(req.params.id)
-        if (deletedCount === 1) {
-            res.send({ msg: 'Deleted successfully' })
-        } else {
-            res.status(400).send({ err: 'Cannot remove order' })
-        }
-    } catch (err) {
-        logger.error('Failed to delete order', err)
-        res.status(400).send({ err: 'Failed to delete order' })
-    }
-}
 
 export async function addOrder(req, res) {
-    const loggedinUser = req.loggedinUser
+    const { buyer, seller, orderDetails, orderPrice, stayDetails, explore, status } = req.body
+
     try {
-        const { buyer, seller, orderDetails, orderPrice, stayDetails, explore, status } = req.body
         const order = {
             buyer,
             seller,
@@ -70,7 +40,6 @@ export async function addOrder(req, res) {
             userId: orderRes.content.seller._id
         })
 
-
         res.send(orderRes._id)
     } catch (err) {
         logger.error('Failed to add order', err)
@@ -78,20 +47,14 @@ export async function addOrder(req, res) {
     }
 }
 
-
 export async function updateOrder(req, res) {
-    // console.log('req.body', req.body)
     const orderId = req.params.id
     const orderStatus = req.body.status
 
-    // console.log('req.params.id', req.params.id)
-    const orderToUpdate = await orderService.getById(orderId)
-    // console.log('orderToUpdate', orderToUpdate)
-    orderToUpdate.content.status = orderStatus
-    // console.log('orderToUpdate', orderToUpdate)
     try {
+        const orderToUpdate = await orderService.getById(orderId)
+        orderToUpdate.content.status = orderStatus
         const orderRes = await orderService.update(orderToUpdate)
-
 
         socketService.emitToUser({
             type: 'stay-reservation-reply',
@@ -105,3 +68,34 @@ export async function updateOrder(req, res) {
         res.status(400).send({ err: 'Failed to update order' })
     }
 }
+// ===================================================================
+// ============== Verified working - but NOT being used ==============
+export async function getOrderById(req, res) {
+    const orderId = req.params.id
+
+    try {
+        const order = await orderService.getById(orderId)
+        res.send(order)
+    } catch (err) {
+        logger.error('Cannot get orders', err)
+        res.status(400).send({ err: 'Failed to get orders' })
+    }
+}
+
+export async function deleteOrder(req, res) {
+    const orderId = req.params.id
+    
+    try {
+        const deletedCount = await orderService.remove(orderId)
+        if (deletedCount === 1) {
+            res.send({ msg: 'Deleted successfully' })
+        } else {
+            res.status(400).send({ err: 'Cannot remove order' })
+        }
+    } catch (err) {
+        logger.error('Failed to delete order', err)
+        res.status(400).send({ err: 'Failed to delete order' })
+    }
+}
+// ===================================================================
+
