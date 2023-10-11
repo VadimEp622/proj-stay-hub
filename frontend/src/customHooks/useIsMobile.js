@@ -1,12 +1,12 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 
 
 export default function useIsMobile(width = 790) {
-    const [isMobile, setIsMobile] = useState(getIsMobile())
-
-    function getIsMobile() {
+    const getIsMobile = useCallback(() => {
         return window.innerWidth < width
-    }
+    }, [width])
+
+    const [isMobile, setIsMobile] = useState(getIsMobile())
 
     useEffect(() => {
         const onResize = () => setIsMobile(getIsMobile())
@@ -15,8 +15,7 @@ export default function useIsMobile(width = 790) {
         return () => {
             window.removeEventListener("resize", onResize)
         }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    }, [getIsMobile])
 
     return isMobile
 }
