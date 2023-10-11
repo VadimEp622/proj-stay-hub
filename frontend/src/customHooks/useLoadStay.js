@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useCallback, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { loadStay } from '../store/stay.actions'
 
@@ -6,17 +6,16 @@ import { loadStay } from '../store/stay.actions'
 export default function useLoadStay(stayId) {
     const navigate = useNavigate()
 
-    useEffect(() => {
-        handleLoadStay()
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
-
-    async function handleLoadStay() {
+    const handleLoadStay = useCallback(async () => {
         try {
             await loadStay(stayId)
         } catch (err) {
             console.log(err)
             navigate('/')
         }
-    }
+    }, [navigate, stayId])
+
+    useEffect(() => {
+        handleLoadStay()
+    }, [handleLoadStay])
 }
