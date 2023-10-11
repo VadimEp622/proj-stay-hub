@@ -1,40 +1,40 @@
 import { stayService } from './stay.service.mjs'
 import { logger } from '../../services/logger.service.mjs'
 
+
+// =================== Verified being used ===================
 export async function getStays(req, res) {
+  logger.debug('Getting Stays:', req.query)
+  const { country, city, from, to, capacity, label } = req.query
+
+  const filterBy = {
+    country: '',
+    city: '',
+    from: '',
+    to: '',
+    capacity: 0,
+    label: '',
+  }
+
+  if (country) filterBy.country = country
+  if (city) filterBy.city = city
+  if (from) filterBy.from = +from
+  if (to) filterBy.to = +to
+  if (capacity) filterBy.capacity = +capacity
+  if (label) filterBy.label = label
+
+  if (filterBy.country === 'Flexible') filterBy.country = filterBy.city
+  if (filterBy.country === 'Middle East') {
+    filterBy.country = 'Turkey'
+    filterBy.city = 'Turkey'
+  }
+  if (filterBy.country === 'South America') {
+    filterBy.country = 'Brazil'
+    filterBy.city = 'Brazil'
+  }
+
   try {
-    logger.debug('Getting Stays:', req.query)
-    const { country, city, from, to, capacity, label } = req.query
-
-    const filterBy = {
-      country: '',
-      city: '',
-      from: '',
-      to: '',
-      capacity: 0,
-      label: '',
-
-    }
-    if (country) filterBy.country = country
-    if (city) filterBy.city = city
-    if (from) filterBy.from = +from
-    if (to) filterBy.to = +to
-    if (capacity) filterBy.capacity = +capacity
-    if (label) filterBy.label = label
-
-
-    if (filterBy.country === 'Flexible') filterBy.country = filterBy.city
-    if (filterBy.country === 'Middle East') {
-      filterBy.country = 'Turkey'
-      filterBy.city = 'Turkey'
-    }
-    if (filterBy.country === 'South America') {
-      filterBy.country = 'Brazil'
-      filterBy.city = 'Brazil'
-    }
-    // console.log('hi before query')
     const stays = await stayService.query(filterBy)
-    // console.log('hi after query')
     res.json(stays)
   } catch (err) {
     logger.error('Failed to get stays', err)
@@ -43,8 +43,8 @@ export async function getStays(req, res) {
 }
 
 export async function getStayById(req, res) {
+  const stayId = req.params.id
   try {
-    const stayId = req.params.id
     const stay = await stayService.getById(stayId)
     res.json(stay)
   } catch (err) {
@@ -52,14 +52,11 @@ export async function getStayById(req, res) {
     res.status(400).send({ err: 'Failed to get stay' })
   }
 }
-
-
+// ===========================================================
+// =============== Verified works but Not used ===============
 export async function addStay(req, res) {
-  const { loggedinUser } = req
-
+  const stay = req.body
   try {
-    const stay = req.body
-    stay.owner = loggedinUser
     const addedStay = await stayService.add(stay)
     res.json(addedStay)
   } catch (err) {
@@ -68,60 +65,26 @@ export async function addStay(req, res) {
   }
 }
 
-
-export async function updateStay(req, res) {
-  try {
-    const stay = req.body
-    const updatedStay = await stayService.update(stay)
-    res.json(updatedStay)
-  } catch (err) {
-    logger.error('Failed to update stay', err)
-    res.status(400).send({ err: 'Failed to update stay' })
-
-  }
-}
-
 export async function removeStay(req, res) {
+  const stayId = req.params.id
   try {
-    const stayId = req.params.id
-    const removedId = await stayService.remove(stayId)
-    res.send(removedId)
+    await stayService.remove(stayId)
+    res.send(`Successfully removed stay: ${stayId}`)
   } catch (err) {
     logger.error('Failed to remove stay', err)
     res.status(400).send({ err: 'Failed to remove stay' })
   }
 }
 
-export async function addStayMsg(req, res) {
-  const { loggedinUser } = req
+export async function updateStay(req, res) {
+  const stayId = req.params.id
+  const stay = req.body
   try {
-    const stayId = req.params.id
-    const msg = {
-      txt: req.body.txt,
-      by: loggedinUser
-    }
-    const savedMsg = await stayService.addStayMsg(stayId, msg)
-    res.json(savedMsg)
+    const updatedStay = await stayService.update(stayId, stay)
+    res.json(updatedStay)
   } catch (err) {
     logger.error('Failed to update stay', err)
     res.status(400).send({ err: 'Failed to update stay' })
-
   }
 }
-
-export async function removeStayMsg(req, res) {
-  const { loggedinUser } = req
-  try {
-    const stayId = req.params.id
-    const { msgId } = req.params
-
-    const removedId = await stayService.removeStayMsg(stayId, msgId)
-    res.send(removedId)
-  } catch (err) {
-    logger.error('Failed to remove stay msg', err)
-    res.status(400).send({ err: 'Failed to remove stay msg' })
-
-  }
-}
-
-
+// ===========================================================

@@ -1,13 +1,12 @@
 import { startOfDay } from 'date-fns'
 import { dbService } from '../../services/db.service.mjs'
 import { logger } from '../../services/logger.service.mjs'
-import { utilService } from '../../services/util.service.mjs'
 import mongodb from 'mongodb'
 const { ObjectId } = mongodb
 
 // const PAGE_SIZE = 3
 
-
+// =================== Verified being used ===================
 async function query(filterBy) {
     try {
         const criteria = _createCriteria(filterBy)
@@ -27,11 +26,22 @@ async function query(filterBy) {
 async function getById(stayId) {
     try {
         const collection = await dbService.getCollection('stay')
-        // const stay = collection.findOne({ _id: ObjectId(stayId) })
         const stay = await collection.findOne({ _id: new ObjectId(stayId) })
         return stay
     } catch (err) {
         logger.error(`while finding stay ${stayId}`, err)
+        throw err
+    }
+}
+// ===========================================================
+// =============== Verified works but Not used ===============
+async function add(stay) {
+    try {
+        const collection = await dbService.getCollection('stay')
+        await collection.insertOne(stay)
+        return stay
+    } catch (err) {
+        logger.error('cannot insert stay', err)
         throw err
     }
 }
@@ -47,66 +57,29 @@ async function remove(stayId) {
     }
 }
 
-async function add(stay) {
+async function update(stayId, stay) {
     try {
-        const collection = await dbService.getCollection('stay')
-        await collection.insertOne(stay)
-        return stay
-    } catch (err) {
-        logger.error('cannot insert stay', err)
-        throw err
-    }
-}
+        const stayToSave = { ...stay }
+        stayToSave._id = new ObjectId(stayId)
 
-async function update(stay) {
-    try {
-        // update specific keys in stay object(!!)
-        const stayToSave = {
-            // vendor: stay.vendor,
-            // price: stay.price
-        }
         const collection = await dbService.getCollection('stay')
-        await collection.updateOne({ _id: new ObjectId(stay._id) }, { $set: stayToSave })
-        return stay
+        await collection.updateOne({ _id: new ObjectId(stayId) }, { $set: stayToSave })
+        return stayToSave
     } catch (err) {
-        logger.error(`cannot update stay ${stay._id}`, err)
+        logger.error(`cannot update stay ${stayId}`, err)
         throw err
     }
 }
+// ===========================================================
 
-// Not Yet In Use
-async function addStayMsg(stayId, msg) {
-    try {
-        msg.id = utilService.makeId()
-        const collection = await dbService.getCollection('stay')
-        await collection.updateOne({ _id: new ObjectId(stayId) }, { $push: { msgs: msg } })
-        return msg
-    } catch (err) {
-        logger.error(`cannot add stay msg ${stayId}`, err)
-        throw err
-    }
-}
 
-// Not Yet In Use
-async function removeStayMsg(stayId, msgId) {
-    try {
-        const collection = await dbService.getCollection('stay')
-        await collection.updateOne({ _id: new ObjectId(stayId) }, { $pull: { msgs: { id: msgId } } })
-        return msgId
-    } catch (err) {
-        logger.error(`cannot add stay msg ${stayId}`, err)
-        throw err
-    }
-}
 
 export const stayService = {
     remove,
     query,
     getById,
     add,
-    update,
-    addStayMsg,
-    removeStayMsg
+    update
 }
 
 
@@ -141,11 +114,11 @@ function _createCriteria(filterBy) {
     }
 
     if (filterBy.capacity > 0) {
-        criteria.$and.push({ 'capacity': { $gte: filterBy.capacity } });
+        criteria.$and.push({ 'capacity': { $gte: filterBy.capacity } })
     }
 
     if (filterBy.label) {
-        criteria.$and.push({ 'type': filterBy.label });
+        criteria.$and.push({ 'type': filterBy.label })
     }
 
     return criteria
