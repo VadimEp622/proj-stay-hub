@@ -1,21 +1,7 @@
 import { userService } from './user.service.mjs'
 import { logger } from '../../services/logger.service.mjs'
-import { socketService } from '../../services/socket.service.mjs'
 
-// ************* Confirmed Being Used *************
-export async function addUserTrip(req, res) {
-    try {
-        const userId = req.params.id
-        const orderId = req.body.orderId
-        const updatedUser = await userService.addTrip(userId, orderId)
-        res.send(updatedUser)
-    } catch (err) {
-        logger.error('Failed adding trip to user', err)
-        res.status(400).send({ err: 'Failed adding trip to user' })
-    }
-}
-// ************************************************
-
+// ====================== Confirmed Being Used ======================
 export async function getUser(req, res) {
     try {
         const user = await userService.getById(req.params.id)
@@ -26,6 +12,33 @@ export async function getUser(req, res) {
     }
 }
 
+export async function addUserTrip(req, res) {
+    const userId = req.params.id
+    const orderId = req.body.orderId
+    try {
+        const updatedUser = await userService.addTrip(userId, orderId)
+        res.send(updatedUser)
+    } catch (err) {
+        logger.error('Failed adding trip to user', err)
+        res.status(400).send({ err: 'Failed adding trip to user' })
+    }
+}
+
+export async function updateUserWishlist(req, res) {
+    const userId = req.params.id
+    const { _id, imgUrls, loc, type, bedrooms, price, availableDates, reviews } = req.body
+    const wishlistStay = { _id, imgUrls, loc, type, bedrooms, price, availableDates, reviews }
+    try {
+        const user = await userService.getById(userId)
+        const updateReport = await userService.updateWishlist(user, wishlistStay)
+        res.send(updateReport)
+    } catch (err) {
+        logger.error('Failed to update user wishlist', err)
+        res.status(400).send({ err: 'Failed to update user wishlist' })
+    }
+}
+// ==================================================================
+// =================== Confirmed works but unused ===================
 export async function getUsers(req, res) {
     try {
         const filterBy = {
@@ -40,21 +53,11 @@ export async function getUsers(req, res) {
     }
 }
 
-export async function deleteUser(req, res) {
-    try {
-        await userService.remove(req.params.id)
-        res.send({ msg: 'Deleted successfully' })
-    } catch (err) {
-        logger.error('Failed to delete user', err)
-        res.status(400).send({ err: 'Failed to delete user' })
-    }
-}
-
 export async function updateUser(req, res) {
+    const userId = req.params.id
+    const user = req.body
     try {
-        const user = req.body
-        // console.log('user', user)
-        const savedUser = await userService.update(user)
+        const savedUser = await userService.update(userId, user)
         res.send(savedUser)
     } catch (err) {
         logger.error('Failed to update user', err)
@@ -62,17 +65,14 @@ export async function updateUser(req, res) {
     }
 }
 
-
-export async function updateUserWishlist(req, res) {
+export async function deleteUser(req, res) {
+    const userId = req.params.id
     try {
-        const { _id, imgUrls, loc, type, bedrooms, price, availableDates, reviews } = req.body
-        const wishlistStay = { _id, imgUrls, loc, type, bedrooms, price, availableDates, reviews }
-        const userId = req.params.id
-        const user = await userService.getById(userId)
-        const updateReport = await userService.updateWishlist(user, wishlistStay)
-        res.send(updateReport)
+        await userService.remove(userId)
+        res.send({ msg: 'Deleted successfully' })
     } catch (err) {
-        logger.error('Failed to update user wishlist', err)
-        res.status(400).send({ err: 'Failed to update user wishlist' })
+        logger.error('Failed to delete user', err)
+        res.status(400).send({ err: 'Failed to delete user' })
     }
 }
+// ==================================================================

@@ -4,14 +4,15 @@ import { getUser, getUsers, deleteUser, updateUser, updateUserWishlist, addUserT
 
 const router = express.Router()
 
-// ************* Confirmed Being Used *************
-router.post('/:id/trip', requireAuth, addUserTrip)
-// ************************************************
-
-router.get('/', getUsers)
+// ====================== Confirmed Being Used ======================
 router.get('/:id', getUser)
-router.put('/:id', requireAuth, updateUser)
+router.post('/:id/trip', requireAuth, addUserTrip)
 router.put('/:id/wishlist', requireAuth, updateUserWishlist)//consider adding middleware checking for undefined values
+// ==================================================================
+// =================== Confirmed works but unused ===================
+router.get('/', getUsers)
+router.put('/:id', requireAuth, updateUser)
 router.delete('/:id', requireAuth, requireAdmin, deleteUser)
+// ==================================================================
 
 export const userRoutes = router
