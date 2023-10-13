@@ -4,6 +4,7 @@ const BASE_URL = process.env.NODE_ENV === 'production'
     ? '/api/'
     : '//localhost:3030/api/'
 
+    console.log('process.env', process.env)
 
 var axios = Axios.create({
     withCredentials: true

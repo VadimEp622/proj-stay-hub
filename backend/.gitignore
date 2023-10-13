@@ -4,3 +4,7 @@
 
 # logs
 /logs
+
+# secret environment variables
+/secret
+.env
