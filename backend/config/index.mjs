@@ -1,5 +1,7 @@
 import configProd from './prod.mjs'
 import configDev from './dev.mjs'
+import dotenv from 'dotenv'
+dotenv.config()
 
 
 export var config
@@ -9,6 +11,5 @@ if (true || process.env.NODE_ENV === 'production') {
 } else {
   config = configDev
 }
+
 config.isGuestMode = true
-
-

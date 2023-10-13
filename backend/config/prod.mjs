@@ -1,4 +1,7 @@
+import dotenv from 'dotenv'
+dotenv.config()
+
 export default {
-  dbURL: 'mongodb+srv://stayhub123:stayhub123@sprint4-airbnbdemo-stay.cmk0lqm.mongodb.net/?retryWrites=true&w=majority',
-  dbName: 'StayHub_db'
+  dbURL: process.env.DB_URL,
+  dbName: process.env.DB_NAME
 }

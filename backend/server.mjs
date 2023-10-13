@@ -6,9 +6,9 @@ import cookieParser from 'cookie-parser'
 import dotenv from 'dotenv'
 
 
+dotenv.config()
 const app = express()
 const server = http.createServer(app)
-dotenv.config()
 
 
 // Express App Config
@@ -67,5 +67,5 @@ app.get('/**', (req, res) => {
 const port = process.env.PORT || 3030
 server.listen(port, () => {
     logger.info('Server is running on port: ' + port)
-    logger.info('REACT_APP_GOOGLE_MAPS_API_KEY: ' + process.env.REACT_APP_GOOGLE_MAPS_API_KEY)
+    logger.info('process.env.DB_NAME: ' + process.env.DB_NAME)
 })
