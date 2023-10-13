@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { AiFillHome } from 'react-icons/ai'
 import GoogleMapReact from 'google-map-react'
+import useFetchSecret from '../../customHooks/useFetchSecret'
+import { Loader } from './loader'
 
 
 function Marker() {
@@ -9,21 +11,22 @@ function Marker() {
 
 
 // TODO: research and improve this map cmp
-// TODO: secure the API key
 
 
 export default function SimpleMap({ loc }) {
     //IMPORTANT NOTE: DEMO DATA CONFUSED LAT AND LAN.
     //ALSO:           GoogleMapReact ONLY WORKS WITH LNG KEY, NOT LAN KEY
 
+    const [isLoading, API_KEY] = useFetchSecret()
     const lng = loc.lat
     const lat = loc.lan
     const [center, setCenter] = useState({ lat, lng })
     const [zoom, setZoom] = useState(12)
     const Popper = () => <div className='map-popper'><AiFillHome /><div className='popper-wedge'></div></div>
-    const API_KEY = 'AIzaSyAAWlKgdwuqVE_rU0R3Mtxje8-RlWbiwzc'
 
+    if (isLoading) return <Loader />
     return (
+
         <section className='map' style={{ height: '60vh', width: '100%' }}>
             <GoogleMapReact
                 bootstrapURLKeys={{ key: API_KEY }}
