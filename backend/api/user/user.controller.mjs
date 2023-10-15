@@ -32,7 +32,6 @@ export async function updateUserWishlist(req, res) {
     const wishlistStay = { _id, imgUrls, loc, type, bedrooms, price, availableDates, reviews }
     try {
         const user = await userService.getById(userId)
-        logger.info('Get user by userId:', userId, user)
         const updateReport = await userService.updateWishlist(user, wishlistStay)
         logger.info('Updated wishlist', updateReport.wishlistStatus, `stayId: ${updateReport.stayId}`)
         res.send(updateReport)
