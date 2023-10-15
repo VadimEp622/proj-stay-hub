@@ -12,4 +12,4 @@ if (true || process.env.NODE_ENV === 'production') {
   config = configDev
 }
 
-config.isGuestMode = true
+config.isGuestMode = false

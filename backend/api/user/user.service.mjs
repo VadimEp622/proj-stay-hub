@@ -94,7 +94,6 @@ async function updateWishlist(user, stay) {
                 { _id: ObjectId(user._id) },
                 { $pull: { wishlist: { _id: stay._id } } }
             )
-            console.log('wishlist removed')
             return { stayId: stay._id, wishlistStatus: 'removed' }
         } else {// adding to wishlist here
             collection.updateOne(
@@ -108,7 +107,6 @@ async function updateWishlist(user, stay) {
                     }
                 }
             )
-            console.log('wishlist added')
             return { stayId: stay._id, wishlistStatus: 'added' }
         }
     } catch (err) {

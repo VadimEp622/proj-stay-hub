@@ -1,6 +1,6 @@
-import {config} from '../config/index.mjs'
-import {logger} from '../services/logger.service.mjs'
-import {asyncLocalStorage} from '../services/als.service.mjs'
+import { config } from '../config/index.mjs'
+import { logger } from '../services/logger.service.mjs'
+import { asyncLocalStorage } from '../services/als.service.mjs'
 
 
 // consider adding requireSameUser
@@ -8,7 +8,7 @@ import {asyncLocalStorage} from '../services/als.service.mjs'
 export function requireAuth(req, res, next) {
   const { loggedinUser } = asyncLocalStorage.getStore()
   req.loggedinUser = loggedinUser
-  
+
   if (config.isGuestMode && !loggedinUser) {
     req.loggedinUser = { _id: '', fullname: 'Guest' }
     return next()
@@ -27,6 +27,3 @@ export function requireAdmin(req, res, next) {
   }
   next()
 }
-
-
-

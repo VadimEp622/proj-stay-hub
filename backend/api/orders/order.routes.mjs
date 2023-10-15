@@ -5,9 +5,11 @@ import { log } from '../../middlewares/logger.middleware.mjs'
 import { addOrder, getOrders, deleteOrder, updateOrder, getOrderById } from './order.controller.mjs'
 const router = express.Router()
 
+router.use(requireAuth)
+
 // ======================= Verified being used =======================
 router.get('/', log, getOrders)
-router.post('/', log, requireAuth, addOrder)
+router.post('/', log, addOrder)
 router.put('/:id', log, updateOrder)
 // ===================================================================
 // ============== Verified working - but NOT being used ==============
