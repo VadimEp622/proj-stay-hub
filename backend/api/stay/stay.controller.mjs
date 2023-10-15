@@ -35,6 +35,7 @@ export async function getStays(req, res) {
 
   try {
     const stays = await stayService.query(filterBy)
+    logger.info('Getting stays by filterBy:', filterBy)
     res.json(stays)
   } catch (err) {
     logger.error('Failed to get stays', err)
@@ -43,9 +44,10 @@ export async function getStays(req, res) {
 }
 
 export async function getStayById(req, res) {
-  const stayId = req.params.id
   try {
+    const stayId = req.params.id
     const stay = await stayService.getById(stayId)
+    logger.info('Getting stay by id:', stayId)
     res.json(stay)
   } catch (err) {
     logger.error('Failed to get stay', err)

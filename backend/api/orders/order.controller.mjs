@@ -6,6 +6,7 @@ import { orderService } from './order.service.mjs'
 export async function getOrders(req, res) {
     try {
         const orders = await orderService.query(req.query)
+        logger.info('Getting orders by filterBy:', req.query)
         res.send(orders)
     } catch (err) {
         logger.error('Cannot get orders', err)
@@ -27,12 +28,7 @@ export async function addOrder(req, res) {
             status,
         }
         const orderRes = await orderService.add(order)
-
-        console.log(`
-        type: 'stay-reserved-send',
-        data: 'a stay you own has just been reserved',
-        userId: orderRes.content.seller._id
-        ------>`, orderRes.content.seller._id)
+        logger.info('Creating order', orderRes._id)
 
         socketService.emitToUser({
             type: 'stay-reserved-send',
@@ -55,7 +51,8 @@ export async function updateOrder(req, res) {
         const orderToUpdate = await orderService.getById(orderId)
         orderToUpdate.content.status = orderStatus
         const orderRes = await orderService.update(orderToUpdate)
-
+        logger.info('Updating order', orderRes._id)
+        
         socketService.emitToUser({
             type: 'stay-reservation-reply',
             data: orderToUpdate.content.status,
@@ -84,7 +81,7 @@ export async function getOrderById(req, res) {
 
 export async function deleteOrder(req, res) {
     const orderId = req.params.id
-    
+
     try {
         const deletedCount = await orderService.remove(orderId)
         if (deletedCount === 1) {
