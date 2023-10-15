@@ -4,7 +4,9 @@ import { logger } from '../../services/logger.service.mjs'
 // ====================== Confirmed Being Used ======================
 export async function getUser(req, res) {
     try {
-        const user = await userService.getById(req.params.id)
+        const userId = req.params.id
+        const user = await userService.getById(userId)
+        logger.info('Get user by userId:', userId, user)
         res.send(user)
     } catch (err) {
         logger.error('Failed to get user', err)
@@ -30,8 +32,9 @@ export async function updateUserWishlist(req, res) {
     const wishlistStay = { _id, imgUrls, loc, type, bedrooms, price, availableDates, reviews }
     try {
         const user = await userService.getById(userId)
+        logger.info('Get user by userId:', userId, user)
         const updateReport = await userService.updateWishlist(user, wishlistStay)
-        logger.info('User updated wishlist', updateReport.wishlistStatus, `stayId: ${updateReport.stayId}`)
+        logger.info('Updated wishlist', updateReport.wishlistStatus, `stayId: ${updateReport.stayId}`)
         res.send(updateReport)
     } catch (err) {
         logger.error('Failed to update user wishlist', err)

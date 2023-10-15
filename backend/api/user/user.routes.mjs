@@ -6,7 +6,7 @@ const router = express.Router()
 
 // ====================== Confirmed Being Used ======================
 router.get('/:id', getUser)
-router.post('/:id/trip', requireAuth, addUserTrip)
+router.post('/:id/trip', requireAuth, addUserTrip) // TODO: make addOrder in order route to also handle addUserTrip
 router.put('/:id/wishlist', requireAuth, updateUserWishlist)//consider adding middleware checking for undefined values
 // ==================================================================
 // =================== Confirmed works but unused ===================
