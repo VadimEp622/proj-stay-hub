@@ -34,7 +34,6 @@ if (process.env.NODE_ENV === 'production') {
 // routes
 import { authRoutes } from './api/auth/auth.routes.mjs'
 import { orderRoutes } from './api/orders/order.routes.mjs'
-import { reviewRoutes } from './api/review/review.routes.mjs'
 import { secretRoutes } from './api/secret/secret.routes.mjs'
 import { stayRoutes } from './api/stay/stay.routes.mjs'
 import { userRoutes } from './api/user/user.routes.mjs'
@@ -47,7 +46,6 @@ app.all('*', setupAsyncLocalStorage)
 
 app.use('/api/auth', authRoutes)
 app.use('/api/orders', orderRoutes)
-app.use('/api/review', reviewRoutes)
 app.use('/api/secret', secretRoutes)
 app.use('/api/stay', stayRoutes)
 app.use('/api/user', userRoutes)
