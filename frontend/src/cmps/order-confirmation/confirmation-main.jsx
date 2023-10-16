@@ -7,10 +7,13 @@ export function ConfirmationMain({ orderObject }) {
 
     const guestCountStr = `${guestCount} ${guestCount === 1 ? 'guest' : 'guests'}`
     const formattedTimeRange = utilService.getFormattedTimeRange(checkIn, checkOut)
-    const formattedDate = new Date(utilService.getFutureTime(2, 'day')).toLocaleDateString(undefined, {
-        month: 'short',
-        day: 'numeric',
-    })
+    const formattedDate = utilService.getFormattedDate(
+        utilService.getFutureTime(2, 'day'),
+        {
+            month: 'short',
+            day: 'numeric',
+        }
+    )
     return (
         <section className='confirmation-main'>
 
