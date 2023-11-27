@@ -12,60 +12,33 @@ This project was built from the **ground up** in **JavaScript**, as a final exam
 
 # Samples
 
-<table>
-  <thead>
-    <tr>
-      <th colspan=2 valign="top"><h3 align="center">Home-page</h3></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td valign="top"><img src="https://github.com/VadimEp622/proj-stay-hub/assets/118854398/a330ffcb-021a-4666-b89d-08599e904c37"/></td>
-      <td valign="top"><img src="https://github.com/VadimEp622/proj-stay-hub/assets/118854398/f1057d15-8ff7-4afb-b335-56742caa7ffc"/></td>
-    </tr>
-  </tbody>
-</table>
+<h2>Desktop</h2>
 
-<table>
-  <thead>
-    <tr>
-      <th colspan=2 valign="top"><h3 align="center">Header-filter</h3></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-    <td valign="top"><img src="https://github.com/VadimEp622/proj-stay-hub/assets/118854398/df704cb6-6964-4c2d-9509-e712ae41eaff"></td>
-    </tr>
-  </tbody>
-</table>
+![Home-page](https://github.com/VadimEp622/proj-stay-hub/assets/118854398/a330ffcb-021a-4666-b89d-08599e904c37)
+<hr></hr>
 
-<table>
-  <thead>
-    <tr>
-      <th colspan=2 valign="top"><h3 align="center">Details-page</h3></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td valign="top"><img src="https://github.com/VadimEp622/proj-stay-hub/assets/118854398/e7e7c48d-2a7f-46f0-95fa-96955fa80915"/></td>
-      <td valign="top"><img src="https://github.com/VadimEp622/proj-stay-hub/assets/118854398/118a6058-9b13-403b-be6f-0abb253505f9"/></td>
-    </tr>
-  </tbody>
-</table>
+![Header-filter](https://github.com/VadimEp622/proj-stay-hub/assets/118854398/df704cb6-6964-4c2d-9509-e712ae41eaff)
+<hr></hr>
 
-<table>
-  <thead>
-    <tr>
-      <th colspan=2 valign="top"><h3 align="center">Trips-page</h3></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td valign="top"><img src="https://github.com/VadimEp622/proj-stay-hub/assets/118854398/9558ad26-2e62-4c2e-abdc-83b0ea433c33"/></td>
-      <td valign="top"><img src="https://github.com/VadimEp622/proj-stay-hub/assets/118854398/476c4a5f-828a-432b-95a2-1e42b84cefa7"/></td>
-    </tr>
-  </tbody>
-</table>
+![Details-page](https://github.com/VadimEp622/proj-stay-hub/assets/118854398/e7e7c48d-2a7f-46f0-95fa-96955fa80915)
+<hr></hr>
+
+![Trips-page](https://github.com/VadimEp622/proj-stay-hub/assets/118854398/9558ad26-2e62-4c2e-abdc-83b0ea433c33)
+<hr></hr>
+
+<h2>Mobile</h2>
+
+<p align="center">
+    <img class="center" src="https://github.com/VadimEp622/proj-stay-hub/assets/118854398/f1057d15-8ff7-4afb-b335-56742caa7ffc"><hr></hr>
+</p>
+<p align="center">
+    <img class="center" src="https://github.com/VadimEp622/proj-stay-hub/assets/118854398/118a6058-9b13-403b-be6f-0abb253505f9"><hr></hr>
+</p>
+<p align="center">
+    <img class="center" src="https://github.com/VadimEp622/proj-stay-hub/assets/118854398/476c4a5f-828a-432b-95a2-1e42b84cefa7"><hr></hr>
+</p>
+
+
 
 # Summary
 
