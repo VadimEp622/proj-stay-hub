@@ -4,18 +4,88 @@
 
 # Introduction
 
-This project was made as a final exam for the ***Full-stack developer*** bootcamp **Coding Academy** (Israel).
+**StayHub** is fullstack web application, which functions as an Airbnb clone.
+This project was built from the **ground up** in **JavaScript**, as a final exam for the ***Full-stack developer*** bootcamp **Coding Academy** (Israel).
 
 - Link:  [**StayHub**](https://stayhub-8w08.onrender.com)
-- Tools:  **React.js** | **Scss** | **Node.js** | **MongoDB**
-  
-# Summary:
-  
-StayHub is an Airbnb clone website, made with **JavaScript**, using **React.js**.
-- Functions as a **Single page application**
-- Uses **Node.js** as backend server, along with **Express.js**
-- Uses **MongoDB** for the database
+- Tools: **React.js**, **Sass**, **Redux** (front-end) | **Node.js**, **Express.js**, **MongoDB**, **Socket.IO** (back-end)
+
+# Samples
+
+<table>
+  <thead>
+    <tr>
+      <th colspan=2 valign="top"><h3 align="center">Home-page</h3></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td valign="top"><img src="https://github.com/VadimEp622/proj-stay-hub/assets/118854398/a330ffcb-021a-4666-b89d-08599e904c37"/></td>
+      <td valign="top"><img src="https://github.com/VadimEp622/proj-stay-hub/assets/118854398/f1057d15-8ff7-4afb-b335-56742caa7ffc"/></td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan=2 valign="top"><h3 align="center">Header-filter</h3></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <td valign="top"><img src="https://github.com/VadimEp622/proj-stay-hub/assets/118854398/df704cb6-6964-4c2d-9509-e712ae41eaff"></td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan=2 valign="top"><h3 align="center">Details-page</h3></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td valign="top"><img src="https://github.com/VadimEp622/proj-stay-hub/assets/118854398/e7e7c48d-2a7f-46f0-95fa-96955fa80915"/></td>
+      <td valign="top"><img src="https://github.com/VadimEp622/proj-stay-hub/assets/118854398/118a6058-9b13-403b-be6f-0abb253505f9"/></td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan=2 valign="top"><h3 align="center">Trips-page</h3></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td valign="top"><img src="https://github.com/VadimEp622/proj-stay-hub/assets/118854398/9558ad26-2e62-4c2e-abdc-83b0ea433c33"/></td>
+      <td valign="top"><img src="https://github.com/VadimEp622/proj-stay-hub/assets/118854398/476c4a5f-828a-432b-95a2-1e42b84cefa7"/></td>
+    </tr>
+  </tbody>
+</table>
+
+# Summary
+
+**StayHub** is divided into **Front-end** (Client-side) and a **Back-end** (Server-side).
+
+<h3>Font-end</h3>
+
+- Uses **Sass** for styling
 - Uses **Redux** for the store
+- Functions as a **Single Page Application**
+- Fully **Responsive**
+
+<h3>Back-end</h3>
+
+- Uses **Node.js** as backend server
+- Uses **Express.js** for RESTful APIs
+- Uses **MongoDB** for the database
+- Uses **Sockets** for instantaneous communication between client and server
+- Uses **Async Local Storage (ALS)** to store unique client state, for middleware/security/authentication purposes  
+
 
 # Made By:
 - [**Vlad Epov**](https://github.com/VadimEp622)
