@@ -5,33 +5,25 @@ import { logger } from '../../services/logger.service.mjs'
 // =================== Verified being used ===================
 export async function getStays(req, res) {
   logger.debug('Getting Stays:', req.query)
-  const { country, city, from, to, capacity, label } = req.query
+  const { country, from, to, capacity, label } = req.query
 
   const filterBy = {
-    country: '',
-    city: '',
+    where: '',
     from: '',
     to: '',
     capacity: 0,
     label: '',
   }
 
-  if (country) filterBy.country = country
-  if (city) filterBy.city = city
+  if (country) filterBy.where = country
   if (from) filterBy.from = +from
   if (to) filterBy.to = +to
   if (capacity) filterBy.capacity = +capacity
   if (label) filterBy.label = label
 
-  if (filterBy.country === 'Flexible') filterBy.country = filterBy.city
-  if (filterBy.country === 'Middle East') {
-    filterBy.country = 'Turkey'
-    filterBy.city = 'Turkey'
-  }
-  if (filterBy.country === 'South America') {
-    filterBy.country = 'Brazil'
-    filterBy.city = 'Brazil'
-  }
+  if (filterBy.where === 'Flexible') filterBy.where = ''
+  if (filterBy.where === 'Middle East') filterBy.where = 'Turkey'
+  if (filterBy.where === 'South America') filterBy.where = 'Brazil'
 
   try {
     const stays = await stayService.query(filterBy)
