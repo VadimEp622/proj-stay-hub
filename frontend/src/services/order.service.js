@@ -3,7 +3,7 @@ import { utilService } from './util.service'
 import { explorePics } from './resources-pics-explore.service'
 
 
-const BASE_URL = 'orders'
+const BASE_URL = 'order'
 
 
 export const orderService = {
