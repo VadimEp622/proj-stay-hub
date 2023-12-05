@@ -89,7 +89,9 @@ function _createCriteria(filterBy) {
         $and: [{
             $or: [
                 { 'loc.country': { $regex: filterBy.country, $options: 'i' } },
-                { 'loc.city': { $regex: filterBy.city, $options: 'i' } }
+                { 'loc.city': { $regex: filterBy.city, $options: 'i' } },
+                { 'loc.countryCode': { $regex: filterBy.city, $options: 'i' } },
+                { 'loc.address': { $regex: filterBy.city, $options: 'i' } }
             ]
         }]
     }
