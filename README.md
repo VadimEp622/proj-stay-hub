@@ -69,6 +69,8 @@ This project was built from the **ground up** in **JavaScript**, as a final exam
 *The GOOGLE_MAPS_API_KEY is needed for viewing the map in the "/stay-details/:id" route, though it's not an absolute requirement to run
 *The DB_URL is needed for running the backend in production ("npm run prod" in backend and that's it) - needs having the database in the cloud, and a "connection SRV string"
 
+**if you wish to run the back-end in production, additionally add in the backend .env file: SECRET1='insert-strin-here' , a random string of your choice, for spicing up the hash for the password, on new user signup.
+
 
 
 # Made By:
