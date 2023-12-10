@@ -19,8 +19,29 @@ import SvgHandler from '../../_reuseable-cmps/svg-handler.jsx'
 
 // **TODO: stay-preview should be a dumb component(!!!), that only display data, and not calculate inside it with functions(!!!)
 
-export function StayPreview({ stay, geoLocation }) {
+export function StayPreview({ stay, geoLocation, isMobile }) {
     const loggedInUser = useSelector(storeState => storeState.userModule.user)
+
+    function getResizeMobilePictures() {
+        if (!isMobile) return stay.imgUrls
+
+        // Array(5) [ 
+        // "http://res.cloudinary.com/dmtlr2viw/image/upload/v1663437358/cy8kzj8jeofwkev6tlq9.jpg",
+        //  "http://res.cloudinary.com/dmtlr2viw/image/upload/v1663436566/dsqwjeelwr1bwjxfkdxv.jpg",
+        //   "http://res.cloudinary.com/dmtlr2viw/image/upload/v1663436893/pkhxv5j90ubdzbpgdbdb.jpg",
+        //    "http://res.cloudinary.com/dmtlr2viw/image/upload/v1663436481/tqwkxtbalipudzhivoag.jpg",
+        //     "http://res.cloudinary.com/dmtlr2viw/image/upload/v1663436993/yzxnnw83e9qyas022au4.jpg" 
+        // ]
+
+        const stayImages = stay.imgUrls.map((imgStr) => {
+            const strIdx = imgStr.indexOf('/upload/') + 8
+            const firstPart = imgStr.substring(0, strIdx)
+            const middlePart = 'c_fit,w_500/'
+            const lastPart = imgStr.substring(strIdx)
+            return firstPart + middlePart + lastPart
+        })
+        return stayImages
+    }
 
 
     function isStayWishlist() {
@@ -72,7 +93,7 @@ export function StayPreview({ stay, geoLocation }) {
     const stayScore = stayService.getStayScore(stay.reviews)
     return (
         <section className='stay-preview' key={stay._id}>
-            <PreviewImageCarousel imgs={stay.imgUrls} stay={stay} />
+            <PreviewImageCarousel imgs={getResizeMobilePictures()} stay={stay} />
 
             <section className='heart-svg' onClick={(ev) => onLikeClicked(ev)}>
                 <SvgHandler svgName={isStayWishlist() ? HEART_24_WHITE_STROKE_RED_FILL : HEART_24_WHITE_STROKE} />
