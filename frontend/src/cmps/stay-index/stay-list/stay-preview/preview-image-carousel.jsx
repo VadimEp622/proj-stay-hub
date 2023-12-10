@@ -46,9 +46,11 @@ export function PreviewImageCarousel({ imgs, stay }) {
     return (
         <Carousel
             additionalTransfrom={0}
-            arrows
+            arrows={false}
             centerMode={false}
             className='preview-image-carousel'
+            customLeftArrow={<CustomLeftArrow />}
+            customRightArrow={<CustomRightArrow />}
             customTransition='transform 300ms ease-in-out'
             dotListClass='dot-container'
             draggable={false}
@@ -56,6 +58,7 @@ export function PreviewImageCarousel({ imgs, stay }) {
             infinite={false}
             itemClass=''
             minimumTouchDrag={80}
+            removeArrowOnDeviceType={["tablet", "mobile"]}
             renderArrowsWhenDisabled={false}
             renderButtonGroupOutside={false}
             renderDotsOutside={false}
@@ -64,9 +67,7 @@ export function PreviewImageCarousel({ imgs, stay }) {
             showDots={true}
             sliderClass=''
             slidesToSlide={1}
-            swipeable
-            customLeftArrow={<CustomLeftArrow />}
-            customRightArrow={<CustomRightArrow />}
+            swipeable={true}
         >
             {
                 imgs.map((img, index) =>
