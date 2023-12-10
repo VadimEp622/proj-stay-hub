@@ -46,7 +46,7 @@ export function PreviewImageCarousel({ imgs, stay }) {
     return (
         <Carousel
             additionalTransfrom={0}
-            arrows={false}
+            arrows={true}
             centerMode={false}
             className='preview-image-carousel'
             customLeftArrow={<CustomLeftArrow />}
