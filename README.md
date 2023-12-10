@@ -63,7 +63,7 @@ This project was built from the **ground up** in **JavaScript**, as a final exam
 # How To Run Locally
 
 0. Dowload code zip, and unzip locally
-1. Using local monogoDB program (Studio 3T), import the "StayHub" folder from the "data" folder (...\backend\data), using "BSON - mongodump folder", into a connection
+1. Using local monogoDB ([MongoDB Community Server](https://www.mongodb.com/try/download/community) + [Studio 3T](https://studio3t.com/download/)), import the "StayHub" folder from the "data" folder (...\backend\data), using "BSON - mongodump folder", into a connection
 2. Simultaneously, run the backend using "npm run dev", and then the frontend using "npm start"
 3. In the backend folder, create an .env file, which will have: GOOGLE_MAPS_API_KEY='insert-string-here' and DB_URL='insert-string-here'.
 *The GOOGLE_MAPS_API_KEY is needed for viewing the map in the "/stay-details/:id" route, though it's not an absolute requirement to run
