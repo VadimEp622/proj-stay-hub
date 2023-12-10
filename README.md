@@ -7,6 +7,8 @@
 **StayHub** is fullstack web application, which functions as an Airbnb clone.
 This project was built from the **ground up** in **JavaScript**, as a final exam for the ***Full-stack developer*** bootcamp **Coding Academy** (Israel).
 
+The project is currently deployed to the cloud service "render.com".
+
 - Link:  [**StayHub**](https://stayhub-8w08.onrender.com)
 - Tools: **React.js**, **Sass**, **Redux** (front-end) | **Node.js**, **Express.js**, **MongoDB**, **Socket.IO** (back-end)
 
@@ -46,6 +48,7 @@ This project was built from the **ground up** in **JavaScript**, as a final exam
 
 <h3>Font-end</h3>
 
+- Uses **React.js**
 - Uses **Sass** for styling
 - Uses **Redux** for the store
 - Functions as a **Single Page Application**
@@ -58,6 +61,20 @@ This project was built from the **ground up** in **JavaScript**, as a final exam
 - Uses **MongoDB** for the database
 - Uses **Sockets** for instantaneous communication between client and server
 - Uses **Async Local Storage (ALS)** to store unique client state, for middleware/security/authentication purposes  
+
+# How To Run Locally
+
+0. Dowload code zip, and unzip locally
+1. Using local monogoDB ([MongoDB Community Server](https://www.mongodb.com/try/download/community) + [Studio 3T](https://studio3t.com/download/)), import the "StayHub" folder from the "data" folder (...\backend\data), using "BSON - mongodump folder", into a connection
+2. Simultaneously, run the backend using "npm run dev", and then the frontend using "npm start"
+3. In the backend folder, create an .env file, which will have: GOOGLE_MAPS_API_KEY='insert-string-here' and DB_URL='insert-string-here'.
+   
+* The GOOGLE_MAPS_API_KEY is needed for viewing the map in the "/stay-details/:id" route, though it's not an absolute requirement to run
+
+* The DB_URL is needed for running the backend in production ("npm run prod" in backend and that's it) - needs having the database in the cloud, and a "connection SRV string"
+
+* If you wish to run the back-end in production, additionally add in the backend .env file: SECRET1='insert-string-here' , a random string of your choice, for spicing up the hash for the password, on new user signup.
+
 
 
 # Made By:
