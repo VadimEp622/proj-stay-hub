@@ -59,6 +59,16 @@ This project was built from the **ground up** in **JavaScript**, as a final exam
 - Uses **Sockets** for instantaneous communication between client and server
 - Uses **Async Local Storage (ALS)** to store unique client state, for middleware/security/authentication purposes  
 
+# How To Run Locally
+
+0. dowload code zip and unzip locally
+1. Using local monogoDB program (Studio 3T), import the "StayHub" folder from the "data" folder (...\backend\data), using "BSON - mongodump folder", into a connection
+2. Simultaneously, run the backend using "npm run dev", and then the frontend using "npm start"
+3. In the backend folder, create an .env file, which will have: GOOGLE_MAPS_API_KEY='insert-string-here' and DB_URL='insert-string-here'.
+*The GOOGLE_MAPS_API_KEY is needed for viewing the map in the "/stay-details/:id" route, though it's not an absolute requirement to run
+*The DB_URL is needed for running the backend in production ("npm run prod" in backend and that's it) - needs having the database in the cloud, and a "connection SRV string"
+
+
 
 # Made By:
 - [**Vlad Epov**](https://github.com/VadimEp622)
