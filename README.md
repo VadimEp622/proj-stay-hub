@@ -46,6 +46,7 @@ This project was built from the **ground up** in **JavaScript**, as a final exam
 
 <h3>Font-end</h3>
 
+- Uses **React.js**
 - Uses **Sass** for styling
 - Uses **Redux** for the store
 - Functions as a **Single Page Application**
