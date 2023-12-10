@@ -6,7 +6,8 @@
 
 **StayHub** is fullstack web application, which functions as an Airbnb clone.
 This project was built from the **ground up** in **JavaScript**, as a final exam for the ***Full-stack developer*** bootcamp **Coding Academy** (Israel).
-The project is deployed to cloud service "render"
+
+The project is currently deployed to the cloud service "render.com".
 
 - Link:  [**StayHub**](https://stayhub-8w08.onrender.com)
 - Tools: **React.js**, **Sass**, **Redux** (front-end) | **Node.js**, **Express.js**, **MongoDB**, **Socket.IO** (back-end)
