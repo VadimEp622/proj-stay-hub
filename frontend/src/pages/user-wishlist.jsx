@@ -11,10 +11,29 @@ import { StayList } from '../cmps/stay-index/stay-list.jsx'
 import { Loader } from '../cmps/_reuseable-cmps/loader.jsx'
 
 
+/**
+ * Output of useGeoLocation() func
+ * 
+ * @typedef {Object} Location
+ * @property {boolean} loaded - Is geolocation loaded
+ * @property {Coordinates} [coordinates] - geolocation coordinates object
+ * @property {Error} [error] - Error object, if any error occurs
+ * 
+ * @typedef {Object} Coordinates
+ * @property {string} lat - The latitude.
+ * @property {string} lng - The longitude.
+ * 
+ * @typedef {Object} Error
+ * @property {number} code - Error Type Code
+ * @property {string} message - Error description
+ */
+
+
 // TODO-priority-LOW: when navigating to a path which requires logging in, consider rerouting to a special login page(?)
 
 export function UserWishlist() {
     const loggedInUser = useSelector(storeState => storeState.userModule.user)
+    /** @type {Location} */
     const geoLocation = useGeoLocation()
     const navigate = useNavigate()
 

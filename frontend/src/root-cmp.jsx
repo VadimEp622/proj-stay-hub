@@ -27,6 +27,9 @@ import { AppMainModal } from './cmps/app-main-modal.jsx'
 // TODO-priority-high: in dashboard-page mobile, table is overflowing!
 
 
+// TODO: when filtering by label, make it possible to remove/reset the label filtering
+
+
 // TODO: research where the following custom-hooks can be used:
 //          1. useEffectUpdate.js
 //          2. useForm.js
