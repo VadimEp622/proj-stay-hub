@@ -5,7 +5,7 @@ import { logger } from '../../services/logger.service.mjs'
 // =================== Verified being used ===================
 export async function getStays(req, res) {
   logger.debug('Getting Stays:', req.query)
-  const { country, from, to, capacity, label } = req.query
+  const { where, from, to, capacity, label } = req.query
 
   const filterBy = {
     where: '',
@@ -15,7 +15,7 @@ export async function getStays(req, res) {
     label: '',
   }
 
-  if (country) filterBy.where = country
+  if (where) filterBy.where = where
   if (from) filterBy.from = +from
   if (to) filterBy.to = +to
   if (capacity) filterBy.capacity = +capacity

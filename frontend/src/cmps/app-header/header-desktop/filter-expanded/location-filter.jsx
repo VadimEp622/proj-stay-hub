@@ -7,12 +7,12 @@ import unitedStates from "../../../../assets/img/locations/united-states.webp"
 
 export function LocationFilter({ filterBy, handleChange }) {
 
-    function handleLocationClick(ev, filterText) {
+    function handleLocationClick(ev, where) {
         if (ev) {
             ev.stopPropagation()
             ev.preventDefault()
         }
-        handleChange({ target: { name: 'filterText', value: filterText } })
+        handleChange({ target: { name: 'where', value: where } })
     }
 
     return (

@@ -20,17 +20,15 @@ export const stayService = {
 
 // =============== Checked and in use =============== 
 function query(filterBy = {
-    country: '',
-    city: '',
+    where: '',
     from: '',
     to: '',
     capacity: 0,
     label: '',
 }) {
-    const { country, city, from, to, capacity, label } = filterBy
+    const { where, from, to, capacity, label } = filterBy
     const filter = {
-        country,
-        city,
+        where,
         from,
         to,
         capacity,
@@ -45,7 +43,7 @@ function getById(stayId) {
 
 function getEmptyFilterBy() {
     return {
-        filterText: '',
+        where: '',
         from: '',
         to: '',
         capacity: 0,

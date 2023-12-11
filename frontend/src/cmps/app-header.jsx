@@ -42,11 +42,10 @@ export function AppHeader({ isStayDetailsPage, isMobile }) {
 
     function createFilterObject() {
         const filter = {
-            city: '',
-            country: '',
+            where: '',
             from: '',
             to: '',
-            capacity: '',
+            capacity: 0,
             guests: {
                 adults: 0,
                 children: 0,
@@ -55,20 +54,14 @@ export function AppHeader({ isStayDetailsPage, isMobile }) {
             },
         }
 
-        if (filterBy.filterText) {
-            filter.city = filterBy.filterText
-            filter.country = filterBy.filterText
-        }
+        if (filterBy.where) filter.where = filterBy.where
         if (filterBy.from) {
             filter.from = filterBy.from
             if (!filterBy.to) filter.to = filterBy.from + utilService.getTimeDiffBy('day')//if picked ONLY check-in date
             else filter.to = filterBy.to
         }
-        if (filterBy.country) filter.country = filterBy.country
         if (filterBy.capacity) filter.capacity = filterBy.capacity
-        if (filterBy.guests) {
-            filter.guests = filterBy.guests
-        }
+        if (filterBy.guests) filter.guests = filterBy.guests
         if (filterBy.label) filter.label = filterBy.label
         return filter
     }

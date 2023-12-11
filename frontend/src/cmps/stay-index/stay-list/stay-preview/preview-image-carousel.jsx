@@ -58,7 +58,7 @@ export function PreviewImageCarousel({ imgs, stay }) {
             infinite={false}
             itemClass=''
             minimumTouchDrag={80}
-            removeArrowOnDeviceType={["tablet", "mobile"]}
+            // removeArrowOnDeviceType={["tablet", "mobile"]}
             renderArrowsWhenDisabled={false}
             renderButtonGroupOutside={false}
             renderDotsOutside={false}
