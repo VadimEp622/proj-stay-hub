@@ -25,15 +25,19 @@ const baseUrl = (process.env.NODE_ENV === 'production') ? '' : '//localhost:3030
 // export const socketService = createDummySocketService()
 export const socketService = createSocketService()
 // for debugging from console
-window.socketService = socketService
+// window.socketService = socketService
 
 socketService.setup()
+
+
+// TODO: socket setup() gets called twice for some reason
 
 
 function createSocketService() {
   var socket = null;
   const socketService = {
     setup() {
+      console.log('hi from front-end socket service - setup')
       socket = io(baseUrl)
       const user = userService.getLoggedinUser()
       if (user) this.login(user._id)
