@@ -57,12 +57,12 @@ export function RootCmp() {
     const isMobile = useIsMobile()
 
 
-    useEffect(() => {
-        socketService.setup()
-        return () => {
-            socketService.terminate()
-        }
-    }, [])
+    // useEffect(() => {
+    //     socketService.setup()
+    //     return () => {
+    //         socketService.terminate()
+    //     }
+    // }, [])
 
 
     function closeBackground(ev) {

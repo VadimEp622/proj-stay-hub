@@ -34,10 +34,9 @@ socketService.setup()
 
 
 function createSocketService() {
-  var socket = null;
+  let socket = null
   const socketService = {
     setup() {
-      console.log('hi from front-end socket service - setup')
       socket = io(baseUrl)
       const user = userService.getLoggedinUser()
       if (user) this.login(user._id)
@@ -71,53 +70,53 @@ function createSocketService() {
   return socketService
 }
 
-function createDummySocketService() {
-  var listenersMap = {}
-  const socketService = {
-    listenersMap,
-    setup() {
-      listenersMap = {}
-    },
-    terminate() {
-      this.setup()
-    },
-    login() {
-      console.log('Dummy socket service here, login - got it')
-    },
-    logout() {
-      console.log('Dummy socket service here, logout - got it')
-    },
-    on(eventName, cb) {
-      listenersMap[eventName] = [...(listenersMap[eventName]) || [], cb]
-    },
-    off(eventName, cb) {
-      if (!listenersMap[eventName]) return
-      if (!cb) delete listenersMap[eventName]
-      else listenersMap[eventName] = listenersMap[eventName].filter(l => l !== cb)
-    },
-    emit(eventName, data) {
-      var listeners = listenersMap[eventName]
-      if (eventName === SOCKET_EMIT_SEND_MSG) {
-        listeners = listenersMap[SOCKET_EVENT_ADD_MSG]
-      }
+// function createDummySocketService() {
+//   var listenersMap = {}
+//   const socketService = {
+//     listenersMap,
+//     setup() {
+//       listenersMap = {}
+//     },
+//     terminate() {
+//       this.setup()
+//     },
+//     login() {
+//       console.log('Dummy socket service here, login - got it')
+//     },
+//     logout() {
+//       console.log('Dummy socket service here, logout - got it')
+//     },
+//     on(eventName, cb) {
+//       listenersMap[eventName] = [...(listenersMap[eventName]) || [], cb]
+//     },
+//     off(eventName, cb) {
+//       if (!listenersMap[eventName]) return
+//       if (!cb) delete listenersMap[eventName]
+//       else listenersMap[eventName] = listenersMap[eventName].filter(l => l !== cb)
+//     },
+//     emit(eventName, data) {
+//       var listeners = listenersMap[eventName]
+//       if (eventName === SOCKET_EMIT_SEND_MSG) {
+//         listeners = listenersMap[SOCKET_EVENT_ADD_MSG]
+//       }
 
-      if (!listeners) return
+//       if (!listeners) return
 
-      listeners.forEach(listener => {
-        listener(data)
-      })
-    },
-    // Functions for easy testing of pushed data
-    testChatMsg() {
-      this.emit(SOCKET_EVENT_ADD_MSG, { from: 'Someone', txt: 'Aha it worked!' })
-    },
-    testUserUpdate() {
-      this.emit(SOCKET_EVENT_USER_UPDATED, { ...userService.getLoggedinUser(), score: 555 })
-    }
-  }
-  window.listenersMap = listenersMap;
-  return socketService
-}
+//       listeners.forEach(listener => {
+//         listener(data)
+//       })
+//     },
+//     // Functions for easy testing of pushed data
+//     testChatMsg() {
+//       this.emit(SOCKET_EVENT_ADD_MSG, { from: 'Someone', txt: 'Aha it worked!' })
+//     },
+//     testUserUpdate() {
+//       this.emit(SOCKET_EVENT_USER_UPDATED, { ...userService.getLoggedinUser(), score: 555 })
+//     }
+//   }
+//   window.listenersMap = listenersMap;
+//   return socketService
+// }
 
 
 // Basic Tests
