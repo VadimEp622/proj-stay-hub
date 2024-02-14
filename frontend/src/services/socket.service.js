@@ -13,15 +13,14 @@ export const SOCKET_EVENT_USER_UPDATED = 'user-updated'
 export const SOCKET_EVENT_REVIEW_ADDED = 'review-added'
 export const SOCKET_EVENT_REVIEW_ABOUT_YOU = 'review-about-you'
 export const SOCKET_EVENT_STAY_RESERVED = 'stay-reserved-send'
-export const SOCKET_EVENT_RESERVATION_REPLY = 'stay-reservation-reply'
+export const SOCKET_EVENT_RESERVATION_REPLY = 'stay-reservation-reply'// being used
 // export const SOCKET_EVENT_STAY_WATCH = 'stay-watch'
 
-const SOCKET_EMIT_LOGIN = 'set-user-socket'
-const SOCKET_EMIT_LOGOUT = 'unset-user-socket'
+const SOCKET_EMIT_LOGIN = 'set-user-socket'// being used
+const SOCKET_EMIT_LOGOUT = 'unset-user-socket'// being used
 
 
 const baseUrl = (process.env.NODE_ENV === 'production') ? '' : '//localhost:3030'
-// export const socketService = createSocketService()
 // export const socketService = createDummySocketService()
 export const socketService = createSocketService()
 // for debugging from console
@@ -30,7 +29,7 @@ export const socketService = createSocketService()
 socketService.setup()
 
 
-// TODO: socket setup() gets called twice for some reason
+// TODO: remove redundant socket strings/events/emits, and improve naming
 
 
 function createSocketService() {
