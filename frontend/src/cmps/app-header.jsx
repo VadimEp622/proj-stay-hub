@@ -37,7 +37,8 @@ export function AppHeader({ isStayDetailsPage, isMobile }) {
         ev.preventDefault()
         const filter = createFilterObject()
         updateFilterBy(filter)
-        if (isStayDetailsPage) navigate('/')
+        // if (isStayDetailsPage) navigate('/')
+        navigate('/')
     }
 
     function createFilterObject() {

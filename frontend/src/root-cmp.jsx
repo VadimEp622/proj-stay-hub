@@ -23,12 +23,13 @@ import { AppFooter } from './cmps/app-footer.jsx'
 import { UserMsg } from './cmps/user-msg.jsx'
 import { AppMainModal } from './cmps/app-main-modal.jsx'
 
+
 // TODO-priority-high: make all pages start from top! (some pages start scrolling from middle on route change)
 // TODO-priority-high: in dashboard-page mobile, table is overflowing!
 
+// TODO: Create StayHub your home (like Airbnb your home), where you can List/Create/Edit/Delete YOUR stays
 
 // TODO: when filtering by label, make it possible to remove/reset the label filtering
-
 
 // TODO: research where the following custom-hooks can be used:
 //          1. useEffectUpdate.js
