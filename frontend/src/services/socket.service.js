@@ -27,7 +27,7 @@ socketService.setup()
 
 
 
-// TODO: remove redundant socket strings/events/emits, and improve naming
+// TODO: make a list of socket events app users need for current app structure
 
 
 
@@ -65,7 +65,7 @@ function createSocketService() {
       socket = null
     },
   }
-  
+
   return socketService
 }
 
