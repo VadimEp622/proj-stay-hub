@@ -19,12 +19,15 @@
 
       & .guest-column {
         flex: 1 1 60%;
-        min-width: 160px;
+        // flex: 1 1 min-content;
+        // min-width: 160px;
       }
+
       & .date-column {
         flex: 1 1 25%;
         min-width: 100px;
       }
+
       & .action-column {
         flex: 1 1 15%;
         min-width: 65px;

@@ -25,7 +25,6 @@ import { AppMainModal } from './cmps/app-main-modal.jsx'
 
 
 // TODO-priority-high: make all pages start from top! (some pages start scrolling from middle on route change)
-// TODO-priority-high: in dashboard-page mobile, table is overflowing!
 
 // TODO: Create StayHub your home (like Airbnb your home), where you can List/Create/Edit/Delete YOUR stays
 
