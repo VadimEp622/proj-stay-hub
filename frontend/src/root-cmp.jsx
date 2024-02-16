@@ -39,6 +39,11 @@ import { AppMainModal } from './cmps/app-main-modal.jsx'
 
 // TODO: add more variety to userMsg, and make styling better!
 
+// TODO: have more different (Quick) registration options
+// I. Regular User ✔
+// II. Host ❌
+// III. Site Admin ❌
+
 
 
 // **** Abstract ****
