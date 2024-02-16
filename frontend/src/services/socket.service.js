@@ -27,7 +27,7 @@ socketService.setup()
 
 
 
-// TODO: make a list of socket events app users need for current app structure
+// TODO: make a list of socket events, app users need for current app structure
 // TODO: upon logout, make sure to transfer the userId to backend
 
 
