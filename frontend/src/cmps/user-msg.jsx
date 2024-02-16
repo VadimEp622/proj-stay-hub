@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { eventBus, showSuccessMsg } from '../services/event-bus.service.js'
 import {
-  socketService, SOCKET_EVENT_REVIEW_ABOUT_YOU, SOCKET_EVENT_STAY_RESERVED, SOCKET_EVENT_RESERVATION_REPLY
+  socketService, SOCKET_EVENT_STAY_RESERVED, SOCKET_EVENT_RESERVATION_REPLY
 } from '../services/socket.service.js'
 
 
@@ -20,10 +20,6 @@ export function UserMsg() {
       timeoutIdRef.current = setTimeout(closeMsg, 3500)
     })
 
-    socketService.on(SOCKET_EVENT_REVIEW_ABOUT_YOU, (review) => {
-      showSuccessMsg(`New review about me ${review.txt}`)
-    })
-
     socketService.on(SOCKET_EVENT_STAY_RESERVED, (loc) => {
       console.log(`New stay reservation about me ----> ${loc.country}, ${loc.city}`)
       showSuccessMsg(`Pending reservation for: ${loc.country}, ${loc.city}`)
@@ -37,7 +33,6 @@ export function UserMsg() {
 
     return () => {
       unsubscribe()
-      socketService.off(SOCKET_EVENT_REVIEW_ABOUT_YOU)
       socketService.off(SOCKET_EVENT_STAY_RESERVED)
       socketService.off(SOCKET_EVENT_RESERVATION_REPLY)
     }

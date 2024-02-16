@@ -1,39 +1,39 @@
 import io from 'socket.io-client'
 import { userService } from './user.service'
 
-export const SOCKET_EMIT_SEND_MSG = 'chat-send-msg'
-export const SOCKET_EMIT_SET_TOPIC = 'chat-set-topic'
+// Emits
 export const SOCKET_EMIT_USER_WATCH = 'user-watch'
-// export const SOCKET_EMIT_STAY_RESERVED = 'stay-reserved'
 export const SOCKET_EMIT_SET_STAYID = 'stay-set-topic'
 
-// export const SOCKET_EVENT_SELLER_REPLY = 'reserve-watch'
-export const SOCKET_EVENT_ADD_MSG = 'chat-add-msg'
-export const SOCKET_EVENT_USER_UPDATED = 'user-updated'
-export const SOCKET_EVENT_REVIEW_ADDED = 'review-added'
-export const SOCKET_EVENT_REVIEW_ABOUT_YOU = 'review-about-you'
+// Events
 export const SOCKET_EVENT_STAY_RESERVED = 'stay-reserved-send'
-export const SOCKET_EVENT_RESERVATION_REPLY = 'stay-reservation-reply'// being used
-// export const SOCKET_EVENT_STAY_WATCH = 'stay-watch'
+export const SOCKET_EVENT_RESERVATION_REPLY = 'stay-reservation-reply'//✔ being used
 
-const SOCKET_EMIT_LOGIN = 'set-user-socket'// being used
-const SOCKET_EMIT_LOGOUT = 'unset-user-socket'// being used
+// Local
+const SOCKET_EMIT_LOGIN = 'set-user-socket'//✔ being used
+const SOCKET_EMIT_LOGOUT = 'unset-user-socket'//✔ being used
+
 
 
 const baseUrl = (process.env.NODE_ENV === 'production') ? '' : '//localhost:3030'
-// export const socketService = createDummySocketService()
+
 export const socketService = createSocketService()
+// export const socketService = createDummySocketService()
+
 // for debugging from console
 // window.socketService = socketService
 
 socketService.setup()
 
 
+
 // TODO: remove redundant socket strings/events/emits, and improve naming
+
 
 
 function createSocketService() {
   let socket = null
+
   const socketService = {
     setup() {
       socket = io(baseUrl)
@@ -54,18 +54,18 @@ function createSocketService() {
       socket.emit(eventName, data)
     },
     login(userId) {
-      socket.emit(SOCKET_EMIT_LOGIN, userId)
       console.log('socket logged in')
+      socket.emit(SOCKET_EMIT_LOGIN, userId)
     },
     logout() {
-      socket.emit(SOCKET_EMIT_LOGOUT)
       console.log('socket logged out')
+      socket.emit(SOCKET_EMIT_LOGOUT)
     },
     terminate() {
       socket = null
     },
-
   }
+  
   return socketService
 }
 
