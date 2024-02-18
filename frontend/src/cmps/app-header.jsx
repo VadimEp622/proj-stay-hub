@@ -1,7 +1,7 @@
 // Node Modules
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 
 // Store
 import { store } from '../store/store.js'
@@ -24,6 +24,8 @@ import { Loader } from './_reuseable-cmps/loader.jsx'
 
 // TODO-low-priority: change in filterBy, "country" and "city" keys, to "where" key. (must also change in backend, so keep in mind the deployment)
 
+// TODO: incorporate search params
+
 
 export function AppHeader({ isStayDetailsPage, isMobile }) {
     const [filterBy, setFilterBy] = useHeaderFilterBy()
@@ -31,14 +33,50 @@ export function AppHeader({ isStayDetailsPage, isMobile }) {
     const [selectedExperienceTab, setSelectedExperienceTab] = useState('stays')
     const [selectedFilterBox, setSelectedFilterBox] = useState('where')
     const navigate = useNavigate()
+    const [searchParams, setSearchParams] = useSearchParams()
 
+
+    useEffect(() => {
+        if (searchParams) {
+            const queryString = queryStringToObject(searchParams)
+            console.log('queryString', queryString)
+        }
+    }, [searchParams])
+
+
+    function createQueryString(data = {}) {
+        return Object.keys(data).map(key => {
+            let val = data[key]
+            if (val !== null && typeof val === 'object') val = createQueryString(val)
+            return `${key}=${encodeURIComponent(`${val}`.replace(/\s/g, '_'))}`
+        }).join('&')
+    }
+
+    function queryStringToObject(searchParams) {
+        const searchParamsObject = {}
+
+        for (const [key, value] of searchParams.entries()) {
+          if (key === 'guests') {
+            const guests = {}
+            const guestParams = value.split('&')
+            for (const guestParam of guestParams) {
+              const [guestKey, guestValue] = guestParam.split('=')
+              guests[guestKey] = parseInt(guestValue,  10)
+            }
+            searchParamsObject[key] = guests
+          } else {
+            searchParamsObject[key] = value
+          }
+        }
+        return searchParamsObject
+    }
 
     function onSubmit(ev) {
         ev.preventDefault()
         const filter = createFilterObject()
+        const searchParamsString=createQueryString(filter)
         updateFilterBy(filter)
-        // if (isStayDetailsPage) navigate('/')
-        navigate('/')
+        navigate(`/?${searchParamsString}`)
     }
 
     function createFilterObject() {

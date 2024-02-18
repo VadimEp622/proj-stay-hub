@@ -1,5 +1,5 @@
 // Node Modules
-import { useEffect } from 'react'
+// import { useEffect } from 'react'
 import { Routes, Route } from 'react-router'
 import { useLocation } from 'react-router-dom'
 import { useSelector } from 'react-redux'
@@ -12,7 +12,7 @@ import { store } from './store/store.js'
 import { CLOSE_EXPANDED_HEADER, REMOVE_UNCLICKABLE_BG } from './store/system.reducer.js'
 
 // Services
-import { socketService } from './services/socket.service.js'
+// import { socketService } from './services/socket.service.js'
 
 // Custom Hooks
 import useIsMobile from './customHooks/useIsMobile.js'

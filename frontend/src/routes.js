@@ -28,7 +28,7 @@ const routes = [
         label: 'UserWishlist'
     },
     {
-        path: '/dashboard',
+        path: 'dashboard',
         component: <UserDashboard />,
         label: 'UserDashboard'
     },
