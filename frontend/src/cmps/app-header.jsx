@@ -35,11 +35,12 @@ export function AppHeader({ isStayDetailsPage, isMobile }) {
     const navigate = useNavigate()
     const [searchParams, setSearchParams] = useSearchParams()
 
-
+// TODO: fix double backend call, which happens when extracting URL search params and setting them in the filterBy store
     useEffect(() => {
         if (searchParams) {
-            const queryString = queryStringToObject(searchParams)
-            console.log('queryString', queryString)
+            const queryObject = queryStringToObject(searchParams)
+            console.log('queryObject', queryObject)
+            updateFilterBy(queryObject)
         }
     }, [searchParams])
 
@@ -52,21 +53,24 @@ export function AppHeader({ isStayDetailsPage, isMobile }) {
         }).join('&')
     }
 
+    // consider making it recursive
     function queryStringToObject(searchParams) {
         const searchParamsObject = {}
 
         for (const [key, value] of searchParams.entries()) {
-          if (key === 'guests') {
-            const guests = {}
-            const guestParams = value.split('&')
-            for (const guestParam of guestParams) {
-              const [guestKey, guestValue] = guestParam.split('=')
-              guests[guestKey] = parseInt(guestValue,  10)
+            if (key === 'guests') {
+                const guests = {}
+                const guestParams = value.split('&')
+                for (const guestParam of guestParams) {
+                    const [guestKey, guestValue] = guestParam.split('=')
+                    guests[guestKey] = parseInt(guestValue, 10)
+                }
+                searchParamsObject[key] = guests
+            } else if (key === 'from' || key === 'to' || key === 'capacity') {
+                searchParamsObject[key] = parseInt(value, 10)
+            } else if (key === 'where') {
+                searchParamsObject[key] = value.includes('_') ? value.replace(/_/g, ' ') : value
             }
-            searchParamsObject[key] = guests
-          } else {
-            searchParamsObject[key] = value
-          }
         }
         return searchParamsObject
     }
@@ -74,7 +78,7 @@ export function AppHeader({ isStayDetailsPage, isMobile }) {
     function onSubmit(ev) {
         ev.preventDefault()
         const filter = createFilterObject()
-        const searchParamsString=createQueryString(filter)
+        const searchParamsString = createQueryString(filter)
         updateFilterBy(filter)
         navigate(`/?${searchParamsString}`)
     }
