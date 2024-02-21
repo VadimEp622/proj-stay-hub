@@ -1,7 +1,7 @@
 // Node Modules
 import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
-import { useNavigate, useSearchParams } from 'react-router-dom'
+import { useLocation, useNavigate, useSearchParams } from 'react-router-dom'
 
 // Store
 import { store } from '../store/store.js'
@@ -24,7 +24,8 @@ import { Loader } from './_reuseable-cmps/loader.jsx'
 
 // TODO-low-priority: change in filterBy, "country" and "city" keys, to "where" key. (must also change in backend, so keep in mind the deployment)
 
-// TODO: incorporate search params
+// TODO-urgent: In search params, regarding the timestamps keys "from" and "to", consider search params with certain dates bookmarked, and bookmark was loaded a few days later.
+//    How will the timestamp extraction affect the app? 
 
 
 export function AppHeader({ isStayDetailsPage, isMobile }) {
@@ -33,16 +34,17 @@ export function AppHeader({ isStayDetailsPage, isMobile }) {
     const [selectedExperienceTab, setSelectedExperienceTab] = useState('stays')
     const [selectedFilterBox, setSelectedFilterBox] = useState('where')
     const navigate = useNavigate()
+    const location = useLocation()
     const [searchParams, setSearchParams] = useSearchParams()
 
     // TODO: improve readability for operation of extracting search params from URL to setting in the store (custom hook?)
     useEffect(() => {
-        if (searchParams) {
+        if (location.pathname === '/') {
             const queryObject = queryStringToObject(searchParams)
             // console.log('queryObject', queryObject)
             updateFilterBy(queryObject)
         }
-    }, [searchParams])
+    }, [searchParams, location.pathname])
 
 
     function createQueryString(data = {}) {
