@@ -25,7 +25,11 @@ import { Loader } from './_reuseable-cmps/loader.jsx'
 // TODO-low-priority: change in filterBy, "country" and "city" keys, to "where" key. (must also change in backend, so keep in mind the deployment)
 
 // TODO-urgent: In search params, regarding the timestamps keys "from" and "to", consider search params with certain dates bookmarked, and bookmark was loaded a few days later.
-//    How will the timestamp extraction affect the app? 
+//    How will the timestamp extraction affect the app?
+// Solution: have an error page, which basically says - 
+// (!) Something went wrong. 
+// Unfortunately, a server error prevented your request from being completed.
+// Redirecting to home page...
 
 
 export function AppHeader({ isStayDetailsPage, isMobile }) {
