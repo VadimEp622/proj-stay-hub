@@ -35,11 +35,11 @@ export function AppHeader({ isStayDetailsPage, isMobile }) {
     const navigate = useNavigate()
     const [searchParams, setSearchParams] = useSearchParams()
 
-// TODO: fix double backend call, which happens when extracting URL search params and setting them in the filterBy store
+    // TODO: improve readability for operation of extracting search params from URL to setting in the store (custom hook?)
     useEffect(() => {
         if (searchParams) {
             const queryObject = queryStringToObject(searchParams)
-            console.log('queryObject', queryObject)
+            // console.log('queryObject', queryObject)
             updateFilterBy(queryObject)
         }
     }, [searchParams])

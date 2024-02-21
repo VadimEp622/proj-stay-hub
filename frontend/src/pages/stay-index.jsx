@@ -19,12 +19,13 @@ import { StayList } from '../cmps/stay-index/stay-list.jsx'
 export function StayIndex() {
     const stays = useSelector(storeState => storeState.stayModule.stays)
     const filterBy = useSelector(storeState => storeState.stayModule.filterBy)
+    const isSetParamsToFilterBy = useSelector(storeState => storeState.stayModule.isSetParamsToFilterBy)
     const geoLocation = useGeoLocation()
 
 
     useEffect(() => {
-        loadStays(filterBy)
-    }, [filterBy])
+        if (isSetParamsToFilterBy) loadStays(filterBy)
+    }, [filterBy, isSetParamsToFilterBy])
 
 
     useEffect(() => {
