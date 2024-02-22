@@ -6,7 +6,7 @@ import { useLocation, useNavigate, useSearchParams } from 'react-router-dom'
 // Store
 import { store } from '../store/store.js'
 import { updateFilterBy } from '../store/stay.actions.js'
-import { OPEN_EXPANDED_HEADER_MODAL } from '../store/system.reducer.js'
+import { CLOSE_EXPANDED_HEADER, OPEN_EXPANDED_HEADER_MODAL, REMOVE_UNCLICKABLE_BG } from '../store/system.reducer.js'
 
 // Services
 import { utilService } from '../services/util.service.js'
@@ -47,8 +47,9 @@ export function AppHeader({ isStayDetailsPage, isMobile }) {
             const queryObject = queryStringToObject(searchParams)
             // console.log('queryObject', queryObject)
             updateFilterBy(queryObject)
+            setFilterBy(queryObject)
         }
-    }, [searchParams, location.pathname])
+    }, [searchParams, location.pathname, setFilterBy])
 
 
     function createQueryString(data = {}) {
@@ -83,6 +84,8 @@ export function AppHeader({ isStayDetailsPage, isMobile }) {
 
     function onSubmit(ev) {
         ev.preventDefault()
+        store.dispatch({ type: CLOSE_EXPANDED_HEADER })
+        store.dispatch({ type: REMOVE_UNCLICKABLE_BG })
         const filter = createFilterObject()
         const searchParamsString = createQueryString(filter)
         updateFilterBy(filter)
