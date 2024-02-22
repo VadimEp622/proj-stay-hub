@@ -1,7 +1,7 @@
 // Store
 import { store } from './store.js'
 import {
-    SET_STAYS, UPDATE_FILTER_BY, RESET_FILTER_BY, SET_STAY, LOADING_STAY_START, LOADING_STAY_END
+    SET_STAYS, UPDATE_FILTER_BY, RESET_FILTER_BY, SET_STAY, LOADING_STAY_START, LOADING_STAY_END, RESET_IS_SET_PARAMS_TO_FILTER_BY
 } from "./stay.reducer.js"
 import { LOADING_DONE, LOADING_START } from "./system.reducer.js"
 
@@ -22,6 +22,7 @@ export function resetFilterBy() {
 
 export async function loadStays(filterBy) {
     try {
+        store.dispatch({ type: RESET_IS_SET_PARAMS_TO_FILTER_BY })
         store.dispatch({ type: LOADING_START })
         const stays = await stayService.query(filterBy)
         store.dispatch({ type: SET_STAYS, stays })

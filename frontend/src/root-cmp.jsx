@@ -1,5 +1,5 @@
 // Node Modules
-import { useEffect } from 'react'
+// import { useEffect } from 'react'
 import { Routes, Route } from 'react-router'
 import { useLocation } from 'react-router-dom'
 import { useSelector } from 'react-redux'
@@ -12,7 +12,7 @@ import { store } from './store/store.js'
 import { CLOSE_EXPANDED_HEADER, REMOVE_UNCLICKABLE_BG } from './store/system.reducer.js'
 
 // Services
-import { socketService } from './services/socket.service.js'
+// import { socketService } from './services/socket.service.js'
 
 // Custom Hooks
 import useIsMobile from './customHooks/useIsMobile.js'
@@ -23,6 +23,8 @@ import { AppFooter } from './cmps/app-footer.jsx'
 import { UserMsg } from './cmps/user-msg.jsx'
 import { AppMainModal } from './cmps/app-main-modal.jsx'
 
+
+// TODO-priority-urgent: make an error page, for faulty search params in stay-index. when done, test everything works, and deploy to cloud
 
 // TODO-priority-high: make all pages start from top! (some pages start scrolling from middle on route change)
 
@@ -48,6 +50,7 @@ import { AppMainModal } from './cmps/app-main-modal.jsx'
 
 // **** Abstract ****
 // TODO-priority-high: organize cmps
+// TODO-priority-high: attempt to extract the state from the store, to the URL search params
 
 // TODO-medium: handle server interactions with minimum data transfer | sockets
 // TODO-medium: in 'stay-details.jsx', In navbar, clicking on: 'photos/amenities/reviews/location'
