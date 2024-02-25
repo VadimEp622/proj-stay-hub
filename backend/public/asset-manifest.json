@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.3373e183.css",
-    "main.js": "/static/js/main.7ddc4d03.js",
+    "main.js": "/static/js/main.8410fbf6.js",
     "static/media/Montserrat-Regular.ttf": "/static/media/Montserrat-Regular.3cd786652b8a2e9d41f2.ttf",
     "static/media/Montserrat-SemiBold.ttf": "/static/media/Montserrat-SemiBold.fa8441f345d83a0bc4ec.ttf",
     "static/media/Roboto-Thin.ttf": "/static/media/Roboto-Thin.4ecf36d10d43e2996afe.ttf",
@@ -56,6 +56,7 @@
     "static/media/keypad.svg": "/static/media/keypad.275db58f754f9f5ee8db82d653424ed2.svg",
     "static/media/carbon-monoxide.svg": "/static/media/carbon-monoxide.1b248e6ebcbc66beee71e0eee1a7937f.svg",
     "static/media/babysitter-recommendation.svg": "/static/media/babysitter-recommendation.95b57d4ba79c9dce28465e8c8c57e885.svg",
+    "index.html": "/index.html",
     "static/media/kitchen.svg": "/static/media/kitchen.c9326b73878b6fc42e5b8d32a2e00d36.svg",
     "static/media/heart-16-black-stroke.svg": "/static/media/heart-16-black-stroke.1ce2611c83af5b9ce1edc0ec30b16ef2.svg",
     "static/media/air-cond.svg": "/static/media/air-cond.1164dcf3493a44d4a41022b5241c064c.svg",
@@ -65,7 +66,6 @@
     "static/media/dedicated-workspace.svg": "/static/media/dedicated-workspace.72eca5823eb9cc1c660bb8ce81b7e367.svg",
     "static/media/wifi.svg": "/static/media/wifi.14b557e41b348f80d0dcce8f69eb5ac4.svg",
     "static/media/smoke-detector.svg": "/static/media/smoke-detector.e03d3e6cfe2e8d475efcaed5e62fa532.svg",
-    "index.html": "/index.html",
     "static/media/fire-exntiguisher.svg": "/static/media/fire-exntiguisher.88e94e4574b7a9e9d9e6093a71e08f42.svg",
     "static/media/essentials.svg": "/static/media/essentials.d1b93b7d9f0304d10076b37b1b4d5835.svg",
     "static/media/dishwasher.svg": "/static/media/dishwasher.4c274499793b9def4647c8102a30ff2b.svg",
@@ -111,10 +111,10 @@
     "static/media/plus.svg": "/static/media/plus.90c03e0389f8a96d7dd11907f750e78f.svg",
     "static/media/minus.svg": "/static/media/minus.067d8ac4dbf7ef7843e07cf1138127cc.svg",
     "main.3373e183.css.map": "/static/css/main.3373e183.css.map",
-    "main.7ddc4d03.js.map": "/static/js/main.7ddc4d03.js.map"
+    "main.8410fbf6.js.map": "/static/js/main.8410fbf6.js.map"
   },
   "entrypoints": [
     "static/css/main.3373e183.css",
-    "static/js/main.7ddc4d03.js"
+    "static/js/main.8410fbf6.js"
   ]
 }
