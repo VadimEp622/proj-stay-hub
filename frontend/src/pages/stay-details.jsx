@@ -1,6 +1,7 @@
 // Node Modules
 import { useNavigate, useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
+import { Helmet } from 'react-helmet-async'
 
 // Services
 import { utilService } from '../services/util.service.js'
@@ -164,6 +165,10 @@ export function StayDetails() {
 
     return (
         <section className={`stay-details full details-layout${isMobile ? ' mobile' : ''}`} id='photos'>
+            <Helmet>
+                {stay?.name && <title>{stay.name}</title>}
+                {stay?.host?.fullname && <meta name='description' content={`Entire villa hosted by ${stay.host.fullname}`}/>}
+            </Helmet>
             {isMobile &&
                 <StayDetailsMobileReturnHeader
                     onLikeClicked={onLikeClicked}
