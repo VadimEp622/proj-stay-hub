@@ -1,28 +1,32 @@
 // Node Modules
 // import { useEffect } from 'react'
-import { Routes, Route } from 'react-router'
-import { useLocation } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+// import { Routes, Route } from "react-router"
+import { useLocation } from "react-router-dom"
+import { useSelector } from "react-redux"
 
 // Routes
-import routes from './routes.js'
+// import routes from "./routes.js"
 
 // Store
-import { store } from './store/store.js'
-import { CLOSE_EXPANDED_HEADER, REMOVE_UNCLICKABLE_BG } from './store/system.reducer.js'
+import { store } from "./store/store.js"
+import {
+  CLOSE_EXPANDED_HEADER,
+  REMOVE_UNCLICKABLE_BG,
+} from "./store/system.reducer.js"
 
 // Services
 // import { socketService } from './services/socket.service.js'
 
 // Custom Hooks
-import useIsMobile from './customHooks/useIsMobile.js'
+import useIsMobile from "./customHooks/useIsMobile.js"
 
 // Components
-import { AppHeader } from './cmps/app-header.jsx'
-import { AppFooter } from './cmps/app-footer.jsx'
-import { UserMsg } from './cmps/user-msg.jsx'
-import { AppMainModal } from './cmps/app-main-modal.jsx'
-
+import { AppHeader } from "./cmps/app-header.jsx"
+import { AppFooter } from "./cmps/app-footer.jsx"
+import { UserMsg } from "./cmps/user-msg.jsx"
+import { AppMainModal } from "./cmps/app-main-modal.jsx"
+import MyCustomRouter from "./routes.js"
+// import { Suspense } from "react"
 
 // TODO-priority-urgent: make an error page, for faulty search params in stay-index. when done, test everything works, and deploy to cloud
 
@@ -46,8 +50,6 @@ import { AppMainModal } from './cmps/app-main-modal.jsx'
 // II. Host ❌
 // III. Site Admin ❌
 
-
-
 // **** Abstract ****
 // TODO-priority-high: organize cmps
 // TODO-priority-high: attempt to extract the state from the store, to the URL search params
@@ -56,46 +58,41 @@ import { AppMainModal } from './cmps/app-main-modal.jsx'
 // TODO-medium: in 'stay-details.jsx', In navbar, clicking on: 'photos/amenities/reviews/location'
 //       makes it so ,in reviews, profile pictures keep changing.
 
-
 export function RootCmp() {
-    const isUnclickableBg = useSelector(storeState => storeState.systemModule.isUnclickableBg)
-    const appModal = useSelector(storeState => storeState.systemModule.appModal)
-    const location = useLocation()
-    const isStayDetailsPage = location.pathname.startsWith('/stay/')
-    const isMobile = useIsMobile()
+  const isUnclickableBg = useSelector((storeState) => storeState.systemModule.isUnclickableBg)
+  const appModal = useSelector((storeState) => storeState.systemModule.appModal)
+  const location = useLocation()
+  const isStayDetailsPage = location.pathname.startsWith("/stay/")
+  const isMobile = useIsMobile()
 
+  // useEffect(() => {
+  //     socketService.setup()
+  //     return () => {
+  //         socketService.terminate()
+  //     }
+  // }, [])
 
-    // useEffect(() => {
-    //     socketService.setup()
-    //     return () => {
-    //         socketService.terminate()
-    //     }
-    // }, [])
+  function closeBackground(ev) {
+    ev.preventDefault()
+    ev.stopPropagation()
+    store.dispatch({ type: CLOSE_EXPANDED_HEADER })
+    store.dispatch({ type: REMOVE_UNCLICKABLE_BG })
+  }
 
+  return (
+    <>
+      {isUnclickableBg && (<div className="gray-viewport" onClick={(ev) => closeBackground(ev)}></div>)}
 
-    function closeBackground(ev) {
-        ev.preventDefault()
-        ev.stopPropagation()
-        store.dispatch({ type: CLOSE_EXPANDED_HEADER })
-        store.dispatch({ type: REMOVE_UNCLICKABLE_BG })
-    }
+      {appModal && <AppMainModal modalType={appModal} />}
 
-    return (
-        <>
-            {isUnclickableBg && <div className='gray-viewport' onClick={(ev) => closeBackground(ev)}></div>}
-
-            {appModal && <AppMainModal modalType={appModal} />}
-
-            <section className={`app ${!isStayDetailsPage ? 'main-layout' : 'details-layout'}`}>
-                <AppHeader isStayDetailsPage={isStayDetailsPage} isMobile={isMobile} />
-                <main className={`app-main${isStayDetailsPage ? ' full details-layout' : ''}`}>
-                    <Routes>
-                        {routes.map(route => <Route key={route.path} exact={true} element={route.component} path={route.path} />)}
-                    </Routes>
-                </main>
-                {!isMobile && <AppFooter isStayDetailsPage={isStayDetailsPage} />}
-                <UserMsg />
-            </section>
-        </>
-    )
+      <section className={`app ${!isStayDetailsPage ? "main-layout" : "details-layout"}`}>
+        <AppHeader isStayDetailsPage={isStayDetailsPage} isMobile={isMobile} />
+        <main className={`app-main${isStayDetailsPage ? " full details-layout" : ""}`}>
+            <MyCustomRouter />
+        </main>
+        {!isMobile && <AppFooter isStayDetailsPage={isStayDetailsPage} />}
+        <UserMsg />
+      </section>
+    </>
+  )
 }
