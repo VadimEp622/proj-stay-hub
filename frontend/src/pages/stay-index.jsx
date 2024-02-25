@@ -13,6 +13,7 @@ import useGeoLocation from '../customHooks/useGeoLocation.js'
 // Components
 import { CategoryFilter } from '../cmps/stay-index/category-filter.jsx'
 import { StayList } from '../cmps/stay-index/stay-list.jsx'
+import { Helmet } from 'react-helmet-async'
 
 
 
@@ -44,6 +45,10 @@ export function StayIndex() {
 
     return (
         <section className='stay-index'>
+            <Helmet>
+                <title>StayHub Stays</title>
+                <meta name='description' content='Check out our beautiful stays'/>
+            </Helmet>
             <CategoryFilter />
             <StayList stays={stays} geoLocation={geoLocation} />
         </section >
