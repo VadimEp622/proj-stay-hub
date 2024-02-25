@@ -26,6 +26,7 @@ import { AppFooter } from "./cmps/app-footer.jsx"
 import { UserMsg } from "./cmps/user-msg.jsx"
 import { AppMainModal } from "./cmps/app-main-modal.jsx"
 import MyCustomRouter from "./routes.js"
+// import { Suspense } from "react"
 
 // TODO-priority-urgent: make an error page, for faulty search params in stay-index. when done, test everything works, and deploy to cloud
 
@@ -87,8 +88,7 @@ export function RootCmp() {
       <section className={`app ${!isStayDetailsPage ? "main-layout" : "details-layout"}`}>
         <AppHeader isStayDetailsPage={isStayDetailsPage} isMobile={isMobile} />
         <main className={`app-main${isStayDetailsPage ? " full details-layout" : ""}`}>
-          {/* <Routes>{routes.map(route => <Route key={route.path} exact={true} element={route.component} path={route.path} />)}</Routes> */}
-          <MyCustomRouter />
+            <MyCustomRouter />
         </main>
         {!isMobile && <AppFooter isStayDetailsPage={isStayDetailsPage} />}
         <UserMsg />

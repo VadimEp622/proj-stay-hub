@@ -1,14 +1,22 @@
-import { StayIndex } from './pages/stay-index.jsx'
-import { StayDetails } from './pages/stay-details.jsx'
-import { OrderConfirmation } from './pages/order-confirmation.jsx'
-import { UserWishlist } from './pages/user-wishlist.jsx'
-import { UserDashboard } from './pages/user-dashboard.jsx'
-import { UserTrips } from './pages/user-trips.jsx'
+import { Suspense, lazy } from 'react'
 import { useRoutes } from 'react-router-dom'
+import { Loader } from './cmps/_reuseable-cmps/loader.jsx'
+
+
+// TODO: handle error handling that might occur during the dynamic import process 
+
+
+const StayIndex = lazy(() => import('./pages/stay-index.jsx').then(module => ({ default: module.StayIndex })))
+const StayDetails = lazy(() => import('./pages/stay-details.jsx').then(module => ({ default: module.StayDetails })))
+const OrderConfirmation = lazy(() => import('./pages/order-confirmation.jsx').then(module => ({ default: module.OrderConfirmation })))
+const UserWishlist = lazy(() => import('./pages/user-wishlist.jsx').then(module => ({ default: module.UserWishlist })))
+const UserDashboard = lazy(() => import('./pages/user-dashboard.jsx').then(module => ({ default: module.UserDashboard })))
+const UserTrips = lazy(() => import('./pages/user-trips.jsx').then(module => ({ default: module.UserTrips })))
 
 
 export default function MyCustomRouter() {
-    return useRoutes([
+
+    const routes = useRoutes([
         {
             path: '/',
             element: <StayIndex />,
@@ -17,8 +25,16 @@ export default function MyCustomRouter() {
         {
             path: 'stay',
             children: [
-                { path: ':stayId', element: <StayDetails />, label: 'StayDetails' },
-                { path: 'book/:stayId', element: <OrderConfirmation />, label: 'OrderConfirmation' }
+                {
+                    path: ':stayId',
+                    element: <StayDetails />,
+                    label: 'StayDetails'
+                },
+                {
+                    path: 'book/:stayId',
+                    element: <OrderConfirmation />,
+                    label: 'OrderConfirmation'
+                }
             ]
         },
         {
@@ -37,6 +53,12 @@ export default function MyCustomRouter() {
             label: 'MyTrips'
         }
     ])
+
+    return (
+        <Suspense fallback={<Loader />}>
+            {routes}
+        </Suspense>
+    )
 }
 
 
