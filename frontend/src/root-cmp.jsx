@@ -5,6 +5,7 @@ import { useLocation } from "react-router-dom"
 import { useSelector } from "react-redux"
 
 // Routes
+import MyCustomRouter from "./routes.js"
 // import routes from "./routes.js"
 
 // Store
@@ -25,8 +26,7 @@ import { AppHeader } from "./cmps/app-header.jsx"
 import { AppFooter } from "./cmps/app-footer.jsx"
 import { UserMsg } from "./cmps/user-msg.jsx"
 import { AppMainModal } from "./cmps/app-main-modal.jsx"
-import MyCustomRouter from "./routes.js"
-// import { Suspense } from "react"
+
 
 // TODO-priority-urgent: make an error page, for faulty search params in stay-index. when done, test everything works, and deploy to cloud
 
@@ -88,7 +88,7 @@ export function RootCmp() {
       <section className={`app ${!isStayDetailsPage ? "main-layout" : "details-layout"}`}>
         <AppHeader isStayDetailsPage={isStayDetailsPage} isMobile={isMobile} />
         <main className={`app-main${isStayDetailsPage ? " full details-layout" : ""}`}>
-            <MyCustomRouter />
+          <MyCustomRouter />
         </main>
         {!isMobile && <AppFooter isStayDetailsPage={isStayDetailsPage} />}
         <UserMsg />

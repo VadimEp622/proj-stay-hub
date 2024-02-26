@@ -25,14 +25,16 @@ function query(filterBy = {
     to: '',
     capacity: 0,
     label: '',
+    page: 0
 }) {
-    const { where, from, to, capacity, label } = filterBy
+    const { where, from, to, capacity, label, page } = filterBy
     const filter = {
         where,
         from,
         to,
         capacity,
         label,
+        page
     }
     return httpService.get(BASE_URL, filter)
 }

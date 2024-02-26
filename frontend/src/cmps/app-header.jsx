@@ -18,6 +18,7 @@ import { useHeaderFilterBy } from '../customHooks/useHeaderFilterBy.js'
 import { HeaderMobile } from './app-header/header-mobile.jsx'
 import { HeaderDesktop } from './app-header/header-desktop.jsx'
 import { Loader } from './_reuseable-cmps/loader.jsx'
+import { RESET_PAGE_NUM, UPDATE_IS_FINAL_PAGE } from '../store/stay.reducer.js'
 
 
 // TODO: in date-picker, when check-in has a date and check-out does not, when clicking same check-in date, check-out date must NOT be same as check-in date!
@@ -32,7 +33,7 @@ export function AppHeader({ isStayDetailsPage, isMobile }) {
     const [selectedFilterBox, setSelectedFilterBox] = useState('where')
     const navigate = useNavigate()
     const location = useLocation()
-    const [searchParams, setSearchParams] = useSearchParams()
+    const [searchParams] = useSearchParams()
 
     // TODO: improve readability for operation of extracting search params from URL to setting in the store (custom hook?)
     useEffect(() => {
@@ -79,6 +80,8 @@ export function AppHeader({ isStayDetailsPage, isMobile }) {
         ev.preventDefault()
         store.dispatch({ type: CLOSE_EXPANDED_HEADER })
         store.dispatch({ type: REMOVE_UNCLICKABLE_BG })
+        store.dispatch({ type: RESET_PAGE_NUM })
+        store.dispatch({ type: UPDATE_IS_FINAL_PAGE, isFinalPage: false })
         const filter = createFilterObject()
         const searchParamsString = createQueryString(filter)
         updateFilterBy(filter)
