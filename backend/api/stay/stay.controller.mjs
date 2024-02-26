@@ -28,9 +28,9 @@ export async function getStays(req, res) {
   if (filterBy.where === 'South America') filterBy.where = 'Brazil'
 
   try {
-    const stays = await stayService.query(filterBy)
+    const { stays, isFinalPage } = await stayService.query(filterBy)
     logger.info('Getting stays by filterBy:', filterBy)
-    res.json(stays)
+    res.json({ stays, isFinalPage })
   } catch (err) {
     logger.error('Failed to get stays', err)
     res.status(400).send({ err: 'Failed to get stays' })

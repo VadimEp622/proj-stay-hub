@@ -55,6 +55,8 @@ export function StayIndex() {
     }, [filterBy, isSetParamsToFilterBy])
 
 
+
+    // TODO: currently only works as in stay-index, it needs to work across the whole app
     useEffect(() => {
         function handleScroll() {
             if (isFilterExpanded) {

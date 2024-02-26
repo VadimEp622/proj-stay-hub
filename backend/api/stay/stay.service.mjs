@@ -18,7 +18,8 @@ async function query(filterBy) {
             .limit(PAGE_SIZE)
             .toArray()
 
-        return stays
+        const isFinalPage = stays.length < PAGE_SIZE
+        return { stays, isFinalPage }
     } catch (err) {
         logger.error('cannot find stays', err)
         throw err

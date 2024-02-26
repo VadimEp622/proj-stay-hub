@@ -24,7 +24,7 @@ export async function loadStays(filterBy) {
     try {
         store.dispatch({ type: RESET_IS_SET_PARAMS_TO_FILTER_BY })
         store.dispatch({ type: LOADING_START })
-        const stays = await stayService.query(filterBy)
+        const { stays } = await stayService.query(filterBy)
         store.dispatch({ type: SET_STAYS, stays })
     } catch (err) {
         console.log('Failed loading stays', err)
@@ -36,9 +36,9 @@ export async function loadStays(filterBy) {
 
 export async function loadMoreStays(filterBy, page) {
     try {
-        console.log('loadMoreStays -> page', page)
-        const stays = await stayService.query({ ...filterBy, page })
-        if (stays.length < 40) store.dispatch({ type: UPDATE_IS_FINAL_PAGE, isFinalPage: true })
+        // console.log('loadMoreStays -> page', page)
+        const { stays, isFinalPage } = await stayService.query({ ...filterBy, page })
+        if (isFinalPage) store.dispatch({ type: UPDATE_IS_FINAL_PAGE, isFinalPage })
         store.dispatch({ type: ADD_TO_STAYS, stays })
         store.dispatch({ type: INCREMENT_PAGE_NUM })
     } catch (err) {
