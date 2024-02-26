@@ -1,7 +1,7 @@
 // Store
 import { store } from './store.js'
 import {
-    SET_STAYS, UPDATE_FILTER_BY, RESET_FILTER_BY, SET_STAY, LOADING_STAY_START, LOADING_STAY_END, RESET_IS_SET_PARAMS_TO_FILTER_BY
+    SET_STAYS, UPDATE_FILTER_BY, RESET_FILTER_BY, SET_STAY, LOADING_STAY_START, LOADING_STAY_END, RESET_IS_SET_PARAMS_TO_FILTER_BY, ADD_TO_STAYS, INCREMENT_PAGE_NUM, UPDATE_IS_FINAL_PAGE
 } from "./stay.reducer.js"
 import { LOADING_DONE, LOADING_START } from "./system.reducer.js"
 
@@ -27,10 +27,25 @@ export async function loadStays(filterBy) {
         const stays = await stayService.query(filterBy)
         store.dispatch({ type: SET_STAYS, stays })
     } catch (err) {
-        console.log('Failed Loading Stays', err)
-        showErrorMsg('Failed Loading Stays')
+        console.log('Failed loading stays', err)
+        showErrorMsg('Failed loading stays')
     } finally {
         store.dispatch({ type: LOADING_DONE })
+    }
+}
+
+export async function loadMoreStays(filterBy, page) {
+    try {
+        console.log('loadMoreStays -> page', page)
+        const stays = await stayService.query({ ...filterBy, page })
+        if (stays.length < 40) store.dispatch({ type: UPDATE_IS_FINAL_PAGE, isFinalPage: true })
+        store.dispatch({ type: ADD_TO_STAYS, stays })
+        store.dispatch({ type: INCREMENT_PAGE_NUM })
+    } catch (err) {
+        console.log('Failed loading more stays', err)
+        showErrorMsg('Failed loading more stays')
+    } finally {
+
     }
 }
 
@@ -40,8 +55,8 @@ export async function loadStay(stayId) {
         const stay = await stayService.getById(stayId)
         store.dispatch({ type: SET_STAY, stay })
     } catch (err) {
-        showErrorMsg('Failed Loading Stay')
-        throw new Error('Failed Loading Stay', err)
+        showErrorMsg('Failed loading stay')
+        throw new Error('Failed loading stay', err)
     } finally {
         store.dispatch({ type: LOADING_STAY_END })
     }

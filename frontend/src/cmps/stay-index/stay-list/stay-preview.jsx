@@ -19,21 +19,21 @@ import SvgHandler from '../../_reuseable-cmps/svg-handler.jsx'
 
 // **TODO: stay-preview should be a dumb component(!!!), that only display data, and not calculate inside it with functions(!!!)
 
-export function StayPreview({ stay, geoLocation, isMobile }) {
+export function StayPreview({ stay, geoLocation, isMobile, lastStayElementRef = null }) {
     const loggedInUser = useSelector(storeState => storeState.userModule.user)
 
     // function getResizeMobilePictures() {
-        // if (!isMobile) return stay.imgUrls
+    // if (!isMobile) return stay.imgUrls
 
-        // const stayImages = stay.imgUrls.map((imgStr) => {
-        //     const strIdx = imgStr.indexOf('/upload/') + 8
-        //     const firstPart = imgStr.substring(0, strIdx)
-        //     const middlePart = 'c_fit,w_500/'
-        //     const lastPart = imgStr.substring(strIdx)
-        //     return firstPart + middlePart + lastPart
-        // })
+    // const stayImages = stay.imgUrls.map((imgStr) => {
+    //     const strIdx = imgStr.indexOf('/upload/') + 8
+    //     const firstPart = imgStr.substring(0, strIdx)
+    //     const middlePart = 'c_fit,w_500/'
+    //     const lastPart = imgStr.substring(strIdx)
+    //     return firstPart + middlePart + lastPart
+    // })
 
-        // return stayImages
+    // return stayImages
     // }
 
 
@@ -85,7 +85,7 @@ export function StayPreview({ stay, geoLocation, isMobile }) {
     )
     const stayScore = stayService.getStayScore(stay.reviews)
     return (
-        <section className='stay-preview' key={stay._id}>
+        <section className='stay-preview' key={stay._id} ref={lastStayElementRef}>
             <PreviewImageCarousel imgs={stay.imgUrls} stay={stay} />
 
             <section className='heart-svg' onClick={(ev) => onLikeClicked(ev)}>
