@@ -7,10 +7,12 @@ export const SET_STAY = 'SET_STAY'
 export const LOADING_STAY_START = 'LOADING_STAY_START'
 export const LOADING_STAY_END = 'LOADING_STAY_END'
 export const RESET_IS_SET_PARAMS_TO_FILTER_BY = 'RESET_IS_SET_PARAMS_TO_FILTER_BY'
-// ***********************************************************************
 export const INCREMENT_PAGE_NUM = 'INCREMENT_PAGE_NUM'
 export const RESET_PAGE_NUM = 'RESET_PAGE_NUM'
 export const UPDATE_IS_FINAL_PAGE = 'UPDATE_IS_FINAL_PAGE'
+export const LOADING_MORE_STAYS_START = 'LOADING_MORE_STAYS_START'
+export const LOADING_MORE_STAYS_END = 'LOADING_MORE_STAYS_END'
+// ***********************************************************************
 
 
 const initialState = {
@@ -18,9 +20,10 @@ const initialState = {
     stay: {}, //✔
     isLoadingStay: false, //✔
     filterBy: {}, //✔
-    isSetParamsToFilterBy: false,
-    page: 0,
-    isFinalPage: false
+    isSetParamsToFilterBy: false, //✔
+    page: 0, //✔
+    isLoadingMoreStays: false, //✔
+    isFinalPage: false //✔
 }
 
 export function stayReducer(state = initialState, action) {
@@ -49,6 +52,12 @@ export function stayReducer(state = initialState, action) {
             break
         case UPDATE_IS_FINAL_PAGE:
             newState = { ...state, isFinalPage: action.isFinalPage }
+            break
+        case LOADING_MORE_STAYS_START:
+            newState = { ...state, isLoadingMoreStays: true }
+            break
+        case LOADING_MORE_STAYS_END:
+            newState = { ...state, isLoadingMoreStays: false }
             break
         case SET_STAY:
             newState = { ...state, stay: action.stay }

@@ -4,7 +4,7 @@ import { logger } from '../../services/logger.service.mjs'
 import mongodb from 'mongodb'
 const { ObjectId } = mongodb
 
-const PAGE_SIZE = 40
+const PAGE_SIZE = 20
 
 // =================== Verified being used ===================
 async function query(filterBy) {
