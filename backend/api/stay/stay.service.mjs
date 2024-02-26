@@ -4,16 +4,18 @@ import { logger } from '../../services/logger.service.mjs'
 import mongodb from 'mongodb'
 const { ObjectId } = mongodb
 
-// const PAGE_SIZE = 3
+const PAGE_SIZE = 40
 
 // =================== Verified being used ===================
 async function query(filterBy) {
     try {
+        const currPage = filterBy.page
         const criteria = _createCriteria(filterBy)
         const collection = await dbService.getCollection('stay')
         const stays = await collection
             .find(criteria)
-            // .limit(20)
+            .skip(currPage * PAGE_SIZE)
+            .limit(PAGE_SIZE)
             .toArray()
 
         return stays
