@@ -28,6 +28,15 @@ import { UserMsg } from "./cmps/user-msg.jsx"
 import { AppMainModal } from "./cmps/app-main-modal.jsx"
 
 
+// TODO-priority-urgent: discovered an error when surfing site, and switching between mobile-desktop screens:
+// TypeError: n.guests is undefined
+// ae filter-expanded.jsx:114
+// React 12
+// e useIsMobile.js:12
+// ^
+// FIX this ASAP
+
+
 // TODO-priority-urgent: make an error page, for faulty search params in stay-index. when done, test everything works, and deploy to cloud
 
 // TODO-priority-high: make all pages start from top! (some pages start scrolling from middle on route change)
