@@ -7,6 +7,7 @@ import { useLocation, useNavigate, useSearchParams } from 'react-router-dom'
 import { store } from '../store/store.js'
 import { updateFilterBy } from '../store/stay.actions.js'
 import { CLOSE_EXPANDED_HEADER, OPEN_EXPANDED_HEADER_MODAL, REMOVE_UNCLICKABLE_BG } from '../store/system.reducer.js'
+import { RESET_PAGE_NUM, UPDATE_IS_FINAL_PAGE } from '../store/stay.reducer.js'
 
 // Services
 import { utilService } from '../services/util.service.js'
@@ -18,7 +19,6 @@ import { useHeaderFilterBy } from '../customHooks/useHeaderFilterBy.js'
 import { HeaderMobile } from './app-header/header-mobile.jsx'
 import { HeaderDesktop } from './app-header/header-desktop.jsx'
 import { Loader } from './_reuseable-cmps/loader.jsx'
-import { RESET_PAGE_NUM, UPDATE_IS_FINAL_PAGE } from '../store/stay.reducer.js'
 
 
 // TODO: in date-picker, when check-in has a date and check-out does not, when clicking same check-in date, check-out date must NOT be same as check-in date!
@@ -78,13 +78,13 @@ export function AppHeader({ isStayDetailsPage, isMobile }) {
 
     function onSubmit(ev) {
         ev.preventDefault()
+        const filter = createFilterObject()
+        const searchParamsString = createQueryString(filter)
+        updateFilterBy(filter)
         store.dispatch({ type: CLOSE_EXPANDED_HEADER })
         store.dispatch({ type: REMOVE_UNCLICKABLE_BG })
         store.dispatch({ type: RESET_PAGE_NUM })
         store.dispatch({ type: UPDATE_IS_FINAL_PAGE, isFinalPage: false })
-        const filter = createFilterObject()
-        const searchParamsString = createQueryString(filter)
-        updateFilterBy(filter)
         navigate(`/?${searchParamsString}`)
     }
 
