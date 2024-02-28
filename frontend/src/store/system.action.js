@@ -1,4 +1,4 @@
-import { store } from './store.js'
+import { store } from './store'
 
 
 export function setAppModal(type) {

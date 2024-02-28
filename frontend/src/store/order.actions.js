@@ -1,8 +1,8 @@
 // Store
-import { store } from "./store.js"
+import { store } from "./store"
 import {
     APPROVE_ORDER, REJECT_ORDER, SET_ORDERS, LOADING_ORDERS_END, LOADING_ORDERS_START
-} from "./order.reducer.js"
+} from "./order.reducer"
 
 // Services
 import { orderService } from "../services/order.service.js"

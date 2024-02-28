@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 import { Helmet } from 'react-helmet-async'
 
 // Store
-import { store } from '../store/store.js'
+import { store } from '../store/store'
 import { loadStays } from '../store/stay.actions.js'
 import { CLOSE_EXPANDED_HEADER, CLOSE_EXPANDED_HEADER_MODAL, REMOVE_UNCLICKABLE_BG } from '../store/system.reducer.js'
 

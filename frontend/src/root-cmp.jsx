@@ -9,10 +9,9 @@ import MyCustomRouter from "./routes.js"
 // import routes from "./routes.js"
 
 // Store
-import { store } from "./store/store.js"
+import { store } from "./store/store"
 import {
-  CLOSE_EXPANDED_HEADER,
-  REMOVE_UNCLICKABLE_BG,
+  CLOSE_EXPANDED_HEADER, REMOVE_UNCLICKABLE_BG,
 } from "./store/system.reducer.js"
 
 // Services
@@ -37,6 +36,8 @@ import { AppMainModal } from "./cmps/app-main-modal.jsx"
 // FIX this ASAP 
 // !!!! can't seem to reproduce this... !!!!
 
+
+// TODO: change store to modern redux toolkit store structure
 
 // TODO-priority-urgent: make an error page, for faulty search params in stay-index. when done, test everything works, and deploy to cloud
 

@@ -4,7 +4,7 @@ import { useSelector } from "react-redux"
 import { format } from 'date-fns'
 
 // Store
-import { store } from "../../../store/store.js"
+import { store } from "../../../store/store"
 import { CLOSE_EXPANDED_HEADER_MODAL, OPEN_EXPANDED_HEADER_MODAL } from "../../../store/system.reducer.js"
 
 // Services

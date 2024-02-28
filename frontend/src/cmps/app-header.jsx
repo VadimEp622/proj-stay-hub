@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 import { useLocation, useNavigate, useSearchParams } from 'react-router-dom'
 
 // Store
-import { store } from '../store/store.js'
+import { store } from '../store/store'
 import { updateFilterBy } from '../store/stay.actions.js'
 import { CLOSE_EXPANDED_HEADER, OPEN_EXPANDED_HEADER_MODAL, REMOVE_UNCLICKABLE_BG } from '../store/system.reducer.js'
 import { RESET_PAGE_NUM, UPDATE_IS_FINAL_PAGE } from '../store/stay.reducer.js'

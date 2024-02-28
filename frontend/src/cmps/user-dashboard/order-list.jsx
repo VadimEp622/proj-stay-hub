@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 
 // Store
-import { store } from '../../store/store.js'
+import { store } from '../../store/store'
 import { approveOrder, rejectOrder, loadOrders } from '../../store/order.actions.js'
 import { LOADING_ORDERS_END } from '../../store/order.reducer.js'
 
