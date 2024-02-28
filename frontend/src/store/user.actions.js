@@ -1,8 +1,8 @@
 // Store
-import { store } from "./store.js"
+import { store } from "./store"
 import {
     SET_ORDER, SET_USER
-} from "./user.reducer.js"
+} from "./user.reducer"
 
 // Services
 import { userService } from "../services/user.service.js"

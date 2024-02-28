@@ -8,8 +8,9 @@ import { showErrorMsg } from '../services/event-bus.service.js'
 import { orderService } from '../services/order.service.js'
 
 // Store
-import { store } from '../store/store.js'
+import { store } from '../store/store'
 import { LOADING_ORDERS_END, LOADING_ORDERS_START } from '../store/order.reducer.js'
+
 
 // Components
 import { FutureReservationList } from '../cmps/user-trips/future-reservation-list.jsx'

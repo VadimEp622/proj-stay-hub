@@ -1,9 +1,9 @@
 // Store
-import { store } from './store.js'
+import { store } from './store'
 import {
     SET_STAYS, UPDATE_FILTER_BY, RESET_FILTER_BY, SET_STAY, LOADING_STAY_START, LOADING_STAY_END, RESET_IS_SET_PARAMS_TO_FILTER_BY, ADD_TO_STAYS, INCREMENT_PAGE_NUM, UPDATE_IS_FINAL_PAGE, LOADING_MORE_STAYS_START, LOADING_MORE_STAYS_END
-} from "./stay.reducer.js"
-import { LOADING_DONE, LOADING_START } from "./system.reducer.js"
+} from "./stay.reducer"
+import { LOADING_DONE, LOADING_START } from "./system.reducer"
 
 // Services
 import { stayService } from "../services/stay.service.js"

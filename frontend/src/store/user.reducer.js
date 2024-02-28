@@ -1,4 +1,4 @@
-import { userService } from '../services/user.service.js'
+import { userService } from '../services/user.service'
 
 // ======================== Confirmed Switch Case In Use =========================
 export const SET_USER = 'SET_USER'
@@ -10,6 +10,7 @@ const initialState = {
     user: userService.getLoggedinUser(),
     order: {}
 }
+
 
 
 export function userReducer(state = initialState, action) {

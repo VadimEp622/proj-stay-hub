@@ -1,5 +1,5 @@
 // Store
-import { store } from "../../../store/store.js"
+import { store } from "../../../store/store"
 import { OPEN_EXPANDED_HEADER, SET_UNCLICKABLE_BG } from "../../../store/system.reducer.js"
 
 // Services
