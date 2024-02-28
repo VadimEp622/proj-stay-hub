@@ -6,7 +6,6 @@ import { useDispatch, useSelector } from "react-redux"
 import MyCustomRouter from "./routes.js"
 
 // Store
-import { store } from "./store/store"
 import { systemSetIsExpandedHeader, systemSetIsUnclickableBg } from "./store/systemSlice"
 
 // Services
@@ -32,7 +31,7 @@ import { AppMainModal } from "./cmps/app-main-modal.jsx"
 
 
 // TODO: change store to modern redux toolkit store structure
-// TODO: explore createAsyncThunk of redux-toolkit, It's essentially replacing async actions.js
+// TODO: explore createAsyncThunk of redux-toolkit, It's essentially replacing async actions.js.
 
 // TODO-priority-urgent: make an error page, for faulty search params in stay-index. when done, test everything works, and deploy to cloud
 
