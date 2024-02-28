@@ -3,7 +3,7 @@ import { configureStore } from '@reduxjs/toolkit'
 import { stayReducer } from './stay.reducer'
 import { userReducer } from './user.reducer'
 import { orderReducer } from './order.reducer'
-import { systemReducer } from './system.reducer'
+import systemReducer from './systemSlice'
 
 
 export const store = configureStore({
@@ -19,8 +19,9 @@ export const store = configureStore({
 
 
 
+
 // store.subscribe(() => {
-    // console.log('**** Store state changed: ****')
-    // console.log('storeState:\n', store.getState())
-    // console.log('*******************************')
+// console.log('**** Store state changed: ****')
+// console.log('storeState:\n', store.getState())
+// console.log('*******************************')
 // })

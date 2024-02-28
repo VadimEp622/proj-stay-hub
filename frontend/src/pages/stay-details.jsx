@@ -1,17 +1,17 @@
 // Node Modules
 import { useNavigate, useParams } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Helmet } from 'react-helmet-async'
 
 // Services
 import { utilService } from '../services/util.service.js'
 import { orderService } from '../services/order.service.js'
 import { stayService } from '../services/stay.service.js'
+import { SET_APP_MODAL_LOGIN } from '../services/resources-strings.service.js'
 
 // Store
 import { setOrder, toggleWishlist } from '../store/user.actions.js'
-import { setAppModal } from '../store/system.action.js'
-import { SET_APP_MODAL_LOGIN } from '../store/system.reducer.js'
+import { systemSetAppModal } from '../store/systemSlice'
 
 // Custom hooks
 import useIsMobile from '../customHooks/useIsMobile.js'
@@ -42,6 +42,7 @@ import { StayDetailsMobileReturnHeader } from '../cmps/stay-details/stay-details
 
 
 export function StayDetails() {
+    const dispatch = useDispatch()
     const navigate = useNavigate()
     const { stayId } = useParams()
     const loggedInUser = useSelector(storeState => storeState.userModule.user)
@@ -72,7 +73,7 @@ export function StayDetails() {
         ev.preventDefault()
         ev.stopPropagation()
         if (!loggedInUser) {
-            setAppModal(SET_APP_MODAL_LOGIN)
+            dispatch(systemSetAppModal(SET_APP_MODAL_LOGIN))
             return
         }
         toggleWishlist(loggedInUser, stay)
@@ -82,7 +83,7 @@ export function StayDetails() {
         ev.preventDefault()
         ev.stopPropagation()
         if (!loggedInUser) {
-            setAppModal(SET_APP_MODAL_LOGIN)
+            dispatch(systemSetAppModal(SET_APP_MODAL_LOGIN))
         }
         else {
             const order = createOrder(orderDetails)
@@ -167,7 +168,7 @@ export function StayDetails() {
         <section className={`stay-details full details-layout${isMobile ? ' mobile' : ''}`} id='photos'>
             <Helmet>
                 {stay?.name && <title>{stay.name}</title>}
-                {stay?.host?.fullname && <meta name='description' content={`Entire villa hosted by ${stay.host.fullname}`}/>}
+                {stay?.host?.fullname && <meta name='description' content={`Entire villa hosted by ${stay.host.fullname}`} />}
             </Helmet>
             {isMobile &&
                 <StayDetailsMobileReturnHeader

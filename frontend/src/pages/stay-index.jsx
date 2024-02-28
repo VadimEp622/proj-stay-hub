@@ -1,12 +1,11 @@
 // Node Modules
 import { useEffect } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Helmet } from 'react-helmet-async'
 
 // Store
-import { store } from '../store/store'
 import { loadStays } from '../store/stay.actions.js'
-import { CLOSE_EXPANDED_HEADER, CLOSE_EXPANDED_HEADER_MODAL, REMOVE_UNCLICKABLE_BG } from '../store/system.reducer.js'
+import { systemSetIsExpandedHeader, systemSetIsExpandedHeaderModal, systemSetIsUnclickableBg } from '../store/systemSlice'
 
 // Custom hook
 import useGeoLocation from '../customHooks/useGeoLocation.js'
@@ -25,7 +24,7 @@ export function StayIndex() {
     const isFilterExpanded = useSelector(storeState => storeState.systemModule.isFilterExpanded)
     const geoLocation = useGeoLocation()
     const [isLoadingMoreStays, lastStayElementRef] = useStaysInfiniteScroll(filterBy)
-
+    const dispatch = useDispatch()
 
 
     useEffect(() => {
@@ -38,9 +37,9 @@ export function StayIndex() {
     useEffect(() => {
         function handleScroll() {
             if (isFilterExpanded) {
-                store.dispatch({ type: CLOSE_EXPANDED_HEADER })
-                store.dispatch({ type: CLOSE_EXPANDED_HEADER_MODAL })
-                store.dispatch({ type: REMOVE_UNCLICKABLE_BG })
+                dispatch(systemSetIsExpandedHeader(false))
+                dispatch(systemSetIsExpandedHeaderModal(false))
+                dispatch(systemSetIsUnclickableBg(false))
             }
             window.removeEventListener('scroll', handleScroll)
         }

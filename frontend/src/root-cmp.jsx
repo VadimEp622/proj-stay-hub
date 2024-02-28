@@ -1,21 +1,15 @@
 // Node Modules
-// import { useEffect } from 'react'
-// import { Routes, Route } from "react-router"
 import { useLocation } from "react-router-dom"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 
 // Routes
 import MyCustomRouter from "./routes.js"
-// import routes from "./routes.js"
 
 // Store
 import { store } from "./store/store"
-import {
-  CLOSE_EXPANDED_HEADER, REMOVE_UNCLICKABLE_BG,
-} from "./store/system.reducer.js"
+import { systemSetIsExpandedHeader, systemSetIsUnclickableBg } from "./store/systemSlice"
 
 // Services
-// import { socketService } from './services/socket.service.js'
 
 // Custom Hooks
 import useIsMobile from "./customHooks/useIsMobile.js"
@@ -38,6 +32,7 @@ import { AppMainModal } from "./cmps/app-main-modal.jsx"
 
 
 // TODO: change store to modern redux toolkit store structure
+// TODO: explore createAsyncThunk of redux-toolkit, It's essentially replacing async actions.js
 
 // TODO-priority-urgent: make an error page, for faulty search params in stay-index. when done, test everything works, and deploy to cloud
 
@@ -75,6 +70,7 @@ export function RootCmp() {
   const location = useLocation()
   const isStayDetailsPage = location.pathname.startsWith("/stay/")
   const isMobile = useIsMobile()
+  const dispatch = useDispatch()
 
   // useEffect(() => {
   //     socketService.setup()
@@ -86,8 +82,8 @@ export function RootCmp() {
   function closeBackground(ev) {
     ev.preventDefault()
     ev.stopPropagation()
-    store.dispatch({ type: CLOSE_EXPANDED_HEADER })
-    store.dispatch({ type: REMOVE_UNCLICKABLE_BG })
+    dispatch(systemSetIsExpandedHeader(false))
+    dispatch(systemSetIsUnclickableBg(false))
   }
 
   return (

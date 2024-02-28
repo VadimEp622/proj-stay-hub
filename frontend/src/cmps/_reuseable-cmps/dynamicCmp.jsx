@@ -1,7 +1,7 @@
-// Store
+// Services
 import {
-    SET_APP_MODAL_LOGIN, SET_APP_MODAL_SIGNUP, SET_APP_MODAL_LOGIN_QUICK, SET_APP_MODAL_SIGNUP_QUICK
-} from '../../store/system.reducer.js'
+    SET_APP_MODAL_LOGIN, SET_APP_MODAL_LOGIN_QUICK, SET_APP_MODAL_SIGNUP, SET_APP_MODAL_SIGNUP_QUICK
+} from '../../services/resources-strings.service.js'
 
 // Components
 import { AppLoginSignup } from '../app-login-signup.jsx'

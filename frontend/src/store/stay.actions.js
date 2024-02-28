@@ -3,7 +3,8 @@ import { store } from './store'
 import {
     SET_STAYS, UPDATE_FILTER_BY, RESET_FILTER_BY, SET_STAY, LOADING_STAY_START, LOADING_STAY_END, RESET_IS_SET_PARAMS_TO_FILTER_BY, ADD_TO_STAYS, INCREMENT_PAGE_NUM, UPDATE_IS_FINAL_PAGE, LOADING_MORE_STAYS_START, LOADING_MORE_STAYS_END
 } from "./stay.reducer"
-import { LOADING_DONE, LOADING_START } from "./system.reducer"
+import { systemSetIsLoading } from './systemSlice'
+
 
 // Services
 import { stayService } from "../services/stay.service.js"
@@ -23,14 +24,14 @@ export function resetFilterBy() {
 export async function loadStays(filterBy) {
     try {
         store.dispatch({ type: RESET_IS_SET_PARAMS_TO_FILTER_BY })
-        store.dispatch({ type: LOADING_START })
+        store.dispatch(systemSetIsLoading(true))
         const { stays } = await stayService.query(filterBy)
         store.dispatch({ type: SET_STAYS, stays })
     } catch (err) {
         console.log('Failed loading stays', err)
         showErrorMsg('Failed loading stays')
     } finally {
-        store.dispatch({ type: LOADING_DONE })
+        store.dispatch(systemSetIsLoading(false))
     }
 }
 

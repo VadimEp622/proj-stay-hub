@@ -1,23 +1,27 @@
 // Node modules
-import { useSelector } from "react-redux"
-import { Link } from "react-router-dom"
+import { useDispatch, useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 // Store
-import { logout } from "../../../../store/user.actions.js"
-import { SET_APP_MODAL_LOGIN, SET_APP_MODAL_SIGNUP } from "../../../../store/system.reducer.js"
-import { setAppModal } from "../../../../store/system.action.js"
-import { showErrorMsg } from "../../../../services/event-bus.service.js"
+import { logout } from '../../../../store/user.actions.js'
+import { systemSetAppModal } from '../../../../store/systemSlice'
+
+// service
+import { SET_APP_MODAL_LOGIN, SET_APP_MODAL_SIGNUP } from '../../../../services/resources-strings.service.js'
+import { showErrorMsg } from '../../../../services/event-bus.service.js'
 
 
 export function NavMenuDropdown({ setIsDropdownActive }) {
     const loggedInUser = useSelector(storeState => storeState.userModule.user)
+    const dispatch = useDispatch()
 
 
     function onOpenModal(ev, modalType) {
         ev.preventDefault()
         ev.stopPropagation()
         setIsDropdownActive(false)
-        setAppModal(modalType)
+        // setAppModal(modalType)
+        dispatch(systemSetAppModal(modalType))
     }
 
     function onLogout(ev) {

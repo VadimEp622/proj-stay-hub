@@ -1,11 +1,10 @@
 // Node modules
 import { useEffect, useRef } from "react"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { format } from 'date-fns'
 
 // Store
-import { store } from "../../../store/store"
-import { CLOSE_EXPANDED_HEADER_MODAL, OPEN_EXPANDED_HEADER_MODAL } from "../../../store/system.reducer.js"
+import { systemSetIsExpandedHeaderModal } from "../../../store/systemSlice"
 
 // Services
 import { SEARCH } from "../../../services/svg.service.js"
@@ -49,6 +48,7 @@ export function FilterExpanded(
     const isExpandedModalOpen = useSelector(storeState => storeState.systemModule.isExpandedModalOpen)
     const isFirstTimeExpandedRef = useRef(true)
     const dropdownRef = useClickOutside(onClickModal)
+    const dispatch = useDispatch()
 
 
     useEffect(() => {
@@ -76,10 +76,10 @@ export function FilterExpanded(
     function onClickModal() {
         if (isFilterExpanded) {
             if (!isFirstTimeExpandedRef.current) {
-                store.dispatch({ type: CLOSE_EXPANDED_HEADER_MODAL })
+                dispatch(systemSetIsExpandedHeaderModal(false))
                 setSelectedFilterBox('all')
             } else {
-                store.dispatch({ type: OPEN_EXPANDED_HEADER_MODAL })
+                dispatch(systemSetIsExpandedHeaderModal(true))
             }
             isFirstTimeExpandedRef.current = false
         }

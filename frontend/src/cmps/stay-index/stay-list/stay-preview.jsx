@@ -1,16 +1,16 @@
 // Node modules
 import { Link } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 // Services
 import { stayService } from '../../../services/stay.service.js'
 import { utilService } from '../../../services/util.service.js'
 import { HEART_24_WHITE_STROKE, HEART_24_WHITE_STROKE_RED_FILL, STAR_12 } from '../../../services/svg.service.js'
+import { SET_APP_MODAL_LOGIN } from '../../../services/resources-strings.service.js'
 
 // Store
 import { toggleWishlist } from '../../../store/user.actions.js'
-import { SET_APP_MODAL_LOGIN } from '../../../store/system.reducer.js'
-import { setAppModal } from '../../../store/system.action.js'
+import { systemSetAppModal } from '../../../store/systemSlice'
 
 // Components
 import { PreviewImageCarousel } from './stay-preview/preview-image-carousel.jsx'
@@ -21,6 +21,7 @@ import SvgHandler from '../../_reuseable-cmps/svg-handler.jsx'
 
 export function StayPreview({ stay, geoLocation, isMobile, lastStayElementRef = null }) {
     const loggedInUser = useSelector(storeState => storeState.userModule.user)
+    const dispatch = useDispatch()
 
     // function getResizeMobilePictures() {
     // if (!isMobile) return stay.imgUrls
@@ -45,7 +46,7 @@ export function StayPreview({ stay, geoLocation, isMobile, lastStayElementRef = 
         ev.preventDefault()
         ev.stopPropagation()
         if (!loggedInUser) {
-            setAppModal(SET_APP_MODAL_LOGIN)
+            dispatch(systemSetAppModal(SET_APP_MODAL_LOGIN))
             return
         }
         toggleWishlist(loggedInUser, stay)
