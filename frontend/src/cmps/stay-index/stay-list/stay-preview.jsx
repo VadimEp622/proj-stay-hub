@@ -9,8 +9,9 @@ import { HEART_24_WHITE_STROKE, HEART_24_WHITE_STROKE_RED_FILL, STAR_12 } from '
 import { SET_APP_MODAL_LOGIN } from '../../../services/resources-strings.service.js'
 
 // Store
-import { toggleWishlist } from '../../../store/user.actions.js'
+// import { toggleWishlist } from '../../../store/user.actions.js'
 import { systemSetAppModal } from '../../../store/systemSlice'
+import { toggleWishlist } from '../../../store/userSlice'
 
 // Components
 import { PreviewImageCarousel } from './stay-preview/preview-image-carousel.jsx'
@@ -49,7 +50,7 @@ export function StayPreview({ stay, geoLocation, isMobile, lastStayElementRef = 
             dispatch(systemSetAppModal(SET_APP_MODAL_LOGIN))
             return
         }
-        toggleWishlist(loggedInUser, stay)
+        dispatch(toggleWishlist({ loggedInUser, stay }))
     }
 
     function calcCrow(lat1, lon1, lat2, lon2) {

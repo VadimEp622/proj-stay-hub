@@ -10,8 +10,9 @@ import { stayService } from '../services/stay.service.js'
 import { SET_APP_MODAL_LOGIN } from '../services/resources-strings.service.js'
 
 // Store
-import { setOrder, toggleWishlist } from '../store/user.actions.js'
+// import { setOrder } from '../store/user.actions.js'
 import { systemSetAppModal } from '../store/systemSlice'
+import { toggleWishlist, userSetOrder } from '../store/userSlice'
 
 // Custom hooks
 import useIsMobile from '../customHooks/useIsMobile.js'
@@ -76,7 +77,7 @@ export function StayDetails() {
             dispatch(systemSetAppModal(SET_APP_MODAL_LOGIN))
             return
         }
-        toggleWishlist(loggedInUser, stay)
+        dispatch(toggleWishlist({ loggedInUser, stay }))
     }
 
     function onReserveClick(ev) {
@@ -87,7 +88,8 @@ export function StayDetails() {
         }
         else {
             const order = createOrder(orderDetails)
-            setOrder(order)
+            // setOrder(order)
+            dispatch(userSetOrder(order))
             navigate(`/stay/book/${stay._id}`)
         }
     }

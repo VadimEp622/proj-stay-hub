@@ -3,8 +3,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 // Store
-import { logout } from '../../../../store/user.actions.js'
+// import { logout } from '../../../../store/user.actions.js'
 import { systemSetAppModal } from '../../../../store/systemSlice'
+import { logout } from '../../../../store/userSlice'
 
 // service
 import { SET_APP_MODAL_LOGIN, SET_APP_MODAL_SIGNUP } from '../../../../services/resources-strings.service.js'
@@ -31,7 +32,8 @@ export function NavMenuDropdown({ setIsDropdownActive }) {
 
     async function handleLogout() {
         try {
-            await logout()
+            // await logout()
+            await dispatch(logout()).unwrap()
         } catch (err) {
             console.log('Failed logging out', err)
             showErrorMsg('Failed logging out')

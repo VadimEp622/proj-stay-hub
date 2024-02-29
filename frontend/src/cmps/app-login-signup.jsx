@@ -7,7 +7,9 @@ import { EXIT } from '../services/svg.service.js'
 import { SET_APP_MODAL_LOGIN, SET_APP_MODAL_LOGIN_QUICK, SET_APP_MODAL_SIGNUP } from '../services/resources-strings.service.js'
 
 // Store
-import { login, signup } from '../store/user.actions.js'
+// import { login, signup } from '../store/user.actions.js'
+// import { signup } from '../store/user.actions.js'
+import { login, signup } from '../store/userSlice'
 import { systemCloseAppModal, systemSetAppModal } from '../store/systemSlice'
 
 // Custom Hooks
@@ -64,7 +66,8 @@ export function AppLoginSignup({ isSignUp, isQuick = false }) {
     async function handleLogin(values) {
         if (!values.username) return
         try {
-            const user = await login(values)
+            // const user = await login(values)
+            const user = await dispatch(login(values)).unwrap()
             showSuccessMsg(`Welcome: ${user.fullname}`)
             dispatch(systemCloseAppModal())
         } catch (err) {
@@ -76,7 +79,8 @@ export function AppLoginSignup({ isSignUp, isQuick = false }) {
     async function handleSignup(values) {
         if (!values.username || !values.password || !values.fullname) return
         try {
-            const user = await signup(values)
+            const user = await dispatch(signup(values)).unwrap()
+            // const user = await signup(values)
             showSuccessMsg(`Welcome: ${user.fullname}`)
             dispatch(systemCloseAppModal())
         } catch (err) {

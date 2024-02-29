@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit'
 
 import { stayReducer } from './stay.reducer'
-import { userReducer } from './user.reducer'
+import userReducer from './userSlice'
 import { orderReducer } from './order.reducer'
 import systemReducer from './systemSlice'
 

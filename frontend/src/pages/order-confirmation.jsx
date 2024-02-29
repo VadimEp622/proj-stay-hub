@@ -1,6 +1,6 @@
 // Node modules
 import { useEffect } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 
 // Services
@@ -9,7 +9,8 @@ import { socketService, SOCKET_EVENT_STAY_RESERVED } from '../services/socket.se
 import { showErrorMsg } from '../services/event-bus.service.js'
 
 // Store
-import { addConfirmedTrip } from '../store/user.actions.js'
+// import { addConfirmedTrip } from '../store/user.actions.js'
+import { addConfirmedTrip } from '../store/userSlice'
 
 // Custom hooks
 import useScrollToTop from '../customHooks/useScrollToTop.js'
@@ -27,10 +28,11 @@ import { ConfirmationSidebar } from '../cmps/order-confirmation/confirmation-sid
 
 
 export function OrderConfirmation() {
-    useScrollToTop()
+    const dispatch = useDispatch()
     const navigate = useNavigate()
     const location = useLocation()
     const orderObject = useSelector(storeState => storeState.userModule.order)
+    useScrollToTop()
 
 
     useEffect(() => {
@@ -51,7 +53,7 @@ export function OrderConfirmation() {
 
     async function handleOrderConfirm() {
         try {
-            await addConfirmedTrip(orderObject)
+            await dispatch(addConfirmedTrip(orderObject)).unwrap()
             socketService.emit(SOCKET_EVENT_STAY_RESERVED, orderObject.seller._id)
             navigate('/trips')
         } catch (error) {
