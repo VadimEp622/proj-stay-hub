@@ -21,7 +21,6 @@ export function NavMenuDropdown({ setIsDropdownActive }) {
         ev.preventDefault()
         ev.stopPropagation()
         setIsDropdownActive(false)
-        // setAppModal(modalType)
         dispatch(systemSetAppModal(modalType))
     }
 
@@ -32,7 +31,6 @@ export function NavMenuDropdown({ setIsDropdownActive }) {
 
     async function handleLogout() {
         try {
-            // await logout()
             await dispatch(logout()).unwrap()
         } catch (err) {
             console.log('Failed logging out', err)

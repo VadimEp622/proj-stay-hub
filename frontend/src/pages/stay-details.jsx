@@ -61,7 +61,7 @@ export function StayDetails() {
 
 
     function isStayWishlist() {
-        return loggedInUser?.wishlist?.some(wishlist => wishlist._id === stayId)
+        return loggedInUser ? loggedInUser.wishlist.some(wishlist => wishlist._id === stayId) : false
     }
 
     function onCheckAvailabilityClick(ev) {
@@ -88,7 +88,6 @@ export function StayDetails() {
         }
         else {
             const order = createOrder(orderDetails)
-            // setOrder(order)
             dispatch(userSetOrder(order))
             navigate(`/stay/book/${stay._id}`)
         }

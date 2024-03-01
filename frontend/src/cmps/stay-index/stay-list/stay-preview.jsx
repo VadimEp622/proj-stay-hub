@@ -9,7 +9,6 @@ import { HEART_24_WHITE_STROKE, HEART_24_WHITE_STROKE_RED_FILL, STAR_12 } from '
 import { SET_APP_MODAL_LOGIN } from '../../../services/resources-strings.service.js'
 
 // Store
-// import { toggleWishlist } from '../../../store/user.actions.js'
 import { systemSetAppModal } from '../../../store/systemSlice'
 import { toggleWishlist } from '../../../store/userSlice'
 
@@ -40,7 +39,7 @@ export function StayPreview({ stay, geoLocation, isMobile, lastStayElementRef = 
 
 
     function isStayWishlist() {
-        return loggedInUser?.wishlist?.some(wishlist => wishlist._id === stay._id)
+        return loggedInUser ? loggedInUser.wishlist.some(wishlist => wishlist._id === stay._id) : false
     }
 
     function onLikeClicked(ev) {

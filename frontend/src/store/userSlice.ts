@@ -21,11 +21,11 @@ interface TripItem {
 }
 
 interface User {
-    _id?: string
-    fullname?: string
-    imgUrl?: string
-    wishlist?: WishItem[]
-    trip?: TripItem[]
+    _id: string
+    fullname: string
+    imgUrl: string
+    wishlist: WishItem[]
+    trip: TripItem[]
 }
 
 interface BuyerSeller {
@@ -71,6 +71,9 @@ interface UserState {
     user: User | null
     order: Order
 }
+
+// TODO make sure "order" object, is EITHER: 1) null , 2) user object filled with keys
+// * null -> since it represents absence of data, and user object filled with keys -> represents the presence of data
 
 const initialState: UserState = {
     user: userService.getLoggedinUser(),
@@ -171,7 +174,6 @@ export const toggleWishlist = createAsyncThunk(
     'user/toggleWishlist',
     async ({ loggedInUser, stay }: { loggedInUser: User, stay: any }) => {
         // TODO: need to pay attention, so that store and DB wishlist values are identical always, even if user rapidly clicks like 
-        if (!loggedInUser.wishlist) throw new Error('invalid loggedInUser object')
 
         const { _id, imgUrls, loc, type, bedrooms, price, availableDates, reviews } = stay
         const wishlistStay = { _id, imgUrls, loc, type, bedrooms, price, availableDates, reviews }
