@@ -1,13 +1,15 @@
 // Node modules
 import { useEffect, useState } from "react"
-import { useSelector } from "react-redux"
+
+// Store
+import { useAppSelector } from "../store/hooks"
 
 // Services
 import { stayService } from "../services/stay.service.js"
 
 
 export function useHeaderFilterBy() {
-    const storeFilterBy = useSelector(storeState => storeState.stayModule.filterBy)
+    const storeFilterBy = useAppSelector(storeState => storeState.stayModule.filterBy)
     const [filterBy, setFilterBy] = useState(null)
 
     useEffect(() => {

@@ -1,13 +1,18 @@
-import { useSelector } from 'react-redux'
+// Store
+import { useAppSelector } from '../../store/hooks'
+
+// Custom hooks
+import useIsMobile from '../../customHooks/useIsMobile.js'
+
+// Components
 import { StayPreview } from './stay-list/stay-preview.jsx'
 import { Loader } from '../_reuseable-cmps/loader.jsx'
-import useIsMobile from '../../customHooks/useIsMobile.js'
 
 
 // TODO: improve stay-list cmp structure + styling
 
 export function StayList({ stays, geoLocation, lastStayElementRef = null }) {
-    const isLoading = useSelector(storeState => storeState.systemModule.isLoading)
+    const isLoading = useAppSelector(storeState => storeState.systemModule.isLoading)
     const isMobile = useIsMobile()
     if (isLoading) return <Loader />
     return (

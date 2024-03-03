@@ -1,5 +1,4 @@
 // Node modules
-import { useDispatch } from 'react-redux'
 
 // Services
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service.js'
@@ -7,8 +6,7 @@ import { EXIT } from '../services/svg.service.js'
 import { SET_APP_MODAL_LOGIN, SET_APP_MODAL_LOGIN_QUICK, SET_APP_MODAL_SIGNUP } from '../services/resources-strings.service.js'
 
 // Store
-// import { login, signup } from '../store/user.actions.js'
-// import { signup } from '../store/user.actions.js'
+import { useAppDispatch } from '../store/hooks'
 import { login, signup } from '../store/userSlice'
 import { systemCloseAppModal, systemSetAppModal } from '../store/systemSlice'
 
@@ -25,7 +23,7 @@ import SvgHandler from './_reuseable-cmps/svg-handler.jsx'
 // TODO: Add option to check for existing username, and denying signup attempt.
 
 export function AppLoginSignup({ isSignUp, isQuick = false }) {
-    const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
     const registerModalRef = useClickOutside(onClickOutsideModal)
     const initialCredentials = useLoginSignupCredentials(isSignUp, isQuick)
 

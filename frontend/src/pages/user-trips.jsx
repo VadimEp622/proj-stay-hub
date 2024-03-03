@@ -1,15 +1,14 @@
 // Node modules
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useSelector } from 'react-redux'
 
 // Services
 import { showErrorMsg } from '../services/event-bus.service.js'
 import { orderService } from '../services/order.service.js'
 
 // Store
-import { store } from '../store/store'
-import { LOADING_ORDERS_END, LOADING_ORDERS_START } from '../store/order.reducer.js'
+import { useAppDispatch, useAppSelector } from '../store/hooks'
+import { orderSetIsLoadingOrders } from '../store/orderSlice'
 
 
 // Components
@@ -22,16 +21,17 @@ import { Loader } from '../cmps/_reuseable-cmps/loader.jsx'
 
 
 export function UserTrips() {
-    const loggedInUser = useSelector(storeState => storeState.userModule.user)
-    const isLoadingOrders = useSelector(storeState => storeState.orderModule.isLoadingOrders)
+    const loggedInUser = useAppSelector(storeState => storeState.userModule.user)
+    const isLoadingOrders = useAppSelector(storeState => storeState.orderModule.isLoadingOrders)
     const [trips, setTrips] = useState([])
     const navigate = useNavigate()
+    const dispatch = useAppDispatch()
 
     useEffect(() => {
         return () => {
-            store.dispatch({ type: LOADING_ORDERS_END })
+            dispatch(orderSetIsLoadingOrders(false))
         }
-    }, [])
+    }, [dispatch])
 
 
     useEffect(() => {
@@ -49,7 +49,7 @@ export function UserTrips() {
 
     async function fetchOrders() {
         try {
-            store.dispatch({ type: LOADING_ORDERS_START })
+            dispatch(orderSetIsLoadingOrders(true))
             const orders = await orderService.getOrders({ byUserId: loggedInUser._id })
             // console.log('orders', orders)
             setTrips(orders)
@@ -57,7 +57,7 @@ export function UserTrips() {
             console.log('Error fetching orders', error)
             showErrorMsg('Error fetching orders')
         } finally {
-            store.dispatch({ type: LOADING_ORDERS_END })
+            dispatch(orderSetIsLoadingOrders(false))
         }
     }
 

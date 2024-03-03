@@ -1,6 +1,13 @@
+// Node modules
 import { useEffect, useRef, useState } from 'react'
-import { useSelector } from 'react-redux'
+
+// Services
 import { userService } from '../services/user.service'
+
+// Store
+import { useAppSelector } from '../store/hooks'
+
+// Custom hooks
 import useLoadStay from './useLoadStay'
 import useStayDetailsDates from './useStayDetailsDates'
 import useStayDetailsGuests from './useStayDetailsGuests'
@@ -9,8 +16,8 @@ import useStayDetailsOrderDetails from './useStayDetailsOrderDetails'
 
 export default function useStayDetails(stayId) {
     const [isLoading, setIsLoading] = useState(true)
-    const stay = useSelector(storeState => storeState.stayModule.stay)
-    const isLoadingStay = useSelector(storeState => storeState.stayModule.isLoadingStay)
+    const stay = useAppSelector(storeState => storeState.stayModule.stay)
+    const isLoadingStay = useAppSelector(storeState => storeState.stayModule.isLoadingStay)
     const stayHostImgUrlRef = useRef()
 
     useLoadStay(stayId)

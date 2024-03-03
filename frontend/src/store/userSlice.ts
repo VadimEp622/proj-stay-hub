@@ -64,7 +64,7 @@ interface Order {
     orderPrice?: OrderPrice
     stayDetails?: any // some keys may not be valid to ALL stays
     explore?: explore[]
-    status?: string
+    status?: 'Approved' | 'Rejected' | 'Pending'
 }
 
 interface UserState {
@@ -93,13 +93,13 @@ const userSlice = createSlice({
 
     },
     extraReducers: (builder) => {
-        builder.addCase(login.fulfilled, (state, action) => {
+        builder.addCase(login.fulfilled, (state, action: PayloadAction<User>) => {
             const user = action.payload
             _updateUserState(state, user)
             socketService.login(user._id)
         })
 
-        builder.addCase(signup.fulfilled, (state, action) => {
+        builder.addCase(signup.fulfilled, (state, action: PayloadAction<User>) => {
             const user = action.payload
             _updateUserState(state, user)
             socketService.login(user._id)
@@ -110,22 +110,21 @@ const userSlice = createSlice({
             socketService.logout()
         })
 
-        builder.addCase(addConfirmedTrip.fulfilled, (state, action) => {
+        builder.addCase(addConfirmedTrip.fulfilled, (state, action: PayloadAction<User>) => {
             const user = action.payload
             userService.saveLocalUser(user)
             _updateUserState(state, user)
         })
 
-        builder.addCase(
-            toggleWishlist.fulfilled, (state, action) => {
-                const user = action.payload
-                userService.saveLocalUser(user)
-                _updateUserState(state, user)
-            }).addCase(
-                toggleWishlist.rejected, (state, action) => {
-                    console.log('err - could not update wishlist', action.error)
-                    // TODO: add prevUser in store, to have a place to restore change if backend action failed
-                })
+        builder.addCase(toggleWishlist.fulfilled, (state, action: PayloadAction<User>) => {
+            const user = action.payload
+            userService.saveLocalUser(user)
+            _updateUserState(state, user)
+        }).addCase(
+            toggleWishlist.rejected, (state, action) => {
+                console.log('err - could not update wishlist', action.error)
+                // TODO: add prevUser in store, to have a place to restore change if backend action failed
+            })
 
     }
 })

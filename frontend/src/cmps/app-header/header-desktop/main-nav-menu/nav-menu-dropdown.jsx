@@ -1,9 +1,8 @@
 // Node modules
-import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 // Store
-// import { logout } from '../../../../store/user.actions.js'
+import { useAppDispatch, useAppSelector } from '../../../../store/hooks'
 import { systemSetAppModal } from '../../../../store/systemSlice'
 import { logout } from '../../../../store/userSlice'
 
@@ -13,8 +12,8 @@ import { showErrorMsg } from '../../../../services/event-bus.service.js'
 
 
 export function NavMenuDropdown({ setIsDropdownActive }) {
-    const loggedInUser = useSelector(storeState => storeState.userModule.user)
-    const dispatch = useDispatch()
+    const loggedInUser = useAppSelector(storeState => storeState.userModule.user)
+    const dispatch = useAppDispatch()
 
 
     function onOpenModal(ev, modalType) {

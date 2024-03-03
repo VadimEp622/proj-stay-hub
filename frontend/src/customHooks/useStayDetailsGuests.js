@@ -1,9 +1,12 @@
 // Node modules
 import { useState } from 'react'
-import { useSelector } from 'react-redux'
+
+// Store
+import { useAppSelector } from '../store/hooks'
+
 
 export default function useStayDetailsGuests() {
-    const filterBy = useSelector(storeState => storeState.stayModule.filterBy)
+    const filterBy = useAppSelector(storeState => storeState.stayModule.filterBy)
     const initialState = filterBy?.guests?.adults > 0 ?
         filterBy.guests :
         {

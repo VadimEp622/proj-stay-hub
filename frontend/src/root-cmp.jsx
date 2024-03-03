@@ -1,12 +1,12 @@
 // Node Modules
 import { useLocation } from "react-router-dom"
-import { useDispatch, useSelector } from "react-redux"
 
 // Routes
 import MyCustomRouter from "./routes.js"
 
 // Store
 import { systemSetIsExpandedHeader, systemSetIsUnclickableBg } from "./store/systemSlice"
+import { useAppDispatch, useAppSelector } from "./store/hooks"
 
 // Services
 
@@ -64,12 +64,12 @@ import { AppMainModal } from "./cmps/app-main-modal.jsx"
 //       makes it so ,in reviews, profile pictures keep changing.
 
 export function RootCmp() {
-  const isUnclickableBg = useSelector((storeState) => storeState.systemModule.isUnclickableBg)
-  const appModal = useSelector((storeState) => storeState.systemModule.appModal)
+  const isUnclickableBg = useAppSelector(storeState => storeState.systemModule.isUnclickableBg)
+  const appModal = useAppSelector(storeState => storeState.systemModule.appModal)
   const location = useLocation()
   const isStayDetailsPage = location.pathname.startsWith("/stay/")
   const isMobile = useIsMobile()
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
 
   // useEffect(() => {
   //     socketService.setup()

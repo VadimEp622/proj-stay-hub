@@ -1,9 +1,9 @@
 // Node modules
 import { useEffect, useRef } from "react"
-import { useDispatch, useSelector } from "react-redux"
 import { format } from 'date-fns'
 
 // Store
+import { useAppDispatch, useAppSelector } from "../../../store/hooks"
 import { systemSetIsExpandedHeaderModal } from "../../../store/systemSlice"
 
 // Services
@@ -45,10 +45,10 @@ export function FilterExpanded(
         onSetSelectedFilterBox,
         setSelectedFilterBox
     }) {
-    const isExpandedModalOpen = useSelector(storeState => storeState.systemModule.isExpandedModalOpen)
+    const isExpandedModalOpen = useAppSelector(storeState => storeState.systemModule.isExpandedModalOpen)
     const isFirstTimeExpandedRef = useRef(true)
     const dropdownRef = useClickOutside(onClickModal)
-    const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
 
 
     useEffect(() => {

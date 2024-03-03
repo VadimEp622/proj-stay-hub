@@ -4,8 +4,64 @@ import { showErrorMsg } from "../services/event-bus.service"
 
 
 // TODO: add ts interfaces
+interface BuyerSeller {
+    _id: string
+    fullname: string
+    img: string
+    joined: string
+}
 
-const initialState = {
+interface OrderDetails {
+    checkIn: string
+    checkOut: string
+    nightsCount: number
+    guestCount: number
+    singleNightPrice: number
+}
+
+interface OrderPrice {
+    price: number
+    serviceFee: number
+    cleaningFee: number
+    total: number
+}
+
+interface explore {
+    label: string
+    title: string
+    amount: number
+    img: string | null
+}
+
+
+interface OrderContent {
+    buyer: BuyerSeller
+    seller: BuyerSeller
+    orderDetails: OrderDetails
+    orderPrice: OrderPrice
+    stayDetails: any // some keys may not be valid to ALL stays
+    explore: explore[]
+    status: 'Approved' | 'Rejected' | 'Pending'
+}
+
+interface MiniUser {
+    _id: string
+    fullname: string
+}
+
+interface Order {
+    _id: string
+    content: OrderContent
+    byUser: MiniUser
+    aboutUser: MiniUser
+}
+
+interface OrderState {
+    orders: Order[]
+    isLoadingOrders: boolean
+}
+
+const initialState: OrderState = {
     orders: [],
     isLoadingOrders: false,
 }
@@ -15,60 +71,41 @@ const orderSlice = createSlice({
     name: 'order',
     initialState,
     reducers: {
-        orderSetOrders(state, action: PayloadAction<any>) {
-            const orders = action.payload
-            state.orders = orders
-        },
-        orderApproveOrder(state, action: PayloadAction<any>) {
-            const orderId = action.payload
-            _approveAndUpdateOrders(state, orderId)
-        },
-        orderDenyOrder(state, action: PayloadAction<any>) {
-            const orderId = action.payload
-            _rejectAndUpdateOrders(state, orderId)
-        },
-        orderSetIsLoadingOrders(state, action: PayloadAction<any>) {
-            const isLoadingOrders = action.payload
-            _updateIsLoadingOrdersState(state, isLoadingOrders)
+        orderSetIsLoadingOrders(state, action: PayloadAction<boolean>) {
+            _updateIsLoadingOrdersState(state, action.payload)
         }
-
     },
     extraReducers: (builder) => {
         builder.addCase(loadOrders.pending, (state) => {
-            const isLoadingOrders = true
-            _updateIsLoadingOrdersState(state, isLoadingOrders)
+            _updateIsLoadingOrdersState(state, true)
         }).addCase(
-            loadOrders.fulfilled, (state, action) => {
-                const orders = action.payload
-                _updateOrdersState(state, orders)
+            loadOrders.fulfilled, (state, action: PayloadAction<Order[]>) => {
+                _updateOrdersState(state, action.payload)
+                _updateIsLoadingOrdersState(state, false)
             }
         ).addCase(
             loadOrders.rejected, (state, action) => {
+                _updateIsLoadingOrdersState(state, false)
                 console.log('error - could not get orders', action.error)
                 showErrorMsg('Could not load orders')
             }
-        ).addMatcher(
-            loadOrders.settled, (state) => {
-                const isLoadingOrders = false
-                _updateIsLoadingOrdersState(state, isLoadingOrders)
-            }
         )
 
-        builder.addCase(approveOrder.fulfilled, (state, action) => {
-            const orderId = action.payload
-            _approveAndUpdateOrders(state, orderId)
-        }).addCase(approveOrder.rejected, (state, action) => {
-            console.log('error - could not approve order', action.error)
-            showErrorMsg('Could not update order')
-        })
+        builder.addCase(approveOrder.fulfilled, (state, action: PayloadAction<string>) => {
+            _approveAndUpdateOrders(state, action.payload)
+        }).addCase(
+            approveOrder.rejected, (state, action) => {
+                console.log('error - could not approve order', action.error)
+                showErrorMsg('Could not update order')
+            })
 
-        builder.addCase(rejectOrder.fulfilled, (state, action) => {
-            const orderId = action.payload
-            _rejectAndUpdateOrders(state, orderId)
-        }).addCase(rejectOrder.rejected, (state, action) => {
-            console.log('error - could not reject order', action.error)
-            showErrorMsg('Could not update order')
-        })
+        builder.addCase(rejectOrder.fulfilled, (state, action: PayloadAction<string>) => {
+            _rejectAndUpdateOrders(state, action.payload)
+        }).addCase(
+            rejectOrder.rejected, (state, action) => {
+                console.log('error - could not reject order', action.error)
+                showErrorMsg('Could not update order')
+            })
 
     }
 })
@@ -98,29 +135,31 @@ export const rejectOrder = createAsyncThunk(
     }
 )
 
+export const { orderSetIsLoadingOrders } = orderSlice.actions
 
+export default orderSlice.reducer
 
 // ******************************** Local util functions ********************************
 // ========================== State Updates ==========================
-function _updateOrdersState(state: any, orders: any) {
+function _updateOrdersState(state: OrderState, orders: Order[]) {
     state.orders = orders
 }
 
-function _updateIsLoadingOrdersState(state: any, isLoadingOrders: boolean) {
+function _updateIsLoadingOrdersState(state: OrderState, isLoadingOrders: boolean) {
     state.isLoadingOrders = isLoadingOrders
 }
 
 // ========================== Other ==========================
-function _approveAndUpdateOrders(state: any, orderId: string) {
+function _approveAndUpdateOrders(state: OrderState, orderId: string) {
     _updateOrdersStatus(state, orderId, 'Approved')
 }
 
-function _rejectAndUpdateOrders(state: any, orderId: string) {
+function _rejectAndUpdateOrders(state: OrderState, orderId: string) {
     _updateOrdersStatus(state, orderId, 'Rejected')
 }
 
-function _updateOrdersStatus(state: any, orderId: string, status: string) {
-    const updatedOrders = state.orders.map((order: any) => (order._id === orderId)
+function _updateOrdersStatus(state: OrderState, orderId: string, status: string) {
+    const updatedOrders: Order[] = state.orders.map((order: any) => (order._id === orderId)
         ? { ...order, content: { ...order.content, status } }
         : order
     )

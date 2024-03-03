@@ -1,13 +1,12 @@
 // Node Modules
 import { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
 import { useLocation, useNavigate, useSearchParams } from 'react-router-dom'
 
 // Store
 import { store } from '../store/store'
-import { updateFilterBy } from '../store/stay.actions.js'
-import { RESET_PAGE_NUM, UPDATE_IS_FINAL_PAGE } from '../store/stay.reducer.js'
+import { useAppDispatch, useAppSelector } from '../store/hooks'
 import { systemSetIsExpandedHeader, systemSetIsExpandedHeaderModal, systemSetIsUnclickableBg } from '../store/systemSlice'
+import { stayResetPageNum, stayUpdateFilterBy, stayUpdateIsFinalPage } from '../store/staySlice'
 
 // Services
 import { utilService } from '../services/util.service.js'
@@ -29,8 +28,8 @@ import { Loader } from './_reuseable-cmps/loader.jsx'
 export function AppHeader({ isStayDetailsPage, isMobile }) {
     const navigate = useNavigate()
     const location = useLocation()
-    const dispatch = useDispatch()
-    const isFilterExpanded = useSelector(storeState => storeState.systemModule.isFilterExpanded)
+    const dispatch = useAppDispatch()
+    const isFilterExpanded = useAppSelector(storeState => storeState.systemModule.isFilterExpanded)
     const [filterBy, setFilterBy] = useHeaderFilterBy()
     const [searchParams] = useSearchParams()
     const [selectedExperienceTab, setSelectedExperienceTab] = useState('stays')
@@ -42,10 +41,10 @@ export function AppHeader({ isStayDetailsPage, isMobile }) {
         if (location.pathname === '/') {
             const queryObject = queryStringToObject(searchParams)
             // console.log('queryObject', queryObject)
-            updateFilterBy(queryObject)
+            dispatch(stayUpdateFilterBy(queryObject))
             setFilterBy(queryObject)
         }
-    }, [searchParams, location.pathname, setFilterBy])
+    }, [dispatch, setFilterBy, searchParams, location.pathname])
 
 
     function createQueryString(data = {}) {
@@ -82,11 +81,11 @@ export function AppHeader({ isStayDetailsPage, isMobile }) {
         ev.preventDefault()
         const filter = createFilterObject()
         const searchParamsString = createQueryString(filter)
-        updateFilterBy(filter)
+        stayUpdateFilterBy(filter)
         dispatch(systemSetIsExpandedHeader(false))
         dispatch(systemSetIsUnclickableBg(false))
-        dispatch({ type: RESET_PAGE_NUM })
-        dispatch({ type: UPDATE_IS_FINAL_PAGE, isFinalPage: false })
+        dispatch(stayResetPageNum())
+        dispatch(stayUpdateIsFinalPage(false))
         navigate(`/?${searchParamsString}`)
     }
 

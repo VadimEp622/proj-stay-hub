@@ -1,19 +1,24 @@
+// Node modules
 import { useCallback, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { loadStay } from '../store/stay.actions'
+
+// Store
+import { loadStay } from '../store/staySlice'
+import { useAppDispatch } from '../store/hooks'
 
 
 export default function useLoadStay(stayId) {
     const navigate = useNavigate()
+    const dispatch = useAppDispatch()
 
     const handleLoadStay = useCallback(async () => {
         try {
-            await loadStay(stayId)
+            await dispatch(loadStay(stayId)).unwrap()
         } catch (err) {
             console.log(err)
             navigate('/')
         }
-    }, [navigate, stayId])
+    }, [navigate, dispatch, stayId])
 
     useEffect(() => {
         handleLoadStay()

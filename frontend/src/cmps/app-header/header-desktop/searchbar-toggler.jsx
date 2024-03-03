@@ -1,19 +1,18 @@
 // Node Modules
-import { useDispatch } from "react-redux"
 
 // Store
-
+import { useAppDispatch } from "../../../store/hooks"
+import { systemSetIsExpandedHeader, systemSetIsUnclickableBg } from "../../../store/systemSlice"
 
 // Services
 import { SEARCH_FAT } from "../../../services/svg.service.js"
 
 // Components
 import SvgHandler from "../../_reuseable-cmps/svg-handler.jsx"
-import { systemSetIsExpandedHeader, systemSetIsUnclickableBg } from "../../../store/systemSlice"
 
 
 export function SearchbarToggler({ isFilterExpanded, selectedExperienceTab, setSelectedExperienceTab }) {
-    const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
 
 
     function onExpandedFilter(ev) {

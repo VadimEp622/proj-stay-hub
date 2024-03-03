@@ -1,11 +1,9 @@
 // Node modules
 import { useState, useEffect } from 'react'
-import { useSelector } from 'react-redux'
 
 // Store
-import { store } from '../../store/store'
-import { approveOrder, rejectOrder, loadOrders } from '../../store/order.actions.js'
-import { LOADING_ORDERS_END } from '../../store/order.reducer.js'
+import { useAppDispatch, useAppSelector } from '../../store/hooks'
+import { approveOrder, loadOrders, orderSetIsLoadingOrders, rejectOrder } from '../../store/orderSlice'
 
 // Services
 import { orderService } from '../../services/order.service.js'
@@ -23,21 +21,22 @@ import { Loader } from '../_reuseable-cmps/loader.jsx'
 
 
 export function OrderList({ loggedInUser }) {
-  const isLoadingOrders = useSelector(storeState => storeState.orderModule.isLoadingOrders)
-  const allOrders = useSelector(storeState => storeState.orderModule.orders)
+  const dispatch = useAppDispatch()
+  const isLoadingOrders = useAppSelector(storeState => storeState.orderModule.isLoadingOrders)
+  const allOrders = useAppSelector(storeState => storeState.orderModule.orders)
   const [demoOrders, setDemoOrders] = useState(orderService.getDemoOrders())
 
 
   useEffect(() => {
-    loadOrders()
+    dispatch(loadOrders())
     return () => {
-      store.dispatch({ type: LOADING_ORDERS_END })
+      dispatch(orderSetIsLoadingOrders(false))
     }
-  }, [])
+  }, [dispatch])
 
-  useEffect(() => {
-    console.log('allOrders', allOrders)
-  }, [allOrders])
+  // useEffect(() => {
+  //   console.log('allOrders', allOrders)
+  // }, [allOrders])
 
 
   // DEMO DATA //
@@ -61,14 +60,14 @@ export function OrderList({ loggedInUser }) {
   function onApprove(ev, orderId, isDemoData = false) {
     ev.preventDefault()
     ev.stopPropagation()
-    if (!isDemoData) approveOrder(orderId)
+    if (!isDemoData) dispatch(approveOrder(orderId))
     else handleApproveDemoData(orderId)
   }
 
   function onReject(ev, orderId, isDemoData = false) {
     ev.preventDefault()
     ev.stopPropagation()
-    if (!isDemoData) rejectOrder(orderId)
+    if (!isDemoData) dispatch(rejectOrder(orderId))
     else handleRejectDemoData(orderId)
   }
 

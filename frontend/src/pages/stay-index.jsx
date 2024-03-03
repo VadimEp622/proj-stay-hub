@@ -1,11 +1,11 @@
 // Node Modules
 import { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
 import { Helmet } from 'react-helmet-async'
 
 // Store
-import { loadStays } from '../store/stay.actions.js'
+import { useAppDispatch, useAppSelector } from '../store/hooks'
 import { systemSetIsExpandedHeader, systemSetIsExpandedHeaderModal, systemSetIsUnclickableBg } from '../store/systemSlice'
+import { loadStays } from '../store/staySlice'
 
 // Custom hook
 import useGeoLocation from '../customHooks/useGeoLocation.js'
@@ -18,18 +18,18 @@ import { Loader } from '../cmps/_reuseable-cmps/loader.jsx'
 
 
 export function StayIndex() {
-    const stays = useSelector(storeState => storeState.stayModule.stays)
-    const filterBy = useSelector(storeState => storeState.stayModule.filterBy)
-    const isSetParamsToFilterBy = useSelector(storeState => storeState.stayModule.isSetParamsToFilterBy)
-    const isFilterExpanded = useSelector(storeState => storeState.systemModule.isFilterExpanded)
+    const stays = useAppSelector(storeState => storeState.stayModule.stays)
+    const filterBy = useAppSelector(storeState => storeState.stayModule.filterBy)
+    const isSetParamsToFilterBy = useAppSelector(storeState => storeState.stayModule.isSetParamsToFilterBy)
+    const isFilterExpanded = useAppSelector(storeState => storeState.systemModule.isFilterExpanded)
     const geoLocation = useGeoLocation()
     const [isLoadingMoreStays, lastStayElementRef] = useStaysInfiniteScroll(filterBy)
-    const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
 
 
     useEffect(() => {
-        if (isSetParamsToFilterBy) loadStays(filterBy)
-    }, [filterBy, isSetParamsToFilterBy])
+        if (isSetParamsToFilterBy) dispatch(loadStays(filterBy))
+    }, [dispatch, filterBy, isSetParamsToFilterBy])
 
 
 
@@ -48,7 +48,7 @@ export function StayIndex() {
         return () => {
             window.removeEventListener('scroll', handleScroll)
         }
-    }, [isFilterExpanded])
+    }, [dispatch, isFilterExpanded])
 
 
     return (

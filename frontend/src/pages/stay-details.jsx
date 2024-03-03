@@ -1,6 +1,5 @@
 // Node Modules
 import { useNavigate, useParams } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
 import { Helmet } from 'react-helmet-async'
 
 // Services
@@ -10,7 +9,7 @@ import { stayService } from '../services/stay.service.js'
 import { SET_APP_MODAL_LOGIN } from '../services/resources-strings.service.js'
 
 // Store
-// import { setOrder } from '../store/user.actions.js'
+import { useAppDispatch, useAppSelector } from '../store/hooks'
 import { systemSetAppModal } from '../store/systemSlice'
 import { toggleWishlist, userSetOrder } from '../store/userSlice'
 
@@ -43,10 +42,10 @@ import { StayDetailsMobileReturnHeader } from '../cmps/stay-details/stay-details
 
 
 export function StayDetails() {
-    const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
     const navigate = useNavigate()
     const { stayId } = useParams()
-    const loggedInUser = useSelector(storeState => storeState.userModule.user)
+    const loggedInUser = useAppSelector(storeState => storeState.userModule.user)
     const isMobile = useIsMobile()
 
     const [
