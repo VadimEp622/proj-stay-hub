@@ -20,7 +20,6 @@ export const stayService = {
 
 // =============== Checked and in use =============== 
 function query(filterBy) {
-    console.log(filterBy, 'filterBy in stay.service')
     return httpService.get(BASE_URL, filterBy)
 }
 

@@ -78,9 +78,9 @@ export function AppHeader({ isStayDetailsPage, isMobile }) {
         return searchParamsObject
     }
 
-    function onSubmit(ev) {
+    function onSubmit(ev, filterBy) {
         ev.preventDefault()
-        const filter = createFilterObject()
+        const filter = createFilterObject(filterBy)
         const searchParamsString = createQueryString(filter)
         stayUpdateFilterBy(filter)
         dispatch(systemSetIsExpandedHeader(false))
@@ -90,7 +90,7 @@ export function AppHeader({ isStayDetailsPage, isMobile }) {
         navigate(`/?${searchParamsString}`)
     }
 
-    function createFilterObject() {
+    function createFilterObject(filterBy) {
         const filter = stayService.getEmptyFilterBy()
 
         if (filterBy.where) filter.where = filterBy.where
