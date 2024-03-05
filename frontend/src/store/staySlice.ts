@@ -18,6 +18,14 @@ interface FilterBy {
     label: string
 }
 
+interface ApiFilterBy {
+    where: string
+    from: '' | number
+    to: '' | number
+    capacity: number
+    label: string
+    page: number
+}
 
 interface StayState {
     stays: any
@@ -37,7 +45,7 @@ const initialState: StayState = {
     stay: {},
     isLoadingStay: false,
     filterBy: null,
-    isSetParamsToFilterBy: false,
+    isSetParamsToFilterBy: false,// protection layer -> basically, before store filterBy is ready, don't fetch stays.
     page: 0,
     isLoadingMoreStays: false,
     isFinalPage: false
@@ -47,7 +55,7 @@ const staySlice = createSlice({
     name: 'stay',
     initialState,
     reducers: {
-        stayUpdateFilterBy: (state, action: PayloadAction<any>) => {
+        stayUpdateFilterBy: (state, action: PayloadAction<FilterBy>) => {
             _updateFilterBy(state, action.payload)
         },
 
@@ -67,7 +75,7 @@ const staySlice = createSlice({
         builder.addCase(loadStays.pending, (state) => {
             state.isSetParamsToFilterBy = false
             state.isLoadingMoreStays = true
-        }).addCase(loadStays.fulfilled, (state, action: PayloadAction<any>) => {
+        }).addCase(loadStays.fulfilled, (state, action: PayloadAction<{ stays: any, isFinalPage: boolean }>) => {
             if (action.payload.isFinalPage) state.isFinalPage = action.payload.isFinalPage
             state.stays = action.payload.stays
             state.isLoadingMoreStays = false
@@ -105,8 +113,8 @@ const staySlice = createSlice({
 // TODO: check if page key gets properly sent to the backend, in ALL possible cases
 export const loadStays = createAsyncThunk(
     'stay/loadStays',
-    async (filterBy: any) => {
-        const filter = {
+    async (filterBy: FilterBy) => {
+        const filter: ApiFilterBy = {
             where: '',
             from: '',
             to: '',
@@ -119,6 +127,7 @@ export const loadStays = createAsyncThunk(
         if (filterBy.to) filter.to = filterBy.to
         if (filterBy.capacity) filter.capacity = filterBy.capacity
         if (filterBy.label) filter.label = filterBy.label
+
         const { stays, isFinalPage } = await stayService.query(filter)
         return { stays, isFinalPage }
     }
@@ -126,8 +135,8 @@ export const loadStays = createAsyncThunk(
 
 export const loadMoreStays = createAsyncThunk(
     'stay/loadMoreStays',
-    async ({ filterBy, page }: { filterBy: any, page: number }) => {
-        const filter = {
+    async ({ filterBy, page }: { filterBy: FilterBy, page: number }) => {
+        const filter: ApiFilterBy = {
             where: '',
             from: '',
             to: '',
@@ -140,6 +149,7 @@ export const loadMoreStays = createAsyncThunk(
         if (filterBy.to) filter.to = filterBy.to
         if (filterBy.capacity) filter.capacity = filterBy.capacity
         if (filterBy.label) filter.label = filterBy.label
+
         const { stays, isFinalPage } = await stayService.query(filter)
         return { stays, isFinalPage }
     }
@@ -166,7 +176,7 @@ export default staySlice.reducer
 
 
 // ************ Local utility functions ************
-function _updateFilterBy(state: StayState, filterBy: any) {
+function _updateFilterBy(state: StayState, filterBy: FilterBy) {
     state.filterBy = { ...stayService.getEmptyFilterBy(), ...state.filterBy, ...filterBy }
     state.isSetParamsToFilterBy = true
 }

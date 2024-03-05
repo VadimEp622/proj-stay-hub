@@ -50,11 +50,8 @@ export function FilterExpanded(
     const dropdownRef = useClickOutside(onClickModal)
     const dispatch = useAppDispatch()
 
-    // useEffect(() => {
-    //     console.log('filter-expanded filterBy', filterBy)
-    // }, [filterBy])
 
-
+    
     useEffect(() => {
         if (!isFilterExpanded) isFirstTimeExpandedRef.current = true
     }, [isFilterExpanded])
@@ -129,7 +126,7 @@ export function FilterExpanded(
                         </section>
                         <section className="btn-search-container">
                             <ButtonMain
-                                onClickButton={(ev) => onSubmit(ev)}
+                                onClickButton={(ev) => onSubmit(ev, filterBy)}
                                 content={(
                                     <section className="search">
                                         <section className="svg-container">
