@@ -1,7 +1,9 @@
 // Node modules
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+
+// Store
+import { useAppSelector } from '../store/hooks'
 
 // Services
 import { userService } from '../services/user.service.js'
@@ -13,7 +15,7 @@ import { DashboardStatistics } from '../cmps/user-dashboard/dashboard-statistics
 
 
 export function UserDashboard() {
-    const loggedInUser = useSelector(storeState => storeState.userModule.user)
+    const loggedInUser = useAppSelector(storeState => storeState.userModule.user)
     const navigate = useNavigate()
     const dashboardData = userService.getUserDashboardData()
 

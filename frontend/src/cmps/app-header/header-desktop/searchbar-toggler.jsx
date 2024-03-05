@@ -1,6 +1,8 @@
+// Node Modules
+
 // Store
-import { store } from "../../../store/store"
-import { OPEN_EXPANDED_HEADER, SET_UNCLICKABLE_BG } from "../../../store/system.reducer.js"
+import { useAppDispatch } from "../../../store/hooks"
+import { systemSetIsExpandedHeader, systemSetIsUnclickableBg } from "../../../store/systemSlice"
 
 // Services
 import { SEARCH_FAT } from "../../../services/svg.service.js"
@@ -10,12 +12,13 @@ import SvgHandler from "../../_reuseable-cmps/svg-handler.jsx"
 
 
 export function SearchbarToggler({ isFilterExpanded, selectedExperienceTab, setSelectedExperienceTab }) {
+    const dispatch = useAppDispatch()
 
 
     function onExpandedFilter(ev) {
         ev.preventDefault()
-        store.dispatch({ type: SET_UNCLICKABLE_BG })
-        store.dispatch({ type: OPEN_EXPANDED_HEADER })
+        dispatch(systemSetIsUnclickableBg(true))
+        dispatch(systemSetIsExpandedHeader(true))
     }
 
     function toggleSelected(ev) {

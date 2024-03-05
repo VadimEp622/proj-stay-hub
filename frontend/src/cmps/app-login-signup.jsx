@@ -1,55 +1,59 @@
+// Node modules
+
 // Services
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service.js'
 import { EXIT } from '../services/svg.service.js'
+import { SET_APP_MODAL_LOGIN, SET_APP_MODAL_LOGIN_QUICK, SET_APP_MODAL_SIGNUP } from '../services/resources-strings.service.js'
 
 // Store
-import { login, signup } from '../store/user.actions.js'
-import { setAppModal } from '../store/system.action.js'
-import { CLOSE_APP_MODAL, SET_APP_MODAL_LOGIN, SET_APP_MODAL_LOGIN_QUICK, SET_APP_MODAL_SIGNUP, SET_APP_MODAL_SIGNUP_QUICK } from '../store/system.reducer.js'
+import { useAppDispatch } from '../store/hooks'
+import { login, signup } from '../store/userSlice'
+import { systemCloseAppModal, systemSetAppModal } from '../store/systemSlice'
 
 // Custom Hooks
 import { useClickOutside } from '../customHooks/useClickOutsideModal.js'
+import useLoginSignupCredentials from '../customHooks/useLoginSignupCredentials.js'
 
 // Components
 import { FormLoginSignup } from './app-login-signup/form-login-signup.jsx'
 import SvgHandler from './_reuseable-cmps/svg-handler.jsx'
-import useLoginSignupCredentials from '../customHooks/useLoginSignupCredentials.js'
 
 
 // TODO: Add success user-msg for signing-up.
 // TODO: Add option to check for existing username, and denying signup attempt.
 
 export function AppLoginSignup({ isSignUp, isQuick = false }) {
+    const dispatch = useAppDispatch()
     const registerModalRef = useClickOutside(onClickOutsideModal)
     const initialCredentials = useLoginSignupCredentials(isSignUp, isQuick)
 
 
     function onClickOutsideModal() {
-        setAppModal(CLOSE_APP_MODAL)
+        dispatch(systemCloseAppModal())
     }
 
     function onCloseModal(ev) {
         ev.preventDefault()
         ev.stopPropagation()
-        setAppModal(CLOSE_APP_MODAL)
+        dispatch(systemCloseAppModal())
     }
 
     function onChangeModal(ev) {
         ev.preventDefault()
         ev.stopPropagation()
-        setAppModal(isSignUp ? SET_APP_MODAL_LOGIN : SET_APP_MODAL_SIGNUP)
+        dispatch(systemSetAppModal(isSignUp ? SET_APP_MODAL_LOGIN : SET_APP_MODAL_SIGNUP))
     }
 
     function onQuickLogin(ev) {
         ev.preventDefault()
         ev.stopPropagation()
-        setAppModal(SET_APP_MODAL_LOGIN_QUICK)
+        dispatch(systemSetAppModal(SET_APP_MODAL_LOGIN_QUICK))
     }
 
     function onQuickSignup(ev) {
         ev.preventDefault()
         ev.stopPropagation()
-        // setAppModal(SET_APP_MODAL_SIGNUP_QUICK)
+        // TODO maybe?
     }
 
     function onSubmit(values) {
@@ -60,9 +64,10 @@ export function AppLoginSignup({ isSignUp, isQuick = false }) {
     async function handleLogin(values) {
         if (!values.username) return
         try {
-            const user = await login(values)
+            // const user = await login(values)
+            const user = await dispatch(login(values)).unwrap()
             showSuccessMsg(`Welcome: ${user.fullname}`)
-            setAppModal(CLOSE_APP_MODAL)
+            dispatch(systemCloseAppModal())
         } catch (err) {
             console.log('Failed Login', err)
             showErrorMsg('Failed Login')
@@ -72,9 +77,10 @@ export function AppLoginSignup({ isSignUp, isQuick = false }) {
     async function handleSignup(values) {
         if (!values.username || !values.password || !values.fullname) return
         try {
-            const user = await signup(values)
+            const user = await dispatch(signup(values)).unwrap()
+            // const user = await signup(values)
             showSuccessMsg(`Welcome: ${user.fullname}`)
-            setAppModal(CLOSE_APP_MODAL)
+            dispatch(systemCloseAppModal())
         } catch (err) {
             console.log('Failed Signup', err)
             showErrorMsg('Failed Signup')

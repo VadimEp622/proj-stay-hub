@@ -1,11 +1,10 @@
 // Node modules
 import { useEffect, useRef } from "react"
-import { useSelector } from "react-redux"
 import { format } from 'date-fns'
 
 // Store
-import { store } from "../../../store/store"
-import { CLOSE_EXPANDED_HEADER_MODAL, OPEN_EXPANDED_HEADER_MODAL } from "../../../store/system.reducer.js"
+import { useAppDispatch, useAppSelector } from "../../../store/hooks"
+import { systemSetIsExpandedHeaderModal } from "../../../store/systemSlice"
 
 // Services
 import { SEARCH } from "../../../services/svg.service.js"
@@ -46,9 +45,14 @@ export function FilterExpanded(
         onSetSelectedFilterBox,
         setSelectedFilterBox
     }) {
-    const isExpandedModalOpen = useSelector(storeState => storeState.systemModule.isExpandedModalOpen)
+    const isExpandedModalOpen = useAppSelector(storeState => storeState.systemModule.isExpandedModalOpen)
     const isFirstTimeExpandedRef = useRef(true)
     const dropdownRef = useClickOutside(onClickModal)
+    const dispatch = useAppDispatch()
+
+    // useEffect(() => {
+    //     console.log('filter-expanded filterBy', filterBy)
+    // }, [filterBy])
 
 
     useEffect(() => {
@@ -57,16 +61,16 @@ export function FilterExpanded(
 
 
 
-    function displayGuestsFilter() {
+    function displayGuestsFilter(filter) {
         // ******** At least 1 Adult from this point ********
         let guestsStr = ''
-        const guests = filterBy.guests.adults + filterBy.guests.children
+        const guests = filter.guests.adults + filter.guests.children
         guestsStr += `${guests} ${guests > 1 ? 'guests' : 'guest'}`//keep it guests/guests in case of i18
-        const infants = filterBy.guests.infants
+        const infants = filter.guests.infants
         if (infants > 0) {
             guestsStr += ` ,${infants} ${infants > 1 ? 'infants' : 'infant'}`
         }
-        const pets = filterBy.guests.pets
+        const pets = filter.guests.pets
         if (pets > 0) {
             guestsStr += ` ,${pets} ${pets > 1 ? 'pets' : 'pet'}`
         }
@@ -76,10 +80,10 @@ export function FilterExpanded(
     function onClickModal() {
         if (isFilterExpanded) {
             if (!isFirstTimeExpandedRef.current) {
-                store.dispatch({ type: CLOSE_EXPANDED_HEADER_MODAL })
+                dispatch(systemSetIsExpandedHeaderModal(false))
                 setSelectedFilterBox('all')
             } else {
-                store.dispatch({ type: OPEN_EXPANDED_HEADER_MODAL })
+                dispatch(systemSetIsExpandedHeaderModal(true))
             }
             isFirstTimeExpandedRef.current = false
         }
@@ -113,9 +117,9 @@ export function FilterExpanded(
                             <h3 className="fs12 lh16 ff-circular-bold">Who</h3>
                             <span className="fs14 lh18">
                                 {
-                                    filterBy.guests.adults > 0
+                                    filterBy?.guests?.adults > 0
                                         ? <LongTxt
-                                            txt={displayGuestsFilter()}
+                                            txt={displayGuestsFilter(filterBy)}
                                             length={11}
                                             askShowMore={false}
                                         />

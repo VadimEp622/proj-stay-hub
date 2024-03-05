@@ -1,6 +1,8 @@
 // Node modules
 import { useState } from "react"
-import { useSelector } from "react-redux"
+
+// Store
+import { useAppSelector } from "../../../store/hooks"
 
 // Custom hooks
 import { useClickOutside } from "../../../customHooks/useClickOutsideModal.js"
@@ -11,7 +13,7 @@ import { NavMenuButton } from "./main-nav-menu/nav-menu-button.jsx"
 
 
 export function MainNavMenu() {
-    const user = useSelector(storeState => storeState.userModule.user)
+    const user = useAppSelector(storeState => storeState.userModule.user)
     const [isDropdownActive, setIsDropdownActive] = useState(false)
     const dropdownRef = useClickOutside(onDropdownClickOutside)
 

@@ -1,16 +1,18 @@
 // Node modules
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { useSelector } from 'react-redux'
 import { startOfDay } from 'date-fns'
 
 // Services
 import { stayService } from '../services/stay.service.js'
 
+// Store
+import { useAppSelector } from '../store/hooks'
+
 
 export default function useStayDetailsDates(stay, isLoadingStay) {
     const isLoadingDatesRef = useRef(true)
     const DAY = useMemo(() => 1000 * 60 * 60 * 24, [])
-    const filterBy = useSelector(storeState => storeState.stayModule.filterBy)
+    const filterBy = useAppSelector(storeState => storeState.stayModule.filterBy)
     const [selectedRange, setSelectedRange] = useState(null)
 
 

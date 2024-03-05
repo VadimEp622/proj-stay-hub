@@ -1,16 +1,16 @@
 // Node Modules
 import { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
 import { useLocation, useNavigate, useSearchParams } from 'react-router-dom'
 
 // Store
 import { store } from '../store/store'
-import { updateFilterBy } from '../store/stay.actions.js'
-import { CLOSE_EXPANDED_HEADER, OPEN_EXPANDED_HEADER_MODAL, REMOVE_UNCLICKABLE_BG } from '../store/system.reducer.js'
-import { RESET_PAGE_NUM, UPDATE_IS_FINAL_PAGE } from '../store/stay.reducer.js'
+import { useAppDispatch, useAppSelector } from '../store/hooks'
+import { systemSetIsExpandedHeader, systemSetIsExpandedHeaderModal, systemSetIsUnclickableBg } from '../store/systemSlice'
+import { stayResetPageNum, stayUpdateFilterBy, stayUpdateIsFinalPage } from '../store/staySlice'
 
 // Services
 import { utilService } from '../services/util.service.js'
+import { stayService } from '../services/stay.service'
 
 // Custom hooks
 import { useHeaderFilterBy } from '../customHooks/useHeaderFilterBy.js'
@@ -27,23 +27,25 @@ import { Loader } from './_reuseable-cmps/loader.jsx'
 
 
 export function AppHeader({ isStayDetailsPage, isMobile }) {
-    const [filterBy, setFilterBy] = useHeaderFilterBy()
-    const isFilterExpanded = useSelector(storeState => storeState.systemModule.isFilterExpanded)
-    const [selectedExperienceTab, setSelectedExperienceTab] = useState('stays')
-    const [selectedFilterBox, setSelectedFilterBox] = useState('where')
     const navigate = useNavigate()
     const location = useLocation()
+    const dispatch = useAppDispatch()
+    const isFilterExpanded = useAppSelector(storeState => storeState.systemModule.isFilterExpanded)
+    const [filterBy, setFilterBy] = useHeaderFilterBy()
     const [searchParams] = useSearchParams()
+    const [selectedExperienceTab, setSelectedExperienceTab] = useState('stays')
+    const [selectedFilterBox, setSelectedFilterBox] = useState('where')
+
 
     // TODO: improve readability for operation of extracting search params from URL to setting in the store (custom hook?)
     useEffect(() => {
         if (location.pathname === '/') {
             const queryObject = queryStringToObject(searchParams)
             // console.log('queryObject', queryObject)
-            updateFilterBy(queryObject)
+            dispatch(stayUpdateFilterBy(queryObject))
             setFilterBy(queryObject)
         }
-    }, [searchParams, location.pathname, setFilterBy])
+    }, [dispatch, setFilterBy, searchParams, location.pathname])
 
 
     function createQueryString(data = {}) {
@@ -56,7 +58,7 @@ export function AppHeader({ isStayDetailsPage, isMobile }) {
 
     // consider making it recursive
     function queryStringToObject(searchParams) {
-        const searchParamsObject = {}
+        const searchParamsObject = stayService.getEmptyFilterBy()
 
         for (const [key, value] of searchParams.entries()) {
             if (key === 'guests') {
@@ -68,7 +70,7 @@ export function AppHeader({ isStayDetailsPage, isMobile }) {
                 }
                 searchParamsObject[key] = guests
             } else if (key === 'from' || key === 'to' || key === 'capacity') {
-                searchParamsObject[key] = parseInt(value, 10)
+                if (value && value !== 'null') searchParamsObject[key] = parseInt(value, 10)
             } else if (key === 'where') {
                 searchParamsObject[key] = value.includes('_') ? value.replace(/_/g, ' ') : value
             }
@@ -80,27 +82,16 @@ export function AppHeader({ isStayDetailsPage, isMobile }) {
         ev.preventDefault()
         const filter = createFilterObject()
         const searchParamsString = createQueryString(filter)
-        updateFilterBy(filter)
-        store.dispatch({ type: CLOSE_EXPANDED_HEADER })
-        store.dispatch({ type: REMOVE_UNCLICKABLE_BG })
-        store.dispatch({ type: RESET_PAGE_NUM })
-        store.dispatch({ type: UPDATE_IS_FINAL_PAGE, isFinalPage: false })
+        stayUpdateFilterBy(filter)
+        dispatch(systemSetIsExpandedHeader(false))
+        dispatch(systemSetIsUnclickableBg(false))
+        dispatch(stayResetPageNum())
+        dispatch(stayUpdateIsFinalPage(false))
         navigate(`/?${searchParamsString}`)
     }
 
     function createFilterObject() {
-        const filter = {
-            where: '',
-            from: '',
-            to: '',
-            capacity: 0,
-            guests: {
-                adults: 0,
-                children: 0,
-                infants: 0,
-                pets: 0
-            },
-        }
+        const filter = stayService.getEmptyFilterBy()
 
         if (filterBy.where) filter.where = filterBy.where
         if (filterBy.from) {
@@ -123,7 +114,7 @@ export function AppHeader({ isStayDetailsPage, isMobile }) {
     function handleGuestCountChange(type, value) {
         setFilterBy(prevFilter => {
             let capacity = prevFilter.capacity
-            let guests = prevFilter.guests
+            let guests = { ...prevFilter.guests }
 
             if (capacity === 0 && value > 0) {
                 guests[type] += value
@@ -153,18 +144,18 @@ export function AppHeader({ isStayDetailsPage, isMobile }) {
 
     function onSetFilterDates(range) {
         if (!range) {
-            setFilterBy(prevFilter => ({ ...prevFilter, from: '', to: '' }))
+            setFilterBy(prevFilter => ({ ...prevFilter, from: null, to: null }))
         } else {
             const filter = { ...range }
 
             if (filter.from === undefined) {
-                filter.from = ''
+                filter.from = null
             } else {
                 filter.from = Date.parse(range.from)
             }
 
             if (filter.to === undefined) {
-                filter.to = ''
+                filter.to = null
             } else {
                 filter.to = Date.parse(range.to)
             }
@@ -175,7 +166,7 @@ export function AppHeader({ isStayDetailsPage, isMobile }) {
 
     function onSetSelectedFilterBox(ev) {
         ev.preventDefault()
-        store.dispatch({ type: OPEN_EXPANDED_HEADER_MODAL })
+        dispatch(systemSetIsExpandedHeaderModal(true))
         const field = ev.currentTarget.getAttribute('name')
         if (selectedFilterBox !== field) setSelectedFilterBox(field)
     }

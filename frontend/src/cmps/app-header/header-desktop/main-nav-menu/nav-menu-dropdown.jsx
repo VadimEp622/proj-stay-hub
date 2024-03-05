@@ -1,23 +1,26 @@
 // Node modules
-import { useSelector } from "react-redux"
-import { Link } from "react-router-dom"
+import { Link } from 'react-router-dom'
 
 // Store
-import { logout } from "../../../../store/user.actions.js"
-import { SET_APP_MODAL_LOGIN, SET_APP_MODAL_SIGNUP } from "../../../../store/system.reducer.js"
-import { setAppModal } from "../../../../store/system.action.js"
-import { showErrorMsg } from "../../../../services/event-bus.service.js"
+import { useAppDispatch, useAppSelector } from '../../../../store/hooks'
+import { systemSetAppModal } from '../../../../store/systemSlice'
+import { logout } from '../../../../store/userSlice'
+
+// service
+import { SET_APP_MODAL_LOGIN, SET_APP_MODAL_SIGNUP } from '../../../../services/resources-strings.service.js'
+import { showErrorMsg } from '../../../../services/event-bus.service.js'
 
 
 export function NavMenuDropdown({ setIsDropdownActive }) {
-    const loggedInUser = useSelector(storeState => storeState.userModule.user)
+    const loggedInUser = useAppSelector(storeState => storeState.userModule.user)
+    const dispatch = useAppDispatch()
 
 
     function onOpenModal(ev, modalType) {
         ev.preventDefault()
         ev.stopPropagation()
         setIsDropdownActive(false)
-        setAppModal(modalType)
+        dispatch(systemSetAppModal(modalType))
     }
 
     function onLogout(ev) {
@@ -27,7 +30,7 @@ export function NavMenuDropdown({ setIsDropdownActive }) {
 
     async function handleLogout() {
         try {
-            await logout()
+            await dispatch(logout()).unwrap()
         } catch (err) {
             console.log('Failed logging out', err)
             showErrorMsg('Failed logging out')

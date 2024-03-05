@@ -2,7 +2,8 @@
 import { useState } from 'react'
 
 // Store
-import { updateFilterBy } from '../../store/stay.actions.js'
+import { useAppDispatch } from '../../store/hooks'
+import { stayUpdateFilterBy } from '../../store/staySlice'
 
 // Services
 import { categoryImages } from '../../services/category-images.service.js'
@@ -15,11 +16,12 @@ import { CategoryCarousel } from './category-filter/category-carousel.jsx'
 
 export function CategoryFilter() {
     const [selectedCategory, setSelectedCategory] = useState('OMG!')
+    const dispatch = useAppDispatch()
 
     function handleClick(ev, label) {
         ev.preventDefault()
         setSelectedCategory(label)
-        updateFilterBy({ label: label })
+        dispatch(stayUpdateFilterBy({ label: label }))
     }
 
     return (

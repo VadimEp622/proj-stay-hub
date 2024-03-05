@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom"
 import { LOGO } from "../../../services/svg.service.js"
 
 // Store
-import { resetFilterBy } from "../../../store/stay.actions.js"
+import { stayResetFilterBy } from "../../../store/staySlice"
 
 // Components
 import SvgHandler from "../../_reuseable-cmps/svg-handler.jsx"
@@ -18,7 +18,7 @@ export function Logo() {
     function onHomepageRedirect(ev) {
         ev.preventDefault()
         ev.stopPropagation()
-        resetFilterBy()
+        stayResetFilterBy()
         navigate('/')
     }
 

@@ -19,24 +19,9 @@ export const stayService = {
 
 
 // =============== Checked and in use =============== 
-function query(filterBy = {
-    where: '',
-    from: '',
-    to: '',
-    capacity: 0,
-    label: '',
-    page: 0
-}) {
-    const { where, from, to, capacity, label, page } = filterBy
-    const filter = {
-        where,
-        from,
-        to,
-        capacity,
-        label,
-        page
-    }
-    return httpService.get(BASE_URL, filter)
+function query(filterBy) {
+    console.log(filterBy, 'filterBy in stay.service')
+    return httpService.get(BASE_URL, filterBy)
 }
 
 function getById(stayId) {
@@ -46,15 +31,16 @@ function getById(stayId) {
 function getEmptyFilterBy() {
     return {
         where: '',
-        from: '',
-        to: '',
+        from: null,
+        to: null,
         capacity: 0,
         guests: {
             adults: 0,
             children: 0,
             infants: 0,
             pets: 0
-        }
+        },
+        label: ''
     }
 }
 

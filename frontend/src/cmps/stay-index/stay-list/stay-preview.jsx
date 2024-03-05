@@ -1,16 +1,16 @@
 // Node modules
 import { Link } from 'react-router-dom'
-import { useSelector } from 'react-redux'
 
 // Services
 import { stayService } from '../../../services/stay.service.js'
 import { utilService } from '../../../services/util.service.js'
 import { HEART_24_WHITE_STROKE, HEART_24_WHITE_STROKE_RED_FILL, STAR_12 } from '../../../services/svg.service.js'
+import { SET_APP_MODAL_LOGIN } from '../../../services/resources-strings.service.js'
 
 // Store
-import { toggleWishlist } from '../../../store/user.actions.js'
-import { SET_APP_MODAL_LOGIN } from '../../../store/system.reducer.js'
-import { setAppModal } from '../../../store/system.action.js'
+import { useAppDispatch, useAppSelector } from '../../../store/hooks'
+import { systemSetAppModal } from '../../../store/systemSlice'
+import { toggleWishlist } from '../../../store/userSlice'
 
 // Components
 import { PreviewImageCarousel } from './stay-preview/preview-image-carousel.jsx'
@@ -20,7 +20,8 @@ import SvgHandler from '../../_reuseable-cmps/svg-handler.jsx'
 // **TODO: stay-preview should be a dumb component(!!!), that only display data, and not calculate inside it with functions(!!!)
 
 export function StayPreview({ stay, geoLocation, isMobile, lastStayElementRef = null }) {
-    const loggedInUser = useSelector(storeState => storeState.userModule.user)
+    const loggedInUser = useAppSelector(storeState => storeState.userModule.user)
+    const dispatch = useAppDispatch()
 
     // function getResizeMobilePictures() {
     // if (!isMobile) return stay.imgUrls
@@ -38,17 +39,17 @@ export function StayPreview({ stay, geoLocation, isMobile, lastStayElementRef = 
 
 
     function isStayWishlist() {
-        return loggedInUser?.wishlist?.some(wishlist => wishlist._id === stay._id)
+        return loggedInUser ? loggedInUser.wishlist.some(wishlist => wishlist._id === stay._id) : false
     }
 
     function onLikeClicked(ev) {
         ev.preventDefault()
         ev.stopPropagation()
         if (!loggedInUser) {
-            setAppModal(SET_APP_MODAL_LOGIN)
+            dispatch(systemSetAppModal(SET_APP_MODAL_LOGIN))
             return
         }
-        toggleWishlist(loggedInUser, stay)
+        dispatch(toggleWishlist({ loggedInUser, stay }))
     }
 
     function calcCrow(lat1, lon1, lat2, lon2) {
