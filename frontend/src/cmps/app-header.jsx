@@ -10,6 +10,7 @@ import { stayResetPageNum, stayUpdateFilterBy, stayUpdateIsFinalPage } from '../
 
 // Services
 import { utilService } from '../services/util.service.js'
+import { stayService } from '../services/stay.service'
 
 // Custom hooks
 import { useHeaderFilterBy } from '../customHooks/useHeaderFilterBy.js'
@@ -57,7 +58,7 @@ export function AppHeader({ isStayDetailsPage, isMobile }) {
 
     // consider making it recursive
     function queryStringToObject(searchParams) {
-        const searchParamsObject = {}
+        const searchParamsObject = stayService.getEmptyFilterBy()
 
         for (const [key, value] of searchParams.entries()) {
             if (key === 'guests') {
@@ -69,7 +70,7 @@ export function AppHeader({ isStayDetailsPage, isMobile }) {
                 }
                 searchParamsObject[key] = guests
             } else if (key === 'from' || key === 'to' || key === 'capacity') {
-                searchParamsObject[key] = parseInt(value, 10)
+                if (value && value !== 'null') searchParamsObject[key] = parseInt(value, 10)
             } else if (key === 'where') {
                 searchParamsObject[key] = value.includes('_') ? value.replace(/_/g, ' ') : value
             }
@@ -90,18 +91,7 @@ export function AppHeader({ isStayDetailsPage, isMobile }) {
     }
 
     function createFilterObject() {
-        const filter = {
-            where: '',
-            from: '',
-            to: '',
-            capacity: 0,
-            guests: {
-                adults: 0,
-                children: 0,
-                infants: 0,
-                pets: 0
-            },
-        }
+        const filter = stayService.getEmptyFilterBy()
 
         if (filterBy.where) filter.where = filterBy.where
         if (filterBy.from) {
@@ -124,7 +114,7 @@ export function AppHeader({ isStayDetailsPage, isMobile }) {
     function handleGuestCountChange(type, value) {
         setFilterBy(prevFilter => {
             let capacity = prevFilter.capacity
-            let guests = prevFilter.guests
+            let guests = { ...prevFilter.guests }
 
             if (capacity === 0 && value > 0) {
                 guests[type] += value
@@ -154,18 +144,18 @@ export function AppHeader({ isStayDetailsPage, isMobile }) {
 
     function onSetFilterDates(range) {
         if (!range) {
-            setFilterBy(prevFilter => ({ ...prevFilter, from: '', to: '' }))
+            setFilterBy(prevFilter => ({ ...prevFilter, from: null, to: null }))
         } else {
             const filter = { ...range }
 
             if (filter.from === undefined) {
-                filter.from = ''
+                filter.from = null
             } else {
                 filter.from = Date.parse(range.from)
             }
 
             if (filter.to === undefined) {
-                filter.to = ''
+                filter.to = null
             } else {
                 filter.to = Date.parse(range.to)
             }
@@ -176,8 +166,7 @@ export function AppHeader({ isStayDetailsPage, isMobile }) {
 
     function onSetSelectedFilterBox(ev) {
         ev.preventDefault()
-        // store.dispatch({ type: OPEN_EXPANDED_HEADER_MODAL })
-        store.dispatch(systemSetIsExpandedHeaderModal(true))
+        dispatch(systemSetIsExpandedHeaderModal(true))
         const field = ev.currentTarget.getAttribute('name')
         if (selectedFilterBox !== field) setSelectedFilterBox(field)
     }

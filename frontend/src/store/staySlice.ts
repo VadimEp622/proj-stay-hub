@@ -1,5 +1,4 @@
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit"
-import { systemSetIsLoading } from "./systemSlice"
 import { stayService } from "../services/stay.service"
 import { showErrorMsg } from "../services/event-bus.service"
 
@@ -11,12 +10,12 @@ interface Guests {
 }
 
 interface FilterBy {
-    where?: string
-    from?: null | number
-    to?: null | number
-    capacity?: number
-    guests?: Guests
-    label?: string
+    where: string
+    from: null | number
+    to: null | number
+    capacity: number
+    guests: Guests
+    label: string
 }
 
 
@@ -24,7 +23,7 @@ interface StayState {
     stays: any
     stay: any
     isLoadingStay: boolean
-    filterBy: FilterBy
+    filterBy: null | FilterBy
     isSetParamsToFilterBy: boolean
     page: number
     isLoadingMoreStays: boolean
@@ -37,7 +36,7 @@ const initialState: StayState = {
     stays: [],
     stay: {},
     isLoadingStay: false,
-    filterBy: {},
+    filterBy: null,
     isSetParamsToFilterBy: false,
     page: 0,
     isLoadingMoreStays: false,
@@ -67,14 +66,16 @@ const staySlice = createSlice({
     extraReducers: (builder) => {
         builder.addCase(loadStays.pending, (state) => {
             state.isSetParamsToFilterBy = false
-            systemSetIsLoading(true)
+            state.isLoadingMoreStays = true
         }).addCase(loadStays.fulfilled, (state, action: PayloadAction<any>) => {
-            state.stays = action.payload
-            systemSetIsLoading(false)
+            if (action.payload.isFinalPage) state.isFinalPage = action.payload.isFinalPage
+            state.stays = action.payload.stays
+            state.isLoadingMoreStays = false
         }).addCase(loadStays.rejected, (state, action) => {
             console.log('Failed loading stays', action.error)
             showErrorMsg('Failed loading stays')
-            systemSetIsLoading(false)
+            state.isLoadingMoreStays = false
+            state.page = 0
         })
 
         builder.addCase(loadMoreStays.pending, (state) => {
@@ -105,15 +106,41 @@ const staySlice = createSlice({
 export const loadStays = createAsyncThunk(
     'stay/loadStays',
     async (filterBy: any) => {
-        const { stays } = await stayService.query(filterBy)
-        return stays
+        const filter = {
+            where: '',
+            from: '',
+            to: '',
+            capacity: 0,
+            label: '',
+            page: 0
+        }
+        if (filterBy.where) filter.where = filterBy.where
+        if (filterBy.from) filter.from = filterBy.from
+        if (filterBy.to) filter.to = filterBy.to
+        if (filterBy.capacity) filter.capacity = filterBy.capacity
+        if (filterBy.label) filter.label = filterBy.label
+        const { stays, isFinalPage } = await stayService.query(filter)
+        return { stays, isFinalPage }
     }
 )
 
 export const loadMoreStays = createAsyncThunk(
     'stay/loadMoreStays',
     async ({ filterBy, page }: { filterBy: any, page: number }) => {
-        const { stays, isFinalPage } = await stayService.query({ ...filterBy, page })
+        const filter = {
+            where: '',
+            from: '',
+            to: '',
+            capacity: 0,
+            label: '',
+            page
+        }
+        if (filterBy.where) filter.where = filterBy.where
+        if (filterBy.from) filter.from = filterBy.from
+        if (filterBy.to) filter.to = filterBy.to
+        if (filterBy.capacity) filter.capacity = filterBy.capacity
+        if (filterBy.label) filter.label = filterBy.label
+        const { stays, isFinalPage } = await stayService.query(filter)
         return { stays, isFinalPage }
     }
 )
@@ -140,11 +167,11 @@ export default staySlice.reducer
 
 // ************ Local utility functions ************
 function _updateFilterBy(state: StayState, filterBy: any) {
-    state.filterBy = { ...state.filterBy, ...filterBy }
+    state.filterBy = { ...stayService.getEmptyFilterBy(), ...state.filterBy, ...filterBy }
     state.isSetParamsToFilterBy = true
 }
 
 function _resetFilterBy(state: StayState) {
-    state.filterBy = {}
+    state.filterBy = null
     state.isSetParamsToFilterBy = true
 }

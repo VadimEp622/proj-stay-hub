@@ -50,6 +50,10 @@ export function FilterExpanded(
     const dropdownRef = useClickOutside(onClickModal)
     const dispatch = useAppDispatch()
 
+    // useEffect(() => {
+    //     console.log('filter-expanded filterBy', filterBy)
+    // }, [filterBy])
+
 
     useEffect(() => {
         if (!isFilterExpanded) isFirstTimeExpandedRef.current = true
@@ -57,16 +61,16 @@ export function FilterExpanded(
 
 
 
-    function displayGuestsFilter() {
+    function displayGuestsFilter(filter) {
         // ******** At least 1 Adult from this point ********
         let guestsStr = ''
-        const guests = filterBy.guests.adults + filterBy.guests.children
+        const guests = filter.guests.adults + filter.guests.children
         guestsStr += `${guests} ${guests > 1 ? 'guests' : 'guest'}`//keep it guests/guests in case of i18
-        const infants = filterBy.guests.infants
+        const infants = filter.guests.infants
         if (infants > 0) {
             guestsStr += ` ,${infants} ${infants > 1 ? 'infants' : 'infant'}`
         }
-        const pets = filterBy.guests.pets
+        const pets = filter.guests.pets
         if (pets > 0) {
             guestsStr += ` ,${pets} ${pets > 1 ? 'pets' : 'pet'}`
         }
@@ -113,9 +117,9 @@ export function FilterExpanded(
                             <h3 className="fs12 lh16 ff-circular-bold">Who</h3>
                             <span className="fs14 lh18">
                                 {
-                                    filterBy.guests.adults > 0
+                                    filterBy?.guests?.adults > 0
                                         ? <LongTxt
-                                            txt={displayGuestsFilter()}
+                                            txt={displayGuestsFilter(filterBy)}
                                             length={11}
                                             askShowMore={false}
                                         />
