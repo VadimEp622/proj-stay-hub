@@ -3,7 +3,7 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import { startOfDay } from 'date-fns'
 
 // Services
-import { stayService } from '../services/stay.service.js'
+import { stayService } from '../services/stay.service'
 
 // Store
 import { useAppSelector } from '../store/hooks'

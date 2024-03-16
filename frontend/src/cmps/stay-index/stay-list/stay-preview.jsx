@@ -2,7 +2,7 @@
 import { Link } from 'react-router-dom'
 
 // Services
-import { stayService } from '../../../services/stay.service.js'
+import { stayService } from '../../../services/stay.service'
 import { utilService } from '../../../services/util.service.js'
 import { HEART_24_WHITE_STROKE, HEART_24_WHITE_STROKE_RED_FILL, STAR_12 } from '../../../services/svg.service.js'
 import { SET_APP_MODAL_LOGIN } from '../../../services/resources-strings.service.js'

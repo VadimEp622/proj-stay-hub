@@ -5,7 +5,7 @@ import { Helmet } from 'react-helmet-async'
 // Services
 import { utilService } from '../services/util.service.js'
 import { orderService } from '../services/order.service.js'
-import { stayService } from '../services/stay.service.js'
+import { stayService } from '../services/stay.service'
 import { SET_APP_MODAL_LOGIN } from '../services/resources-strings.service.js'
 
 // Store

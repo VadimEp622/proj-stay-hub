@@ -2,7 +2,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 
 // Services
-import { stayService } from '../services/stay.service.js'
+import { stayService } from '../services/stay.service'
 import { utilService } from '../services/util.service.js'
 
 
