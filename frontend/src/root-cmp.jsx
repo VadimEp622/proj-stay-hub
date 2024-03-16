@@ -30,8 +30,7 @@ import { AppMainModal } from "./cmps/app-main-modal.jsx"
 // !!!! can't seem to reproduce this... !!!!
 
 
-// TODO: change store to modern redux toolkit store structure
-// TODO: explore createAsyncThunk of redux-toolkit, It's essentially replacing async actions.js.
+// TODO: make backend DB testing, to check that ALL the current items in the DB have the correct keys, and value types
 
 // TODO-priority-urgent: make an error page, for faulty search params in stay-index. when done, test everything works, and deploy to cloud
 
