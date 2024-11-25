@@ -62,6 +62,8 @@ import { AppMainModal } from "./cmps/app-main-modal.jsx"
 // TODO-medium: in 'stay-details.jsx', In navbar, clicking on: 'photos/amenities/reviews/location'
 //       makes it so ,in reviews, profile pictures keep changing.
 
+// Extra: on mobile, horizontal scroll of shame in stay-details
+
 export function RootCmp() {
   const isUnclickableBg = useAppSelector(storeState => storeState.systemModule.isUnclickableBg)
   const appModal = useAppSelector(storeState => storeState.systemModule.appModal)
