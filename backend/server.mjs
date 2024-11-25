@@ -10,8 +10,10 @@ dotenv.config()
 const app = express()
 const server = http.createServer(app)
 
+// TODO: deploy updated app with "healthcheck + graceful shutdown" to Render.com
 
-// Express App Config
+
+// ***************** Express App Config *****************
 app.use(cookieParser())
 app.use(express.json())
 
@@ -34,7 +36,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 
-// routes
+// ***************** Routes *****************
 import { healthcheckRoutes } from './api/healthcheck/healthcheck.routes.mjs'
 import { authRoutes } from './api/auth/auth.routes.mjs'
 import { orderRoutes } from './api/order/order.routes.mjs'
