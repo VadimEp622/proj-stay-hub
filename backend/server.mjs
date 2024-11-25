@@ -35,6 +35,7 @@ if (process.env.NODE_ENV === 'production') {
 
 
 // routes
+import { healthcheckRoutes } from './api/healthcheck/healthcheck.routes.mjs'
 import { authRoutes } from './api/auth/auth.routes.mjs'
 import { orderRoutes } from './api/order/order.routes.mjs'
 import { secretRoutes } from './api/secret/secret.routes.mjs'
@@ -47,6 +48,7 @@ import { setupAsyncLocalStorage } from './middlewares/setupAls.middleware.mjs'
 
 app.all('*', setupAsyncLocalStorage)
 
+app.use('/api/healthcheck', healthcheckRoutes)
 app.use('/api/auth', authRoutes)
 app.use('/api/order', orderRoutes)
 app.use('/api/secret', secretRoutes)
