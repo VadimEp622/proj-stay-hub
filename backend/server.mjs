@@ -10,8 +10,14 @@ dotenv.config()
 const app = express()
 const server = http.createServer(app)
 
+// TODO: deploy updated app with "healthcheck + graceful shutdown" to Render.com
 
-// Express App Config
+// TODO: make stay_wishlist database collection.
+
+// TODO: make app flow to allow getting user related orders (aka trips), so that we can remove user's key trips array.
+
+
+// ***************** Express App Config *****************
 app.use(cookieParser())
 app.use(express.json())
 
@@ -34,7 +40,8 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 
-// routes
+// ***************** Routes *****************
+import { healthcheckRoutes } from './api/healthcheck/healthcheck.routes.mjs'
 import { authRoutes } from './api/auth/auth.routes.mjs'
 import { orderRoutes } from './api/order/order.routes.mjs'
 import { secretRoutes } from './api/secret/secret.routes.mjs'
@@ -47,6 +54,7 @@ import { setupAsyncLocalStorage } from './middlewares/setupAls.middleware.mjs'
 
 app.all('*', setupAsyncLocalStorage)
 
+app.use('/api/healthcheck', healthcheckRoutes)
 app.use('/api/auth', authRoutes)
 app.use('/api/order', orderRoutes)
 app.use('/api/secret', secretRoutes)
@@ -56,15 +64,33 @@ app.use('/api/user', userRoutes)
 setupSocketAPI(server)
 
 
+// ***************** Graceful shutdown *****************
+process.on('SIGTERM', () => {
+    logger.warn('SIGTERM received, shutting down server...')
+    server.close(() => {
+        logger.warn('SIGTERM received, server closed')
+        process.exit(0)
+    })
+})
 
-// Make every server-side-route to match the index.html
-// so when requesting http://localhost:3030/index.html/stay/123 it will still respond with
-// our SPA (single page app) (the index.html file) and allow vue/react-router to take it from there
+process.on('SIGINT', () => {
+    logger.warn('SIGINT received, shutting down server...')
+    server.close(() => {
+        logger.warn('SIGINT received, server closed')
+        process.exit(0)
+    })
+})
+
+
+
+
+// ***************** Get static React app *****************
 app.get('/**', (req, res) => {
     res.sendFile(path.resolve('public/index.html'))
 })
 
 
+// ***************** Run Server *****************
 const port = process.env.PORT || 3030
 server.listen(port, () => {
     logger.info('Server is running on port: ' + port)

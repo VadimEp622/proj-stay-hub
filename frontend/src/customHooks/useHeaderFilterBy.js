@@ -5,7 +5,7 @@ import { useEffect, useState } from "react"
 import { useAppSelector } from "../store/hooks"
 
 // Services
-import { stayService } from "../services/stay.service.js"
+import { stayService } from "../services/stay.service"
 
 
 export function useHeaderFilterBy() {

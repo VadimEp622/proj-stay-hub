@@ -1,5 +1,5 @@
 // Services
-import { stayService } from '../../../../services/stay.service.js'
+import { stayService } from '../../../../services/stay.service'
 import { STAR } from '../../../../services/svg.service.js'
 import { utilService } from '../../../../services/util.service.js'
 
