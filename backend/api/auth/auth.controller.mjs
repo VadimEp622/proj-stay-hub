@@ -1,13 +1,13 @@
-import {authService} from './auth.service.mjs'
-import {logger} from '../../services/logger.service.mjs'
+import { authService } from './auth.service.mjs'
+import { logger } from '../../services/logger.service.mjs'
 
 export async function login(req, res) {
     const { username, password } = req.body
     try {
         const user = await authService.login(username, password)
         const loginToken = authService.getLoginToken(user)
-        logger.info('User login: ', user._id)
-        res.cookie('loginToken', loginToken, {sameSite: 'None', secure: true})
+        // logger.info('User login: ', user._id)
+        res.cookie('loginToken', loginToken, { sameSite: 'None', secure: true })
         res.json(user)
     } catch (err) {
         logger.error('Failed to Login ' + err)
@@ -21,11 +21,11 @@ export async function signup(req, res) {
         // Never log passwords
         // logger.debug(credentials)
         const account = await authService.signup(credentials)
-        logger.debug(`auth.route - new account created: ` + JSON.stringify(account))
+        // logger.debug(`auth.route - new account created: ` + JSON.stringify(account))
         const user = await authService.login(credentials.username, credentials.password)
-        logger.info('User signup:', user._id)
+        // logger.info('User signup:', user._id)
         const loginToken = authService.getLoginToken(user)
-        res.cookie('loginToken', loginToken, {sameSite: 'None', secure: true})
+        res.cookie('loginToken', loginToken, { sameSite: 'None', secure: true })
         res.json(user)
     } catch (err) {
         logger.error('Failed to signup ' + err)
@@ -33,7 +33,7 @@ export async function signup(req, res) {
     }
 }
 
-export async function logout(req, res){
+export async function logout(req, res) {
     try {
         res.clearCookie('loginToken')
         res.send({ msg: 'Logged out successfully' })

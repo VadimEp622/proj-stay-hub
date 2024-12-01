@@ -4,7 +4,6 @@ import { logger } from '../../services/logger.service.mjs'
 
 // =================== Verified being used ===================
 export async function getStays(req, res) {
-  logger.debug('Getting Stays:', req.query)
   const { where, from, to, capacity, label, page } = req.query
 
   const filterBy = {
@@ -29,7 +28,6 @@ export async function getStays(req, res) {
 
   try {
     const { stays, isFinalPage } = await stayService.query(filterBy)
-    logger.info('Getting stays by filterBy:', filterBy)
     res.json({ stays, isFinalPage })
   } catch (err) {
     logger.error('Failed to get stays', err)
@@ -41,7 +39,6 @@ export async function getStayById(req, res) {
   try {
     const stayId = req.params.id
     const stay = await stayService.getById(stayId)
-    logger.info('Getting stay by id:', stayId)
     res.json(stay)
   } catch (err) {
     logger.error('Failed to get stay', err)

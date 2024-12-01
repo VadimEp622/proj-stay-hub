@@ -13,7 +13,7 @@ const router = express.Router()
 
 // =================== Verified being used ===================
 router.get('/', log, getStays)
-router.get('/:id', getStayById)
+router.get('/:id', log, getStayById)
 // ===========================================================
 // =============== Verified works but Not used ===============
 router.post('/', requireAdmin, addStay)
