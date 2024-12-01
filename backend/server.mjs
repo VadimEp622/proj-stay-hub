@@ -12,6 +12,10 @@ const server = http.createServer(app)
 
 // TODO: deploy updated app with "healthcheck + graceful shutdown" to Render.com
 
+// TODO: make stay_wishlist database collection.
+
+// TODO: make app flow to allow getting user related orders (aka trips), so that we can remove user's key trips array.
+
 
 // ***************** Express App Config *****************
 app.use(cookieParser())
