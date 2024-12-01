@@ -6,7 +6,7 @@ export async function getUser(req, res) {
     try {
         const userId = req.params.id
         const user = await userService.getById(userId)
-        logger.info('Get user by userId:', userId)
+        // logger.info('Get user by userId:', userId)
         res.send(user)
     } catch (err) {
         logger.error('Failed to get user', err)
@@ -19,7 +19,7 @@ export async function addUserTrip(req, res) {
     const orderId = req.body.orderId
     try {
         const updatedUser = await userService.addTrip(userId, orderId)
-        logger.info('Update user - add tripId to trips array',userId)
+        // logger.info('Update user - add tripId to trips array',userId)
         res.send(updatedUser)
     } catch (err) {
         logger.error('Failed adding trip to user', err)
@@ -34,7 +34,7 @@ export async function updateUserWishlist(req, res) {
     try {
         const user = await userService.getById(userId)
         const updateReport = await userService.updateWishlist(user, wishlistStay)
-        logger.info('Updated wishlist', updateReport.wishlistStatus, `stayId: ${updateReport.stayId}`)
+        // logger.info('Updated wishlist', updateReport.wishlistStatus, `stayId: ${updateReport.stayId}`)
         res.send(updateReport)
     } catch (err) {
         logger.error('Failed to update user wishlist', err)

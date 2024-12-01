@@ -4,6 +4,6 @@ import { secretService } from './secret.service.mjs'
 
 export function getApiKeyGoogleMap(req, res) {
     const apiKey = secretService.getApiKeyGoogleMap()
-    logger.info('Getting secret API key', 'Google Maps')
+    // logger.info('Getting secret API key', 'Google Maps')
     res.json(apiKey)
 }
