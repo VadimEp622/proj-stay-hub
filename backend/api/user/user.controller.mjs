@@ -19,6 +19,7 @@ export async function addUserTrip(req, res) {
     const orderId = req.body.orderId
     try {
         const updatedUser = await userService.addTrip(userId, orderId)
+        logger.info('Update user - add tripId to trips array',userId)
         res.send(updatedUser)
     } catch (err) {
         logger.error('Failed adding trip to user', err)
