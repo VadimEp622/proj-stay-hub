@@ -3,6 +3,7 @@
     "version": "1.0.0",
     "description": "production ready server",
     "main": "server.mjs",
+    "type": "module",
     "scripts": {
         "start": "node server.mjs",
         "dev": "nodemon server.mjs",
@@ -12,17 +13,17 @@
     "author": "Me",
     "license": "ISC",
     "dependencies": {
-        "bcrypt": "^5.1.0",
-        "cookie-parser": "^1.4.6",
+        "bcrypt": "^5.1.1",
+        "cookie-parser": "^1.4.7",
         "cors": "^2.8.5",
-        "cryptr": "^6.0.3",
-        "date-fns": "^2.30.0",
-        "dotenv": "^16.3.1",
-        "express": "^4.17.1",
-        "mongodb": "^3.2.7",
-        "socket.io": "^4.2.0"
+        "cryptr": "^6.3.0",
+        "date-fns": "^4.1.0",
+        "dotenv": "^16.4.7",
+        "express": "^4.21.2",
+        "mongodb": "^6.11.0",
+        "socket.io": "^4.8.1"
     },
     "devDependencies": {
-        "nodemon": "^2.0.20"
+        "nodemon": "^3.1.7"
     }
 }
