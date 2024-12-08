@@ -10,9 +10,16 @@ dotenv.config()
 const app = express()
 const server = http.createServer(app)
 
-// TODO: make stay_wishlist database collection.
+// NOTE: use mongoose next time.
 
-// TODO: make app flow to allow getting user related orders (aka trips), so that we can remove user's key trips array.
+// INFO: when app is shutting down, mongoDB client should close the connection (For every connection, mongo DB does assign a thread for its execution. If you won't close it, it keeps using the resources on the DB server.)
+//        HOWEVER, current mongoDB structure does not allow this 
+
+// TODO: 1) make sure there is full CRUD for all related APIs
+//       2) then, make DB collection: "wishlist_stay".
+//       3) make app flow to allow getting user related orders (aka trips), so that we can remove user's key trips array.
+
+
 
 
 // ***************** Express App Config *****************
