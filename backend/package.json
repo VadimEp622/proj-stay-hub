@@ -2,8 +2,8 @@
     "name": "server",
     "version": "1.0.0",
     "description": "production ready server",
-    "main": "server.js",
     "type": "module",
+    "main": "server.js",
     "scripts": {
         "start": "node server.js",
         "dev": "nodemon server.js",
