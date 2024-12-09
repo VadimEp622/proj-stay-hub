@@ -20,6 +20,9 @@ const server = http.createServer(app)
 //       3) make app flow to allow getting user related orders (aka trips), so that we can remove user's key trips array.
 
 
+// TODO: improve all CRUD update services, and use mongodb's "set" smarter, to update only specific fields of the db's doc
+
+
 
 // ***************** Express App Config *****************
 app.use(cookieParser())
