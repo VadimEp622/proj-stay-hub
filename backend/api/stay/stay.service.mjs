@@ -6,6 +6,8 @@ const { ObjectId } = mongodb
 
 const PAGE_SIZE = 20
 
+// TODO: (ONLY after creating wishlist_stay DB collection) add option to query wishlist saves
+
 // =================== Verified being used ===================
 async function query(filterBy) {
     try {
