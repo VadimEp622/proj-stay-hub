@@ -1,6 +1,6 @@
 import { appConfig } from '../config/app.config.ts'
-import { logger } from '../services/logger.service.js'
-import { asyncLocalStorage } from '../services/als.service.js'
+import { logger } from '../service/logger.service.js'
+import { asyncLocalStorage } from '../service/als.service.js'
 
 
 // consider adding requireSameUser

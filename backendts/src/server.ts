@@ -4,7 +4,7 @@ import path from "path";
 import cors from "cors";
 import express from "express";
 import cookieParser from "cookie-parser";
-import { logger } from "./services/logger.service.js";
+import { logger } from "./service/logger.service.js";
 import { appConfig } from "./config/app.config.ts";
 // import mongoose from "mongoose";
 // import { connectDB } from "./services/db.service.js";
@@ -38,8 +38,8 @@ if (appConfig.NODE_ENV === "production") {
 }
 
 // ***************** Routes *****************
-import { setupAsyncLocalStorage } from "./middlewares/setupAls.middleware.js";
-import { setupSocketAPI } from "./services/socket.service.js";
+import { setupAsyncLocalStorage } from "./middleware/setupAls.middleware.js";
+import { setupSocketAPI } from "./service/socket.service.js";
 import { userRoutes } from "./api/user/user.routes.js";
 import { healthcheckRoutes } from "./api/healthcheck/healthcheck.routes.js";
 import { authRoutes } from "./api/auth/auth.routes.js";

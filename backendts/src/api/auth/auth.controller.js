@@ -1,5 +1,5 @@
 import { authService } from './auth.service.js'
-import { logger } from '../../services/logger.service.js'
+import { logger } from '../../service/logger.service.js'
 
 export async function login(req, res) {
     const { username, password } = req.body

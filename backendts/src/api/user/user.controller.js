@@ -1,5 +1,5 @@
 import { userService } from './user.service.js'
-import { logger } from '../../services/logger.service.js'
+import { logger } from '../../service/logger.service.js'
 
 // ====================== Confirmed Being Used ======================
 export async function getUser(req, res) {

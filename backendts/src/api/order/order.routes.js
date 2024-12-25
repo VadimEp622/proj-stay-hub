@@ -1,6 +1,6 @@
 import express from 'express'
-import { requireAdmin, requireAuth } from '../../middlewares/requireAuth.middleware.js'
-import { log } from '../../middlewares/logger.middleware.js'
+import { requireAdmin, requireAuth } from '../../middleware/requireAuth.middleware.js'
+import { log } from '../../middleware/logger.middleware.js'
 
 import { addOrder, getOrders, deleteOrder, updateOrder, getOrderById } from './order.controller.js'
 const router = express.Router()

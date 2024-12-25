@@ -1,4 +1,4 @@
-import { logger } from '../../services/logger.service.js'
+import { logger } from '../../service/logger.service.js'
 import { secretService } from './secret.service.js'
 
 

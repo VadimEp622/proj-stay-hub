@@ -1,5 +1,5 @@
 import { stayService } from './stay.service.js'
-import { logger } from '../../services/logger.service.js'
+import { logger } from '../../service/logger.service.js'
 
 
 // =================== Verified being used ===================

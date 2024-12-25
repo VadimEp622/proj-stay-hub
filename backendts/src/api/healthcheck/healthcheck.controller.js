@@ -1,4 +1,4 @@
-import { logger } from '../../services/logger.service.js'
+import { logger } from '../../service/logger.service.js'
 
 
 export async function healthcheck(req, res) {

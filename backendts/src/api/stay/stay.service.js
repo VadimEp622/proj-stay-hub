@@ -1,6 +1,6 @@
 import { startOfDay } from 'date-fns'
-import { dbService } from '../../services/db.service.js'
-import { logger } from '../../services/logger.service.js'
+import { dbService } from '../../service/db.service.js'
+import { logger } from '../../service/logger.service.js'
 import mongodb from 'mongodb'
 const { ObjectId } = mongodb
 

@@ -1,5 +1,5 @@
-import { logger } from '../../services/logger.service.js'
-import { socketService } from '../../services/socket.service.js'
+import { logger } from '../../service/logger.service.js'
+import { socketService } from '../../service/socket.service.js'
 import { orderService } from './order.service.js'
 
 // ======================= Verified being used =======================
