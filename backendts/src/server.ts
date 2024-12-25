@@ -9,6 +9,9 @@ import { appConfig } from "./config/app.config.ts";
 // import mongoose from "mongoose";
 // import { connectDB } from "./services/db.service.js";
 
+
+// TODO: add mongoose to replace mongoDB package
+
 // ***************** Express App Config *****************
 const app = express();
 const server = http.createServer(app);
