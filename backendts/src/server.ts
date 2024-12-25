@@ -4,18 +4,18 @@ import path from "path";
 import cors from "cors";
 import express from "express";
 import cookieParser from "cookie-parser";
+import mongoose from "mongoose";
 import { logger } from "./service/logger.service.js";
 import { appConfig } from "./config/app.config.ts";
-// import mongoose from "mongoose";
-// import { connectDB } from "./services/db.service.js";
-
+import { connectDB } from "./service/db.service.ts";
 
 // TODO: add mongoose to replace mongoDB package
+// TODO: currently doing the above TODO -> finished all relevant GETS. need to start on PUT/POST/DELETE 
 
 // ***************** Express App Config *****************
 const app = express();
 const server = http.createServer(app);
-// connectDB();
+connectDB();
 
 app.use(cookieParser());
 app.use(express.json());
@@ -62,7 +62,7 @@ const shutdown = async () => {
   logger.warn("Shutdown initiated...");
   try {
     server.close(() => logger.info("HTTP server closed."));
-    // await mongoose.connection.close();
+    await mongoose.connection.close();
     logger.info("MongoDB connection closed.");
     process.exit(0);
   } catch (err) {

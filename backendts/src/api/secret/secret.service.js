@@ -1,8 +1,9 @@
+import { appConfig } from "../../config/app.config.ts"
 
 
 function getApiKeyGoogleMap() {
     return {
-        secret: process.env.GOOGLE_MAPS_API_KEY
+        secret: appConfig.GOOGLE_MAPS_API_KEY
     }
 }
 

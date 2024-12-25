@@ -12,18 +12,23 @@ const orderSchema: Schema = new Schema(
     content: {
       type: {
         buyer: {
+          type: Object,
           required: true,
         },
         seller: {
+          type: Object,
           required: true,
         },
         orderDetails: {
+          type: Object,
           required: true,
         },
         orderPrice: {
+          type: Object,
           required: true,
         },
         stayDetails: {
+          type: Object,
           required: true,
         },
         explore: {
@@ -35,6 +40,7 @@ const orderSchema: Schema = new Schema(
           required: true,
         },
       },
+      _id: false, // Mongoose creates _id for single nested subdocuments or arrays/objects. To avoid this, we set _id to false
       required: true,
     },
   },

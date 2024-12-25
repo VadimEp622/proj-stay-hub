@@ -1,10 +1,19 @@
 import { startOfDay } from 'date-fns'
-import { dbService } from '../../service/db.service.js'
+// import { dbService } from '../../service/db.service.js'
 import { logger } from '../../service/logger.service.js'
-import mongodb from 'mongodb'
-const { ObjectId } = mongodb
+import { StayModel } from '../../model/stay.ts'
+// import mongodb from 'mongodb'
+// const { ObjectId } = mongodb
 
 const PAGE_SIZE = 20
+
+export const stayService = {
+    query,
+    getById,
+    // remove,
+    // add,
+    // update
+}
 
 // TODO: (ONLY after creating wishlist_stay DB collection) add option to query wishlist saves
 
@@ -13,12 +22,9 @@ async function query(filterBy) {
     try {
         const currPage = filterBy.page
         const criteria = _createCriteria(filterBy)
-        const collection = await dbService.getCollection('stay')
-        const stays = await collection
-            .find(criteria)
+        const stays = await StayModel.find(criteria)
             .skip(currPage * PAGE_SIZE)
             .limit(PAGE_SIZE)
-            .toArray()
 
         const isFinalPage = stays.length < PAGE_SIZE
         return { stays, isFinalPage }
@@ -30,8 +36,7 @@ async function query(filterBy) {
 
 async function getById(stayId) {
     try {
-        const collection = await dbService.getCollection('stay')
-        const stay = await collection.findOne({ _id: new ObjectId(stayId) })
+        const stay = await StayModel.findById(stayId)
         return stay
     } catch (err) {
         logger.error(`while finding stay ${stayId}`, err)
@@ -40,52 +45,44 @@ async function getById(stayId) {
 }
 // ===========================================================
 // =============== Verified works but Not used ===============
-async function add(stay) {
-    try {
-        const collection = await dbService.getCollection('stay')
-        await collection.insertOne(stay)
-        return stay
-    } catch (err) {
-        logger.error('cannot insert stay', err)
-        throw err
-    }
-}
+// async function add(stay) {
+//     try {
+//         const collection = await dbService.getCollection('stay')
+//         await collection.insertOne(stay)
+//         return stay
+//     } catch (err) {
+//         logger.error('cannot insert stay', err)
+//         throw err
+//     }
+// }
 
-async function remove(stayId) {
-    try {
-        const collection = await dbService.getCollection('stay')
-        await collection.deleteOne({ _id: new ObjectId(stayId) })
-        return stayId
-    } catch (err) {
-        logger.error(`cannot remove stay ${stayId}`, err)
-        throw err
-    }
-}
+// async function remove(stayId) {
+//     try {
+//         const collection = await dbService.getCollection('stay')
+//         await collection.deleteOne({ _id: new ObjectId(stayId) })
+//         return stayId
+//     } catch (err) {
+//         logger.error(`cannot remove stay ${stayId}`, err)
+//         throw err
+//     }
+// }
 
-async function update(stayId, stay) {
-    try {
-        const stayToSave = { ...stay }
-        stayToSave._id = new ObjectId(stayId)
+// async function update(stayId, stay) {
+//     try {
+//         const stayToSave = { ...stay }
+//         stayToSave._id = new ObjectId(stayId)
 
-        const collection = await dbService.getCollection('stay')
-        await collection.updateOne({ _id: new ObjectId(stayId) }, { $set: stayToSave })
-        return stayToSave
-    } catch (err) {
-        logger.error(`cannot update stay ${stayId}`, err)
-        throw err
-    }
-}
+//         const collection = await dbService.getCollection('stay')
+//         await collection.updateOne({ _id: new ObjectId(stayId) }, { $set: stayToSave })
+//         return stayToSave
+//     } catch (err) {
+//         logger.error(`cannot update stay ${stayId}`, err)
+//         throw err
+//     }
+// }
 // ===========================================================
 
 
-
-export const stayService = {
-    remove,
-    query,
-    getById,
-    add,
-    update
-}
 
 
 
