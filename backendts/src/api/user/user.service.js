@@ -6,13 +6,13 @@ export const userService = {
     // ====================== Confirmed Being Used ======================
     getById,
     getByUsername,
-    // add,
+    create,
     // addTrip,
     // updateWishlist,
     // ==================================================================
     // =================== Confirmed works but unused ===================
     // query,
-    // remove,
+    remove,
     // update,
 }
 
@@ -37,69 +37,65 @@ async function getByUsername(username) {
     }
 }
 
-// async function add(user) {
-    // try {
-        // const userToAdd = {
-        //     username: user.username,
-        //     password: user.password,
-        //     fullname: user.fullname,
-        //     imgUrl: user.imgUrl,
-        //     wishlist: [],
-        //     trip: [],
-        // }
-        // const collection = await dbService.getCollection('user')
-        // await collection.insertOne(userToAdd)
-        // // logger.info('Creating user', `userId: ${userToAdd._id}`)
-        // return userToAdd
-    // } catch (err) {
-        // logger.error('cannot add user', err)
-        // throw err
-    // }
-// }
+async function create(user) {
+    try {
+        const userToAdd = {
+            username: user.username,
+            password: user.password,
+            fullname: user.fullname,
+            imgUrl: user.imgUrl
+        }
+        await UserModel.create(userToAdd)
+        return userToAdd
+    } catch (err) {
+        logger.error('cannot add user', err)
+        throw err
+    }
+}
 
 // async function addTrip(userId, orderId) {
-    // try {
-        // const collection = await dbService.getCollection('user')
-        // const userPrms = await collection.findOneAndUpdate({ _id: ObjectId(userId) }, { $push: { trip: { orderId } } }, { returnOriginal: false })
-        // const updatedUser = ({ ...userPrms.value })
-        // delete updatedUser.password
-        // delete updatedUser.username
-        // return updatedUser
-    // } catch (err) {
+// try {
+// const collection = await dbService.getCollection('user')
+// const userPrms = await collection.findOneAndUpdate({ _id: ObjectId(userId) }, { $push: { trip: { orderId } } }, { returnOriginal: false })
+// const updatedUser = ({ ...userPrms.value })
+// delete updatedUser.password
+// delete updatedUser.username
+// return updatedUser
+// } catch (err) {
 //         logger.error(`failed to add order ${orderId} to user ${userId}`, err)
 //         throw err
 //     }
 // }
 
 // async function updateWishlist(user, stay) {
-    // try {
-        // const isWishlist = user.wishlist.some(wishlist => wishlist._id === stay._id)
-        // const collection = await dbService.getCollection('user')
+// try {
+// const isWishlist = user.wishlist.some(wishlist => wishlist._id === stay._id)
+// const collection = await dbService.getCollection('user')
 
-        // if (isWishlist) {// removing from wishlist here
-        //     await collection.updateOne(
-        //         { _id: ObjectId(user._id) },
-        //         { $pull: { wishlist: { _id: stay._id } } }
-        //     )
-        //     return { stayId: stay._id, wishlistStatus: 'removed' }
-        // } else {// adding to wishlist here
-        //     collection.updateOne(
-        //         { _id: ObjectId(user._id) },
-        //         {
-        //             $push: {
-        //                 wishlist: {
-        //                     $each: [stay],
-        //                     $position: 0
-        //                 }
-        //             }
-        //         }
-        //     )
-        //     return { stayId: stay._id, wishlistStatus: 'added' }
-        // }
-    // } catch (err) {
-        // logger.error(`cannot update user's ${user._id} wishlist, for stay ${stay._id}`, err)
-        // throw err
-    // }
+// if (isWishlist) {// removing from wishlist here
+//     await collection.updateOne(
+//         { _id: ObjectId(user._id) },
+//         { $pull: { wishlist: { _id: stay._id } } }
+//     )
+//     return { stayId: stay._id, wishlistStatus: 'removed' }
+// } else {// adding to wishlist here
+//     collection.updateOne(
+//         { _id: ObjectId(user._id) },
+//         {
+//             $push: {
+//                 wishlist: {
+//                     $each: [stay],
+//                     $position: 0
+//                 }
+//             }
+//         }
+//     )
+//     return { stayId: stay._id, wishlistStatus: 'added' }
+// }
+// } catch (err) {
+// logger.error(`cannot update user's ${user._id} wishlist, for stay ${stay._id}`, err)
+// throw err
+// }
 // }
 
 // ==================================================================
@@ -137,15 +133,14 @@ async function getByUsername(username) {
 //     }
 // }
 
-// async function remove(userId) {
-//     try {
-//         const collection = await dbService.getCollection('user')
-//         await collection.deleteOne({ _id: ObjectId(userId) })
-//     } catch (err) {
-//         logger.error(`cannot remove user ${userId}`, err)
-//         throw err
-//     }
-// }
+async function remove(userId) {
+    try {
+        await UserModel.deleteOne({ _id: userId })
+    } catch (err) {
+        logger.error(`cannot remove user ${userId}`, err)
+        throw err
+    }
+}
 // ==================================================================
 
 

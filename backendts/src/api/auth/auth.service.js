@@ -38,7 +38,7 @@ async function signup({ username, password, fullname, imgUrl }) {
     if (userExist) return Promise.reject('Username already taken')
 
     const hash = await bcrypt.hash(password, saltRounds)
-    return userService.add({ username, password: hash, fullname, imgUrl })
+    return userService.create({ username, password: hash, fullname, imgUrl })
 }
 
 function getLoginToken(user) {
