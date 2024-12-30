@@ -6,8 +6,8 @@ import { logger } from '../../service/logger.service.js'
 export const orderService = {
     query,
     getById,
-    // remove,
-    // add,
+    create,
+    remove,
     // update
 }
 
@@ -33,27 +33,24 @@ async function query(filterBy = {}) {
     }
 }
 
-// async function add(order) {
-//     try {
-//         const criteria = _buildCriteria({
-//             byUserId: order.buyer._id,
-//             aboutUserId: order.seller._id
-//         })
-//         const orderToAdd = {
-//             ...criteria,
-//             content: order
-//         }
+async function create(order) {
+    try {
+        const criteria = _buildCriteria({
+            byUserId: order.buyer._id,
+            aboutUserId: order.seller._id
+        })
+        const orderToAdd = {
+            ...criteria,
+            content: order
+        }
 
-//         const collection = await dbService.getCollection('order')
-//         await collection.insertOne(orderToAdd)
-//         // mongoDB adds _id key to orderToAdd!
-
-//         return orderToAdd
-//     } catch (err) {
-//         logger.error('cannot add order', err)
-//         throw err
-//     }
-// }
+        const returnedOrder = await OrderModel.create(orderToAdd)
+        return returnedOrder
+    } catch (err) {
+        logger.error('cannot add order', err)
+        throw err
+    }
+}
 
 async function getById(orderId) {
     try {
@@ -79,17 +76,16 @@ async function getById(orderId) {
 // }
 // ===================================================================
 // ============== Verified working - but NOT being used ==============
-// async function remove(orderId) {
-//     try {
-//         const collection = await dbService.getCollection('order')
-//         const criteria = _buildCriteria({ orderId })
-//         const { deletedCount } = await collection.deleteOne(criteria)
-//         return deletedCount
-//     } catch (err) {
-//         logger.error(`cannot remove order ${orderId}`, err)
-//         throw err
-//     }
-// }
+async function remove(orderId) {
+    try {
+        const criteria = _buildCriteria({ orderId })
+        const { deletedCount } = await OrderModel.deleteOne(criteria)
+        return deletedCount
+    } catch (err) {
+        logger.error(`cannot remove order ${orderId}`, err)
+        throw err
+    }
+}
 // ===================================================================
 
 

@@ -27,7 +27,7 @@ export async function addOrder(req, res) {
             explore,
             status,
         }
-        const orderRes = await orderService.add(order)
+        const orderRes = await orderService.create(order)
         // logger.info('Creating order', orderRes._id)
 
         socketService.emitToUser({
@@ -52,7 +52,7 @@ export async function updateOrder(req, res) {
         orderToUpdate.content.status = orderStatus
         const orderRes = await orderService.update(orderToUpdate)
         // logger.info('Updating order', orderRes._id)
-        
+
         socketService.emitToUser({
             type: 'stay-reservation-reply',
             data: orderToUpdate.content.status,
