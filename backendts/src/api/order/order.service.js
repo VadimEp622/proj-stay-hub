@@ -14,8 +14,8 @@ export const orderService = {
 // ======================= Verified being used =======================
 async function query(filterBy = {}) {
     try {
-        const criteria = _buildCriteria(filterBy)
-        const orders = await OrderModel.find(criteria)
+        const filterCriteria = _buildFilterCriteria(filterBy)
+        const orders = await OrderModel.find(filterCriteria)
 
         // // TODO: find out why below is happening, make a detailed note of related cmps/files, and make a todo note to fix it
 
@@ -35,12 +35,12 @@ async function query(filterBy = {}) {
 
 async function create(order) {
     try {
-        const criteria = _buildCriteria({
+        const filterCriteria = _buildFilterCriteria({
             byUserId: order.buyer._id,
             aboutUserId: order.seller._id
         })
         const orderToAdd = {
-            ...criteria,
+            ...filterCriteria,
             content: order
         }
 
@@ -64,10 +64,10 @@ async function getById(orderId) {
 
 // async function update(order) {
 //     try {
-//         const criteria = _buildCriteria({ orderId: order._id })
+//         const filterCriteria = _buildFilterCriteria({ orderId: order._id })
 //         const orderToUpdate = { ...order }
 //         const collection = await dbService.getCollection('order')
-//         await collection.updateOne(criteria, { $set: orderToUpdate })
+//         await collection.updateOne(filterCriteria, { $set: orderToUpdate })
 //         return orderToUpdate
 //     } catch (err) {
 //         logger.error('cannot update order', err)
@@ -78,8 +78,8 @@ async function getById(orderId) {
 // ============== Verified working - but NOT being used ==============
 async function remove(orderId) {
     try {
-        const criteria = _buildCriteria({ orderId })
-        const { deletedCount } = await OrderModel.deleteOne(criteria)
+        const filterCriteria = _buildFilterCriteria({ orderId })
+        const { deletedCount } = await OrderModel.deleteOne(filterCriteria)
         return deletedCount
     } catch (err) {
         logger.error(`cannot remove order ${orderId}`, err)
@@ -90,8 +90,7 @@ async function remove(orderId) {
 
 
 
-
-function _buildCriteria(filterBy) {
+function _buildFilterCriteria(filterBy) {
     const criteria = {}
     if (filterBy.orderId) criteria._id = filterBy.orderId
     if (filterBy.byUserId) criteria.byUserId = filterBy.byUserId
@@ -99,3 +98,8 @@ function _buildCriteria(filterBy) {
     return criteria
 }
 
+function _buildUpdateMethod(order) {
+    // TODO: crate this for order update method
+
+    return {}
+}
