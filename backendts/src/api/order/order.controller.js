@@ -44,19 +44,27 @@ export async function addOrder(req, res) {
 }
 
 export async function updateOrder(req, res) {
-    const orderId = req.params.id
-    const orderStatus = req.body.status
+    const { id: orderId } = req.params
+    const filterBy = {
+        orderId
+    }
+
+    const { status } = req.body
+    const orderToUpdate = {
+        content: {
+            status
+        }
+    }
+
 
     try {
-        const orderToUpdate = await orderService.getById(orderId)
-        orderToUpdate.content.status = orderStatus
-        const orderRes = await orderService.update(orderToUpdate)
-        // logger.info('Updating order', orderRes._id)
+        const orderRes = await orderService.update(filterBy, orderToUpdate)
+        logger.debug('orderRes', orderRes)
 
         socketService.emitToUser({
             type: 'stay-reservation-reply',
-            data: orderToUpdate.content.status,
-            userId: orderToUpdate.content.buyer._id
+            data: orderRes.content.status,
+            userId: orderRes.content.buyer._id
         })
 
         res.send(orderRes)

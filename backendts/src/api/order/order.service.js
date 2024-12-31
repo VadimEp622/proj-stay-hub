@@ -8,7 +8,7 @@ export const orderService = {
     getById,
     create,
     remove,
-    // update
+    update
 }
 
 // ======================= Verified being used =======================
@@ -62,18 +62,22 @@ async function getById(orderId) {
     }
 }
 
-// async function update(order) {
-//     try {
-//         const filterCriteria = _buildFilterCriteria({ orderId: order._id })
-//         const orderToUpdate = { ...order }
-//         const collection = await dbService.getCollection('order')
-//         await collection.updateOne(filterCriteria, { $set: orderToUpdate })
-//         return orderToUpdate
-//     } catch (err) {
-//         logger.error('cannot update order', err)
-//         throw err
-//     }
-// }
+async function update(filterBy, order) {
+    try {
+        const filterCriteria = _buildFilterCriteria(filterBy)
+        logger.debug('filterCriteria', filterCriteria)
+        const updateMethod = _buildUpdateMethod(order)
+        logger.debug('updateMethod', updateMethod)
+
+        const updatedOrder = await OrderModel.findOneAndUpdate(filterCriteria, updateMethod, { returnOriginal: false, upsert: false })
+        if (!updatedOrder) throw new Error('Error updating order') // TODO: clearly understand the scenarios where updatedOrder is null, and mention them here
+
+        return updatedOrder
+    } catch (err) {
+        logger.error('cannot update order', err)
+        throw err
+    }
+}
 // ===================================================================
 // ============== Verified working - but NOT being used ==============
 async function remove(orderId) {
@@ -91,7 +95,7 @@ async function remove(orderId) {
 
 
 function _buildFilterCriteria(filterBy) {
-    const criteria = {}
+    let criteria = {}
     if (filterBy.orderId) criteria._id = filterBy.orderId
     if (filterBy.byUserId) criteria.byUserId = filterBy.byUserId
     if (filterBy.aboutUserId) criteria.aboutUserId = filterBy.aboutUserId
@@ -99,7 +103,9 @@ function _buildFilterCriteria(filterBy) {
 }
 
 function _buildUpdateMethod(order) {
-    // TODO: crate this for order update method
+    // TODO: improve upon this order update method
+    let updateMethod = { $set: {} }
+    if (order.content.status) updateMethod.$set["content.status"] = order.content.status
 
-    return {}
+    return updateMethod
 }

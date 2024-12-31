@@ -10,7 +10,7 @@ import { appConfig } from "./config/app.config.ts";
 import { connectDB } from "./service/db.service.ts";
 
 // TODO: add mongoose to replace mongoDB package
-// TODO: currently doing the above TODO -> finished all relevant GET/POST/DELETE. need to start on PUT (update doc object)
+// TODO: currently doing the above TODO -> finished all relevant GET/POST/DELETE. need to start on PUT (DONE: order)
 
 // ***************** Express App Config *****************
 const app = express();
