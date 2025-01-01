@@ -9,8 +9,10 @@ import { logger } from "./service/logger.service.js";
 import { appConfig } from "./config/app.config.ts";
 import { connectDB } from "./service/db.service.ts";
 
-// TODO: add mongoose to replace mongoDB package
-// TODO: currently doing the above TODO -> finished all relevant GET/POST/DELETE. need to start on PUT (DONE: order)
+// INFO: replaced mongodb with mongoose (for the current used API's), and checked that all used methods actually WORK
+// TODO: 1) go over front+back API connections
+//       2) imporved API's services (filterCriteriaBuilders + updateMethodBuilders)
+//       3) deploy to typescript backend to render
 
 // ***************** Express App Config *****************
 const app = express();

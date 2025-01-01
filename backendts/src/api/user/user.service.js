@@ -7,7 +7,7 @@ export const userService = {
     getById,
     getByUsername,
     create,
-    // addTrip,
+    addTrip,
     updateWishlist,
     // ==================================================================
     // =================== Confirmed works but unused ===================
@@ -53,19 +53,15 @@ async function create(user) {
     }
 }
 
-// async function addTrip(userId, orderId) {
-// try {
-// const collection = await dbService.getCollection('user')
-// const userPrms = await collection.findOneAndUpdate({ _id: ObjectId(userId) }, { $push: { trip: { orderId } } }, { returnOriginal: false })
-// const updatedUser = ({ ...userPrms.value })
-// delete updatedUser.password
-// delete updatedUser.username
-// return updatedUser
-// } catch (err) {
-//         logger.error(`failed to add order ${orderId} to user ${userId}`, err)
-//         throw err
-//     }
-// }
+async function addTrip(userId, orderId) {
+    try {
+        const updatedUser = await UserModel.findOneAndUpdate({ _id: userId }, { $push: { trip: { orderId } } }, { returnOriginal: false })
+        return updatedUser
+    } catch (err) {
+        logger.error(`failed to add order ${orderId} to user ${userId}`, err)
+        throw err
+    }
+}
 
 async function updateWishlist(user, stay) {
     try {
