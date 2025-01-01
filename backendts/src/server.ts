@@ -12,7 +12,7 @@ import { connectDB } from "./service/db.service.ts";
 // INFO: replaced mongodb with mongoose (for the current used API's), and checked that all used methods actually WORK
 // TODO: 1) go over front+back API connections
 //       2) imporve API's services (filterCriteriaBuilders + updateMethodBuilders)
-//       3) deploy to typescript backend to render
+//       3) deploy typescript backend to render
 
 // ***************** Express App Config *****************
 const app = express();
