@@ -27,12 +27,14 @@ export async function addUserTrip(req, res) {
     }
 }
 
+// TODO: needs to be improved
 export async function updateUserWishlist(req, res) {
     const userId = req.params.id
     const { _id, imgUrls, loc, type, bedrooms, price, availableDates, reviews } = req.body
     const wishlistStay = { _id, imgUrls, loc, type, bedrooms, price, availableDates, reviews }
     try {
         const user = await userService.getById(userId)
+        if (!user) throw new Error('User not found')
         const updateReport = await userService.updateWishlist(user, wishlistStay)
         // logger.info('Updated wishlist', updateReport.wishlistStatus, `stayId: ${updateReport.stayId}`)
         res.send(updateReport)
