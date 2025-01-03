@@ -1,6 +1,7 @@
 import { authService } from '../api/auth/auth.service.js'
 import { asyncLocalStorage } from '../service/als.service.js'
 
+// NOTE: als, used for remembering a state throughout a request
 export async function setupAsyncLocalStorage(req, res, next) {
   const storage = {}
   asyncLocalStorage.run(storage, () => {

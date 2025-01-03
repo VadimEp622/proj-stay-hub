@@ -1,6 +1,5 @@
 import express from 'express'
 import { requireAdmin, requireAuth } from '../../middleware/requireAuth.middleware.js'
-import { log } from '../../middleware/logger.middleware.js'
 import {
     getStays, getStayById, addStay, updateStay, removeStay
 } from './stay.controller.js'
@@ -12,8 +11,8 @@ const router = express.Router()
 
 
 // =================== Verified being used ===================
-router.get('/', log, getStays)
-router.get('/:id', log, getStayById)
+router.get('/', getStays)
+router.get('/:id', getStayById)
 // ===========================================================
 // =============== Verified works but Not used ===============
 router.post('/', requireAdmin, addStay)

@@ -44,6 +44,7 @@ if (appConfig.NODE_ENV === "production") {
 
 // ***************** Routes *****************
 import { setupAsyncLocalStorage } from "./middleware/setupAls.middleware.js";
+import { log } from "./middleware/logger.middleware.js";
 import { setupSocketAPI } from "./service/socket.service.js";
 import { userRoutes } from "./api/user/user.routes.js";
 import { healthcheckRoutes } from "./api/healthcheck/healthcheck.routes.js";
@@ -52,7 +53,7 @@ import { orderRoutes } from "./api/order/order.routes.js";
 import { secretRoutes } from "./api/secret/secret.routes.js";
 import { stayRoutes } from "./api/stay/stay.routes.js";
 
-app.all("*", setupAsyncLocalStorage);
+app.all("*", log, setupAsyncLocalStorage);
 app.use("/api/user", userRoutes);
 app.use("/api/healthcheck", healthcheckRoutes);
 app.use("/api/auth", authRoutes);
