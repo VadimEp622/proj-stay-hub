@@ -4,7 +4,7 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "start": "node dist/src/index.js",
+    "start": "node dist/src/server.js",
     "build": "swc src --out-dir dist",
     "build:ci": "tsc && npm run build",
     "build:watch": "swc src -w --out-dir dist",
