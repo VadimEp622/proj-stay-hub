@@ -1,0 +1,27 @@
+{
+    "exclude": "node_modules/",
+    "minify": true,
+    "jsc": {
+        "parser": {
+            "syntax": "typescript",
+            "topLevelAwait": true
+        },
+        "target": "es2022",
+        "experimental": {
+            "plugins": [
+                [
+                    "@swc/plugin-transform-imports",
+                    {
+                        "^(.*?)(\\.ts)$": {
+                            "skipDefaultConversion": true,
+                            "transform": "{{matches.[1]}}.js"
+                        }
+                    }
+                ]
+            ]
+        }
+    },
+    "module": {
+        "type": "nodenext"
+    }
+}

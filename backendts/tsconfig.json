@@ -1,0 +1,26 @@
+{
+    "extends": "@tsconfig/node22/tsconfig.json",
+    "compilerOptions": {
+        "skipLibCheck": true,
+        "isolatedModules": true,
+        "noEmit": true,
+        "allowImportingTsExtensions": true,
+        "rootDir": "./src",
+        "outDir": "./dist",
+        "types": [
+            "node",
+            "express"
+        ],
+        "allowJs": true,
+    },
+    "include": [
+        "src/**/*"
+    ],
+    "exclude": [
+        "node_modules",
+        "dist",
+    ],
+    "ts-node": {
+        "esm": true, // «———— enabling ESM for ts-node
+    },
+}

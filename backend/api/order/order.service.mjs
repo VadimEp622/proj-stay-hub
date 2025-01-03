@@ -9,6 +9,9 @@ async function query(filterBy = {}) {
         const criteria = _buildCriteria(filterBy)
         const collection = await dbService.getCollection('order')
         const orders = await collection.find(criteria).toArray()
+
+// TODO: find out why below is happening, make a detailed note of related cmps/files, and make a todo note to fix it
+
         const updatedOrders = orders.map(order => {
             order.byUser = { _id: order.content.buyer._id, fullname: order.content.buyer.fullname }
             order.aboutUser = { _id: order.content.seller._id, fullname: order.content.seller.fullname }
