@@ -10,12 +10,12 @@ import { appConfig } from "./config/app.config.ts";
 import { connectDB } from "./service/db.service.ts";
 
 // INFO: replaced mongodb with mongoose (for the current used API's), and checked that all used methods actually WORK
-// TODO: 1) go over front+back API connections
+// TODO: 1) ✔ go over front+back API connections
 //       2) imporve API's services (filterCriteriaBuilders + updateMethodBuilders)
-//       3) deploy typescript backend to render
+//       3) ✔ deploy typescript backend to render
 
 // TODO: (after deploying TS backend)
-// * make a new DB collection "wishlist-stay". It will have "_id", "userId" and "stayId".
+// * ✔ make a new DB collection "wishlistStay". It will have "_id", "userId" and "stayId".
 
 // ***************** Express App Config *****************
 const app = express();
