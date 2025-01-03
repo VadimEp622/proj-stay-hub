@@ -14,6 +14,9 @@ import { connectDB } from "./service/db.service.ts";
 //       2) imporve API's services (filterCriteriaBuilders + updateMethodBuilders)
 //       3) deploy typescript backend to render
 
+// TODO: (after deploying TS backend)
+// * make a new DB collection "wishlist-stay". It will have "_id", "userId" and "stayId".
+
 // ***************** Express App Config *****************
 const app = express();
 const server = http.createServer(app);
