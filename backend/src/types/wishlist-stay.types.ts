@@ -8,9 +8,9 @@ export interface IWishlistStayModel {
   _id: Types.ObjectId;
   userId: Types.ObjectId;
   stayId: Types.ObjectId;
-  createdAt?: NativeDate;
-  updatedAt?: NativeDate;
-  __v?: number;
+  createdAt: NativeDate;
+  updatedAt: NativeDate;
+  __v: number;
 }
 
 // Only the needed relevant fields
@@ -18,5 +18,5 @@ export interface IWishlistStay {
   _id: Types.ObjectId;
   userId: Types.ObjectId;
   stayId: Types.ObjectId;
-  createdAt?: NativeDate;
+  createdAt: NativeDate;
 }

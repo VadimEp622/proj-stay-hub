@@ -16,6 +16,8 @@ import { connectDB } from "./service/db.service.ts";
 
 // TODO: (after deploying TS backend)
 // * ✔ make a new DB collection "wishlistStay". It will have "_id", "userId" and "stayId".
+// * ✔ make functional API for "wishlistStay" that toggles wishlist item, and fetches wishlisted stay objects
+// * connect "wishlistStay" to frontend
 
 // ***************** Express App Config *****************
 const app = express();
@@ -52,6 +54,7 @@ import { authRoutes } from "./api/auth/auth.routes.js";
 import { orderRoutes } from "./api/order/order.routes.js";
 import { secretRoutes } from "./api/secret/secret.routes.js";
 import { stayRoutes } from "./api/stay/stay.routes.js";
+import { wishlistStayRoutes } from "./api/wishlist-stay/wishlist-stay.routes.ts";
 
 app.all("*", log, setupAsyncLocalStorage);
 app.use("/api/user", userRoutes);
@@ -60,6 +63,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api/order", orderRoutes);
 app.use("/api/secret", secretRoutes);
 app.use("/api/stay", stayRoutes);
+app.use("/api/wishlist-stay", wishlistStayRoutes);
 
 setupSocketAPI(server);
 
