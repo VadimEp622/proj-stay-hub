@@ -16,7 +16,7 @@ export async function queryWishlistStays(req: Request, res: Response) {
 
 export async function toggleWishlistStay(req: Request, res: Response) {
   try {
-    const { id: userId } = req.params;
+    const { userid: userId } = req.params;
     const { stayId } = req.body;
     const wishlistStay = { userId, stayId };
     const foundWishlistStay = await wishlistStayService.findOne(wishlistStay);

@@ -19,6 +19,12 @@ import { connectDB } from "./service/db.service.ts";
 // * ✔ make functional API for "wishlistStay" that toggles wishlist item, and fetches wishlisted stay objects
 // * connect "wishlistStay" to frontend
 
+// TODO: I decided on a uniform file name convention -> all file-names should henceforth only be in "kebab-case"
+
+// TODO: I realised, that it's better to query in stay API for a "mini-stay" object, that is aggregated with only the useful stay-preview data, + isWishlist boolean.
+//      this will allow for proper functionality of infinite scrolling for wishlist stays, with the new "wishlistStay" DB collection API.
+//      need to think about cases when there is no logged in user as well.
+
 // ***************** Express App Config *****************
 const app = express();
 const server = http.createServer(app);
