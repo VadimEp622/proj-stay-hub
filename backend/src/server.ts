@@ -25,6 +25,35 @@ import { connectDB } from "./service/db.service.ts";
 //      this will allow for proper functionality of infinite scrolling for wishlist stays, with the new "wishlistStay" DB collection API.
 //      need to think about cases when there is no logged in user as well.
 
+// ####################################################################################################################
+// ####################################################################################################################
+
+// TODO: new startegy -
+//    1) first, have a cacheable API for fetching mini stays by query (no user-specific data!!!)
+//    2) after first API request was completed, on the frontend, checks if loggedin, and if yes, fires a second different API request,
+//   with the same query parameters, but for user-specific data this time (which stays from the query are wishlisted by the user).
+
+//   ** NOTE: At this stage, we have cacheable API for stays, which is non user-personalized. (not logged-in user can get blazing fast data)
+//        and another API request to supplement the cacheable API with user-specific data.
+
+//    3) since we have infinite scrolling for our stays, we have to account for user logging-in mid pagination journey, so we get user-specific wishlist data,
+//     for all currently displayed stays.
+//     I imagine that we will also need to add current page of stays to the second API request, to get user-specific wishlist data for ALL currently displayed stays.
+
+// ⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇
+
+// -> SO, let's review what we need to do step by step:
+//   1) make GET "api/stay" query API, which will fetch mini stays, and have it cacheable. (make sure it WORKS)
+//   2) make GET "api/stay/wishlist" query API, which will fetch array of user sepcifc wishlisted stayIds. will fetch stayIds of all currently displayed stays in 1 request.
+//    make sure there is a destinction for the API between fetching wishlist for ALL current rendered stays, and fetching wishlist for next small paged batch of stays ONLY.
+//    (like from page 1 to 9, and from page 9 to 10, etc...). (make sure it WORKS)
+
+//   3) frontend, in redux stay slice, we will have an array of wishlisted stayIds. they are always coupled with the actual stays array in redux stay slice.
+//   4) frontend, in wishlist page, we will have a paginated list of wishlisted stays (maybe with infinite scrolling). those are stays that will be in the redux user slice.
+
+// ####################################################################################################################
+// ####################################################################################################################
+
 // ***************** Express App Config *****************
 const app = express();
 const server = http.createServer(app);

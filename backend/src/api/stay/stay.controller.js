@@ -28,6 +28,7 @@ export async function getStays(req, res) {
 
   try {
     const { stays, isFinalPage } = await stayService.query(filterBy)
+    // const { stays, isFinalPage } = await stayService.query2(filterBy)
     res.json({ stays, isFinalPage })
   } catch (err) {
     logger.error('Failed to get stays', err)
