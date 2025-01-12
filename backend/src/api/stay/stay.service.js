@@ -10,8 +10,9 @@ const PAGE_SIZE = 20
 
 export const stayService = {
     query,
-    query2,
+    getStayIdsWishlistedByUserByQuery,
     getById,
+    // query2,
     // remove,
     // add,
     // update
@@ -37,16 +38,10 @@ async function query(filterBy) {
     }
 }
 
-// NOTE: ok, this works (atleast using postman)
-async function query2(filterBy) {
+async function getStayIdsWishlistedByUserByQuery(userId, filterBy) {
     try {
         const currPage = filterBy.page
         const criteria = _createCriteria(filterBy)
-        const store = asyncLocalStorage.getStore()
-        const userId = store?.loggedinUser?._id ? store?.loggedinUser?._id : null
-        console.log("userId", userId)
-        // TODO: aggregate with user collections's wishlist in the pipeline (for now, later with wishlistStay collection)
-
         const stays = await StayModel.aggregate([
             { $match: criteria },
             { $skip: currPage * PAGE_SIZE },
@@ -54,63 +49,119 @@ async function query2(filterBy) {
             {
                 $lookup: {
                     from: "wishlistStay",
-                    localField: "_id",
-                    foreignField: "stayId",
+                    let: { "id": "$_id" },
+                    pipeline: [
+                        {
+                            $match: {
+                                $expr: {
+                                    $and: [
+                                        { $eq: ["$userId", { $toObjectId: userId }] },
+                                        { $eq: ["$stayId", "$$id"] },
+                                    ]
+                                }
+                            }
+                        },
+                    ],
                     as: "wishlistStay"
                 }
             },
             {
-                $addFields: {
-                    isWishlist: {
-                        $cond: {
-                            if: { $ifNull: [userId, false] }, // Check if userId is a non-empty string
-                            then: {
-                                $gt: [
-                                    {
-                                        $size: {
-                                            $filter: {
-                                                input: "$wishlistStay",
-                                                as: "w",
-                                                cond: {
-                                                    $eq: ["$$w.userId", {
-                                                        $toObjectId: userId
-                                                    }]
-                                                }
-                                            }
-                                        }
-                                    },
-                                    0
-                                ]
-                            },
-                            else: false // If guest user (userId is null/empty), default to false
-                        }
+                $redact: {
+                    $cond: {
+                        if: {
+                            $gt: [{ $size: "$wishlistStay" }, 0]
+                        },
+                        then: "$$KEEP",
+                        else: "$$PRUNE"
                     }
                 }
             },
-            {
-                $project: {
-                    _id: 1,
-                    name: 1,
-                    type: 1,
-                    imgUrls: 1,
-                    price: 1,
-                    capacity: 1,
-                    loc: 1,
-                    reviews: 1,
-                    availableDates: 1,
-                    isWishlist: 1,
-                    createdAt: 1
-                }
-            }
+            { $group: { _id: null, stayIds: { $push: "$_id" } } },
+            { $project: { _id: false, stayIds: true } }
         ])
 
-        const isFinalPage = stays.length < PAGE_SIZE
-        return { stays, isFinalPage }
+        const stayIds = stays[0]?.stayIds ? stays[0].stayIds : []
+        return stayIds
     } catch (err) {
-        logger.error('cannot find stays', err)
+        logger.error('cannot get wishlisted stay ids', err)
         throw err
     }
 }
+
+// NOTE: ok, this works (atleast using postman)
+// async function query2(filterBy) {
+//     try {
+//         const currPage = filterBy.page
+//         const criteria = _createCriteria(filterBy)
+//         const store = asyncLocalStorage.getStore()
+//         const userId = store?.loggedinUser?._id ? store?.loggedinUser?._id : null
+//         console.log("userId", userId)
+//         // TODO: aggregate with user collections's wishlist in the pipeline (for now, later with wishlistStay collection)
+
+//         const stays = await StayModel.aggregate([
+//             { $match: criteria },
+//             { $skip: currPage * PAGE_SIZE },
+//             { $limit: PAGE_SIZE },
+//             {
+//                 $lookup: {
+//                     from: "wishlistStay",
+//                     localField: "_id",
+//                     foreignField: "stayId",
+//                     as: "wishlistStay"
+//                 }
+//             },
+//             {
+//                 $addFields: {
+//                     isWishlist: {
+//                         $cond: {
+//                             if: { $ifNull: [userId, false] }, // Check if userId is a non-empty string
+//                             then: {
+//                                 $gt: [
+//                                     {
+//                                         $size: {
+//                                             $filter: {
+//                                                 input: "$wishlistStay",
+//                                                 as: "w",
+//                                                 cond: {
+//                                                     $eq: ["$$w.userId", {
+//                                                         $toObjectId: userId
+//                                                     }]
+//                                                 }
+//                                             }
+//                                         }
+//                                     },
+//                                     0
+//                                 ]
+//                             },
+//                             else: false // If guest user (userId is null/empty), default to false
+//                         }
+//                     }
+//                 }
+//             },
+//             {
+//                 $project: {
+//                     _id: 1,
+//                     name: 1,
+//                     type: 1,
+//                     imgUrls: 1,
+//                     price: 1,
+//                     capacity: 1,
+//                     loc: 1,
+//                     reviews: 1,
+//                     availableDates: 1,
+//                     isWishlist: 1,
+//                     createdAt: 1
+//                 }
+//             }
+//         ])
+
+//         const isFinalPage = stays.length < PAGE_SIZE
+//         return { stays, isFinalPage }
+//     } catch (err) {
+//         logger.error('cannot find stays', err)
+//         throw err
+//     }
+// }
 
 async function getById(stayId) {
     try {

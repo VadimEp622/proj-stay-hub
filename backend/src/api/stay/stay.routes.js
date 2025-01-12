@@ -1,8 +1,10 @@
 import express from 'express'
 import { requireAdmin, requireAuth } from '../../middleware/requireAuth.middleware.js'
 import {
-    getStays, getStayById, addStay, updateStay, removeStay
+    getStays, getStayById, addStay, updateStay, removeStay,
+    getStayIdsWishlistedByUser
 } from './stay.controller.js'
+
 
 const router = express.Router()
 
@@ -12,6 +14,7 @@ const router = express.Router()
 
 // =================== Verified being used ===================
 router.get('/', getStays)
+router.get('/wishlist/', requireAuth, getStayIdsWishlistedByUser)// gets only wishlisted id's for current query (if logged in)
 router.get('/:id', getStayById)
 // ===========================================================
 // =============== Verified works but Not used ===============
