@@ -1,4 +1,5 @@
 // Node modules
+import { useLocation } from 'react-router-dom'
 
 // Services
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service.js'
@@ -6,9 +7,10 @@ import { EXIT } from '../services/svg.service.js'
 import { SET_APP_MODAL_LOGIN, SET_APP_MODAL_LOGIN_QUICK, SET_APP_MODAL_SIGNUP } from '../services/resources-strings.service.js'
 
 // Store
-import { useAppDispatch } from '../store/hooks'
+import { useAppDispatch, useAppSelector } from '../store/hooks'
 import { login, signup } from '../store/userSlice'
 import { systemCloseAppModal, systemSetAppModal } from '../store/systemSlice'
+import { loadWishlistedStayIds } from '../store/staySlice'
 
 // Custom Hooks
 import { useClickOutside } from '../customHooks/useClickOutsideModal.js'
@@ -23,6 +25,9 @@ import SvgHandler from './_reuseable-cmps/svg-handler.jsx'
 // TODO: Add option to check for existing username, and denying signup attempt.
 
 export function AppLoginSignup({ isSignUp, isQuick = false }) {
+    const filterBy = useAppSelector(storeState => storeState.stayModule.filterBy)
+    const page = useAppSelector(storeState => storeState.stayModule.page)
+    const location = useLocation()
     const dispatch = useAppDispatch()
     const registerModalRef = useClickOutside(onClickOutsideModal)
     const initialCredentials = useLoginSignupCredentials(isSignUp, isQuick)
@@ -64,8 +69,8 @@ export function AppLoginSignup({ isSignUp, isQuick = false }) {
     async function handleLogin(values) {
         if (!values.username) return
         try {
-            // const user = await login(values)
             const user = await dispatch(login(values)).unwrap()
+            if (location.pathname === '/') dispatch(loadWishlistedStayIds({ filterBy, page, isAllUntilPage: true }))
             showSuccessMsg(`Welcome: ${user.fullname}`)
             dispatch(systemCloseAppModal())
         } catch (err) {
@@ -78,7 +83,7 @@ export function AppLoginSignup({ isSignUp, isQuick = false }) {
         if (!values.username || !values.password || !values.fullname) return
         try {
             const user = await dispatch(signup(values)).unwrap()
-            // const user = await signup(values)
+            if (location.pathname === '/') dispatch(loadWishlistedStayIds({ filterBy, page, isAllUntilPage: true }))
             showSuccessMsg(`Welcome: ${user.fullname}`)
             dispatch(systemCloseAppModal())
         } catch (err) {

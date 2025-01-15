@@ -38,14 +38,16 @@ async function query(filterBy) {
     }
 }
 
-async function getStayIdsWishlistedByUserByQuery(userId, filterBy) {
+async function getStayIdsWishlistedByUserByQuery(userId, filterBy, isAllUntilPage = false) {
     try {
+        logger.debug('getStayIdsWishlistedByUserByQuery -> isAllUntilPage', isAllUntilPage)
+
         const currPage = filterBy.page
         const criteria = _createCriteria(filterBy)
         const stays = await StayModel.aggregate([
             { $match: criteria },
-            { $skip: currPage * PAGE_SIZE },
-            { $limit: PAGE_SIZE },
+            { $skip: isAllUntilPage ? 0 : currPage * PAGE_SIZE },
+            { $limit: isAllUntilPage ? ((currPage + 1) * PAGE_SIZE) : PAGE_SIZE },
             {
                 $lookup: {
                     from: "wishlistStay",

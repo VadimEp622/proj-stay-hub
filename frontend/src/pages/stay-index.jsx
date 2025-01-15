@@ -5,7 +5,7 @@ import { Helmet } from 'react-helmet-async'
 // Store
 import { useAppDispatch, useAppSelector } from '../store/hooks'
 import { systemSetIsExpandedHeader, systemSetIsExpandedHeaderModal, systemSetIsUnclickableBg } from '../store/systemSlice'
-import { loadStays } from '../store/staySlice'
+import { loadStays, loadWishlistedStayIds, stayResetWishlistIds } from '../store/staySlice'
 
 // Custom hook
 import useGeoLocation from '../customHooks/useGeoLocation.js'
@@ -20,6 +20,7 @@ import { Loader } from '../cmps/_reuseable-cmps/loader.jsx'
 export function StayIndex() {
     const stays = useAppSelector(storeState => storeState.stayModule.stays)
     const filterBy = useAppSelector(storeState => storeState.stayModule.filterBy)
+    const loggedinUser = useAppSelector(storeState => storeState.userModule.user)
     const isSetParamsToFilterBy = useAppSelector(storeState => storeState.stayModule.isSetParamsToFilterBy)
     const isFilterExpanded = useAppSelector(storeState => storeState.systemModule.isFilterExpanded)
     const geoLocation = useGeoLocation()
@@ -30,6 +31,13 @@ export function StayIndex() {
     useEffect(() => {
         if (isSetParamsToFilterBy) dispatch(loadStays(filterBy))
     }, [dispatch, filterBy, isSetParamsToFilterBy])
+
+    useEffect(() => {
+        if (isSetParamsToFilterBy && loggedinUser) {
+            dispatch(stayResetWishlistIds())
+            dispatch(loadWishlistedStayIds({ filterBy, page: 0 }))
+        }
+    }, [dispatch, filterBy, isSetParamsToFilterBy, loggedinUser])
 
 
 

@@ -43,12 +43,12 @@ import { connectDB } from "./service/db.service.ts";
 // ⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇
 
 // -> SO, let's review what we need to do step by step:
-//   1) make GET "api/stay" query API, which will fetch mini stays, and have it cacheable. (make sure it WORKS)
-//   2) make GET "api/stay/wishlist" query API, which will fetch array of user sepcifc wishlisted stayIds. will fetch stayIds of all currently displayed stays in 1 request.
+//   1) ✔ make GET "api/stay" query API, which will fetch mini stays, and have it cacheable. (make sure it WORKS)
+//   2) ✔ make GET "api/stay/wishlist" query API, which will fetch array of user sepcifc wishlisted stayIds. will fetch stayIds of all currently displayed stays in 1 request.
 //    make sure there is a destinction for the API between fetching wishlist for ALL current rendered stays, and fetching wishlist for next small paged batch of stays ONLY.
 //    (like from page 1 to 9, and from page 9 to 10, etc...). (make sure it WORKS)
 
-//   3) frontend, in redux stay slice, we will have an array of wishlisted stayIds. they are always coupled with the actual stays array in redux stay slice.
+//   3) ✔ frontend, in redux stay slice, we will have an array of wishlisted stayIds. they are always coupled with the actual stays array in redux stay slice.
 //   4) frontend, in wishlist page, we will have a paginated list of wishlisted stays (maybe with infinite scrolling). those are stays that will be in the redux user slice.
 
 // ####################################################################################################################
