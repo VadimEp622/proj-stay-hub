@@ -7,6 +7,8 @@ interface WishlistStayState {
   isLoadingStays: boolean;
 }
 
+// TODO: connect this to wishlist-stay API (make sure it works!)
+
 const initialState: WishlistStayState = {
   stays: [],
   isLoadingStays: false,
