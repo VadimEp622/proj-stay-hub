@@ -9,6 +9,6 @@ const router = express.Router();
 router.use(requireAuth);
 
 router.get("/", queryWishlistStays);
-router.post("/:userid", toggleWishlistStay);
+router.post("/", toggleWishlistStay);
 
 export const wishlistStayRoutes = router;

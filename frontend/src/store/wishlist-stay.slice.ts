@@ -1,16 +1,16 @@
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-// import { wishlistStayService } from "../services/wishlist-stay.service";
-// import { showErrorMsg } from "../services/event-bus.service";
+import { wishlistStayService } from "../services/wishlist-stay.service";
+import { showErrorMsg } from "../services/event-bus.service";
 
-// interface WishlistStayState {
-//   stays: any[];
-//   isLoadingStays: boolean;
-// }
+interface WishlistStayState {
+  stays: any[];
+  isLoadingStays: boolean;
+}
 
-// const initialState: WishlistStayState = {
-//   stays: [],
-//   isLoadingStays: false,
-// };
+const initialState: WishlistStayState = {
+  stays: [],
+  isLoadingStays: false,
+};
 
 // const wishlistSlice = createSlice({
 //   name: "wishlistStay",

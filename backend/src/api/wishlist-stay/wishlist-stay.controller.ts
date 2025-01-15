@@ -1,11 +1,14 @@
-import { Request, Response } from "express";
+import { Response } from "express";
 import { logger } from "../../service/logger.service.js";
 import { wishlistStayService } from "./wishlist-stay.service.ts";
+import { RequestCustom } from "../../types/custom-extend.types.ts";
 
-export async function queryWishlistStays(req: Request, res: Response) {
+export async function queryWishlistStays(req: RequestCustom, res: Response) {
   try {
-    const { stayid: stayId, userid: userId } = req.query;
-    const filterBy = { stayId, userId };
+    const userId = req.loggedinUser?._id;
+    if (!userId) throw new Error("logged in userId is not valid");
+
+    const filterBy = { userId };
     const wishlistStays = await wishlistStayService.query(filterBy);
     res.send(wishlistStays);
   } catch (err) {
@@ -14,9 +17,11 @@ export async function queryWishlistStays(req: Request, res: Response) {
   }
 }
 
-export async function toggleWishlistStay(req: Request, res: Response) {
+export async function toggleWishlistStay(req: RequestCustom, res: Response) {
   try {
-    const { userid: userId } = req.params;
+    const userId = req.loggedinUser?._id;
+    if (!userId) throw new Error("logged in userId is not valid");
+
     const { stayId } = req.body;
     const wishlistStay = { userId, stayId };
     const foundWishlistStay = await wishlistStayService.findOne(wishlistStay);

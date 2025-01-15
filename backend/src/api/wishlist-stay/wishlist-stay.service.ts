@@ -11,6 +11,7 @@ export const wishlistStayService = {
 
 async function query(filterBy: any) {
   try {
+    // TODO: this works, but aggregate it to 1 DB call.
     const filterCriteria = _buildFilterCriteria(filterBy);
     const foundWishlistStayIds = await wishlistStayModel
       .find(filterCriteria)
@@ -63,7 +64,7 @@ async function remove(filterBy: any) {
 
 function _buildFilterCriteria(filterBy: any) {
   let criteria: any = {};
-  if (filterBy.orderId) criteria._id = filterBy.wishlistId;
+  if (filterBy.wishlistId) criteria._id = filterBy.wishlistId;
   if (filterBy.userId) criteria.userId = filterBy.userId;
   if (filterBy.stayId) criteria.stayId = filterBy.stayId;
   return criteria;

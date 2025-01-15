@@ -3,14 +3,14 @@ import { httpService } from "./http.service";
 const BASE_URL = "wishlist-stay";
 
 export const wishlistStayService = {
-  getStaysByUserId,
-  updateWishlistStay,
+  queryWishlistStays,
+  toggleWishlistStay,
 };
 
-function getStaysByUserId(userId: string): Promise<any> {
-  return httpService.get(`${BASE_URL}/${userId}`);
+function queryWishlistStays(): Promise<any> {
+  return httpService.get(`${BASE_URL}`);
 }
 
-function updateWishlistStay(userId: string, stayId: string): Promise<any> {
-  return httpService.post(`${BASE_URL}/${userId}`, { stayId });
+function toggleWishlistStay(stayId: string): Promise<any> {
+  return httpService.post(`${BASE_URL}`, { stayId });
 }
