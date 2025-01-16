@@ -32,14 +32,20 @@ export async function toggleWishlistStay(req: RequestCustom, res: Response) {
         wishlistStay
       );
       logger.debug("createdWishlistStay", createdWishlistStay);
-      res.send({ msg: "Created wishlist stay successfully" });
+      res.send({
+        actionType: "create",
+        msg: "Created wishlist stay successfully",
+      });
     } else {
       const deletedCount = await wishlistStayService.remove(wishlistStay);
       logger.debug("deletedCount", deletedCount);
-      res.send({ msg: "Deleted wishlist stay successfully" });
+      res.send({
+        actionType: "delete",
+        msg: "Deleted wishlist stay successfully",
+      });
     }
   } catch (err) {
     logger.error("Failed toggling wishlist stay", err);
-    res.status(400).send({ err: "Failed toggling wishlist stay" });
+    res.status(400).send({ msg: "Failed toggling wishlist stay" });
   }
 }

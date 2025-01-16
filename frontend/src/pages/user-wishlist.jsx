@@ -6,11 +6,12 @@ import { Link, useNavigate } from 'react-router-dom'
 import useGeoLocation from '../customHooks/useGeoLocation.js'
 
 // Store
-import { useAppSelector } from '../store/hooks'
+import { useAppDispatch, useAppSelector } from '../store/hooks'
 
 // Components
 import { StayList } from '../cmps/stay-index/stay-list.jsx'
 import { Loader } from '../cmps/_reuseable-cmps/loader.jsx'
+import { loadWishlistStays } from '../store/wishlist-stay.slice'
 
 
 /**
@@ -35,13 +36,21 @@ import { Loader } from '../cmps/_reuseable-cmps/loader.jsx'
 
 export function UserWishlist() {
     const loggedInUser = useAppSelector(storeState => storeState.userModule.user)
+    const wishlistStays = useAppSelector(storeState => storeState.wishlistStayModule.stays)
+    const reqStatusGetStays = useAppSelector(storeState => storeState.wishlistStayModule.reqStatusGetStays)
+
     /** @type {Location} */
     const geoLocation = useGeoLocation()
     const navigate = useNavigate()
+    const dispatch = useAppDispatch()
 
 
     useEffect(() => {
         if (!loggedInUser) navigate('/')
+    }, [loggedInUser, navigate])
+
+    useEffect(() => {
+        if (reqStatusGetStays === "idle") dispatch(loadWishlistStays())
     }, [loggedInUser, navigate])
 
 
