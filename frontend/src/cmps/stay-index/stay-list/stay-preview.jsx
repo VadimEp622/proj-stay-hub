@@ -11,6 +11,7 @@ import { SET_APP_MODAL_LOGIN } from '../../../services/resources-strings.service
 import { useAppDispatch, useAppSelector } from '../../../store/hooks'
 import { systemSetAppModal } from '../../../store/systemSlice'
 import { toggleWishlist } from '../../../store/userSlice'
+import { toggleWishlistStay } from '../../../store/wishlist-stay.slice'
 
 // Components
 import { PreviewImageCarousel } from './stay-preview/preview-image-carousel.jsx'
@@ -50,6 +51,7 @@ export function StayPreview({ stay, geoLocation, isMobile, lastStayElementRef = 
             return
         }
         dispatch(toggleWishlist({ loggedInUser, stay }))
+        dispatch(toggleWishlistStay({ stayId: stay._id }))
     }
 
     function calcCrow(lat1, lon1, lat2, lon2) {

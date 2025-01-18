@@ -12,6 +12,7 @@ import { SET_APP_MODAL_LOGIN } from '../services/resources-strings.service.js'
 import { useAppDispatch, useAppSelector } from '../store/hooks'
 import { systemSetAppModal } from '../store/systemSlice'
 import { toggleWishlist, userSetOrder } from '../store/userSlice'
+import { toggleWishlistStay } from '../store/wishlist-stay.slice'
 
 // Custom hooks
 import useIsMobile from '../customHooks/useIsMobile.js'
@@ -77,6 +78,7 @@ export function StayDetails() {
             return
         }
         dispatch(toggleWishlist({ loggedInUser, stay }))
+        dispatch(toggleWishlistStay({ stayId }))
     }
 
     function onReserveClick(ev) {
