@@ -29,7 +29,10 @@ const wishlistStaySlice = createSlice({
   name: "wishlistStay",
   initialState,
   reducers: {
-    wishlistStaySetIsLoadingStays(state, action: PayloadAction<RequestStatus>) {
+    wishlistStayUpdateReqStatusGetStays(
+      state,
+      action: PayloadAction<RequestStatus>
+    ) {
       _updateReqStatusGetStays(state, action.payload);
     },
   },
@@ -87,7 +90,8 @@ export const toggleWishlistStay = createAsyncThunk(
   }
 );
 
-export const { wishlistStaySetIsLoadingStays } = wishlistStaySlice.actions;
+export const { wishlistStayUpdateReqStatusGetStays } =
+  wishlistStaySlice.actions;
 
 export default wishlistStaySlice.reducer;
 

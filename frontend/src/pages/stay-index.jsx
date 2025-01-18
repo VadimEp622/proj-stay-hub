@@ -21,6 +21,7 @@ export function StayIndex() {
     const stays = useAppSelector(storeState => storeState.stayModule.stays)
     const filterBy = useAppSelector(storeState => storeState.stayModule.filterBy)
     const loggedinUser = useAppSelector(storeState => storeState.userModule.user)
+    const wishlistIds = useAppSelector(storeState => storeState.stayModule.wishlistIds)
     const isSetParamsToFilterBy = useAppSelector(storeState => storeState.stayModule.isSetParamsToFilterBy)
     const isFilterExpanded = useAppSelector(storeState => storeState.systemModule.isFilterExpanded)
     const geoLocation = useGeoLocation()
@@ -59,6 +60,11 @@ export function StayIndex() {
     }, [dispatch, isFilterExpanded])
 
 
+    function isStayWishlist(stayId) {
+        return loggedinUser ? wishlistIds.some(wishlistId => wishlistId === stayId) : false
+    }
+
+
     return (
         <section className='stay-index'>
             <Helmet>
@@ -66,7 +72,7 @@ export function StayIndex() {
                 <meta name='description' content='Check out our beautiful stays' />
             </Helmet>
             <CategoryFilter />
-            <StayList stays={stays} geoLocation={geoLocation} lastStayElementRef={lastStayElementRef} />
+            <StayList stays={stays} geoLocation={geoLocation} lastStayElementRef={lastStayElementRef} isStayWishlist={isStayWishlist} />
             {isLoadingMoreStays && <Loader />}
         </section >
     )

@@ -11,7 +11,7 @@ import { useAppDispatch, useAppSelector } from '../store/hooks'
 // Components
 import { StayList } from '../cmps/stay-index/stay-list.jsx'
 import { Loader } from '../cmps/_reuseable-cmps/loader.jsx'
-import { loadWishlistStays } from '../store/wishlist-stay.slice'
+import { loadWishlistStays, wishlistStayUpdateReqStatusGetStays } from '../store/wishlist-stay.slice'
 
 
 /**
@@ -35,7 +35,7 @@ import { loadWishlistStays } from '../store/wishlist-stay.slice'
 // TODO-priority-LOW: when navigating to a path which requires logging in, consider rerouting to a special login page(?)
 
 export function UserWishlist() {
-    const loggedInUser = useAppSelector(storeState => storeState.userModule.user)
+    const loggedinUser = useAppSelector(storeState => storeState.userModule.user)
     const wishlistStays = useAppSelector(storeState => storeState.wishlistStayModule.stays)
     const reqStatusGetStays = useAppSelector(storeState => storeState.wishlistStayModule.reqStatusGetStays)
 
@@ -46,20 +46,32 @@ export function UserWishlist() {
 
 
     useEffect(() => {
-        if (!loggedInUser) navigate('/')
-    }, [loggedInUser, navigate])
+        return () => {
+            dispatch(wishlistStayUpdateReqStatusGetStays("idle"))
+        }
+    }, [])
+
+    useEffect(() => {
+        if (!loggedinUser) navigate('/')
+    }, [loggedinUser, navigate])
 
     useEffect(() => {
         if (reqStatusGetStays === "idle") dispatch(loadWishlistStays())
-    }, [loggedInUser])
+    }, [reqStatusGetStays])
 
 
+    function isStayWishlist(stayId) {
+        return loggedinUser ? wishlistStays.some(wishlistStay => wishlistStay._id === stayId) : false
+    }
 
-    if (!loggedInUser) return <Loader />
+
+    if (!loggedinUser || reqStatusGetStays === "idle" || reqStatusGetStays === "loading") return <Loader />
+    if (reqStatusGetStays === "failed") return <h1>Failed to load wishlist</h1>
+
     return (
         <section className='user-wishlist-page'>
             <h1 className='ff-circular-semibold fs28 lh28'>Wishlist</h1>
-            {(!loggedInUser.wishlist || loggedInUser.wishlist.length === 0)
+            {(wishlistStays.length === 0)
                 ? (
                     <section className='empty-wishlist'>
                         <h3 className='fs22'>No places saved yet</h3>
@@ -69,7 +81,7 @@ export function UserWishlist() {
                         </Link>
                     </section>
                 )
-                : <StayList stays={loggedInUser.wishlist} geoLocation={geoLocation} />
+                : <StayList stays={wishlistStays} geoLocation={geoLocation} isStayWishlist={isStayWishlist} />
             }
         </section>
     )

@@ -11,7 +11,7 @@ import { SET_APP_MODAL_LOGIN } from '../services/resources-strings.service.js'
 // Store
 import { useAppDispatch, useAppSelector } from '../store/hooks'
 import { systemSetAppModal } from '../store/systemSlice'
-import { toggleWishlist, userSetOrder } from '../store/userSlice'
+import { userSetOrder } from '../store/userSlice'
 import { toggleWishlistStay } from '../store/wishlist-stay.slice'
 
 // Custom hooks
@@ -40,6 +40,10 @@ import { StayDetailsMobileReturnHeader } from '../cmps/stay-details/stay-details
 //    and then decide if I want to keep such feature.
 // --------------------------------------------
 // --------------------------------------------
+
+
+// TODO: make a way to, on page load, call backend to check if stay is in wishlist. (wishlist-stay.service, function "isStayWishlist(stayId)").
+//   if it's in the wishlist, add to staySlice's wishlistId's array.
 
 
 export function StayDetails() {
@@ -77,7 +81,6 @@ export function StayDetails() {
             dispatch(systemSetAppModal(SET_APP_MODAL_LOGIN))
             return
         }
-        dispatch(toggleWishlist({ loggedInUser, stay }))
         dispatch(toggleWishlistStay({ stayId }))
     }
 
