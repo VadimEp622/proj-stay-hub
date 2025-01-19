@@ -91,7 +91,7 @@ import { secretRoutes } from "./api/secret/secret.routes.js";
 import { stayRoutes } from "./api/stay/stay.routes.js";
 import { wishlistStayRoutes } from "./api/wishlist-stay/wishlist-stay.routes.ts";
 
-app.all("*", log, setupAsyncLocalStorage);
+app.all("*", setupAsyncLocalStorage, log);
 app.use("/api/user", userRoutes);
 app.use("/api/healthcheck", healthcheckRoutes);
 app.use("/api/auth", authRoutes);

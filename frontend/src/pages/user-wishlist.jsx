@@ -57,7 +57,7 @@ export function UserWishlist() {
 
     useEffect(() => {
         if (reqStatusGetStays === "idle") dispatch(loadWishlistStays())
-    }, [reqStatusGetStays])
+    }, [reqStatusGetStays, dispatch])
 
 
     function isStayWishlist(stayId) {

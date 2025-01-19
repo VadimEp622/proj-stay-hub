@@ -49,3 +49,29 @@ export async function toggleWishlistStay(req: RequestCustom, res: Response) {
     res.status(400).send({ msg: "Failed toggling wishlist stay" });
   }
 }
+
+export async function checkIsWishlistStayByStayId(
+  req: RequestCustom,
+  res: Response
+) {
+  try {
+    const userId = req.loggedinUser?._id;
+    if (!userId || userId.length < 8)
+      throw new Error("logged in userId is not valid");
+    // TODO: improve userId verification
+
+    const { stayid: stayId } = req.params;
+    if (!stayId || stayId.length < 8) throw new Error("stayId is not valid");
+    // TODO: improve stayId verification
+
+    const filterBy = { stayId, userId };
+    const wishlistStay = await wishlistStayService.findOne(filterBy);
+    logger.debug("checkIsWishlistStayByStayId -> wishlistStay", wishlistStay);
+
+    if (!wishlistStay) res.send({ isWishlist: false });
+    else res.send({ isWishlist: true });
+  } catch (err) {
+    logger.error("Failed checking if stay is wishlisted", err);
+    res.status(400).send({ msg: "Failed checking if stay is wishlisted" });
+  }
+}
