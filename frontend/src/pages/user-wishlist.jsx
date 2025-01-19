@@ -49,6 +49,7 @@ export function UserWishlist() {
         return () => {
             dispatch(wishlistStayUpdateReqStatusGetStays("idle"))
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     useEffect(() => {

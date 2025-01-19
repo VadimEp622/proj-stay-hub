@@ -42,15 +42,13 @@ import { StayDetailsMobileReturnHeader } from '../cmps/stay-details/stay-details
 // --------------------------------------------
 
 
-// TODO: make a way to, on page load, call backend to check if stay is in wishlist. (wishlist-stay.service, function "isStayWishlist(stayId)").
-//   if it's in the wishlist, add to staySlice's wishlistId's array.
-
 
 export function StayDetails() {
     const dispatch = useAppDispatch()
     const navigate = useNavigate()
     const { stayId } = useParams()
     const loggedInUser = useAppSelector(storeState => storeState.userModule.user)
+    const wishlistIds = useAppSelector(storeState => storeState.stayModule.wishlistIds)
     const isMobile = useIsMobile()
 
     const [
@@ -65,7 +63,7 @@ export function StayDetails() {
 
 
     function isStayWishlist() {
-        return loggedInUser ? loggedInUser.wishlist.some(wishlist => wishlist._id === stayId) : false
+        return loggedInUser ? wishlistIds.some(wishlistId => wishlistId === stayId) : false
     }
 
     function onCheckAvailabilityClick(ev) {
