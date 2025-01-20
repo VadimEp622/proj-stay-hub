@@ -14,11 +14,7 @@ interface WishlistStayState {
   reqStatusLoadStays: RequestStatus;
 }
 
-// TODO: connect this to wishlist-stay API (make sure it works!)
-
-// INFO: getting wishlist stays to store WORKS ✔
-// INFO: connect toggle wishlist to app  ✔
-// TODO: make whole app function using the wishlist-stay API and wishlist-stay DB collection
+// TODO: add event-bus success/error for relevant reqStatuses
 
 const initialState: WishlistStayState = {
   stays: [],

@@ -55,6 +55,8 @@ interface StayState {
 
 // TODO: add reqStatusLoadStay to initialState, and have app use it, instead of isLoadingStay
 
+// TODO: add event-bus success/error for relevant reqStatuses
+
 const initialState: StayState = {
   stays: [],
   stay: {},
