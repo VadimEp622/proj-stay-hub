@@ -10,7 +10,6 @@ export const userService = {
     // ========================= Checked and in use =========================
     // ******* C.R.U.D.L *******
     addUserTrip,
-    updateWishlist,
     getById,
     // *************************
     randomHostImg,
@@ -30,11 +29,6 @@ export const userService = {
 // ******* C.R.U.D.L *******
 function addUserTrip(userId, orderId) {
     return httpService.post(`${BASE_URL}/${userId}/trip`, orderId)
-}
-
-function updateWishlist(stay) {
-    const loggedInUserId = getLoggedinUser()?._id
-    return httpService.put(`${BASE_URL}/${loggedInUserId}/wishlist`, stay)
 }
 
 function getById(userId) {

@@ -5,7 +5,7 @@ import { Helmet } from 'react-helmet-async'
 // Store
 import { useAppDispatch, useAppSelector } from '../store/hooks'
 import { systemSetIsExpandedHeader, systemSetIsExpandedHeaderModal, systemSetIsUnclickableBg } from '../store/systemSlice'
-import { loadStays } from '../store/staySlice'
+import { loadStays, loadWishlistedStayIds, stayResetWishlistIds, stayUpdateReqStatusLoadWishlistIds } from '../store/staySlice'
 
 // Custom hook
 import useGeoLocation from '../customHooks/useGeoLocation.js'
@@ -20,6 +20,8 @@ import { Loader } from '../cmps/_reuseable-cmps/loader.jsx'
 export function StayIndex() {
     const stays = useAppSelector(storeState => storeState.stayModule.stays)
     const filterBy = useAppSelector(storeState => storeState.stayModule.filterBy)
+    const loggedinUser = useAppSelector(storeState => storeState.userModule.user)
+    const wishlistIds = useAppSelector(storeState => storeState.stayModule.wishlistIds)
     const isSetParamsToFilterBy = useAppSelector(storeState => storeState.stayModule.isSetParamsToFilterBy)
     const isFilterExpanded = useAppSelector(storeState => storeState.systemModule.isFilterExpanded)
     const geoLocation = useGeoLocation()
@@ -28,8 +30,22 @@ export function StayIndex() {
 
 
     useEffect(() => {
+        return () => {
+            dispatch(stayUpdateReqStatusLoadWishlistIds("idle"))
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
+    useEffect(() => {
         if (isSetParamsToFilterBy) dispatch(loadStays(filterBy))
     }, [dispatch, filterBy, isSetParamsToFilterBy])
+
+    useEffect(() => {
+        if (isSetParamsToFilterBy && loggedinUser) {
+            dispatch(stayResetWishlistIds())
+            dispatch(loadWishlistedStayIds({ filterBy, page: 0 }))
+        }
+    }, [dispatch, filterBy, isSetParamsToFilterBy, loggedinUser])
 
 
 
@@ -51,6 +67,11 @@ export function StayIndex() {
     }, [dispatch, isFilterExpanded])
 
 
+    function isStayWishlist(stayId) {
+        return loggedinUser ? wishlistIds.some(wishlistId => wishlistId === stayId) : false
+    }
+
+
     return (
         <section className='stay-index'>
             <Helmet>
@@ -58,7 +79,7 @@ export function StayIndex() {
                 <meta name='description' content='Check out our beautiful stays' />
             </Helmet>
             <CategoryFilter />
-            <StayList stays={stays} geoLocation={geoLocation} lastStayElementRef={lastStayElementRef} />
+            <StayList stays={stays} geoLocation={geoLocation} lastStayElementRef={lastStayElementRef} isStayWishlist={isStayWishlist} />
             {isLoadingMoreStays && <Loader />}
         </section >
     )

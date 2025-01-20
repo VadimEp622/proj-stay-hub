@@ -6,11 +6,12 @@ import { Link, useNavigate } from 'react-router-dom'
 import useGeoLocation from '../customHooks/useGeoLocation.js'
 
 // Store
-import { useAppSelector } from '../store/hooks'
+import { useAppDispatch, useAppSelector } from '../store/hooks'
 
 // Components
 import { StayList } from '../cmps/stay-index/stay-list.jsx'
 import { Loader } from '../cmps/_reuseable-cmps/loader.jsx'
+import { loadWishlistStays, wishlistStayUpdateReqStatusLoadStays } from '../store/wishlist-stay.slice'
 
 
 /**
@@ -34,23 +35,44 @@ import { Loader } from '../cmps/_reuseable-cmps/loader.jsx'
 // TODO-priority-LOW: when navigating to a path which requires logging in, consider rerouting to a special login page(?)
 
 export function UserWishlist() {
-    const loggedInUser = useAppSelector(storeState => storeState.userModule.user)
+    const loggedinUser = useAppSelector(storeState => storeState.userModule.user)
+    const wishlistStays = useAppSelector(storeState => storeState.wishlistStayModule.stays)
+    const reqStatusLoadStays = useAppSelector(storeState => storeState.wishlistStayModule.reqStatusLoadStays)
+
     /** @type {Location} */
     const geoLocation = useGeoLocation()
     const navigate = useNavigate()
+    const dispatch = useAppDispatch()
 
 
     useEffect(() => {
-        if (!loggedInUser) navigate('/')
-    }, [loggedInUser, navigate])
+        return () => {
+            dispatch(wishlistStayUpdateReqStatusLoadStays("idle"))
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
+    useEffect(() => {
+        if (!loggedinUser) navigate('/')
+    }, [loggedinUser, navigate])
+
+    useEffect(() => {
+        if (reqStatusLoadStays === "idle") dispatch(loadWishlistStays())
+    }, [reqStatusLoadStays, dispatch])
 
 
+    function isStayWishlist(stayId) {
+        return loggedinUser ? wishlistStays.some(wishlistStay => wishlistStay._id === stayId) : false
+    }
 
-    if (!loggedInUser) return <Loader />
+
+    if (!loggedinUser || reqStatusLoadStays === "idle" || reqStatusLoadStays === "loading") return <Loader />
+    if (reqStatusLoadStays === "failed") return <h1>Failed to load wishlist</h1>
+
     return (
         <section className='user-wishlist-page'>
             <h1 className='ff-circular-semibold fs28 lh28'>Wishlist</h1>
-            {(!loggedInUser.wishlist || loggedInUser.wishlist.length === 0)
+            {(wishlistStays.length === 0)
                 ? (
                     <section className='empty-wishlist'>
                         <h3 className='fs22'>No places saved yet</h3>
@@ -60,7 +82,7 @@ export function UserWishlist() {
                         </Link>
                     </section>
                 )
-                : <StayList stays={loggedInUser.wishlist} geoLocation={geoLocation} />
+                : <StayList stays={wishlistStays} geoLocation={geoLocation} isStayWishlist={isStayWishlist} />
             }
         </section>
     )

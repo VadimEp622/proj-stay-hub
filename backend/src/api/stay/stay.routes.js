@@ -1,9 +1,11 @@
 import express from 'express'
 import { requireAdmin, requireAuth } from '../../middleware/requireAuth.middleware.js'
-import { log } from '../../middleware/logger.middleware.js'
 import {
-    getStays, getStayById, addStay, updateStay, removeStay
+    getStays, getStayById, addStay, updateStay, removeStay,
+    getWishlistedStayIdsPerPage,
+    getWishlistedStayIdsUntilPage
 } from './stay.controller.js'
+
 
 const router = express.Router()
 
@@ -12,13 +14,15 @@ const router = express.Router()
 
 
 // =================== Verified being used ===================
-router.get('/', log, getStays)
-router.get('/:id', log, getStayById)
+router.get('/', getStays)
+router.get('/wishlist', requireAuth, getWishlistedStayIdsPerPage)// gets only wishlisted id's for current query, per page (if logged in)
+router.get('/wishlist/all', requireAuth, getWishlistedStayIdsUntilPage) // gets only wishlisted id's for current query, all until page (if logged in)
+router.get('/:id', getStayById)
 // ===========================================================
 // =============== Verified works but Not used ===============
-router.post('/', requireAdmin, addStay)
-router.put('/:id', requireAdmin, updateStay)
-router.delete('/:id', requireAdmin, removeStay)
+// router.post('/', requireAdmin, addStay)
+// router.put('/:id', requireAdmin, updateStay)
+// router.delete('/:id', requireAdmin, removeStay)
 // ===========================================================
 
 

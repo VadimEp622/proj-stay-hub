@@ -11,7 +11,8 @@ import { SET_APP_MODAL_LOGIN } from '../services/resources-strings.service.js'
 // Store
 import { useAppDispatch, useAppSelector } from '../store/hooks'
 import { systemSetAppModal } from '../store/systemSlice'
-import { toggleWishlist, userSetOrder } from '../store/userSlice'
+import { userSetOrder } from '../store/userSlice'
+import { toggleWishlistStay } from '../store/wishlist-stay.slice'
 
 // Custom hooks
 import useIsMobile from '../customHooks/useIsMobile.js'
@@ -41,11 +42,13 @@ import { StayDetailsMobileReturnHeader } from '../cmps/stay-details/stay-details
 // --------------------------------------------
 
 
+
 export function StayDetails() {
     const dispatch = useAppDispatch()
     const navigate = useNavigate()
     const { stayId } = useParams()
     const loggedInUser = useAppSelector(storeState => storeState.userModule.user)
+    const wishlistIds = useAppSelector(storeState => storeState.stayModule.wishlistIds)
     const isMobile = useIsMobile()
 
     const [
@@ -60,7 +63,7 @@ export function StayDetails() {
 
 
     function isStayWishlist() {
-        return loggedInUser ? loggedInUser.wishlist.some(wishlist => wishlist._id === stayId) : false
+        return loggedInUser ? wishlistIds.some(wishlistId => wishlistId === stayId) : false
     }
 
     function onCheckAvailabilityClick(ev) {
@@ -76,7 +79,7 @@ export function StayDetails() {
             dispatch(systemSetAppModal(SET_APP_MODAL_LOGIN))
             return
         }
-        dispatch(toggleWishlist({ loggedInUser, stay }))
+        dispatch(toggleWishlistStay({ stayId }))
     }
 
     function onReserveClick(ev) {

@@ -5,12 +5,6 @@ import { Link } from 'react-router-dom'
 import { stayService } from '../../../services/stay.service'
 import { utilService } from '../../../services/util.service.js'
 import { HEART_24_WHITE_STROKE, HEART_24_WHITE_STROKE_RED_FILL, STAR_12 } from '../../../services/svg.service.js'
-import { SET_APP_MODAL_LOGIN } from '../../../services/resources-strings.service.js'
-
-// Store
-import { useAppDispatch, useAppSelector } from '../../../store/hooks'
-import { systemSetAppModal } from '../../../store/systemSlice'
-import { toggleWishlist } from '../../../store/userSlice'
 
 // Components
 import { PreviewImageCarousel } from './stay-preview/preview-image-carousel.jsx'
@@ -19,10 +13,7 @@ import SvgHandler from '../../_reuseable-cmps/svg-handler.jsx'
 
 // **TODO: stay-preview should be a dumb component(!!!), that only display data, and not calculate inside it with functions(!!!)
 
-export function StayPreview({ stay, geoLocation, isMobile, lastStayElementRef = null }) {
-    const loggedInUser = useAppSelector(storeState => storeState.userModule.user)
-    const dispatch = useAppDispatch()
-
+export function StayPreview({ stay, geoLocation, isMobile, lastStayElementRef = null, isStayWishlist, onLikeClicked }) {
     // function getResizeMobilePictures() {
     // if (!isMobile) return stay.imgUrls
 
@@ -37,20 +28,6 @@ export function StayPreview({ stay, geoLocation, isMobile, lastStayElementRef = 
     // return stayImages
     // }
 
-
-    function isStayWishlist() {
-        return loggedInUser ? loggedInUser.wishlist.some(wishlist => wishlist._id === stay._id) : false
-    }
-
-    function onLikeClicked(ev) {
-        ev.preventDefault()
-        ev.stopPropagation()
-        if (!loggedInUser) {
-            dispatch(systemSetAppModal(SET_APP_MODAL_LOGIN))
-            return
-        }
-        dispatch(toggleWishlist({ loggedInUser, stay }))
-    }
 
     function calcCrow(lat1, lon1, lat2, lon2) {
         const R = 6371 // km
@@ -77,20 +54,21 @@ export function StayPreview({ stay, geoLocation, isMobile, lastStayElementRef = 
         return `${distance} kilometers away`
     }
 
-
     // TODO: make it so that if user filtered by dates, don't display range for dates before those filtered dates,
     //   in stay-preview
     const dateRange = utilService.getStayPreviewDateRange(
         stay.availableDates[0].daysFromToday,
         stay.availableDates[0].until
     )
+
     const stayScore = stayService.getStayScore(stay.reviews)
+
     return (
         <section className='stay-preview' key={stay._id} ref={lastStayElementRef}>
             <PreviewImageCarousel imgs={stay.imgUrls} stay={stay} />
 
-            <section className='heart-svg' onClick={(ev) => onLikeClicked(ev)}>
-                <SvgHandler svgName={isStayWishlist() ? HEART_24_WHITE_STROKE_RED_FILL : HEART_24_WHITE_STROKE} />
+            <section className='heart-svg' onClick={(ev) => onLikeClicked(ev, stay._id)}>
+                <SvgHandler svgName={isStayWishlist(stay._id) ? HEART_24_WHITE_STROKE_RED_FILL : HEART_24_WHITE_STROKE} />
             </section>
 
             <Link to={`/stay/${stay._id}`}>
