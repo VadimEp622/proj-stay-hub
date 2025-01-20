@@ -45,9 +45,9 @@ interface StayState {
   isSetParamsToFilterBy: boolean;
   page: number;
   isLoadingMoreStays: boolean;
-  isLoadingWishlistIds: boolean;
   isFinalPage: boolean;
   reqStatusGetWishlistId: RequestStatus;
+  reqStatusGetWishlistIds: RequestStatus;
 }
 
 // TODO: basically, decide to either make 1 loadItems which handles more items pagination logic, or make 2 functions: loadItems and loadMoreItems.
@@ -67,9 +67,9 @@ const initialState: StayState = {
   isSetParamsToFilterBy: false, // protection layer -> basically, before store filterBy is ready, don't fetch stays.
   page: 0,
   isLoadingMoreStays: false,
-  isLoadingWishlistIds: false,
   isFinalPage: false,
   reqStatusGetWishlistId: RequestStatus.IDLE,
+  reqStatusGetWishlistIds: RequestStatus.IDLE,
 };
 
 const staySlice = createSlice({
@@ -101,6 +101,12 @@ const staySlice = createSlice({
       action: PayloadAction<RequestStatus>
     ) => {
       _updateReqStatusGetWishlistId(state, action.payload);
+    },
+    stayUpdateReqStatusGetWishlistIds: (
+      state,
+      action: PayloadAction<RequestStatus>
+    ) => {
+      _updateReqStatusGetWishlistIds(state, action.payload);
     },
   },
   extraReducers: (builder) => {
@@ -166,17 +172,17 @@ const staySlice = createSlice({
 
     builder
       .addCase(loadWishlistedStayIds.pending, (state) => {
-        state.isLoadingWishlistIds = true;
+        _updateReqStatusGetWishlistIds(state, RequestStatus.PENDING);
       })
       .addCase(
         loadWishlistedStayIds.fulfilled,
         (state, action: PayloadAction<any>) => {
           state.wishlistIds = [...state.wishlistIds, ...action.payload];
-          state.isLoadingWishlistIds = false;
+          _updateReqStatusGetWishlistIds(state, RequestStatus.SUCCEEDED);
         }
       )
       .addCase(loadWishlistedStayIds.rejected, (state, action) => {
-        state.isLoadingWishlistIds = false;
+        _updateReqStatusGetWishlistIds(state, RequestStatus.FAILED);
       });
 
     builder
@@ -330,6 +336,7 @@ export const {
   stayUpdateIsFinalPage,
   stayResetWishlistIds,
   stayUpdateReqStatusGetWishlistId,
+  stayUpdateReqStatusGetWishlistIds,
 } = staySlice.actions;
 
 export default staySlice.reducer;
@@ -354,4 +361,11 @@ function _updateReqStatusGetWishlistId(
   reqStatusGetWishlistId: RequestStatus
 ) {
   state.reqStatusGetWishlistId = reqStatusGetWishlistId;
+}
+
+function _updateReqStatusGetWishlistIds(
+  state: StayState,
+  reqStatusGetWishlistIds: RequestStatus
+) {
+  state.reqStatusGetWishlistIds = reqStatusGetWishlistIds;
 }

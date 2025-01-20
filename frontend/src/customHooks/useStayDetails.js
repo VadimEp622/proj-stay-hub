@@ -6,7 +6,7 @@ import { userService } from '../services/user.service'
 
 // Store
 import { useAppDispatch, useAppSelector } from '../store/hooks'
-import { loadWishlistedStayId, stayUpdateReqStatusGetWishlistId } from '../store/staySlice'
+import { loadWishlistedStayId, stayResetWishlistIds, stayUpdateReqStatusGetWishlistId } from '../store/staySlice'
 
 // Custom hooks
 import useLoadStay from './useLoadStay'
@@ -37,7 +37,10 @@ export default function useStayDetails(stayId) {
     }, [])
 
     useEffect(() => {
-        if (reqStatusGetWishlistId === "idle") dispatch(loadWishlistedStayId(stayId))
+        if (reqStatusGetWishlistId === "idle") {
+            dispatch(stayResetWishlistIds())
+            dispatch(loadWishlistedStayId(stayId))
+        }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [reqStatusGetWishlistId, dispatch])
 
