@@ -37,7 +37,7 @@ import { loadWishlistStays, wishlistStayUpdateReqStatusLoadStays } from '../stor
 export function UserWishlist() {
     const loggedinUser = useAppSelector(storeState => storeState.userModule.user)
     const wishlistStays = useAppSelector(storeState => storeState.wishlistStayModule.stays)
-    const reqStatusGetStays = useAppSelector(storeState => storeState.wishlistStayModule.reqStatusGetStays)
+    const reqStatusLoadStays = useAppSelector(storeState => storeState.wishlistStayModule.reqStatusLoadStays)
 
     /** @type {Location} */
     const geoLocation = useGeoLocation()
@@ -57,8 +57,8 @@ export function UserWishlist() {
     }, [loggedinUser, navigate])
 
     useEffect(() => {
-        if (reqStatusGetStays === "idle") dispatch(loadWishlistStays())
-    }, [reqStatusGetStays, dispatch])
+        if (reqStatusLoadStays === "idle") dispatch(loadWishlistStays())
+    }, [reqStatusLoadStays, dispatch])
 
 
     function isStayWishlist(stayId) {
@@ -66,8 +66,8 @@ export function UserWishlist() {
     }
 
 
-    if (!loggedinUser || reqStatusGetStays === "idle" || reqStatusGetStays === "loading") return <Loader />
-    if (reqStatusGetStays === "failed") return <h1>Failed to load wishlist</h1>
+    if (!loggedinUser || reqStatusLoadStays === "idle" || reqStatusLoadStays === "loading") return <Loader />
+    if (reqStatusLoadStays === "failed") return <h1>Failed to load wishlist</h1>
 
     return (
         <section className='user-wishlist-page'>
