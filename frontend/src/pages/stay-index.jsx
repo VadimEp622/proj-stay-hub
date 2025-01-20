@@ -5,7 +5,7 @@ import { Helmet } from 'react-helmet-async'
 // Store
 import { useAppDispatch, useAppSelector } from '../store/hooks'
 import { systemSetIsExpandedHeader, systemSetIsExpandedHeaderModal, systemSetIsUnclickableBg } from '../store/systemSlice'
-import { loadStays, loadWishlistedStayIds, stayResetWishlistIds, stayUpdateReqStatusGetWishlistIds } from '../store/staySlice'
+import { loadStays, loadWishlistedStayIds, stayResetWishlistIds, stayUpdateReqStatusLoadWishlistIds } from '../store/staySlice'
 
 // Custom hook
 import useGeoLocation from '../customHooks/useGeoLocation.js'
@@ -31,7 +31,7 @@ export function StayIndex() {
 
     useEffect(() => {
         return () => {
-            dispatch(stayUpdateReqStatusGetWishlistIds("idle"))
+            dispatch(stayUpdateReqStatusLoadWishlistIds("idle"))
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])

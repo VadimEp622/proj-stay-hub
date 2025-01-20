@@ -46,17 +46,14 @@ interface StayState {
   page: number;
   isLoadingMoreStays: boolean;
   isFinalPage: boolean;
-  reqStatusGetWishlistId: RequestStatus;
-  reqStatusGetWishlistIds: RequestStatus;
+  reqStatusLoadWishlistId: RequestStatus;
+  reqStatusLoadWishlistIds: RequestStatus;
 }
 
 // TODO: basically, decide to either make 1 loadItems which handles more items pagination logic, or make 2 functions: loadItems and loadMoreItems.
 //    The idea is to stay consistent across the application.
 
-// ####################################################################################################################
-// INFO: successfuly added wishlist-stay API to app.
-// TODO: properly test/debug and make sure new wishlisting is working as intented, without unexpected behavior. (also, improve isLoading with reqStatuses)
-// ####################################################################################################################
+// TODO: add reqStatusLoadStay to initialState, and have app use it, instead of isLoadingStay
 
 const initialState: StayState = {
   stays: [],
@@ -68,8 +65,8 @@ const initialState: StayState = {
   page: 0,
   isLoadingMoreStays: false,
   isFinalPage: false,
-  reqStatusGetWishlistId: RequestStatus.IDLE,
-  reqStatusGetWishlistIds: RequestStatus.IDLE,
+  reqStatusLoadWishlistId: RequestStatus.IDLE,
+  reqStatusLoadWishlistIds: RequestStatus.IDLE,
 };
 
 const staySlice = createSlice({
@@ -96,17 +93,17 @@ const staySlice = createSlice({
       state.wishlistIds = [];
     },
 
-    stayUpdateReqStatusGetWishlistId: (
+    stayUpdateReqStatusLoadWishlistId: (
       state,
       action: PayloadAction<RequestStatus>
     ) => {
-      _updateReqStatusGetWishlistId(state, action.payload);
+      _updateReqStatusLoadWishlistId(state, action.payload);
     },
-    stayUpdateReqStatusGetWishlistIds: (
+    stayUpdateReqStatusLoadWishlistIds: (
       state,
       action: PayloadAction<RequestStatus>
     ) => {
-      _updateReqStatusGetWishlistIds(state, action.payload);
+      _updateReqStatusLoadWishlistIds(state, action.payload);
     },
   },
   extraReducers: (builder) => {
@@ -172,22 +169,22 @@ const staySlice = createSlice({
 
     builder
       .addCase(loadWishlistedStayIds.pending, (state) => {
-        _updateReqStatusGetWishlistIds(state, RequestStatus.PENDING);
+        _updateReqStatusLoadWishlistIds(state, RequestStatus.PENDING);
       })
       .addCase(
         loadWishlistedStayIds.fulfilled,
         (state, action: PayloadAction<any>) => {
           state.wishlistIds = [...state.wishlistIds, ...action.payload];
-          _updateReqStatusGetWishlistIds(state, RequestStatus.SUCCEEDED);
+          _updateReqStatusLoadWishlistIds(state, RequestStatus.SUCCEEDED);
         }
       )
       .addCase(loadWishlistedStayIds.rejected, (state, action) => {
-        _updateReqStatusGetWishlistIds(state, RequestStatus.FAILED);
+        _updateReqStatusLoadWishlistIds(state, RequestStatus.FAILED);
       });
 
     builder
       .addCase(loadWishlistedStayId.pending, (state) => {
-        _updateReqStatusGetWishlistId(state, RequestStatus.PENDING);
+        _updateReqStatusLoadWishlistId(state, RequestStatus.PENDING);
       })
       .addCase(
         loadWishlistedStayId.fulfilled,
@@ -195,11 +192,11 @@ const staySlice = createSlice({
           if (action.payload.isWishlist) {
             state.wishlistIds = [...state.wishlistIds, action.payload.stayId];
           }
-          _updateReqStatusGetWishlistId(state, RequestStatus.SUCCEEDED);
+          _updateReqStatusLoadWishlistId(state, RequestStatus.SUCCEEDED);
         }
       )
       .addCase(loadWishlistedStayId.rejected, (state, action) => {
-        _updateReqStatusGetWishlistId(state, RequestStatus.FAILED);
+        _updateReqStatusLoadWishlistId(state, RequestStatus.FAILED);
       });
 
     builder
@@ -335,8 +332,8 @@ export const {
   stayResetPageNum,
   stayUpdateIsFinalPage,
   stayResetWishlistIds,
-  stayUpdateReqStatusGetWishlistId,
-  stayUpdateReqStatusGetWishlistIds,
+  stayUpdateReqStatusLoadWishlistId,
+  stayUpdateReqStatusLoadWishlistIds,
 } = staySlice.actions;
 
 export default staySlice.reducer;
@@ -356,16 +353,16 @@ function _resetFilterBy(state: StayState) {
   state.isSetParamsToFilterBy = true;
 }
 
-function _updateReqStatusGetWishlistId(
+function _updateReqStatusLoadWishlistId(
   state: StayState,
-  reqStatusGetWishlistId: RequestStatus
+  reqStatusLoadWishlistId: RequestStatus
 ) {
-  state.reqStatusGetWishlistId = reqStatusGetWishlistId;
+  state.reqStatusLoadWishlistId = reqStatusLoadWishlistId;
 }
 
-function _updateReqStatusGetWishlistIds(
+function _updateReqStatusLoadWishlistIds(
   state: StayState,
-  reqStatusGetWishlistIds: RequestStatus
+  reqStatusLoadWishlistIds: RequestStatus
 ) {
-  state.reqStatusGetWishlistIds = reqStatusGetWishlistIds;
+  state.reqStatusLoadWishlistIds = reqStatusLoadWishlistIds;
 }

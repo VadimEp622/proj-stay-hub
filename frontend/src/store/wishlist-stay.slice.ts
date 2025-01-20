@@ -11,7 +11,7 @@ enum RequestStatus {
 
 interface WishlistStayState {
   stays: any[];
-  reqStatusGetStays: RequestStatus;
+  reqStatusLoadStays: RequestStatus;
 }
 
 // TODO: connect this to wishlist-stay API (make sure it works!)
@@ -22,35 +22,35 @@ interface WishlistStayState {
 
 const initialState: WishlistStayState = {
   stays: [],
-  reqStatusGetStays: RequestStatus.IDLE,
+  reqStatusLoadStays: RequestStatus.IDLE,
 };
 
 const wishlistStaySlice = createSlice({
   name: "wishlistStay",
   initialState,
   reducers: {
-    wishlistStayUpdateReqStatusGetStays(
+    wishlistStayUpdateReqStatusLoadStays(
       state,
       action: PayloadAction<RequestStatus>
     ) {
-      _updateReqStatusGetStays(state, action.payload);
+      _updateReqStatusLoadStays(state, action.payload);
     },
   },
   extraReducers: (builder) => {
     builder
       .addCase(loadWishlistStays.pending, (state) => {
         state.stays = [];
-        _updateReqStatusGetStays(state, RequestStatus.PENDING);
+        _updateReqStatusLoadStays(state, RequestStatus.PENDING);
       })
       .addCase(
         loadWishlistStays.fulfilled,
         (state, action: PayloadAction<any[]>) => {
           _updateStaysState(state, action.payload);
-          _updateReqStatusGetStays(state, RequestStatus.SUCCEEDED);
+          _updateReqStatusLoadStays(state, RequestStatus.SUCCEEDED);
         }
       )
       .addCase(loadWishlistStays.rejected, (state, action) => {
-        _updateReqStatusGetStays(state, RequestStatus.FAILED);
+        _updateReqStatusLoadStays(state, RequestStatus.FAILED);
         console.log("error - could not get wishlist stays", action.error);
         showErrorMsg("Could not load wishlist stays");
       });
@@ -90,7 +90,7 @@ export const toggleWishlistStay = createAsyncThunk(
   }
 );
 
-export const { wishlistStayUpdateReqStatusGetStays } =
+export const { wishlistStayUpdateReqStatusLoadStays } =
   wishlistStaySlice.actions;
 
 export default wishlistStaySlice.reducer;
@@ -100,9 +100,9 @@ function _updateStaysState(state: WishlistStayState, stays: any[]) {
   state.stays = [...stays];
 }
 
-function _updateReqStatusGetStays(
+function _updateReqStatusLoadStays(
   state: WishlistStayState,
-  reqStatusGetStays: RequestStatus
+  reqStatusLoadStays: RequestStatus
 ) {
-  state.reqStatusGetStays = reqStatusGetStays;
+  state.reqStatusLoadStays = reqStatusLoadStays;
 }

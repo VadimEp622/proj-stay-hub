@@ -11,7 +11,7 @@ import { useAppDispatch, useAppSelector } from '../store/hooks'
 // Components
 import { StayList } from '../cmps/stay-index/stay-list.jsx'
 import { Loader } from '../cmps/_reuseable-cmps/loader.jsx'
-import { loadWishlistStays, wishlistStayUpdateReqStatusGetStays } from '../store/wishlist-stay.slice'
+import { loadWishlistStays, wishlistStayUpdateReqStatusLoadStays } from '../store/wishlist-stay.slice'
 
 
 /**
@@ -47,7 +47,7 @@ export function UserWishlist() {
 
     useEffect(() => {
         return () => {
-            dispatch(wishlistStayUpdateReqStatusGetStays("idle"))
+            dispatch(wishlistStayUpdateReqStatusLoadStays("idle"))
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
