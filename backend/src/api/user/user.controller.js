@@ -26,23 +26,6 @@ export async function addUserTrip(req, res) {
         res.status(400).send({ err: 'Failed adding trip to user' })
     }
 }
-
-// TODO: needs to be improved
-export async function updateUserWishlist(req, res) {
-    const userId = req.params.id
-    const { _id, imgUrls, loc, type, bedrooms, price, availableDates, reviews } = req.body
-    const wishlistStay = { _id, imgUrls, loc, type, bedrooms, price, availableDates, reviews }
-    try {
-        const user = await userService.getById(userId)
-        if (!user) throw new Error('User not found')
-        const updateReport = await userService.updateWishlist(user, wishlistStay)
-        // logger.info('Updated wishlist', updateReport.wishlistStatus, `stayId: ${updateReport.stayId}`)
-        res.send(updateReport)
-    } catch (err) {
-        logger.error('Failed to update user wishlist', err)
-        res.status(400).send({ err: 'Failed to update user wishlist' })
-    }
-}
 // ==================================================================
 // =================== Confirmed works but unused ===================
 export async function getUsers(req, res) {

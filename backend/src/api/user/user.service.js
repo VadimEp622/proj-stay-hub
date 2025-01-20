@@ -8,7 +8,6 @@ export const userService = {
     getByUsername,
     create,
     addTrip,
-    updateWishlist,
     // ==================================================================
     // =================== Confirmed works but unused ===================
     // query,
@@ -63,35 +62,6 @@ async function addTrip(userId, orderId) {
     }
 }
 
-async function updateWishlist(user, stay) {
-    try {
-        const isWishlist = user.wishlist.some(wishlist => wishlist._id === stay._id)
-
-        if (isWishlist) {// removing from wishlist here
-            await UserModel.updateOne(
-                { _id: user._id },
-                { $pull: { wishlist: { _id: stay._id } } }
-            )
-            return { stayId: stay._id, wishlistStatus: 'removed' }
-        } else {// adding to wishlist here
-            await UserModel.updateOne(
-                { _id: user._id },
-                {
-                    $push: {
-                        wishlist: {
-                            $each: [stay],
-                            $position: 0
-                        }
-                    }
-                }
-            )
-            return { stayId: stay._id, wishlistStatus: 'added' }
-        }
-    } catch (err) {
-        logger.error(`cannot update user's ${user._id} wishlist, for stay ${stay._id}`, err)
-        throw err
-    }
-}
 
 // ==================================================================
 // =================== Confirmed works but unused ===================

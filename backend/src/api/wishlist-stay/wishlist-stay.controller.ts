@@ -66,7 +66,6 @@ export async function checkIsWishlistStayByStayId(
 
     const filterBy = { stayId, userId };
     const wishlistStay = await wishlistStayService.findOne(filterBy);
-    logger.debug("checkIsWishlistStayByStayId -> wishlistStay", wishlistStay);
 
     if (!wishlistStay) res.send({ isWishlist: false });
     else res.send({ isWishlist: true });
