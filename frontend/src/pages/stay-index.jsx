@@ -17,6 +17,8 @@ import { StayList } from '../cmps/stay-index/stay-list.jsx'
 import { Loader } from '../cmps/_reuseable-cmps/loader.jsx'
 
 
+// TODO: improve reqStatus render handling for stay list. (take into account infinite scroll)
+
 export function StayIndex() {
     const stays = useAppSelector(storeState => storeState.stayModule.stays)
     const filterBy = useAppSelector(storeState => storeState.stayModule.filterBy)
@@ -82,6 +84,8 @@ export function StayIndex() {
             <CategoryFilter />
             <StayList stays={stays} geoLocation={geoLocation} lastStayElementRef={lastStayElementRef} isStayWishlist={isStayWishlist} />
             {(reqStatusLoadStays === "pending") && <Loader />}
+            {(reqStatusLoadStays === "succeeded") && stays.length === 0 && <h4>No stays available.</h4>}
+            {(reqStatusLoadStays === "failed") && <h4>Failed to load stays.</h4>}
         </section >
     )
 }
