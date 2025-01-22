@@ -42,6 +42,9 @@ import { StayDetailsMobileReturnHeader } from '../cmps/stay-details/stay-details
 // --------------------------------------------
 
 
+// TODO: add loading spinner next to "save" wishlist button, for visual indication of loading. also, prevent wishlist clicks during wishlistId's loading
+
+
 export function StayDetails() {
     const dispatch = useAppDispatch()
     const navigate = useNavigate()
