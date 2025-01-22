@@ -19,6 +19,7 @@ export default function useStayDetails(stayId) {
     const [isLoading, setIsLoading] = useState(true)
     const stay = useAppSelector(storeState => storeState.stayModule.stay)
     const isLoadingStay = useAppSelector(storeState => storeState.stayModule.isLoadingStay)
+    const loggedinUser = useAppSelector(storeState => storeState.userModule.user)
     const reqStatusLoadWishlistId = useAppSelector(storeState => storeState.stayModule.reqStatusLoadWishlistId)
     const stayHostImgUrlRef = useRef()
 
@@ -37,7 +38,7 @@ export default function useStayDetails(stayId) {
     }, [])
 
     useEffect(() => {
-        if (reqStatusLoadWishlistId === "idle") {
+        if (loggedinUser && reqStatusLoadWishlistId === "idle") {
             dispatch(stayResetWishlistIds())
             dispatch(loadWishlistedStayId(stayId))
         }

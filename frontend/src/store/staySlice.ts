@@ -46,6 +46,7 @@ interface StayState {
   page: number;
   isLoadingMoreStays: boolean;
   isFinalPage: boolean;
+  reqStatusLoadStays: RequestStatus;
   reqStatusLoadWishlistId: RequestStatus;
   reqStatusLoadWishlistIds: RequestStatus;
 }
@@ -67,6 +68,7 @@ const initialState: StayState = {
   page: 0,
   isLoadingMoreStays: false,
   isFinalPage: false,
+  reqStatusLoadStays: RequestStatus.IDLE,
   reqStatusLoadWishlistId: RequestStatus.IDLE,
   reqStatusLoadWishlistIds: RequestStatus.IDLE,
 };
@@ -95,12 +97,20 @@ const staySlice = createSlice({
       state.wishlistIds = [];
     },
 
+    stayUpdateReqStatusLoadStays: (
+      state,
+      action: PayloadAction<RequestStatus>
+    ) => {
+      _updateReqStatusLoadStays(state, action.payload);
+    },
+
     stayUpdateReqStatusLoadWishlistId: (
       state,
       action: PayloadAction<RequestStatus>
     ) => {
       _updateReqStatusLoadWishlistId(state, action.payload);
     },
+
     stayUpdateReqStatusLoadWishlistIds: (
       state,
       action: PayloadAction<RequestStatus>
@@ -117,6 +127,8 @@ const staySlice = createSlice({
 
         state.isSetParamsToFilterBy = false;
         state.isLoadingMoreStays = true;
+
+        _updateReqStatusLoadStays(state, RequestStatus.PENDING);
       })
       .addCase(
         loadStays.fulfilled,
@@ -128,6 +140,8 @@ const staySlice = createSlice({
             state.isFinalPage = action.payload.isFinalPage;
           state.stays = action.payload.stays;
           state.isLoadingMoreStays = false;
+
+          _updateReqStatusLoadStays(state, RequestStatus.SUCCEEDED);
         }
       )
       .addCase(loadStays.rejected, (state, action) => {
@@ -135,11 +149,15 @@ const staySlice = createSlice({
         showErrorMsg("Failed loading stays");
         state.isLoadingMoreStays = false;
         state.page = 0;
+
+        _updateReqStatusLoadStays(state, RequestStatus.FAILED);
       });
 
     builder
       .addCase(loadMoreStays.pending, (state) => {
         state.isLoadingMoreStays = true;
+
+        _updateReqStatusLoadStays(state, RequestStatus.PENDING);
       })
       .addCase(
         loadMoreStays.fulfilled,
@@ -152,10 +170,13 @@ const staySlice = createSlice({
           state.stays = [...state.stays, ...action.payload.stays];
           state.page += 1;
           state.isLoadingMoreStays = false;
+
+          _updateReqStatusLoadStays(state, RequestStatus.SUCCEEDED);
         }
       )
       .addCase(loadMoreStays.rejected, (state, action) => {
         state.isLoadingMoreStays = false;
+        _updateReqStatusLoadStays(state, RequestStatus.FAILED);
         console.log("Failed loading more stays", action.error);
         showErrorMsg("Failed loading more stays");
       });
@@ -334,6 +355,7 @@ export const {
   stayResetPageNum,
   stayUpdateIsFinalPage,
   stayResetWishlistIds,
+  stayUpdateReqStatusLoadStays,
   stayUpdateReqStatusLoadWishlistId,
   stayUpdateReqStatusLoadWishlistIds,
 } = staySlice.actions;
@@ -367,4 +389,11 @@ function _updateReqStatusLoadWishlistIds(
   reqStatusLoadWishlistIds: RequestStatus
 ) {
   state.reqStatusLoadWishlistIds = reqStatusLoadWishlistIds;
+}
+
+function _updateReqStatusLoadStays(
+  state: StayState,
+  reqStatusLoadStays: RequestStatus
+) {
+  state.reqStatusLoadStays = reqStatusLoadStays;
 }
