@@ -42,9 +42,6 @@ import { StayDetailsMobileReturnHeader } from '../cmps/stay-details/stay-details
 // --------------------------------------------
 
 
-// TODO (BUG): when in stay-details page, when wishlisted, when logging out, and logging in, wishlistIds will not update properly, and it will not show stay as wishlisted.
-
-
 export function StayDetails() {
     const dispatch = useAppDispatch()
     const navigate = useNavigate()
