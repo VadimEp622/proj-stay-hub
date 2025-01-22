@@ -44,7 +44,6 @@ interface StayState {
   filterBy: null | FilterBy;
   isSetParamsToFilterBy: boolean;
   page: number;
-  isLoadingMoreStays: boolean;
   isFinalPage: boolean;
   reqStatusLoadStays: RequestStatus;
   reqStatusLoadWishlistId: RequestStatus;
@@ -66,7 +65,6 @@ const initialState: StayState = {
   filterBy: null,
   isSetParamsToFilterBy: false, // protection layer -> basically, before store filterBy is ready, don't fetch stays.
   page: 0,
-  isLoadingMoreStays: false,
   isFinalPage: false,
   reqStatusLoadStays: RequestStatus.IDLE,
   reqStatusLoadWishlistId: RequestStatus.IDLE,
@@ -124,10 +122,7 @@ const staySlice = createSlice({
         state.stays = [];
         state.page = 0;
         state.isFinalPage = false;
-
         state.isSetParamsToFilterBy = false;
-        state.isLoadingMoreStays = true;
-
         _updateReqStatusLoadStays(state, RequestStatus.PENDING);
       })
       .addCase(
@@ -139,24 +134,19 @@ const staySlice = createSlice({
           if (action.payload.isFinalPage)
             state.isFinalPage = action.payload.isFinalPage;
           state.stays = action.payload.stays;
-          state.isLoadingMoreStays = false;
-
           _updateReqStatusLoadStays(state, RequestStatus.SUCCEEDED);
         }
       )
       .addCase(loadStays.rejected, (state, action) => {
+        state.page = 0;
+        _updateReqStatusLoadStays(state, RequestStatus.FAILED);
+
         console.log("Failed loading stays", action.error);
         showErrorMsg("Failed loading stays");
-        state.isLoadingMoreStays = false;
-        state.page = 0;
-
-        _updateReqStatusLoadStays(state, RequestStatus.FAILED);
       });
 
     builder
       .addCase(loadMoreStays.pending, (state) => {
-        state.isLoadingMoreStays = true;
-
         _updateReqStatusLoadStays(state, RequestStatus.PENDING);
       })
       .addCase(
@@ -169,14 +159,12 @@ const staySlice = createSlice({
             state.isFinalPage = action.payload.isFinalPage;
           state.stays = [...state.stays, ...action.payload.stays];
           state.page += 1;
-          state.isLoadingMoreStays = false;
-
           _updateReqStatusLoadStays(state, RequestStatus.SUCCEEDED);
         }
       )
       .addCase(loadMoreStays.rejected, (state, action) => {
-        state.isLoadingMoreStays = false;
         _updateReqStatusLoadStays(state, RequestStatus.FAILED);
+
         console.log("Failed loading more stays", action.error);
         showErrorMsg("Failed loading more stays");
       });
