@@ -57,6 +57,10 @@ import { connectDB } from "./service/db.service.ts";
 // ####################################################################################################################
 // ####################################################################################################################
 
+// TODO: (Bugs)
+//  * in frontend, sometimes in console appears: "Cookie “__cf_bm” has been rejected because there is an existing “secure” cookie."
+//  investigate and fix!
+
 // ***************** Express App Config *****************
 const app = express();
 const server = http.createServer(app);

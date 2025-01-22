@@ -5,7 +5,7 @@ import { Helmet } from 'react-helmet-async'
 // Store
 import { useAppDispatch, useAppSelector } from '../store/hooks'
 import { systemSetIsExpandedHeader, systemSetIsExpandedHeaderModal, systemSetIsUnclickableBg } from '../store/systemSlice'
-import { loadStays, loadWishlistedStayIds, stayResetWishlistIds, stayUpdateReqStatusLoadWishlistIds } from '../store/staySlice'
+import { loadStays, loadWishlistedStayIds, stayResetWishlistIds, stayUpdateReqStatusLoadStays, stayUpdateReqStatusLoadWishlistIds } from '../store/staySlice'
 
 // Custom hook
 import useGeoLocation from '../customHooks/useGeoLocation.js'
@@ -25,13 +25,14 @@ export function StayIndex() {
     const isSetParamsToFilterBy = useAppSelector(storeState => storeState.stayModule.isSetParamsToFilterBy)
     const isFilterExpanded = useAppSelector(storeState => storeState.systemModule.isFilterExpanded)
     const geoLocation = useGeoLocation()
-    const [isLoadingMoreStays, lastStayElementRef] = useStaysInfiniteScroll(filterBy)
+    const [reqStatusLoadStays, lastStayElementRef] = useStaysInfiniteScroll(filterBy)
     const dispatch = useAppDispatch()
 
 
     useEffect(() => {
         return () => {
             dispatch(stayUpdateReqStatusLoadWishlistIds("idle"))
+            dispatch(stayUpdateReqStatusLoadStays("idle"))
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
@@ -80,7 +81,7 @@ export function StayIndex() {
             </Helmet>
             <CategoryFilter />
             <StayList stays={stays} geoLocation={geoLocation} lastStayElementRef={lastStayElementRef} isStayWishlist={isStayWishlist} />
-            {isLoadingMoreStays && <Loader />}
+            {(reqStatusLoadStays === "pending") && <Loader />}
         </section >
     )
 }

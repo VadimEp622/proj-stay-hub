@@ -10,7 +10,7 @@ import { SET_APP_MODAL_LOGIN, SET_APP_MODAL_LOGIN_QUICK, SET_APP_MODAL_SIGNUP } 
 import { useAppDispatch, useAppSelector } from '../store/hooks'
 import { login, signup } from '../store/userSlice'
 import { systemCloseAppModal, systemSetAppModal } from '../store/systemSlice'
-import { loadWishlistedStayIds } from '../store/staySlice'
+import { loadWishlistedStayId, loadWishlistedStayIds } from '../store/staySlice'
 
 // Custom Hooks
 import { useClickOutside } from '../customHooks/useClickOutsideModal.js'
@@ -71,6 +71,7 @@ export function AppLoginSignup({ isSignUp, isQuick = false }) {
         try {
             const user = await dispatch(login(values)).unwrap()
             if (location.pathname === '/') dispatch(loadWishlistedStayIds({ filterBy, page, isAllUntilPage: true }))
+            if (location.pathname.startsWith('/stay/')) dispatch(loadWishlistedStayId(location.pathname.split('/')[2]))
             showSuccessMsg(`Welcome: ${user.fullname}`)
             dispatch(systemCloseAppModal())
         } catch (err) {
@@ -84,6 +85,7 @@ export function AppLoginSignup({ isSignUp, isQuick = false }) {
         try {
             const user = await dispatch(signup(values)).unwrap()
             if (location.pathname === '/') dispatch(loadWishlistedStayIds({ filterBy, page, isAllUntilPage: true }))
+            if (location.pathname.startsWith('/stay/')) dispatch(loadWishlistedStayId(location.pathname.split('/')[2]))
             showSuccessMsg(`Welcome: ${user.fullname}`)
             dispatch(systemCloseAppModal())
         } catch (err) {

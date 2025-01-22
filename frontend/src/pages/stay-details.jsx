@@ -42,12 +42,11 @@ import { StayDetailsMobileReturnHeader } from '../cmps/stay-details/stay-details
 // --------------------------------------------
 
 
-
 export function StayDetails() {
     const dispatch = useAppDispatch()
     const navigate = useNavigate()
     const { stayId } = useParams()
-    const loggedInUser = useAppSelector(storeState => storeState.userModule.user)
+    const loggedinUser = useAppSelector(storeState => storeState.userModule.user)
     const wishlistIds = useAppSelector(storeState => storeState.stayModule.wishlistIds)
     const isMobile = useIsMobile()
 
@@ -63,7 +62,7 @@ export function StayDetails() {
 
 
     function isStayWishlist() {
-        return loggedInUser ? wishlistIds.some(wishlistId => wishlistId === stayId) : false
+        return loggedinUser ? wishlistIds.some(wishlistId => wishlistId === stayId) : false
     }
 
     function onCheckAvailabilityClick(ev) {
@@ -75,7 +74,7 @@ export function StayDetails() {
     function onLikeClicked(ev) {
         ev.preventDefault()
         ev.stopPropagation()
-        if (!loggedInUser) {
+        if (!loggedinUser) {
             dispatch(systemSetAppModal(SET_APP_MODAL_LOGIN))
             return
         }
@@ -85,7 +84,7 @@ export function StayDetails() {
     function onReserveClick(ev) {
         ev.preventDefault()
         ev.stopPropagation()
-        if (!loggedInUser) {
+        if (!loggedinUser) {
             dispatch(systemSetAppModal(SET_APP_MODAL_LOGIN))
         }
         else {
@@ -104,10 +103,10 @@ export function StayDetails() {
     function createOrder({ guestCount, singleNightPrice, nightsCount, serviceFee, cleaningFee }) {
         return {
             buyer: {
-                _id: loggedInUser._id,
-                fullname: loggedInUser.fullname,
-                img: loggedInUser.imgUrl,
-                joined: loggedInUser.joined ? loggedInUser.joined : utilService.getRandomMonthAndYear()
+                _id: loggedinUser._id,
+                fullname: loggedinUser.fullname,
+                img: loggedinUser.imgUrl,
+                joined: loggedinUser.joined ? loggedinUser.joined : utilService.getRandomMonthAndYear()
             },
             seller: {
                 _id: stay.host._id,
