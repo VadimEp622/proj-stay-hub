@@ -17,7 +17,7 @@ export default function useStayDetailsDates(stay, reqStatusLoadStay) {
 
 
     useEffect(() => {
-        if (reqStatusLoadStay !== 'pending' && Object.keys(stay).length > 0) {
+        if (reqStatusLoadStay !== 'pending' && stay) {
             const initialState = getInitialState(filterBy)
             setSelectedRange(initialState)
             isLoadingDatesRef.current = false

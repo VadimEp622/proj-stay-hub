@@ -57,7 +57,7 @@ interface StayState {
 
 const initialState: StayState = {
   stays: [],
-  stay: {},
+  stay: null,
   wishlistIds: [],
   filterBy: null,
   isSetParamsToFilterBy: false, // protection layer -> basically, before store filterBy is ready, don't fetch stays.

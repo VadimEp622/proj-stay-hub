@@ -47,7 +47,7 @@ export default function useStayDetails(stayId) {
     }, [reqStatusLoadWishlistId, dispatch])
 
     useEffect(() => {
-        if (reqStatusLoadStay !== 'pending' && Object.keys(stay).length > 0) stayHostImgUrlRef.current = userService.randomHostImg()
+        if (reqStatusLoadStay !== 'pending' && stay) stayHostImgUrlRef.current = userService.randomHostImg()
     }, [reqStatusLoadStay, stay])
 
     useEffect(() => {
