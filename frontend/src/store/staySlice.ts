@@ -40,11 +40,11 @@ interface StayState {
   stays: any[];
   stay: any;
   wishlistIds: any[];
-  isLoadingStay: boolean;
   filterBy: null | FilterBy;
   isSetParamsToFilterBy: boolean;
   page: number;
   isFinalPage: boolean;
+  reqStatusLoadStay: RequestStatus;
   reqStatusLoadStays: RequestStatus;
   reqStatusLoadWishlistId: RequestStatus;
   reqStatusLoadWishlistIds: RequestStatus;
@@ -53,19 +53,17 @@ interface StayState {
 // TODO: basically, decide to either make 1 loadItems which handles more items pagination logic, or make 2 functions: loadItems and loadMoreItems.
 //    The idea is to stay consistent across the application.
 
-// TODO: add reqStatusLoadStay to initialState, and have app use it, instead of isLoadingStay
-
 // TODO: add event-bus success/error for relevant reqStatuses
 
 const initialState: StayState = {
   stays: [],
   stay: {},
   wishlistIds: [],
-  isLoadingStay: false,
   filterBy: null,
   isSetParamsToFilterBy: false, // protection layer -> basically, before store filterBy is ready, don't fetch stays.
   page: 0,
   isFinalPage: false,
+  reqStatusLoadStay: RequestStatus.IDLE,
   reqStatusLoadStays: RequestStatus.IDLE,
   reqStatusLoadWishlistId: RequestStatus.IDLE,
   reqStatusLoadWishlistIds: RequestStatus.IDLE,
@@ -93,6 +91,13 @@ const staySlice = createSlice({
 
     stayResetWishlistIds: (state) => {
       state.wishlistIds = [];
+    },
+
+    stayUpdateReqStatusLoadStay: (
+      state,
+      action: PayloadAction<RequestStatus>
+    ) => {
+      _updateReqStatusLoadStay(state, action.payload);
     },
 
     stayUpdateReqStatusLoadStays: (
@@ -171,11 +176,14 @@ const staySlice = createSlice({
 
     builder
       .addCase(loadStay.pending, (state) => {
-        state.isLoadingStay = true;
+        _updateReqStatusLoadStay(state, RequestStatus.PENDING);
       })
       .addCase(loadStay.fulfilled, (state, action: PayloadAction<any>) => {
         state.stay = action.payload;
-        state.isLoadingStay = false;
+        _updateReqStatusLoadStay(state, RequestStatus.SUCCEEDED);
+      })
+      .addCase(loadStay.rejected, (state, action: PayloadAction<any>) => {
+        _updateReqStatusLoadStay(state, RequestStatus.FAILED);
       });
 
     builder
@@ -343,6 +351,7 @@ export const {
   stayResetPageNum,
   stayUpdateIsFinalPage,
   stayResetWishlistIds,
+  stayUpdateReqStatusLoadStay,
   stayUpdateReqStatusLoadStays,
   stayUpdateReqStatusLoadWishlistId,
   stayUpdateReqStatusLoadWishlistIds,
@@ -350,21 +359,11 @@ export const {
 
 export default staySlice.reducer;
 
-// ************ Local utility functions ************
-function _updateFilterBy(state: StayState, filterBy: FilterBy) {
-  state.filterBy = {
-    ...stayService.getEmptyFilterBy(),
-    ...state.filterBy,
-    ...filterBy,
-  };
-  state.isSetParamsToFilterBy = true;
-}
+// **************************************************************
+// **************** Local utility functions *********************
+// **************************************************************
 
-function _resetFilterBy(state: StayState) {
-  state.filterBy = null;
-  state.isSetParamsToFilterBy = true;
-}
-
+// ************ Request Status ************
 function _updateReqStatusLoadWishlistId(
   state: StayState,
   reqStatusLoadWishlistId: RequestStatus
@@ -379,9 +378,31 @@ function _updateReqStatusLoadWishlistIds(
   state.reqStatusLoadWishlistIds = reqStatusLoadWishlistIds;
 }
 
+function _updateReqStatusLoadStay(
+  state: StayState,
+  reqStatusLoadStay: RequestStatus
+) {
+  state.reqStatusLoadStay = reqStatusLoadStay;
+}
+
 function _updateReqStatusLoadStays(
   state: StayState,
   reqStatusLoadStays: RequestStatus
 ) {
   state.reqStatusLoadStays = reqStatusLoadStays;
+}
+
+// ************ Other ************
+function _updateFilterBy(state: StayState, filterBy: FilterBy) {
+  state.filterBy = {
+    ...stayService.getEmptyFilterBy(),
+    ...state.filterBy,
+    ...filterBy,
+  };
+  state.isSetParamsToFilterBy = true;
+}
+
+function _resetFilterBy(state: StayState) {
+  state.filterBy = null;
+  state.isSetParamsToFilterBy = true;
 }
