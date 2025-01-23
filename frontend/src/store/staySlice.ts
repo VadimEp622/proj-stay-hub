@@ -122,6 +122,7 @@ const staySlice = createSlice({
     },
   },
   extraReducers: (builder) => {
+    // loadStays
     builder
       .addCase(loadStays.pending, (state) => {
         state.stays = [];
@@ -150,6 +151,7 @@ const staySlice = createSlice({
         showErrorMsg("Failed loading stays");
       });
 
+    // loadMoreStays
     builder
       .addCase(loadMoreStays.pending, (state) => {
         _updateReqStatusLoadStays(state, RequestStatus.PENDING);
@@ -174,6 +176,7 @@ const staySlice = createSlice({
         showErrorMsg("Failed loading more stays");
       });
 
+    // loadStay
     builder
       .addCase(loadStay.pending, (state) => {
         _updateReqStatusLoadStay(state, RequestStatus.PENDING);
@@ -186,6 +189,7 @@ const staySlice = createSlice({
         _updateReqStatusLoadStay(state, RequestStatus.FAILED);
       });
 
+    // loadWishlistedStayIds
     builder
       .addCase(loadWishlistedStayIds.pending, (state) => {
         _updateReqStatusLoadWishlistIds(state, RequestStatus.PENDING);
@@ -201,6 +205,7 @@ const staySlice = createSlice({
         _updateReqStatusLoadWishlistIds(state, RequestStatus.FAILED);
       });
 
+    // loadWishlistedStayId
     builder
       .addCase(loadWishlistedStayId.pending, (state) => {
         _updateReqStatusLoadWishlistId(state, RequestStatus.PENDING);
@@ -218,6 +223,7 @@ const staySlice = createSlice({
         _updateReqStatusLoadWishlistId(state, RequestStatus.FAILED);
       });
 
+    // toggleWishlistStay
     builder
       .addCase(
         toggleWishlistStay.fulfilled,
