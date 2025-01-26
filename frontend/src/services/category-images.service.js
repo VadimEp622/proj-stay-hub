@@ -60,8 +60,13 @@ import tinyHomes from "../assets/img/category-bar/tiny-homes.jpeg"
 import treehouses from "../assets/img/category-bar/treehouses.jpeg"
 import windmills from "../assets/img/category-bar/windmills.jpeg"
 import yurts from "../assets/img/category-bar/yurts.jpeg"
+// import all from "../assets/img/category-bar/all.jpeg"
 
 export const categoryImages = [
+    // {
+    //     label: "All",
+    //     imgSrc: all
+    // },
     {
         label: "OMG!",
         imgSrc: omg
