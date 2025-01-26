@@ -59,8 +59,10 @@ import { connectDB } from "./service/db.service.ts";
 
 // TODO: big frontend change (requires step by step!!!):
 //   1) in stay-index, make category filter for "all" (make sure it works!)
-//   2) in stay-index, make clicking on a category update the URL query (which should trigger a fresh filtered stay list with infinite scroll)
-//   3) combine redux store's stay slice's "loadStays" and "loadMoreStays" async thunk actions into one.
+//   2) in stay-index category filter, upon every user-search using the header-filter and "fresh" fetching of stays, category resets to "all".
+//     (basically, every time user clicks on header's red search button, category resets to "all")
+//   3) in stay-index, make clicking on a category update the URL query (which should trigger a fresh filtered stay list with infinite scroll)
+//   4) combine redux store's stay slice's "loadStays" and "loadMoreStays" async thunk actions into one.
 
 // ####################################################################################################################
 // ####################################################################################################################
