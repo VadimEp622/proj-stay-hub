@@ -62,6 +62,11 @@ import windmills from "../assets/img/category-bar/windmills.jpeg"
 import yurts from "../assets/img/category-bar/yurts.jpeg"
 // import all from "../assets/img/category-bar/all.jpeg"
 
+
+// TODO: make distinction between rendered label name, and label used for filter.
+//   maybe something like:
+//    { labelType: "All", labelValue: "", imgSrc: all }, { labelType: "OMG!", labelValue: "OMG!", imgSrc: omg }, etc...
+
 export const categoryImages = [
     // {
     //     label: "All",
