@@ -57,6 +57,14 @@ import { connectDB } from "./service/db.service.ts";
 // ####################################################################################################################
 // ####################################################################################################################
 
+// TODO: big frontend change (requires step by step!!!):
+//   1) in stay-index, make category filter for "all" (make sure it works!)
+//   2) in stay-index, make clicking on a category update the URL query (which should trigger a fresh filtered stay list with infinite scroll)
+//   3) combine redux store's stay slice's "loadStays" and "loadMoreStays" async thunk actions into one.
+
+// ####################################################################################################################
+// ####################################################################################################################
+
 // TODO: (Bugs)
 //  * in frontend, sometimes in console appears: "Cookie “__cf_bm” has been rejected because there is an existing “secure” cookie."
 //  investigate and fix!
