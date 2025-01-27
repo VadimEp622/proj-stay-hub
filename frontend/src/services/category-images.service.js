@@ -60,261 +60,258 @@ import tinyHomes from "../assets/img/category-bar/tiny-homes.jpeg"
 import treehouses from "../assets/img/category-bar/treehouses.jpeg"
 import windmills from "../assets/img/category-bar/windmills.jpeg"
 import yurts from "../assets/img/category-bar/yurts.jpeg"
-// import all from "../assets/img/category-bar/all.jpeg"
+import all from "../assets/img/category-bar/all.jpeg"
 
 
-// TODO: make distinction between rendered label name, and label used for filter.
-//   maybe something like:
-//    { labelType: "All", labelValue: "", imgSrc: all }, { labelType: "OMG!", labelValue: "OMG!", imgSrc: omg }, etc...
 
 export const categoryImages = [
-    // {
-    //     label: "All",
-    //     imgSrc: all
-    // },
     {
-        label: "OMG!",
+        labelName: "All",
+        imgSrc: all
+    },
+    {
+        labelName: "OMG!",
         imgSrc: omg
     },
     {
-        label: "Trending",
+        labelName: "Trending",
         imgSrc: trending
     },
     {
-        label: "Rooms",
+        labelName: "Rooms",
         imgSrc: rooms
     },
     {
-        label: "Cabins",
+        labelName: "Cabins",
         imgSrc: cabins
     },
     {
-        label: "Design",
+        labelName: "Design",
         imgSrc: design
     },
     {
-        label: "Beach",
+        labelName: "Beach",
         imgSrc: beach
     },
     {
-        label: "Desert",
+        labelName: "Desert",
         imgSrc: desert
     },
     {
-        label: "Mansions",
+        labelName: "Mansions",
         imgSrc: mansions
     },
     {
-        label: "Beachfront",
+        labelName: "Beachfront",
         imgSrc: beachfront
     },
     {
-        label: "Amazing views",
+        labelName: "Amazing views",
         imgSrc: amazingViews
     },
     {
-        label: "Amazing pools",
+        labelName: "Amazing pools",
         imgSrc: amazingPools
     },
     {
-        label: "Luxe",
+        labelName: "Luxe",
         imgSrc: luxe
     },
     {
-        label: "Lakefront",
+        labelName: "Lakefront",
         imgSrc: lakefront
     },
     {
-        label: "Castles",
+        labelName: "Castles",
         imgSrc: castles
     },
     {
-        label: "Tropical",
+        labelName: "Tropical",
         imgSrc: tropical
     },
     {
-        label: "Countryside",
+        labelName: "Countryside",
         imgSrc: countrySide
     },
     {
-        label: "Islands",
+        labelName: "Islands",
         imgSrc: islands
     },
     {
-        label: "National parks",
+        labelName: "National parks",
         imgSrc: nationalParks
     },
     {
-        label: "Farms",
+        labelName: "Farms",
         imgSrc: farms
     },
     {
-        label: "Vineyards",
+        labelName: "Vineyards",
         imgSrc: vineyards
     },
     {
-        label: "Boats",
+        labelName: "Boats",
         imgSrc: boats
     },
     {
-        label: "Off-the-grid",
+        labelName: "Off-the-grid",
         imgSrc: offTheGrid
     },
     {
-        label: "New",
+        labelName: "New",
         imgSrc: New
     },
     {
-        label: "Treehouses",
+        labelName: "Treehouses",
         imgSrc: treehouses
     },
     {
-        label: "Tiny homes",
+        labelName: "Tiny homes",
         imgSrc: tinyHomes
     },
     {
-        label: "Iconic cities",
+        labelName: "Iconic cities",
         imgSrc: iconicCities
     },
     {
-        label: "Camping",
+        labelName: "Camping",
         imgSrc: camping
     },
     {
-        label: "Earth homes",
+        labelName: "Earth homes",
         imgSrc: earthHomes
     },
     {
-        label: "Skiing",
+        labelName: "Skiing",
         imgSrc: skiing
     },
     {
-        label: "Caves",
+        labelName: "Caves",
         imgSrc: caves
     },
     {
-        label: "Creative spaces",
+        labelName: "Creative spaces",
         imgSrc: creativeSpaces
     },
     {
-        label: "Cycladic homes",
+        labelName: "Cycladic homes",
         imgSrc: cycladicHomes
     },
     {
-        label: "Top-of-the-world",
+        labelName: "Top-of-the-world",
         imgSrc: topOfTheWorld
     },
     {
-        label: "Arctic",
+        labelName: "Arctic",
         imgSrc: arctic
     },
     {
-        label: "Surfing",
+        labelName: "Surfing",
         imgSrc: surfing
     },
     {
-        label: "Play",
+        labelName: "Play",
         imgSrc: play
     },
     {
-        label: "Riads",
+        labelName: "Riads",
         imgSrc: riads
     },
     {
-        label: "Houseboats",
+        labelName: "Houseboats",
         imgSrc: houseBoats
     },
     {
-        label: "Grand pianos",
+        labelName: "Grand pianos",
         imgSrc: grandPianos
     },
     {
-        label: "Domes",
+        labelName: "Domes",
         imgSrc: domes
     },
     {
-        label: "Yurts",
+        labelName: "Yurts",
         imgSrc: yurts
     },
     {
-        label: "Bed & breakfast",
+        labelName: "Bed & breakfast",
         imgSrc: bedAndBreakfast
     },
     {
-        label: "Historical homes",
+        labelName: "Historical homes",
         imgSrc: historicalHomes
     },
 
     {
-        label: "Ski-in/out",
+        labelName: "Ski-in/out",
         imgSrc: skiInOut
     },
     {
-        label: "A-frames",
+        labelName: "A-frames",
         imgSrc: aFrames
     },
     {
-        label: "Containers",
+        labelName: "Containers",
         imgSrc: containers
     },
     {
-        label: "Ryokans",
+        labelName: "Ryokans",
         imgSrc: ryokans
     },
     {
-        label: "Casas particulares",
+        labelName: "Casas particulares",
         imgSrc: casasParticulares
     },
     {
-        label: "Barns",
+        labelName: "Barns",
         imgSrc: barns
     },
     {
-        label: "Dammusi",
+        labelName: "Dammusi",
         imgSrc: dammusi
     },
     {
-        label: "Chef's kitchens",
+        labelName: "Chef's kitchens",
         imgSrc: chefsKitchens
     },
     {
-        label: "Minsus",
+        labelName: "Minsus",
         imgSrc: minsus
     },
     {
-        label: "Towers",
+        labelName: "Towers",
         imgSrc: towers
     },
     {
-        label: "Shepherd's huts",
+        labelName: "Shepherd's huts",
         imgSrc: shepherdsHuts
     },
     {
-        label: "Hanoks",
+        labelName: "Hanoks",
         imgSrc: hanoks
     },
     {
-        label: "Windmills",
+        labelName: "Windmills",
         imgSrc: windmills
     },
     {
-        label: "Golfing",
+        labelName: "Golfing",
         imgSrc: golfing
     },
     {
-        label: "Campers",
+        labelName: "Campers",
         imgSrc: campers
     },
     {
-        label: "Adapted",
+        labelName: "Adapted",
         imgSrc: adapted
     },
     {
-        label: "Trulli",
+        labelName: "Trulli",
         imgSrc: trulli
     },
     {
-        label: "Lake",
+        labelName: "Lake",
         imgSrc: lake
     }
 ]

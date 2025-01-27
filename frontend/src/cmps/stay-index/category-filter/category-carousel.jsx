@@ -120,15 +120,15 @@ export function CategoryCarousel({ images, selectedCategory, handleClick }) {
                 images.map((img, index) => (
                     <section
                         key={index}
-                        className={`img-container${selectedCategory === img.label ? ' active' : ''}`}
-                        onClick={(ev) => handleClick(ev, img.label)}
+                        className={`img-container${selectedCategory === img.labelName ? ' active' : ''}`}
+                        onClick={(ev) => handleClick(ev, img.labelName)}
                     >
                         <img
                             key={index}
                             src={img.imgSrc}
                             alt={index}
                         />
-                        <label><span>{img.label}</span></label>
+                        <label><span>{img.labelName}</span></label>
                     </section>
                 ))
             }

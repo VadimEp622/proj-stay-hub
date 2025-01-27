@@ -20,5 +20,7 @@ export function useHeaderFilterBy() {
         if (!storeFilterBy) setFilterBy(stayService.getEmptyFilterBy())
     }, [storeFilterBy])
 
+
+
     return [filterBy, setFilterBy]
 }

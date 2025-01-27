@@ -26,6 +26,8 @@ export async function getStays(req, res) {
   if (filterBy.where === 'Middle East') filterBy.where = 'Turkey'
   if (filterBy.where === 'South America') filterBy.where = 'Brazil'
 
+  if (filterBy.label === 'All') filterBy.label = ''
+
   try {
     const { stays, isFinalPage } = await stayService.query(filterBy)
     // const { stays, isFinalPage } = await stayService.query2(filterBy)
@@ -64,6 +66,8 @@ export async function getWishlistedStayIdsPerPage(req, res) {
     if (filterBy.where === 'Middle East') filterBy.where = 'Turkey'
     if (filterBy.where === 'South America') filterBy.where = 'Brazil'
 
+    if (filterBy.label === 'All') filterBy.label = ''
+
     const stayIds = await stayService.getStayIdsWishlistedByUserByQuery(userId, filterBy)
     res.json(stayIds)
   } catch (err) {
@@ -99,6 +103,8 @@ export async function getWishlistedStayIdsUntilPage(req, res) {
     if (filterBy.where === 'Flexible') filterBy.where = ''
     if (filterBy.where === 'Middle East') filterBy.where = 'Turkey'
     if (filterBy.where === 'South America') filterBy.where = 'Brazil'
+
+    if (filterBy.label === 'All') filterBy.label = ''
 
     const stayIds = await stayService.getStayIdsWishlistedByUserByQuery(userId, filterBy, true)
     res.json(stayIds)
