@@ -60,7 +60,7 @@ const initialState: StayState = {
   wishlistIds: [],
   filterBy: null,
   isSetParamsToFilterBy: false, // protection layer -> basically, before store filterBy is ready, don't fetch stays.
-  page: 0,
+  page: 0, // current page of rendered staylist
   isFinalPage: false,
   reqStatusLoadStay: RequestStatus.IDLE,
   reqStatusLoadStays: RequestStatus.IDLE,
