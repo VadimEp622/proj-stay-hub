@@ -50,8 +50,7 @@ interface StayState {
   reqStatusLoadWishlistIds: RequestStatus;
 }
 
-// TODO: basically, decide to either make 1 loadItems which handles more items pagination logic, or make 2 functions: loadItems and loadMoreItems.
-//    The idea is to stay consistent across the application.
+// TODO: combine "loadWishlistedStayIds" and "loadWishlistedStayId" into one function (handle backend as well)
 
 // TODO: add event-bus success/error for relevant reqStatuses
 
@@ -93,6 +92,10 @@ const staySlice = createSlice({
       state.wishlistIds = [];
     },
 
+    stayResetLoadStays: (state) => {
+      _resetLoadStays(state);
+    },
+
     stayUpdateReqStatusLoadStay: (
       state,
       action: PayloadAction<RequestStatus>
@@ -125,55 +128,30 @@ const staySlice = createSlice({
     // loadStays
     builder
       .addCase(loadStays.pending, (state) => {
-        state.stays = [];
-        state.page = 0;
-        state.isFinalPage = false;
-        state.isSetParamsToFilterBy = false;
         _updateReqStatusLoadStays(state, RequestStatus.PENDING);
       })
       .addCase(
         loadStays.fulfilled,
         (
           state,
-          action: PayloadAction<{ stays: any; isFinalPage: boolean }>
+          action: PayloadAction<{
+            stays: any;
+            isFinalPage: boolean;
+            isFirstBatch: boolean;
+          }>
         ) => {
+          if (!action.payload.isFirstBatch) state.page += 1;
           if (action.payload.isFinalPage)
             state.isFinalPage = action.payload.isFinalPage;
-          state.stays = action.payload.stays;
+          state.stays = [...state.stays, ...action.payload.stays];
           _updateReqStatusLoadStays(state, RequestStatus.SUCCEEDED);
         }
       )
       .addCase(loadStays.rejected, (state, action) => {
-        state.page = 0;
         _updateReqStatusLoadStays(state, RequestStatus.FAILED);
 
         console.log("Failed loading stays", action.error);
         showErrorMsg("Failed loading stays");
-      });
-
-    // loadMoreStays
-    builder
-      .addCase(loadMoreStays.pending, (state) => {
-        _updateReqStatusLoadStays(state, RequestStatus.PENDING);
-      })
-      .addCase(
-        loadMoreStays.fulfilled,
-        (
-          state,
-          action: PayloadAction<{ stays: any; isFinalPage: boolean }>
-        ) => {
-          if (action.payload.isFinalPage)
-            state.isFinalPage = action.payload.isFinalPage;
-          state.stays = [...state.stays, ...action.payload.stays];
-          state.page += 1;
-          _updateReqStatusLoadStays(state, RequestStatus.SUCCEEDED);
-        }
-      )
-      .addCase(loadMoreStays.rejected, (state, action) => {
-        _updateReqStatusLoadStays(state, RequestStatus.FAILED);
-
-        console.log("Failed loading more stays", action.error);
-        showErrorMsg("Failed loading more stays");
       });
 
     // loadStay
@@ -245,10 +223,17 @@ const staySlice = createSlice({
   },
 });
 
-// TODO: check if page key gets properly sent to the backend, in ALL possible cases
 export const loadStays = createAsyncThunk(
   "stay/loadStays",
-  async (filterBy: FilterBy) => {
+  async ({
+    filterBy,
+    page,
+    isFirstBatch,
+  }: {
+    filterBy: FilterBy;
+    page: number | undefined;
+    isFirstBatch: boolean;
+  }) => {
     const filter: ApiFilterBy = {
       where: "",
       from: "",
@@ -262,31 +247,10 @@ export const loadStays = createAsyncThunk(
     if (filterBy.to) filter.to = filterBy.to;
     if (filterBy.capacity) filter.capacity = filterBy.capacity;
     if (filterBy.label) filter.label = filterBy.label;
+    if (page) filter.page = page;
 
     const { stays, isFinalPage } = await stayService.query(filter);
-    return { stays, isFinalPage };
-  }
-);
-
-export const loadMoreStays = createAsyncThunk(
-  "stay/loadMoreStays",
-  async ({ filterBy, page }: { filterBy: FilterBy; page: number }) => {
-    const filter: ApiFilterBy = {
-      where: "",
-      from: "",
-      to: "",
-      capacity: 0,
-      label: "",
-      page,
-    };
-    if (filterBy.where) filter.where = filterBy.where;
-    if (filterBy.from) filter.from = filterBy.from;
-    if (filterBy.to) filter.to = filterBy.to;
-    if (filterBy.capacity) filter.capacity = filterBy.capacity;
-    if (filterBy.label) filter.label = filterBy.label;
-
-    const { stays, isFinalPage } = await stayService.query(filter);
-    return { stays, isFinalPage };
+    return { stays, isFinalPage, isFirstBatch };
   }
 );
 
@@ -357,6 +321,7 @@ export const {
   stayResetPageNum,
   stayUpdateIsFinalPage,
   stayResetWishlistIds,
+  stayResetLoadStays,
   stayUpdateReqStatusLoadStay,
   stayUpdateReqStatusLoadStays,
   stayUpdateReqStatusLoadWishlistId,
@@ -411,4 +376,11 @@ function _updateFilterBy(state: StayState, filterBy: FilterBy) {
 function _resetFilterBy(state: StayState) {
   state.filterBy = null;
   state.isSetParamsToFilterBy = true;
+}
+
+function _resetLoadStays(state: StayState) {
+  state.stays = [];
+  state.page = 0;
+  state.isFinalPage = false;
+  state.isSetParamsToFilterBy = false;
 }
