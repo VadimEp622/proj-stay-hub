@@ -90,7 +90,7 @@ function getEmptyFilterBy(): EmptyFilterBy {
       infants: 0,
       pets: 0,
     },
-    label: "",
+    label: "All",
   };
 }
 

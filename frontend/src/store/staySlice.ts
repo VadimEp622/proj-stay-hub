@@ -40,34 +40,29 @@ interface StayState {
   stays: any[];
   stay: any;
   wishlistIds: any[];
-  isLoadingStay: boolean;
   filterBy: null | FilterBy;
   isSetParamsToFilterBy: boolean;
   page: number;
-  isLoadingMoreStays: boolean;
   isFinalPage: boolean;
+  reqStatusLoadStay: RequestStatus;
   reqStatusLoadStays: RequestStatus;
   reqStatusLoadWishlistId: RequestStatus;
   reqStatusLoadWishlistIds: RequestStatus;
 }
 
-// TODO: basically, decide to either make 1 loadItems which handles more items pagination logic, or make 2 functions: loadItems and loadMoreItems.
-//    The idea is to stay consistent across the application.
-
-// TODO: add reqStatusLoadStay to initialState, and have app use it, instead of isLoadingStay
+// TODO: combine "loadWishlistedStayIds" and "loadWishlistedStayId" into one function (handle backend as well)
 
 // TODO: add event-bus success/error for relevant reqStatuses
 
 const initialState: StayState = {
   stays: [],
-  stay: {},
+  stay: null,
   wishlistIds: [],
-  isLoadingStay: false,
   filterBy: null,
   isSetParamsToFilterBy: false, // protection layer -> basically, before store filterBy is ready, don't fetch stays.
-  page: 0,
-  isLoadingMoreStays: false,
+  page: 0, // current page of rendered staylist
   isFinalPage: false,
+  reqStatusLoadStay: RequestStatus.IDLE,
   reqStatusLoadStays: RequestStatus.IDLE,
   reqStatusLoadWishlistId: RequestStatus.IDLE,
   reqStatusLoadWishlistIds: RequestStatus.IDLE,
@@ -97,6 +92,17 @@ const staySlice = createSlice({
       state.wishlistIds = [];
     },
 
+    stayResetLoadStays: (state) => {
+      _resetLoadStays(state);
+    },
+
+    stayUpdateReqStatusLoadStay: (
+      state,
+      action: PayloadAction<RequestStatus>
+    ) => {
+      _updateReqStatusLoadStay(state, action.payload);
+    },
+
     stayUpdateReqStatusLoadStays: (
       state,
       action: PayloadAction<RequestStatus>
@@ -119,77 +125,49 @@ const staySlice = createSlice({
     },
   },
   extraReducers: (builder) => {
+    // loadStays
     builder
       .addCase(loadStays.pending, (state) => {
-        state.stays = [];
-        state.page = 0;
-        state.isFinalPage = false;
-
-        state.isSetParamsToFilterBy = false;
-        state.isLoadingMoreStays = true;
-
         _updateReqStatusLoadStays(state, RequestStatus.PENDING);
       })
       .addCase(
         loadStays.fulfilled,
         (
           state,
-          action: PayloadAction<{ stays: any; isFinalPage: boolean }>
+          action: PayloadAction<{
+            stays: any;
+            isFinalPage: boolean;
+            isFirstBatch: boolean;
+          }>
         ) => {
+          if (!action.payload.isFirstBatch) state.page += 1;
           if (action.payload.isFinalPage)
             state.isFinalPage = action.payload.isFinalPage;
-          state.stays = action.payload.stays;
-          state.isLoadingMoreStays = false;
-
+          state.stays = [...state.stays, ...action.payload.stays];
           _updateReqStatusLoadStays(state, RequestStatus.SUCCEEDED);
         }
       )
       .addCase(loadStays.rejected, (state, action) => {
+        _updateReqStatusLoadStays(state, RequestStatus.FAILED);
+
         console.log("Failed loading stays", action.error);
         showErrorMsg("Failed loading stays");
-        state.isLoadingMoreStays = false;
-        state.page = 0;
-
-        _updateReqStatusLoadStays(state, RequestStatus.FAILED);
       });
 
-    builder
-      .addCase(loadMoreStays.pending, (state) => {
-        state.isLoadingMoreStays = true;
-
-        _updateReqStatusLoadStays(state, RequestStatus.PENDING);
-      })
-      .addCase(
-        loadMoreStays.fulfilled,
-        (
-          state,
-          action: PayloadAction<{ stays: any; isFinalPage: boolean }>
-        ) => {
-          if (action.payload.isFinalPage)
-            state.isFinalPage = action.payload.isFinalPage;
-          state.stays = [...state.stays, ...action.payload.stays];
-          state.page += 1;
-          state.isLoadingMoreStays = false;
-
-          _updateReqStatusLoadStays(state, RequestStatus.SUCCEEDED);
-        }
-      )
-      .addCase(loadMoreStays.rejected, (state, action) => {
-        state.isLoadingMoreStays = false;
-        _updateReqStatusLoadStays(state, RequestStatus.FAILED);
-        console.log("Failed loading more stays", action.error);
-        showErrorMsg("Failed loading more stays");
-      });
-
+    // loadStay
     builder
       .addCase(loadStay.pending, (state) => {
-        state.isLoadingStay = true;
+        _updateReqStatusLoadStay(state, RequestStatus.PENDING);
       })
       .addCase(loadStay.fulfilled, (state, action: PayloadAction<any>) => {
         state.stay = action.payload;
-        state.isLoadingStay = false;
+        _updateReqStatusLoadStay(state, RequestStatus.SUCCEEDED);
+      })
+      .addCase(loadStay.rejected, (state, action: PayloadAction<any>) => {
+        _updateReqStatusLoadStay(state, RequestStatus.FAILED);
       });
 
+    // loadWishlistedStayIds
     builder
       .addCase(loadWishlistedStayIds.pending, (state) => {
         _updateReqStatusLoadWishlistIds(state, RequestStatus.PENDING);
@@ -205,6 +183,7 @@ const staySlice = createSlice({
         _updateReqStatusLoadWishlistIds(state, RequestStatus.FAILED);
       });
 
+    // loadWishlistedStayId
     builder
       .addCase(loadWishlistedStayId.pending, (state) => {
         _updateReqStatusLoadWishlistId(state, RequestStatus.PENDING);
@@ -222,6 +201,7 @@ const staySlice = createSlice({
         _updateReqStatusLoadWishlistId(state, RequestStatus.FAILED);
       });
 
+    // toggleWishlistStay
     builder
       .addCase(
         toggleWishlistStay.fulfilled,
@@ -243,10 +223,17 @@ const staySlice = createSlice({
   },
 });
 
-// TODO: check if page key gets properly sent to the backend, in ALL possible cases
 export const loadStays = createAsyncThunk(
   "stay/loadStays",
-  async (filterBy: FilterBy) => {
+  async ({
+    filterBy,
+    page,
+    isFirstBatch,
+  }: {
+    filterBy: FilterBy;
+    page: number | undefined;
+    isFirstBatch: boolean;
+  }) => {
     const filter: ApiFilterBy = {
       where: "",
       from: "",
@@ -260,31 +247,10 @@ export const loadStays = createAsyncThunk(
     if (filterBy.to) filter.to = filterBy.to;
     if (filterBy.capacity) filter.capacity = filterBy.capacity;
     if (filterBy.label) filter.label = filterBy.label;
+    if (page) filter.page = page;
 
     const { stays, isFinalPage } = await stayService.query(filter);
-    return { stays, isFinalPage };
-  }
-);
-
-export const loadMoreStays = createAsyncThunk(
-  "stay/loadMoreStays",
-  async ({ filterBy, page }: { filterBy: FilterBy; page: number }) => {
-    const filter: ApiFilterBy = {
-      where: "",
-      from: "",
-      to: "",
-      capacity: 0,
-      label: "",
-      page,
-    };
-    if (filterBy.where) filter.where = filterBy.where;
-    if (filterBy.from) filter.from = filterBy.from;
-    if (filterBy.to) filter.to = filterBy.to;
-    if (filterBy.capacity) filter.capacity = filterBy.capacity;
-    if (filterBy.label) filter.label = filterBy.label;
-
-    const { stays, isFinalPage } = await stayService.query(filter);
-    return { stays, isFinalPage };
+    return { stays, isFinalPage, isFirstBatch };
   }
 );
 
@@ -355,6 +321,8 @@ export const {
   stayResetPageNum,
   stayUpdateIsFinalPage,
   stayResetWishlistIds,
+  stayResetLoadStays,
+  stayUpdateReqStatusLoadStay,
   stayUpdateReqStatusLoadStays,
   stayUpdateReqStatusLoadWishlistId,
   stayUpdateReqStatusLoadWishlistIds,
@@ -362,21 +330,11 @@ export const {
 
 export default staySlice.reducer;
 
-// ************ Local utility functions ************
-function _updateFilterBy(state: StayState, filterBy: FilterBy) {
-  state.filterBy = {
-    ...stayService.getEmptyFilterBy(),
-    ...state.filterBy,
-    ...filterBy,
-  };
-  state.isSetParamsToFilterBy = true;
-}
+// **************************************************************
+// **************** Local utility functions *********************
+// **************************************************************
 
-function _resetFilterBy(state: StayState) {
-  state.filterBy = null;
-  state.isSetParamsToFilterBy = true;
-}
-
+// ************ Request Status ************
 function _updateReqStatusLoadWishlistId(
   state: StayState,
   reqStatusLoadWishlistId: RequestStatus
@@ -391,9 +349,38 @@ function _updateReqStatusLoadWishlistIds(
   state.reqStatusLoadWishlistIds = reqStatusLoadWishlistIds;
 }
 
+function _updateReqStatusLoadStay(
+  state: StayState,
+  reqStatusLoadStay: RequestStatus
+) {
+  state.reqStatusLoadStay = reqStatusLoadStay;
+}
+
 function _updateReqStatusLoadStays(
   state: StayState,
   reqStatusLoadStays: RequestStatus
 ) {
   state.reqStatusLoadStays = reqStatusLoadStays;
+}
+
+// ************ Other ************
+function _updateFilterBy(state: StayState, filterBy: FilterBy) {
+  state.filterBy = {
+    ...stayService.getEmptyFilterBy(),
+    ...state.filterBy,
+    ...filterBy,
+  };
+  state.isSetParamsToFilterBy = true;
+}
+
+function _resetFilterBy(state: StayState) {
+  state.filterBy = null;
+  state.isSetParamsToFilterBy = true;
+}
+
+function _resetLoadStays(state: StayState) {
+  state.stays = [];
+  state.page = 0;
+  state.isFinalPage = false;
+  state.isSetParamsToFilterBy = false;
 }

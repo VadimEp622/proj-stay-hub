@@ -13,7 +13,7 @@ export default function useLoadStay(stayId) {
 
     const handleLoadStay = useCallback(async () => {
         try {
-            await dispatch(loadStay(stayId)).unwrap()
+            await dispatch(loadStay(stayId))
         } catch (err) {
             console.log(err)
             navigate('/')

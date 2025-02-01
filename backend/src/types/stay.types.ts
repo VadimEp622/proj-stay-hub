@@ -44,17 +44,14 @@ export interface IStay {
   createdAt?: NativeDate;
 }
 
-// aggregated with only the useful stay-preview data, + isWishlist boolean.
+// Only the useful stay-preview data decoupled from personalized data.
 export interface IStayPreview {
   _id: Types.ObjectId;
-  name?: string;
-  type?: string;
-  imgUrls?: any[];
-  price?: number;
-  capacity?: number;
-  loc?: any;
-  reviews?: any[];
-  availableDates?: any[];
-  isWishlist?: boolean;
+  type: string;
+  imgUrls: any[];
+  price: number;
+  loc: any;
+  reviews: any[];
+  availableDates: any[];
   createdAt?: NativeDate;
 }

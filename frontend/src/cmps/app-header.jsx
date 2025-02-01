@@ -40,6 +40,7 @@ export function AppHeader({ isStayDetailsPage, isMobile }) {
     // TODO: improve readability for operation of extracting search params from URL to setting in the store (custom hook?)
     useEffect(() => {
         if (location.pathname === '/') {
+            // console.log('location', location)
             const queryObject = queryStringToObject(searchParams)
             // console.log('queryObject', queryObject)
             dispatch(stayUpdateFilterBy(queryObject))
@@ -73,6 +74,8 @@ export function AppHeader({ isStayDetailsPage, isMobile }) {
                 if (value && value !== 'null') searchParamsObject[key] = parseInt(value, 10)
             } else if (key === 'where') {
                 searchParamsObject[key] = value.includes('_') ? value.replace(/_/g, ' ') : value
+            } else if (key === 'label') {
+                searchParamsObject[key] = value
             }
         }
         return searchParamsObject
@@ -82,11 +85,8 @@ export function AppHeader({ isStayDetailsPage, isMobile }) {
         ev.preventDefault()
         const filter = createFilterObject(filterBy)
         const searchParamsString = createQueryString(filter)
-        stayUpdateFilterBy(filter)
         dispatch(systemSetIsExpandedHeader(false))
         dispatch(systemSetIsUnclickableBg(false))
-        dispatch(stayResetPageNum())
-        dispatch(stayUpdateIsFinalPage(false))
         navigate(`/?${searchParamsString}`)
     }
 
@@ -101,7 +101,7 @@ export function AppHeader({ isStayDetailsPage, isMobile }) {
         }
         if (filterBy.capacity) filter.capacity = filterBy.capacity
         if (filterBy.guests) filter.guests = filterBy.guests
-        if (filterBy.label) filter.label = filterBy.label
+
         return filter
     }
 

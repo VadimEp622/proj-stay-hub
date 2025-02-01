@@ -2,7 +2,7 @@ import { startOfDay } from 'date-fns'
 // import { dbService } from '../../service/db.service.js'
 import { logger } from '../../service/logger.service.js'
 import { StayModel } from '../../model/stay.ts'
-import { asyncLocalStorage } from '../../service/als.service.js'
+// import { asyncLocalStorage } from '../../service/als.service.js'
 // import mongodb from 'mongodb'
 // const { ObjectId } = mongodb
 
@@ -27,8 +27,7 @@ async function query(filterBy) {
         const stays = await StayModel.find(criteria)
             .skip(currPage * PAGE_SIZE)
             .limit(PAGE_SIZE)
-
-        // add .select({_id: 1,name: 1,type: 1,imgUrls: 1,price: 1,capacity: 1,loc: 1,reviews: 1,availableDates: 1,createdAt: 1})
+            .select({ _id: 1, type: 1, imgUrls: 1, price: 1, loc: 1, reviews: 1, availableDates: 1, createdAt: 1 })
 
         const isFinalPage = stays.length < PAGE_SIZE
         return { stays, isFinalPage }

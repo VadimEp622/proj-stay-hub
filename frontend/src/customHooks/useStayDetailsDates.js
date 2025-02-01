@@ -9,7 +9,7 @@ import { stayService } from '../services/stay.service'
 import { useAppSelector } from '../store/hooks'
 
 
-export default function useStayDetailsDates(stay, isLoadingStay) {
+export default function useStayDetailsDates(stay, reqStatusLoadStay) {
     const isLoadingDatesRef = useRef(true)
     const DAY = useMemo(() => 1000 * 60 * 60 * 24, [])
     const filterBy = useAppSelector(storeState => storeState.stayModule.filterBy)
@@ -17,13 +17,13 @@ export default function useStayDetailsDates(stay, isLoadingStay) {
 
 
     useEffect(() => {
-        if (!isLoadingStay && Object.keys(stay).length > 0) {
+        if (reqStatusLoadStay !== 'pending' && stay) {
             const initialState = getInitialState(filterBy)
             setSelectedRange(initialState)
             isLoadingDatesRef.current = false
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [isLoadingStay, stay])
+    }, [reqStatusLoadStay, stay])
 
 
     function getInitialState(filterBy) {

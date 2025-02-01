@@ -5,7 +5,7 @@ import { Helmet } from 'react-helmet-async'
 // Store
 import { useAppDispatch, useAppSelector } from '../store/hooks'
 import { systemSetIsExpandedHeader, systemSetIsExpandedHeaderModal, systemSetIsUnclickableBg } from '../store/systemSlice'
-import { loadStays, loadWishlistedStayIds, stayResetWishlistIds, stayUpdateReqStatusLoadStays, stayUpdateReqStatusLoadWishlistIds } from '../store/staySlice'
+import { loadStays, loadWishlistedStayIds, stayResetLoadStays, stayResetWishlistIds, stayUpdateReqStatusLoadStays, stayUpdateReqStatusLoadWishlistIds } from '../store/staySlice'
 
 // Custom hook
 import useGeoLocation from '../customHooks/useGeoLocation.js'
@@ -16,8 +16,6 @@ import { CategoryFilter } from '../cmps/stay-index/category-filter.jsx'
 import { StayList } from '../cmps/stay-index/stay-list.jsx'
 import { Loader } from '../cmps/_reuseable-cmps/loader.jsx'
 
-
-// TODO: improve reqStatus render handling for stay list. (take into account infinite scroll)
 
 export function StayIndex() {
     const stays = useAppSelector(storeState => storeState.stayModule.stays)
@@ -40,7 +38,10 @@ export function StayIndex() {
     }, [])
 
     useEffect(() => {
-        if (isSetParamsToFilterBy) dispatch(loadStays(filterBy))
+        if (isSetParamsToFilterBy) {
+            dispatch(stayResetLoadStays())
+            dispatch(loadStays({ filterBy, isFirstBatch: true }))
+        }
     }, [dispatch, filterBy, isSetParamsToFilterBy])
 
     useEffect(() => {

@@ -2,7 +2,7 @@
 import { useCallback, useEffect, useRef } from "react"
 
 // Store
-import { loadMoreStays, loadWishlistedStayIds } from "../store/staySlice"
+import { loadStays, loadWishlistedStayIds } from "../store/staySlice"
 import { useAppDispatch, useAppSelector } from "../store/hooks"
 
 
@@ -21,8 +21,7 @@ export default function useStaysInfiniteScroll(filterBy) {
         if (observer.current) observer.current.disconnect()
         observer.current = new IntersectionObserver(entries => {
             if (entries[0].isIntersecting && reqStatusLoadStays !== "pending" && !isFinalPage) {
-                // console.log('Visible')
-                dispatch(loadMoreStays({ filterBy, page: page + 1 }))
+                dispatch(loadStays({ filterBy, page: page + 1, isFirstBatch: false }))
                 if (loggedinUser) dispatch(loadWishlistedStayIds({ filterBy, page: page + 1 }))
             }
         })

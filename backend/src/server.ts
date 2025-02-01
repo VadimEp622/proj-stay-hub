@@ -50,15 +50,34 @@ import { connectDB } from "./service/db.service.ts";
 //   3) ✔ frontend, in redux stay slice, we will have an array of wishlisted stayIds. they are always coupled with the actual stays array in redux stay slice.
 //   4) ✔ frontend, in wishlist page, we will have a paginated list of wishlisted stays (maybe with infinite scrolling). those are stays that will be in the redux user slice.
 
-//   5) make frontend work with "mini-stay" object, for listing large previews of stays.
-//   6) add caching to querying of "mini-stays"
-//   7) remove users doc's "wishlist" field (since it's now redundant), from ALL app flow. (db/cookies/request.loggedinUser/asyncLocalStorage/etc...)
+//   5) ✔ make frontend work with "mini-stay" object, for listing large previews of stays.
+//   6) ✔ add caching to querying of "mini-stays"
+//   7) ✔ remove users doc's "wishlist" field (since it's now redundant), from ALL app flow. (db/cookies/request.loggedinUser/asyncLocalStorage/etc...)
+//      (don't forget to update both local and live db's!)
 
 // ####################################################################################################################
 // ####################################################################################################################
+
+// TODO: big frontend change (requires step by step!!!):
+//   1) ✔ in stay-index, make category filter for "all" (make sure it works!)
+//   2) ✔ in stay-index category filter, upon every user-search using the header-filter and "fresh" fetching of stays, category resets to "all".
+//     (basically, every time user clicks on header's red search button, category resets to "all")
+//   3) ✔ in stay-index, make clicking on a category update the URL query (which should trigger a fresh filtered stay list with infinite scroll)
+//   4) ✔ combine redux store's stay slice's "loadStays" and "loadMoreStays" async thunk actions into one.
+//   5) combine redux store's stay slice's "loadWishlistedStayId" and "loadWishlistedStayIds" async thunk actions into one.
+
+// ####################################################################################################################
+// ####################################################################################################################
+
+// TODO: (misc)
+// * Change in entire app, so that "loggedinUser" variable/state will always be named like that, and not "loggedInUser". (for consistency)
+// * In frontend, user object sometimes looks for "joined" field. probably because of large stay demo data, which has fake user object with "joined" field.
+// Think what to do about it.
+// * In frontend, checkout out store's systemSlice, review it's flow and structure, and improve it if needed.
 
 // TODO: (Bugs)
-//  * in frontend, sometimes in console appears: "Cookie “__cf_bm” has been rejected because there is an existing “secure” cookie."
+// * When attempting to login using incorrect credentials, currently, the page is refreshed. (need to fix)
+// * in frontend, sometimes in console appears: "Cookie “__cf_bm” has been rejected because there is an existing “secure” cookie."
 //  investigate and fix!
 
 // ***************** Express App Config *****************
