@@ -1,5 +1,6 @@
 import fs from 'fs'
-import {asyncLocalStorage} from './als.service.js'
+import { asyncLocalStorage } from './als.service.js'
+import { appConfig } from '../config/app.config.ts'
 
 
 const logsDir = './logs'
@@ -29,14 +30,14 @@ function doLog(level, ...args) {
     const str = userId ? `[userId: ${userId}]` : ''
     line = `${getTime()} - ${level} - ${line} ${str}\n`
     console.log(line)
-    fs.appendFile('./logs/backend.log', line, (err) =>{
+    fs.appendFile('./logs/backend.log', line, (err) => {
         if (err) console.log('FATAL: cannot write to log file')
     })
 }
 
 export const logger = {
     debug(...args) {
-        if (process.env.NODE_NEV === 'production') return
+        if (appConfig.NODE_ENV === "production") return
         doLog('DEBUG', ...args)
     },
     info(...args) {
