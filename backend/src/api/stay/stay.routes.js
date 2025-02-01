@@ -5,6 +5,7 @@ import {
     getWishlistedStayIdsPerPage,
     getWishlistedStayIdsUntilPage
 } from './stay.controller.js'
+import { cache } from '../../middleware/cache.middleware.ts'
 
 
 const router = express.Router()
@@ -14,7 +15,7 @@ const router = express.Router()
 
 
 // =================== Verified being used ===================
-router.get('/', getStays)
+router.get('/', cache, getStays)
 router.get('/wishlist', requireAuth, getWishlistedStayIdsPerPage)// gets only wishlisted id's for current query, per page (if logged in)
 router.get('/wishlist/all', requireAuth, getWishlistedStayIdsUntilPage) // gets only wishlisted id's for current query, all until page (if logged in)
 router.get('/:id', getStayById)

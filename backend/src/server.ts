@@ -51,7 +51,7 @@ import { connectDB } from "./service/db.service.ts";
 //   4) ✔ frontend, in wishlist page, we will have a paginated list of wishlisted stays (maybe with infinite scrolling). those are stays that will be in the redux user slice.
 
 //   5) ✔ make frontend work with "mini-stay" object, for listing large previews of stays.
-//   6) add caching to querying of "mini-stays"
+//   6) ✔ add caching to querying of "mini-stays"
 //   7) remove users doc's "wishlist" field (since it's now redundant), from ALL app flow. (db/cookies/request.loggedinUser/asyncLocalStorage/etc...)
 
 // ####################################################################################################################

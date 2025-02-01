@@ -1,36 +1,41 @@
 import { stayService } from './stay.service.js'
 import { logger } from '../../service/logger.service.js'
+import { cacheUrl } from '../../service/cache.service.ts'
 
 
 // =================== Verified being used ===================
 export async function getStays(req, res) {
-  const { where, from, to, capacity, label, page } = req.query
-
-  const filterBy = {
-    where: '',
-    from: '',
-    to: '',
-    capacity: 0,
-    label: '',
-    page: 0
-  }
-
-  if (where) filterBy.where = where
-  if (from) filterBy.from = +from
-  if (to) filterBy.to = +to
-  if (capacity) filterBy.capacity = +capacity
-  if (label) filterBy.label = label
-  if (page) filterBy.page = +page
-
-  if (filterBy.where === 'Flexible') filterBy.where = ''
-  if (filterBy.where === 'Middle East') filterBy.where = 'Turkey'
-  if (filterBy.where === 'South America') filterBy.where = 'Brazil'
-
-  if (filterBy.label === 'All') filterBy.label = ''
-
   try {
+    const { where, from, to, capacity, label, page } = req.query
+
+    const filterBy = {
+      where: '',
+      from: '',
+      to: '',
+      capacity: 0,
+      label: '',
+      page: 0
+    }
+
+    if (where) filterBy.where = where
+    if (from) filterBy.from = +from
+    if (to) filterBy.to = +to
+    if (capacity) filterBy.capacity = +capacity
+    if (label) filterBy.label = label
+    if (page) filterBy.page = +page
+
+    if (filterBy.where === 'Flexible') filterBy.where = ''
+    if (filterBy.where === 'Middle East') filterBy.where = 'Turkey'
+    if (filterBy.where === 'South America') filterBy.where = 'Brazil'
+
+    if (filterBy.label === 'All') filterBy.label = ''
+
+
     const { stays, isFinalPage } = await stayService.query(filterBy)
-    // const { stays, isFinalPage } = await stayService.query2(filterBy)
+
+    cacheUrl.set(req.originalUrl, { stays, isFinalPage })
+    logger.info(`Cache set - ${req.originalUrl}`)
+
     res.json({ stays, isFinalPage })
   } catch (err) {
     logger.error('Failed to get stays', err)
