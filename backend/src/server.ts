@@ -76,7 +76,8 @@ import { connectDB } from "./service/db.service.ts";
 // * In frontend, checkout out store's systemSlice, review it's flow and structure, and improve it if needed.
 
 // TODO: (Bugs)
-//  * in frontend, sometimes in console appears: "Cookie “__cf_bm” has been rejected because there is an existing “secure” cookie."
+// * When attempting to login using incorrect credentials, currently, the page is refreshed. (need to fix)
+// * in frontend, sometimes in console appears: "Cookie “__cf_bm” has been rejected because there is an existing “secure” cookie."
 //  investigate and fix!
 
 // ***************** Express App Config *****************
