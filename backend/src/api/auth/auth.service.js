@@ -46,6 +46,7 @@ function getLoginToken(user) {
     return cryptr.encrypt(JSON.stringify(userInfo))
 }
 
+// TODO: check if cryptr or JSON.parse operations can cause errors. either way, improve below function.
 function validateToken(loginToken) {
     try {
         const json = cryptr.decrypt(loginToken)
