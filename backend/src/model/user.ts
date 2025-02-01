@@ -20,10 +20,6 @@ const userSchema: Schema = new Schema(
     imgUrl: {
       type: String,
     },
-    wishlist: {
-      type: Array,
-      required: true,
-    },
     trip: {
       type: Array,
       required: true,

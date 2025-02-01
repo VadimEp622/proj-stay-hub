@@ -4,17 +4,6 @@ import { authService } from "../services/auth.service";
 import { socketService } from "../services/socket.service";
 import { orderService } from "../services/order.service";
 
-interface WishItem {
-  _id: string;
-  imgUrls: string[];
-  loc: any;
-  type: string;
-  bedrooms: number;
-  price: number;
-  availableDates: any;
-  reviews: any;
-}
-
 interface TripItem {
   orderId: string;
 }
@@ -23,7 +12,6 @@ interface User {
   _id: string;
   fullname: string;
   imgUrl: string;
-  wishlist: WishItem[];
   trip: TripItem[];
 }
 
@@ -49,7 +37,7 @@ interface OrderPrice {
   total: number;
 }
 
-interface explore {
+interface Explore {
   label: string;
   title: string;
   amount: number;
@@ -62,7 +50,7 @@ interface Order {
   orderDetails?: OrderDetails;
   orderPrice?: OrderPrice;
   stayDetails?: any; // some keys may not be valid to ALL stays
-  explore?: explore[];
+  explore?: Explore[];
   status?: "Approved" | "Rejected" | "Pending";
 }
 

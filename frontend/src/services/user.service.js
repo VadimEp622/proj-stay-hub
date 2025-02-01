@@ -69,7 +69,7 @@ function clearLocalUser() {
 }
 
 function saveLocalUser(user) {
-    user = { _id: user._id, fullname: user.fullname, imgUrl: user.imgUrl, wishlist: user.wishlist, trip: user.trip }
+    user = { _id: user._id, fullname: user.fullname, imgUrl: user.imgUrl, trip: user.trip }
     sessionStorage.setItem(BASE_URL, JSON.stringify(user))
     return user
 }

@@ -42,7 +42,11 @@ async function signup({ username, password, fullname, imgUrl }) {
 }
 
 function getLoginToken(user) {
-    const userInfo = { _id: user._id, fullname: user.fullname, isAdmin: user.isAdmin }
+    const userInfo = { _id: user._id, fullname: user.fullname, isAdmin: user?.isAdmin }
+
+    // logger.debug(`getLoginToken -> user - ${JSON.stringify(user)}`)
+    // logger.debug(`getLoginToken -> userInfo - ${JSON.stringify(userInfo)}`)
+
     return cryptr.encrypt(JSON.stringify(userInfo))
 }
 

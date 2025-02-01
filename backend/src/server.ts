@@ -52,7 +52,8 @@ import { connectDB } from "./service/db.service.ts";
 
 //   5) ✔ make frontend work with "mini-stay" object, for listing large previews of stays.
 //   6) ✔ add caching to querying of "mini-stays"
-//   7) remove users doc's "wishlist" field (since it's now redundant), from ALL app flow. (db/cookies/request.loggedinUser/asyncLocalStorage/etc...)
+//   7) ✔ remove users doc's "wishlist" field (since it's now redundant), from ALL app flow. (db/cookies/request.loggedinUser/asyncLocalStorage/etc...)
+//      (don't forget to update both local and live db's!)
 
 // ####################################################################################################################
 // ####################################################################################################################
@@ -67,6 +68,12 @@ import { connectDB } from "./service/db.service.ts";
 
 // ####################################################################################################################
 // ####################################################################################################################
+
+// TODO: (misc)
+// * Change in entire app, so that "loggedinUser" variable/state will always be named like that, and not "loggedInUser". (for consistency)
+// * In frontend, user object sometimes looks for "joined" field. probably because of large stay demo data, which has fake user object with "joined" field.
+// Think what to do about it.
+// * In frontend, checkout out store's systemSlice, review it's flow and structure, and improve it if needed.
 
 // TODO: (Bugs)
 //  * in frontend, sometimes in console appears: "Cookie “__cf_bm” has been rejected because there is an existing “secure” cookie."

@@ -10,7 +10,6 @@ export interface IUserModel {
   password: string;
   fullname: string;
   imgUrl?: string;
-  wishlist: any[];
   trip: any[];
   createdAt?: NativeDate;
   updatedAt?: NativeDate;
@@ -23,7 +22,6 @@ export interface IUser {
   username: string;
   fullname: string;
   imgUrl?: string;
-  wishlist: any[];
   trip: any[];
   createdAt?: NativeDate;
 }
