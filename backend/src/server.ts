@@ -74,8 +74,10 @@ import { connectDB } from "./service/db.service.ts";
 // * In frontend, user object sometimes looks for "joined" field. probably because of large stay demo data, which has fake user object with "joined" field.
 // Think what to do about it.
 // * In frontend, checkout out store's systemSlice, review it's flow and structure, and improve it if needed.
-// * In frontend, research "redux-persist" for handling session persistence with redux
-// * Research more robust error handling structure for the app
+// * Research more robust error handling structure for the app (carefully finish reading: "https://www.toptal.com/nodejs/node-js-error-handling")
+// * In frontend, research "redux-persist" for handling session persistence with redux.
+//      OR, update sessionStorage after unwrapping login/signup/logout dispatch actions.
+//      OR, ditch persistent storage entirely, and use cookies only. 
 
 // TODO: (Bugs)
 // * in frontend, sometimes in console appears: "Cookie “__cf_bm” has been rejected because there is an existing “secure” cookie."
