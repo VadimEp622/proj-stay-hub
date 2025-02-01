@@ -78,22 +78,31 @@ const userSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(login.fulfilled, (state, action: PayloadAction<User>) => {
-      const user = action.payload;
-      _updateUserState(state, user);
-      socketService.login(user._id);
-    });
+    builder
+      .addCase(login.fulfilled, (state, action: PayloadAction<User>) => {
+        const user = action.payload;
+        _updateUserState(state, user);
+        socketService.login(user._id);
+      })
+      .addCase(login.rejected, (state, action) => {
+        _updateUserState(state, null);
+        socketService.logout();
+      });
 
-    builder.addCase(signup.fulfilled, (state, action: PayloadAction<User>) => {
-      const user = action.payload;
-      _updateUserState(state, user);
-      socketService.login(user._id);
-    });
+    builder
+      .addCase(signup.fulfilled, (state, action: PayloadAction<User>) => {
+        const user = action.payload;
+        _updateUserState(state, user);
+        socketService.login(user._id);
+      })
+      .addCase(signup.rejected, (state, action) => {});
 
-    builder.addCase(logout.fulfilled, (state) => {
-      _updateUserState(state, null);
-      socketService.logout();
-    });
+    builder
+      .addCase(logout.fulfilled, (state) => {
+        _updateUserState(state, null);
+        socketService.logout();
+      })
+      .addCase(logout.rejected, (state, action) => {});
 
     builder.addCase(
       addConfirmedTrip.fulfilled,
@@ -108,9 +117,13 @@ const userSlice = createSlice({
 
 export const login = createAsyncThunk(
   "user/login",
-  async (credentials: any) => {
-    const user = await authService.login(credentials);
-    return user;
+  async (credentials: any, { rejectWithValue }) => {
+    try {
+      const user = await authService.login(credentials);
+      return user;
+    } catch (err) {
+      return rejectWithValue(null);
+    }
   }
 );
 

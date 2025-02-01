@@ -74,9 +74,10 @@ import { connectDB } from "./service/db.service.ts";
 // * In frontend, user object sometimes looks for "joined" field. probably because of large stay demo data, which has fake user object with "joined" field.
 // Think what to do about it.
 // * In frontend, checkout out store's systemSlice, review it's flow and structure, and improve it if needed.
+// * In frontend, research "redux-persist" for handling session persistence with redux
+// * Research more robust error handling structure for the app
 
 // TODO: (Bugs)
-// * When attempting to login using incorrect credentials, currently, the page is refreshed. (need to fix)
 // * in frontend, sometimes in console appears: "Cookie “__cf_bm” has been rejected because there is an existing “secure” cookie."
 //  investigate and fix!
 
