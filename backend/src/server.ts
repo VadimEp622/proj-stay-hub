@@ -76,7 +76,7 @@ import { connectDB } from "./service/db.service.ts";
 // * In frontend, checkout out store's systemSlice, review it's flow and structure, and improve it if needed.
 // * Research more robust error handling structure for the app (carefully finish reading: "https://www.toptal.com/nodejs/node-js-error-handling")
 // * In frontend, research "redux-persist" for handling session persistence with redux.
-//      OR, update sessionStorage after unwrapping login/signup/logout dispatch actions (also consider only storing safe data - boolean isLoggedin + cookie auth).
+//      OR, update sessionStorage after unwrapping login/signup/logout dispatch actions (also consider only storing safe data in sessionStorage - boolean isLoggedin + cookie auth).
 //      OR, ditch persistent storage entirely, and use cookies only. 
 
 // TODO: (Bugs)
