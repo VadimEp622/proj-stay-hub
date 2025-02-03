@@ -54,8 +54,6 @@ interface StayState {
   reqStatusLoadWishlistIds: RequestStatus;
 }
 
-// TODO: combine "loadWishlistedStayIds" and "loadWishlistedStayId" into one function (handle backend as well)
-
 // TODO: add event-bus success/error for relevant reqStatuses
 
 const initialState: StayState = {
