@@ -21,7 +21,7 @@ import { Loader } from '../cmps/_reuseable-cmps/loader.jsx'
 
 
 export function UserTrips() {
-    const loggedInUser = useAppSelector(storeState => storeState.userModule.user)
+    const loggedinUser = useAppSelector(storeState => storeState.userModule.user)
     const isLoadingOrders = useAppSelector(storeState => storeState.orderModule.isLoadingOrders)
     const [trips, setTrips] = useState([])
     const navigate = useNavigate()
@@ -35,10 +35,10 @@ export function UserTrips() {
 
 
     useEffect(() => {
-        if (!loggedInUser) navigate('/')
+        if (!loggedinUser) navigate('/')
         else fetchOrders()
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [loggedInUser])
+    }, [loggedinUser])
 
 
     function onSearchClick(ev) {
@@ -50,7 +50,7 @@ export function UserTrips() {
     async function fetchOrders() {
         try {
             dispatch(orderSetIsLoadingOrders(true))
-            const orders = await orderService.getOrders({ byUserId: loggedInUser._id })
+            const orders = await orderService.getOrders({ byUserId: loggedinUser._id })
             // console.log('orders', orders)
             setTrips(orders)
         } catch (error) {

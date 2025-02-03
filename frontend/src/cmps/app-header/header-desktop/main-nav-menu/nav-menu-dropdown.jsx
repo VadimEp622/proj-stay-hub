@@ -13,7 +13,7 @@ import { showErrorMsg } from '../../../../services/event-bus.service.js'
 
 
 export function NavMenuDropdown({ setIsDropdownActive }) {
-    const loggedInUser = useAppSelector(storeState => storeState.userModule.user)
+    const loggedinUser = useAppSelector(storeState => storeState.userModule.user)
     const dispatch = useAppDispatch()
 
 
@@ -41,7 +41,7 @@ export function NavMenuDropdown({ setIsDropdownActive }) {
 
     return (
         <section className="dropdown-navbar flex">
-            {loggedInUser ? (
+            {loggedinUser ? (
                 <>
                     {/* <div className="dropdown-option">Messages</div> */}
                     <Link to={`/trips`} className="dropdown-option">

@@ -15,25 +15,25 @@ import { DashboardStatistics } from '../cmps/user-dashboard/dashboard-statistics
 
 
 export function UserDashboard() {
-    const loggedInUser = useAppSelector(storeState => storeState.userModule.user)
+    const loggedinUser = useAppSelector(storeState => storeState.userModule.user)
     const navigate = useNavigate()
     const dashboardData = userService.getUserDashboardData()
 
 
     useEffect(() => {
-        if (!loggedInUser) {
+        if (!loggedinUser) {
             showErrorMsg('You must be logged in to view your listings')
             navigate('/')
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [loggedInUser])
+    }, [loggedinUser])
 
 
     return (
         <section className='dashboard-page'>
             <h1 className='dashboard-page-title fs30'>My Dashboard</h1>
             <DashboardStatistics dashboardData={dashboardData} />
-            <OrderList loggedInUser={loggedInUser} />
+            <OrderList loggedinUser={loggedinUser} />
         </section>
     )
 }

@@ -20,7 +20,7 @@ import { Loader } from '../_reuseable-cmps/loader.jsx'
 // TODO: consider whether it's really needed to put the orders into the store, and not use useState
 
 
-export function OrderList({ loggedInUser }) {
+export function OrderList({ loggedinUser }) {
   const dispatch = useAppDispatch()
   const isLoadingOrders = useAppSelector(storeState => storeState.orderModule.isLoadingOrders)
   const allOrders = useAppSelector(storeState => storeState.orderModule.orders)
