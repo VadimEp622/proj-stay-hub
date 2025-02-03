@@ -64,6 +64,8 @@ const initialState: OrderState = {
   isLoadingOrders: false,
 };
 
+// TODO: add "reqStatusLoadOrders" to replace "isLoadingOrders"
+
 const orderSlice = createSlice({
   name: "order",
   initialState,
