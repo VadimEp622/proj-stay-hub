@@ -47,7 +47,7 @@ export function StayIndex() {
     useEffect(() => {
         if (isSetParamsToFilterBy && loggedinUser) {
             dispatch(stayResetWishlistIds())
-            dispatch(loadWishlistedStayIds({ filterBy, page: 0 }))
+            dispatch(loadWishlistedStayIds({ filterBy }))
         }
     }, [dispatch, filterBy, isSetParamsToFilterBy, loggedinUser])
 

@@ -276,11 +276,11 @@ export const loadWishlistedStayIds = createAsyncThunk(
   async ({
     filterBy,
     page,
-    isAllUntilPage = false,
+    isAllUntilPage,
   }: {
     filterBy: FilterBy;
-    page: number;
-    isAllUntilPage: boolean;
+    page: number | undefined;
+    isAllUntilPage: boolean | undefined;
   }) => {
     const filter: ApiFilterBy = {
       where: "",
@@ -288,7 +288,7 @@ export const loadWishlistedStayIds = createAsyncThunk(
       to: "",
       capacity: 0,
       label: "",
-      page,
+      page: 0,
     };
 
     const wishlistFilter: ApiWishlistFilterBy = {
@@ -300,6 +300,7 @@ export const loadWishlistedStayIds = createAsyncThunk(
     if (filterBy.to) filter.to = filterBy.to;
     if (filterBy.capacity) filter.capacity = filterBy.capacity;
     if (filterBy.label) filter.label = filterBy.label;
+    if (page) filter.page = page;
 
     if (isAllUntilPage) wishlistFilter.isalluntilpage = true;
 
