@@ -129,39 +129,4 @@ export async function getStayById(req, res) {
     res.status(400).send({ err: 'Failed to get stay' })
   }
 }
-// ===========================================================
-// =============== Verified works but Not used ===============
-// export async function addStay(req, res) {
-//   const stay = req.body
-//   try {
-//     const addedStay = await stayService.add(stay)
-//     res.json(addedStay)
-//   } catch (err) {
-//     logger.error('Failed to add stay', err)
-//     res.status(400).send({ err: 'Failed to add stay' })
-//   }
-// }
-
-// export async function removeStay(req, res) {
-//   const stayId = req.params.id
-//   try {
-//     await stayService.remove(stayId)
-//     res.send(`Successfully removed stay: ${stayId}`)
-//   } catch (err) {
-//     logger.error('Failed to remove stay', err)
-//     res.status(400).send({ err: 'Failed to remove stay' })
-//   }
-// }
-
-// export async function updateStay(req, res) {
-//   const stayId = req.params.id
-//   const stay = req.body
-//   try {
-//     const updatedStay = await stayService.update(stayId, stay)
-//     res.json(updatedStay)
-//   } catch (err) {
-//     logger.error('Failed to update stay', err)
-//     res.status(400).send({ err: 'Failed to update stay' })
-//   }
-// }
-// ===========================================================
+// ===================================================================
