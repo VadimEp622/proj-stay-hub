@@ -27,6 +27,10 @@ interface FilterBy {
   label: string;
 }
 
+interface ApiWishlistFilterBy {
+  isalluntilpage: boolean;
+}
+
 interface ApiFilterBy {
   where: string;
   from: "" | number;
@@ -286,22 +290,24 @@ export const loadWishlistedStayIds = createAsyncThunk(
       label: "",
       page,
     };
+
+    const wishlistFilter: ApiWishlistFilterBy = {
+      isalluntilpage: false,
+    };
+
     if (filterBy.where) filter.where = filterBy.where;
     if (filterBy.from) filter.from = filterBy.from;
     if (filterBy.to) filter.to = filterBy.to;
     if (filterBy.capacity) filter.capacity = filterBy.capacity;
     if (filterBy.label) filter.label = filterBy.label;
 
-    if (isAllUntilPage) {
-      const wishlistIdsAllUntilPage =
-        await stayService.getWishlistedStayIdsAllUntilPage(filter);
-      return wishlistIdsAllUntilPage;
-    }
+    if (isAllUntilPage) wishlistFilter.isalluntilpage = true;
 
-    const wishlistIdsPerPage = await stayService.getWishlistedStayIdsPerPage(
-      filter
+    const wishlistIds = await stayService.getWishlistedStayIds(
+      filter,
+      wishlistFilter
     );
-    return wishlistIdsPerPage;
+    return wishlistIds;
   }
 );
 

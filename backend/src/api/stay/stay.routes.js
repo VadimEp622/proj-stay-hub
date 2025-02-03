@@ -2,25 +2,17 @@ import express from 'express'
 import { requireAuth } from '../../middleware/requireAuth.middleware.js'
 import {
     getStays, getStayById,
-    getWishlistedStayIdsPerPage,
-    getWishlistedStayIdsUntilPage
+    getWishlistedStayIds
 } from './stay.controller.js'
 import { cache } from '../../middleware/cache.middleware.ts'
 
 
 const router = express.Router()
 
-// We can add a middleware for the entire router:
-// router.use(requireAuth)
 
-
-// =================== Verified being used ===================
 router.get('/', cache, getStays)
-router.get('/wishlist', requireAuth, getWishlistedStayIdsPerPage)// gets only wishlisted id's for current query, per page (if logged in)
-router.get('/wishlist/all', requireAuth, getWishlistedStayIdsUntilPage) // gets only wishlisted id's for current query, all until page (if logged in)
+router.get('/wishlist', requireAuth, getWishlistedStayIds)
 router.get('/:id', getStayById)
-// ===========================================================
-
 
 
 export const stayRoutes = router

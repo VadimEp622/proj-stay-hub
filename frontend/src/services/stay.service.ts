@@ -7,8 +7,7 @@ export const stayService = {
   // =============== Checked and in use ===============
   query,
   getById,
-  getWishlistedStayIdsPerPage,
-  getWishlistedStayIdsAllUntilPage,
+  getWishlistedStayIds,
   getEmptyFilterBy,
   getStayCategoryScores,
   getStayScore,
@@ -16,6 +15,10 @@ export const stayService = {
   getDate,
   // ==================================================
 };
+
+interface ApiWishlistFilterBy {
+  isalluntilpage: boolean;
+}
 
 interface ApiFilterBy {
   where: string;
@@ -69,13 +72,14 @@ function getById(stayId: string): Promise<any> {
   return httpService.get(`${BASE_URL}/${stayId}`);
 }
 
-// TODO: connect "getWishlistedStayIds" functions to frontend (stay slice) 
-function getWishlistedStayIdsPerPage(filterBy: ApiFilterBy): Promise<any> {
-  return httpService.get(`${BASE_URL}/wishlist`, filterBy);
-}
-
-function getWishlistedStayIdsAllUntilPage(filterBy: ApiFilterBy): Promise<any> {
-  return httpService.get(`${BASE_URL}/wishlist/all`, filterBy);
+function getWishlistedStayIds(
+  filter: ApiFilterBy,
+  wishlistfilter: ApiWishlistFilterBy
+): Promise<any> {
+  return httpService.get(`${BASE_URL}/wishlist`, {
+    ...filter,
+    ...wishlistfilter,
+  });
 }
 
 function getEmptyFilterBy(): EmptyFilterBy {
