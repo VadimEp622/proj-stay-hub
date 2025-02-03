@@ -13,6 +13,8 @@ export const authService = {
 
 // TODO: (important) research "redux-persist" for handling session persistence with redux
 // NOTE: sessionStorage or similiar operation MAY FAIL and cause an error, due to certain browser configurations.
+//     Since redux reducers should not have any side effects (sessionStorage fail is considered a side effect,
+//     sessionStorage CANNOT be there. 
 async function login(userCred) {
     try {
         const user = await httpService.post(`${BASE_URL}/login`, userCred)
