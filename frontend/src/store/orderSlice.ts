@@ -2,6 +2,21 @@ import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { orderService } from "../services/order.service";
 import { showErrorMsg } from "../services/event-bus.service";
 
+enum RequestStatus {
+  IDLE = "idle",
+  PENDING = "pending",
+  SUCCEEDED = "succeeded",
+  FAILED = "failed",
+}
+
+interface ApiOrderFilterBy {
+  usertype: "all" | "buyer" | "seller";
+}
+
+interface OrderFilterBy {
+  userType: "all" | "buyer" | "seller";
+}
+
 // TODO: add ts interfaces
 interface BuyerSeller {
   _id: string;
@@ -56,42 +71,48 @@ interface Order {
 
 interface OrderState {
   orders: Order[];
-  isLoadingOrders: boolean;
+  reqStatusLoadOrders: RequestStatus;
 }
 
 const initialState: OrderState = {
   orders: [],
-  isLoadingOrders: false,
+  reqStatusLoadOrders: RequestStatus.IDLE,
 };
-
-// TODO: add "reqStatusLoadOrders" to replace "isLoadingOrders"
 
 const orderSlice = createSlice({
   name: "order",
   initialState,
   reducers: {
-    orderSetIsLoadingOrders(state, action: PayloadAction<boolean>) {
-      _updateIsLoadingOrdersState(state, action.payload);
+    orderUpdateReqStatusLoadOrders: (
+      state,
+      action: PayloadAction<RequestStatus>
+    ) => {
+      _updateReqStatusLoadOrders(state, action.payload);
+    },
+    orderResetLoadOrders: (state) => {
+      _resetLoadOrders(state);
     },
   },
   extraReducers: (builder) => {
+    // loadOrders
     builder
       .addCase(loadOrders.pending, (state) => {
-        _updateIsLoadingOrdersState(state, true);
+        _updateReqStatusLoadOrders(state, RequestStatus.PENDING);
       })
       .addCase(
         loadOrders.fulfilled,
         (state, action: PayloadAction<Order[]>) => {
           _updateOrdersState(state, action.payload);
-          _updateIsLoadingOrdersState(state, false);
+          _updateReqStatusLoadOrders(state, RequestStatus.SUCCEEDED);
         }
       )
       .addCase(loadOrders.rejected, (state, action) => {
-        _updateIsLoadingOrdersState(state, false);
+        _updateReqStatusLoadOrders(state, RequestStatus.FAILED);
         console.log("error - could not get orders", action.error);
         showErrorMsg("Could not load orders");
       });
 
+    // approveOrder
     builder
       .addCase(
         approveOrder.fulfilled,
@@ -104,6 +125,7 @@ const orderSlice = createSlice({
         showErrorMsg("Could not update order");
       });
 
+    // rejectOrder
     builder
       .addCase(
         rejectOrder.fulfilled,
@@ -118,10 +140,27 @@ const orderSlice = createSlice({
   },
 });
 
-export const loadOrders = createAsyncThunk("order/loadOrders", async () => {
-  const orders = await orderService.getOrders();
-  return orders;
-});
+export const loadOrders = createAsyncThunk(
+  "order/loadOrders",
+  async (filterBy: OrderFilterBy, { rejectWithValue }) => {
+    if (!filterBy || !["all", "buyer", "seller"].includes(filterBy.userType)) {
+      return rejectWithValue({
+        error: "Invalid filter parameters",
+        invalidParams: {
+          userType: filterBy?.userType,
+          expectedValues: ["all", "buyer", "seller"],
+        },
+      });
+    }
+
+    const filter: ApiOrderFilterBy = {
+      usertype: filterBy.userType,
+    };
+
+    const orders = await orderService.getOrders(filter);
+    return orders;
+  }
+);
 
 export const approveOrder = createAsyncThunk(
   "order/approveOrder",
@@ -139,24 +178,33 @@ export const rejectOrder = createAsyncThunk(
   }
 );
 
-export const { orderSetIsLoadingOrders } = orderSlice.actions;
+export const { orderUpdateReqStatusLoadOrders, orderResetLoadOrders } =
+  orderSlice.actions;
 
 export default orderSlice.reducer;
 
-// ******************************** Local util functions ********************************
-// ========================== State Updates ==========================
-function _updateOrdersState(state: OrderState, orders: Order[]) {
-  state.orders = orders;
-}
-
-function _updateIsLoadingOrdersState(
+// =====================================================
+// ============== Local utility functions ==============
+// =====================================================
+// ------------------------- Request Status -------------------------
+function _updateReqStatusLoadOrders(
   state: OrderState,
-  isLoadingOrders: boolean
+  reqStatusLoadOrders: RequestStatus
 ) {
-  state.isLoadingOrders = isLoadingOrders;
+  state.reqStatusLoadOrders = reqStatusLoadOrders;
 }
 
-// ========================== Other ==========================
+// ------------------------- State Resets -------------------------
+function _resetLoadOrders(state: OrderState) {
+  state.orders = [];
+}
+
+// ------------------------- State Updates -------------------------
+function _updateOrdersState(state: OrderState, orders: Order[]) {
+  state.orders = [...state.orders, ...orders];
+}
+
+// ------------------------- State Updates (Orders Array -> Update "status" for specific order) -------------------------
 function _approveAndUpdateOrders(state: OrderState, orderId: string) {
   _updateOrdersStatus(state, orderId, "Approved");
 }
@@ -175,5 +223,6 @@ function _updateOrdersStatus(
       ? { ...order, content: { ...order.content, status } }
       : order
   );
-  _updateOrdersState(state, updatedOrders);
+  state.orders = updatedOrders;
 }
+// ------------------------- Other -------------------------

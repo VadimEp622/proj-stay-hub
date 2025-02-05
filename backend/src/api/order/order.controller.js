@@ -5,12 +5,22 @@ import { orderService } from './order.service.js'
 // ======================= Verified being used =======================
 export async function getOrders(req, res) {
     try {
-        const orders = await orderService.query(req.query)
-        // logger.info('Getting orders by filterBy:', req.query)
+        const { usertype: userType } = req.query
+        if (!userType || !["all", "buyer", "seller"].includes(userType)) throw new Error('invalid query params')
+
+        const userId = req.loggedinUser?._id
+        if (!userId) throw new Error('logged in userId is not valid')
+        // TODO: make sure userId is valid mongo object id
+
+        const filter = {}
+        if (userType === 'buyer') filter.byUserId = userId
+        else if (userType === 'seller') filter.aboutUserId = userId
+
+        const orders = await orderService.query(filter)
         res.send(orders)
     } catch (err) {
-        logger.error('Cannot get orders', err)
-        res.status(400).send({ err: 'Failed to get orders' })
+        logger.error('Failed to get all orders', err)
+        res.status(400).send({ err: 'Failed to get all orders' })
     }
 }
 
@@ -103,4 +113,3 @@ export async function deleteOrder(req, res) {
     }
 }
 // ===================================================================
-

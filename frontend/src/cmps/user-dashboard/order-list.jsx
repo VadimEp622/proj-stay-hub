@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 
 // Store
 import { useAppDispatch, useAppSelector } from '../../store/hooks'
-import { approveOrder, loadOrders, orderSetIsLoadingOrders, rejectOrder } from '../../store/orderSlice'
+import { approveOrder, loadOrders, orderResetLoadOrders, orderUpdateReqStatusLoadOrders, rejectOrder } from '../../store/orderSlice'
 
 // Services
 import { orderService } from '../../services/order.service.js'
@@ -22,21 +22,18 @@ import { Loader } from '../_reuseable-cmps/loader.jsx'
 
 export function OrderList({ loggedinUser }) {
   const dispatch = useAppDispatch()
-  const isLoadingOrders = useAppSelector(storeState => storeState.orderModule.isLoadingOrders)
+  const reqStatusLoadOrders = useAppSelector(storeState => storeState.orderModule.reqStatusLoadOrders)
   const allOrders = useAppSelector(storeState => storeState.orderModule.orders)
   const [demoOrders, setDemoOrders] = useState(orderService.getDemoOrders())
 
 
   useEffect(() => {
-    dispatch(loadOrders())
+    dispatch(orderResetLoadOrders())
+    dispatch(loadOrders({ userType: 'all' }))
     return () => {
-      dispatch(orderSetIsLoadingOrders(false))
+      dispatch(orderUpdateReqStatusLoadOrders("idle"))
     }
   }, [dispatch])
-
-  // useEffect(() => {
-  //   console.log('allOrders', allOrders)
-  // }, [allOrders])
 
 
   // DEMO DATA //
@@ -72,7 +69,9 @@ export function OrderList({ loggedinUser }) {
   }
 
 
-  if (isLoadingOrders) return <Loader />
+  if (reqStatusLoadOrders === 'idle' || reqStatusLoadOrders === 'pending') return <Loader />
+  if (reqStatusLoadOrders === 'failed') return <p>Failed to load orders</p>
+
   return (
     <section className="order-list">
       <table>

@@ -29,6 +29,9 @@ import { connectDB } from "./service/db.service.ts";
 // * In frontend, research "redux-persist" for handling session persistence with redux.
 //      OR, update sessionStorage after unwrapping login/signup/logout dispatch actions (also consider only storing safe data in sessionStorage - boolean isLoggedin + cookie auth).
 //      OR, ditch persistent storage entirely, and use cookies only.
+// * In frontend store, decide if floating even-bus success/error message is called from the store (or if it's even correct to do so at all),
+//      or if it's called from the dispatching component with an unwarped action.
+// * In frontend store, consider state operations of "set" "update" "reset" for objects and arrays, and decide on a good uniform structure.
 
 // TODO: (Bugs)
 // * in frontend, sometimes in console appears: "Cookie “__cf_bm” has been rejected because there is an existing “secure” cookie."

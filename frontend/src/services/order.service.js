@@ -7,19 +7,20 @@ const BASE_URL = 'order'
 
 
 export const orderService = {
-    // ---- Verified Works ---- //
+    // ==================== REST API ==================== //
     getOrders,
     addOrder,
     updateOrderStatus,
+    // ====================== OTHER ===================== //
     getDemoOrders,
-    getOrderExploreList
-    // ------------------------ //
+    getOrderExploreList,
+    // ================================================== //
 }
 
 
-// =========== Verified Works =========== //
-function getOrders(userId) {
-    return httpService.get(BASE_URL, userId)
+// ====================== REST API ====================== //
+function getOrders(filterBy) {
+    return httpService.get(`${BASE_URL}`, filterBy)
 }
 
 function addOrder(order) {
@@ -29,6 +30,7 @@ function addOrder(order) {
 function updateOrderStatus(order) {
     return httpService.put(`${BASE_URL}/${order._id}`, order)
 }
+// ============================= Other ============================= //
 
 function getDemoOrders() {
     return [
@@ -83,8 +85,8 @@ function getDemoOrders() {
 function getOrderExploreList() {
     return _createOrderExploreItems()
 }
-// ====================================== //
-// ********************** PRIVATE FUNCTIONS **********************
+
+// ====================== PRIVATE FUNCTIONS ====================== //
 
 function _createOrderExploreItems() {
     return [
@@ -110,4 +112,4 @@ function _getRandomExploreImg(label) {
     const arrayLength = explorePics[label].length
     return explorePics[label][utilService.getRandomIntInclusive(0, arrayLength - 1)]
 }
-// ***************************************************************
+// ================================================================= //

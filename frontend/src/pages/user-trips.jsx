@@ -4,11 +4,10 @@ import { useNavigate } from 'react-router-dom'
 
 // Services
 import { showErrorMsg } from '../services/event-bus.service.js'
-import { orderService } from '../services/order.service.js'
 
 // Store
 import { useAppDispatch, useAppSelector } from '../store/hooks'
-import { orderSetIsLoadingOrders } from '../store/orderSlice'
+import { loadOrders, orderResetLoadOrders, orderUpdateReqStatusLoadOrders } from '../store/orderSlice'
 
 
 // Components
@@ -20,16 +19,20 @@ import { Loader } from '../cmps/_reuseable-cmps/loader.jsx'
 // TODO: when fetching trips, perform loading animation, and only when finished fetching, render cmps
 
 
+// TODO: check why fetching of orders is not done through the store..., fix if possible
+
+
 export function UserTrips() {
     const loggedinUser = useAppSelector(storeState => storeState.userModule.user)
-    const isLoadingOrders = useAppSelector(storeState => storeState.orderModule.isLoadingOrders)
+    const reqStatusLoadOrders = useAppSelector(storeState => storeState.orderModule.reqStatusLoadOrders)
     const [trips, setTrips] = useState([])
     const navigate = useNavigate()
     const dispatch = useAppDispatch()
 
+
     useEffect(() => {
         return () => {
-            dispatch(orderSetIsLoadingOrders(false))
+            dispatch(orderUpdateReqStatusLoadOrders("idle"))
         }
     }, [dispatch])
 
@@ -49,15 +52,13 @@ export function UserTrips() {
 
     async function fetchOrders() {
         try {
-            dispatch(orderSetIsLoadingOrders(true))
-            const orders = await orderService.getOrders({ byUserId: loggedinUser._id })
+            dispatch(orderResetLoadOrders())
+            const orders = await dispatch(loadOrders({ userType: 'buyer' })).unwrap()
             // console.log('orders', orders)
             setTrips(orders)
         } catch (error) {
             console.log('Error fetching orders', error)
             showErrorMsg('Error fetching orders')
-        } finally {
-            dispatch(orderSetIsLoadingOrders(false))
         }
     }
 
@@ -80,7 +81,9 @@ export function UserTrips() {
     }
 
 
-    if (isLoadingOrders) return <Loader />
+    if (reqStatusLoadOrders === 'idle' || reqStatusLoadOrders === 'pending') return <Loader />
+    if (reqStatusLoadOrders === 'failed') return <p>Failed to load orders</p>
+
     return (
         <section className='user-trips-page'>
             <h1 className='page-title fs28'>Trips</h1>

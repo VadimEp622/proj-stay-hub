@@ -1,7 +1,6 @@
 import { OrderModel } from '../../model/order.ts'
 import { logger } from '../../service/logger.service.js'
-// import mongodb from 'mongodb'
-// const { ObjectId } = mongodb
+
 
 export const orderService = {
     query,
@@ -10,6 +9,7 @@ export const orderService = {
     remove,
     update
 }
+
 
 // ======================= Verified being used =======================
 async function query(filterBy = {}) {
