@@ -16,17 +16,7 @@ async function query(filterBy = {}) {
     try {
         const filterCriteria = _buildFilterCriteria(filterBy)
         const orders = await OrderModel.find(filterCriteria)
-
-        // // TODO: find out why below is happening, make a detailed note of related cmps/files, and make a todo note to fix it
-
-        const updatedOrders = orders.map(order => {
-            order.byUser = { _id: order.content.buyer._id, fullname: order.content.buyer.fullname }
-            order.aboutUser = { _id: order.content.seller._id, fullname: order.content.seller.fullname }
-            delete order.byUserId
-            delete order.aboutUserId
-            return order
-        })
-        return updatedOrders
+        return orders
     } catch (err) {
         logger.error('cannot retrieve orders from Database', err)
         throw err
@@ -97,8 +87,8 @@ async function remove(orderId) {
 function _buildFilterCriteria(filterBy) {
     let criteria = {}
     if (filterBy.orderId) criteria._id = filterBy.orderId
-    if (filterBy.byUserId) criteria.byUserId = filterBy.byUserId
-    if (filterBy.aboutUserId) criteria.aboutUserId = filterBy.aboutUserId
+    if (filterBy.byUserId) criteria['content.buyer._id'] = filterBy.byUserId
+    if (filterBy.aboutUserId) criteria['content.seller._id'] = filterBy.aboutUserId
     return criteria
 }
 

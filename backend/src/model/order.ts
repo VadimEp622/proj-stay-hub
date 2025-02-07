@@ -3,20 +3,32 @@ import { IOrderModel } from "../types/order.types.ts";
 
 const orderSchema: Schema = new Schema(
   {
-    byUserId: {
-      type: Schema.Types.ObjectId,
-    },
-    aboutUserId: {
-      type: Schema.Types.ObjectId,
-    },
     content: {
-      type: {
+      type: new Schema({
         buyer: {
-          type: Object,
+          type: new Schema({
+            _id: {
+              type: Schema.Types.ObjectId,
+              index: true,
+              required: true,
+            },
+            fullname: String,
+            img: String,
+            joined: String,
+          }),
           required: true,
         },
         seller: {
-          type: Object,
+          type: new Schema({
+            _id: {
+              type: Schema.Types.ObjectId,
+              index: true,
+              required: true,
+            },
+            fullname: String,
+            img: String,
+            joined: String,
+          }),
           required: true,
         },
         orderDetails: {
@@ -39,7 +51,7 @@ const orderSchema: Schema = new Schema(
           type: String,
           required: true,
         },
-      },
+      }),
       _id: false, // Mongoose creates _id for single nested subdocuments or arrays/objects. To avoid this, we set _id to false
       required: true,
     },
