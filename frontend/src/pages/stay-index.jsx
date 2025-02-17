@@ -30,23 +30,13 @@ export function StayIndex() {
 
 
     useEffect(() => {
-        return () => {
-            dispatch(stayUpdateReqStatusLoadWishlistIds("idle"))
-            dispatch(stayUpdateReqStatusLoadStays("idle"))
-        }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
-
-    useEffect(() => {
         if (isSetParamsToFilterBy) {
-            dispatch(stayResetLoadStays())
             dispatch(loadStays({ filterBy, isFirstBatch: true }))
         }
-    }, [dispatch, filterBy, isSetParamsToFilterBy])
+    }, [dispatch, filterBy, isSetParamsToFilterBy, reqStatusLoadStays])
 
     useEffect(() => {
         if (isSetParamsToFilterBy && loggedinUser) {
-            dispatch(stayResetWishlistIds())
             dispatch(loadWishlistedStayIds({ filterBy }))
         }
     }, [dispatch, filterBy, isSetParamsToFilterBy, loggedinUser])

@@ -6,7 +6,7 @@ import { useLocation, useNavigate, useSearchParams } from 'react-router-dom'
 import { store } from '../store/store'
 import { useAppDispatch, useAppSelector } from '../store/hooks'
 import { systemSetIsExpandedHeader, systemSetIsExpandedHeaderModal, systemSetIsUnclickableBg } from '../store/systemSlice'
-import { stayResetPageNum, stayUpdateFilterBy, stayUpdateIsFinalPage } from '../store/staySlice'
+import { stayResetPageNum, stayUpdateFilterBy, stayUpdateIsFinalPage, stayUpdateReqStatusLoadStays, stayUpdateReqStatusLoadWishlistIds } from '../store/staySlice'
 
 // Services
 import { utilService } from '../services/util.service.js'
@@ -44,6 +44,8 @@ export function AppHeader({ isStayDetailsPage, isMobile }) {
             const queryObject = queryStringToObject(searchParams)
             // console.log('queryObject', queryObject)
             dispatch(stayUpdateFilterBy(queryObject))
+            dispatch(stayUpdateReqStatusLoadStays("idle"))// only in home, when URL search params change, reset loadStays reqStatus 
+            dispatch(stayUpdateReqStatusLoadWishlistIds("idle"))// only in home, when URL search params change, reset LoadWishlistIds reqStatus 
             setFilterBy(queryObject)
         }
     }, [dispatch, setFilterBy, searchParams, location.pathname])

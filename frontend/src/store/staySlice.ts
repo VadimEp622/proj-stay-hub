@@ -3,6 +3,7 @@ import { stayService } from "../services/stay.service";
 import { showErrorMsg } from "../services/event-bus.service";
 import { toggleWishlistStay } from "./wishlist-stay.slice";
 import { wishlistStayService } from "../services/wishlist-stay.service";
+import { RootState } from "./store";
 
 enum RequestStatus {
   IDLE = "idle",
@@ -55,6 +56,15 @@ interface StayState {
 }
 
 // TODO: add event-bus success/error for relevant reqStatuses
+
+// TODO: when entering app using URL with label, it always resets to All, need to fix
+
+// TODO: fix to make it work with React <StrictMode>:
+//   * ✔ stay-index
+//   * stay-detail
+//   * user-trips
+//   * user-wishlist
+//   * final check for all possible API actions, that everything works in  <StrictMode> as intented
 
 const initialState: StayState = {
   stays: [],
@@ -129,7 +139,8 @@ const staySlice = createSlice({
   extraReducers: (builder) => {
     // loadStays
     builder
-      .addCase(loadStays.pending, (state) => {
+      .addCase(loadStays.pending, (state, action) => {
+        if (action.meta.arg.isFirstBatch) _resetLoadStays(state);
         _updateReqStatusLoadStays(state, RequestStatus.PENDING);
       })
       .addCase(
@@ -171,7 +182,9 @@ const staySlice = createSlice({
 
     // loadWishlistedStayIds
     builder
-      .addCase(loadWishlistedStayIds.pending, (state) => {
+      .addCase(loadWishlistedStayIds.pending, (state, action) => {
+        // if page is undefined, meaning first request on page load, thus reset.
+        if (action.meta.arg.page === undefined) _resetLoadWishlistIds(state);
         _updateReqStatusLoadWishlistIds(state, RequestStatus.PENDING);
       })
       .addCase(
@@ -227,15 +240,18 @@ const staySlice = createSlice({
 
 export const loadStays = createAsyncThunk(
   "stay/loadStays",
-  async ({
-    filterBy,
-    page,
-    isFirstBatch,
-  }: {
-    filterBy: FilterBy;
-    page: number | undefined;
-    isFirstBatch: boolean;
-  }) => {
+  async (
+    {
+      filterBy,
+      page,
+      isFirstBatch,
+    }: {
+      filterBy: FilterBy;
+      page: number | undefined;
+      isFirstBatch: boolean;
+    },
+    { rejectWithValue }
+  ) => {
     const filter: ApiFilterBy = {
       where: "",
       from: "",
@@ -253,6 +269,16 @@ export const loadStays = createAsyncThunk(
 
     const { stays, isFinalPage } = await stayService.query(filter);
     return { stays, isFinalPage, isFirstBatch };
+  },
+  {
+    condition(arg, thunkApi) {
+      // TODO: should probably add proper selectors to store - see: "https://redux.js.org/usage/deriving-data-selectors"
+      const reqStatusLoadStays = selectStayReqStatusLoadStays(
+        thunkApi.getState() as RootState
+      );
+      if (arg.isFirstBatch && reqStatusLoadStays !== RequestStatus.IDLE)
+        return false;
+    },
   }
 );
 
@@ -307,6 +333,19 @@ export const loadWishlistedStayIds = createAsyncThunk(
       wishlistFilter
     );
     return wishlistIds;
+  },
+  {
+    condition(arg, thunkApi) {
+      const reqStatusLoadWishlistIds = selectStayReqStatusLoadWishlistIds(
+        thunkApi.getState() as RootState
+      );
+      // if page is undefined, meaning first request on page load, and reqStatusLoadWishlistIds is not idle, then something is wrong, abort.
+      if (
+        arg.page === undefined &&
+        reqStatusLoadWishlistIds !== RequestStatus.IDLE
+      )
+        return false;
+    },
   }
 );
 
@@ -334,6 +373,18 @@ export const {
 } = staySlice.actions;
 
 export default staySlice.reducer;
+
+// *************************************************************
+// ************************* Selectors *************************
+// *************************************************************
+export const selectStayReqStatusLoadWishlistId = (state: RootState) =>
+  state.stayModule.reqStatusLoadWishlistId;
+
+export const selectStayReqStatusLoadWishlistIds = (state: RootState) =>
+  state.stayModule.reqStatusLoadWishlistIds;
+
+export const selectStayReqStatusLoadStays = (state: RootState) =>
+  state.stayModule.reqStatusLoadStays;
 
 // **************************************************************
 // **************** Local utility functions *********************
@@ -384,8 +435,16 @@ function _resetFilterBy(state: StayState) {
 }
 
 function _resetLoadStays(state: StayState) {
+  // const reqStatusLoadStays = state.reqStatusLoadStays;
+  // console.log("_resetLoadStays -> reqStatusLoadStays", reqStatusLoadStays);
   state.stays = [];
   state.page = 0;
   state.isFinalPage = false;
   state.isSetParamsToFilterBy = false;
+  state.reqStatusLoadStays = RequestStatus.IDLE;
+}
+
+function _resetLoadWishlistIds(state: StayState) {
+  state.wishlistIds = [];
+  state.reqStatusLoadWishlistIds = RequestStatus.IDLE;
 }
