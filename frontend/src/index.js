@@ -1,4 +1,4 @@
-import React, { StrictMode } from 'react'
+import { StrictMode } from 'react'
 import ReactDOM from 'react-dom/client'
 import { BrowserRouter as Router } from 'react-router-dom'
 import { Provider } from 'react-redux'
@@ -10,7 +10,7 @@ import { HelmetProvider } from 'react-helmet-async'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
-  // <StrictMode>
+  <StrictMode>
     <HelmetProvider>
       <Provider store={store}>
         <Router>
@@ -18,7 +18,7 @@ root.render(
         </Router>
       </Provider>
     </HelmetProvider>
-  // </StrictMode>
+  </StrictMode>
 )
 
 // If you want your app to work offline and load faster, you can change

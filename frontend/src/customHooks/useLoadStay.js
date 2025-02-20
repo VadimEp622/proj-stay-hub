@@ -1,18 +1,21 @@
 // Node modules
-import { useCallback, useEffect } from 'react'
+import { useCallback, useEffect, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 // Store
-import { loadStay } from '../store/staySlice'
-import { useAppDispatch } from '../store/hooks'
+import { loadStay, loadWishlistedStayId } from '../store/staySlice'
+import { useAppDispatch, useAppSelector } from '../store/hooks'
 
 
 export default function useLoadStay(stayId) {
     const navigate = useNavigate()
     const dispatch = useAppDispatch()
+    const loggedinUser = useAppSelector(storeState => storeState.userModule.user)
+    const isRequestedOnceOnCmpLoadRef = useRef(false)
 
     const handleLoadStay = useCallback(async () => {
         try {
+            isRequestedOnceOnCmpLoadRef.current = true
             await dispatch(loadStay(stayId))
         } catch (err) {
             console.log(err)
@@ -20,7 +23,16 @@ export default function useLoadStay(stayId) {
         }
     }, [navigate, dispatch, stayId])
 
+    const handleLoadWishlistStayId = useCallback(() => {
+        if (loggedinUser) {
+            dispatch(loadWishlistedStayId(stayId))
+        }
+    }, [dispatch, stayId, loggedinUser])
+
     useEffect(() => {
-        handleLoadStay()
-    }, [handleLoadStay])
+        if (!isRequestedOnceOnCmpLoadRef.current) {
+            handleLoadStay()
+            handleLoadWishlistStayId()
+        }
+    }, [isRequestedOnceOnCmpLoadRef, handleLoadStay, handleLoadWishlistStayId])
 }

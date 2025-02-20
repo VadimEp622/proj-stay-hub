@@ -61,7 +61,7 @@ interface StayState {
 
 // TODO: fix to make it work with React <StrictMode>:
 //   * ✔ stay-index
-//   * stay-detail
+//   * ✔ stay-detail
 //   * user-trips
 //   * user-wishlist
 //   * final check for all possible API actions, that everything works in  <StrictMode> as intented
@@ -201,6 +201,8 @@ const staySlice = createSlice({
     // loadWishlistedStayId
     builder
       .addCase(loadWishlistedStayId.pending, (state) => {
+        // Since only happens in stay-details page, always reset wishlistIds array when calling loadWishlistedStayId
+        _resetLoadWishlistId(state);
         _updateReqStatusLoadWishlistId(state, RequestStatus.PENDING);
       })
       .addCase(
@@ -386,6 +388,9 @@ export const selectStayReqStatusLoadWishlistIds = (state: RootState) =>
 export const selectStayReqStatusLoadStays = (state: RootState) =>
   state.stayModule.reqStatusLoadStays;
 
+export const selectStayReqStatusLoadStay = (state: RootState) =>
+  state.stayModule.reqStatusLoadStay;
+
 // **************************************************************
 // **************** Local utility functions *********************
 // **************************************************************
@@ -435,8 +440,6 @@ function _resetFilterBy(state: StayState) {
 }
 
 function _resetLoadStays(state: StayState) {
-  // const reqStatusLoadStays = state.reqStatusLoadStays;
-  // console.log("_resetLoadStays -> reqStatusLoadStays", reqStatusLoadStays);
   state.stays = [];
   state.page = 0;
   state.isFinalPage = false;
@@ -447,4 +450,9 @@ function _resetLoadStays(state: StayState) {
 function _resetLoadWishlistIds(state: StayState) {
   state.wishlistIds = [];
   state.reqStatusLoadWishlistIds = RequestStatus.IDLE;
+}
+
+function _resetLoadWishlistId(state: StayState) {
+  state.wishlistIds = [];
+  state.reqStatusLoadWishlistId = RequestStatus.IDLE;
 }

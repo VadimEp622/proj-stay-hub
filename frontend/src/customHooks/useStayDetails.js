@@ -6,7 +6,7 @@ import { userService } from '../services/user.service'
 
 // Store
 import { useAppDispatch, useAppSelector } from '../store/hooks'
-import { loadWishlistedStayId, stayResetWishlistIds, stayUpdateReqStatusLoadStay, stayUpdateReqStatusLoadWishlistId } from '../store/staySlice'
+import { stayUpdateReqStatusLoadStay, stayUpdateReqStatusLoadWishlistId } from '../store/staySlice'
 
 // Custom hooks
 import useLoadStay from './useLoadStay'
@@ -19,8 +19,6 @@ export default function useStayDetails(stayId) {
     const [isLoading, setIsLoading] = useState(true)
     const stay = useAppSelector(storeState => storeState.stayModule.stay)
     const reqStatusLoadStay = useAppSelector(storeState => storeState.stayModule.reqStatusLoadStay)
-    const loggedinUser = useAppSelector(storeState => storeState.userModule.user)
-    const reqStatusLoadWishlistId = useAppSelector(storeState => storeState.stayModule.reqStatusLoadWishlistId)
     const stayHostImgUrlRef = useRef()
 
     useLoadStay(stayId)
@@ -30,21 +28,13 @@ export default function useStayDetails(stayId) {
     const dispatch = useAppDispatch()
 
 
+
     useEffect(() => {
         return () => {
             dispatch(stayUpdateReqStatusLoadWishlistId("idle"))
             dispatch(stayUpdateReqStatusLoadStay("idle"))
         }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
-
-    useEffect(() => {
-        if (loggedinUser && reqStatusLoadWishlistId === "idle") {
-            dispatch(stayResetWishlistIds())
-            dispatch(loadWishlistedStayId(stayId))
-        }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [reqStatusLoadWishlistId, dispatch])
+    }, [dispatch])
 
     useEffect(() => {
         if (reqStatusLoadStay !== 'pending' && stay) stayHostImgUrlRef.current = userService.randomHostImg()
