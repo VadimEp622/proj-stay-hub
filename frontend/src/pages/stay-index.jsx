@@ -16,6 +16,11 @@ import { CategoryFilter } from '../cmps/stay-index/category-filter.jsx'
 import { StayList } from '../cmps/stay-index/stay-list.jsx'
 import { Loader } from '../cmps/_reuseable-cmps/loader.jsx'
 
+// NOTE: on homepage (stay-index) route, loadStays can be requested more than once, based on changes on query params values.
+//          The homepage (stay-index) route is NOT changed.
+//          Beacause of this, the isRequestedOnceOnCmpLoadRef, used for preventing initial duplicate loadStays requests, cannot be used here.
+//          Instead, we added in redux stay slice's loadStays createAsyncThunk, condition to prevent duplicate requests.
+
 
 export function StayIndex() {
     const stays = useAppSelector(storeState => storeState.stayModule.stays)

@@ -66,6 +66,11 @@ interface StayState {
 //   * user-wishlist
 //   * final check for all possible API actions, that everything works in  <StrictMode> as intented
 
+// TODO: Research using redux thunks requestId's, to prevent duplicate requests, and make sure only LATEST request is executed (required for this home-pages loadStays logic)
+//          Use this link (https://redux-toolkit.js.org/api/createAsyncThunk#examples).
+//          Use it to prevent a scenario where user changed to label #2, and then quickly to label #3, which with the current structure,
+//          the two requests will be executed in parrallel, and race each other to update the store state.
+
 const initialState: StayState = {
   stays: [],
   stay: null,

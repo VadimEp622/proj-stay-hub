@@ -7,6 +7,9 @@ import { loadStay, loadWishlistedStayId } from '../store/staySlice'
 import { useAppDispatch, useAppSelector } from '../store/hooks'
 
 
+// NOTE: on stay-details route, loadStay can only be requested once, on cmp load, and never again.
+//          Thus, the isRequestedOnceOnCmpLoadRef is used to enforce this.
+
 export default function useLoadStay(stayId) {
     const navigate = useNavigate()
     const dispatch = useAppDispatch()
