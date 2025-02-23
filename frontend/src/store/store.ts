@@ -29,5 +29,5 @@ export const store = configureStore({
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
 export type RootState = ReturnType<typeof store.getState>;
-// Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
+// Inferred type: {stayModule: stayState, userModule: userState, orderModule: OrderState, ...}
 export type AppDispatch = typeof store.dispatch;

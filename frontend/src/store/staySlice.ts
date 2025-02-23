@@ -53,6 +53,7 @@ interface StayState {
   reqStatusLoadStays: RequestStatus;
   reqStatusLoadWishlistId: RequestStatus;
   reqStatusLoadWishlistIds: RequestStatus;
+  reqIdLoadStays: null | string;
 }
 
 // TODO: add event-bus success/error for relevant reqStatuses
@@ -83,6 +84,7 @@ const initialState: StayState = {
   reqStatusLoadStays: RequestStatus.IDLE,
   reqStatusLoadWishlistId: RequestStatus.IDLE,
   reqStatusLoadWishlistIds: RequestStatus.IDLE,
+  reqIdLoadStays: null,
 };
 
 const staySlice = createSlice({
@@ -147,26 +149,20 @@ const staySlice = createSlice({
       .addCase(loadStays.pending, (state, action) => {
         if (action.meta.arg.isFirstBatch) _resetLoadStays(state);
         _updateReqStatusLoadStays(state, RequestStatus.PENDING);
+        state.reqIdLoadStays = action.meta.requestId;
       })
-      .addCase(
-        loadStays.fulfilled,
-        (
-          state,
-          action: PayloadAction<{
-            stays: any;
-            isFinalPage: boolean;
-            isFirstBatch: boolean;
-          }>
-        ) => {
-          if (!action.payload.isFirstBatch) state.page += 1;
-          if (action.payload.isFinalPage)
-            state.isFinalPage = action.payload.isFinalPage;
-          state.stays = [...state.stays, ...action.payload.stays];
-          _updateReqStatusLoadStays(state, RequestStatus.SUCCEEDED);
-        }
-      )
+      .addCase(loadStays.fulfilled, (state, action) => {
+        if (state.reqIdLoadStays !== action.meta.requestId) return; // protection, in case prev request completed AFTER current request completed
+        if (!action.payload.isFirstBatch) state.page += 1;
+        if (action.payload.isFinalPage)
+          state.isFinalPage = action.payload.isFinalPage;
+        state.stays = [...state.stays, ...action.payload.stays];
+        _updateReqStatusLoadStays(state, RequestStatus.SUCCEEDED);
+        state.reqIdLoadStays = null;
+      })
       .addCase(loadStays.rejected, (state, action) => {
         _updateReqStatusLoadStays(state, RequestStatus.FAILED);
+        state.reqIdLoadStays = null;
 
         console.log("Failed loading stays", action.error);
         showErrorMsg("Failed loading stays");
@@ -280,6 +276,8 @@ export const loadStays = createAsyncThunk(
   {
     condition(arg, thunkApi) {
       // TODO: should probably add proper selectors to store - see: "https://redux.js.org/usage/deriving-data-selectors"
+
+      // if isFirstBatch, and reqStatusLoadStays is not IDLE, then something is wrong, abort.
       const reqStatusLoadStays = selectStayReqStatusLoadStays(
         thunkApi.getState() as RootState
       );

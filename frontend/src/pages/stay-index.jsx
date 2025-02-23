@@ -34,12 +34,17 @@ export function StayIndex() {
     const dispatch = useAppDispatch()
 
 
+    // Fetch stays on first load, 
+    // OR when navigated to homepage (stay-index) with changed params, which updated store filterBy
     useEffect(() => {
         if (isSetParamsToFilterBy) {
             dispatch(loadStays({ filterBy, isFirstBatch: true }))
         }
     }, [dispatch, filterBy, isSetParamsToFilterBy, reqStatusLoadStays])
 
+    // ONLY when loggedin, 
+    // Fetch wishlistedIds on first load,
+    // OR when navigated to homepage (stay-index) with changed params, which updated store filterBy
     useEffect(() => {
         if (isSetParamsToFilterBy && loggedinUser) {
             dispatch(loadWishlistedStayIds({ filterBy }))
