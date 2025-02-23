@@ -66,6 +66,7 @@ export function CategoryFilter() {
 
     useEffect(() => {
         if (!storeFilterBy.label || storeFilterBy.label === 'All') setSelectedCategory('All')
+        else setSelectedCategory(storeFilterBy.label)
     }, [storeFilterBy])
 
     return (
