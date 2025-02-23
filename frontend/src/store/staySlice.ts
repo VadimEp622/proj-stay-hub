@@ -58,8 +58,6 @@ interface StayState {
 
 // TODO: add event-bus success/error for relevant reqStatuses
 
-// TODO: when entering app using URL with label, it always resets to All, need to fix
-
 // TODO: fix to make it work with React <StrictMode>:
 //   * ✔ stay-index
 //   * ✔ stay-detail
