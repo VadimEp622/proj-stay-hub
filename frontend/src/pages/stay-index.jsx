@@ -5,7 +5,7 @@ import { Helmet } from 'react-helmet-async'
 // Store
 import { useAppDispatch, useAppSelector } from '../store/hooks'
 import { systemSetIsExpandedHeader, systemSetIsExpandedHeaderModal, systemSetIsUnclickableBg } from '../store/systemSlice'
-import { loadStays, loadWishlistedStayIds, stayResetLoadStays, stayResetWishlistIds, stayUpdateReqStatusLoadStays, stayUpdateReqStatusLoadWishlistIds } from '../store/staySlice'
+import { loadStays, loadWishlistedStayIds } from '../store/staySlice'
 
 // Custom hook
 import useGeoLocation from '../customHooks/useGeoLocation.js'
