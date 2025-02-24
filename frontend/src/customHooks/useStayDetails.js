@@ -5,8 +5,7 @@ import { useEffect, useRef, useState } from 'react'
 import { userService } from '../services/user.service'
 
 // Store
-import { useAppDispatch, useAppSelector } from '../store/hooks'
-import { stayUpdateReqStatusLoadStay, stayUpdateReqStatusLoadWishlistId } from '../store/staySlice'
+import { useAppSelector } from '../store/hooks'
 
 // Custom hooks
 import useLoadStay from './useLoadStay'
@@ -25,16 +24,7 @@ export default function useStayDetails(stayId) {
     const [isLoadingDates, checkIn, checkOut, selectedRange, setSelectedRange] = useStayDetailsDates(stay, reqStatusLoadStay)
     const [guests, setGuests] = useStayDetailsGuests()// TODO: isLoadedGuests
     const [isLoadingOrderDetails, orderDetails] = useStayDetailsOrderDetails(isLoadingDates, stay, checkIn, checkOut, guests)// TODO: !isLoadedDates && !isLoadedGuests
-    const dispatch = useAppDispatch()
 
-
-
-    useEffect(() => {
-        return () => {
-            dispatch(stayUpdateReqStatusLoadWishlistId("idle"))
-            dispatch(stayUpdateReqStatusLoadStay("idle"))
-        }
-    }, [dispatch])
 
     useEffect(() => {
         if (reqStatusLoadStay !== 'pending' && stay) stayHostImgUrlRef.current = userService.randomHostImg()
@@ -43,7 +33,6 @@ export default function useStayDetails(stayId) {
     useEffect(() => {
         if (!isLoadingOrderDetails) setIsLoading(false)
     }, [isLoadingOrderDetails])
-
 
 
     return [

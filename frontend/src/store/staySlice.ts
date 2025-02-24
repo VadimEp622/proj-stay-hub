@@ -58,6 +58,8 @@ interface StayState {
 
 // TODO: add event-bus success/error for relevant reqStatuses
 
+// TODO: make it so, the wishlistIds is reset by itself upon logout/login/signup (without actually calling an action)
+
 // TODO: fix to make it work with React <StrictMode>:
 //   * ✔ stay-index
 //   * ✔ stay-detail
