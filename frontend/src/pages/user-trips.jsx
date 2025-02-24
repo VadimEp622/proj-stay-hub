@@ -7,7 +7,7 @@ import { showErrorMsg } from '../services/event-bus.service.js'
 
 // Store
 import { useAppDispatch, useAppSelector } from '../store/hooks'
-import { loadOrders, orderResetLoadOrders, orderUpdateReqStatusLoadOrders } from '../store/orderSlice'
+import { loadOrders } from '../store/orderSlice'
 
 
 // Components
@@ -31,16 +31,9 @@ export function UserTrips() {
     const isRequestedOnceOnCmpLoadRef = useRef(false)
 
 
-    useEffect(() => {
-        return () => {
-            dispatch(orderUpdateReqStatusLoadOrders("idle"))
-        }
-    }, [dispatch])
-
     const handleLoadOrders = useCallback(async () => {
         try {
             isRequestedOnceOnCmpLoadRef.current = true
-            dispatch(orderResetLoadOrders())
             const orders = await dispatch(loadOrders({ userType: 'buyer' })).unwrap()
             // console.log('orders', orders)
             setTrips(orders)

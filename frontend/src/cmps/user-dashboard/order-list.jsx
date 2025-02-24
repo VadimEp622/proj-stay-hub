@@ -1,9 +1,9 @@
 // Node modules
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 
 // Store
 import { useAppDispatch, useAppSelector } from '../../store/hooks'
-import { approveOrder, loadOrders, orderResetLoadOrders, orderUpdateReqStatusLoadOrders, rejectOrder } from '../../store/orderSlice'
+import { approveOrder, loadOrders, rejectOrder } from '../../store/orderSlice'
 
 // Services
 import { orderService } from '../../services/order.service.js'
@@ -11,6 +11,7 @@ import { orderService } from '../../services/order.service.js'
 // Components
 import { OrderPreview } from './order-list/order-preview.jsx'
 import { Loader } from '../_reuseable-cmps/loader.jsx'
+import { showErrorMsg } from '../../services/event-bus.service'
 
 
 // TODO: make tabs, for displaying:
@@ -25,15 +26,25 @@ export function OrderList({ loggedinUser }) {
   const reqStatusLoadOrders = useAppSelector(storeState => storeState.orderModule.reqStatusLoadOrders)
   const allOrders = useAppSelector(storeState => storeState.orderModule.orders)
   const [demoOrders, setDemoOrders] = useState(orderService.getDemoOrders())
+  const isRequestedOnceOnCmpLoadRef = useRef(false)
+
+
+  const handleLoadOrders = useCallback(async () => {
+    try {
+      isRequestedOnceOnCmpLoadRef.current = true
+      await dispatch(loadOrders({ userType: 'all' }))
+    } catch (error) {
+      console.log('Error fetching orders', error)
+      showErrorMsg('Error fetching orders')
+    }
+  }, [dispatch])
 
 
   useEffect(() => {
-    dispatch(orderResetLoadOrders())
-    dispatch(loadOrders({ userType: 'all' }))
-    return () => {
-      dispatch(orderUpdateReqStatusLoadOrders("idle"))
+    if (!isRequestedOnceOnCmpLoadRef.current) {
+      handleLoadOrders()
     }
-  }, [dispatch])
+  }, [handleLoadOrders, isRequestedOnceOnCmpLoadRef])
 
 
   // DEMO DATA //

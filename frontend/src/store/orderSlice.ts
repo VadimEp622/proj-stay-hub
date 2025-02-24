@@ -72,11 +72,13 @@ interface Order {
 interface OrderState {
   orders: Order[];
   reqStatusLoadOrders: RequestStatus;
+  reqIdLoadOrders: null | string;
 }
 
 const initialState: OrderState = {
   orders: [],
   reqStatusLoadOrders: RequestStatus.IDLE,
+  reqIdLoadOrders: null,
 };
 
 const orderSlice = createSlice({
@@ -89,25 +91,24 @@ const orderSlice = createSlice({
     ) => {
       _updateReqStatusLoadOrders(state, action.payload);
     },
-    orderResetLoadOrders: (state) => {
-      _resetLoadOrders(state);
-    },
   },
   extraReducers: (builder) => {
     // loadOrders
     builder
-      .addCase(loadOrders.pending, (state) => {
+      .addCase(loadOrders.pending, (state, action) => {
+        _resetLoadOrders(state);
         _updateReqStatusLoadOrders(state, RequestStatus.PENDING);
+        state.reqIdLoadOrders = action.meta.requestId;
       })
-      .addCase(
-        loadOrders.fulfilled,
-        (state, action: PayloadAction<Order[]>) => {
-          _updateOrdersState(state, action.payload);
-          _updateReqStatusLoadOrders(state, RequestStatus.SUCCEEDED);
-        }
-      )
+      .addCase(loadOrders.fulfilled, (state, action) => {
+        if (state.reqIdLoadOrders !== action.meta.requestId) return; // protection, in case prev request completed AFTER current request completed
+        _updateOrdersState(state, action.payload);
+        _updateReqStatusLoadOrders(state, RequestStatus.SUCCEEDED);
+        state.reqIdLoadOrders = null;
+      })
       .addCase(loadOrders.rejected, (state, action) => {
         _updateReqStatusLoadOrders(state, RequestStatus.FAILED);
+        state.reqIdLoadOrders = null;
         console.log("error - could not get orders", action.error);
         showErrorMsg("Could not load orders");
       });
@@ -178,8 +179,7 @@ export const rejectOrder = createAsyncThunk(
   }
 );
 
-export const { orderUpdateReqStatusLoadOrders, orderResetLoadOrders } =
-  orderSlice.actions;
+export const { orderUpdateReqStatusLoadOrders } = orderSlice.actions;
 
 export default orderSlice.reducer;
 
