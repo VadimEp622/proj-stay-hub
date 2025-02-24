@@ -61,7 +61,7 @@ interface StayState {
 // TODO: fix to make it work with React <StrictMode>:
 //   * ✔ stay-index
 //   * ✔ stay-detail
-//   * user-trips
+//   * ✔ user-trips
 //   * user-wishlist
 //   * final check for all possible API actions, that everything works in  <StrictMode> as intented
 

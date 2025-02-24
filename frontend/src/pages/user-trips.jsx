@@ -1,5 +1,5 @@
 // Node modules
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 // Services
@@ -28,6 +28,7 @@ export function UserTrips() {
     const [trips, setTrips] = useState([])
     const navigate = useNavigate()
     const dispatch = useAppDispatch()
+    const isRequestedOnceOnCmpLoadRef = useRef(false)
 
 
     useEffect(() => {
@@ -36,22 +37,9 @@ export function UserTrips() {
         }
     }, [dispatch])
 
-
-    useEffect(() => {
-        if (!loggedinUser) navigate('/')
-        else fetchOrders()
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [loggedinUser])
-
-
-    function onSearchClick(ev) {
-        ev.preventDefault()
-        ev.stopPropagation()
-        navigate('/')
-    }
-
-    async function fetchOrders() {
+    const handleLoadOrders = useCallback(async () => {
         try {
+            isRequestedOnceOnCmpLoadRef.current = true
             dispatch(orderResetLoadOrders())
             const orders = await dispatch(loadOrders({ userType: 'buyer' })).unwrap()
             // console.log('orders', orders)
@@ -60,6 +48,20 @@ export function UserTrips() {
             console.log('Error fetching orders', error)
             showErrorMsg('Error fetching orders')
         }
+    }, [dispatch])
+
+    useEffect(() => {
+        if (!loggedinUser) navigate('/')
+        else if (!isRequestedOnceOnCmpLoadRef.current) {
+            handleLoadOrders()
+        }
+    }, [isRequestedOnceOnCmpLoadRef, loggedinUser, handleLoadOrders, navigate])
+
+
+    function onSearchClick(ev) {
+        ev.preventDefault()
+        ev.stopPropagation()
+        navigate('/')
     }
 
     function getUpcomingTrips() {
