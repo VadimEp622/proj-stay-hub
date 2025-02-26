@@ -3,8 +3,7 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 // Store
-import { useAppDispatch, useAppSelector } from '../../store/hooks'
-import { stayUpdateFilterBy } from '../../store/staySlice'
+import { useAppSelector } from '../../store/hooks'
 
 // Services
 import { categoryImages } from '../../services/category-images.service.js'
@@ -22,19 +21,18 @@ import { utilService } from '../../services/util.service'
 export function CategoryFilter() {
     const [selectedCategory, setSelectedCategory] = useState('All')
     const storeFilterBy = useAppSelector(storeState => storeState.stayModule.filterBy)
-    const dispatch = useAppDispatch()
     const navigate = useNavigate()
 
-    // function handleClick(ev, label) {
-    //     ev.preventDefault()
-    //     setSelectedCategory(label)
-    //     dispatch(stayUpdateFilterBy({ label: label }))
-    // }
+
+    useEffect(() => {
+        if (!storeFilterBy.label || storeFilterBy.label === 'All') setSelectedCategory('All')
+        else setSelectedCategory(storeFilterBy.label)
+    }, [storeFilterBy])
+
 
     function handleClick(ev, label) {
         ev.preventDefault()
         setSelectedCategory(label)
-        // dispatch(stayUpdateFilterBy({ label: label }))
         const filter = createFilterObject(storeFilterBy, label)
         const searchParamsString = createQueryString(filter)
         navigate(`/?${searchParamsString}`)
@@ -63,11 +61,6 @@ export function CategoryFilter() {
             return `${key}=${encodeURIComponent(`${val}`.replace(/\s/g, '_'))}`
         }).join('&')
     }
-
-    useEffect(() => {
-        if (!storeFilterBy.label || storeFilterBy.label === 'All') setSelectedCategory('All')
-        else setSelectedCategory(storeFilterBy.label)
-    }, [storeFilterBy])
 
     return (
         <section className='category-filter'>
