@@ -12,6 +12,7 @@ const OrderConfirmation = lazy(() => import('./pages/order-confirmation.jsx').th
 const UserWishlist = lazy(() => import('./pages/user-wishlist.jsx').then(module => ({ default: module.UserWishlist })))
 const UserDashboard = lazy(() => import('./pages/user-dashboard.jsx').then(module => ({ default: module.UserDashboard })))
 const UserTrips = lazy(() => import('./pages/user-trips.jsx').then(module => ({ default: module.UserTrips })))
+const ErrorPage = lazy(() => import('./pages/error-page.jsx').then(module => ({ default: module.ErrorPage })))
 
 
 export default function MyCustomRouter() {
@@ -19,40 +20,95 @@ export default function MyCustomRouter() {
     const routes = useRoutes([
         {
             path: '/',
-            element: <StayIndex />,
-            label: 'StayHub'
-        },
-        {
-            path: 'stay',
+            label: 'StayHub',
+            errorElement: <ErrorPage />,
             children: [
                 {
-                    path: ':stayId',
-                    element: <StayDetails />,
-                    label: 'StayDetails'
+                    index: true,
+                    element: <StayIndex />,
+                    label: 'StayIndex'
                 },
                 {
-                    path: 'book/:stayId',
-                    element: <OrderConfirmation />,
-                    label: 'OrderConfirmation'
-                }
+                    path: 'stay',
+                    children: [
+                        {
+                            path: ':stayId',
+                            element: <StayDetails />,
+                            label: 'StayDetails'
+                        },
+                        {
+                            path: 'book/:stayId',
+                            element: <OrderConfirmation />,
+                            label: 'OrderConfirmation'
+                        }
+                    ]
+                },
+                {
+                    path: 'wishlist',
+                    element: <UserWishlist />,
+                    label: 'UserWishlist'
+                },
+                {
+                    path: 'dashboard',
+                    element: <UserDashboard />,
+                    label: 'UserDashboard'
+                },
+                {
+                    path: 'trips',
+                    element: <UserTrips />,
+                    label: 'MyTrips'
+                },
             ]
         },
         {
-            path: 'wishlist',
-            element: <UserWishlist />,
-            label: 'UserWishlist'
-        },
-        {
-            path: 'dashboard',
-            element: <UserDashboard />,
-            label: 'UserDashboard'
-        },
-        {
-            path: 'trips',
-            element: <UserTrips />,
-            label: 'MyTrips'
+            path: '*',
+            element: <ErrorPage />,
+            label: 'ErrorPage'
         }
     ])
+
+    // const routes = useRoutes([
+    //     {
+    //         path: '/',
+    //         element: <StayIndex />,
+    //         label: 'StayHub'
+    //     },
+    //     {
+    //         path: 'stay',
+    //         children: [
+    //             {
+    //                 path: ':stayId',
+    //                 element: <StayDetails />,
+    //                 label: 'StayDetails'
+    //             },
+    //             {
+    //                 path: 'book/:stayId',
+    //                 element: <OrderConfirmation />,
+    //                 label: 'OrderConfirmation'
+    //             }
+    //         ]
+    //     },
+    //     {
+    //         path: 'wishlist',
+    //         element: <UserWishlist />,
+    //         label: 'UserWishlist'
+    //     },
+    //     {
+    //         path: 'dashboard',
+    //         element: <UserDashboard />,
+    //         label: 'UserDashboard'
+    //     },
+    //     {
+    //         path: 'trips',
+    //         element: <UserTrips />,
+    //         label: 'MyTrips'
+    //     },
+    //     {
+    //         path: '*',
+    //         element: <ErrorPage />,
+    //         label: 'ErrorPage'
+    //     }
+    // ])
 
     return (
         <Suspense fallback={<Loader />}>
@@ -60,9 +116,6 @@ export default function MyCustomRouter() {
         </Suspense>
     )
 }
-
-
-// const routes = [
 //     {
 //         path: '/',
 //         component: <StayIndex />,
