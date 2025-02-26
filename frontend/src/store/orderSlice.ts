@@ -96,19 +96,20 @@ const orderSlice = createSlice({
     // loadOrders
     builder
       .addCase(loadOrders.pending, (state, action) => {
-        _resetLoadOrders(state);
+        _resetOrders(state);
         _updateReqStatusLoadOrders(state, RequestStatus.PENDING);
-        state.reqIdLoadOrders = action.meta.requestId;
+        _updateReqIdLoadOrders(state, action.meta.requestId);
       })
       .addCase(loadOrders.fulfilled, (state, action) => {
         if (state.reqIdLoadOrders !== action.meta.requestId) return; // protection, in case prev request completed AFTER current request completed
-        _updateOrdersState(state, action.payload);
+        _addToOrders(state, action.payload);
         _updateReqStatusLoadOrders(state, RequestStatus.SUCCEEDED);
-        state.reqIdLoadOrders = null;
+        _updateReqIdLoadOrders(state, null);
       })
       .addCase(loadOrders.rejected, (state, action) => {
         _updateReqStatusLoadOrders(state, RequestStatus.FAILED);
-        state.reqIdLoadOrders = null;
+        _updateReqIdLoadOrders(state, null);
+
         console.log("error - could not get orders", action.error);
         showErrorMsg("Could not load orders");
       });
@@ -194,13 +195,21 @@ function _updateReqStatusLoadOrders(
   state.reqStatusLoadOrders = reqStatusLoadOrders;
 }
 
-// ------------------------- State Resets -------------------------
-function _resetLoadOrders(state: OrderState) {
+// ------------------------- Request Id -------------------------
+function _updateReqIdLoadOrders(state: OrderState, reqId: string | null) {
+  state.reqIdLoadOrders = reqId;
+}
+
+// ------------------------- Orders Array -------------------------
+function _resetOrders(state: OrderState) {
   state.orders = [];
 }
 
-// ------------------------- State Updates -------------------------
-function _updateOrdersState(state: OrderState, orders: Order[]) {
+// function _setOrders(state: OrderState, orders: Order[]) {
+//   state.orders = [...orders];
+// }
+
+function _addToOrders(state: OrderState, orders: Order[]) {
   state.orders = [...state.orders, ...orders];
 }
 

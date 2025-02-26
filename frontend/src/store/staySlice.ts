@@ -64,7 +64,7 @@ interface StayState {
 //   * ✔ stay-index
 //   * ✔ stay-detail
 //   * ✔ user-trips
-//   * user-wishlist
+//   * ✔ user-wishlist
 //   * final check for all possible API actions, that everything works in  <StrictMode> as intented
 
 // TODO: Research using redux thunks requestId's, to prevent duplicate requests, and make sure only LATEST request is executed (required for this home-pages loadStays logic)
@@ -108,7 +108,7 @@ const staySlice = createSlice({
     },
 
     stayResetWishlistIds: (state) => {
-      state.wishlistIds = [];
+      _resetWishlistIds(state);
     },
 
     stayResetLoadStays: (state) => {
@@ -149,20 +149,20 @@ const staySlice = createSlice({
       .addCase(loadStays.pending, (state, action) => {
         if (action.meta.arg.isFirstBatch) _resetLoadStays(state);
         _updateReqStatusLoadStays(state, RequestStatus.PENDING);
-        state.reqIdLoadStays = action.meta.requestId;
+        _updateReqIdLoadStays(state, action.meta.requestId);
       })
       .addCase(loadStays.fulfilled, (state, action) => {
         if (state.reqIdLoadStays !== action.meta.requestId) return; // protection, in case prev request completed AFTER current request completed
         if (!action.payload.isFirstBatch) state.page += 1;
         if (action.payload.isFinalPage)
           state.isFinalPage = action.payload.isFinalPage;
-        state.stays = [...state.stays, ...action.payload.stays];
+        _addToStays(state, action.payload.stays);
         _updateReqStatusLoadStays(state, RequestStatus.SUCCEEDED);
-        state.reqIdLoadStays = null;
+        _updateReqIdLoadStays(state, null);
       })
       .addCase(loadStays.rejected, (state, action) => {
         _updateReqStatusLoadStays(state, RequestStatus.FAILED);
-        state.reqIdLoadStays = null;
+        _updateReqIdLoadStays(state, null);
 
         console.log("Failed loading stays", action.error);
         showErrorMsg("Failed loading stays");
@@ -191,7 +191,7 @@ const staySlice = createSlice({
       .addCase(
         loadWishlistedStayIds.fulfilled,
         (state, action: PayloadAction<any>) => {
-          state.wishlistIds = [...state.wishlistIds, ...action.payload];
+          _addToWishlistIds(state, action.payload);
           _updateReqStatusLoadWishlistIds(state, RequestStatus.SUCCEEDED);
         }
       )
@@ -210,7 +210,7 @@ const staySlice = createSlice({
         loadWishlistedStayId.fulfilled,
         (state, action: PayloadAction<any>) => {
           if (action.payload.isWishlist) {
-            state.wishlistIds = [...state.wishlistIds, action.payload.stayId];
+            _addToWishlistIds(state, [action.payload.stayId]);
           }
           _updateReqStatusLoadWishlistId(state, RequestStatus.SUCCEEDED);
         }
@@ -230,7 +230,7 @@ const staySlice = createSlice({
             );
           }
           if (action.payload.actionType === "create") {
-            state.wishlistIds = [...state.wishlistIds, action.payload.stayId];
+            _addToWishlistIds(state, [action.payload.stayId]);
           }
         }
       )
@@ -398,7 +398,7 @@ export const selectStayReqStatusLoadStay = (state: RootState) =>
 // **************** Local utility functions *********************
 // **************************************************************
 
-// ************ Request Status ************
+// ------------------------- Request Status -------------------------
 function _updateReqStatusLoadWishlistId(
   state: StayState,
   reqStatusLoadWishlistId: RequestStatus
@@ -427,7 +427,38 @@ function _updateReqStatusLoadStays(
   state.reqStatusLoadStays = reqStatusLoadStays;
 }
 
-// ************ Other ************
+// ------------------------- Request Id -------------------------
+function _updateReqIdLoadStays(state: StayState, reqId: string | null) {
+  state.reqIdLoadStays = reqId;
+}
+
+// ------------------------- Stays Array -------------------------
+// function _resetStays(state: StayState, stays: any[]) {
+//   state.stays = [];
+// }
+
+// function _setStays(state: StayState, stays: any[]) {
+//   state.stays = [...stays];
+// }
+
+function _addToStays(state: StayState, stays: any[]) {
+  state.stays = [...state.stays, ...stays];
+}
+
+// ------------------------- Wishlist Ids Array -------------------------
+function _resetWishlistIds(state: StayState) {
+  state.wishlistIds = [];
+}
+
+// function _setWishlistIds(state: StayState, wishlistIds: any[]) {
+//   state.wishlistIds = [...wishlistIds];
+// }
+
+function _addToWishlistIds(state: StayState, wishlistIds: any[]) {
+  state.wishlistIds = [...state.wishlistIds, ...wishlistIds];
+}
+
+// ------------------------- Other -------------------------
 function _updateFilterBy(state: StayState, filterBy: FilterBy) {
   state.filterBy = {
     ...stayService.getEmptyFilterBy(),

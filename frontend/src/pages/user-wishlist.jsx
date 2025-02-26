@@ -1,5 +1,5 @@
 // Node modules
-import { useEffect } from 'react'
+import { useCallback, useEffect, useRef } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
 // Custom hooks
@@ -11,7 +11,7 @@ import { useAppDispatch, useAppSelector } from '../store/hooks'
 // Components
 import { StayList } from '../cmps/stay-index/stay-list.jsx'
 import { Loader } from '../cmps/_reuseable-cmps/loader.jsx'
-import { loadWishlistStays, wishlistStayUpdateReqStatusLoadStays } from '../store/wishlist-stay.slice'
+import { loadWishlistStays } from '../store/wishlist-stay.slice'
 
 
 /**
@@ -38,6 +38,7 @@ export function UserWishlist() {
     const loggedinUser = useAppSelector(storeState => storeState.userModule.user)
     const wishlistStays = useAppSelector(storeState => storeState.wishlistStayModule.stays)
     const reqStatusLoadStays = useAppSelector(storeState => storeState.wishlistStayModule.reqStatusLoadStays)
+    const isRequestedOnceOnCmpLoadRef = useRef(false)
 
     /** @type {Location} */
     const geoLocation = useGeoLocation()
@@ -45,20 +46,22 @@ export function UserWishlist() {
     const dispatch = useAppDispatch()
 
 
-    useEffect(() => {
-        return () => {
-            dispatch(wishlistStayUpdateReqStatusLoadStays("idle"))
+    const handleLoadWishlistStays = useCallback(async () => {
+        try {
+            isRequestedOnceOnCmpLoadRef.current = true
+            await dispatch(loadWishlistStays())
+        } catch (err) {
+            console.log(err)
+            navigate('/')
         }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    }, [navigate, dispatch])
+
 
     useEffect(() => {
         if (!loggedinUser) navigate('/')
-    }, [loggedinUser, navigate])
+        else if (!isRequestedOnceOnCmpLoadRef.current) handleLoadWishlistStays()
+    }, [navigate, handleLoadWishlistStays, loggedinUser, isRequestedOnceOnCmpLoadRef])
 
-    useEffect(() => {
-        if (reqStatusLoadStays === "idle") dispatch(loadWishlistStays())
-    }, [reqStatusLoadStays, dispatch])
 
 
     function isStayWishlist(stayId) {
@@ -66,7 +69,7 @@ export function UserWishlist() {
     }
 
 
-    if (!loggedinUser || reqStatusLoadStays === "idle" || reqStatusLoadStays === "loading") return <Loader />
+    if (!loggedinUser || reqStatusLoadStays === "idle" || reqStatusLoadStays === "pending") return <Loader />
     if (reqStatusLoadStays === "failed") return <h1>Failed to load wishlist</h1>
 
     return (
