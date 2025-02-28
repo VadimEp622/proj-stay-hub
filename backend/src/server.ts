@@ -35,7 +35,8 @@ import { connectDB } from "./service/db.service.ts";
 // * In frontend, in MyCustomRouter, consider adding loader for routes.
 // * In frontend, consider wrapping header/footer in layout component, and add outlet + error boundary (example: https://github.com/remix-run/react-router/blob/dev/examples/error-boundaries/src/app.tsx)
 //      The reason, is that in case an error is thrown in the header cmp, the whole app will crash, since nothing will catch it - it's outside the routing structure,
-//      and cannot be redirected to an error page.
+//      and cannot be redirected to an error page
+// * In frontend - stay-details, API google key request happens twice
 
 // TODO: (Bugs)
 // * in frontend, sometimes in console appears: "Cookie “__cf_bm” has been rejected because there is an existing “secure” cookie."
