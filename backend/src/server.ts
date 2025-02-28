@@ -10,73 +10,34 @@ import { appConfig } from "./config/app.config.ts";
 import { connectDB } from "./service/db.service.ts";
 
 // INFO: replaced mongodb with mongoose (for the current used API's), and checked that all used methods actually WORK
+
 // TODO: 1) ✔ go over front+back API connections
 //       2) imporve API's services (filterCriteriaBuilders + updateMethodBuilders)
 //       3) ✔ deploy typescript backend to render
 
-// TODO: (after deploying TS backend)
-// * ✔ make a new DB collection "wishlistStay". It will have "_id", "userId" and "stayId".
-// * ✔ make functional API for "wishlistStay" that toggles wishlist item, and fetches wishlisted stay objects
-// * ✔ connect "wishlistStay" to frontend
-
 // TODO: I decided on a uniform file name convention -> all file-names should henceforth only be in "kebab-case"
-
-// TODO: I realised, that it's better to query in stay API for a "mini-stay" object, that is aggregated with only the useful stay-preview data, + isWishlist boolean.
-//      this will allow for proper functionality of infinite scrolling for wishlist stays, with the new "wishlistStay" DB collection API.
-//      need to think about cases when there is no logged in user as well.
-
-// ####################################################################################################################
-// ####################################################################################################################
-
-// TODO: new startegy -
-//    1) first, have a cacheable API for fetching mini stays by query (no user-specific data!!!)
-//    2) after first API request was completed, on the frontend, checks if loggedin, and if yes, fires a second different API request,
-//   with the same query parameters, but for user-specific data this time (which stays from the query are wishlisted by the user).
-
-//   ** NOTE: At this stage, we have cacheable API for stays, which is non user-personalized. (not logged-in user can get blazing fast data)
-//        and another API request to supplement the cacheable API with user-specific data.
-
-//    3) since we have infinite scrolling for our stays, we have to account for user logging-in mid pagination journey, so we get user-specific wishlist data,
-//     for all currently displayed stays.
-//     I imagine that we will also need to add current page of stays to the second API request, to get user-specific wishlist data for ALL currently displayed stays.
-
-// ⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇
-
-// -> SO, let's review what we need to do step by step:
-//   1) ✔ make GET "api/stay" query API, which will fetch mini stays, and have it cacheable. (make sure it WORKS)
-//   2) ✔ make GET "api/stay/wishlist" query API, which will fetch array of user sepcifc wishlisted stayIds. will fetch stayIds of all currently displayed stays in 1 request.
-//    make sure there is a destinction for the API between fetching wishlist for ALL current rendered stays, and fetching wishlist for next small paged batch of stays ONLY.
-//    (like from page 1 to 9, and from page 9 to 10, etc...). (make sure it WORKS)
-//   3) ✔ frontend, in redux stay slice, we will have an array of wishlisted stayIds. they are always coupled with the actual stays array in redux stay slice.
-//   4) ✔ frontend, in wishlist page, we will have a paginated list of wishlisted stays (maybe with infinite scrolling). those are stays that will be in the redux user slice.
-
-//   5) ✔ make frontend work with "mini-stay" object, for listing large previews of stays.
-//   6) ✔ add caching to querying of "mini-stays"
-//   7) ✔ remove users doc's "wishlist" field (since it's now redundant), from ALL app flow. (db/cookies/request.loggedinUser/asyncLocalStorage/etc...)
-//      (don't forget to update both local and live db's!)
-
-// ####################################################################################################################
-// ####################################################################################################################
-
-// TODO: big frontend change (requires step by step!!!):
-//   1) ✔ in stay-index, make category filter for "all" (make sure it works!)
-//   2) ✔ in stay-index category filter, upon every user-search using the header-filter and "fresh" fetching of stays, category resets to "all".
-//     (basically, every time user clicks on header's red search button, category resets to "all")
-//   3) ✔ in stay-index, make clicking on a category update the URL query (which should trigger a fresh filtered stay list with infinite scroll)
-//   4) ✔ combine redux store's stay slice's "loadStays" and "loadMoreStays" async thunk actions into one.
-//   5) combine redux store's stay slice's "loadWishlistedStayId" and "loadWishlistedStayIds" async thunk actions into one.
 
 // ####################################################################################################################
 // ####################################################################################################################
 
 // TODO: (misc)
-// * Change in entire app, so that "loggedinUser" variable/state will always be named like that, and not "loggedInUser". (for consistency)
+// * ✔ Change in entire app, so that "loggedinUser" variable/state will always be named like that, and not "loggedInUser". (for consistency)
 // * In frontend, user object sometimes looks for "joined" field. probably because of large stay demo data, which has fake user object with "joined" field.
 // Think what to do about it.
 // * In frontend, checkout out store's systemSlice, review it's flow and structure, and improve it if needed.
+// * Research more robust error handling structure for the app (carefully finish reading: "https://www.toptal.com/nodejs/node-js-error-handling")
+// * In frontend, research "redux-persist" for handling session persistence with redux.
+//      OR, update sessionStorage after unwrapping login/signup/logout dispatch actions (also consider only storing safe data in sessionStorage - boolean isLoggedin + cookie auth).
+//      OR, ditch persistent storage entirely, and use cookies only.
+// * In frontend store, decide if floating even-bus success/error message is called from the store (or if it's even correct to do so at all),
+//      or if it's called from the dispatching component with an unwarped action.
+// * In frontend, try adding "Strict mode", and see how it affects the app.
+// * In frontend, in MyCustomRouter, consider adding loader for routes.
+// * In frontend, consider wrapping header/footer in layout component, and add outlet + error boundary (example: https://github.com/remix-run/react-router/blob/dev/examples/error-boundaries/src/app.tsx)
+//      The reason, is that in case an error is thrown in the header cmp, the whole app will crash, since nothing will catch it - it's outside the routing structure,
+//      and cannot be redirected to an error page
 
 // TODO: (Bugs)
-// * When attempting to login using incorrect credentials, currently, the page is refreshed. (need to fix)
 // * in frontend, sometimes in console appears: "Cookie “__cf_bm” has been rejected because there is an existing “secure” cookie."
 //  investigate and fix!
 

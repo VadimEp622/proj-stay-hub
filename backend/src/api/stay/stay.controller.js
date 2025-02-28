@@ -43,13 +43,13 @@ export async function getStays(req, res) {
   }
 }
 
-export async function getWishlistedStayIdsPerPage(req, res) {
+export async function getWishlistedStayIds(req, res) {
   try {
     const userId = req.loggedinUser?._id
     if (!userId) throw new Error('logged in userId is not valid')
     // TODO: make sure userId is valid mongo object id
 
-    const { where, from, to, capacity, label, page } = req.query
+    const { where, from, to, capacity, label, page, isalluntilpage: isAllUntilPage } = req.query
 
     const filterBy = {
       where: '',
@@ -58,6 +58,10 @@ export async function getWishlistedStayIdsPerPage(req, res) {
       capacity: 0,
       label: '',
       page: 0
+    }
+
+    const wishlistFilterBy = {
+      isAllUntilPage: false
     }
 
     if (where) filterBy.where = where
@@ -73,45 +77,9 @@ export async function getWishlistedStayIdsPerPage(req, res) {
 
     if (filterBy.label === 'All') filterBy.label = ''
 
-    const stayIds = await stayService.getStayIdsWishlistedByUserByQuery(userId, filterBy)
-    res.json(stayIds)
-  } catch (err) {
-    logger.error('Failed to get wishlisted stay ids', err)
-    res.status(400).send({ err: 'Failed to get wishlisted stay ids' })
-  }
-}
+    if (isAllUntilPage === 'true') wishlistFilterBy.isAllUntilPage = true
 
-export async function getWishlistedStayIdsUntilPage(req, res) {
-  try {
-    const userId = req.loggedinUser?._id
-    if (!userId) throw new Error('logged in userId is not valid')
-    // TODO: make sure userId is valid mongo object id
-
-    const { where, from, to, capacity, label, page } = req.query
-
-    const filterBy = {
-      where: '',
-      from: '',
-      to: '',
-      capacity: 0,
-      label: '',
-      page: 0
-    }
-
-    if (where) filterBy.where = where
-    if (from) filterBy.from = +from
-    if (to) filterBy.to = +to
-    if (capacity) filterBy.capacity = +capacity
-    if (label) filterBy.label = label
-    if (page) filterBy.page = +page
-
-    if (filterBy.where === 'Flexible') filterBy.where = ''
-    if (filterBy.where === 'Middle East') filterBy.where = 'Turkey'
-    if (filterBy.where === 'South America') filterBy.where = 'Brazil'
-
-    if (filterBy.label === 'All') filterBy.label = ''
-
-    const stayIds = await stayService.getStayIdsWishlistedByUserByQuery(userId, filterBy, true)
+    const stayIds = await stayService.getStayIdsWishlistedByUserByQuery(userId, filterBy, wishlistFilterBy.isAllUntilPage)
     res.json(stayIds)
   } catch (err) {
     logger.error('Failed to get wishlisted stay ids', err)
@@ -129,39 +97,4 @@ export async function getStayById(req, res) {
     res.status(400).send({ err: 'Failed to get stay' })
   }
 }
-// ===========================================================
-// =============== Verified works but Not used ===============
-// export async function addStay(req, res) {
-//   const stay = req.body
-//   try {
-//     const addedStay = await stayService.add(stay)
-//     res.json(addedStay)
-//   } catch (err) {
-//     logger.error('Failed to add stay', err)
-//     res.status(400).send({ err: 'Failed to add stay' })
-//   }
-// }
-
-// export async function removeStay(req, res) {
-//   const stayId = req.params.id
-//   try {
-//     await stayService.remove(stayId)
-//     res.send(`Successfully removed stay: ${stayId}`)
-//   } catch (err) {
-//     logger.error('Failed to remove stay', err)
-//     res.status(400).send({ err: 'Failed to remove stay' })
-//   }
-// }
-
-// export async function updateStay(req, res) {
-//   const stayId = req.params.id
-//   const stay = req.body
-//   try {
-//     const updatedStay = await stayService.update(stayId, stay)
-//     res.json(updatedStay)
-//   } catch (err) {
-//     logger.error('Failed to update stay', err)
-//     res.status(400).send({ err: 'Failed to update stay' })
-//   }
-// }
-// ===========================================================
+// ===================================================================

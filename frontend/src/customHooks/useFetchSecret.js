@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { secretService } from '../services/secret.service'
 import { showErrorMsg } from '../services/event-bus.service'
 
@@ -6,13 +6,17 @@ import { showErrorMsg } from '../services/event-bus.service'
 export default function useFetchSecret() {
     const [secret, setSecret] = useState({})
     const [isLoading, setIsLoading] = useState(true)
+    const isRequestedOnceOnCmpLoadRef = useRef(false)
 
     useEffect(() => {
-        handleFetchSecret()
-    }, [])
+        if (!isRequestedOnceOnCmpLoadRef.current) {
+            handleFetchSecret()
+        }
+    }, [isRequestedOnceOnCmpLoadRef])
 
     async function handleFetchSecret() {
         try {
+            isRequestedOnceOnCmpLoadRef.current = true
             const fetchedSecret = await secretService.getApiKeyGoogleMap()
             setSecret(() => fetchedSecret)
         } catch (error) {

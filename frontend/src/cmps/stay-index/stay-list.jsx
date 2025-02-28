@@ -16,7 +16,7 @@ import { StayPreview } from './stay-list/stay-preview.jsx'
 // TODO: improve stay-list cmp structure + styling
 
 export function StayList({ stays, geoLocation, lastStayElementRef = null, isStayWishlist }) {
-    const loggedInUser = useAppSelector(storeState => storeState.userModule.user)
+    const loggedinUser = useAppSelector(storeState => storeState.userModule.user)
     const isMobile = useIsMobile()
     const dispatch = useAppDispatch()
 
@@ -24,7 +24,7 @@ export function StayList({ stays, geoLocation, lastStayElementRef = null, isStay
     function onLikeClicked(ev, stayId) {
         ev.preventDefault()
         ev.stopPropagation()
-        if (!loggedInUser) {
+        if (!loggedinUser) {
             dispatch(systemSetAppModal(SET_APP_MODAL_LOGIN))
             return
         }

@@ -12,6 +12,7 @@ enum RequestStatus {
 interface WishlistStayState {
   stays: any[];
   reqStatusLoadStays: RequestStatus;
+  reqIdLoadStays: null | string;
 }
 
 // TODO: add event-bus success/error for relevant reqStatuses
@@ -19,6 +20,7 @@ interface WishlistStayState {
 const initialState: WishlistStayState = {
   stays: [],
   reqStatusLoadStays: RequestStatus.IDLE,
+  reqIdLoadStays: null,
 };
 
 const wishlistStaySlice = createSlice({
@@ -34,19 +36,21 @@ const wishlistStaySlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(loadWishlistStays.pending, (state) => {
-        state.stays = [];
+      .addCase(loadWishlistStays.pending, (state, action) => {
         _updateReqStatusLoadStays(state, RequestStatus.PENDING);
+        _resetStays(state);
+        _updateReqIdLoadStays(state, action.meta.requestId);
       })
-      .addCase(
-        loadWishlistStays.fulfilled,
-        (state, action: PayloadAction<any[]>) => {
-          _updateStaysState(state, action.payload);
-          _updateReqStatusLoadStays(state, RequestStatus.SUCCEEDED);
-        }
-      )
+      .addCase(loadWishlistStays.fulfilled, (state, action) => {
+        if (state.reqIdLoadStays !== action.meta.requestId) return;
+        _updateReqStatusLoadStays(state, RequestStatus.SUCCEEDED);
+        _setStays(state, action.payload);
+        _updateReqIdLoadStays(state, null);
+      })
       .addCase(loadWishlistStays.rejected, (state, action) => {
         _updateReqStatusLoadStays(state, RequestStatus.FAILED);
+        _updateReqIdLoadStays(state, null);
+
         console.log("error - could not get wishlist stays", action.error);
         showErrorMsg("Could not load wishlist stays");
       });
@@ -91,14 +95,34 @@ export const { wishlistStayUpdateReqStatusLoadStays } =
 
 export default wishlistStaySlice.reducer;
 
-// ************ Local utility functions ************
-function _updateStaysState(state: WishlistStayState, stays: any[]) {
-  state.stays = [...stays];
-}
+// **************************************************************
+// **************** Local utility functions *********************
+// **************************************************************
 
+// ------------------------- Request Status -------------------------
 function _updateReqStatusLoadStays(
   state: WishlistStayState,
   reqStatusLoadStays: RequestStatus
 ) {
   state.reqStatusLoadStays = reqStatusLoadStays;
 }
+
+// ------------------------- Request Id -------------------------
+function _updateReqIdLoadStays(state: WishlistStayState, reqId: string | null) {
+  state.reqIdLoadStays = reqId;
+}
+
+// ------------------------- Stays Array -------------------------
+function _resetStays(state: WishlistStayState) {
+  state.stays = [];
+}
+
+function _setStays(state: WishlistStayState, stays: any[]) {
+  state.stays = [...stays];
+}
+
+// function _addToStays(state: WishlistStayState, stays: any[]) {
+//   state.stays = [...state.stays, ...stays];
+// }
+
+// ------------------------- Other -------------------------

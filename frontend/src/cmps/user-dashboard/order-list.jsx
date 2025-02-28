@@ -1,9 +1,9 @@
 // Node modules
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 
 // Store
 import { useAppDispatch, useAppSelector } from '../../store/hooks'
-import { approveOrder, loadOrders, orderSetIsLoadingOrders, rejectOrder } from '../../store/orderSlice'
+import { approveOrder, loadOrders, rejectOrder } from '../../store/orderSlice'
 
 // Services
 import { orderService } from '../../services/order.service.js'
@@ -11,6 +11,7 @@ import { orderService } from '../../services/order.service.js'
 // Components
 import { OrderPreview } from './order-list/order-preview.jsx'
 import { Loader } from '../_reuseable-cmps/loader.jsx'
+import { showErrorMsg } from '../../services/event-bus.service'
 
 
 // TODO: make tabs, for displaying:
@@ -20,23 +21,30 @@ import { Loader } from '../_reuseable-cmps/loader.jsx'
 // TODO: consider whether it's really needed to put the orders into the store, and not use useState
 
 
-export function OrderList({ loggedInUser }) {
+export function OrderList({ loggedinUser }) {
   const dispatch = useAppDispatch()
-  const isLoadingOrders = useAppSelector(storeState => storeState.orderModule.isLoadingOrders)
+  const reqStatusLoadOrders = useAppSelector(storeState => storeState.orderModule.reqStatusLoadOrders)
   const allOrders = useAppSelector(storeState => storeState.orderModule.orders)
   const [demoOrders, setDemoOrders] = useState(orderService.getDemoOrders())
+  const isRequestedOnceOnCmpLoadRef = useRef(false)
 
 
-  useEffect(() => {
-    dispatch(loadOrders())
-    return () => {
-      dispatch(orderSetIsLoadingOrders(false))
+  const handleLoadOrders = useCallback(async () => {
+    try {
+      isRequestedOnceOnCmpLoadRef.current = true
+      await dispatch(loadOrders({ userType: 'all' }))
+    } catch (error) {
+      console.log('Error fetching orders', error)
+      showErrorMsg('Error fetching orders')
     }
   }, [dispatch])
 
-  // useEffect(() => {
-  //   console.log('allOrders', allOrders)
-  // }, [allOrders])
+
+  useEffect(() => {
+    if (!isRequestedOnceOnCmpLoadRef.current) {
+      handleLoadOrders()
+    }
+  }, [handleLoadOrders, isRequestedOnceOnCmpLoadRef])
 
 
   // DEMO DATA //
@@ -72,7 +80,9 @@ export function OrderList({ loggedInUser }) {
   }
 
 
-  if (isLoadingOrders) return <Loader />
+  if (reqStatusLoadOrders === 'idle' || reqStatusLoadOrders === 'pending') return <Loader />
+  if (reqStatusLoadOrders === 'failed') return <p>Failed to load orders</p>
+
   return (
     <section className="order-list">
       <table>

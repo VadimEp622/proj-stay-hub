@@ -70,6 +70,7 @@ export function AppLoginSignup({ isSignUp, isQuick = false }) {
         if (!values.username) return
         try {
             const user = await dispatch(login(values)).unwrap()
+            if (!user) throw new Error('Failed Login')
             if (location.pathname === '/') dispatch(loadWishlistedStayIds({ filterBy, page, isAllUntilPage: true }))
             if (location.pathname.startsWith('/stay/')) dispatch(loadWishlistedStayId(location.pathname.split('/')[2]))
             showSuccessMsg(`Welcome: ${user.fullname}`)

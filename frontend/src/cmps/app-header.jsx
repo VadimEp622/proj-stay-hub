@@ -3,10 +3,9 @@ import { useEffect, useState } from 'react'
 import { useLocation, useNavigate, useSearchParams } from 'react-router-dom'
 
 // Store
-import { store } from '../store/store'
 import { useAppDispatch, useAppSelector } from '../store/hooks'
 import { systemSetIsExpandedHeader, systemSetIsExpandedHeaderModal, systemSetIsUnclickableBg } from '../store/systemSlice'
-import { stayResetPageNum, stayUpdateFilterBy, stayUpdateIsFinalPage } from '../store/staySlice'
+import { stayUpdateFilterBy, stayUpdateReqStatusLoadStays, stayUpdateReqStatusLoadWishlistIds } from '../store/staySlice'
 
 // Services
 import { utilService } from '../services/util.service.js'
@@ -40,10 +39,10 @@ export function AppHeader({ isStayDetailsPage, isMobile }) {
     // TODO: improve readability for operation of extracting search params from URL to setting in the store (custom hook?)
     useEffect(() => {
         if (location.pathname === '/') {
-            // console.log('location', location)
             const queryObject = queryStringToObject(searchParams)
-            // console.log('queryObject', queryObject)
-            dispatch(stayUpdateFilterBy(queryObject))
+            dispatch(stayUpdateFilterBy(queryObject))// only in home, when URL search params change, use params to update store filterBy
+            dispatch(stayUpdateReqStatusLoadStays("idle"))// only in home, when URL search params change, reset loadStays reqStatus 
+            dispatch(stayUpdateReqStatusLoadWishlistIds("idle"))// only in home, when URL search params change, reset LoadWishlistIds reqStatus 
             setFilterBy(queryObject)
         }
     }, [dispatch, setFilterBy, searchParams, location.pathname])
