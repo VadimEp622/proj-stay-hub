@@ -1,4 +1,3 @@
-import { isValidObjectId } from "mongoose";
 import { logger } from "../../service/logger.service.js";
 import { wishlistStayService } from "./wishlist-stay.service.ts";
 import {
@@ -6,7 +5,6 @@ import {
   RequestCustom,
   ResponseCustom,
 } from "../../types/custom-extend.types.ts";
-import { BadRequestException } from "../../shared/exeptions/http.exceptions.ts";
 
 export async function queryWishlistStays(
   req: RequestCustom,
@@ -29,11 +27,9 @@ export async function toggleWishlistStay(
   next: NextFunctionCustom
 ) {
   try {
-    const userId = req.loggedinUser?._id;
-    if (!isValidObjectId(userId))
-      throw new BadRequestException("Invalid loggedin userId");
-
+    const userId = req.loggedinUser._id;
     const { stayId } = req.body;
+
     const wishlistStay = { userId, stayId };
     const foundWishlistStay = await wishlistStayService.findOne(wishlistStay);
     logger.debug("foundWishlistStay", foundWishlistStay);

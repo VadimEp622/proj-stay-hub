@@ -30,3 +30,17 @@ export function checkIsWishlistStayByStayIdValidator(
 
   next();
 }
+
+export function toggleWishlistStayValidator(
+  req: RequestCustom,
+  _res: ResponseCustom,
+  next: NextFunctionCustom
+) {
+  if (!isValidObjectId(req.loggedinUser?._id))
+    throw new BadRequestException("Invalid loggedin userId");
+
+  if (!isValidObjectId(req.body?.stayId))
+    throw new BadRequestException("Invalid stayId");
+
+  next();
+}

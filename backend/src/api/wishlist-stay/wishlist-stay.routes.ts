@@ -8,6 +8,7 @@ import { requireAuth } from "../../middleware/requireAuth.middleware.js";
 import {
   checkIsWishlistStayByStayIdValidator,
   queryWishlistStaysValidator,
+  toggleWishlistStayValidator,
 } from "./wishlist-stay.validator.ts";
 
 const router = express.Router();
@@ -19,6 +20,6 @@ router.get(
   checkIsWishlistStayByStayIdValidator,
   checkIsWishlistStayByStayId
 );
-router.post("/", toggleWishlistStay);
+router.post("/", toggleWishlistStayValidator, toggleWishlistStay);
 
 export const wishlistStayRoutes = router;
