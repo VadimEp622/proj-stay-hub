@@ -8,9 +8,9 @@ export enum HTTPStatusCode {
   MovedPermanently = 301,
   Found = 302,
   BadRequest = 400,
-  Unauthorized = 401,
+  Unauthorized = 401, // failed to identify the user (missing/incorrect/expired credentials)
   PaymentRequired = 402,
-  Forbidden = 403,
+  Forbidden = 403, // user is authenticated, but lacks permissions
   NotFound = 404,
   MethodNotAllowed = 405,
   RequestTimeout = 408,

@@ -14,10 +14,7 @@ export async function queryWishlistStays(
   next: NextFunctionCustom
 ) {
   try {
-    const userId = req.loggedinUser?._id;
-    if (!isValidObjectId(userId))
-      throw new BadRequestException("Invalid loggedin userId");
-
+    const userId = req.loggedinUser._id;
     const filterBy = { userId };
     const wishlistStays = await wishlistStayService.query(filterBy);
     res.status(200).send(wishlistStays);
@@ -69,13 +66,8 @@ export async function checkIsWishlistStayByStayId(
   next: NextFunctionCustom
 ) {
   try {
-    const userId = req.loggedinUser?._id;
-    if (!isValidObjectId(userId))
-      throw new BadRequestException("Invalid loggedin userId");
-
+    const userId = req.loggedinUser._id;
     const { stayid: stayId } = req.params;
-    if (!isValidObjectId(stayId))
-      throw new BadRequestException("Invalid stayId");
 
     const filterBy = { stayId, userId };
     const wishlistStay = await wishlistStayService.findOne(filterBy);
