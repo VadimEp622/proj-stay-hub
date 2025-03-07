@@ -1,6 +1,6 @@
 import { startOfDay } from 'date-fns'
 import { logger } from '../../service/logger.service.js'
-import { StayModel } from '../../model/stay.ts'
+import { StayModel } from '../../database/model/stay.ts'
 
 const PAGE_SIZE = 20
 

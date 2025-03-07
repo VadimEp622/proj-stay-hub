@@ -1,4 +1,4 @@
-import { UserModel } from '../../model/user.ts'
+import { UserModel } from '../../database/model/user.ts'
 import { logger } from '../../service/logger.service.js'
 
 

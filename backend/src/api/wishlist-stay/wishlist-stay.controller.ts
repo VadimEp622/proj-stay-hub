@@ -1,26 +1,40 @@
-import { Response } from "express";
+import { isValidObjectId } from "mongoose";
 import { logger } from "../../service/logger.service.js";
 import { wishlistStayService } from "./wishlist-stay.service.ts";
-import { RequestCustom } from "../../types/custom-extend.types.ts";
+import {
+  NextFunctionCustom,
+  RequestCustom,
+  ResponseCustom,
+} from "../../types/custom-extend.types.ts";
+import { BadRequestException } from "../../shared/exeptions/http.exceptions.ts";
 
-export async function queryWishlistStays(req: RequestCustom, res: Response) {
+export async function queryWishlistStays(
+  req: RequestCustom,
+  res: ResponseCustom,
+  next: NextFunctionCustom
+) {
   try {
     const userId = req.loggedinUser?._id;
-    if (!userId) throw new Error("logged in userId is not valid");
+    if (!isValidObjectId(userId))
+      throw new BadRequestException("Invalid loggedin userId");
 
     const filterBy = { userId };
     const wishlistStays = await wishlistStayService.query(filterBy);
-    res.send(wishlistStays);
+    res.status(200).send(wishlistStays);
   } catch (err) {
-    logger.error("Failed querying wishlist stays", err);
-    res.status(400).send({ err: "Failed querying wishlist stays" });
+    next(err);
   }
 }
 
-export async function toggleWishlistStay(req: RequestCustom, res: Response) {
+export async function toggleWishlistStay(
+  req: RequestCustom,
+  res: ResponseCustom,
+  next: NextFunctionCustom
+) {
   try {
     const userId = req.loggedinUser?._id;
-    if (!userId) throw new Error("logged in userId is not valid");
+    if (!isValidObjectId(userId))
+      throw new BadRequestException("Invalid loggedin userId");
 
     const { stayId } = req.body;
     const wishlistStay = { userId, stayId };
@@ -32,45 +46,43 @@ export async function toggleWishlistStay(req: RequestCustom, res: Response) {
         wishlistStay
       );
       logger.debug("createdWishlistStay", createdWishlistStay);
-      res.send({
+      res.status(200).send({
         actionType: "create",
         msg: "Created wishlist stay successfully",
       });
     } else {
       const deletedCount = await wishlistStayService.remove(wishlistStay);
       logger.debug("deletedCount", deletedCount);
-      res.send({
+      res.status(200).send({
         actionType: "delete",
         msg: "Deleted wishlist stay successfully",
       });
     }
   } catch (err) {
-    logger.error("Failed toggling wishlist stay", err);
-    res.status(400).send({ msg: "Failed toggling wishlist stay" });
+    next(err);
   }
 }
 
 export async function checkIsWishlistStayByStayId(
   req: RequestCustom,
-  res: Response
+  res: ResponseCustom,
+  next: NextFunctionCustom
 ) {
   try {
     const userId = req.loggedinUser?._id;
-    if (!userId || userId.length < 8)
-      throw new Error("logged in userId is not valid");
-    // TODO: improve userId verification
+    if (!isValidObjectId(userId))
+      throw new BadRequestException("Invalid loggedin userId");
 
     const { stayid: stayId } = req.params;
-    if (!stayId || stayId.length < 8) throw new Error("stayId is not valid");
-    // TODO: improve stayId verification
+    if (!isValidObjectId(stayId))
+      throw new BadRequestException("Invalid stayId");
 
     const filterBy = { stayId, userId };
     const wishlistStay = await wishlistStayService.findOne(filterBy);
 
     if (!wishlistStay) res.send({ isWishlist: false });
-    else res.send({ isWishlist: true });
+    else res.status(200).send({ isWishlist: true });
   } catch (err) {
-    logger.error("Failed checking if stay is wishlisted", err);
-    res.status(400).send({ msg: "Failed checking if stay is wishlisted" });
+    next(err);
   }
 }

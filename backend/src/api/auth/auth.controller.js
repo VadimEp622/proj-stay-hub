@@ -1,7 +1,7 @@
 import { authService } from './auth.service.js'
 import { logger } from '../../service/logger.service.js'
 
-export async function login(req, res) {
+export async function login(req, res, next) {
     try {
         const { username, password } = req.body
         const user = await authService.login(username, password)
@@ -10,12 +10,11 @@ export async function login(req, res) {
         res.cookie('loginToken', loginToken, { sameSite: 'None', secure: true })
         res.json(user)
     } catch (err) {
-        logger.error('Failed to Login ' + err)
-        res.status(400).send({ err: 'Failed to Login' })
+        next(err);
     }
 }
 
-export async function signup(req, res) {
+export async function signup(req, res, next) {
     try {
         const credentials = req.body
         // Never log passwords
@@ -28,17 +27,16 @@ export async function signup(req, res) {
         res.cookie('loginToken', loginToken, { sameSite: 'None', secure: true })
         res.json(user)
     } catch (err) {
-        logger.error('Failed to signup ' + err)
-        res.status(400).send({ err: 'Failed to signup' })
+        next(err);
     }
 }
 
-export async function logout(req, res) {
+export async function logout(req, res, next) {
     try {
         res.clearCookie('loginToken')
         res.send({ msg: 'Logged out successfully' })
     } catch (err) {
-        res.status(400).send({ err: 'Failed to logout' })
+        next(err);
     }
 }
 

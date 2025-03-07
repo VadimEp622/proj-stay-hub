@@ -1,4 +1,4 @@
-import { OrderModel } from '../../model/order.ts'
+import { OrderModel } from '../../database/model/order.ts'
 import { logger } from '../../service/logger.service.js'
 
 

@@ -1,9 +1,7 @@
-import { logger } from '../../service/logger.service.js'
 import { secretService } from './secret.service.js'
 
 
 export function getApiKeyGoogleMap(req, res) {
     const apiKey = secretService.getApiKeyGoogleMap()
-    // logger.info('Getting secret API key', 'Google Maps')
-    res.json(apiKey)
+    res.status(200).json(apiKey)
 }

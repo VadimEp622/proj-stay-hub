@@ -1,5 +1,5 @@
 import mongoose, { Schema } from "mongoose";
-import { IStayModel } from "../types/stay.types.ts";
+import { IStayModel } from "../../types/stay.types.ts";
 
 const staySchema: Schema = new Schema(
   {

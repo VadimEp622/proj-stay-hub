@@ -1,10 +1,12 @@
+import { isValidObjectId } from 'mongoose'
 import { stayService } from './stay.service.js'
 import { logger } from '../../service/logger.service.js'
 import { cacheUrl } from '../../service/cache.service.ts'
+import { BadRequestException } from '../../shared/exeptions/http.exceptions.ts'
 
 
 // =================== Verified being used ===================
-export async function getStays(req, res) {
+export async function getStays(req, res, next) {
   try {
     const { where, from, to, capacity, label, page } = req.query
 
@@ -36,18 +38,17 @@ export async function getStays(req, res) {
     cacheUrl.set(req.originalUrl, { stays, isFinalPage })
     logger.info(`Cache set - ${req.originalUrl}`)
 
-    res.json({ stays, isFinalPage })
+    res.status(200).json({ stays, isFinalPage })
   } catch (err) {
-    logger.error('Failed to get stays', err)
-    res.status(400).send({ err: 'Failed to get stays' })
+    next(err);
   }
 }
 
-export async function getWishlistedStayIds(req, res) {
+export async function getWishlistedStayIds(req, res, next) {
   try {
     const userId = req.loggedinUser?._id
-    if (!userId) throw new Error('logged in userId is not valid')
-    // TODO: make sure userId is valid mongo object id
+    if (!isValidObjectId(userId))
+      throw new BadRequestException("Invalid loggedin userId");
 
     const { where, from, to, capacity, label, page, isalluntilpage: isAllUntilPage } = req.query
 
@@ -80,21 +81,19 @@ export async function getWishlistedStayIds(req, res) {
     if (isAllUntilPage === 'true') wishlistFilterBy.isAllUntilPage = true
 
     const stayIds = await stayService.getStayIdsWishlistedByUserByQuery(userId, filterBy, wishlistFilterBy.isAllUntilPage)
-    res.json(stayIds)
+    res.status(200).json(stayIds)
   } catch (err) {
-    logger.error('Failed to get wishlisted stay ids', err)
-    res.status(400).send({ err: 'Failed to get wishlisted stay ids' })
+    next(err);
   }
 }
 
-export async function getStayById(req, res) {
+export async function getStayById(req, res, next) {
   try {
     const stayId = req.params.id
     const stay = await stayService.getById(stayId)
-    res.json(stay)
+    res.status(200).json(stay)
   } catch (err) {
-    logger.error('Failed to get stay', err)
-    res.status(400).send({ err: 'Failed to get stay' })
+    next(err);
   }
 }
 // ===================================================================

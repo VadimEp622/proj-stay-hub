@@ -1,9 +1,13 @@
-import { NextFunction, Response } from "express";
-import { RequestCustom } from "../types/custom-extend.types.ts";
+import { NextFunction } from "express";
+import { RequestCustom, ResponseCustom } from "../types/custom-extend.types.ts";
 import { cacheUrl } from "../service/cache.service.ts";
 import { logger } from "../service/logger.service.js";
 
-export function cache(req: RequestCustom, res: Response, next: NextFunction) {
+export function cache(
+  req: RequestCustom,
+  res: ResponseCustom,
+  next: NextFunction
+) {
   try {
     if (req.method === "GET" && cacheUrl.has(req.originalUrl)) {
       logger.info(`Cache hit - ${req.originalUrl}`);

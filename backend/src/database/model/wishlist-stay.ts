@@ -1,5 +1,5 @@
 import mongoose, { Schema } from "mongoose";
-import { IWishlistStayModel } from "../types/wishlist-stay.types.ts";
+import { IWishlistStayModel } from "../../types/wishlist-stay.types.ts";
 
 // ************************************************** EXTRA NOTE **************************************************
 // NOTE: a possible structure for wishlist doc, is to implement "Expire Documents with Filter Conditions" (partial TTL index)

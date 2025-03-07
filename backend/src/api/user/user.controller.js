@@ -1,34 +1,37 @@
+import { isValidObjectId } from 'mongoose'
 import { userService } from './user.service.js'
-import { logger } from '../../service/logger.service.js'
+import { BadRequestException } from '../../shared/exeptions/http.exceptions.ts'
+
 
 // ====================== Confirmed Being Used ======================
-export async function getUser(req, res) {
+export async function getUser(req, res, next) {
     try {
         const userId = req.params.id
+        if (!isValidObjectId(userId)) throw new BadRequestException('Invalid userId')
         const user = await userService.getById(userId)
-        // logger.info('Get user by userId:', userId)
-        res.send(user)
+        res.status(200).send(user)
     } catch (err) {
-        logger.error('Failed to get user', err)
-        res.status(400).send({ err: 'Failed to get user' })
+        next(err)
     }
 }
 
-export async function addUserTrip(req, res) {
-    const userId = req.params.id
-    const orderId = req.body.orderId
+
+export async function addUserTrip(req, res, next) {
     try {
+        const userId = req.params.id
+        if (!isValidObjectId(userId)) throw new BadRequestException('Invalid userId')
+        const orderId = req.body.orderId
+        if (!isValidObjectId(orderId)) throw new BadRequestException('Invalid orderId')
+
         const updatedUser = await userService.addTrip(userId, orderId)
-        // logger.info('Update user - add tripId to trips array',userId)
-        res.send(updatedUser)
+        res.status(200).send(updatedUser)
     } catch (err) {
-        logger.error('Failed adding trip to user', err)
-        res.status(400).send({ err: 'Failed adding trip to user' })
+        next(err)
     }
 }
 // ==================================================================
 // =================== Confirmed works but unused ===================
-export async function getUsers(req, res) {
+export async function getUsers(req, res, next) {
     try {
         const filterBy = {
             txt: req.query?.txt || '',
@@ -37,31 +40,28 @@ export async function getUsers(req, res) {
         const users = await userService.query(filterBy)
         res.send(users)
     } catch (err) {
-        logger.error('Failed to get users', err)
-        res.status(400).send({ err: 'Failed to get users' })
+        next(err)
     }
 }
 
-export async function updateUser(req, res) {
-    const userId = req.params.id
-    const user = req.body
+export async function updateUser(req, res, next) {
     try {
+        const userId = req.params.id
+        const user = req.body
         const savedUser = await userService.update(userId, user)
         res.send(savedUser)
     } catch (err) {
-        logger.error('Failed to update user', err)
-        res.status(400).send({ err: 'Failed to update user' })
+        next(err)
     }
 }
 
-export async function deleteUser(req, res) {
-    const userId = req.params.id
+export async function deleteUser(req, res, next) {
     try {
+        const userId = req.params.id
         await userService.remove(userId)
         res.send({ msg: 'Deleted successfully' })
     } catch (err) {
-        logger.error('Failed to delete user', err)
-        res.status(400).send({ err: 'Failed to delete user' })
+        next(err)
     }
 }
 // ==================================================================

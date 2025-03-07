@@ -1,5 +1,5 @@
-import { StayModel } from "../../model/stay.ts";
-import { wishlistStayModel } from "../../model/wishlist-stay.ts";
+import { StayModel } from "../../database/model/stay.ts";
+import { wishlistStayModel } from "../../database/model/wishlist-stay.ts";
 import { logger } from "../../service/logger.service.js";
 
 export const wishlistStayService = {
