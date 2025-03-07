@@ -1,5 +1,12 @@
 import { NextFunction, Request, Response } from "express";
 
+// INFO: current app flow is based on cookie auth.  an encrypted object is stored in the cookie as a token.
+//    the enctrypted object should (WIP) contain only the user's id.
+
+interface ILoggedinUser {
+  _id: string;
+}
+
 export interface RequestCustom extends Request {
   loggedinUser?: any;
 }

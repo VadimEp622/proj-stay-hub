@@ -42,7 +42,10 @@ import { connectDB } from "./service/db.service.ts";
 // TODO: (backend)
 // -------------- cookie loginToken object --------------
 // 1) check explicitly what is allowed/not-allowed to be inside cookie loginToken object
-// 2) type CustomRequest interface's loggedinUser field accordingly
+// 2) check explicitly what is allowed/not-allowed to be inside als loggedinUser object
+// 3) type CustomRequest interface's loggedinUser field accordingly
+// 4) improve auth service's validateToken function, to get db user from id decrypted from loginToken.
+//         make sure that only auth service accesses user service, and not the other way around, to avoid circular dependencies (TODO: isolate services from each other)
 // ------------------------------------------------------
 // * research API service error handling (mongoose errors, etc...)
 // * add to all routes, API validation to for specific controllers (req.body, req.params, etc...)
