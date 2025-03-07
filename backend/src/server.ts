@@ -31,12 +31,24 @@ import { connectDB } from "./service/db.service.ts";
 //      OR, ditch persistent storage entirely, and use cookies only.
 // * In frontend store, decide if floating even-bus success/error message is called from the store (or if it's even correct to do so at all),
 //      or if it's called from the dispatching component with an unwarped action.
-// * In frontend, try adding "Strict mode", and see how it affects the app.
 // * In frontend, in MyCustomRouter, consider adding loader for routes.
 // * In frontend, consider wrapping header/footer in layout component, and add outlet + error boundary (example: https://github.com/remix-run/react-router/blob/dev/examples/error-boundaries/src/app.tsx)
 //      The reason, is that in case an error is thrown in the header cmp, the whole app will crash, since nothing will catch it - it's outside the routing structure,
 //      and cannot be redirected to an error page
-// * In backend, Wrap all API's with new error handling logic
+
+// ####################################################################################################################
+// ####################################################################################################################
+
+// TODO: (backend)
+// -------------- cookie loginToken object --------------
+// 1) check explicitly what is allowed/not-allowed to be inside cookie loginToken object
+// 2) type CustomRequest interface's loggedinUser field accordingly
+// ------------------------------------------------------
+// * research API service error handling (mongoose errors, etc...)
+// * add to all routes, API validation to for specific controllers (req.body, req.params, etc...)
+
+// ####################################################################################################################
+// ####################################################################################################################
 
 // TODO: (Bugs)
 // * in frontend, sometimes in console appears: "Cookie “__cf_bm” has been rejected because there is an existing “secure” cookie."
