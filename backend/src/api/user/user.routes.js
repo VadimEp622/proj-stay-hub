@@ -1,12 +1,13 @@
 import express from 'express'
 import { requireAuth, requireAdmin } from '../../middleware/requireAuth.middleware.js'
 import { getUser, getUsers, deleteUser, updateUser, addUserTrip } from './user.controller.js'
+import { addUserTripValidator, getUserValidator } from './user.validator.ts'
 
 const router = express.Router()
 
 // ====================== Confirmed Being Used ======================
-router.get('/:id', getUser)
-router.post('/:id/trip', requireAuth, addUserTrip)
+router.get('/:id', getUserValidator, getUser)
+router.post('/:id/trip', requireAuth, addUserTripValidator, addUserTrip)
 // TODO: 1) "/:id/trip" should be PUT, not POST
 //       2) check if possible to use something like "updateUser" for all cases
 // ==================================================================
