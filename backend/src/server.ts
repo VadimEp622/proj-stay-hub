@@ -51,6 +51,7 @@ import { connectDB } from "./service/db.service.ts";
 // * add to all routes, API validation to for specific controllers (req.body, req.params, etc...)
 // * improve trip/order backend handling
 // * add database actions under database folder, to decouple from API's and prevent circular dependencies between auth/user, etc...
+// * in user backend, either remove "trips" filed from db user object, or limit it to 5 or 10 (as in latest trips by user).
 
 // ####################################################################################################################
 // ####################################################################################################################
