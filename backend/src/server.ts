@@ -49,6 +49,7 @@ import { connectDB } from "./service/db.service.ts";
 // ------------------------------------------------------
 // * research API service error handling (mongoose errors, etc...)
 // * add to all routes, API validation to for specific controllers (req.body, req.params, etc...)
+// * improve trip/order backend handling
 
 // ####################################################################################################################
 // ####################################################################################################################
