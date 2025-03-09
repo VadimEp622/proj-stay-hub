@@ -10,7 +10,7 @@ const router = express.Router();
 
 // ====================== Confirmed Being Used ======================
 router.get("/:id", getUserValidator, getUser);
-router.post("/:id/trip", requireAuth, addUserTripValidator, addUserTrip);
+router.put("/:id/trip", requireAuth, addUserTripValidator, addUserTrip);
 // TODO: 1) "/:id/trip" should be PUT, not POST
 //       2) check if possible to use something like "updateUser" for all cases
 // ==================================================================

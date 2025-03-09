@@ -28,7 +28,7 @@ export const userService = {
 // ========================= Checked and in use =========================
 // ******* C.R.U.D.L *******
 function addUserTrip(userId, orderId) {
-    return httpService.post(`${BASE_URL}/${userId}/trip`, orderId)
+    return httpService.put(`${BASE_URL}/${userId}/trip`, orderId)
 }
 
 function getById(userId) {
