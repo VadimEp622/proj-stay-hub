@@ -10,9 +10,8 @@ export const userService = {
     addTrip,
     // ==================================================================
     // =================== Confirmed works but unused ===================
-    // query,
     remove,
-    // update,
+    // ==================================================================
 }
 
 // ====================== Confirmed Being Used ======================
@@ -65,39 +64,6 @@ async function addTrip(userId, orderId) {
 
 // ==================================================================
 // =================== Confirmed works but unused ===================
-// async function query(filterBy = {}) {
-//     const criteria = _buildCriteria(filterBy)
-//     try {
-//         const collection = await dbService.getCollection('user')
-//         var users = await collection.find(criteria).toArray()
-//         users = users.map(user => {
-//             delete user.password
-//             user.createdAt = ObjectId(user._id).getTimestamp()
-//             return user
-//         })
-//         return users
-//     } catch (err) {
-//         logger.error('cannot find users', err)
-//         throw err
-//     }
-// }
-
-// async function update(userId, user) {
-//     try {
-//         const { fullname, imgUrl } = user
-//         const userToSave = {}
-//         if (fullname) userToSave.fullname = fullname
-//         if (imgUrl) userToSave.imgUrl = imgUrl
-
-//         const collection = await dbService.getCollection('user')
-//         await collection.updateOne({ _id: ObjectId(userId) }, { $set: userToSave })
-//         return userToSave
-//     } catch (err) {
-//         logger.error(`cannot update user ${userId}`, err)
-//         throw err
-//     }
-// }
-
 async function remove(userId) {
     try {
         await UserModel.deleteOne({ _id: userId })
@@ -107,25 +73,3 @@ async function remove(userId) {
     }
 }
 // ==================================================================
-
-
-
-// private functions
-function _buildCriteria(filterBy) {
-    const criteria = {}
-    if (filterBy.txt) {
-        const txtCriteria = { $regex: filterBy.txt, $options: 'i' }
-        criteria.$or = [
-            {
-                username: txtCriteria
-            },
-            {
-                fullname: txtCriteria
-            }
-        ]
-    }
-    if (filterBy.minBalance) {
-        criteria.score = { $gte: filterBy.minBalance }
-    }
-    return criteria
-}
