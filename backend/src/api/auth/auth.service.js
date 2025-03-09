@@ -55,9 +55,9 @@ function validateToken(loginToken) {
     try {
         const json = cryptr.decrypt(loginToken)
         const loggedinUser = JSON.parse(json)
+        if (!loggedinUser.hasOwnProperty('_id') || !loggedinUser.hasOwnProperty('fullname')) throw new Error()
         return loggedinUser
     } catch (err) {
-        console.log('Invalid login token')
+        return null
     }
-    return null
 }

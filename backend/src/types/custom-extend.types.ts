@@ -5,6 +5,8 @@ import { NextFunction, Request, Response } from "express";
 
 interface ILoggedinUser {
   _id: string;
+  fullname: string;
+  isAdmin?: boolean;
 }
 
 export interface RequestCustom extends Request {
