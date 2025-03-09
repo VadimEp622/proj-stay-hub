@@ -16,7 +16,7 @@ interface ILoggedinUser {
 // NOTE: als, used for remembering a state throughout a request
 export async function setupAsyncLocalStorage(
   req: RequestCustom,
-  res: ResponseCustom,
+  _res: ResponseCustom,
   next: NextFunctionCustom
 ) {
   const storage = {};
